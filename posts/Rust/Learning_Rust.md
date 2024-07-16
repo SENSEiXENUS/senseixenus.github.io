@@ -32,4 +32,7 @@
  ### To compile Rust with cargo, from the directory, run with the command below and spot the binary in `target/debug`
 
      cargo build
-  
+
+ ### To build and run, use
+
+     cargo run
