@@ -7,7 +7,7 @@
 ### Printing Hello World!!!
 
     fn main () {
-       println("Hello World!!!");
+       println!("Hello World!!!");
     }
 
 ### Compiling rust code with rustc
