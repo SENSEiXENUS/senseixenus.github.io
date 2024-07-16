@@ -14,4 +14,9 @@
 
     rustc -o <binary's name> <rust script's name>.rs
 
+### Or you can use
+
+    rustc try.rs
+
+
   
