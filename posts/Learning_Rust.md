@@ -18,5 +18,16 @@
 
     rustc try.rs
 
+### Cargo
+ Cargo is a package manager for Rust and it is used to install dependencies that your code requires.
 
+ ### Checking Cargo's version
+
+     cargo --version
+
+ ### Creating a directory to manage project with cargo containing directory for us: a Cargo.toml file and a srcdirectory with a main.rs file inside. It has also initialized a new Git repository along with a .gitignore file.
+
+     cargo new <binary> --bin
+  
+ ### 
   
