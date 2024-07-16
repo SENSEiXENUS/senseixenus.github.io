@@ -41,4 +41,8 @@
 
      cargo check
 
-###
+### To run and compile a rust code from github, use
+
+    $ git clone someurl.com/someproject
+    $ cd someproject
+    $ cargo build
