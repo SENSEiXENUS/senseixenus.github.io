@@ -36,3 +36,9 @@
  ### To build and run, use
 
      cargo run
+
+### To run and check for errors without creating a binary, use
+
+     cargo check
+
+###
