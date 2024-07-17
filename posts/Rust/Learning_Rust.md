@@ -75,3 +75,6 @@
     let y = 10;
     println!("The x is {} and y is {}",x,y);
 
+### To update a crate, use
+
+    cargo update
