@@ -103,7 +103,18 @@
        let guess = String::new();
        let mut guess: i32 = guess.trim().parse();
     
+- Use `loop{}` to create a loop in rust and break it with `break` 
 
-     
-
+        extern crate rand;
+        use rand::Rng;
+        fn main() {
+            let _secret_number = rand::thread_rng().gen_range(1,101);
+            loop {
+                let guess: u32  =  10;
+                if guess ==  10 {
+                   println!("Success");
+                   break;
+                }
+            }
+        }
     
