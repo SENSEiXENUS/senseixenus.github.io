@@ -68,3 +68,10 @@
 '&' means reference in rust and it allows rust read data once without making it read multiple times.`&mut guess` is used instead of `&guess` to make it mutable.
 
     io::stdin().read_line(&mut guess).expect("Failed to read lines");
+
+### Using `println!()` to insert values with placeholders
+
+    let x  = 9;
+    let y = 10;
+    println!("The x is {} and y is {}",x,y);
+
