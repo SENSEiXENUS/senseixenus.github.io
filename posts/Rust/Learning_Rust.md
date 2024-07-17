@@ -46,3 +46,26 @@
     $ git clone someurl.com/someproject
     $ cd someproject
     $ cargo build
+
+
+### Chapter 2: Building a Guessing game 
+
+ Learning `let,match and other methods`
+
+### To import a library, use the keyword `use` and to use the specific library, use `::`
+
+    use std::io;
+
+### To create a mutable variable, use `mut` and `let` to define a variable
+
+    let  mut foo = "bar";
+### Creating a variable to store string
+
+    let mut foo = String::new();
+
+### Using io to read lines and triggering a statement if the functions fails to read the line with `.expect`
+
+'&' means reference in rust and it allows rust read data once without making it read multiple times.`&mut guess` is used instead of `&guess` to make it mutable.
+
+    io::stdin().read_line(&mut guess);
+        .expect("Failed to read lines")
