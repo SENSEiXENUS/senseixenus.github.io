@@ -87,8 +87,23 @@
 ### Comparing a number with `std::cmp::Ordering`
 
     match guess.cmp(&secret_number){
-          Ordering::Less => println!("");
-          Ordering::Greater => println!("");
-          Ordering::Equal => println!("");
+          Ordering::Less => println!(""),
+          Ordering::Greater => println!(""),
+          Ordering::Equal => println!(""),
     }
+
+### Some functions
+-  .trim() eliminates any whitespace in a a string
+
+        let guess  =  "1";
+        let mut guess =  guess.trim();
+
+-  A variable can be reused in Rust with the .parse() function
+
+       let guess = String::new();
+       let mut guess: i32 = guess.trim().parse();
+    
+
+     
+
     
