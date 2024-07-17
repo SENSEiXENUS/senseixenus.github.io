@@ -78,3 +78,7 @@
 ### To update a crate, use
 
     cargo update
+
+### To import a crate, use the keyword `extern crate` 
+
+    extern crate rand
