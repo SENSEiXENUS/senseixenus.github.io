@@ -85,4 +85,10 @@
     use std::cmp::Ordering
 
 ### Comparing a number with `std::cmp::Ordering`
+
+    match guess.cmp(&secret_number){
+          Ordering::Less => println!("");
+          Ordering::Greater => println!("");
+          Ordering::Equal => println!("");
+    }
     
