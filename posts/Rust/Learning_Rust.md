@@ -82,3 +82,7 @@
 ### To import a crate, use the keyword `extern crate` 
 
     extern crate rand
+    use std::cmp::Ordering
+
+### Comparing a number with `std::cmp::Ordering`
+    
