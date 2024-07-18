@@ -189,3 +189,17 @@ An integer can be signed or unsigned. A signed integer can contain both negative
 | 32-bit     |   i32      |    u32       |
 | 64-bit     |   i64      |    u64       |
 | Arch       |   isize    |    usize     |
+
+### Calculating the numbers that each length can store
+
+- Signed integer 
+
+      (2n − 1) N refers to the amount of bit e.g (2 raise to 8-1) which is 2 raise to 7-1 
+
+- Unsigned integer
+
+      (2n − 1) which is 2 raise to power the bit,then the result -1
+
+- If use are unsure of the type of integer, you should use default `i32`.`isize and usize` are used when indexing collections.
+  
+      
