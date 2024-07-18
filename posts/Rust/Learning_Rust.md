@@ -203,5 +203,18 @@ An integer can be signed or unsigned. A signed integer can contain both negative
 - If use are unsure of the type of integer, you should use default `i32`.`isize and usize` are used when indexing collections.
   
       
+### Boolean 
 
+- It is denoted by `bool` in Rust.It can either be `true` or `false`
+
+      let x: bool = true;
+      let y: bool = false;
+
+### Character
+
+- It is denoted by `char`.It represents unicode characters e.g emojis
+
+      let x: char  =  '[emoji]';
+
+    
 
