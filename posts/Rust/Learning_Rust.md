@@ -174,3 +174,8 @@ This chapter explains the concepts like variables,functions, control flow, basic
 - `Const` variables are hardcoded and should be in uppercase
 
          const MAX_SCORES: u32 = 100000;
+
+### Scalar Types
+
+A Scalar type means a single point character. It can be an `integer,floating-point number,Boolean and character`
+
