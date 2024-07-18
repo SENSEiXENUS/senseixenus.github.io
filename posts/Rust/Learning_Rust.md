@@ -146,3 +146,28 @@
           }
        }    
     }
+
+### Common Programming Concepts
+This chapter explains the concepts like variables,functions, control flow, basic types and comments
+
+### Variables
+
+- A variable might be mutable or immutable, A variable is mutable if its value can be changed and immutable if its value cannot be changed.The `mut` keyword makes a variable mutable.
+
+   A code without the `mut` keyword
+  
+         fn main () {
+         let x = 6; 
+         println!("X is {}",x);
+         x = 9;
+         println!("X is {}",x);
+      }
+
+   A code with the `mut` keyword
+
+         fn main () {
+         let mut  x = 6; 
+         println!("X is {}",x);
+         x = 9;
+         println!("X is {}",x);
+      }
