@@ -179,3 +179,5 @@ This chapter explains the concepts like variables,functions, control flow, basic
 
 A Scalar type means a single point character. It can be an `integer,floating-point number,Boolean and character`
 
+### Integer types
+An integer can be signed or unsigned. A signed integer can contain both negative and positive integers while unsigned ones can only contain non-negative integers.
