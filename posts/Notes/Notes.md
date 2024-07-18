@@ -7,8 +7,13 @@ NOTES
 
 - Connect with dynamic portforwarding with ssh
 
-      ssh -l id_rsa -D {proxychains' scok5 port number}
+      ssh -l id_rsa -D {proxychains' sock5 port number}
 
 - To scan the internal network with nmap,use
 
-      proxychains nmap 127.0.0.1
+      proxychains nmap -sT 127.0.0.1
+
+- To local port forward
+
+      sudo ssh -l id_rsa -L {port you want to forwrd through}:127.0.0.1:{remote port discovered} 
+  
