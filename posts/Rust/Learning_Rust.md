@@ -181,3 +181,11 @@ A Scalar type means a single point character. It can be an `integer,floating-poi
 
 ### Integer types
 An integer can be signed or unsigned. A signed integer can contain both negative and positive integers while unsigned ones can only contain non-negative integers.
+
+| **length** | **signed** | **unsigned** |
+|------------|------------|--------------|
+| 8-bit      |   i8       |    u8        |
+| 16-bit     |   i16      |    i16       |
+| 32-bit     |   i32      |    u32       |
+| 64-bit     |   i64      |    u64       |
+| Arch       |   isize    |    usize     |
