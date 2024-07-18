@@ -17,3 +17,6 @@ NOTES
 
       sudo ssh -l id_rsa -L {port you want to forwrd through}:127.0.0.1:{remote port discovered} 
   
+### Removing `\r` in `exploitdb` scripts
+
+    sed -i -e 's/\r$//' <script's name>
