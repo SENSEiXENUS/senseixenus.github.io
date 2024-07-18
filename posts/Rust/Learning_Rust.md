@@ -171,3 +171,6 @@ This chapter explains the concepts like variables,functions, control flow, basic
          x = 9;
          println!("X is {}",x);
       }
+- `Const` variables are hardcoded and should be in uppercase
+
+         const MAX_SCORES: u32 = 100000;
