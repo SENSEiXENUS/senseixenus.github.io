@@ -219,6 +219,7 @@ An integer can be signed or unsigned. A signed integer can contain both negative
     
 ### Compound Types
 
+### Tuple
 - Tuple is a way of storing variables
 
       fn main () {
@@ -234,4 +235,16 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       let hundred  =  x.2;
       println!(hundred);
      
-      
+
+### Array
+
+- An array contains values and they must be of the same type. It is denoted by `[]`.
+
+      let x = [1,2,3,4];
+
+- To pick a value, use `x[index of the number]`
+
+      println!("X is {}",x);
+
+### Functions
+  
