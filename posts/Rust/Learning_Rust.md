@@ -217,4 +217,21 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       let x: char  =  '[emoji]';
 
     
+### Compound Types
 
+- Tuple is a way of storing variables
+
+      fn main () {
+         let tup: (i32,i32,&str) = (100,100,"str");
+     }
+
+- Use destructuring to break down the values
+
+      let (x,y,z) = tup;
+
+- To also destructure, you can use x followed by . and the value you want to pick
+
+      let hundred  =  x.2;
+      println!(hundred);
+     
+      
