@@ -247,4 +247,29 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       println!("X is {}",x);
 
 ### Functions
+
+- A function name should be separated with underscore and should not be in camel case
+  e.g
+
+      fn main() {
+       println!("{}",printing_five());
+    }
+    fn printing_five() -> i32 {
+       return 5;
+    
+    }
+
+- Passing an argument or parameter into a function
+
+      fn main () {
+         multiply_by_five(100);
+      }
+      
+      fn multiply_by_five(x: i32) {
+          let result: i32 =  x * 5;
+          println!("The result is {}",result);
+      }
+
   
+    
+
