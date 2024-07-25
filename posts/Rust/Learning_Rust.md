@@ -253,11 +253,11 @@ An integer can be signed or unsigned. A signed integer can contain both negative
 
       fn main() {
        println!("{}",printing_five());
-    }
-    fn printing_five() -> i32 {
-       return 5;
+      }
+      fn printing_five() -> i32 {
+         return 5;
     
-    }
+      } 
 
 - Passing an argument or parameter into a function
 
@@ -354,4 +354,4 @@ An integer can be signed or unsigned. A signed integer can contain both negative
        for i in (1..100).rev() {
            println!("Value: {}",i);
        }
-    }
+      }
