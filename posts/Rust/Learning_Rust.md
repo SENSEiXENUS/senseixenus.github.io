@@ -273,8 +273,34 @@ An integer can be signed or unsigned. A signed integer can contain both negative
 
   ### Control Flow
 
-  - Using if within a let statement
+- An example of an `if else` statement
 
-       
+        fn main () {
+           let x: bool =  true;
+           let y: bool = true;
+           println!("{}",compare_boolean(x,y));
+        }
+        fn compare_boolean(x: bool,y: bool) -> String {
+           if x == y {
+              return "Same Boolean".to_string()
+           } else {
+              return "Different boolean".to_string()
+           }
+        }
+
+
+- Using `if` in a let statement, it should be noted that the if condition should return the same type e.g `str` should not be replaced with `integer`.
+    
+       fn main () {
+        let condition: bool = true;
+        let number: i32  =  if condition {
+            5
+        } else {
+            6
+        };
+        println!("{}",number);
+      }
+
+  
     
 
