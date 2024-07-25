@@ -339,4 +339,13 @@ An integer can be signed or unsigned. A signed integer can contain both negative
        println!("Items printed")
       }
 
-- A for loop looks like this
+- A for loop looks like this,looping through it requires the `iter()` function
+
+           fn main () {
+         let elements = [1,23,45,67,88];
+         for element in elements.iter() {
+             println!("Element: {}",element);
+         }
+      }
+
+- 
