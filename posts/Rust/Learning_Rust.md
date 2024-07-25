@@ -302,5 +302,41 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       }
 
   
-    
+### Loops
 
+- The main types of loops are `loop,while and for`
+
+### Loop
+
+- Repeating code with loop, break with `ctrl + c` {Sikes}
+
+      fn main () {
+        loop {
+            println!("Liftoff!!!");
+        }
+      }
+
+- Using while loop
+
+      fn main () {
+        let mut number: i32 = 3;
+        while number != 0 {
+             println!("Hichichichic,number equals to 0");
+             number = number - 1;
+        }
+        println!("Liftoff!!!!!");
+      }
+
+- Using `while` loop to print out the elements of a collection
+    
+       fn main () {
+       let items = [100,90,90,-100];
+       let mut index = 0;
+       while index < items.len() {
+             println!("The value is {}",items[index]);
+             index = index + 1;
+       }
+       println!("Items printed")
+      }
+
+- A for loop looks like this
