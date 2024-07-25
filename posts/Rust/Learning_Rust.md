@@ -348,4 +348,10 @@ An integer can be signed or unsigned. A signed integer can contain both negative
          }
       }
 
-- 
+- To reverse the order of the array, use the `rev()` function, notice the syntax `(<start number>..<end number>).rev()`
+
+      fn main() {
+       for i in (1..100).rev() {
+           println!("Value: {}",i);
+       }
+    }
