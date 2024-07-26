@@ -162,7 +162,28 @@ our attacker machine.Set up a python http server with this command `python -m ht
    
   ![image](https://github.com/user-attachments/assets/3eb0eb80-1e18-48f0-83dd-1a18405191cd)
 
-- 
+- Fuzzing for web directories and files with ffuf reveals an images directories.
+
+  ![image](https://github.com/user-attachments/assets/a41b2238-849d-493e-98d1-566209ad6072)
+
+- The `images/` directories contains a gif and jpg images.I decided to perform steganography on the jpg file to check if the file is within the jpg file.
+
+  ![image](https://github.com/user-attachments/assets/a4603504-669c-4586-9d49-5a56f7dc6b2d)
+
+- Download the file to your machine with wget and use `stegseek` to crack the jpg file passphrase
+
+  ![image](https://github.com/user-attachments/assets/75d02ae7-b8a4-43f0-962f-913fad045fd6)
+
+- The jpg file was not password protected and it contains a backup.zip file but the zip file is password protected
+
+  ![Uploading image.png…]()
+
+- I cracked the zip with john,I recovered 
+
+
+  
+
+
   
 
   
