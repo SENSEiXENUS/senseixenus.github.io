@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/87a7f2c8-cb4b-43fd-b2fd-e1ddf1e2b89f)* * *
+* * *
 Title: Chill Hack
 Platform: Vulnhub
 
