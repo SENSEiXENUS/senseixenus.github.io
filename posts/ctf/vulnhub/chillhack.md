@@ -130,10 +130,11 @@
   ![image](https://github.com/user-attachments/assets/188f3c98-6c02-43dd-9a00-22fdc49bb057)
 
 - Stabilize the shell with the instructions below
-  `python3 -c "import pty;pty.spawn('/bin/bash')"
-   ctrl + z {to make it a backround process}
-   stty raw -echo;fg
-   export TERM=XTERM`
+
+           python3 -c "import pty;pty.spawn('/bin/bash')"
+           ctrl + z {to make it a backround process}
+           stty raw -echo;fg
+           export TERM=XTERM
   
   ![image](https://github.com/user-attachments/assets/9f757f47-2f93-46bf-a798-252397d3ec67)
 
@@ -199,7 +200,7 @@ our attacker machine.Set up a python http server with this command `python -m ht
 
 ### Privilege Escalation with Docker
 
--  User `anurodh` is under the group, we can run a privileged container and breakout as root.
+-  User `anurodh` is under the group `docker`, we can run a privileged docker container and breakout as root.
 
   ![image](https://github.com/user-attachments/assets/af0baaf1-532b-44db-ae17-4c567aa4351e)
 
