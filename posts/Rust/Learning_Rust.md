@@ -355,3 +355,13 @@ An integer can be signed or unsigned. A signed integer can contain both negative
            println!("Value: {}",i);
        }
       }
+
+### Ownership
+
+### Rules:
+
+- Every value has a variable which is the `owner`
+- When a variable is out of scope, the value will be dropped
+- A value cannot have multiple variables i.e `owners`
+
+  
