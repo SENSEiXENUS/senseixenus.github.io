@@ -34,3 +34,8 @@ NOTES
   ![image](https://github.com/user-attachments/assets/8270951c-d313-4bf8-9f28-4ac5a58db988)
 
    
+### Installing adb-tools on Kali Linux[Ubuntu/Debian]
+
+    sudo apt-get install android-sdk-platform-tools
+
+   
