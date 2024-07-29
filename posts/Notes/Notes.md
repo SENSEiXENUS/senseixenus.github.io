@@ -38,4 +38,11 @@ NOTES
 
     sudo apt-get install android-sdk-platform-tools
 
-   
+
+### ADB-Tools
+
+- Use `adb devices` to see devices connected
+- Use `adb shell pm path <package name>` to get the apk package name
+- Use `adb pull <package name>` to download apk locally
+
+  
