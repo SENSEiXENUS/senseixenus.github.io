@@ -45,4 +45,26 @@ NOTES
 - Use `adb shell pm path <package name>` to get the apk package name
 - Use `adb pull <package name>` to download apk locally
 
-  
+### STATIC ANALYSIS
+
+- Use this grep examples to check for  weak cryptography e.g exposed private key
+
+          grep -r "SecretKeySpec" *
+      
+          grep -rli "aes" *
+      
+          grep -rli "iv"
+
+- To check for exported preferences, check the `AndroidManifest.xml` with grep
+
+      cat AndroidManifest.xml | grep "activity" --color ##To check activities
+      cat AndroidManifest.xml | grep "android:allowBackup" --color ## To check the app allows backup access
+      cat AndroidManifest.xml | grep "android:debuggable" --color ### Check if the app is debuggable,it makes it easier to reverse engineer if debuggable
+      cat AndroidManifest.xml | grep "android:" --color #finding android permissions
+
+- Apps permission
+  Apps can be `normal` or `dangerous`, normal perms don't pose risks or dangers if granted but `dangerous` ones post otherwise
+
+
+
+   
