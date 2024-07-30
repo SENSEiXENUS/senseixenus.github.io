@@ -63,8 +63,17 @@ NOTES
       cat AndroidManifest.xml | grep "android:" --color #finding android permissions
 
 - Apps permission
-  Apps can be `normal` or `dangerous`, normal perms don't pose risks or dangers if granted but `dangerous` ones post otherwise
+  Apps can be `normal` or `dangerous`, normal perms don't pose risks or dangers if granted but `dangerous` ones pose otherwise
 
+- Discovering Firebase Scanner
 
+  `git clone https://github.com/shivsahni/FireBaseScanner`
+  [+] Commands
+
+   `python FireBaseScanner.py -p /path/apk`
+
+- 
+  
+    
 
    
