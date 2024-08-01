@@ -429,6 +429,15 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       fn calculate_length(s: &String) -> usize {
           return s.len()
       }
+
+- References are immutable i.e they cannot be modified. The code below will trigger an error
       
-        
+        fn main() {
+         let z = String::from("Hello");
+         change_me(&z);
+      }
+      fn change_me(x: &String) {
+          x.push_str(", world");
+      }
+              
           
