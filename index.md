@@ -34,12 +34,10 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 * * *
 
-* * *
-
 ### **Vulnhub:~#**
 * * *
 
-- [[August 01 2024]] [Chill Hack] (https://senseixenus.github.io/posts/ctf/vulnhub/chillhack.html)
+- [[August 01 2024]] [Chill Hack](https://senseixenus.github.io/posts/ctf/vulnhub/chillhack.html)
 
 * * *
   
