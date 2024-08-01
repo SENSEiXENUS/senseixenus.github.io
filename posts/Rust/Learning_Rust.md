@@ -409,5 +409,15 @@ An integer can be signed or unsigned. A signed integer can contain both negative
           println!("{},{}",x,x2);
       }
 
-- 
+- Types that allow the `COPY` trait
+  
+  - All Integer types
+  - All floating point types
+  - All `char` types
+  - Boolean e.g `true` and `false`
+  - Tuple containing the allowed types e.g `[i32,i64,f64]` not `[i32,u66,&str]`
+
+### Functions and Ownership
+
+  
     
