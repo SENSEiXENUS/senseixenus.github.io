@@ -365,3 +365,15 @@ An integer can be signed or unsigned. A signed integer can contain both negative
 - A value cannot have multiple variables i.e `owners`
 
   
+### Learning Ownership with `String` data type
+
+- When you create a string with `String::from("Hello")`,it automatically adds it to the heap because the size is unknown at compile time.Although, this kind of string can be mutated e.g
+
+      fn main() { 
+       let mut string = String::from("Hello");
+       string.push_str(", world");
+       println!("{}",string);
+      }
+### Memory Allocation of the two strings
+
+- Every programming language requires a garbage collector which is required to return unused memory but in the case of rust, it does not exist and it is left to us to clean up unused memories
