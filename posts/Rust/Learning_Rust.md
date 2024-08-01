@@ -376,4 +376,38 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       }
 ### Memory Allocation of the two strings
 
-- Every programming language requires a garbage collector which is required to return unused memory but in the case of rust, it does not exist and it is left to us to clean up unused memories
+- Every programming language requires a garbage collector which is required to return unused memory but in the case of rust, it does not exist and it is left to us to clean up unused memory. This forces Rust to spot `unused variables` as a bug, Rust takes a different path and memory is unused if a variable is out of scope e.g
+
+      fn main() {
+         let mut string =  String::from("hello") //Variable x is still in use
+                                                 // still in use
+      } // No longer in use after this curly brace and calls the drop function after this curly brace
+
+### Ways that data and variables interact: `Move`
+
+- Multiple variables can interact with the same data e.g
+      
+        fn main() {
+         let x =  100;
+         let z = x;
+         println!("{},{}",x,z);
+      }
+
+- This concept does not apply to strings e.g
+
+      fn main() {
+         let x = String::from("Hello");
+         let s2 = x;
+       }
+  The above code will lead to a `double free flow` error because once Rust tris to call the `drop` function,the two variables will point to the same location. Freeing memory twice can lead to memory corruption and cause security vulnerabilities. The best solution is to apply the shallow copy by copying only the pointer,capacity and length.
+
+- If you want to deeply copy the heap data of a String, use the `clone()` function e.g
+
+      fn main() {
+          let x = String::from("Hello");
+          let x2 = x.clone();
+          println!("{},{}",x,x2);
+      }
+
+- 
+    
