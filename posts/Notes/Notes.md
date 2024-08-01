@@ -68,9 +68,10 @@ NOTES
 - Discovering Firebase Scanner
 
   `git clone https://github.com/shivsahni/FireBaseScanner`
-  [+] Commands
+  
+  - Commands
 
-   `python FireBaseScanner.py -p /path/apk`
+     `python FireBaseScanner.py -p /path/apk`
 
 - 
   
