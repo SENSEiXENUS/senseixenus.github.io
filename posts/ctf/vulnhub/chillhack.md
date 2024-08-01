@@ -6,6 +6,8 @@
 
 ### Wakthrough:
 
+### RECONNAISSANCE
+
 - Spot the ip of the victim machine with `netdiscover -r <eth0 ip>`, to get our host machine's ip, use `ip a | grep "eth0"`
 
   ![image](https://github.com/user-attachments/assets/be2e49a2-5292-4bc1-b965-e365e86cd7b8)
@@ -129,6 +131,8 @@
 
   ![image](https://github.com/user-attachments/assets/188f3c98-6c02-43dd-9a00-22fdc49bb057)
 
+### FOOTHOLD
+
 - Stabilize the shell with the instructions below
 
            python3 -c "import pty;pty.spawn('/bin/bash')"
@@ -152,6 +156,8 @@ our attacker machine.Set up a python http server with this command `python -m ht
 `chmod +x {binary}` to grant execute permissions.
 
   ![image](https://github.com/user-attachments/assets/0871e405-846a-43e1-8373-d5837863995a)--
+
+### PORT FORWARDING
 
 -  Set up a server with `chisel server -p [port] --reverse` on your target machine
 
