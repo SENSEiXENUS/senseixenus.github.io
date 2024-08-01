@@ -417,7 +417,18 @@ An integer can be signed or unsigned. A signed integer can contain both negative
   - Boolean e.g `true` and `false`
   - Tuple containing the allowed types e.g `[i32,i64,f64]` not `[i32,u66,&str]`
 
-### Functions and Ownership
+### Referencing and Dereferencing
+  Referencing is denoted by `&`, it does not take ownership of a variable's value but just makes a reference to it e.g
 
-  
-    
+      
+        fn main() {
+         let z = String::from("Hello");
+         let length = calculate_length(&z);
+         println!("The length of \"{}\" is {}",z,length);
+      }
+      fn calculate_length(s: &String) -> usize {
+          return s.len()
+      }
+      
+        
+          
