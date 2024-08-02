@@ -78,7 +78,13 @@ NOTES
 
      `python FireBaseScanner.py -p /path/apk`
 
-- 
+### POP3 login
+
+- Use
+
+      telnet <ip> <port>
+      USER <username>
+      PASS <password>
   
     
 
