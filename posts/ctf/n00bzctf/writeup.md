@@ -1,5 +1,6 @@
-![image](https://github.com/user-attachments/assets/7f71b75b-48af-44bd-98be-143cd5ef4c7f)* * *
-### CTF: n00bzCTF
+* * *
+
+### CTF: **n00bzCTF**
 
 * * *
 
