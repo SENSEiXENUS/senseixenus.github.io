@@ -57,7 +57,7 @@
       if __name__ == '__main__':
           app.run(host='0.0.0.0', port=1337)
 
-- The `/<uid>` route reveals the flag, one of the requirement for creating the flag's uid is the leet uid which is already hardocded which is a vulnerability.If the uid is added to the route, it reveals the flag.
+- The `/<uid>` route reveals the flag, one of the requirement for creating the flag's uid is the leet uid which is hardocded  and the majin vulnerability.If the uid is added to the route, it reveals the flag.
 
       #Leet uid
       leet=uuid.UUID('13371337-1337-1337-1337-133713371337')
