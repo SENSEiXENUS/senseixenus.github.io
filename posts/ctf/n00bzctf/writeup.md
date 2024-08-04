@@ -229,7 +229,7 @@
 
 - I don't know powershell but I guessed that the code read the `flag.txt` file and xors it with `3` and writes the output to `output.txt`.
 
-- I wrote a script for it
+- I wrote a script for it.<a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/rev/vacation/vacation.py">link to script</a>
 
 
 - Output:
