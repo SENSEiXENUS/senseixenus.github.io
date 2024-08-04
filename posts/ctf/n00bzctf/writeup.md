@@ -157,7 +157,7 @@
 
 ### RCE
 
-- I got command execution with this payload `{{"".__class__.__base__.__subclasses__()[351]}}`, now we can execute shell commands with `class subprocess.Popen`.
+- I got command execution with this payload **{{"".__class__.__base__.__subclasses__()[351]}}**, now we can execute shell commands with `class subprocess.Popen`.
 
    ![image](https://github.com/user-attachments/assets/889412d1-1e9f-41f9-9f3f-07763f68100f)
 
