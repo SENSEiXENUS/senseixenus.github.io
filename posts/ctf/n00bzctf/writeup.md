@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/532c9df8-f0bd-4da5-abd7-aba2b7097c9d)* * *
+* * *
 ### CTF: **n00bzCTF**
 * * *
 
