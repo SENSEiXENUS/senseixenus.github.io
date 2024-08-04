@@ -17,12 +17,16 @@
 - Rev:
   - Vacation
     
-- Programming
+- Programming:
   - Numbers 2
 
 - Misc:
   - Agree
 
+- Forensics:
+  -  Plane
+  -  Bad Wave
+   
 ### Web:
 
 - Passwordless
@@ -273,7 +277,7 @@
 
  ![image](https://github.com/user-attachments/assets/7407df79-4ad6-4107-bebe-d4286b70a1c9)
 
-- I solved the challenge with the aid of Google dorks.
+- I solved this challenge with the aid of Google dorks.
 
 - I got the first part of the flag with this dork `site:https://ctf.n00bzunit3d.xyz/ intext:Terms of Service`
 
@@ -288,11 +292,33 @@
       n00bz{Terms_0f_Serv1c3s_4nd_pr1v4cy_p0l1cy_6f3a4d}
 
 
+
+### Forensics:
+
+![image](https://github.com/user-attachments/assets/73a3f0e2-a18d-4234-92c8-365010fc27ad)
+
+### Plane:
+
+- The challenge's objective was to find the current location the picture below was taken. A picture's metadata or exifdata if not cleared contains sensitive info e.g where the  picture was taken but nowadays it is removed by most social media platforms.
+
+  ![image](https://github.com/user-attachments/assets/5d297bb4-027f-4c15-a1fe-2ef2e6d32809)
+
+
+- I checked the metadata with exiftool and got this values
+  Command: `exiftool <filename>`
+
+  ![image](https://github.com/user-attachments/assets/0a058e66-6c95-4498-8943-811fdd3d2184)
+
+- With the aid of chatgpt's insight, I calculated the values and got the flag
+
+- Flag:
+
+      n00bz{13.37-,13.37}
+
+
+
+
   
-
-
-
-
 
 
   
