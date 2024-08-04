@@ -316,6 +316,35 @@
       n00bz{13.37-,13.37}
 
 
+### Wave
+
+ ![image](https://github.com/user-attachments/assets/a1ea310e-ad8c-4725-b418-ce41fdf95188)
+
+- The challenge consists of a `wav` file which was corrupt
+- I tried `file <file name>` to check the file type but got the `data` output because it has no file header.
+
+  ![image](https://github.com/user-attachments/assets/a27d8b4b-1408-4c62-9146-3c53d42d34a8)
+
+- I proceeded to add a typical wav file header to it with `hex editor -b filename`.Magic bytes help to distinguish a file from another because a file's magic bytes is  distinctive. I got the magic bytes of a wav file from this <a href="https://medium.com/@arifwc/writeup-bsides-delhi-ctf-2020-never-gonna-give-you-the-flag-forensics-616f547f2492">writeup</a>.
+
+    ![image](https://github.com/user-attachments/assets/31323a70-7d35-42f0-9166-2ff73d7af8e2)
+
+- After listening to the fixed wav file,the audio corresponds to morse code sounds, I decoded it with this <a href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">online morse decoder</a>.
+
+  ![image](https://github.com/user-attachments/assets/ec4c1003-521b-40a8-80fe-727174721410)
+
+- Flag:
+
+      n00bz{beebbopmorsecode}
+
+* * *
+### REFERENCES:
+
+* * *
+
+- **Largest Prime Factor's script**: <a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/">GeekforGeeks</a>
+- **Wav file's magic bytes**: <a href="https://medium.com/@arifwc/writeup-bsides-delhi-ctf-2020-never-gonna-give-you-the-flag-forensics-616f547f2492">Aricfwc</a>
+-
 
 
   
