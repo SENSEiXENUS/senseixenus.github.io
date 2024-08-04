@@ -129,9 +129,9 @@
            # except:
         return render_template_string(out)
 
-### Proof of concept writing 
+### Proof of concept 
 
-- I wrote a python script that stores the payload with  `input()` and creates a file with the payload's name.Then, a tarfile named `zip.tar` is created with module `tarfile` and the payload named file is added to it. This code works in a loop.
+- I wrote a python script that stores the payload with  `input()` and creates a file with the payload's name.Then, a tarfile named `zip.tar` is created with module `tarfile` and the payload named file is added to it. This code works in an infinite `while True:` loop to prevent the scripting from exiting.
 
 - Code:
       
