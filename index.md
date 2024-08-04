@@ -41,3 +41,10 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 * * *
   
+
+### **CTF competitions:~#**
+* * *
+
+- [[August 04 2024]] [N00bzCTF](https://senseixenus.github.io/posts/ctf/n00bzctf/writeup.html)
+
+* * *
