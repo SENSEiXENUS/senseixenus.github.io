@@ -262,10 +262,10 @@
 |  Gcd              |   math.gcd(x,y)     |
 |  Largest prime fac|   custom code       |
 
-- I got the largest prime factor from<a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/"> geekfor geeks</aM.
+- I got the largest prime factor from<a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/">geekforgeeks</a>.
 <a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/lpf.py"> Largest prime factor code</a>
 
-- I suggest you run with good network(omoh, mtn).
+- I wrote a <a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/exploitnumbers.py">python script</a> to automate the whole process and suggest you run with good network(omoh, mtn).
 
 - Flag:
 
