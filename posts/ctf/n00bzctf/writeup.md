@@ -151,7 +151,7 @@
 
   ![image](https://github.com/user-attachments/assets/42725d11-9e19-4c1a-bb82-3220e3a0406c)
 
-- Uploading the tar file shows it works, here is the result of `config`, it should be noted that ssti payloads should be enclosed in {{}}
+- Uploading the tar file shows it works, here is the result of `config`, it should be noted that ssti payloads should be enclosed with {{}}
 
   ![image](https://github.com/user-attachments/assets/2aeca84b-8d71-4392-a868-e2f5382fef82)
 
