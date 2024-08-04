@@ -16,7 +16,9 @@
 
 - Rev:
   - Vacation
-
+- Programming
+  - Numbers 2
+    
 ### Web:
 
 - Passwordless
@@ -237,7 +239,33 @@
         ❯ ./vacation.py
       n00bz{from_paris_wth_xor}
 
+### Programming
 
+### Numbers 2
+
+   ![image](https://github.com/user-attachments/assets/91a1e5d3-9522-4c9e-a693-447c53295b2b)
+
+- This challenge surrounds solving 100 maths problems in relation. The table below outlines the math problems and the python appproach.
+
+| **Math problems** | **Python approach** |
+|-------------------|---------------------|
+|  Lcm              |   math.lcm(x,y)     |
+|  Gcd              |   math.gcd(x,y)     |
+|  Largest prime fac|   custom code       |
+
+- I got the largest prime factor from<a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/"> geekfor geeks</aM.
+<a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/lpf.py"> Largest prime factor code</a>
+
+- I suggest you run with good network(omoh, mtn).
+
+- Flag:
+
+  ![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
+
+
+  
+
+  
 
 
 
