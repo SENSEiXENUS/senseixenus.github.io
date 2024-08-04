@@ -339,7 +339,7 @@
           		flag = subprocess.run(["cat","fake_flag.txt"],capture_output=True) # You actually thought I would give the flag?
           		print(flag.stdout.strip())
 
-- Option 1 allows us to write to a file and triggers an assertion error if the string contains `/proc,/bin,\n and chall.Then, it tries to read the file and raises an exception if the file does not exist. It takes in the data and write to the file.
+- Option 1 allows us to write to a file and triggers an assertion error if the string contains `/proc,/bin,\n and chall`.Then, it tries to read the file and raises an exception if the file does not exist. It takes in the data and write to the file.
 
 ### Vulnerability
 
