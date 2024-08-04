@@ -16,9 +16,13 @@
 
 - Rev:
   - Vacation
+    
 - Programming
   - Numbers 2
-    
+
+- Misc:
+  - Agree
+
 ### Web:
 
 - Passwordless
@@ -263,7 +267,26 @@
   ![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
 
 
-  
+### Misc:
+
+### Agree
+
+ ![image](https://github.com/user-attachments/assets/7407df79-4ad6-4107-bebe-d4286b70a1c9)
+
+- I solved the challenge with the aid of Google dorks.
+
+- I got the first part of the flag with this dork `site:https://ctf.n00bzunit3d.xyz/ intext:Terms of Service`
+
+  ![image](https://github.com/user-attachments/assets/8c9e4279-15c1-4fa6-97e7-44db7b6f39b3)
+
+- The 2nd part's dork is `site:https://ctf.n00bzunit3d.xyz/ intext:Privacy`
+
+  ![image](https://github.com/user-attachments/assets/6e8e7168-0856-4024-9275-54012695800f)
+
+- Flag:
+
+      n00bz{Terms_0f_Serv1c3s_4nd_pr1v4cy_p0l1cy_6f3a4d}
+
 
   
 
