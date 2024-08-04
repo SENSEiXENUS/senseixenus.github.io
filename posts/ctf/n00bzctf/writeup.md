@@ -1,8 +1,8 @@
 * * *
-
 ### CTF: **n00bzCTF**
-
 * * *
+
+![image](https://github.com/user-attachments/assets/4fa8daa1-b9f6-4d60-9a81-3b306c0e40c6)
 
 ### Challeges
 
@@ -29,7 +29,7 @@
    
 ### Web:
 
-- Passwordless
+### Challenge: Passwordless
 
    ![image](https://github.com/user-attachments/assets/83262de2-1574-4005-b0a7-02f9b0e05295)
 
@@ -246,6 +246,8 @@
         ❯ ./vacation.py
       n00bz{from_paris_wth_xor}
 
+
+
 ### Programming
 
 ### Numbers 2
@@ -268,6 +270,8 @@
 - Flag:
 
   ![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
+
+
 
 
 ### Misc:
@@ -315,6 +319,7 @@
       n00bz{13.37-,13.37}
 
 
+
 ### Wave
 
  ![image](https://github.com/user-attachments/assets/a1ea310e-ad8c-4725-b418-ce41fdf95188)
@@ -335,6 +340,7 @@
 - Flag:
 
       n00bz{beebbopmorsecode}
+
 
 
 * * *
