@@ -211,6 +211,33 @@
 
   
 
+### Rev:
+
+### Vacation:
+
+ ![image](https://github.com/user-attachments/assets/9ba6e0c3-8c8e-4a07-ab95-83f9232d633a)
+
+- The challenge contains this powershell script.
+
+      $bytes = [System.Text.Encoding]::ASCII.GetBytes((cat .\flag.txt))
+      [System.Collections.Generic.List[byte]]$newBytes = @()
+      $bytes.ForEach({
+          $newBytes.Add($_ -bxor 3)
+          })
+      $newString =  [System.Text.Encoding]::ASCII.GetString($newBytes)
+      echo $newString | Out-File -Encoding ascii .\output.txt
+
+- I don't know powershell but I guessed that the code read the `flag.txt` file and xors it with `3` and writes the output to `output.txt`.
+
+- I wrote a script for it
+
+
+- Output:
+
+        ❯ ./vacation.py
+      n00bz{from_paris_wth_xor}
+
+
 
 
 
