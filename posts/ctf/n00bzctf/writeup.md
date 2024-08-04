@@ -1,4 +1,4 @@
-* * *
+![image](https://github.com/user-attachments/assets/532c9df8-f0bd-4da5-abd7-aba2b7097c9d)* * *
 ### CTF: **n00bzCTF**
 * * *
 
@@ -22,6 +22,7 @@
 
 - Misc:
   - Agree
+  - Waas
 
 - Forensics:
   -  Plane
@@ -301,8 +302,63 @@
 
       n00bz{Terms_0f_Serv1c3s_4nd_pr1v4cy_p0l1cy_6f3a4d}
 
+### Waas
 
+![image](https://github.com/user-attachments/assets/d2837bff-4401-48a1-9db6-066419a9a24e)
 
+- The challenge provides a service that allows us to write a file, the challenge contains a source code.
+  
+- Source code:
+
+          import subprocess
+          from base64 import b64decode as d
+          while True:
+          	print("[1] Write to a file\n[2] Get the flag\n[3] Exit")
+          	try:
+          		inp = int(input("Choice: ").strip())
+          	except:
+          		print("Invalid input!")
+          		exit(0)
+          	if inp == 1:
+          		file = input("Enter file name: ").strip()
+          		assert file.count('.') <= 2 # Why do you need more?
+          		assert "/proc" not in file # Why do you need to write there?
+          		assert "/bin" not in file # Why do you need to write there? 
+          		assert "\n" not in file # Why do you need these?
+          		assert "chall" not in file # Don't be overwriting my files!
+          		try: 
+          			f = open(file,'w')
+          		except:
+          			print("Error! Maybe the file does not exist?")
+          
+          		f.write(input("Data: ").strip())
+          		f.close()
+          		print("Data written sucessfully!")
+          		
+          	if inp == 2:
+          		flag = subprocess.run(["cat","fake_flag.txt"],capture_output=True) # You actually thought I would give the flag?
+          		print(flag.stdout.strip())
+
+- Option 1 allows us to write to a file and triggers an assertion error if the string contains `/proc,/bin,\n and chall.Then, it tries to read the file and raises an exception if the file does not exist. It takes in the data and write to the file.
+
+### Vulnerability
+
+- The source code imports the base64 module but it does not apply it in the code, we can simply try to overwrite the base64 module's py script. Instead of trying to find the py script, we can create the base64.py file in the same directoty as the py file because python `open()` function automatically creates a file even if it does not exist, so it does not raise the exception. We will be abusing py policy because python checks the challenge code's directory for the module script before it checks python libraries' directory.
+- We will be writing this code to our malicious `base64.py` file.
+
+  Payload: `import os;print(os.system("cat flag.txt"))`
+  
+- I added `print()` to print the results of `os.system()` as soon as we reconnect the service.The `os.system` function  is used to execute shell commands.
+
+- Exploiting it
+
+  ![image](https://github.com/user-attachments/assets/a2b7b584-c71a-47a6-a340-8fcd06aff6c5)
+
+- Flag:
+
+       n00bz{0v3rwr1t1ng_py7h0n3_m0dul3s?!!!_972529c5f5a9}
+
+  
 ### Forensics:
 
 ![image](https://github.com/user-attachments/assets/73a3f0e2-a18d-4234-92c8-365010fc27ad)
