@@ -379,7 +379,7 @@
 
 - Flag:
 
-      n00bz{13.37-,13.37}
+      n00bz{13.37,-13.37}
 
 
 
@@ -402,7 +402,7 @@
 
 - Flag:
 
-      n00bz{beebbopmorsecode}
+      n00bz{beepbopmorsecode}
 
 
 
