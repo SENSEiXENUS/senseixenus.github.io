@@ -277,9 +277,9 @@
 
 ### Numbers 2
 
-   ![image](https://github.com/user-attachments/assets/91a1e5d3-9522-4c9e-a693-447c53295b2b)
+![image](https://github.com/user-attachments/assets/91a1e5d3-9522-4c9e-a693-447c53295b2b)
 
-- This challenge surrounds solving 100 maths problems in relation. The table below outlines the math problems and the python appproach.
+- This challenge surrounds solving 100 maths problems. The table below outlines the math problems and their python appproach.
 
 | **Math problems** | **Python approach** |
 |-------------------|---------------------|
@@ -287,14 +287,14 @@
 |  Gcd              |   math.gcd(x,y)     |
 |  Largest prime fac|   custom code       |
 
-- I got the largest prime factor from<a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/">geekforgeeks</a>.
-<a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/lpf.py"> Largest prime factor code</a>
+- I got the largest prime factor from <a href="https://www.geeksforgeeks.org/find-largest-prime-factor-number/">geekforgeeks</a>.
+<a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/lpf.py"> Largest prime factor's script</a>
 
 - I wrote a <a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/n00bzctf/scripts/exploitnumbers.py">python script</a> to automate the whole process and suggest you run with good network(omoh, mtn).
 
 - Flag:
 
-  ![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
+![image](https://github.com/user-attachments/assets/0e951039-d857-41f5-a9fe-47af475aae2a)
 
 
 --------------------------------
@@ -303,17 +303,17 @@
 
 ### Agree
 
- ![image](https://github.com/user-attachments/assets/7407df79-4ad6-4107-bebe-d4286b70a1c9)
+![image](https://github.com/user-attachments/assets/7407df79-4ad6-4107-bebe-d4286b70a1c9)
 
 - I solved this challenge with the aid of Google dorks.
 
 - I got the first part of the flag with this dork `site:https://ctf.n00bzunit3d.xyz/ intext:Terms of Service`
 
-  ![image](https://github.com/user-attachments/assets/8c9e4279-15c1-4fa6-97e7-44db7b6f39b3)
+![image](https://github.com/user-attachments/assets/8c9e4279-15c1-4fa6-97e7-44db7b6f39b3)
 
 - The 2nd part's dork is `site:https://ctf.n00bzunit3d.xyz/ intext:Privacy`
 
-  ![image](https://github.com/user-attachments/assets/6e8e7168-0856-4024-9275-54012695800f)
+![image](https://github.com/user-attachments/assets/6e8e7168-0856-4024-9275-54012695800f)
 
 - Flag:
 
@@ -371,7 +371,7 @@
 
 - Exploiting it
 
-  ![image](https://github.com/user-attachments/assets/a2b7b584-c71a-47a6-a340-8fcd06aff6c5)
+![image](https://github.com/user-attachments/assets/a2b7b584-c71a-47a6-a340-8fcd06aff6c5)
 
 - Flag:
 
@@ -387,13 +387,13 @@
 
 - The challenge's objective was to find the current location the picture below was taken. A picture's metadata or exifdata if not cleared contains sensitive info e.g where the  picture was taken but nowadays it is removed by most social media platforms.
 
-  ![image](https://github.com/user-attachments/assets/5d297bb4-027f-4c15-a1fe-2ef2e6d32809)
+![image](https://github.com/user-attachments/assets/5d297bb4-027f-4c15-a1fe-2ef2e6d32809)
 
 
 - I checked the metadata with exiftool and got this values
   Command: `exiftool <filename>`
 
-  ![image](https://github.com/user-attachments/assets/0a058e66-6c95-4498-8943-811fdd3d2184)
+![image](https://github.com/user-attachments/assets/0a058e66-6c95-4498-8943-811fdd3d2184)
 
 - With the aid of chatgpt's insight, I calculated the values and got the flag
 
@@ -405,20 +405,20 @@
 
 ### Wave
 
- ![image](https://github.com/user-attachments/assets/a1ea310e-ad8c-4725-b418-ce41fdf95188)
+![image](https://github.com/user-attachments/assets/a1ea310e-ad8c-4725-b418-ce41fdf95188)
 
 - The challenge consists of a `wav` file which was corrupt
 - I tried `file <file name>` to check the file type but got the `data` output because it has no file header.
 
-  ![image](https://github.com/user-attachments/assets/a27d8b4b-1408-4c62-9146-3c53d42d34a8)
+![image](https://github.com/user-attachments/assets/a27d8b4b-1408-4c62-9146-3c53d42d34a8)
 
 - I proceeded to add a typical wav file header to it with `hex editor -b filename`.Magic bytes help to distinguish a file from another because a file's magic bytes is  distinctive. I got the magic bytes of a wav file from this <a href="https://medium.com/@arifwc/writeup-bsides-delhi-ctf-2020-never-gonna-give-you-the-flag-forensics-616f547f2492">writeup</a>.
 
-    ![image](https://github.com/user-attachments/assets/31323a70-7d35-42f0-9166-2ff73d7af8e2)
+![image](https://github.com/user-attachments/assets/31323a70-7d35-42f0-9166-2ff73d7af8e2)
 
 - After listening to the fixed wav file,the audio corresponds to morse code sounds, I decoded it with this <a href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">online morse decoder</a>.
 
-  ![image](https://github.com/user-attachments/assets/ec4c1003-521b-40a8-80fe-727174721410)
+![image](https://github.com/user-attachments/assets/ec4c1003-521b-40a8-80fe-727174721410)
 
 - Flag:
 
@@ -432,7 +432,7 @@
 
 --------------------------------
 
-Thanks for reading_____________
+Thanks for reading!!!!!
 
 * * *
 ### REFERENCES:
