@@ -506,6 +506,13 @@ It is used to grab to a part of a String.
           let s1 = &string[3..];
           println!("{}",s1);
       }
--
+- Picking the whole data with `.len()`
 
-  
+      fn main() {
+         let string: String = String::from("Hello, world");
+         let size: usize = string.len();
+         let s1 = &string[0..size]; 
+         println!("{}",s1);
+      }
+
+- Instead of the whole len() stuff, you can use `&string[..]`
