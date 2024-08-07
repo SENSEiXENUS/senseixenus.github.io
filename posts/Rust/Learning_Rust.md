@@ -441,3 +441,37 @@ An integer can be signed or unsigned. A signed integer can contain both negative
       }
               
           
+- Mutable references: To mutate a variable,the mut keyword should be set, then the argument of the function should be set like this e.g `s: &mut String`, to call our function,the following argument should be set `&mut <variable's name>`
+
+      fn main() {
+         let mut string: String = String::from_new("Hello world");
+         change_me(&mut string);
+         println!("{}",string);
+      }
+      fn change_me(s: &mut String) {
+         s.push_str(" ls");
+      }
+
+### Mutable reference: Data race prevention in Rust
+
+- You cannot make mutable reference to a variable twice.This benefit prevents data race at compile time. A data raace is similar to race condition and happens under these three circumstances
+  - Two or more pointers access the same data at the same time
+  - At least one of the pointers is used to write data
+  - No mechanisms used to synchronize access to this data
+ 
+
+        //This code will trigger a data raceerror
+        fn main () {
+           let string = String::from("Hello world");
+           let r2 = &mut string;
+           let r3 =&mut string;
+        }
+        // Best fix is to create out of scope simulaneous variables
+        let string  = String::from("Hellow world");
+        {
+         let r1 = &mut string;
+         let r2 =  &mut string;
+        }
+
+
+-
