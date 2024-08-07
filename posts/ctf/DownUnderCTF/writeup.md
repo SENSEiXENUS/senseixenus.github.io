@@ -67,6 +67,6 @@
 
 - Flag-:```DUCTF{PaRrOt_EmU_ReNdErS_AnYtHiNg}```
 
-  
+---------------------------------------
 
 
