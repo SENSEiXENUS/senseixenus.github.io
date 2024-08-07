@@ -38,4 +38,4 @@
           
           return render_template('index.html', chat_log=chat_log)
 
-- Testing our little fact by executing ```{{7*7}}```,the server returned the value `49`
+- Testing our little fact by executing \{\{7*7\}\}```,the server returned the value `49`
