@@ -18,7 +18,10 @@
 
 ### Challenge: Parrot the emu
 
+----------------------------------
+
 ![image](https://github.com/user-attachments/assets/8f1e8226-6491-4ec6-8705-30129f0adc5e)
+
 
 - The index route `/` is the vulnerable part of the web app's code. The index page passes the `user_input` variable  to  the `render_template_string()` which is vulnerable to server side template injection in flask web apps' code.It allows an attacker to inject code into templaates.
 
@@ -38,4 +41,28 @@
           
           return render_template('index.html', chat_log=chat_log)
 
-- Testing our little fact by executing \{\{7*7\}\}```,the server returned the value `49`
+- Testing our little fact by executing \{\{7*7\}\},the server returned the value `49`
+
+![image](https://github.com/user-attachments/assets/f30a52a9-2651-4f55-8e01-c577b0da806b)
+
+### RCE
+
+- I used the payload \{\{''.\_\_class\_\_.\_\_base\_\_.\_\_subclasses\_\_()\}\} to access the classes available
+
+![image](https://github.com/user-attachments/assets/a4b3b2a7-ca56-4dbd-812d-d42543db5721)
+
+- After checking the list of available, I got shell command access with class `subprocess.Popen` on index `213`
+
+       Payload: {{''.__class__.__base__.__subclasses__()[213]}}
+
+![image](https://github.com/user-attachments/assets/ce45878b-c7f2-4b2a-9005-6784a09b30a3)
+
+### Reading the flag
+
+
+
+
+
+  
+
+
