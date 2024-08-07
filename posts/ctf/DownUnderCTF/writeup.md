@@ -53,7 +53,7 @@
 
 - After checking the list of available classes, I got shell command access with class `subprocess.Popen` on index `213`
 
-       Payload: {{''.__class__.__base__.__subclasses__()[213]}}
+       Payload: \{\{''.__class__.__base__.__subclasses__()[213]\}\}
 
 ![image](https://github.com/user-attachments/assets/ce45878b-c7f2-4b2a-9005-6784a09b30a3)
 
