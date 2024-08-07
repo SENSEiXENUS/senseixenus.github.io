@@ -516,3 +516,13 @@ It is used to grab to a part of a String.
       }
 
 - Instead of the whole len() stuff, you can use `&string[..]`
+
+### Slicing an array
+
+    fn main() {
+       let a = [1,3,4,5];
+       let a1 = &a[0..3];
+       println!("{:?}",a1);
+    }
+
+- use `println!("{:?}")` to print an array
