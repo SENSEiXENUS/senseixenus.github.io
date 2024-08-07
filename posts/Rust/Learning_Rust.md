@@ -474,4 +474,23 @@ An integer can be signed or unsigned. A signed integer can contain both negative
         }
 
 
--
+### Dangling pointer
+
+- A `dangling` pointer is a pointer that points to amemory given to someone else e.g making reference to a variable already out of scope with its memory already previously allocated.
+
+      //error
+      fn main() {
+          let do_nothing = dangle();
+      }
+      fn dangle() -> &String{
+          let s: String = String::from("Hello world");
+          &s
+      }
+      //fix
+      fn main() {
+      let do_nothing = dangle();
+      }
+      fn dangle() -> String{
+          let s: String = String::from("Hello world");
+          s
+      }
