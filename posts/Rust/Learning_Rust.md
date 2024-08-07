@@ -494,3 +494,18 @@ An integer can be signed or unsigned. A signed integer can contain both negative
           let s: String = String::from("Hello world");
           s
       }
+
+### String Slices
+It is used to grab to a part of a String. 
+
+- Syntax-:``` &<variable>[starting_index..ending_index]```
+- Code Snippet
+
+      fn main() {
+          let string : String = String::from("Hello world");
+          let s1 = &string[3..];
+          println!("{}",s1);
+      }
+-
+
+  
