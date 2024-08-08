@@ -86,6 +86,20 @@ NOTES
       USER <username>
       PASS <password>
   
-    
+### Content-Security-Policy 
+- Content-Security-Policy prevents execution of inline javascript code and sets a trusted list of stylesheets,scripts and plugin to be allowed by the browser.
+     - Examples of inline javascript
+
+           <script>alert("5");</script>
+      
+- Use the http header `Content-Security-Policy` to dictate the security policy of the content.
+
+-Essence of the header include
+   - Prevents execution of inline scripts
+   - Provides a list of a safe external domains for the browser to load scripts
+
+### Directives used by the Content-Security-Policy header
+
+|_______________
 
    
