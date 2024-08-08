@@ -526,3 +526,39 @@ It is used to grab to a part of a String.
     }
 
 - use `println!("{:?}")` to print an array
+
+
+### Using struct to structure out data
+Structs are more like tuple but are more flexible than the latter because you don't have to rely on the order of data to get values.It is denoted by the keyword `struct` and contianed in curly braces.Then, inside the curly braces,we define the name,type of piece of data called fields.
+
+- A template of the struct has to be created
+
+      //Creating an instance of the struct
+          struct User {
+               username: String,
+               email: String,
+               sign_in_count: u64,
+               active: bool,
+          }
+
+- Then, it should be declared later
+
+      //Declaring the struct user
+          let user1 = User {
+              username: String::from("Kazeem02@gamil.com"),
+              email: String::from("Kazeem03"),
+              sign_in_count: 1000,
+              active: true,
+          };
+          println!("{}",user1.username);
+
+- To get a specific value,use the dot notation, e.g `user.username`
+- To change a specific value, you have to make it mutable i.e setting the `mut` keyword
+
+        let mut user1 = User {
+                username: String::from("Kazeem02@gamil.com"),
+                email: String::from("Kazeem03"),
+                sign_in_count: 1000,
+                active: true,
+            };
+            user1.email = String::from("Ojay");
