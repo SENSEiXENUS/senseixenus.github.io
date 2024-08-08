@@ -10,7 +10,7 @@
 -     Parrot the emu
 -     Zoo feedback form
 -     Co2
--     Confusion
+-     I am Confusion
 
 ---------------------------------
 
@@ -71,6 +71,8 @@
 
 ### Challenge: Zoo Feedback form
 
+---------------------------------------
+
 ![image](https://github.com/user-attachments/assets/25cbd005-207a-423c-b2e1-9403eb6efbb7)
 
 - After reviewing the source code, I noticed that `resolve_entities` was set to `True` which forces lxml parser to resolve external entities. In a whole, the main vulnerability is `XML External Entity Expansion` which allows an attacker to inject xml entities into a web application.
@@ -84,7 +86,7 @@
 
 - I intercepted the request with burpsuite
 
-   ![image](https://github.com/user-attachments/assets/4da48e9d-c2f3-42ca-92b1-aeb1e05ba5ac)
+![image](https://github.com/user-attachments/assets/4da48e9d-c2f3-42ca-92b1-aeb1e05ba5ac)
 
 - I used this payload to read the `/etc/passwd` file
 
@@ -111,7 +113,15 @@
 ![image](https://github.com/user-attachments/assets/ab20d730-43d0-48d2-99bd-f933e65dc8ee)
 
 - Flag-:```DUCTF{emU_say$_he!!0_h0!@_ci@0}```
+--------------------------
 
+### Challenge: I am Confusion
+
+--------------------------
+
+![image](https://github.com/user-attachments/assets/9a30d811-d76a-4d40-9a0f-1dca3b2452ee)
+
+- Source code:
 --------------------------
 ### References:
 --------------------------
