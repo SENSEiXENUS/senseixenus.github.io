@@ -100,6 +100,33 @@ NOTES
 
 ### Directives used by the Content-Security-Policy header
 
-|_______________
+Policy: `Content-Security-Policy: script-src 'self' https://safe-external-site.com; style-src 'self'`
 
+- `Script-src`: It tells the browser where to load scripts from, `self` indicates that scripts should be loaded from the same domain or loaded from domain `https://safe-external-site.com`
+- The `style-src` directs the browser to load from the same domain and not an external one.
+
+- You can also create a CSP directive within a `<meta>` tag e.g
+
+  `<meta http-equiv="Content-Security-Policy" content="script-src 'self' https://safe-external-site.com">`
+
+- `unsafe-inline` directives defeats the purpose of CSP and allows execution of inline scripts which is not highly recommended.(Smells like XSS)
+- default-src: Defines the default policy for fetching all resources. Whenever a more specific policy is absent, the browser will fallback to the default-src policy directive. Example: default-src 'self' trusted-domain.com
+- img-src: Defines valid sources for images, e.g. img-src 'self' img.mydomain.com
+- Font-src: Defines valid sources for font resources.
+- object-src: Defines valid sources for plugins and external content, like <object> or <embed> elements.
+- Media-src: Defines valid sources for audio and video
+
+### Sources allowed
+    
+    'none' : Match nothing.
+    'self': Match the current host domain (same origin, i.e. host and port). Do not match subdomains, though.
+    'unsafe-inline': Allow inline JavaScript and CSS.
+    'unsafe-eval': Allow dynamic text to JavaScript evaluations.
+    domain.example.com: Allow loading resource from the specified domain. To match any subdomain, use the * wildcard, e.g. *.example.com
+    https: or ws:: Allow loading resources only over HTTPS or WebSocket.
+    nonce-{token}: Allow an inline script or CSS containing the same nonce attribute value.
+  
    
+### Explaining Nonce
+
+`Nonce` attribute allows us to use specific inline attributes without the need to enable the `unsafe-inline` attributes.
