@@ -1,10 +1,15 @@
 * * *
 NOTES
 * * *
+
+--------------------------------
+
 ### **Webhooks**:
 
 - [Request Catcher](https://requestcatcher.com/)
 - [Postb.in](https://www.postb.in/)
+
+---------------------------------
 
 ### Portforwarding with SSH and proxychains
 
@@ -22,14 +27,20 @@ NOTES
 
       sudo ssh -l id_rsa -L {port you want to forwrd through}:127.0.0.1:{remote port discovered}  
 
+-------------------------------
+
 ### Removing `\r` in `exploitdb` scripts
 
     sed -i -e 's/\r$//' <script's name>
+
+--------------------------------
 
 ### Port Forwarding with chisel
 
 - Set up a server with `chisel server -p <port> --reverse` on the attacker machine
 - On the client's machine, use `./chisel client [chisel server's ip]:[chisel's server port} R:[port you want it to tunnel through on the server's machine]:127.0.0.1:[internal port running a service on the victim's machine]`
+
+---------------------------------
 
 ### To replace the root hash by generating a new one
 
@@ -38,7 +49,8 @@ NOTES
 
   ![image](https://github.com/user-attachments/assets/8270951c-d313-4bf8-9f28-4ac5a58db988)
 
-   
+----------------------------------
+
 ### Installing adb-tools on Kali Linux[Ubuntu/Debian]
 
     sudo apt-get install android-sdk-platform-tools
@@ -78,6 +90,8 @@ NOTES
 
      `python FireBaseScanner.py -p /path/apk`
 
+--------------------------
+
 ### POP3 login
 
 - Use
@@ -86,6 +100,8 @@ NOTES
       USER <username>
       PASS <password>
   
+-------------------------- 
+
 ### Content-Security-Policy 
 - Content-Security-Policy prevents execution of inline javascript code and sets a trusted list of stylesheets,scripts and plugin to be allowed by the browser.
      - Examples of inline javascript
@@ -129,4 +145,24 @@ Policy: `Content-Security-Policy: script-src 'self' https://safe-external-site.c
    
 ### Explaining Nonce
 
-`Nonce` attribute allows us to use specific inline attributes without the need to enable the `unsafe-inline` attributes.
+- `Nonce` attribute allows us to use specific inline attributes without the need to enable the `unsafe-inline` attributes.It is an attribute of the `<script>` and `<style>` tag.
+
+### How does it work
+
+- For every request, the server creates a base64 encoded value that cannot be guessed.Then, the server includes it in every allowed inline tag allowed. e.g
+
+  <script nonce="dGhpcyBpcyBhIG5v==">alert("5")</script>
+
+- The nonce is also indicated in the inline `<style>` and `<script>` tag allowed e.g
+
+      Content-Security-Policy: script-src 'nonce-dGhpcyBpcyBhIG5v=='; style-src 'nonce-dGhpcyBpcyBhIG5v=='
+
+--------------------
+
+Refeferences:
+
+--------------------
+
+- CSP: [AKSHAY](https://www.writesoftwarewell.com/content-security-policy/)
+
+--------------------
