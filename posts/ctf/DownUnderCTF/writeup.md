@@ -122,6 +122,81 @@
 ![image](https://github.com/user-attachments/assets/9a30d811-d76a-4d40-9a0f-1dca3b2452ee)
 
 - Source code:
+
+                  // ascii art
+                  const asciiArt = fs.readFileSync('ascii-art.txt', 'utf8');
+                  
+                  // algs
+                  const verifyAlg = { algorithms: ['HS256','RS256'] }
+                  const signAlg = { algorithm:'RS256' }
+                  
+                  // keys
+                  // change these back once confirmed working
+                  const privateKey = fs.readFileSync('keys/priv.key')
+                  const publicKey = fs.readFileSync('keys/pubkeyrsa.pem')
+                  const certificate = fs.readFileSync('keys/fullchain.pem')
+                  
+                  // middleware
+                  app.use(express.static(__dirname + '/public'));
+                  app.use(express.urlencoded({extended:false}))
+                  app.use(cookieParser())
+                  
+                  app.get('/', (req, res) => {
+                    res.status(302).redirect('/login.html')
+                  });
+                  
+                  app.post('/login', (req,res) => {
+                    var username = req.body.username
+                    var password = req.body.password
+                  
+                    if (/^admin$/i.test(username)) {
+                      res.status(400).send("Username taken");
+                      return;
+                    }
+                  
+                    if (username && password){
+                      var payload = { user: username };
+                      var cookie_expiry =  { maxAge: 900000, httpOnly: true }
+                  
+                      const jwt_token = jwt.sign(payload, privateKey, signAlg)
+                  
+                      res.cookie('auth', jwt_token, cookie_expiry)
+                      res.redirect(302, '/public.html')
+                    } else {
+                      res.status(404).send("404 uh oh")
+                    }
+                  });
+                  
+                  app.get('/admin.html', (req, res) => {
+                    var cookie = req.cookies;
+                    jwt.verify(cookie['auth'], publicKey, verifyAlg, (err, decoded_jwt) => {
+                      if (err) {
+                        res.status(403).send("403 -.-");
+                      } else if (decoded_jwt['user'] == 'admin') {
+                        res.sendFile(path.join(__dirname, 'admin.html')) // flag!
+                      } else {
+                        res.status(403).sendFile(path.join(__dirname, '/public/hehe.html'))
+                      }
+                    })
+                  })
+                  
+                  app.get('/public.html', (req, res) => {
+                    var cookie = req.cookies;
+                    jwt.verify(cookie['auth'], publicKey, verifyAlg, (err, decoded_jwt) => {
+                      if (err) {
+                        res.status(302).redirect('/login.html');
+                      } else if (decoded_jwt['user']) {
+                        res.sendFile(path.join(__dirname, 'public.html'))
+                      }
+                    })
+                  })
+
+- The challenge's implements the RS256 but it is vulnerable to `JWT Confusion Attack` which occurs when a server allows the use of algorithm `RS256` and `HS256` in verifying a `Json Web Token`. A `RS256` algorithm applies the asymmetric form of encryption that encrypts with the public key and can only be decrypted with the private key. `Hs256` on the other hand applies the symmetric form of encryption requiring only the public key for encryption. If the jwt `'alg'` header is set `hs256`, the server decrypts only with the public key. If an attacker can derive the public key, he can decrypt the jwt token and edit it for malicious purposes.
+
+### Vulnerable code snippets
+
+-
+  
 --------------------------
 ### References:
 --------------------------
