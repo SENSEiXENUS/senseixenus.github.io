@@ -195,8 +195,17 @@
 
 ### Vulnerable code snippets
 
--
-  
+- The code verifies the algorithm of a token by comparing with value `hs256 and rs256` and signs the token only with `rs256`
+
+        // algs
+      const verifyAlg = { algorithms: ['HS256','RS256'] }
+      const signAlg = { algorithm:'RS256' }
+      
+- The code verifies the alg by comparing the `alg` value with the `verifyAlg` variable and not the `signAlg` variable
+
+      jwt.verify(cookie['auth'], publicKey, verifyAlg, (err, decoded_jwt)
+
+
 --------------------------
 ### References:
 --------------------------
