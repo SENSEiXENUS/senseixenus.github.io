@@ -193,7 +193,7 @@ References:
 
 - Add tmux plugin to your plugins
 
-    plugins(tmux)
+      plugins(tmux)
 
 - Set `ZSH_TMUX_AUTOSTART=true` in your `.zshrc`
 - Note that you have to add this assignment before the line
