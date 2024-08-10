@@ -159,10 +159,23 @@ Policy: `Content-Security-Policy: script-src 'self' https://safe-external-site.c
 
 --------------------
 
-Refeferences:
+References:
 
 --------------------
 
 - CSP: [AKSHAY](https://www.writesoftwarewell.com/content-security-policy/)
 
 --------------------
+
+### ABUSING NPM INSTALL node package-lock.json to get shell access
+
+- Change file's details  to
+  
+              {
+              "name": ".nodeitems",
+              "scripts": {
+                      "preinstall": "[shell code]"
+               }
+            }
+
+
