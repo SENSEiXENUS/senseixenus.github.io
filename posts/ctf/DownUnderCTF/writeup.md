@@ -237,6 +237,9 @@
 
 ### Challenge: Co2
 
+![image](https://github.com/user-attachments/assets/e8c4d915-d52e-41e2-bb90-8250587a609c)
+
+
 ### Vulnerable code:
 
 - Vulnerable Code 1: `utils.merge()`
