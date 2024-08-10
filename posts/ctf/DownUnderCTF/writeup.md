@@ -304,3 +304,4 @@
 - XXE's details: [Hacktrickz](https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity)
 - Silent-signal's forgery script: [Silent Signal](https://github.com/silentsignal/rsa_sign2n/blob/release/standalone/jwt_forgery.py)
 - Jwt Confusion Attack: [Portswigger](https://portswigger.net/web-security/jwt/algorithm-confusion)
+- Python Prototype Pollution: [abdlrah33m](https://blog.abdulrah33m.com/prototype-pollution-in-python/)
