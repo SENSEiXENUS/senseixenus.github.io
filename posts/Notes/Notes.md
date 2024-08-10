@@ -184,3 +184,4 @@ References:
       if [-z "$TMUX"]; then
       exec tmux
       fi
+- Explanation: $TMUX vsriable prevents nested tmux instances are started on login shells. `exec` will replace current process with a new one i.e. current shell will be terminated and tmux instance with shell inside will be started, so you won't need to exit twice.
