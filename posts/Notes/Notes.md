@@ -179,3 +179,8 @@ References:
             }
 
 
+### TERMUX: Adding tmux to your ~/.zlogin to prevent errors
+
+      if [-z "$TMUX"]; then
+      exec tmux
+      fi
