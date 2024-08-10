@@ -178,6 +178,7 @@ References:
                }
             }
 
+--------------------
 
 ### TERMUX: Adding tmux to your ~/.zlogin to prevent errors
 
@@ -185,3 +186,18 @@ References:
       exec tmux
       fi
 - Explanation: $TMUX vsriable prevents nested tmux instances are started on login shells. `exec` will replace current process with a new one i.e. current shell will be terminated and tmux instance with shell inside will be started, so you won't need to exit twice.
+
+-------------------
+
+### Adding tmux to your custom zsh shell
+
+- Add tmux plugin to your plugins
+
+    plugins(tmux)
+
+- Set `ZSH_TMUX_AUTOSTART=true` in your `.zshrc`
+- Note that you have to add this assignment before the line
+
+      source $ZSH/oh-my-zsh.sh
+
+-------------------
