@@ -47,5 +47,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 - [[August 04 2024]] [N00bzCTF](https://senseixenus.github.io/posts/ctf/n00bzctf/writeup.html)
 - [[August 07 2024]] [DownUnderCTF](https://senseixenus.github.io/posts/ctf/DownUnderCTF/writeup.html)
-  
+- [[August 11 2024]] [BICCTF24](https://senseixenus.github.io/posts/ctf/BICTF2024/writeup.html)
+    
 * * *
