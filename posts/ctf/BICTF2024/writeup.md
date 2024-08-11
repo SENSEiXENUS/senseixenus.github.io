@@ -115,7 +115,7 @@ PORT   STATE SERVICE REASON
 
 ![image](https://github.com/user-attachments/assets/f862d4c6-0403-4d1e-b485-8ffbd4ebdcc2)
 
-- We can abuse the package-lock.json file to spawn a reverse shell by creating a new one since the present one cannot be edited.
+- We can abuse the package-lock.json file to spawn a reverse shell by creating a new one since the present one cannot be edited.You can also add it to the package.json file.
 
       {
         "name": ".nodeitems",
@@ -124,4 +124,13 @@ PORT   STATE SERVICE REASON
              }
       }
       
+- Shell Access to user `node`
+
+![image](https://github.com/user-attachments/assets/80caf1f3-99fb-4f6a-b1c4-d41336e8595d)
+
+- The last flag is located in `/home/node/flag4.txt`.
+
+![image](https://github.com/user-attachments/assets/26184e5b-89bf-4e3d-8679-1a82b145961c)
+
+- Flag4-:```BICCTF{n0deM@st3r}```
 
