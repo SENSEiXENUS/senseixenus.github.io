@@ -19,8 +19,12 @@
 ![image](https://github.com/user-attachments/assets/53744598-c639-4c2a-9fab-074e4051614a)
 
 - The server was hosted on ip:`54.226.229.244`
+   
+- I scanned with Rustcan and discovered 2 open ports, port 80 `http` and port 22 `ssh` respectively.
+
 
       ❯ rustscan -a 54.226.229.244
+
       .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
       | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
       | .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
@@ -56,13 +60,9 @@
       Host is up, received syn-ack (0.29s latency).
       Scanned at 2024-08-11 04:44:30 EDT for 0s
 
-PORT   STATE SERVICE REASON
-22/tcp open  ssh     syn-ack
-80/tcp open  http    syn-ack
-
-
-- I scanned with Rustcan and discovered 2 open ports, port 80 `http` and port 22 `ssh` respectively.
-
+      PORT   STATE SERVICE REASON
+      22/tcp open  ssh     syn-ack
+      80/tcp open  http    syn-ack
 - The site's source code contains this hint to check `robots.txt` file
 
 ![image](https://github.com/user-attachments/assets/e6ee4bf9-940e-4540-b413-41652c4611b3)
