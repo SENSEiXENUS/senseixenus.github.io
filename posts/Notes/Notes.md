@@ -201,3 +201,9 @@ References:
       source $ZSH/oh-my-zsh.sh
 
 -------------------
+
+### 0XTIberius's sql payload
+
+- [OxTiberius'slist] (https://tib3rius.com/sqli.html)
+
+-------------------
