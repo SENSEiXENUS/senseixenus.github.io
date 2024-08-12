@@ -562,3 +562,61 @@ Structs are more like tuple but are more flexible than the latter because you do
                 active: true,
             };
             user1.email = String::from("Ojay");
+
+### Writing a function that returns a user Instance of a struct
+
+    //Function returning a struct instance
+    fn build_user(email: String,name: String) -> User {
+        User {
+            name: name,
+            email: email,
+            age: 10,
+            is_active: false
+        }
+    }
+
+- Repeating the variable and field wil be stressful, use the field init method,e.g imstead of `email:email`,use email only
+
+      //Function returning a struct instance
+      fn build_user(email: String,name: String) -> User {
+          User {
+              name,
+              email,
+              age: 10,
+              is_active: false
+          }
+      }
+
+### Using the update instance to add instances of a struct instance
+
+The syntax `..<struct's instance` specifies that the remaining fields not explicitly set should have the same value as the fields in the given instance.
+
+     let mut user1 =  User {
+         name: String::from("Ms Ilaro"),
+         email: String::from("ZainabYassmineee"),
+         age: -9,
+         is_active: true
+     };
+     let mut user2 = User{
+         name: String::from("Nardo@gmail.com"),
+         email: String::from("wthisthat@gmail.com"),
+         ..user1
+     };
+
+### Struct tuple
+
+Tuple structs are useful when you want to give more meaning to a tuple rather than creating a normal tuple e.g
+
+     struct Name(String,String,String)
+
+    fn main() {
+        struct Color(i32,i32,i32);
+        struct Point(i32,i32,i32);
+        let color1 =  Color(1,2,34);
+        let point1 =  Point(1,2,34);
+        println!("{},{}",point1.0,color1.1);
+    }
+
+### Unit like struct with no field
+
+
