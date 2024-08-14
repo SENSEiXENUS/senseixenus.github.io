@@ -1,7 +1,10 @@
-* * *
- ### Lab: Tryhackme
- ### Name: Dejavu 
-* * *
+---------------------
+
+### TRYHACKME
+### DEJAVU
+
+---------------------
+
 ![image](https://github.com/user-attachments/assets/30e9cc6a-e8ce-4a69-adcb-77209de52e7c)
 
 ---------------------
