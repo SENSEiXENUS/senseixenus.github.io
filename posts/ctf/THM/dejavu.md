@@ -90,7 +90,7 @@
 
 ![image](https://github.com/user-attachments/assets/674ececf-595a-476b-bc1d-a4917b34286d)
 
-- BURP SUITE'S SITEMAP
+- Sitemap
 
 ![image](https://github.com/user-attachments/assets/8d6b3161-a1ad-422a-831b-3553af5b13b0)
 
