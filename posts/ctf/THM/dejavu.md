@@ -132,7 +132,15 @@
 
   ![image](https://github.com/user-attachments/assets/8716fcaf-6e4d-4abb-864f-dc94e3833546)
 
-- I created a systemctl file that spawn `bash` with `echo "/bin/bash" > systemctl` and change the path env variable to check the current directory for binaries with `export PATH=.:$PATH`
+- I created a systemctl file that spawn `bash` with `echo "/bin/bash" > systemctl` and change the path env variable to check the current directory for binaries with `export PATH=.:$PATH`.
+
+  ![image](https://github.com/user-attachments/assets/18026f23-5e02-4fa5-a3f8-d52dfa58cf80)
+
+- Root
+
+  ![image](https://github.com/user-attachments/assets/ca84df27-2994-42bc-9619-5fa1c151c70a)
+
+
 
   
 
