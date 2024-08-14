@@ -37,14 +37,14 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 ### **Vulnhub:~#**
 * * *
 
-- [[August 01 2024]] [Chill Hack](https://senseixenus.github.io/posts/ctf/vulnhub/chillhack.html)
+- [[August 01 2024]] [Chill Hack](https://senseixenus.github.io/posts/ctf/vulnhub/chillhack.html) ``Command Injection`` ``Port forwarding`` ``Docker breakout``
 
 * * *
 
 ### **Tryhackme:~#**
 * * *
 
-- [[Aug 14 2024]] [Dejavu](https://senseixenus.github.io/posts/ctf/THM/dejavu.html)
+- [[Aug 14 2024]] [Dejavu](https://senseixenus.github.io/posts/ctf/THM/dejavu.html) ``Exiftool 12.23 RCE`` ``PATH Variable Privesc``
 
 * * *
   
