@@ -204,7 +204,7 @@ References:
 
 ### 0XTIberius's sql payload
 
-- [OxTiberius'slist] (https://tib3rius.com/sqli.html)
+- [OxTiberius'slist](https://tib3rius.com/sqli.html)
 
 -------------------
 
