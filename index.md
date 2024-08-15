@@ -44,7 +44,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 ### **Tryhackme:~#**
 * * *
 
-- [[Aug 14 2024]] [Dejavu](https://senseixenus.github.io/posts/ctf/THM/dejavu.html) ``Exiftool 12.23 RCE`` ``PATH Variable Privesc``
+- [[Aug 14 2024]] [Dejavu](https://senseixenus.github.io/posts/ctf/THM/dejavu.html) ``Exiftool 12.23 RCE`` ``PATH-HIJACKING``
+- [[Aug 15 2024]] [Mustacchio](https://senseixenus.github.io/posts/ctf/THM/Mustacchio.html) ``XXE`` ``PATH HIJACKING``
 
 * * *
   
