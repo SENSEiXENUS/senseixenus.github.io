@@ -172,6 +172,12 @@ Use:
 - Use `time` to show time
 
  
+------------------------------
 
+### REFERENCES:
+
+- [Freecode camp](https://www.freecodecamp.org/news/command-line-commands-cli-tutorial/)
+
+------------------------------
 
  
