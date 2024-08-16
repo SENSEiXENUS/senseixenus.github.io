@@ -35,4 +35,20 @@ Use:
 - Use `>` and `<`, Linux logic appplies to it,the same with  piping `|`
 
 
+### Running a cmd shell as admin
 
+- `powershell start cmd  -v runAs`
+
+### Checking list of drivers
+
+- `driverquery`
+
+### Show your PC's details
+
+- `systeminfo`
+
+### Environmental Variables
+
+- `set`
+
+### 
