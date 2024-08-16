@@ -181,3 +181,17 @@ Use:
 ------------------------------
 
  
+### Understanding Windows
+
+### COnnecting to a remote desktop protocol, use `remmina` on linux 
+
+![image](https://github.com/user-attachments/assets/914044ec-5759-49a0-b26e-7d81e24b40a6)
+
+- Enter ip
+
+![image](https://github.com/user-attachments/assets/a27b0ae2-64e2-4b51-8e7e-a5cd2e56ecca)
+
+- Enter credentials
+
+
+
