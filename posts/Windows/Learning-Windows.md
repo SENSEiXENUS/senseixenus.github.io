@@ -194,4 +194,35 @@ Use:
 - Enter credentials
 
 
+### Troubleshooting with Msconfig
+  
+  The System Configuration utility (MSConfig) is for advanced troubleshooting, and its main purpose is to help diagnose startup issues. 
+
+- Use `windowskey + r` ,type `msconfig`
+
+![image](https://github.com/user-attachments/assets/a6c81d7d-cdd4-422e-82e5-7316071f1650)
+
+- Type `taskmgr to run the `task manager` get programs and background processes
+
+![image](https://github.com/user-attachments/assets/83bd7c79-4909-4ce4-bb70-c6648443f897)
+
+### Computer management
+
+The Computer Management (compmgmt) utility has three primary sections: System Tools, Storage, and Services and Applications.
+
+- Type `compmgmt.msc` in the `windowskey + r` dialog box
+- The task scheduler is used to enable tasks at startup
+
+![image](https://github.com/user-attachments/assets/0ab80421-0ccf-447d-a983-26205b412b12)
+
+- Event viewer allows us to acccess logs of events hat occurred while using the system
+
+![image](https://github.com/user-attachments/assets/b9a71b7f-e8df-4a18-a720-3bd51621324c)
+
+- 
+
+
+
+
+
 
