@@ -118,6 +118,19 @@ Use:
 
 - Use `vol`
 
-### 
+### Pinging an address
+
+- Use `ping <addr>`
+
+### Changing the terminal's color
+
+- Use `color attr` to check a color's index
+- use `color <number>` to change color
+
+### Checking a wifi's password
+
+- Use `netsh wlan show profiles` to check wifis previously connected to
+- Then,`netsh wlan show profiles name="<wifi's name>" key=clear`
+
 
   
