@@ -132,5 +132,46 @@ Use:
 - Use `netsh wlan show profiles` to check wifis previously connected to
 - Then,`netsh wlan show profiles name="<wifi's name>" key=clear`
 
+### Using `ipconfig` to check the machine's ip address
 
+- run `ipconfig`
+- This command also has extensions such as `ipconfig /release`, `ipconfig /renew`, and `ipconfig /flushdns` which you can use to troubleshoot issues with internet connections
+
+### System file checker `sfc`
+
+- Use `sfc /scannow` to check for corrupt files and repair them
   
+### `Powercfg`
+  You can use this command with its several extensions to show information about the power state of your PC. 
+
+### Starting a web address
+
+- use `start <web addr>`
+
+### Showing the tree of the current directory
+
+- Use `tree`
+
+### Os version
+
+- Use `ver`
+
+### Show open programs
+
+- Use `tasklist`
+
+### Killing open programs
+
+- use `taskkill /IM "<program>" /F` to kill a program
+
+### Showing date, time
+
+- Use `date` to show data
+- Use `time` to show time
+
+ 
+
+
+ - `powercfg /energy` to generate a battery health report
+
+### 
