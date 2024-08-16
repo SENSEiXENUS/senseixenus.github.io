@@ -24,6 +24,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 * * *
 
 - [[August 01 2024]] [Notes](https://senseixenus.github.io/posts/Notes/Notes.html)
+- [[August 16 2024]] [Everything Windows](https://senseixenus.github.io/posts/Windows/Learning-Windows.html)
   
 * * *
 
