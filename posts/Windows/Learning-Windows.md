@@ -27,5 +27,8 @@ Use:
 |   cd ..          |   `cd ..`               | Move up a directory   |
 |   move           |   `move file file`      | Move a file           |
 |   copy           |  `copy file file`       | Copy a file           |
-|   del            |   `del <file name>`     |  Delete a file        |
-|
+|   del            |   `del <file name>`     |  Delete a file        |  
+|   mkdir          | `mkdir <directoryname>` | Make a directory      |
+
+
+
