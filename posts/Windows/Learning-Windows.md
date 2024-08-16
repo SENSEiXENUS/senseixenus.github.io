@@ -219,7 +219,12 @@ The Computer Management (compmgmt) utility has three primary sections: System To
 
 ![image](https://github.com/user-attachments/assets/b9a71b7f-e8df-4a18-a720-3bd51621324c)
 
-- 
+- Shared folders shows shares or folders that users can have access to
+
+![image](https://github.com/user-attachments/assets/67f17e12-3223-4885-8eb2-418dc68a9eaa)
+
+-
+
 
 
 
