@@ -51,4 +51,73 @@ Use:
 
 - `set`
 
+### Prompt
+
+- To change your default text
+
+ ![image](https://github.com/user-attachments/assets/2ee8b3d5-2f3a-47dd-aa3e-0e18548b41d8)
+
+- use `prompt <what you want to do> $G`
+- To revert, use `prompt`
+
+### To copy to clipboard
+
+- Just pipe the output of a file to clip e.g `dir | clip`
+
+### Listing files and their extensions
+
+- Use `assoc`
+
+### Changing your cmd title window
+
+- Use `title cmdbaby`
+
+### Comparing 2 files
+
+- Use `fc <file1> <file2>`
+
+### Using `cipher`
+
+- On a PC, deleted files remain accessible to you and other users. So, technically, they are not deleted under the hood.
+
+   `cipher`
+
+### Checking open ports, ip and states
+
+- Use `netstat -an`
+
+### shutdown a system
+- Use `shutdown`
+- `shutdown /r` will restart a system
+
+### Clear a system shell
+
+- Use `cls`
+
+### Exit cmd
+
+- Use `cmd`
+
+### Rename a file
+
+- use `ren <filename1> <filename2>`
+
+### Creating a file
+
+- use `echo <words> > filename.txt`
+
+### Use `-help` to show a guide on  list
+
+- `powercfg -help`
+
+### To run the Deployment Image Service Management Tool
+
+- Use `dism`
+
+### Show the Serial Number and Label Info of the Current Drive
+
+- Use `vol`
+
 ### 
+
+  
