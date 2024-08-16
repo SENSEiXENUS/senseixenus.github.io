@@ -30,5 +30,9 @@ Use:
 |   del            |   `del <file name>`     |  Delete a file        |  
 |   mkdir          | `mkdir <directoryname>` | Make a directory      |
 
+### Redirecting output
+
+- Use `>` and `<`, Linux logic appplies to it,the same with  piping `|`
+
 
 
