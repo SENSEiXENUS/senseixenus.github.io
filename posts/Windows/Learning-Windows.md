@@ -144,6 +144,8 @@ Use:
 ### `Powercfg`
   You can use this command with its several extensions to show information about the power state of your PC. 
 
+- `powercfg /energy` to generate a battery health report
+
 ### Starting a web address
 
 - use `start <web addr>`
@@ -172,6 +174,4 @@ Use:
  
 
 
- - `powercfg /energy` to generate a battery health report
-
-### 
+ 
