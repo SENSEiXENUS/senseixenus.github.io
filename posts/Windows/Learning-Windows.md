@@ -223,7 +223,17 @@ The Computer Management (compmgmt) utility has three primary sections: System To
 
 ![image](https://github.com/user-attachments/assets/67f17e12-3223-4885-8eb2-418dc68a9eaa)
 
+- Checking `Local Users and Groups`, use `lusrmgr.msc` or check here
+
+![image](https://github.com/user-attachments/assets/851f4af3-f32e-4f55-a017-26b326299fa8)
+
+- Monitoring performance, use `perfmon.exe` or check
+
+![image](https://github.com/user-attachments/assets/38a00f65-1080-421b-b9f5-b62de196e0ed)
+
 -
+
+
 
 
 
