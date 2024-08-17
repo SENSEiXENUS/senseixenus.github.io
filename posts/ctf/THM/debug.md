@@ -102,7 +102,7 @@
 ### CODE REVIEW OF index.php
 ### Main vulnerability: Insecure Deserialization in function `unserialze()`
   
-  Deserialization covers conversion of an object into bytes.Serialization  converts bytes into an object.These functions are carried out by some functions and if not properly handled might lead to remote code execution or other critical vulnerabilities e.g`pickle.dumps()[python],yaml.loads()[python],unserialize()[php]`.
+  Deserialization covers conversion of an object into bytes.Serialization  converts bytes into an object.These concepts are carried out by some programming languages' functions and if not properly handled might lead to remote code execution or other critical vulnerabilities. Some  examples of dangerous unserializing functions in python and php are `pickle.dumps()[python],yaml.loads()[python],unserialize()[php]`.
 
 - Index.php accept a get parameter `debug` which is then unserialized by the `unserialize()` function
 
