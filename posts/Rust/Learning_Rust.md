@@ -718,7 +718,30 @@ Tuple structs are useful when you want to give more meaning to a tuple rather th
          println!("Can rect1 hold rect2? {}",rect1.can_hold(&rect2));
       }
 
--
+- You can split the methods and associated functions into multiple `impl` blocks. Although, it does not make actual sense to split the methods but it is also a valid syntax e.g
+
+      //Struct
+      #[derive(Debug)]
+      struct Rect {
+         width: u32,
+         height: u32
+      }
+      impl Rect {
+         fn area(&self) -> u32 {
+            self.width * self.height
+         }
+         fn can_hold(&self, other: &Rect) -> bool {
+            self.width > other.width && self.height > other.height
+         }
+      }
+      
+      impl Rect {
+         //Associated function
+         fn square(size: u32) -> Rect {
+            Rect { width: size,height: size}
+         }
+      }
+
 
 
 
