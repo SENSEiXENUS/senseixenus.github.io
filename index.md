@@ -47,6 +47,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 - [[Aug 14 2024]] [Dejavu](https://senseixenus.github.io/posts/ctf/THM/dejavu.html) ``Exiftool 12.23 RCE`` ``PATH-HIJACKING``
 - [[Aug 15 2024]] [Mustacchio](https://senseixenus.github.io/posts/ctf/THM/Mustacchio.html) ``XXE`` ``PATH HIJACKING``
+- [[Aug 17 2024]] [Debug](https://senseixenus.github.io/posts/ctf/THM/debug.html) ``Unserialize()`` ``Update-motd``
 
 * * *
   
