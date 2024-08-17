@@ -617,6 +617,109 @@ Tuple structs are useful when you want to give more meaning to a tuple rather th
         println!("{},{}",point1.0,color1.1);
     }
 
-### Unit like struct with no field
+### TRAITS in rust
+ A trait defines the functionality a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way. We can use trait bounds to specify that a generic type can be any type that has certain behavior.
+
+### Printing a struct
+
+-  Printing a struct requires the println! macro `println!("{:?}",<struct's instance>)`
+-  To achieve this, add `#[derive(Debug)]` before the struct e.g
+
+        fn main() {
+           #[derive(Debug)]
+           struct Rect{
+                width: i32,
+                height: i32
+           }
+           let rect1 = Rect {
+               width: 100,
+               height: 2000
+           };
+           let answer: i32 = area(&rect1.width,&rect1.height);
+           println!("The answer is {},struct is {:?}",answer,rect1);
+           fn area(width: &i32, height: &i32) -> i32{
+             width * height
+           }
+        }
+               
+### Method Syntax
+ Method are declared like functions with the `fn` keyword but it is defined within the context of a struct.The first parameter of a method is `self`.
+
+- Method are placed within a struct context with `impl`, `self` is used by method to access fields of a struct.it can be referenced mutably or immutably
+
+      //Struct
+      #[derive(Debug)]
+      struct Rect {
+         width: u32,
+         height: u32
+      }
+      //impl to place within a struct's context
+      impl Rect {
+         fn area(&self) -> u32 {
+            self.width * self.height
+         }
+      }
+      fn main() {
+         let rect1 = Rect {width: 90,height: 100};
+         println!("The answer is {}",rect1.area());
+      }
+
+- Adding multiple parameters to access another struct instance
+  
+        //Struct
+        #[derive(Debug)]
+        struct Rect {
+           width: u32,
+           height: u32
+        }
+        impl Rect {
+           fn area(&self) -> u32 {
+              self.width * self.height
+           }
+           fn can_hold(&self, other: &Rect) -> bool {
+              self.width > other.width && self.height > other.height
+           }
+        }
+        fn main() {
+           let rect1 = Rect {width: 90,height: 100};
+           let rect2 = Rect {width: 10,height: 10};
+           println!("The answer is {}",rect1.area());
+           println!("Can rect1 hold rect2? {}",rect1.can_hold(&rect2));
+
+### Associated functions
+ Associated functions allows us to declare methods within `impl` blocks without need to use the `self` parameter. They don't have the instance of self to work with.They are called using this namespace syntax `::`.`String::from()` is an associated function.
+
+- Example:
+
+      //Struct
+      #[derive(Debug)]
+      struct Rect {
+         width: u32,
+         height: u32
+      }
+      impl Rect {
+         fn area(&self) -> u32 {
+            self.width * self.height
+         }
+         fn can_hold(&self, other: &Rect) -> bool {
+            self.width > other.width && self.height > other.height
+         }
+         //Associated function
+         fn square(size: u32) -> Rect {
+            Rect { width: size,height: size}
+         }
+      }
+      fn main() {
+         let rect1 = Rect {width: 90,height: 100};
+         let rect2 = Rect {width: 10,height: 10};
+         let rect3 = Rect::square(100);
+         println!("{:?}",rect3);
+         println!("The answer is {}",rect1.area());
+         println!("Can rect1 hold rect2? {}",rect1.can_hold(&rect2));
+      }
+
+-
+
+
 
 
