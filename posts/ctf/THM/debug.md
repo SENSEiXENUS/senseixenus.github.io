@@ -1,12 +1,13 @@
 --------------------
 
 ### TRYHACKME
-### Lab: Debug:
+### Lab: Debug
 
 --------------------
 
 ![image](https://github.com/user-attachments/assets/7a87a1ed-8d4c-43fd-a5f9-0a391f20067c)
 
+--------------------
 
 ### Recon
 
@@ -96,11 +97,12 @@
 
 ![image](https://github.com/user-attachments/assets/2c6de75a-dbe1-4217-b4ee-e6cc3209d5ad)
 
+----------------------------
 
 ### CODE REVIEW OF index.php
 ### Main vulnerability: Insecure Deserialization in function `unserialze()`
   
-  Deserialization covers conversion of an object into bytes.Serialization  converts bytes into an object.These functions are carried out by some functions and if not properly handled might lead to remote code execution or other critical vulnerabilitiese.g`pickle.dumps()[python],yaml.loads()[python],unserialize()[php]`.
+  Deserialization covers conversion of an object into bytes.Serialization  converts bytes into an object.These functions are carried out by some functions and if not properly handled might lead to remote code execution or other critical vulnerabilities e.g`pickle.dumps()[python],yaml.loads()[python],unserialize()[php]`.
 
 - Index.php accept a get parameter `debug` which is then unserialized by the `unserialize()` function
 
@@ -133,6 +135,8 @@
             
             }
 
+-----------------------
+
 ### Exploit
 
 - Exploit:
@@ -148,6 +152,7 @@
 
 ![image](https://github.com/user-attachments/assets/06daccd3-9901-4409-a667-a2931e43f731)
 
+-----------------------------
 
 ### Initial Foothold
 
@@ -167,7 +172,9 @@
 
 ![image](https://github.com/user-attachments/assets/4440561e-a28a-4ffb-9f4b-0a15e05815d9)
 
-### PRIVESC with update-motd
+-------------------------
+
+### PRIVESC with `/etc/update-motd.d` files
 
 - An hint in  txt file reveals that we can modify ssh motd `message of the day` files.
 
@@ -188,10 +195,11 @@
   
 ![image](https://github.com/user-attachments/assets/ae599468-0fb9-4760-abae-a34992083c3c)
 
+------------------
 
 ### THANKS FOR READING!!!!!!!!
 
-----------------
+-----------------------
 
 ### REFERENCES:
 
@@ -200,7 +208,7 @@
 - [Php Object injection](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Insecure%20Deserialization/PHP.md)
 
 
-
+-----------------------
 
 
 
