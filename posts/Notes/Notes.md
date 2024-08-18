@@ -280,4 +280,4 @@ References:
 
 - Add your user to the `/etc/sudoers` file and grant power to execute all commands
 
-   echo "<user> ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+      echo "<user> ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
