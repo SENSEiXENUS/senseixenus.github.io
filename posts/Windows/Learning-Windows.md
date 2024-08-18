@@ -231,7 +231,31 @@ The Computer Management (compmgmt) utility has three primary sections: System To
 
 ![image](https://github.com/user-attachments/assets/38a00f65-1080-421b-b9f5-b62de196e0ed)
 
--
+
+### System Information
+
+ - Windows includes a tool called Microsoft System Information (Msinfo32.exe).  This tool gathers information about your computer and displays a comprehensive view of your hardware, system components, and software environment, which you can use to diagnose computer issues
+
+- The system information tab contains the `Environmental variables`.Environment variables store information about the operating system environment. This information includes details such as the operating system path, the number of processors used by the operating system, and the location of temporary folders.The environment variables store data that is used by the operating system and other programs. For example, the WINDIR environment variable contains the location of the Windows installation directory. Programs can query the value of this variable to determine where Windows operating system files are located.
+
+![image](https://github.com/user-attachments/assets/5a841594-c065-4572-b54f-fd69176ceda1)
+
+### Monitoring Resource
+
+- The application  is known as `Resource Monitor` and the executable is `resmon.exe`.Resource Monitor displays per-process and aggregate CPU, memory, disk, and network usage information, in addition to providing details about which processes are using individual file handles and modules. Advanced filtering allows users to isolate the data related to one or more processes (either applications or services), start, stop, pause, and resume services, and close unresponsive applications from the user interface. It also includes a process analysis feature that can help identify deadlocked processes and file locking conflicts so that the user can attempt to resolve the conflict instead of closing an application and potentially losing data
+
+![image](https://github.com/user-attachments/assets/0752dccc-96d7-43f1-afb0-fefa3aca77c4)
+
+
+### Registry Editor [regedit.exe]
+
+It is an hierarchical database used to store information necessary to configure the system for one or more users, applications, and hardware devices.
+
+- One way to use regedit is `regedit` or `regedt32`.
+
+  ![image](https://github.com/user-attachments/assets/12c25d18-9c07-453e-af44-40c365808f5e)
+
+
 
 
 
