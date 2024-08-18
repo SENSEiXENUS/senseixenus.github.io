@@ -7,6 +7,8 @@
 
 ![image](https://github.com/user-attachments/assets/9e72f931-43df-4a8d-a1ca-f002a9fa0542)
 
+-----------------
+
 ### RECON
 
 - Rustscan's output
@@ -131,11 +133,15 @@
 
 ![image](https://github.com/user-attachments/assets/49efff70-56ff-4448-88c9-b40183a22990)
 
+---------------------
+
 ### Initial Foothold
 
 - Shell as `www-data`
 
 ![image](https://github.com/user-attachments/assets/1d2c6f15-62b6-4354-956b-933c8ef76658)
+
+-----------------
 
 ### User Lennie
 
@@ -151,6 +157,8 @@
 
 ![image](https://github.com/user-attachments/assets/bdab5f79-cf22-4345-a22d-157cfd9dab2f)
 
+---------------------
+
 ### Privesc with root script
 
 - Lennie's home directory hosts a `scripts` which contains a `planner.sh` bash script owned by the `root` user.Although,it runs a bash script
@@ -158,7 +166,24 @@
 
 ![image](https://github.com/user-attachments/assets/326be5e7-2b9d-474f-a7e8-47a49ccb99a9)
 
-- I added this code
+- I added this bash code to grant lennie the privilege to run all commands.The code simply copies the `all` rule to the `/etc/sudoers` file.I added the code below to the `/etc/print.sh` file.
+
+      sudo echo "lennie ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+- Now we can run `sudo`
+
+![image](https://github.com/user-attachments/assets/33c6daa3-788b-4309-8e98-6c04fa4b2776)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/1150b95f-3eb4-45f5-9fa2-71cbe4b22931)
+
+--------------------
+
+### THANKS FOR READING!!!!
+
+---------------------
+
 
 
 
