@@ -49,6 +49,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 15 2024]] [Mustacchio](https://senseixenus.github.io/posts/ctf/THM/Mustacchio.html) ``XXE`` ``PATH HIJACKING``
 - [[Aug 17 2024]] [Debug](https://senseixenus.github.io/posts/ctf/THM/debug.html) ``Unserialize()`` ``Update-motd``
 - [[Aug 18 2024]] [Startup](https://senseixenus.github.io/posts/ctf/THM/startup.html) ``Ftp write priv`` ``Abusing root scripts``
+- [[Aug 19 2024]] [Sweettooth inc](https://senseixenus.github.io/posts/ctf/THM/sweettoothinc.html) ``Influxdb`` ``Docker``
 
 * * *
   
