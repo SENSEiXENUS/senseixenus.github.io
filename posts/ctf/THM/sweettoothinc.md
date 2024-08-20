@@ -107,7 +107,30 @@
 -  Port `8086` hosts `Influxdb` ver 1.3.0 which has a critical vulnerability that allows an attacker to sign cookies of existing users.
   I  got an [exploit](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933) to sign cookies.
 
-- I used this endpoint to enumerate users and got a user
-  
+- I enumerated users with this endpoint and got a user
 
-  
+  Endpoint:```http://<ip>:8086/debug/requests```
+
+![image](https://github.com/user-attachments/assets/cca82fc0-3dd9-42ad-b57f-fe4f844cf4c3)
+
+
+- Cookie
+    
+![image](https://github.com/user-attachments/assets/f45b4714-b7ad-4566-9cf3-508969455a92)
+
+
+### SSH creds
+
+- The host contains 5 dbs
+
+![image](https://github.com/user-attachments/assets/1a8d90e5-94b5-471f-9824-d8ae616769ae)
+
+- DB `creds` contains a column  `ssh`, I used the command `SHOW SERIES;` to check.
+
+![image](https://github.com/user-attachments/assets/60a02c7e-8092-4fb5-b293-4e283168c6aa)
+
+- Then I got the values of the column with `select * from ssh`.It contains a ssh credential.
+
+![image](https://github.com/user-attachments/assets/fbd30a8c-b4d5-4504-a0d4-f3a82b320b92)
+
+
