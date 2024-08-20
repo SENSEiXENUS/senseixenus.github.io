@@ -1,0 +1,113 @@
+----------------
+
+### CTF: TRYHACKME
+### LAB: SWEETTOOTHINC
+
+----------------
+
+![image](https://github.com/user-attachments/assets/87cdb8eb-e485-421b-a6fe-ba1ab4e4dfbd)
+
+----------------
+
+### RECON
+
+- Rustscan's output
+
+      ❯ rustscan -a 10.10.5.0 -- -sC -sV
+      .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+      | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+      | .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+      `-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+      The Modern Day Port Scanner.
+      ________________________________________
+      : https://discord.gg/GFrQsGy           :
+      : https://github.com/RustScan/RustScan :
+       --------------------------------------
+      🌍HACK THE PLANET🌍
+      
+      [~] The config file is expected to be at "/home/sensei/.rustscan.toml"
+      [!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+      [!] Your file limit is very small, which negatively impacts RustScan's speed. Use the Docker image, or up the Ulimit with '--ulimit 5000'. 
+      Open 10.10.5.0:111
+      Open 10.10.5.0:2222
+      Open 10.10.5.0:8086
+      Open 10.10.5.0:37088
+      [~] Starting Script(s)
+      [>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+      
+      [~] Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-19 14:04 EDT
+      NSE: Loaded 156 scripts for scanning.
+      NSE: Script Pre-scanning.
+      NSE: Starting runlevel 1 (of 3) scan.
+      Initiating NSE at 14:04
+      Completed NSE at 14:04, 0.00s elapsed
+      NSE: Starting runlevel 2 (of 3) scan.
+      Initiating NSE at 14:04
+      Completed NSE at 14:04, 0.00s elapsed
+      NSE: Starting runlevel 3 (of 3) scan.
+      Initiating NSE at 14:04
+      Completed NSE at 14:04, 0.00s elapsed
+      Initiating Ping Scan at 14:04
+      Scanning 10.10.5.0 [2 ports]
+      Completed Ping Scan at 14:04, 0.20s elapsed (1 total hosts)
+      Initiating Parallel DNS resolution of 1 host. at 14:04
+      Completed Parallel DNS resolution of 1 host. at 14:04, 0.04s elapsed
+      DNS resolution of 1 IPs took 0.04s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+      Initiating Connect Scan at 14:04
+      Scanning 10.10.5.0 [4 ports]
+      Discovered open port 111/tcp on 10.10.5.0
+      Discovered open port 37088/tcp on 10.10.5.0
+      Discovered open port 8086/tcp on 10.10.5.0
+      Discovered open port 2222/tcp on 10.10.5.0
+      Completed Connect Scan at 14:04, 0.17s elapsed (4 total ports)
+      Initiating Service scan at 14:04
+      Scanning 4 services on 10.10.5.0
+      Completed Service scan at 14:05, 12.77s elapsed (4 services on 1 host)
+      NSE: Script scanning 10.10.5.0.
+      NSE: Starting runlevel 1 (of 3) scan.
+      Initiating NSE at 14:05
+      Completed NSE at 14:05, 8.07s elapsed
+      NSE: Starting runlevel 2 (of 3) scan.
+      Initiating NSE at 14:05
+      Completed NSE at 14:05, 0.80s elapsed
+      NSE: Starting runlevel 3 (of 3) scan.
+      Initiating NSE at 14:05
+      Completed NSE at 14:05, 0.01s elapsed
+      Nmap scan report for 10.10.5.0
+      Host is up, received conn-refused (0.19s latency).
+      Scanned at 2024-08-19 14:04:58 EDT for 22s
+      
+      PORT      STATE SERVICE REASON  VERSION
+      111/tcp   open  rpcbind syn-ack 2-4 (RPC #100000)
+      | rpcinfo: 
+      |   program version    port/proto  service
+      |   100000  2,3,4        111/tcp   rpcbind
+      |   100000  2,3,4        111/udp   rpcbind
+      |   100000  3,4          111/tcp6  rpcbind
+      |   100000  3,4          111/udp6  rpcbind
+      |   100024  1          36282/udp6  status
+      |   100024  1          37088/tcp   status
+      |   100024  1          50155/tcp6  status
+      |_  100024  1          51328/udp   status
+      2222/tcp  open  ssh     syn-ack OpenSSH 6.7p1 Debian 5+deb8u8 (protocol 2.0)
+      | ssh-hostkey: 
+      |   1024 b0:ce:c9:21:65:89:94:52:76:48:ce:d8:c8:fc:d4:ec (DSA)
+      | ssh-dss AAAAB3NzaC1kc3MAAACBALOlP9Bx9VQxs4JDY8vovlJp+l+pPX2MGttzN2gGNYABXAVSF9CA14OituA5tcJd5/Nv3Ru3Xyu8Yo5SV0d82rd7L/NF5Relx+iiVF+bigo329wbV3wsIrRQGUYHXiMjAs8WqQR+XKjOm3q4QLVxe/jU1I1ddy6/xO4fL7nOSh3RAAAAFQDKuQDe9pQtmnqvJkZ7QuCGm31+vQAAAIBENh/MS3oHvz1tCC4nZYwdAYZMBj2It0gYCMvD0oSkqL9IMaP9DIt/5G3D9ARrZPeSP4CqhfryIGHS7t59RNdnc3ukEsfJPo23bPBwWdIW7HXp9XDqyY1kD6L3Tq0bpeXpeXt6FQ93rFxncZngFkCrMD4+YytS532qPHMPOWh75gAAAIA7TohVech8kWTh6KIMl2Y61s9cwUqwrTkqJIYMdZ73nP69FD0bw08vyrdAwtVnsqRaNzsVVz9sBOOz3wmp/ZNI5NiuyA0UwEcxPj5k6jCn620gBpMEzVy6a8Ih3yRYHoiVMrQ/PIuoeIGxeYGckCorv8jSz2O3pq1Fnz23FRPH2A==
+      |   2048 7e:86:88:fe:42:4e:94:48:0a:aa:da:ab:34:61:3c:6e (RSA)
+      | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbBmLBPg9mxkAdEbJGnz0v6Jzo4qdBcajkaIBKewKyz6OQTvyhVcDReSB2Dz0nl4mPCs3UN58hSNStCYXjZcpIBpqz2pHupVlqQ7u41Vo2W8u0nVFLt2U8JhTtA9wE6MA9GhitkN3Qorhxb3klCpSnWCDdcmkdNL0EYxZV53A52VWiNGX3vYkdMAKHAmp/VHvrsIeHozqflL8vD2UIoDmxDJwgXJRsr2iGVU1fL/Bu/DwlPwJkm50ua99yPpZbvCS9EwWki76aEtZSbcM4WHzx33Oe3tLXLCfKc9CJdIW35nBvpe5Dxl7gLR/mCHp2iTpdx1FmpSf+JjO/m2vKwL4X
+      |   256 04:1c:82:f6:a6:74:53:c9:c4:6f:25:37:4c:bf:8b:a8 (ECDSA)
+      | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHufHfqIZHVEKYC/yyNS+vTt35iULiIWoFNSQP/Bm/v90QzZjsYU9MSt7xdlR/2LZp9VWk32nl5JL65tvCMImxc=
+      |   256 49:4b:dc:e6:04:07:b6:d5:ab:c0:b0:a3:42:8e:87:b5 (ED25519)
+      |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJEYHtE8GbpGSlNB+/3IWfYRFrkJB+N9SmKs3Uh14pPj
+      8086/tcp  open  http    syn-ack InfluxDB http admin 1.3.0
+      |_http-title: Site doesn't have a title (text/plain; charset=utf-8).
+      37088/tcp open  status  syn-ack 1 (RPC #100024)
+      Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+-  Port `8086` hosts `Influxdb` ver 1.3.0 which has a critical vulnerability that allows an attacker to sign cookies of existing users.
+  I  got an [exploit](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933) to sign cookies.
+
+- I used this endpoint to enumerate users and got a user
+  
+
+  
