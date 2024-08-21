@@ -135,6 +135,118 @@
               print(response)
               break
 
-- Path spotted
-- 
+- Path spotted in number `10921`
+  
+            [+]Path not in number 10920
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Spinner</title>
+                <link rel="stylesheet" href="/static/style.css">
+            </head>
+            <body>
+              <strong>0</strong>
+                <h1>Spinner Wheel</h1>
+                <div class="container">
+            <ul class="imglist">
+              <li  ><img src="/static/arrow.png" alt="arrow"></li>
+              <li><img src="/static/wheel.png" alt="wheel"></li>
+            </ul>
+                  
+                  
+            
+                </div>
+                <h2>Spin the wheel</h2>
+                <div id="spin">
+                    <button  class="spin-btn">spin</button>
+                </div>
+                <label for="number">Feeling lucky? Guess the right number. You have a 0.004% chance of winning.</label>
+            
+                <form  method="post" class="inputs">
+                    <input placeholder="Input" type="number" name="number">
+                    <button type="submit" class="btn draw-border">Click</button>
+            
+                </form>
+                <h3>path: /YouGotTh3P@th</h3>
+            
+                
+            
+            </body>
+            <script src="/static/index.js"></script>
+            
+            </html>
+
+![image](https://github.com/user-attachments/assets/e27e428d-04f1-4f19-b1ba-2b0458c245dd)
+
+---------------------------
+
+### EXPLOITING MARA CMS 
+
+-  Directory `/YouGotTh3P@th` hosts `MARACMS-7.5` which has an authenticated file upload [exploit](https://www.exploit-db.com/exploits/48780)
+
+![image](https://github.com/user-attachments/assets/fa4e2c54-617c-477c-a6bf-0fe130d1c2c1)
+
+- The page  creators forgot to change the default creds `admin:changeme`.We can login as user `admin` and upload a web shell.
+
+![image](https://github.com/user-attachments/assets/ca8111a3-9fb2-44a6-8fe2-5c8ccf5b9060)
+
+- The file functionality allows us to write files.
+
+![image](https://github.com/user-attachments/assets/221d3dcd-a775-4fff-953f-8d0df6ebc40f)
+
+- Upload to directory `template/`
+
+![image](https://github.com/user-attachments/assets/2af81d51-13a5-447b-a82f-d01df9ee85a5)
+
+- Command injection
+
+![image](https://github.com/user-attachments/assets/85aa3e28-8406-4165-adee-cb580da78973)
+
+-------------------------
+
+### Initial Foothold
+
+- Shell access
+
+![image](https://github.com/user-attachments/assets/dabf4356-cb0b-4544-abc6-f74b882a8035)
+
+- I was able to get user `kiran` password  from an hidden file in `/var/backups/`
+
+![image](https://github.com/user-attachments/assets/feb18e78-ee7a-4a21-b896-44ab10765846)
+
+- User Kiran
+
+![image](https://github.com/user-attachments/assets/493a0895-a099-4e29-9038-f29ef94570c8)
+
+-------------------------
+
+### Privesc with PWNKIT 
+
+- The machine is vulnerable to `CVE-2021-4034 - Pkexec Local Privilege Escalation`.I got an exploit from this [github repo](https://github.com/ly4k/PwnKit)
+
+- Root
+
+![image](https://github.com/user-attachments/assets/4e1b36c2-f30f-4301-b81c-87553a1fe977)
+
+------------------------
+
+### REFERENCES:
+- [PWNKIT](https://github.com/ly4k/PwnKit)
+- [MARACMS](https://www.exploit-db.com/exploits/48780)
+
+------------------------
+
+### THANKS FOR READING!!!!
+
+-------------------------
+
+
+
+
+
+
+
+
 
