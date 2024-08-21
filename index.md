@@ -51,7 +51,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 18 2024]] [Startup](https://senseixenus.github.io/posts/ctf/THM/startup.html) ``Ftp write priv`` ``Abusing root scripts``
 - [[Aug 19 2024]] [Sweettooth inc](https://senseixenus.github.io/posts/ctf/THM/sweettoothinc.html) ``Influxdb`` ``Docker``
 - [[Aug 20 2024]] [Broker](https://senseixenus.github.io/posts/ctf/THM/broker.html) ``CVE-2016-3088``
-- [[Aug 21 2024]] [Sustah](https://senseixenus.github.io/posts/ctf/THM/sustah.html) ``Rate-Limit Bypass`` ``MARA-CMS`` ``CVE-2021-4034`` 
+- [[Aug 21 2024]] [Sustah](https://senseixenus.github.io/posts/ctf/THM/sustah.html) ``Rate-Limit Bypass`` ``MARA-CMS`` ``CVE-2021-4034``
+- [[Aug 21 2024]] [Develpy](https://senseixenus.github.io/posts/ctf/THM/develpy.html) ``Python2's input() rce`` ``Port Forwarding`` ``Abusing sh jobs``
 
 * * *
   
