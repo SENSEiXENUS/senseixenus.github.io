@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/73bc65b6-6482-4a62-9b5c-dc86b56b5cd0)--------------------
+--------------------
 
 ### CTF: TRYHACKME
 ### LAB: WGELCTF
