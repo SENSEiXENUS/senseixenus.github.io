@@ -54,6 +54,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 21 2024]] [Sustah](https://senseixenus.github.io/posts/ctf/THM/sustah.html) ``Rate-Limit Bypass`` ``MARA-CMS`` ``CVE-2021-4034``
 - [[Aug 21 2024]] [Develpy](https://senseixenus.github.io/posts/ctf/THM/develpy.html) ``Python2's input() rce`` ``Port Forwarding`` ``Abusing sh jobs``
 - [[Aug 24 2024]] [Wgelctf](https://senseixenus.github.io/posts/ctf/THM/wgelctf.html) ``Exposed .ssh dir`` ``Wget privesc``
+- [[Aug 24 2024]] [Dav](https://senseixenus.github.io/posts/ctf/THM/dav.html) ``WebDav`` ``Default Creds`` ``Cat Privesc``
   
 * * *
   
