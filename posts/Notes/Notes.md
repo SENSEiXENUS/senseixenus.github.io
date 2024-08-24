@@ -340,6 +340,15 @@ References:
 
 --------------------------
 
+### Exploiting GIT to gain sensitive information
+
+
+### REFERENCES
+
+- [Some OP medium blog](https://satyasai1460.medium.com/how-git-folder-can-be-exploited-to-access-sensitive-data-eb805c38fd6c)
+
+----------------------------
+
 
 
 
