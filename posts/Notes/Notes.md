@@ -49,6 +49,7 @@ NOTES
 
   ![image](https://github.com/user-attachments/assets/8270951c-d313-4bf8-9f28-4ac5a58db988)
 
+- Format-:```root:<hash>:18195:0:99999:7:::```
 ----------------------------------
 
 ### Installing adb-tools on Kali Linux[Ubuntu/Debian]
