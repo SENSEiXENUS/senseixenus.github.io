@@ -241,11 +241,19 @@ With the aid of the encoding filter,we can pass it out in encoded form instead o
 
 ![image](https://github.com/user-attachments/assets/afe25f5c-b6dc-45ab-a930-cc94f38eda0a)
 
+----------------------
+
+### REFERENCES:
+
+- [LFI-Bypass](https://null-byte.wonderhowto.com/how-to/beat-lfi-restrictions-with-advanced-techniques-0198048/)
+- [LFI2RCE](https://github.com/RoqueNight/LFI---RCE-Cheat-Sheet)
+  
 -----------------------
 
 ### THANKS FOR READING !!!
 
 -----------------------
+
 
 
 
