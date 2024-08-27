@@ -57,7 +57,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 24 2024]] [Dav](https://senseixenus.github.io/posts/ctf/THM/dav.html) ``WebDav`` ``Default Creds`` ``Cat Privesc``
 - [[Aug 26 2024]] [Archangel](https://senseixenus.github.io/posts/ctf/THM/archangel.html) ``LFI2RCE`` ``Cronjob`` ``Path Hijacking``
 - [[Aug 27 2024]] [Dogcat](https://senseixenus.github.io/posts/ctf/THM/dogcat.html) ``LFI2RCE`` ``env`` ``Docker escape``
-- [[Aug 28 2034]] [Haskhell](https://senseixenus.github.io/posts/ctf/THM/haskhell.html) ``Haskhell`` ``id_rsa`` ``Flask``
+- [[Aug 27 2024]] [Haskhell](https://senseixenus.github.io/posts/ctf/THM/haskhell.html) ``Haskhell`` ``id_rsa`` ``Flask``
   
 * * *
   
