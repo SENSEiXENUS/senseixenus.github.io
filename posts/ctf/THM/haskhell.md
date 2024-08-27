@@ -91,13 +91,12 @@
 
 ![image](https://github.com/user-attachments/assets/5d93beae-8096-4303-8ec9-985fd083d801)
 
-- The `homework1` page states that we can students are to submit some exercies involving haskell programming.The site states that it accepts
-only haskell code and it compiles and run.Most programming languages have modules that allow execution of shell commands and if not properly filtered, it can lead to
-shell commands execution
+- The `homework1` page states students are to submit some exercises involving haskell programming.The site states that it accepts
+only haskell code and compiles,run and renders the output.Most programming languages have modules that allow execution of shell commands and if not properly filtered, it can lead to shell commands execution.
 
 ![image](https://github.com/user-attachments/assets/763ba897-f088-44f3-9ddd-014bce05cb97)
 
-- The `submit` route allows us to upload files.I used this piece of code to execute shell commands and execute `ls`.
+- The `submit` route allows us to upload files.I used this haskell code to execute shell commands.
 
       import System.Process
       
@@ -112,7 +111,7 @@ shell commands execution
 
 ### Pivoting to user `prof`
 
-- I checked user `prof` directory and found his `id_rsa` private key.
+- I checked user `prof` directory and found his private ssh key.
 
 ![image](https://github.com/user-attachments/assets/72e5e411-0223-4b3c-952a-9c52a581bc42)
 
