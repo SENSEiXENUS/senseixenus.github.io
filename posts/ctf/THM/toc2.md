@@ -120,6 +120,8 @@
 
 ![image](https://github.com/user-attachments/assets/bcdf206e-7a40-4780-9b54-eb3c09862215)
 
+----------------------------
+
 ### Initial Foothold:
 
 - Shell Access
@@ -130,20 +132,38 @@
 
 ![image](https://github.com/user-attachments/assets/ec650636-43b6-47c3-b3fd-3640e2cf2d40)
 
+----------------------------
+
 ### Privesc with  TOCTOU`[Time of Check to TIme of Use]` 
 
 - This [blog](https://saketupadhyay.medium.com/winning-race-conditions-c80796f0e231) explains TOCTOU as a race condition bug exploited based on time of check e.g checking credentials  and to application of the check's results. I discovered a file containing root's backup password and can only be read as root.This file will be our target while exploiting this bug.
 
 ![image](https://github.com/user-attachments/assets/93e971ab-21b7-42b2-93c5-66c8872f9c01)
 
-- I got an exploit from this [github](https://github.com/sroettger/35c3ctf_chals/blob/master/logrotate/exploit/rename.c) to switch both the temporary file and the root password file. I added `&` while executing the binary to make it a background process.
+- I got an exploit from this [github](https://github.com/sroettger/35c3ctf_chals/blob/master/logrotate/exploit/rename.c) to switch both the temporary file and the root password file. I ran the binary on this current session to run the exploit and ssh to the same user to read files
 
-![image](https://github.com/user-attachments/assets/d052c19d-1e1b-4e67-90c3-a4d77118d4cb)
+![image](https://github.com/user-attachments/assets/b30d525d-e4fa-4f8f-a061-462efdc06094)
 
-- Now, we can run the `readflag` suid binary to check if we can read the root file.We have to try multiple times because it is more of a test of luck.
+- Now, we can run the `readflag` suid binary to check if we can read the root file.We have to try multiple times because it is more of luck.
 
-  
+![image](https://github.com/user-attachments/assets/9b1ae77c-f891-4ede-8bd4-09f269b5f0d9)
 
+- Root access !!!
+
+![image](https://github.com/user-attachments/assets/07cc2623-331d-4a1b-9150-c8c232da1769)
+
+------------------------
+
+### THANKS FOR READING!!!
+
+-------------------------
+
+### REFERENCES:
+
+- TOCTOU: [Medium](https://saketupadhyay.medium.com/winning-race-conditions-c80796f0e231)
+- CMSMS 2.1.6: [ExploitDb](https://www.exploit-db.com/exploits/44192)
+
+---------------------------
 
 
 
