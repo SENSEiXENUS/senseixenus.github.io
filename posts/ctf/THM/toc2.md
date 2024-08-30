@@ -106,11 +106,17 @@
 
 ### CMSMS 2.1.6 exploit
 
-- The `cmsms version 2.1.6` is vulnerable to `Remote Code Execution` as explained in [exploitdb](https://www.exploit-db.com/exploits/44192). The vulnerability entails injection of php code into a parameter `timestamp` while installing the cms on a server.
+- The `cmsms version 2.1.6` is vulnerable to `Remote Code Execution` as explained in [exploitdb](https://www.exploit-db.com/exploits/44192). The vulnerability entails injection of php code into a parameter `timezone` while installing the cms on a server.After completing the installation, the injected code is accessed at `/path/config.php?cmd=[system code]`.
 
 ![image](https://github.com/user-attachments/assets/1ba899ea-a2d2-4071-90ed-ab09236ac6b7)
 
 - I intercepted the request of stage 4's installation and tweaked the request as displayed below.
+
+![image](https://github.com/user-attachments/assets/01287ece-0eb7-4589-b723-240550f7b7d3)
+
+- 
+
+
 
 
 
