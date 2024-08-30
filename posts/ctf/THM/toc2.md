@@ -132,7 +132,26 @@
 
 ### Privesc with  TOCTOU`[Time of Check to TIme of Use]` 
 
-- 
+- This [blog](https://saketupadhyay.medium.com/winning-race-conditions-c80796f0e231) explains TOCTOU as a race condition bug exploited based on time of check e.g checking credentials  and to application of the check's results. I discovered a file containing root's backup password and can only be read as root.This file will be our target while exploiting this bug.
+
+![image](https://github.com/user-attachments/assets/93e971ab-21b7-42b2-93c5-66c8872f9c01)
+
+- I got an exploit from this [github](https://github.com/sroettger/35c3ctf_chals/blob/master/logrotate/exploit/rename.c) to switch both the temporary file and the root password file. I added `&` while executing the binary to make it a background process.
+
+![image](https://github.com/user-attachments/assets/d052c19d-1e1b-4e67-90c3-a4d77118d4cb)
+
+- Now, we can run the `readflag` suid binary to check if we can read the root file.We have to try multiple times because it is more of a test of luck.
+
+  
+
+
+
+
+
+
+
+
+
 
 
 
