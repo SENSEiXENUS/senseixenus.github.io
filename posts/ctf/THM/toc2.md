@@ -94,7 +94,7 @@
 
 -  FFUF's output
 
-
+![image](https://github.com/user-attachments/assets/e3ca51a6-3cfc-4127-954c-4dc5449dc1a6)
 
 - I discovered exposed credentials in the index page
 
@@ -106,8 +106,18 @@
 
 ### CMSMS 2.1.6 exploit
 
-- The `cmsms version 2.1.6` is vulnerable to `Remote Code Execution` as explained in [exploitdb](https://www.exploit-db.com/exploits/44192). The vulnerability allows
-injection of php code into a parameter `timestamp` while installing the cms on a server.
+- The `cmsms version 2.1.6` is vulnerable to `Remote Code Execution` as explained in [exploitdb](https://www.exploit-db.com/exploits/44192). The vulnerability entails injection of php code into a parameter `timestamp` while installing the cms on a server.
+
+![image](https://github.com/user-attachments/assets/1ba899ea-a2d2-4071-90ed-ab09236ac6b7)
+
+- I intercepted the request of stage 4's installation and tweaked the request as displayed below.
+
+
+
+
+
+
+
 
 
 
