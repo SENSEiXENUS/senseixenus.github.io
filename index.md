@@ -61,7 +61,14 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 30 2024]] [Toc2](https://senseixenus.github.io/posts/ctf/THM/toc2.html) ``CVE-2018-7448`` ``TOCTOU``
   
 * * *
+
+
+### **Proving Grounds:~#**
+* * *
+
+- [[August 31 2024]] [Inclusiveness](https://senseixenus.github.io/posts/ctf/PG/inclusiveness.html) ``LFI2RCE`` ``PATH HIJACKING``
   
+* * *
 
 ### **CTF competitions:~#**
 * * *
