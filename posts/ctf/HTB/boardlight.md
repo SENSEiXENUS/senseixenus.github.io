@@ -9,6 +9,10 @@
 
 ------------------
 
+### RECONNAISSANCE
+
+------------------
+
 - Rustscan's output
 
       ❯ rustscan -a 10.10.11.11 -- -sC -sV
@@ -115,6 +119,7 @@ I was able to get an exploit from the same site.The credentials `admin:admin` wi
 
 ![image](https://github.com/user-attachments/assets/9eb20c26-83b2-41fe-86af-d41d312a2646)
 
+----------------------
 
 ### User Larissa
 
@@ -126,6 +131,7 @@ I was able to get an exploit from the same site.The credentials `admin:admin` wi
 
 ![image](https://github.com/user-attachments/assets/3bf8adef-d358-4b31-bdcc-0a3df3e42c48)
 
+-------------------------
 
 ### Privesc with suid binary
 
