@@ -213,6 +213,7 @@ This hash's password is `password123`.
 ### REFERENCES:
 
 - [Chamilo](https://github.com/dollarboysushil/Chamilo-LMS-Unauthenticated-File-Upload-CVE-2023-4220)
+- [My Exploit for Chamilo](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/HTB/scripts/ChamiloCVE.py)
 
 -------------------------
 
