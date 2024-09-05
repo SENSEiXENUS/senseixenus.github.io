@@ -549,5 +549,8 @@ References:
 
 ### JWT vs JWS vs JWE
 
+- JSON Web Token is not used without Json Web Signature and JSON Web Encryption, When people use the term `JWT` , it also means a JWS token. JWEs are very similar except the actual contents are encrypted and not encoded.
+
+
 
 
