@@ -572,3 +572,23 @@ References:
 Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":"none}||{"iss":"portswigger","exp":1725569977,"sub":"administrator"}```
 
   
+---------------------------
+
+### Compiling exploit error: no cc1 in directory
+
+![image](https://github.com/user-attachments/assets/c6adac8b-c767-4656-a1b1-3b7f9f1eb75a)
+
+- It happens if `/usr/bin` is not added to the PATH environmental variable
+
+  ![image](https://github.com/user-attachments/assets/17b40813-87eb-48e9-9cc7-f27f871a0125)
+
+- Add it to the path with
+
+      export PATH=/usr/bin:$PATH
+
+![image](https://github.com/user-attachments/assets/60592489-d0dd-41a7-a944-022247589547)
+
+--------------------------
+
+  
+
