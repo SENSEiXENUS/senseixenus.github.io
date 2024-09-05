@@ -609,6 +609,13 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 --------------------
 
+### READING FILES WITH ECHO
+
+- Use
+
+      echo "$(<[filename])"
+
+---------------------
 
   
 
