@@ -59,6 +59,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 27 2024]] [Dogcat](https://senseixenus.github.io/posts/ctf/THM/dogcat.html) ``LFI2RCE`` ``env`` ``Docker escape``
 - [[Aug 27 2024]] [Haskhell](https://senseixenus.github.io/posts/ctf/THM/haskhell.html) ``Haskell`` ``id_rsa`` ``Flask``
 - [[Aug 30 2024]] [Toc2](https://senseixenus.github.io/posts/ctf/THM/toc2.html) ``CVE-2018-7448`` ``TOCTOU``
+- [[Sept 5 2024]] [0day](https://senseixenus.github.io/posts/ctf/THM/0day.html) ``Shellshock`` ``Overlayfs LPE``
   
 * * *
 
