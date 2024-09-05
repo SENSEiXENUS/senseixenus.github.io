@@ -552,5 +552,23 @@ References:
 - JSON Web Token is not used without Json Web Signature and JSON Web Encryption, When people use the term `JWT` , it also means a JWS token. JWEs are very similar except the actual contents are encrypted and not encoded.
 
 
+### Vulnerabilities
+
+### FLAWED SIGNATURES VERIFICATION
+
+- Servers don't usually store any information about the JWTs that they issue. Instead, each token is an entirely self-contained entity. This has several advantages, but also introduces a fundamental problem - the server doesn't actually know anything about the original contents of the token, or even what the original signature was. Therefore, if the server doesn't verify the signature properly, there's nothing to stop an attacker from making arbitrary changes to the rest of the token
+
+- Jwt libraries provide a way for verifying and decoding them, e.g the Node.js library `jsonwebtoken` has methods `verify()` and `decode()`. Occassionally, developers confuse this two methods and pass the token to `decode()` which doe not verify the signature.With this flaw, we can sign cookies for other users.
 
 
+### Accepting JWTS with no signature
+
+- The jwt token has an `alg` headers which states the algorithmn technique used to sign the token.Although, some servers allow the `none` which is flawed and unsigned with the secret key.Due to the obvious dangers of this, servers usually reject tokens with no signature. However, as this kind of filtering relies on string parsing, you can sometimes bypass these filters using classic obfuscation techniques, such as mixed capitalization and unexpected encodings.Even if the token is unsigned, the payload part must still be terminated with a trailing dot.
+
+- A tampered one, this should be the structure, set the header's alg to not and tweak the payload's user but it must end wit a trailing dot.
+
+          eyJraWQiOiJiODU0Yjg0Mi0wMzM5LTQ0ZGEtYjM4Zi05ODQ2ODRiOTE1MDYiLCJhbGciOiJub25lIn0.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTcyNTU2OTk3Nywic3ViIjoiYWRtaW5pc3RyYXRvciJ9.
+
+Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":"none}||{"iss":"portswigger","exp":1725569977,"sub":"administrator"}```
+
+  
