@@ -197,6 +197,47 @@
 
 - While checking the redis directory, I discovered a redis.conf containing a password for authentication.
 
+![image](https://github.com/user-attachments/assets/3574c689-6d0e-4246-b504-54c4d41d44a3)
+
+### Enumerating REDIS on port 6379
+
+- I connected to the redis port with `redis-cli -h [host]`.Then, `AUTH [password]` to access the db.
+
+![image](https://github.com/user-attachments/assets/a12a287e-31cd-4791-bb01-feb17b235496)
+
+- I listed all the db keys with `KEYS *` and discovered base64 encoded values in a key `authlist`
+
+![image](https://github.com/user-attachments/assets/8fb31421-2ec6-490a-a6bf-24e7ebb9c6c3)
+
+- I decoded the base64 string and got the password for the `rsync` service.
+
+![image](https://github.com/user-attachments/assets/e69c4e1c-59c8-4103-b097-43a4aac4bbc9)
+
+### ENUMERATING rsync on port `879`
+
+- Rsync allows file downloading and uploading.You can interact with a rsync service with `rsync`. I enumerated the directories with `rsync [host]::`.We have write access to `.ssh` of the home user `sys-internal`.
+
+![image](https://github.com/user-attachments/assets/cae5215c-afc4-4467-b6ef-59b8a2bcb03a)
+
+- We can access ssh by copying public key in `~/.ssh/id_rsa.pub` to authorized keys in user `sys-internal` .ssh directory.
+
+![image](https://github.com/user-attachments/assets/49f5abf4-7b28-4321-b4a3-4fc6c123d94a)
+
+- SSH Access
+
+![image](https://github.com/user-attachments/assets/afc42f2c-6de1-43bf-a277-80fb88fd4231)
+
+### PRIVESC with TEAM-CITY
+
+
+
+
+
+
+
+
+
+
 
 
 
