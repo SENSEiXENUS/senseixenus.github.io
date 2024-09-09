@@ -2,6 +2,33 @@
 NOTES
 * * *
 
+-------------------------------
+
+### Enumerating REDIS
+
+- Use `redis-cli -h [ip]` to connect
+- Then, `AUTH [password]` to authenticate
+
+![image](https://github.com/user-attachments/assets/caddc1da-a3d1-4df3-b714-f8aec08b49f8)
+
+- Use `KEYS *` to list all the keys
+
+![image](https://github.com/user-attachments/assets/60222e44-a93f-4435-823a-d9ad4e19e9b3)
+
+- Then, user `GET <key>` to read a key of te string type
+
+![image](https://github.com/user-attachments/assets/56e16e94-337b-45fe-9a5c-99536e5332c3)
+
+- Use `lrange <key> <start number> <stop number>` to read a list
+
+![image](https://github.com/user-attachments/assets/0093c647-0df8-489d-8be6-6aaed2094fae)
+
+-----------------------------
+
+### REFERENCES:
+
+- [Redis Cheatsheet](https://redis.io/learn/howtos/quick-start/cheat-sheet)
+  
 --------------------------------
 
 ### **Webhooks**:
@@ -616,6 +643,76 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
       echo "$(<[filename])"
 
 ---------------------
+
+### PENTESTING TEAM CITY
+
+- Grep for super token with ` grep -rni 'authentication token' TeamCity/logs 2</dev/null`
+
+![image](https://github.com/user-attachments/assets/861f4f8e-43de-4b16-8ea2-92ffa727aaa3)
+
+### Exploit with this steps
+
+- Create a new project, pick "manually"
+
+![image](https://github.com/user-attachments/assets/e0a9ec77-75e0-4dce-96f0-010b60570c8a)
+
+- Create a build configuration
+
+![image](https://github.com/user-attachments/assets/86bf10a6-27d2-4552-852a-5d0c604b4094)
+
+- Click on build steps
+
+![image](https://github.com/user-attachments/assets/57a9b4d2-6687-4eea-be50-6c77b5c97ce8)
+
+- Then, add a build step, set the runner type to `command line` and copy any bash reverse shell code and save
+
+![image](https://github.com/user-attachments/assets/09f05185-e513-4543-984c-68bfdbb22b09)
+
+- Click on run to spawn a reverse shell as root
+
+![image](https://github.com/user-attachments/assets/230358c8-5466-465e-a4cc-af12c31320e0)
+
+- Reverse shell as root
+
+![image](https://github.com/user-attachments/assets/32893314-b416-4008-9a94-fa6d8c90a3b0)
+
+------------------------------
+
+### REFERENCES:
+
+- [Pentesting Team City](https://exploit-notes.hdks.org/exploit/web/teamcity-pentesting/)
+
+------------------------------
+
+### Pentesting Rsync
+
+- Use rsync to interact with the service
+- `rsync <hosst>::` to check for directories
+
+![image](https://github.com/user-attachments/assets/2a23f845-a1d8-4c51-aba7-f2d63942847f)
+
+- Then, `rysnc rsync://[username]@[ip]/directory/` to list sub directories or files
+
+![image](https://github.com/user-attachments/assets/de21cc57-25d9-4485-a3fa-dc8959254e4b)
+
+- Use the -a option to upload file
+
+![image](https://github.com/user-attachments/assets/42ce6eab-4e4a-4d83-afbe-2b54a425422a)
+
+- To copy files, use the -avh option 
+
+      rsync -avh rsync://rsync-connect@10.10.121.4/files/sys-internal/.ssh/ [directory you want to copy to]
+
+![image](https://github.com/user-attachments/assets/c5585930-4fea-422e-a72c-7226460db2df)
+
+----------------------------
+
+
+
+
+
+
+
 
   
 
