@@ -171,6 +171,8 @@
       |   challenge_response: supported
       |_  message_signing: disabled (dangerous, but default)
 
+------------------
+
 ### Enumerating SMB
 
 - Enumerating port `139` and `445`[smb&&netbios] with `enum4linux` shows listing access to a smb share `shares`.
@@ -184,6 +186,8 @@
 - One of the files contains the first flag
 
 ![image](https://github.com/user-attachments/assets/552c724e-61d5-47ad-b34b-c6a71995801a)
+
+-----------------------
 
 ### Enumerating NFS
 
@@ -213,6 +217,8 @@
 
 ![image](https://github.com/user-attachments/assets/e69c4e1c-59c8-4103-b097-43a4aac4bbc9)
 
+--------------------
+
 ### ENUMERATING rsync on port `879`
 
 - Rsync allows file downloading and uploading.You can interact with a rsync service with `rsync`. I enumerated the directories with `rsync [host]::`.We have write access to `.ssh` of the home user `sys-internal`.
@@ -227,7 +233,94 @@
 
 ![image](https://github.com/user-attachments/assets/afc42f2c-6de1-43bf-a277-80fb88fd4231)
 
+-----------------------
+
 ### PRIVESC with TEAM-CITY
+
+- I ran `ps aux` to check for running processes,I discovered team city running as root on the server.
+
+![image](https://github.com/user-attachments/assets/3f051be5-dc07-4e3f-9848-0e1b80da7944)
+
+- Then, I checked for internal services with `ss -atur` and spotted a service on 8111.I used to `nc` to test the server and discovered it is an http server.I summed up that team city is running on that service.
+
+![image](https://github.com/user-attachments/assets/594aa799-9268-43d6-89f0-636e0556f76f)
+
+- I port forwarded the service with chisel.
+
+![image](https://github.com/user-attachments/assets/64debe25-8e1b-4585-a4d3-35e32cab077e)
+
+![image](https://github.com/user-attachments/assets/73d89cc0-f0b6-4354-8a53-d31f9d39309e)
+
+- Team city requires an authentication token to access the super user account. I got a grep one liner from this [site](https://exploit-notes.hdks.org/exploit/web/teamcity-pentesting/) to check for it .
+
+ONE-LINER-:```grep -rni 'authentication token' TeamCity/logs 2</dev/null```
+
+![image](https://github.com/user-attachments/assets/34bb04e5-2be1-49a3-bb18-35aa42cf1950)
+
+- The last token worked
+
+![image](https://github.com/user-attachments/assets/b4d25510-1e71-4e49-a3b7-cd2e27dccb43)
+
+- I followed the steps in this [site](https://exploit-notes.hdks.org/exploit/web/teamcity-pentesting/) to spawn a revshell.
+
+- Create a new project, pick "manually"
+
+![image](https://github.com/user-attachments/assets/e0a9ec77-75e0-4dce-96f0-010b60570c8a)
+
+- Create a build configuration
+
+![image](https://github.com/user-attachments/assets/86bf10a6-27d2-4552-852a-5d0c604b4094)
+
+- Click on build steps
+
+![image](https://github.com/user-attachments/assets/57a9b4d2-6687-4eea-be50-6c77b5c97ce8)
+
+- Then, add a build step, set the runner type to `command line` and copy any bash reverse shell code and save
+
+![image](https://github.com/user-attachments/assets/09f05185-e513-4543-984c-68bfdbb22b09)
+
+- Click on run to spawn a reverse shell as root
+
+![image](https://github.com/user-attachments/assets/230358c8-5466-465e-a4cc-af12c31320e0)
+
+- Reverse shell as root
+
+![image](https://github.com/user-attachments/assets/32893314-b416-4008-9a94-fa6d8c90a3b0)
+
+- Root access.....!!!
+
+![image](https://github.com/user-attachments/assets/e7e16f40-46de-4e41-a511-082d1c13de0e)
+
+--------------------
+
+### THANKS FOR READING.....!!!!!
+
+---------------------
+
+### REFERENCES:
+
+- [Redis Commands](https://redis.io/learn/howtos/quick-start/cheat-sheet)
+- [Team City Pentest](https://exploit-notes.hdks.org/exploit/web/teamcity-pentesting/)
+
+----------------------
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
