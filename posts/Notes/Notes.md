@@ -782,6 +782,28 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 ----------------------------
 
+### Bypassing restricted port number on firefox
+
+- Type `about:config` in the url bar
+
+![image](https://github.com/user-attachments/assets/32cb156d-8016-47a5-bfb4-332630c4463e)
+
+- Copy `network.security.ports.banned.override`,pick string, delete if it contains `boolean` type
+
+![image](https://github.com/user-attachments/assets/4dc0fdc7-a2a0-4194-8239-807fe0156253)
+
+- You can specify a port range
+
+![image](https://github.com/user-attachments/assets/b273f8c9-aee2-4c4b-bb9f-68cb7b6b7fb9)
+
+-----------------------------
+
+### REFERENCES:
+
+- [Special Agent's blog](https://www.specialagentsqueaky.com/blog-post/r5iwj96j/2012-02-20-how-to-remove-firefoxs-this-address-is-restricted/)
+  
+-------------------------------
+
 
 
 
