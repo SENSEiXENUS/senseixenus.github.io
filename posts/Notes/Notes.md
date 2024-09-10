@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/28d722d5-c4a5-498f-897c-a806cf62227f)* * *
+* * *
 NOTES
 * * *
 
@@ -639,7 +639,11 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
               "n": "yy1wpYmffgXBxhAUJzHHocCuJolwDqql75ZWuCQ_cb33K2vh9m"
           }
       }
-- Ideally, servers should only use a limited whitelist of public keys to verify JWT signatures. However, misconfigured servers sometimes use any key that's embedded in the jwk parameter
+- Ideally, servers should only use a limited whitelist of public keys to verify JWT signatures. However, misconfigured servers sometimes use any key that's embedded in the jwk parameter.
+
+### Exploiting with JWT_EDITOR
+
+-
 
 
 ---------------------------
