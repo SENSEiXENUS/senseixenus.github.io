@@ -1,0 +1,96 @@
+------------------
+
+### CTF: TRYHACKME
+### LAB: JACK-OF-ALL-TRADES
+
+------------------
+
+![image](https://github.com/user-attachments/assets/8fb027aa-9dda-4797-8df2-15a7ffdb7b2a)
+
+-----------------
+
+### RECONNAISSANCE
+
+- Rustscan's output
+
+      ❯ rustscan -a 10.10.128.125 -- -sC -sV -Pn
+      .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+      | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+      | .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+      `-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+      The Modern Day Port Scanner.
+      ________________________________________
+      : https://discord.gg/GFrQsGy           :
+      : https://github.com/RustScan/RustScan :
+       --------------------------------------
+      🌍HACK THE PLANET🌍
+      
+      [~] The config file is expected to be at "/home/sensei/.rustscan.toml"
+      [!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+      [!] Your file limit is very small, which negatively impacts RustScan's speed. Use the Docker image, or up the Ulimit with '--ulimit 5000'. 
+      Open 10.10.128.125:22
+      Open 10.10.128.125:80
+      [~] Starting Script(s)
+      [>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+      
+      Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+      [~] Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-09-10 11:42 EDT
+      NSE: Loaded 156 scripts for scanning.
+      NSE: Script Pre-scanning.
+      NSE: Starting runlevel 1 (of 3) scan.
+      Initiating NSE at 11:42
+      Completed NSE at 11:42, 0.00s elapsed
+      NSE: Starting runlevel 2 (of 3) scan.
+      Initiating NSE at 11:42
+      Completed NSE at 11:42, 0.00s elapsed
+      NSE: Starting runlevel 3 (of 3) scan.
+      Initiating NSE at 11:42
+      Completed NSE at 11:42, 0.00s elapsed
+      Initiating Parallel DNS resolution of 1 host. at 11:42
+      Completed Parallel DNS resolution of 1 host. at 11:42, 0.00s elapsed
+      DNS resolution of 1 IPs took 0.00s. Mode: Async [#: 1, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+      Initiating Connect Scan at 11:42
+      Scanning 10.10.128.125 [2 ports]
+      Discovered open port 80/tcp on 10.10.128.125
+      Discovered open port 22/tcp on 10.10.128.125
+      Completed Connect Scan at 11:42, 0.16s elapsed (2 total ports)
+      Initiating Service scan at 11:42
+      Scanning 2 services on 10.10.128.125
+      Completed Service scan at 11:43, 11.54s elapsed (2 services on 1 host)
+      NSE: Script scanning 10.10.128.125.
+      NSE: Starting runlevel 1 (of 3) scan.
+      Initiating NSE at 11:43
+      Completed NSE at 11:43, 30.22s elapsed
+      NSE: Starting runlevel 2 (of 3) scan.
+      Initiating NSE at 11:43
+      Completed NSE at 11:43, 0.70s elapsed
+      NSE: Starting runlevel 3 (of 3) scan.
+      Initiating NSE at 11:43
+      Completed NSE at 11:43, 0.01s elapsed
+      Nmap scan report for 10.10.128.125
+      Host is up, received user-set (0.16s latency).
+      Scanned at 2024-09-10 11:42:57 EDT for 43s
+      
+      PORT   STATE SERVICE REASON  VERSION
+      22/tcp open  http    syn-ack Apache httpd 2.4.10 ((Debian))
+      |_http-title: Jack-of-all-trades!
+      |_ssh-hostkey: ERROR: Script execution failed (use -d to debug)
+      |_http-server-header: Apache/2.4.10 (Debian)
+      | http-methods: 
+      |_  Supported Methods: GET HEAD POST OPTIONS
+      80/tcp open  ssh     syn-ack OpenSSH 6.7p1 Debian 5 (protocol 2.0)
+      | ssh-hostkey: 
+      |   1024 13:b7:f0:a1:14:e2:d3:25:40:ff:4b:94:60:c5:00:3d (DSA)
+      | ssh-dss AAAAB3NzaC1kc3MAAACBANucPy+D67M/cKVTYaHYYpt9bqPviYbWW/4+BFnUOQoNordc9Pc+8CauJqNFiebIqpKYKXhpEAt82m1IjQh8EmWdJYcQnkMFgukM3/mGjngXTbUO8vAbi53Zy8wwOaBlmRK9mvfAYEWPkcjzRmYgSp51TgEtSGWIyAkc1Lx6YVtDAAAAFQCsIgZJlrsYvAtF7Rmho7lIdn0WOwAAAIEApri35SyOophhqX45JcDpVASe3CSs8tPMGoOc0I9ZtTGt5qyb1cl7N3tXsP6mlrw4d4YNo8ct0w6TjsxPcJjGitRQ+SILWHy72XZ5Chde6yewKB5BeBjXrYvRR1rW+Tpia5kyjB4s0mGB7o3FMjX/dT+ISqYvZeVa7mQnBo0f0XMAAACAP89Ag2kmcs0FBt7KCBieH3UB6gF+LdeRVJHio5p4VQ8cTY1NZDyWqudS1TJq1BAToJSz9MqwUwzlILjRjuGQtylpssWSRbHyM0aqmJdORSMOCMUiEwyfk6T8+Vmama/AN7/htZeWBjWVeVEnbYJJQ6kPSCvZodMdOggYXcv32CA=
+      |   2048 91:0c:d6:43:d9:40:c3:88:b1:be:35:0b:bc:b9:90:88 (RSA)
+      | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbCwl2kyYWpv1DPDF0xQ5szNR1muMph6gJMJFw9VubKkSvHMWfg7CaCNcyo1QR5dg9buIygIGab8e9aigJdjQUY4XeBejwGe+vAA8RtPMoiLclR6g5qAqVQSeZ2FBzMrmkyKIgsSDb8tP+czpzn/Gp1HzDtiYUvleTvO2xEZ3k2Xz8YDvPlkV4zAIPzZSSZ8BABPYsBrePIwMpr/ZjeeiE59DlkUIv8x8M0z9KOls9zaeqFsbWrfMZzFgtPP+KILN6GrGijxgcGq5mDwvr67oHL3T3FtpReE+UZ/CafmzO/2Ls8XstmUiNeMaNBYtc6703/84bpL0uLp/pkILS8eqX
+      |   256 a3:fb:09:fb:50:80:71:8f:93:1f:8d:43:97:1e:dc:ab (ECDSA)
+      | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBO4p2E6NglzDeP40tJ42LjWaVrOcINmy42cspAv8DSzGD0K+V3El/tyGBxCJlMMR7wbN0968CQl61x0AkkAHLFk=
+      |   256 65:21:e7:4e:7c:5a:e7:bc:c6:ff:68:ca:f1:cb:75:e3 (ED25519)
+      |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6jYsDJq1mWTDx7D+p3mMbqXhu9OhhW2p1ickLCdZ9E
+      Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+- There is a twist in the open ports, `http` is running on port `22` and ssh is running on `80`.
+- I checked the source code of the page and discovered a `base64` encoded comment.
+
+
