@@ -120,6 +120,8 @@
 
 ![image](https://github.com/user-attachments/assets/6b51292d-8640-47cc-93eb-9d6359880bc1)
 
+-----------------------
+
 ### Pivoting to user `jack`
 
 - The home directory contains a password list that containing Jack's password.
@@ -134,9 +136,30 @@
 
 ![image](https://github.com/user-attachments/assets/a6e3d7fc-aeab-4f77-aa74-e63465721419)
 
-### SUID file read with `strings`
 
--
+------------------------
+
+### Privesc: SUID file read with `strings`
+
+- I ran `find / -perm -u=s -type f 2</dev/null` to check for suid binaries.I spotted the `strings` binary.
+
+![image](https://github.com/user-attachments/assets/0455e567-99bd-4c95-ab65-1579ceb37a4e)
+
+- Now, we can read the root flag.
+
+![image](https://github.com/user-attachments/assets/e028be96-6e24-485a-8a73-9f9bdaed441b)
+
+- For the user.jpg file in Jack's directory, use pytesseract to convert tha image to string.
+
+![image](https://github.com/user-attachments/assets/3b290169-d049-42be-98a4-2978fded7a58)
+
+------------------------
+
+### THANKS FOR READING
+
+------------------------
+
+
 
 
 
