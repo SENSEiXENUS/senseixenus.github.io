@@ -141,7 +141,7 @@
 
 ### Privesc: SUID file read with `strings`
 
-- I ran `find / -perm -u=s -type f 2</dev/null` to check for suid binaries.I spotted the `strings` binary.Strings is used to output the readable characters of a file.We can use it to read files.
+- I ran `find / -perm -u=s -type f 2</dev/null` to check for suid binaries.I spotted the `strings` binary.Strings is used to output the printable characters of a file.We can use it to read files.
 
 ![image](https://github.com/user-attachments/assets/0455e567-99bd-4c95-ab65-1579ceb37a4e)
 
