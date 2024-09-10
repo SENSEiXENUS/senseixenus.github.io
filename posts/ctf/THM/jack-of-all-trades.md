@@ -91,6 +91,62 @@
       Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 - There is a twist in the open ports, `http` is running on port `22` and ssh is running on `80`.
-- I checked the source code of the page and discovered a `base64` encoded comment.
+- I checked the source code of the page,discovered a `base64` encoded comment and a `recover.php` page.
+
+![image](https://github.com/user-attachments/assets/4061eb40-0993-4b4f-b20d-7f5ae7cc120c)
+
+- The base64 decoded content indicates a password
+
+![image](https://github.com/user-attachments/assets/be736e0b-4294-42b7-b86e-edbeb1446dc0)
+
+- The source code of `recover.php` contains a base32 string.
+
+![image](https://github.com/user-attachments/assets/0b6a2d44-8bb2-4345-92fc-15aba7637569)
+
+- The base32 decoded string reveals a hex string which also contains a rot13 string that finally reveals the text.
+
+![image](https://github.com/user-attachments/assets/2f43ea9b-5072-4332-b559-dbb3ab20f409)
+
+- The hint redirects us  to a wikipedia page on the dinosaur `stegosaurus`.This hint implies that we should use steganography on the jpg images in the webpage.
+- I tried steghide on the `header` jpg file  using the password I got and discovered a file containing the recovery page's credentials.
+
+![image](https://github.com/user-attachments/assets/52985dc3-b5de-467c-805c-eab29efb5912)
+
+- The index page takes in a `cmd` parameter and executes the values as shell commands.
+
+![image](https://github.com/user-attachments/assets/868a9a4b-bd6f-4b70-99de-a7bdc39c5267)
+
+- Shell access
+
+![image](https://github.com/user-attachments/assets/6b51292d-8640-47cc-93eb-9d6359880bc1)
+
+### Pivoting to user `jack`
+
+- The home directory contains a password list that containing Jack's password.
+
+![image](https://github.com/user-attachments/assets/fa32d107-83c4-4404-a5ba-f5fcfa57dc52)
+
+- I cracked Jack's ssh password with hydra
+
+![image](https://github.com/user-attachments/assets/e709d82b-9838-4ccf-be32-6dfffc97bc06)
+
+- SSH access
+
+![image](https://github.com/user-attachments/assets/a6e3d7fc-aeab-4f77-aa74-e63465721419)
+
+### SUID file read with `strings`
+
+-
+
+
+
+
+
+
+
+
+  
+
+
 
 
