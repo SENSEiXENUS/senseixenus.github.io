@@ -61,6 +61,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Aug 30 2024]] [Toc2](https://senseixenus.github.io/posts/ctf/THM/toc2.html) ``CVE-2018-7448`` ``TOCTOU``
 - [[Sept 5 2024]] [0day](https://senseixenus.github.io/posts/ctf/THM/0day.html) ``Shellshock`` ``Overlayfs LPE``
 - [[Sept 9 2024]] [VulnetInternal](https://senseixenus.github.io/posts/ctf/THM/vulnetinternal.html) ``REDIS`` ``TEAMCITY Privesc``
+- [[Sept 10 2024]] [Jack of all Trades](https://senseixenus.github.io/posts/ctf/THM/jack-of-all-trades.html) ``Steganography`` ``SUID``
   
 * * *
 
