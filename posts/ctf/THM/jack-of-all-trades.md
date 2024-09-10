@@ -141,7 +141,7 @@
 
 ### Privesc: SUID file read with `strings`
 
-- I ran `find / -perm -u=s -type f 2</dev/null` to check for suid binaries.I spotted the `strings` binary.
+- I ran `find / -perm -u=s -type f 2</dev/null` to check for suid binaries.I spotted the `strings` binary.Strings is used to output the readable characters of a file.We can use it to read files.
 
 ![image](https://github.com/user-attachments/assets/0455e567-99bd-4c95-ab65-1579ceb37a4e)
 
@@ -149,7 +149,7 @@
 
 ![image](https://github.com/user-attachments/assets/e028be96-6e24-485a-8a73-9f9bdaed441b)
 
-- For the user.jpg file in Jack's directory, use pytesseract to convert tha image to string.
+- For the user.jpg file in Jack's directory, use pytesseract to convert the image to string.
 
 ![image](https://github.com/user-attachments/assets/3b290169-d049-42be-98a4-2978fded7a58)
 
