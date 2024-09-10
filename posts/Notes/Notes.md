@@ -643,7 +643,35 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 ### Exploiting with JWT_EDITOR
 
--
+- Generate a new RSA key with JWT Editor
+
+![image](https://github.com/user-attachments/assets/7100ee8e-5bf1-4a12-aad0-00db0cf5ba0c)
+
+- Intercept a request with burp suite proxy and send to the repeater
+
+![image](https://github.com/user-attachments/assets/1695cdf0-1017-4b1d-8e1d-a318029ec6cb)
+
+- Rightclick and  pick `copy public key as JWK` in the JWT_Editor tab
+- Go to the json web token tab in the repeater to tweak the token
+
+![image](https://github.com/user-attachments/assets/00420fc6-887f-4a99-b3fa-2d38c97566e4)
+
+- Create an key `jwt` to hold the public key object
+
+![image](https://github.com/user-attachments/assets/08b5da20-da59-48b7-8726-55fdad16b3a6)
+
+- Then, add the replace the `kid` key with the new public key `kid`.
+
+![image](https://github.com/user-attachments/assets/6797f61a-66c9-494e-8cc8-a5210743ac28)
+
+- Click on attack and `embedded jwt` later
+
+![image](https://github.com/user-attachments/assets/1f2aa050-eb51-4da0-8e01-5d07bcea496f)
+
+- Admin access
+
+![image](https://github.com/user-attachments/assets/c169a215-3e76-43db-bb2e-2578492454f2)
+
 
 
 ---------------------------
