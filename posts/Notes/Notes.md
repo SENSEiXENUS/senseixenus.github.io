@@ -1,4 +1,4 @@
-* * *
+![image](https://github.com/user-attachments/assets/28d722d5-c4a5-498f-897c-a806cf62227f)* * *
 NOTES
 * * *
 
@@ -598,7 +598,50 @@ References:
 
 Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":"none}||{"iss":"portswigger","exp":1725569977,"sub":"administrator"}```
 
+### JWT SECRET KEY BRUTE FORCE
+
+- Some signing algorithms, such as HS256 (HMAC + SHA-256), use an arbitrary, standalone string as the secret key. Just like a password, it's crucial that this secret can't be easily guessed or brute-forced by an attacker. Otherwise, they may be able to create JWTs with any header and payload values they like, then use the key to re-sign the token with a valid signature.
+
+- Bruteforce with hashcat with
   
+      hashcat -a 0 -m 16500 <jwt> <wordlist>
+
+- Use `hashcat --show <jwt>` to see a the secret
+
+  ![image](https://github.com/user-attachments/assets/47c684e4-b0a3-4f81-a514-843a00279d6e)
+
+### JWT PARAMETER Headers Injection
+
+ According to the JWS specification, only the alg header parameter is mandatory. In practice, however, JWT headers (also known as JOSE headers) often contain several other parameters. The following ones are of particular interest to attackers.
+
+    jwk (JSON Web Key) - Provides an embedded JSON object representing the key.
+
+    jku (JSON Web Key Set URL) - Provides a URL from which servers can fetch a set of keys containing the correct key.
+
+    kid (Key ID) - Provides an ID that servers can use to identify the correct key in cases where there are multiple keys to choose from. Depending on the format of the key, this may have a matching kid parameter.
+
+- As you can see, these user-controllable parameters each tell the recipient server which key to use when verifying the signature. 
+
+
+### Injecting self-signed JWTs via the jwk parameter
+
+- The JSON Web Signature (JWS) specification describes an optional jwk header parameter, which servers can use to embed their public key directly within the token itself in JWK format
+- Example:
+      
+        {
+          "kid": "ed2Nf8sb-sD6ng0-scs5390g-fFD8sfxG",
+          "typ": "JWT",
+          "alg": "RS256",
+          "jwk": {
+              "kty": "RSA",
+              "e": "AQAB",
+              "kid": "ed2Nf8sb-sD6ng0-scs5390g-fFD8sfxG",
+              "n": "yy1wpYmffgXBxhAUJzHHocCuJolwDqql75ZWuCQ_cb33K2vh9m"
+          }
+      }
+- Ideally, servers should only use a limited whitelist of public keys to verify JWT signatures. However, misconfigured servers sometimes use any key that's embedded in the jwk parameter
+
+
 ---------------------------
 
 ### Compiling exploit error: no cc1 in directory
