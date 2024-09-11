@@ -486,13 +486,22 @@ References:
       http://127.0.0.1/?0=id&file=[filter generated above]
 
 - Sweet RCE[Test on Inclusiveness PG PLAY]
+- Script usage for the php filter
+
+      ./filter.py --rawbase64 [base64 encoded php code]
+
+![image](https://github.com/user-attachments/assets/340321c8-e317-4ffa-bd7f-920ae50f57d8)
+
+- Rce
+
+![image](https://github.com/user-attachments/assets/d06ea870-87ae-4115-9b2c-c904ebc511cc)
 
 --------------------------------
 
 ### REFERENCES:
 
 - [SundaeGan](https://medium.com/@sundaeGAN/php-wrapper-and-lfi2rce-81c536ef7a06)
-- [Script's Link](https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi2rce-via-php-filters)
+- [Script's Link](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/Notes/scripts/phpfilter.py)
 
 ---------------------------------
 
