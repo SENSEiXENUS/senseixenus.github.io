@@ -216,7 +216,7 @@
 
 ![image](https://github.com/user-attachments/assets/c354e1b8-9594-4a38-98e9-5d428fc966e7)
 
-- I escalated LFI to rce with php filters generated with this [script from syanctiv](https://raw.githubusercontent.com/synacktiv/php_filter_chain_generator/main/php_filter_chain_generator.py).
+- I escalated LFI to rce with php filters generated with this [script from synacktiv](https://raw.githubusercontent.com/synacktiv/php_filter_chain_generator/main/php_filter_chain_generator.py).
 
 ![image](https://github.com/user-attachments/assets/920d91a5-0bb0-4fe5-821f-d6c5facf5077)
 
