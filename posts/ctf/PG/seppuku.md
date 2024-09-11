@@ -216,11 +216,21 @@
 
 ### Privesc with tanto and `samurai`
 
-- After running `sudo -l` on user `samuraai`, I discovered that user `samurai` can run a command as root but we need to access user tanto
-  to create a binary `bin` in a directory `.cgi-bin`.
+- After running `sudo -l` on user `samurai`, I discovered that user `samurai` can run a command as root but we need to access user tanto to create a binary `bin` in a directory `.cgi-bin`.
+
+
 
 
 - I was able to login to user tanto with the aid of the private key I downloaded from the `keys` directory.
+
+![image](https://github.com/user-attachments/assets/dbcf0ede-a9e6-4186-9113-57fb79ee8a6c)
+
+- Then, I create the `/.cgi-bin/bin` file and added this python payload
+
+![image](https://github.com/user-attachments/assets/636037e3-fdc2-45b9-b6a5-1cd96adc6728)
+
+- Now we can trigger the payload as user `samurai`.
+
 
 
 
