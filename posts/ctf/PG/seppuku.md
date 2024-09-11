@@ -5,6 +5,10 @@
 
 ----------------
 
+![image](https://github.com/user-attachments/assets/61a92159-250b-4618-a619-5d9688328f35)
+
+----------------
+
 ### Reconnaissance:
 
 - Rustscan's output:
@@ -214,12 +218,13 @@
 
 ![image](https://github.com/user-attachments/assets/4e2f0a73-16e5-4f0e-a792-b2cc11a7b2de)
 
-### Privesc with tanto and `samurai`
+-----------------------
+
+### Privesc with user tanto and `samurai`
 
 - After running `sudo -l` on user `samurai`, I discovered that user `samurai` can run a command as root but we need to access user tanto to create a binary `bin` in a directory `.cgi-bin`.
 
-
-
+![image](https://github.com/user-attachments/assets/8515cec3-db10-44a8-8ab5-fa5d5c5bfe9a)
 
 - I was able to login to user tanto with the aid of the private key I downloaded from the `keys` directory.
 
@@ -231,6 +236,18 @@
 
 - Now we can trigger the payload as user `samurai`.
 
+![image](https://github.com/user-attachments/assets/963cbce7-a877-45e1-8c78-e19cb3cb6e9a)
+
+- Root access...!!!!
+
+![image](https://github.com/user-attachments/assets/b9038f46-e83c-4df1-83e6-d33e84db501e)
+
+
+-------------------------
+
+### THANKS FOR READING!!!!
+
+--------------------------
 
 
 
