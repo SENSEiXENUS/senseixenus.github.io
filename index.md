@@ -71,6 +71,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 - [[August 31 2024]] [Inclusiveness](https://senseixenus.github.io/posts/ctf/PG/inclusiveness.html) ``LFI2RCE`` ``PATH HIJACKING``
 - [[September 4 2024]] [Potato](https://senseixenus.github.io/posts/ctf/PG/potato.html) ``Strcmp() bypass`` ``Command Injection`` ``Exposed User Hash`` ``Privesc Nice``
+- [[September 11 2024]] [Seppuku](https://senseixenus.github.io/posts/ctf/PG/seppuku.html) ``Weak SSH password`` ``Exposed SSH private key`` ``sudo -l``
   
 * * *
 
