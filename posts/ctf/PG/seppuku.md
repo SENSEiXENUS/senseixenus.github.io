@@ -230,9 +230,9 @@
 
 ![image](https://github.com/user-attachments/assets/dbcf0ede-a9e6-4186-9113-57fb79ee8a6c)
 
-- Then, I create the `/.cgi-bin/bin` file and added this python payload
+- Then, I create the `/.cgi_bin/bin` file and added this python payload
 
-![image](https://github.com/user-attachments/assets/636037e3-fdc2-45b9-b6a5-1cd96adc6728)
+![image](https://github.com/user-attachments/assets/c980c41e-5ddf-40d3-8ace-f60719082ba9)
 
 - Now we can trigger the payload as user `samurai`.
 
