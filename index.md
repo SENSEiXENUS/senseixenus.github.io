@@ -62,6 +62,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Sept 5 2024]] [0day](https://senseixenus.github.io/posts/ctf/THM/0day.html) ``Shellshock`` ``Overlayfs LPE``
 - [[Sept 9 2024]] [VulnetInternal](https://senseixenus.github.io/posts/ctf/THM/vulnetinternal.html) ``REDIS`` ``TEAMCITY Privesc``
 - [[Sept 10 2024]] [Jack of all Trades](https://senseixenus.github.io/posts/ctf/THM/jack-of-all-trades.html) ``Steganography`` ``SUID``
+- [[Sept 11 2024]] [All in one](https://senseixenus.github.io/posts/ctf/THM/allinone.html) ``Mail Masta 1.0`` ``Abusing cronjobs``
   
 * * *
 
