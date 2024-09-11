@@ -496,6 +496,16 @@ References:
 
 ![image](https://github.com/user-attachments/assets/d06ea870-87ae-4115-9b2c-c904ebc511cc)
 
+- It should be noted that if you can read a valid file that is being rendered,you should tweak the script's variable to the file you can read.File `php://temp` is not compulsory
+
+![image](https://github.com/user-attachments/assets/d5bfe1f8-1e22-4163-85bc-82ed2b73e335)
+
+- Exploiting with valid `/etc/passwd` file
+
+![image](https://github.com/user-attachments/assets/75d87504-5d1d-43ad-9c91-ad76c853a86c)
+
+
+
 --------------------------------
 
 ### REFERENCES:
