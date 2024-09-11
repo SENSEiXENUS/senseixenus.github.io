@@ -253,6 +253,7 @@
 ### REFERENCES:
 
 - [Phpflter2Rce](https://medium.com/@sundaeGAN/php-wrapper-and-lfi2rce-81c536ef7a06)
+- [Mail Masta](https://www.exploit-db.com/exploits/40290)
 - [Synactivscript](https://raw.githubusercontent.com/synacktiv/php_filter_chain_generator/main/php_filter_chain_generator.py)
 
 --------------------
