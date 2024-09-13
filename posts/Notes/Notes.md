@@ -845,6 +845,29 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
   
 -------------------------------
 
+### Server Side Request Forgery Little Cheatsheet [Portswigger]
+
+- It is a server side web vulnerability that allows an attacker to induce a server to make requests to an unintended location.In other words, the attacker may be allowed to connect to internal services within organization infrastructures.
+
+### SSRF attacks against the server
+
+- An attacker can cause the server to make a request to itself via the loopback network interface.It involves providing a url like `localhost` or `127.0.0.1`.For example,modifying an endpoint POST `parameter` that loads a url
+
+      POST /product/stock HTTP/1.0
+      Content-Type: application/x-www-form-urlencoded
+      Content-Length: 118
+      
+      stockApi=http://localhost/admin
+
+- Exploiting it
+
+![image](https://github.com/user-attachments/assets/5fc18d8f-4dd5-4e7a-975b-7c88e6bb6bbb)
+
+
+### SSRF against other back end systems
+
+- Most times , some servers have `non-routable private ip addresses` which are reserved for private use and cannot be accessed on the internet.In many cases,internal backend functionalities always have sensitive info with no authentication.SSRF allows an attacker to scan the whole network for internal services.
+
 
 
 
