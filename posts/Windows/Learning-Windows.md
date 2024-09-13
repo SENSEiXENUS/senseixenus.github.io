@@ -431,6 +431,17 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 ![image](https://github.com/user-attachments/assets/d9316e5c-d530-4b5c-a4e9-b0e2f2ebf4ca)
 
+### Cracking with Hashcat
+
+- Command-:``` hashcat -m 1000 --force <hash> /usr/share/wordlists/rockyou.txt```
+
+![image](https://github.com/user-attachments/assets/f1705fa8-15dc-4af9-b568-63210da6e1a1)
+
+- Hashes result
+
+![image](https://github.com/user-attachments/assets/d6f84f35-894d-4a50-93ab-b33ca79b9f45)
+
+
 ### Passing the hash
 
 - You can use the hash to login instead of cracking the password,use `pth-winexe`
@@ -439,7 +450,30 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 - Remember that the hash contains both the LM and NTLM hash seperated by colon
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/4ee7eeb2-ee1f-471d-9ba7-74cddfaa4f2d)
+
+### Scheduled tasks
+
+- An attacker can abuse a scheduled process running a script running as `SYSTEM` with write access.
+
+![image](https://github.com/user-attachments/assets/59704788-9e65-4a01-a962-8fd5749966ce)
+
+- Append a line that trigger our reverse shell
+
+![image](https://github.com/user-attachments/assets/78abb9ec-d07f-43e7-be1a-5bc2b453dcd2)
+
+- Reverse shell
+
+![image](https://github.com/user-attachments/assets/fbc57a9b-54f1-49ac-88a3-ff9c37520e40)
+
+### Insecure GUI apps
+
+
+
+
+
+
+
 
 
 
