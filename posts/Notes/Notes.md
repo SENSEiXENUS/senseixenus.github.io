@@ -867,6 +867,16 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 ### SSRF against other back end systems
 
 - Most times , some servers have `non-routable private ip addresses` which are reserved for private use and cannot be accessed on the internet.In many cases,internal backend functionalities always have sensitive info with no authentication.SSRF allows an attacker to scan the whole network for internal services.
+- Fuzz with `burp intruder` and spot juicy requests based on the `Content-Length`
+
+![image](https://github.com/user-attachments/assets/916abeda-3030-42d6-b908-645d9e7478ed)
+
+- Admin panel spotted on `192.168.0.7`
+
+  ![image](https://github.com/user-attachments/assets/38897cad-609e-4c4a-866c-b5f2b7e375f3)
+
+
+
 
 
 
