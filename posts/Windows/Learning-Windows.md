@@ -468,6 +468,10 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 ### Insecure GUI apps
 
+- Abusing `mspaint.exe`
+- Run this `tasklist /V | findstr mspaint.exe` to see if it is running with admin privileges
+
+
 
 
 
