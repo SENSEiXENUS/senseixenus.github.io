@@ -691,7 +691,29 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 ![image](https://github.com/user-attachments/assets/c169a215-3e76-43db-bb2e-2578492454f2)
 
+### Injecting self signed JWTs via the url endpoint
 
+- Instead of embedding private keys with the `jwk` ,some servers allow you use `jku` (JWK set url) to reference a set containing the key.A jwk key is a json object containing array representing different keys.e.g
+
+      {
+          "keys": [
+              {
+                  "kty": "RSA",
+                  "e": "AQAB",
+                  "kid": "75d0ef47-af89-47a9-9061-7c02a610d5ab",
+                  "n": "o-yy1wpYmffgXBxhAUJzHHocCuJolwDqql75ZWuCQ_cb33K2vh9mk6GPM9gNN4Y_qTVX67WhsN3JvaFYw-fhvsWQ"
+              },
+              {
+                  "kty": "RSA",
+                  "e": "AQAB",
+                  "kid": "d8fDFo-fS9-faS14a9-ASf99sa-7c1Ad5abA",
+                  "n": "fc3f-yy1wpYmffgXBxhAUJzHql79gNNQ_cb33HocCuJolwDqmk6GPM4Y_qTVX67WhsN3JvaFYw-dfg6DH-asAScw"
+              }
+          ]
+      }
+
+
+-  JWK Sets like this are sometimes exposed publicly via a standard endpoint, such as `/.well-known/jwks.json`.More secure websites will only fetch keys from trusted domains, but you can sometimes take advantage of URL parsing discrepancies to bypass this kind of filtering.[Sliding to SSRF to learn some stuffs]
 
 ---------------------------
 
