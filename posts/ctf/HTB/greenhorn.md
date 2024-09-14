@@ -206,6 +206,64 @@
 
 - `PLUCK CMS` is vulnerable to  authenticated Remote Code Execution. I got a python exploit for it from this [site](https://github.com/Rai2en/CVE-2023-50564_Pluck-v4.7.18_PoC).
 
+  ![image](https://github.com/user-attachments/assets/725623b9-5558-4a25-bbe5-728ed580b188)
+
+- RCE
+
+![image](https://github.com/user-attachments/assets/5d184525-5dca-415b-917a-5a48e2f61baa)
+
+- Shell as `www-data`
+
+![image](https://github.com/user-attachments/assets/3399abc0-8215-4aaa-82e1-f9b73387e328)
+
+### User junior
+
+- I logged into the user `junior` with the `PLUCKCMS` creds
+
+![image](https://github.com/user-attachments/assets/4654fb46-01ad-4158-afd7-abd3cffe61cd)
+
+### Depix
+
+- User `junior`'s home directory contains a pdf file named `Using Openvas.pdf`.
+
+![image](https://github.com/user-attachments/assets/27911991-b07b-4c75-a8dd-d5f186374ebc)
+
+- I transferred it to my machine,the pdf is not from the `root` user to user `junior`.I noticed a pixelized image in it.
+
+![image](https://github.com/user-attachments/assets/435f51b4-c7ea-4284-a771-8941ee9e9b34)
+
+- In a bid to extract the file, I used a tool `pdftohtml` to extract the image content.
+
+![image](https://github.com/user-attachments/assets/69ff25c3-8414-4c55-8cc0-21965ea639a1)
+
+- Then, I used the tool `Depix` to depixelize the image.
+
+![image](https://github.com/user-attachments/assets/c2896a73-df00-44ee-93ad-46ee4bf1a0fb)
+
+- Output image
+
+![image](https://github.com/user-attachments/assets/cde0d769-bdb3-41d2-8ecf-4523bf29e1dd)
+
+- At first, I got a weird text, I tried to log into the `root` account with the password and it worked surprsingly.
+
+![image](https://github.com/user-attachments/assets/94195088-93ef-4064-9381-eeb18a7b97f7)
+
+- Root
+
+![image](https://github.com/user-attachments/assets/bb5a4aee-ed77-4649-96e0-9ddc020d3644)
+
+-------------------
+
+### THANKS FOR READING!!!
+
+--------------------
+
+
+
+
+
+
+
 
 
 
