@@ -174,7 +174,7 @@
 
 ![image](https://github.com/user-attachments/assets/c9ef7fd1-8dd8-4bc1-9c9b-8c6b5d6e70dc)
   
-- The `sitemap.xml` reveals a sitemap for repository.
+- The `sitemap.xml` reveals a sitemap for repositories.
 
 ![image](https://github.com/user-attachments/assets/0221918b-98c7-4cd0-86d2-31f71292e083)
 
@@ -192,7 +192,7 @@
 
 ![image](https://github.com/user-attachments/assets/72c7e9d9-a1e7-41df-abc8-02b560194cfb)
 
-- I traced the folder to get other sensitive info.I discovered a `pass.php` file.
+- I traced the directory to get other sensitive info and discovered a `pass.php` file.
 
 ![image](https://github.com/user-attachments/assets/f75a999c-a157-46c6-9d14-cb602376015f)
 
@@ -244,7 +244,7 @@
 
 ![image](https://github.com/user-attachments/assets/cde0d769-bdb3-41d2-8ecf-4523bf29e1dd)
 
-- At first, I got a weird text, I tried to log into the `root` account with the password and it worked surprsingly.
+- At first, I got a weird text, I tried to log into the `root` account with the password and it worked surprisingly.
 
 ![image](https://github.com/user-attachments/assets/94195088-93ef-4064-9381-eeb18a7b97f7)
 
