@@ -81,6 +81,7 @@
       | http-methods: 
       |_  Supported Methods: OPTIONS HEAD GET
       Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+  
 - FFUF's output
 
 ![image](https://github.com/user-attachments/assets/9419995b-d652-4a7d-8112-077ca8cec274)
@@ -113,6 +114,8 @@
 
 ![image](https://github.com/user-attachments/assets/5c0080f5-968e-46c2-be95-a304060e5864)
 
+--------------------
+
 ### Pivoting to user `prod`
 
 - I discovered a git file in dev's directory `app/`
@@ -132,7 +135,53 @@
 ![image](https://github.com/user-attachments/assets/1d76aca2-4e2f-487d-974b-c50d1f93cfac)
 
 
-### Privesc with gitpython clone_from() function
+------------------------
+
+### Privesc with gitpython `clone_from()` function
+
+- I ran `sudo -l` and discovered I can run a python script as root and it has a wildcard character that allows us to add other characters to it.
+
+![image](https://github.com/user-attachments/assets/39b9a030-bacc-42c9-91d4-0e769b33b67d)
+
+- I decided to dig into the script and  a spotted `clone_from` and decided to read more on it. i stumbled on a report by [snyk](https://security.snyk.io/vuln/SNYK-PYTHON-GITPYTHON-3113858)
+
+![image](https://github.com/user-attachments/assets/4de0429e-4f2d-4705-9c10-107ed72a8d6a)
+
+- According to snyk,this function is exploitable if the `-c protocol.ext.allow=always` is set to `always` which allows use of the `ext` transport protocol.The payload below is an example of a crafted url to gain RCE.
+
+  Payload-:```ext::bash -c [path to binary]% ls```
+
+![image](https://github.com/user-attachments/assets/26257844-c1a0-4e26-b6d6-d0a9d7601cac)
+
+- Creating a python script that execute a shell
+
+![image](https://github.com/user-attachments/assets/2d00ab97-c7d0-489d-a87e-73cb1d219397)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/8724b5c5-2504-432d-9f0f-f32edca94cf3)
+
+- Root..!!!!
+
+![image](https://github.com/user-attachments/assets/de210a1d-9241-424f-8fe2-e2b46dc62fb7)
+
+---------------------
+
+### THANKS FOR READING
+
+---------------------
+
+### REFERENCES:
+
+- [GitTools](https://github.com/internetwache/GitTools)
+- [GitpythonRCE](https://security.snyk.io/vuln/SNYK-PYTHON-GITPYTHON-3113858)
+
+----------------------
+
+
+
+
+
 
 
 
