@@ -202,6 +202,13 @@
 
 - I was able to get the password with `crackstation.net`.
 
+![image](https://github.com/user-attachments/assets/8eb573af-3c65-4926-98a0-f2185006563d)
+
+- `PLUCK CMS` is vulnerable to  authenticated Remote Code Execution. I got a python exploit for it from this [site](https://github.com/Rai2en/CVE-2023-50564_Pluck-v4.7.18_PoC).
+
+
+
+
 
 
 
