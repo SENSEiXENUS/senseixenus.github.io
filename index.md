@@ -81,6 +81,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 - [[September 3 2024]] [BoardLight](https://senseixenus.github.io/posts/ctf/HTB/boardlight.html) ``Dolibarr 17.00`` ``ENLIGHTMENT_SYS``
 - [[September 3 2024]] [PermX](https://senseixenus.github.io/posts/ctf/HTB/permx.html) ``Chamilo RCE`` ``SETFACL``
+- [[September 12 2024] [Editorial](https://senseixenus.github.io/posts/ctf/HTB/editorial.html) ``SSRF`` ``GIT`` ``GITPYTHON clone_from() RCE``
 
 * * *
 
