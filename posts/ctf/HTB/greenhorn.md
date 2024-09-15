@@ -204,9 +204,9 @@
 
 ![image](https://github.com/user-attachments/assets/8eb573af-3c65-4926-98a0-f2185006563d)
 
-- `PLUCK CMS` is vulnerable to  authenticated Remote Code Execution. I got a python exploit for it from this [site](https://github.com/Rai2en/CVE-2023-50564_Pluck-v4.7.18_PoC).
+- `PLUCK CMS` is vulnerable to  authenticated Remote Code Execution. I wrote an exploit for [it](https://github.com/SENSEiXENUS/senseixenus.github.io/tree/main/posts/ctf/HTB/scripts/PluckCMS).
 
-  ![image](https://github.com/user-attachments/assets/725623b9-5558-4a25-bbe5-728ed580b188)
+![image](https://github.com/user-attachments/assets/05aa7d6c-ba46-4e9f-9c80-14c69617fc87)
 
 - RCE
 
@@ -258,6 +258,11 @@
 
 --------------------
 
+### REFERENCE:
+
+- [My Exploit](https://github.com/SENSEiXENUS/senseixenus.github.io/tree/main/posts/ctf/HTB/scripts/PluckCMS)
+
+---------------------
 
 
 
