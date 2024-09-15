@@ -21,3 +21,17 @@ pip install requests requests_toolbelt
 
 - Usage-:
 
+ ```bash
+    ❯ ./pluckCMS.py --help
+    usage: pluckCMS.py [-h] [-hst HOST] [-u USERNAME] [-p PASSWORD]
+    
+    options:
+      -h, --help            show this help message and exit
+      -hst HOST, --host HOST
+                            Format: domain.com
+      -u USERNAME, --username USERNAME
+                            Username....
+      -p PASSWORD, --password PASSWORD
+                            Password....
+```
+
