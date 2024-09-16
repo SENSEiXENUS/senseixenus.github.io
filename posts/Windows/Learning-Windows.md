@@ -476,6 +476,13 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 - Click `file` and `open`.then paste this:`file://c:/windows/system32/cmd.exe`
 
+![image](https://github.com/user-attachments/assets/321fe040-b73a-407a-a30c-c0294b50e1bf)
+
+- Press enter to spawn a command prompt with admin privileges
+
+
+
+
 
 
 
