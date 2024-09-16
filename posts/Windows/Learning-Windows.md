@@ -469,7 +469,15 @@ When this registry key is enabled, it allows non-administrator users to install 
 ### Insecure GUI apps
 
 - Abusing `mspaint.exe`
+- Double-click on the adminpaint shortcut
 - Run this `tasklist /V | findstr mspaint.exe` to see if it is running with admin privileges
+
+![image](https://github.com/user-attachments/assets/9284c76e-9c6a-4b6c-bcb9-fc1472de2c01)
+
+- Click `file` and `open`.then paste this:`file://c:/windows/system32/cmd.exe`
+
+
+
 
 
 
