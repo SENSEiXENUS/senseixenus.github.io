@@ -206,7 +206,19 @@ for i in rockyou:
 
 ![image](https://github.com/user-attachments/assets/4cec7ad2-f264-4186-aa8d-0386c0e3bb6f)
 
-- The light is known as the `Northern Lights`.
+- The lights are known as the `Northern Lights`.
+
+![image](https://github.com/user-attachments/assets/31509493-7706-4ad0-b049-0488cf5bfb11)
+
+- I logged in to user `mason` using the password `northernlights`.
+
+![image](https://github.com/user-attachments/assets/d7f66b28-eca7-444d-ae39-295498dcf76c)
+
+### Privesc with user `mason` backdoor
+
+
+
+
 
 
 
