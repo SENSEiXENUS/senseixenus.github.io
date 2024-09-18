@@ -175,7 +175,7 @@
 
 ### Cracking the hash
 
-- The python code contains the hash of adam's password.To crack the hash,I copied the salt 
+- The python code contains the hash of adam's password.To crack the hash,we need the salt,if the entire hash is passed to the `hashpw` function,bcrypt automaticaly generates the salt from it.With this flaw,we can just pass a password to it,generate the hash and compare with `adam's hash` to get th right password.In the script, I brute forced with the rockyou wordlist.
 
 
 
