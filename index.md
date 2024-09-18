@@ -63,6 +63,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Sept 9 2024]] [VulnetInternal](https://senseixenus.github.io/posts/ctf/THM/vulnetinternal.html) ``REDIS`` ``TEAMCITY Privesc``
 - [[Sept 10 2024]] [Jack of all Trades](https://senseixenus.github.io/posts/ctf/THM/jack-of-all-trades.html) ``Steganography`` ``SUID``
 - [[Sept 11 2024]] [All in one](https://senseixenus.github.io/posts/ctf/THM/allinone.html) ``Mail Masta 1.0`` ``Abusing cronjobs``
+- [[Sept 18 2024]] [Lunizzctf]](https://senseixenus.github.io/posts/ctf/THM/lunizzctf.html) ``Mysql`` ``default creds`` ``bcrypt`` ``backdoor``
   
 * * *
 
