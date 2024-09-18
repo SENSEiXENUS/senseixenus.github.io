@@ -226,6 +226,26 @@ for i in rockyou:
 
 - I tried the password `northernlights` with cmdtype `lsla` and the password worked.
 
+![image](https://github.com/user-attachments/assets/770fdbe4-361d-4294-b96e-059f3d681dd7)
+
+- I changed the `root` user's password with cmdtype `password` to the password `northernlights`
+
+![image](https://github.com/user-attachments/assets/690fda23-0a19-4ef8-980b-8983db5b79a5)
+
+- Root access...!!!!
+
+![image](https://github.com/user-attachments/assets/eec38b2a-fa94-4e20-b772-dcafcc7cf3cb)
+
+
+---------------------
+
+### THANKS FOR READING!!!!!.....
+
+---------------------
+
+
+
+
 
 
 
