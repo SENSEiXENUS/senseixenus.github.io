@@ -142,9 +142,27 @@
 
 ### Enumerating Mysql
 
-- I access the mysql user with mysql cli binary and checked for dbs with the `show
+- I access the mysql user with mysql cli binary and checked for dbs with the `show databases` query.
 
 ![image](https://github.com/user-attachments/assets/29be8aa6-5043-4fb5-abfa-2d4ccf703eea)
+
+- I logged in again and specified the db `runornot`,I  queried for tables with `show tables;` and reveealed the value of table `run` with `select * from runcheck`.
+
+![image](https://github.com/user-attachments/assets/bae6c735-bcd8-408f-94cc-7498cda31705)
+
+- The run value `0` is being displayed in the whatever index page and if not set to `1` in the db,no user will be able to execute commands.
+- I used the `update` statement to set the value of `1` to `0`.
+
+![image](https://github.com/user-attachments/assets/722ae014-c4e1-47bf-ac99-e2e44e51e1dc)
+
+- Now we can execute commands
+
+![image](https://github.com/user-attachments/assets/6102a86a-4766-4416-bea4-fd1d778525ef)
+
+
+
+
+
 
 
 
