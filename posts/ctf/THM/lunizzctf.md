@@ -176,6 +176,45 @@
 ### Cracking the hash
 
 - The python code contains the hash of adam's password.To crack the hash,we need the salt,if the entire hash is passed to the `hashpw` function,bcrypt automaticaly generates the salt from it.With this flaw,we can just pass a password to it,generate the hash and compare with `adam's hash` to get th right password.In the script, I brute forced with the rockyou wordlist.
+```python3
+#! /usr/bin/env python3
+import base64
+import bcrypt
+
+salt = "$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e"
+hashandsalt="$2b$12$LJ3m4rzPGmuN1U/h0IO55.3h9WhI/A0Rcbchmvk10KWRMWe4me81e"
+rockyou = open("/usr/share/wordlists/rockyou.txt","r",encoding="latin-1").read().split("\n")
+for i in rockyou:
+    passwd =  base64.b64encode(i.encode('ascii'))
+    hashed = bcrypt.hashpw(passwd,salt.encode()).decode()
+    print(f"Password:{i},hash:{hashed}")
+    if hashed == hashandsalt:
+        print(f"Password is {i}")
+        exit()
+```
+- Now,we have the password `bowwow`
+
+![image](https://github.com/user-attachments/assets/85d1908b-ad5a-4add-a595-d389145e68da)
+
+- User adam
+
+![image](https://github.com/user-attachments/assets/244268ef-9038-4f3d-9b8c-48ba84b811bd)
+
+### Pivoting to user `mason`
+
+- In Adam's directory,I discovered a txt file in `Desktop/.archive/` containing a google map link and a description by `mason` stating that the lights' name is his password.
+
+![image](https://github.com/user-attachments/assets/4cec7ad2-f264-4186-aa8d-0386c0e3bb6f)
+
+- The light is known as the `Northern Lights`.
+
+
+
+
+
+
+ 
+
 
 
 
