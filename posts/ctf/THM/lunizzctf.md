@@ -159,6 +159,27 @@
 
 ![image](https://github.com/user-attachments/assets/6102a86a-4766-4416-bea4-fd1d778525ef)
 
+- Shell as `www-data`
+
+![image](https://github.com/user-attachments/assets/e2bf4d21-f711-4ebe-8135-88172ed1ca14)
+
+### Pivoting to user `adam`
+
+- I noticed a weird directory `proct` in directory `/` which contains another directory `pass` with a python script.
+
+![image](https://github.com/user-attachments/assets/4e11232b-3f87-49cd-be40-4bc5d9e200f7)
+
+- The script converts password `wewillROCKYOU` to bytes and use the base64 function `b64encode` to convert it to base64.Then,it is hashed with bcrypt's function `hashpw` and a randomly generated salt.
+
+![image](https://github.com/user-attachments/assets/81683c90-9407-425e-8bf5-9365202243b8)
+
+### Cracking the hash
+
+- The python code contains the hash of adam's password.To crack the hash,I copied the salt 
+
+
+
+
 
 
 
