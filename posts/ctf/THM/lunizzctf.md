@@ -139,7 +139,13 @@
 
 ![image](https://github.com/user-attachments/assets/85c3e1df-bb6e-4d55-bb9e-5891ff77983a)
 
--
+
+### Enumerating Mysql
+
+- I access the mysql user with mysql cli binary and checked for dbs with the `show
+
+![image](https://github.com/user-attachments/assets/29be8aa6-5043-4fb5-abfa-2d4ccf703eea)
+
 
 
 
