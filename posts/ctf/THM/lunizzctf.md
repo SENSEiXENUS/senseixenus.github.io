@@ -216,6 +216,19 @@ for i in rockyou:
 
 ### Privesc with user `mason` backdoor
 
+- Based on the output of command `netstat -antp`,a web service is running on port `8080`
+
+![image](https://github.com/user-attachments/assets/b605d129-79f6-4a29-9fdb-72041f3ee617)
+
+- I made a request to the service with `curl`.It is backdoor for user `mason` to access root and it required the POST params `password` and `cmdtype`.
+
+![image](https://github.com/user-attachments/assets/4f7b90ef-bb6f-4e24-9451-e998219d7121)
+
+- I tried the password `northernlights` with cmdtype `lsla` and the password worked.
+
+
+
+
 
 
 
