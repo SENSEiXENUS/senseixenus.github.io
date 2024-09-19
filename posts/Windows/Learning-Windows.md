@@ -595,6 +595,16 @@ Management Users can access it with WinRM.
 - To display the routing tables, use `route print`
 - To list all active network connections we can use netstat753 with the argument -a to display all active TCP connections as well as TCP and UDP ports, -n to disable name resolution, and -o to show the process ID for each connection.Use `netstat -ano`
 
+### Checking installed applications on a system
+
+- For 64-bit and 32-bit applications , use
+
+      Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"  | select displayname
+
+- For 32-bit,use
+
+      
+
 
 
 
