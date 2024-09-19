@@ -156,6 +156,8 @@
 
 ![image](https://github.com/user-attachments/assets/7831f260-2a04-43b8-bc3f-2b4e8d2d43ec)
 
+-----------------
+
 ### Privesc with sudoers rule
 
 - I discovered that I can run sudo as root with no pasword based on the output of `sudo -l`.
