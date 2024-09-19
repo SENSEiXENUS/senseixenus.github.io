@@ -570,6 +570,24 @@ UAC consent prompt needs to be confirmed.
   powershell
   Get-LocalUser
 ```
+### Enumerating Local Groups
+
+- Use command `net LocalGroup` or `Get-LocalGroup` in powershell
+
+### Examples of groups
+
+- Members of Backup Operators can backup and restore all files on a computer, even those files 
+they don’t have permissions for.
+- Members of Remote Desktop Users can access the system with RDP, while members of Remote 
+Management Users can access it with WinRM.
+
+### View the members of a group with `Get-LocalGroupMember`
+
+- Syntax-: ```Get-LocalGroupMember <Group's name>```
+
+
+
+
 
 
 
