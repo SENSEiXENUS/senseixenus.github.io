@@ -585,6 +585,19 @@ Management Users can access it with WinRM.
 
 - Syntax-: ```Get-LocalGroupMember <Group's name>```
 
+### Check the operating system, version, and architecture
+
+- Use `systeminfo`
+
+### Identify network interfaces, routes andactive network connections
+
+- To list all network interfaces,use `ifconfig /all`
+- To display the routing tables, use `route print`
+- To list all active network connections we can use netstat753 with the argument -a to display all active TCP connections as well as TCP and UDP ports, -n to disable name resolution, and -o to show the process ID for each connection.Use `netstat -ano`
+
+
+
+
 
 
 
