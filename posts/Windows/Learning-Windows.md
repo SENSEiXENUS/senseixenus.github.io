@@ -528,7 +528,10 @@ and “32” for built-in principals. The RID determines principals such as user
 ### ACCESS TOKEN
 - Once a user gets authenticaed by Windows,a token gets generated with set of attributes which limits the type of operation carried out by the user.
 - When a user starts a process or thread, a token will be assigned to these objects. This token, called a primary token, specifies which permissions the process or threads have when interacting with another object and is a copy of the access token of the user
-- 
+- A thread can also have an impersonation token739 assigned. Impersonation tokens are used to provide a different security context than the process that owns the thread. This means that the thread interacts with objects on behalf of the impersonation token instead of the primary token of the process.
+
+### Mandatory Access Control
+
 
 
 
