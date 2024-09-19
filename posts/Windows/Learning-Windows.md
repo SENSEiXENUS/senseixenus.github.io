@@ -600,8 +600,11 @@ Management Users can access it with WinRM.
 - For 64-bit and 32-bit applications , use
 
       Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"  | select displayname
+       Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+  
 
-- For 32-bit,use
+- Finding running processes, use powershell `Get-Process` cmdlet
+- The listed processes might not be complete.Check for files in the `c:/` directory
 
       
 
