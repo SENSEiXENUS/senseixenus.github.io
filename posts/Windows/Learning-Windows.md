@@ -526,8 +526,9 @@ and “32” for built-in principals. The RID determines principals such as user
       S-1-5-domainidentifier-500 Administrator
 
 ### ACCESS TOKEN
-
-
+- Once a user gets authenticaed by Windows,a token gets generated with set of attributes which limits the type of operation carried out by the user.
+- When a user starts a process or thread, a token will be assigned to these objects. This token, called a primary token, specifies which permissions the process or threads have when interacting with another object and is a copy of the access token of the user
+- 
 
 
 
