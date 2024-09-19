@@ -545,8 +545,31 @@ and “32” for built-in principals. The RID determines principals such as user
 - UAC is a Windows security feature that protects the operating system by running most applications and tasks with standard user privileges, even if the user launching them is an Administrator. For this, an administrative user obtains two access tokens after a successful logon. The first token is a standard user token (or filtered admin token), which is used to perform all non-privileged operations. The second token is a regular administrator token. It will be used when the user wants to perform a privileged operation. To leverage the administrator token, a 
 UAC consent prompt needs to be confirmed.
 
+### SITUATIONAL AWARENESS
 
+- This involves understanding  the nature of the windows system to identify potential vectors for privilege escalation.
+- Important stuffs to check  are:
 
+  - Username and hostname
+  - Group memberships of the current user
+  - Existing users and groups
+  - Operating system, version and architecture
+  - Network information
+  - Installed applications
+  - Running processes
+
+### Groups
+
+- Use `whoami /GROUPS` to display the groups that the current user is a member of
+
+### Users
+
+- The next piece of information we are interested in are other users and groups on the system. We can use the `net user` command or the Get-LocalUser Cmdlet to obtain a list of all local users. Let’s use the latter by starting PowerShell and running Get-LocalUser
+
+```bash
+  powershell
+  Get-LocalUser
+```
 
 
 
