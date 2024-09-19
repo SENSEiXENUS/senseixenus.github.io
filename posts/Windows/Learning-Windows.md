@@ -532,6 +532,19 @@ and “32” for built-in principals. The RID determines principals such as user
 
 ### Mandatory Access Control
 
+- It uses integrity levels to determine control access to securable objects.When processes are started,they receive the integrity levels of the principal while performing the operations.
+- Processes run on 4 integrity levels
+
+      System: SYSTEM (kernel, ...)
+      High: Elevated users
+      Medium: Standard users
+      Low: very restricted rights often used in sandboxed[^privesc_win_sandbox] processes or for directories storing temporary data
+
+### User Access Control
+
+- UAC is a Windows security feature that protects the operating system by running most applications and tasks with standard user privileges, even if the user launching them is an Administrator. For this, an administrative user obtains two access tokens after a successful logon. The first token is a standard user token (or filtered admin token), which is used to perform all non-privileged operations. The second token is a regular administrator token. It will be used when the user wants to perform a privileged operation. To leverage the administrator token, a 
+UAC consent prompt needs to be confirmed.
+
 
 
 
