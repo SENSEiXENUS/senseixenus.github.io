@@ -154,6 +154,31 @@
 
 - Shell access as `www-data`
 
+![image](https://github.com/user-attachments/assets/7831f260-2a04-43b8-bc3f-2b4e8d2d43ec)
+
+### Privesc with sudoers rule
+
+- I discovered that I can run sudo as root with no pasword based on the output of `sudo -l`.
+
+![image](https://github.com/user-attachments/assets/a5ac96b1-1993-42eb-9905-447bf4ac6bba)
+
+- I used `sudo -u root /usr/bin/sudo bash -p` to spawn a root shell
+
+![image](https://github.com/user-attachments/assets/8a15cb41-a2e0-4a74-8d1c-effea1a8f495)
+
+- Root shell
+
+![image](https://github.com/user-attachments/assets/39f78003-5405-4afc-bb98-8dc6eb2b8188)
+
+----------------
+
+### THANKS FOR READING
+
+-----------------
+
+
+
+
 
 
 
