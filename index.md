@@ -85,6 +85,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 3 2024]] [PermX](https://senseixenus.github.io/posts/ctf/HTB/permx.html) ``Chamilo RCE`` ``SETFACL``
 - [[September 12 2024] [Editorial](https://senseixenus.github.io/posts/ctf/HTB/editorial.html) ``SSRF`` ``GIT`` ``GITPYTHON clone_from() RCE``
 - [[September 13 2024]] [Greenhorn](https://senseixenus.github.io/posts/ctf/HTB/greenhorn.html) ``PLUCK CMS`` ``DEPIX``
+- [[September 22 2024]] [Cap](https://senseixenus.github.io/posts/ctf/HTB/cap.html) ``Pcap Analysis`` ``Capabilities``
+  
 
 * * *
 
