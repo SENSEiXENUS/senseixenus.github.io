@@ -197,8 +197,45 @@
 
 - I decided to check the route `/data/` and change the `id` to 0 and got a pcap file.
 
+![image](https://github.com/user-attachments/assets/cfd5853b-19c2-455a-85c7-8ba9994175f9)
 
 - After checking the pcap file, I discovered a password for the ftp service.
+
+![image](https://github.com/user-attachments/assets/ce45015f-73a3-4abc-8418-08b5eef416a8)
+
+- The password also works for ssh.Now we have ssh to access to Nathan's user account.
+
+![image](https://github.com/user-attachments/assets/f62ac18b-0197-4353-a24e-e31c6a4bf400)
+
+----------------------
+
+### PRIVESC with capabilities
+
+- I ran `getcap -r / 2</dev/null` to check for binaries with capabilities.I discovered that python3 has the capability to set uid.
+
+![image](https://github.com/user-attachments/assets/c0e86496-8479-4bd0-9f12-6412078371ce)
+
+- I escalated privileges by setting Nathan's account to uid `0`.
+
+Payload-:```python3 -c "import os;os.setuid(0);os.system('bash -p')"```
+
+![image](https://github.com/user-attachments/assets/b122e0e3-f524-493e-952c-f0eb6092e0a0)
+
+- Root...!!!
+
+![image](https://github.com/user-attachments/assets/e4ed57ef-71ac-4564-b2de-b2f2980837f4)
+
+-------------------
+
+### THANKS FOR READING !!!!!
+
+-------------------
+
+
+
+
+
+
 
 
 
