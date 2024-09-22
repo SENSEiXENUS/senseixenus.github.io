@@ -46,11 +46,11 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
 
  ![image](https://github.com/user-attachments/assets/6d0b86ff-658a-4e62-bf4a-d180a3078ef5)
 
-- Creating a wordlist
+- Creating a wordlist with my [wordlist script](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/patriotctf/script/Impersonate/wordlist.py)
 
 ![image](https://github.com/user-attachments/assets/e0b1b189-9456-4c9c-817a-3c98d0401779)
 
-- I wrote another script to generate the cookie.The script requires binary `flask-unsign` to bruteforce and sign cookies.
+- I wrote another [script](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/patriotctf/script/Impersonate/exploit.py) to generate the cookie.The script requires binary `flask-unsign` to bruteforce and sign cookies.
 
 ![image](https://github.com/user-attachments/assets/c8249c2f-0355-4d91-8f9f-f73e636567ed)
 
