@@ -12,6 +12,33 @@
   - Giraffe-notes
   - Impersonate
 
+----------------
+
+### Giraffe-notes
+
+![image](https://github.com/user-attachments/assets/5c8b0a94-9240-4e01-8ba9-bc00be6f27cb)
+
+- The web app allows only ip `localhost` and `127.0.0.1`
+
+      $allowed_ip = ['localhost', '127.0.0.1'];
+
+- The web sets variable `allowed` to `True` only if the header `X-FORWARDED-FOR` is set to one of the allowed ips.We can only read the flag if variable `allowed` is set to `True`.
+  
+      if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && in_array($_SERVER['HTTP_X_FORWARDED_FOR'], $allowed_ip)) {
+          $allowed = true;
+      } else {
+          $allowed = false;
+      }
+
+### Exploitation
+
+- I set header `X-FORWARDED-FOR` to `127.0.0.1` with curl and grepped for `CACI`.
+
+![image](https://github.com/user-attachments/assets/2252e997-f009-48e5-84f1-189d18c1dfcb)
+
+- Flag-:```CACI{1_lik3_g1raff3s_4_l0t}```
+
+
 -----------------
 
 ### Impersonate
@@ -40,6 +67,8 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
           uptime = current_time - server_start_time
           formatted_uptime = str(uptime).split('.')[0]
 
+-------------------
+
 ### Exploitation
 
 - I visited the status page to get the `year|month|date|hour` since the hour remains static but subject to change as time moves.Then,I can created a wordlist generator that adds the minutes and seconds.We need only 4 figures which will between be range `0000-9999`.Based on the status below,the static part of the `secret_key` will be `secret_key_2024092200`.
@@ -60,4 +89,6 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
 PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}
 ```
 Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
+
+--------------------------
 
