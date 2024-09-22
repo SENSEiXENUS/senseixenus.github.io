@@ -35,5 +35,13 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
               return flag
           else:
               abort(401)
-- Lastly, the `status` route presents the uptime and current_time.
+- Lastly, the `status` route presents the uptime and current_time.The current time is the present time, while the `uptime` is the `currenttime` - `server_xtart_time` which is then formatted.There is a certain twist not specified in the code, the server gets rebooted every 5 mins.
+
+          current_time = datetime.now()
+          uptime = current_time - server_start_time
+          formatted_uptime = str(uptime).split('.')[0]
+
+### Exploitation
+
+- I visited the status page to get the `year|month|date|hour` since the hour remains static but subject to change as time moves.Then,I can create a wordlist generator that adds the minutes and seconds.We  need only 4 figures whill will between range `0000-9999`.
 
