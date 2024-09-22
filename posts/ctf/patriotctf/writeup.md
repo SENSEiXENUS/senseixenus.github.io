@@ -42,7 +42,7 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
 
 ### Exploitation
 
-- I visited the status page to get the `year|month|date|hour` since the hour remains static but subject to change as time moves.Then,I can create a wordlist generator that adds the minutes and seconds.We need only 4 figures whill will between range `0000-9999`.Based on the status below,the static part of the `secret_key` will be `secret_key_2024092200`.
+- I visited the status page to get the `year|month|date|hour` since the hour remains static but subject to change as time moves.Then,I can created a wordlist generator that adds the minutes and seconds.We need only 4 figures which will between be range `0000-9999`.Based on the status below,the static part of the `secret_key` will be `secret_key_2024092200`.
 
  ![image](https://github.com/user-attachments/assets/6d0b86ff-658a-4e62-bf4a-d180a3078ef5)
 
