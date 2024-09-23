@@ -169,7 +169,8 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
       if allow_ip == url_parsed:
                   get_content = r.get(url = url)
 
- 
+
+### XML Ext
 
 --------------------------
 
