@@ -13,6 +13,8 @@
   - Impersonate
 - Crypto
   - Bigger is Better
+- Misc
+  - Really only Echo
 
 ----------------
 
@@ -134,5 +136,45 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
 ![image](https://github.com/user-attachments/assets/7ded5a07-3ec8-49f9-be3e-0e4f271d7489)
 
 - Flag-:```pctf{fun_w1th_l4tt1c3s_f039ab9}```
+
+--------------------
+
+### Misc
+
+### Really Only Echo
+
+![image](https://github.com/user-attachments/assets/ed1940ae-6c6c-4879-a5e5-5ba3d12f9929)
+
+- The main goal of the challenge is to read `flag.txt` with `echo`.The code lists the binaries within directory `/bin` and blacklists them from usage but removes `echo` from the list.
+
+      blacklist = os.popen("ls /bin").read().split("\n")
+      blacklist.remove("echo")
+- The code also checks if `echo` is in user input and also filters `>` to prevent redirection.
+
+      if not "echo" in parsed:
+              return False
+          else:
+              if ">" in parsed:
+                  #print("HEY! No moving things around.")
+                  req.sendall(b"HEY! No moving things around.\n\n")
+                  return False
+- Lastly,the code prevents the usage of special linux chars like `$()|&;<>\`.
+
+      command.replace("$", " ").replace("(", " ").replace(")", " ").replace("|"," ").replace("&", " ").replace(";"," ").replace("<"," ").replace(">"," ").replace("`"," ").split()
+            #print(parsed)
+
+### Bypassing the filters
+
+- I bypassed the filters with characters `\` and `backticks` which are not being filtered.Linux shells executes binaries even if they are separated by slashes.e.g
+
+![image](https://github.com/user-attachments/assets/18b6f96c-5c6a-4a43-b2a2-e587e9da1a8c)
+
+- I read the flag with payload
+
+      echo `c\a\t flag.txt`
+
+![image](https://github.com/user-attachments/assets/051e363d-f8ac-45ab-9033-4bb378fac673)
+
+- Flag-:```pctf{echo_is_such_a_versatile_command}```
 
 
