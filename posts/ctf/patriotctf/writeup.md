@@ -181,6 +181,14 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
                 get_doc = etree.fromstring(str(parsed_json), parser)
                 print(get_doc, "ho")
                 result = etree.tostring(get_doc)
+
+- There is a slight twist,lxml's xml parser only loads xml code as bytes but the code converts the value of our payload to string which will trigger a `ValueError` and prvent our payload execution.
+
+![image](https://github.com/user-attachments/assets/77b30545-3ac3-4f9f-b8dd-d1f3d8a307a9)
+
+
+
+
   
 --------------------------
 
