@@ -170,7 +170,9 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
                   get_content = r.get(url = url)
 
 
-### XML Ext
+### XML External Entity
+
+- XXE occurs when a XML parsers resolves entities in web applications.Entities can be abused to read files and other purposes.
 
 --------------------------
 
