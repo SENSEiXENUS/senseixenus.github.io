@@ -172,7 +172,7 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ### XML External Entity
 
-- XXE occurs when a XML parsers resolves entities in web applications.Entities can be abused to read files and other purposes.
+- XXE occurs when a XML parsers resolves entities in web applications.External entities references can be abused to read files and other malicious purposes.
 
 --------------------------
 
