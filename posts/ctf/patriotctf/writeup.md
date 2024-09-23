@@ -182,9 +182,22 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
                 print(get_doc, "ho")
                 result = etree.tostring(get_doc)
 
-- There is a slight twist,lxml's xml parser only loads xml code as bytes but the code converts the value of our payload to string which will trigger a `ValueError` and prvent our payload execution.
+- There is a slight twist,lxml's xml parser only loads xml code as bytes but the code converts the value of our payload to string which will trigger a `ValueError` and prevent our payload execution.
 
 ![image](https://github.com/user-attachments/assets/77b30545-3ac3-4f9f-b8dd-d1f3d8a307a9)
+
+### Bypassing the filters
+
+- I bypassed the host header filter by injecting the urllib parsed version of the malicious url.
+
+![image](https://github.com/user-attachments/assets/bf33bdde-73b3-457b-a108-1ba72a8e4f81)
+
+- I was able to pass string to the xml parser by removing the default xml tags and passing the entities to a tag.With this process,I read my `/etc/passwd` locally.
+
+![image](https://github.com/user-attachments/assets/bd0c7878-bb4c-4b39-b8a1-887294612fe0)
+
+
+
 
 
 
