@@ -156,11 +156,18 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
                 r = requests.Session()
                 allow_ip = request.headers['Host']
 
-- Then, if the request method or `verb` is `POST`.It grabs the query or param `url` from the data and stores it as variable `url`.Then, it passes it to  `urllib.parse.urlparse(url).netloc` to remove the protocol e.g `http://` and slashes `/` as seen in the picture below.The code proceeds further only if `allowed_ip` is equal to variable `url_parsed` which is the value of the urllib parsed url.We can inject an arbitrary host and if the server still makes a request to the normal host, the server is vulnerable to `Host header injection` because servers are not meant to load requests with arbitrary and unknown hosts.
+- Then, if the request method or `verb` is `POST`.It grabs the query or param `url` from the data and stores it as variable `url`.Then, it passes it to  `urllib.parse.urlparse(url).netloc` to remove the protocol e.g `http://` and slashes `/` as seen in the picture below.The code proceeds further only if `allowed_ip` is equal to variable `url_parsed` which is the value of the urllib parsed url.We can inject an arbitrary host and if the server still makes a request to the normal host, the server is vulnerable to `Host header injection` because servers are not meant to load requests with arbitrary and unknown host headers.
 
 ![image](https://github.com/user-attachments/assets/153b208a-0a4c-4875-8bd1-622d5e7a46d4)
 
+    if request.method == 'POST':
+            url = request.form['url']
+            url_parsed = urllib.parse.urlparse(url).netloc
 
+- If the allowed_ip is equal to url_parsed,the code uses `requests.get()` to load a url which amounts to `Server Side Request Forgery`.SSRF is a web vuln that occurs when a web app loads url.A server can be forced to make requests to internal services or malicious services.In this case,we will be abusing ssrf to serve a payload.
+
+      if allow_ip == url_parsed:
+                  get_content = r.get(url = url)
 
  
 
