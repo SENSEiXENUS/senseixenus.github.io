@@ -213,13 +213,11 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/28d64d48-c0d4-40fd-9ed2-931f98d71926)
 
--
+- The flagfile is located in `/app/flag.txt`.Flag
 
+![image](https://github.com/user-attachments/assets/3371604f-7d78-475a-8289-fa0b44140f20)
 
-
-
-
-
+- Flag-:```PCTF{Y0u_D00m3D_U5_Man_So_SAD}```
   
 --------------------------
 
