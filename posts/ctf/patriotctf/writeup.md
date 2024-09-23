@@ -119,11 +119,50 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/40ea2f60-25c9-4d14-8dd0-58bb97de46c6)
 
-- The `app.py` contains the source code for the challenge.I won't be explaining the other routes because they are not vulnerable and not required in explanation of the web app.
+- The `app.py` contains the source code for the challenge.I won't be explaining the other routes because they are not vulnerable and not required in explanation of the web app.It should also be noted that the app is a flask app.
 
 ### Explaining route `check`
 
+- Route `check`
 
+      @app.route('/check', methods=['POST', 'GET'])
+      def check():
+          r = requests.Session()
+          allow_ip = request.headers['Host']
+          if request.method == 'POST':
+              url = request.form['url']
+              url_parsed = urllib.parse.urlparse(url).netloc 
+              if allow_ip == url_parsed:
+                  get_content = r.get(url = url)
+              else:
+                  return "Cannot request for that url"
+              try:
+                  parsed_json = json.loads(get_content.content.decode())["Comment"]
+                  parser = etree.XMLParser(no_network=False, resolve_entities=True)
+                  get_doc = etree.fromstring(str(parsed_json), parser)
+                  print(get_doc, "ho")
+                  result = etree.tostring(get_doc)
+              except:
+                  return "Something wrong!!"
+              if result: return result
+              else: return "Empty head"
+          else:
+              return render_template('check.html') 
+
+- The route allows HTTP verbs `GET` and `POST`.The method grabs the `Host` header from the request and stores it in variable `allowed ip`.
+
+      @app.route('/check', methods=['POST', 'GET'])
+            def check():
+                r = requests.Session()
+                allow_ip = request.headers['Host']
+
+- Then, if the request method or `verb` is `POST`.It grabs the query or param `url` from the data and stores it as variable `url`.Then, it passes it to  `urllib.parse.urlparse(url).netloc` to remove the protocol e.g `http://` and slashes `/` as seen in the picture below.The code proceeds further only if `allowed_ip` is equal to variable `url_parsed` which is the value of the urllib parsed url.We can inject an arbitrary host and if the server still makes a request to the normal host, the server is vulnerable to `Host header injection` because servers are not meant to load requests with arbitrary and unknown hosts.
+
+![image](https://github.com/user-attachments/assets/153b208a-0a4c-4875-8bd1-622d5e7a46d4)
+
+
+
+ 
 
 --------------------------
 
