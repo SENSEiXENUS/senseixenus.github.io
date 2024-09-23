@@ -209,7 +209,7 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/7f347995-322c-40d7-8090-538d54650c58)
 
-- Now, we can load our malicious url with curl,don't forget to protect `ctrl+c` to end our nc connection.The payload worked,I was able to read the `/etc/passwd` file.Local file read achieved
+- Now, we can load our malicious url with curl,don't forget to use `ctrl+c` to end our nc connection.The payload worked,I was able to read the `/etc/passwd` file.Local file read achieved
 
 ![image](https://github.com/user-attachments/assets/28d64d48-c0d4-40fd-9ed2-931f98d71926)
 
