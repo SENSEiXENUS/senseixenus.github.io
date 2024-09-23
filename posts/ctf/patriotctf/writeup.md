@@ -174,6 +174,14 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 - XXE occurs when a XML parsers resolves entities in web applications.External entities references can be abused to read files and other malicious purposes.
 
+- The code snippet below uses `json.loads` to convert the `json` data which has already been decoded to remove bytes and control characters to a `dict`.Then, the key `Comment`'s value is retrieved from the dict.A parser is created with `lxml.etree`'s xml parser which is vulnerable to `XXE` only if the `resolve_entities` keyword is set to boolean `True`.It is parsed and converted into string and returned as a response.
+
+      parsed_json = json.loads(get_content.content.decode())["Comment"]
+                parser = etree.XMLParser(no_network=False, resolve_entities=True)
+                get_doc = etree.fromstring(str(parsed_json), parser)
+                print(get_doc, "ho")
+                result = etree.tostring(get_doc)
+  
 --------------------------
 
 ### CRYPTO
