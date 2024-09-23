@@ -11,6 +11,7 @@
 - WEB
   - Giraffe-notes
   - Impersonate
+  - DOMDOM
 - Crypto
   - Bigger is Better
 - Misc
@@ -97,6 +98,32 @@ fulfilled,we get flag and if it appears otherwise.We get a 401 error.
 PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}
 ```
 Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
+
+--------------------------
+
+### DOMDOM
+
+### TAGS: `Host Header Injection` `SSRF` `XXE`
+
+![image](https://github.com/user-attachments/assets/91000090-e539-4897-82e2-f1810844445c)
+
+-------------------------
+
+### Source Code Review
+
+- The tar file contains this directories and files.
+
+![image](https://github.com/user-attachments/assets/8253dccd-42db-41f4-8324-2068af6d3178)
+
+- The docker file states that the `flag.txt` is stored in `/app/flag.txt`.
+
+![image](https://github.com/user-attachments/assets/40ea2f60-25c9-4d14-8dd0-58bb97de46c6)
+
+- The `app.py` contains the source code for the challenge.I won't be explaining the other routes because they are not vulnerable and not required in explanation of the web app.
+
+### Explaining route `check`
+
+
 
 --------------------------
 
