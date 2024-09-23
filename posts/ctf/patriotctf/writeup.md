@@ -165,7 +165,7 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
 
 ### Bypassing the filters
 
-- I bypassed the filters with characters `\` and `backticks` which are not being filtered.Linux shells executes binaries even if they are separated by slashes.e.g
+- I bypassed the filters with characters `\` and `backticks` that are not being filtered.Linux shells executes binaries even if they are separated by slashes.e.g
 
 ![image](https://github.com/user-attachments/assets/18b6f96c-5c6a-4a43-b2a2-e587e9da1a8c)
 
@@ -177,4 +177,4 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
 
 - Flag-:```pctf{echo_is_such_a_versatile_command}```
 
-
+---------------------------------
