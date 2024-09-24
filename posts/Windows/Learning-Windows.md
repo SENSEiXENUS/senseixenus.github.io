@@ -510,6 +510,11 @@ When this registry key is enabled, it allows non-administrator users to install 
   
 ![image](https://github.com/user-attachments/assets/980e676e-705f-4d15-9248-74d2c32f56d8)
 
+- Use `whoami /priv` to check for privileges
+
+![image](https://github.com/user-attachments/assets/baf8ab23-fbd5-408d-9eb4-2e5e967d324d)
+
+
 
 ### OFFSEC
 ### Windows Access Control
