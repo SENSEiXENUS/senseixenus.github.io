@@ -121,6 +121,8 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 - The `app.py` contains the source code for the challenge.I won't be explaining the other routes because they are not vulnerable and not required in explanation of the web app.It should also be noted that the app is a flask app.
 
+----------------------
+
 ### Explaining route `check`
 
 - Route `check`
@@ -169,6 +171,7 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
       if allow_ip == url_parsed:
                   get_content = r.get(url = url)
 
+--------------------------
 
 ### XML External Entity
 
@@ -186,6 +189,8 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/77b30545-3ac3-4f9f-b8dd-d1f3d8a307a9)
 
+-----------------------
+
 ### Bypassing the filters
 
 - I bypassed the host header filter by injecting the urllib parsed version of the malicious url.
@@ -196,9 +201,11 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/bd0c7878-bb4c-4b39-b8a1-887294612fe0)
 
+-------------------
+
 ### Exploitation
 
-- My first attempt in exploiting was to read the server's `/etc/passwd` file.I set up a mock netcat listening server to serve an http resposnse containing a json content as seen below.I tunneled to the internet with `ngrok`.
+- My first attempt at exploiting the vulnerability was reading the server's `/etc/passwd` file.I set up a mock netcat listening server to serve an http resposnse containing a json content as seen below.I tunneled to the internet with `ngrok`.
 
       ❯ cat index.html
       HTTP/1.1 200 OK
@@ -209,7 +216,7 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 ![image](https://github.com/user-attachments/assets/7f347995-322c-40d7-8090-538d54650c58)
 
-- Now, we can load our malicious url with curl,don't forget to use `ctrl+c` to end our nc connection.The payload worked,I was able to read the `/etc/passwd` file.Local file read achieved
+- Now, we can load our malicious url with curl,don't forget to use `ctrl+c` to end our nc connection.The payload worked,I was able to read the `/etc/passwd` file.File read achieved
 
 ![image](https://github.com/user-attachments/assets/28d64d48-c0d4-40fd-9ed2-931f98d71926)
 
@@ -241,7 +248,9 @@ Flag-:```PCTF{Imp3rs0n4t10n_Iz_Sup3r_Ezz}```
 
 - The calculation is extreme and complex, there is a python module to attack the numbers.
 
-Download to the script's directory with curl-:```curl -O https://raw.githubusercontent.com/orisano/owiener/master/owiener.py```
+- Save the file in the script's directory
+
+  - Curl-:```curl -O https://raw.githubusercontent.com/orisano/owiener/master/owiener.py```
 
 - Script
 
@@ -268,9 +277,13 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
 
 ### Misc
 
+--------------------
+
 ### Really Only Echo
 
 ![image](https://github.com/user-attachments/assets/ed1940ae-6c6c-4879-a5e5-5ba3d12f9929)
+
+-------------------
 
 - The main goal of the challenge is to read `flag.txt` with `echo`.The code lists the binaries within directory `/bin` and blacklists them from usage but removes `echo` from the list.
 
@@ -290,6 +303,8 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
       command.replace("$", " ").replace("(", " ").replace(")", " ").replace("|"," ").replace("&", " ").replace(";"," ").replace("<"," ").replace(">"," ").replace("`"," ").split()
             #print(parsed)
 
+------------------
+
 ### Bypassing the filters
 
 - I bypassed the filters with characters `\` and `backticks` that are not being filtered.Linux shells executes binaries even if they are separated by slashes.e.g
@@ -305,3 +320,7 @@ Download to the script's directory with curl-:```curl -O https://raw.githubuserc
 - Flag-:```pctf{echo_is_such_a_versatile_command}```
 
 ---------------------------------
+
+### THANKS FOR READING!!!!
+
+--------------------------------
