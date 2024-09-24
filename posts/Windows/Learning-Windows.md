@@ -648,6 +648,32 @@ Management Users can access it with WinRM.
 
 
 
+### Upgrading a shell to meterpreter
+
+- Search for `search_to_meterpreter` with `search <keyword>`
+
+![image](https://github.com/user-attachments/assets/3d6e3cb1-ba21-4fa1-a890-f2d729f60129)
+
+- Type, `use 0` or `use <keyword>`
+
+![image](https://github.com/user-attachments/assets/5eebe888-3445-4e08-8f1f-465fddbd6560)
+
+- Use options to show options
+
+![image](https://github.com/user-attachments/assets/b5a65c68-5508-457f-9117-a854cd2a6a82)
+
+- Then,check for sessions with `sessions -i`
+
+![image](https://github.com/user-attachments/assets/6b32651e-062f-4436-adba-7850146aaf24)
+
+- RUn
+
+![image](https://github.com/user-attachments/assets/918845c9-68fb-4d27-9c9e-a03df77f8e24)
+
+
+
+
+
 
 
 
