@@ -964,7 +964,14 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 - [Github](https://gist.github.com/ky28059/d539294051afa549eb303b832c7a5826)
 - [Github](https://github.com/mde/ejs/issues/720)
-- 
+
+--------------------
+
+### Php escapes for `escapeshellcmd() and escapeshellargs()`
+
+- [kacperszurek](https://github.com/kacperszurek/exploits/blob/master/GitList/exploit-bypass-php-escapeshellarg-escapeshellcmd.md)
+
+---------------------
 
 
 
