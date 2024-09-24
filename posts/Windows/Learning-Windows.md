@@ -670,6 +670,15 @@ Management Users can access it with WinRM.
 
 ![image](https://github.com/user-attachments/assets/918845c9-68fb-4d27-9c9e-a03df77f8e24)
 
+### Using Msfconsole Hashdump rb script
+
+- Shell must be a meterpreter shell,run `search "hashdump"` to search for hashdump and follow the process in a picture
+
+![image](https://github.com/user-attachments/assets/35ad8d4e-a149-4bb4-a1ca-191e3908dd03)
+
+- Result
+
+![image](https://github.com/user-attachments/assets/bc8f3974-c833-4df7-ab61-bd5081fb4f26)
 
 
 
