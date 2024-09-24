@@ -680,6 +680,13 @@ Management Users can access it with WinRM.
 
 ![image](https://github.com/user-attachments/assets/bc8f3974-c833-4df7-ab61-bd5081fb4f26)
 
+- Use `john` to crack the hash
+
+      john --format=NT --wordlist=/home/sensei/rockyou.txt hashfile
+
+![image](https://github.com/user-attachments/assets/b84b14f0-afde-4068-9c41-4aad6dbf3aa5)
+
+
 
 
 
