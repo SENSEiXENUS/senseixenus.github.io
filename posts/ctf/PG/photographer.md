@@ -160,6 +160,40 @@
 
 - I tried the password `babygirl` and mail `daisa@photographer.com` and was able to access the admin account.
 
+![image](https://github.com/user-attachments/assets/47ceeb7c-ba08-42b2-8f6b-ed703086bdab)
+
+### Exploiting KOKEN CMS Arbitrary file upload
+
+- [Exploit Db](https://www.exploit-db.com/exploits/48706) details a walkthrough on how to exploit koken cms arbitrary file upload.
+- I imported a php shell code saved as shell.php.jpg
+
+![image](https://github.com/user-attachments/assets/7f9d1aac-4d21-4fb8-a166-14b43513c59c)
+
+- I intercepted with burpsuite to change the filename to `shell.php` and forwarded the request.
+
+![image](https://github.com/user-attachments/assets/9bde0231-bccb-40fd-aeec-a9259a5a81d0)
+
+- I accessed the file from download file.
+
+![image](https://github.com/user-attachments/assets/da0fc213-699d-48ec-83df-03edfd42a32e)
+
+- RCE achieved
+
+![image](https://github.com/user-attachments/assets/2669db3e-4498-496a-bd30-4254bea445db)
+
+- Initial foothold
+
+![image](https://github.com/user-attachments/assets/011e82be-77c8-449e-a1d9-e279a4b88f5a)
+
+### Privesc with SUID PHP binary
+
+-
+
+
+
+
+
+
 
 
 
