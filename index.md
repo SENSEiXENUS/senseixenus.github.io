@@ -75,7 +75,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 4 2024]] [Potato](https://senseixenus.github.io/posts/ctf/PG/potato.html) ``Strcmp() bypass`` ``Command Injection`` ``Exposed User Hash`` ``Privesc Nice``
 - [[September 11 2024]] [Seppuku](https://senseixenus.github.io/posts/ctf/PG/seppuku.html) ``Weak SSH password`` ``Exposed SSH private key`` ``sudo -l``
 - [[September 19 2024]] [Dawn](https://senseixenus.github.io/posts/ctf/PG/Dawn.html) ``Cron Jobs`` ``Sudoers rule``
-- [[September 23 2024]] [DC-1](https://senseixenus.github.io/posts/ctf/PG/DC-1.html) ``Drupal 7 RCE`` ``Find``
+- [[September 22 2024]] [DC-1](https://senseixenus.github.io/posts/ctf/PG/DC-1.html) ``Drupal 7 RCE`` ``Find``
+- [[September 27 2024]] [Photographer](https://senseixenus.github.io/posts/ctf/PG/photographer.html) ``Koken CMS`` ``PHP 7.2``
   
 * * *
 
