@@ -427,7 +427,7 @@
 
 --------------------------------
 
-### Teammates' writeup:
+### Teammate's writeup:
 
 - **Bl4ckanon's writeup**: <a href="https://github.com/BlackAnon22/BlackAnon22.github.io/blob/main/posts/CTF Competitions/n00bz_ctf.md">here</a>
 
