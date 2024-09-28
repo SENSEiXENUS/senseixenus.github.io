@@ -48,7 +48,7 @@ passes the `file_id` path variable into send file.We can control the path to rea
 
 ### *Exploitation*
 
-- I forced curl to pass the `../` request without interpreting it with the `--path-as-is` option.I read the file `/etc/passwd`.
+- I forced curl to include the characters `../` in a request without interpreting it with the `--path-as-is` option and read the file `/etc/passwd`.
 
 ![image](https://github.com/user-attachments/assets/42e4cba7-61b9-46e7-8073-506b442123bf)
 
