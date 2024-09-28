@@ -1,6 +1,6 @@
 --------------
 
-### CTF: BUCKEYE2024
+### CTF: *BUCKEYE2024*
 
 ---------------
 
@@ -8,18 +8,18 @@
 
 ---------------
 
-### Challenges
+### *Challenges*
 
 - Web
   - SFSS
 
 ---------------
 
-### WEB
+### *WEB*
 
 ---------------
 
-### SFSS
+### *SFSS*
 
 ![image](https://github.com/user-attachments/assets/937cf518-0698-403f-90c6-2a50a03a5662)
 
@@ -46,6 +46,21 @@ passes the `file_id` path variable into send file.We can control the path to rea
 
       return send_file('uploads/' + file_id, download_name=f"{file_id}.{file_exts.get(file_id, 'UNK')}")
 
-### Exploitation
+### *Exploitation*
 
-- To prevent the web app from interpreting the `../` pattern
+- I forced curl to pass the `../` request without interpreting it with the `--path-as-is` option.I read the file `/etc/passwd`.
+
+![image](https://github.com/user-attachments/assets/42e4cba7-61b9-46e7-8073-506b442123bf)
+
+- Flag-:```bctf{4lw4y5_35c4p3_ur_p4th5}```
+
+![image](https://github.com/user-attachments/assets/ad8cc69d-e959-47fa-bad7-0d84db5f859a)
+
+
+-------------------
+
+### *REFERENCE*
+
+- [Flask's send_file() vulnerability](https://github.com/jaygarza1982/ytdl-sync/issues/1)
+
+-------------------
