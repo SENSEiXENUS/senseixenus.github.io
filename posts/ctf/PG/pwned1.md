@@ -92,6 +92,8 @@
 
 - FFUF's output
 
+![image](https://github.com/user-attachments/assets/29cfa229-23a8-424f-8693-fa43002fc684)
+
 - Robots.txt reveals two hidden directories
 
 ![image](https://github.com/user-attachments/assets/e541a09d-7f8e-4ea1-a167-19355b60a497)
@@ -109,7 +111,24 @@
 ![image](https://github.com/user-attachments/assets/cdefa81c-731e-4490-8dd3-eb91b43a17b9)
 
 - Ftp acesss as ftp user
-- 
+
+![image](https://github.com/user-attachments/assets/99a559df-4dcb-46d4-8390-f4a18d927ed5)
+
+- The share directory contains a note.txt and an id_rsa file
+
+![image](https://github.com/user-attachments/assets/2122b286-7e81-4f08-8409-9a892a2e165d)
+
+- The note.txt points to a user `ariana`
+
+![image](https://github.com/user-attachments/assets/1dce5721-fb14-462c-be47-c792418671d4)
+
+- SSH access as user `ariana`
+
+![image](https://github.com/user-attachments/assets/b3dab1fb-5643-4fa1-bd01-a7379f900004)
+
+
+
+
 
 
 
