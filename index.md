@@ -77,6 +77,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 19 2024]] [Dawn](https://senseixenus.github.io/posts/ctf/PG/Dawn.html) ``Cron Jobs`` ``Sudoers rule``
 - [[September 22 2024]] [DC-1](https://senseixenus.github.io/posts/ctf/PG/DC-1.html) ``Drupal 7 RCE`` ``Find``
 - [[September 27 2024]] [Photographer](https://senseixenus.github.io/posts/ctf/PG/photographer.html) ``Koken CMS`` ``PHP 7.2``
+- [[September 30 2024]] [Pwned1](https://senseixenus.github.io/posts/ctf/PG/pwned1.html) ``Exposed id_rsa`` ``Docker``
   
 * * *
 
