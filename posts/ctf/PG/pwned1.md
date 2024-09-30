@@ -1,7 +1,7 @@
 ----------------
 
-###CTF: Proving Grounds
-###Lab: Pwned1
+### CTF: Proving Grounds
+### Lab: Pwned1
 
 ----------------
 
@@ -89,3 +89,29 @@
           |_  Supported Methods: HEAD GET POST OPTIONS
           |_http-title: Pwned....!!
           Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+- FFUF's output
+
+- Robots.txt reveals two hidden directories
+
+![image](https://github.com/user-attachments/assets/e541a09d-7f8e-4ea1-a167-19355b60a497)
+
+- `Hidden_text` directory contains a wordlist for directory fuzzing
+
+![image](https://github.com/user-attachments/assets/49e8a81c-7c3e-4f3f-91d0-4a170d2d6968)
+
+- I fuzzed for directories with the wordlist and got one file match.
+
+![image](https://github.com/user-attachments/assets/79ebe5ad-2f70-4cc0-b359-d4588500b256)
+
+- Checking the source of `pwned.vuln` reveals  ftp creds
+
+![image](https://github.com/user-attachments/assets/cdefa81c-731e-4490-8dd3-eb91b43a17b9)
+
+- Ftp acesss as ftp user
+- 
+
+
+
+
+
