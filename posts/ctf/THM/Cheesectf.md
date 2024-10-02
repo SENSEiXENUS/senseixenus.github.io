@@ -87,6 +87,51 @@
 
 - Reverse shell as user `www-data`
 
+![image](https://github.com/user-attachments/assets/0e078bce-5b5a-4643-91ad-14e4de95650d)
+
+### Pivoting to user `comte`
+
+- We have write access to user `comte`'s authorized keys,we can add our ssh public key to gain access to user `comte` without password.
+
+![image](https://github.com/user-attachments/assets/ac5eff6a-4555-4f20-8d8e-1624907e4620)
+
+![image](https://github.com/user-attachments/assets/581e297d-b111-4402-9902-250a9cd411e4)
+
+- User `comte`
+
+![image](https://github.com/user-attachments/assets/93e9a308-9db7-4f23-8f8b-d021d87ca1e5)
+
+### Privesc with `systemctl` and `root`
+
+- Running `sudo -l` shows we can use `systemctl` to start a service `exploit.timer`.
+
+![image](https://github.com/user-attachments/assets/e9f12afa-3c6d-421e-ad64-c10a68e2ecf3)
+
+- I tried to run it but I noticed an error.
+
+![image](https://github.com/user-attachments/assets/4dcc3415-a62e-4fd9-8de1-a56693535378)
+
+- There is an issue because the `OnbootSec` variable is not set and a variable `Unit` is not set to the target service `exploit.service`.Timers are like schedulers or crons for systemd services.
+
+![image](https://github.com/user-attachments/assets/bc4fa1c7-135e-478a-a4cf-aa199ec309bb)
+
+- Fix
+
+![image](https://github.com/user-attachments/assets/5a5c0ec8-d40c-43a3-a1fc-bac1214f7710)
+
+- The service `exploit.service` runs a bash command that copies binary `xxd` to `/opt` and grants it suid privileges.
+
+![image](https://github.com/user-attachments/assets/4b9f7ea7-d862-429c-bfbb-6b33f4a896df)
+
+- Exploiting it
+
+
+
+
+
+
+
+
 
 
 
