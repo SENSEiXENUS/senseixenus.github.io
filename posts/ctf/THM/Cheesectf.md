@@ -125,6 +125,43 @@
 
 - Exploiting it
 
+![image](https://github.com/user-attachments/assets/7bd1e617-3955-48d2-b881-d266daa1ebf6)
+
+### Privesc to `root` with XXD
+
+- `XXD` can be used to read and write files.We can use this to rewrite the `/etc/shadow` and change the root user's hash.
+
+ ![image](https://github.com/user-attachments/assets/4cf9ef00-8b76-496c-841a-48351dfdea93)
+
+- Generate an hash with `openssl`
+
+![image](https://github.com/user-attachments/assets/0c61afd8-cf5d-437e-b3db-8e3c9124c3aa)
+
+- I redirected the output to a file and changed the root hash
+
+![image](https://github.com/user-attachments/assets/451ba02e-df30-477e-8d1b-2d30b4dbb856)
+
+- Then, I rewrote the content with xxd.
+
+![image](https://github.com/user-attachments/assets/746d87e6-8c99-4359-9a5b-bdaf379d4b42)
+
+- Root......!!!
+
+![image](https://github.com/user-attachments/assets/c7709823-0faf-4374-9775-27f7d01d1ea8)
+
+------------------
+
+### THANKS FOR READING!!!!
+
+-------------------
+
+### REFERENCE:
+
+- [Configuring a systemd timer](https://medium.com/@rockibul.islam20/configure-and-implement-of-systemd-timers-8c640cc6d667)
+
+-------------------
+
+
 
 
 
