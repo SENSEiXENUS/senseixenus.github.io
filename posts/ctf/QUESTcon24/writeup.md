@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0fad64fc-90bc-4c19-8f3a-b70bc645031a)-----------------
+-----------------
 
 ### CTF: QUESTCONCTF
 
