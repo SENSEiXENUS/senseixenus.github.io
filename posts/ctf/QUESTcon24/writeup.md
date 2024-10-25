@@ -95,7 +95,7 @@ curl https://questcon-theadmin.chals.io/access -H "Authorization: Bearer $(echo 
 
 ![image](https://github.com/user-attachments/assets/a9abae67-3da3-4799-bd5d-7c495faa1b3c)
 
-- Flag-: ```'QUESTCON{r3c0ver_d3l3t3d_fil3}```
+- Flag-: ```QUESTCON{r3c0ver_d3l3t3d_fil3}```
 
 -------------------
 
