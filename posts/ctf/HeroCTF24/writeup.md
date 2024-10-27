@@ -13,6 +13,7 @@
 - Misc:
   - Einstein
   - Moo
+  - Free Shell
 - Web:
 
 -------------------
@@ -78,6 +79,47 @@
 - Flag-:```Hero{s0m3_s4cr3d_c0w}```
 
 ![image](https://github.com/user-attachments/assets/8257b5c7-0a92-4d8d-bab8-11a3eebe3bf2)
+
+------------------------
+
+### FREE SHELL
+
+![image](https://github.com/user-attachments/assets/53a0b994-71a9-4845-9483-94c3b46457fd)
+
+- This challenge contains a source code which is provided below.
+
+```python3
+#!/usr/bin/env python3
+import os
+import subprocess
+
+
+print("Welcome to the free shell service!")
+print("Your goal is to obtain a shell.")
+
+command = ["/bin/sh",input("Choose param: "),os.urandom(32).hex(),os.urandom(32).hex(),os.urandom(32).hex()]
+subprocess.run(command)
+```
+
+- This service executes system commands with subprocess but takes in the value of the `input()` and passes it as an option to binary `/bin/sh`.This approach won't allow attackers to end or close statements.Binary `sh` perceives the value as an attempt to read a file if it is not an option as shown below.Another filter is that we cannot spawn an interactive shell with `-i` because of the hex values created with `os.urandom(32).hex` which will only trigger an error.
+
+![image](https://github.com/user-attachments/assets/78ac0e19-f9ae-438a-9382-c88502d5624d)
+
+- I checked `sh` documentation for other options that will allow us spawn an interactive shell even if files are passed to it.Then, I spotted the `-s` option which spawns a shell and read commands from standard input.
+
+![image](https://github.com/user-attachments/assets/c8174530-659e-4d42-a16b-cf980f45e65a)
+
+- The approach worked.
+
+![image](https://github.com/user-attachments/assets/609e8685-7fc2-4426-bdda-7d11ec62f5a6)
+
+- Flag-:```Hero{533m5_11k3_y0u_f0und_7h3_c0223c7_p424m3732}```
+
+![image](https://github.com/user-attachments/assets/41d0458b-3371-4d73-a77e-4a8ebc28602f)
+
+
+
+
 
 
 
