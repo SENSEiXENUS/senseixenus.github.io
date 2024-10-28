@@ -88,7 +88,12 @@ def index():
 
 ![image](https://github.com/user-attachments/assets/a1216e31-aacf-4ed6-9e02-6fe2b84ce1af)
 
-- I tried the next method by passing `eval("__IMPORT__".lower())` which worked because the filter is not case sensitive and picks only `import` in lowercase and not in uppercase.I passed the uppercase `import` to the `lower()` to convert it to lowercase which is evaluated later with the `eval()`.
+- I tried the next method by passing `eval("__IMPORT__".lower())` which worked because the filter is not case sensitive and picks only `import` in lowercase and not in uppercase.I passed the uppercase `import` to the `lower()` to convert it to lowercase which is evaluated later with the `eval()` function.You can see below that we've successfully called the `import` function.
+
+![image](https://github.com/user-attachments/assets/4e11ab0b-0e79-48e1-8d2d-a277e05cf148)
+
+
+
 
 
 
