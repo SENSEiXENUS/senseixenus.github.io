@@ -104,6 +104,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 28 2024]] [BuckeyeCTF2024](https://senseixenus.github.io/posts/ctf/Buckeye2024/writeup.html)
 - [[October 24 2024]] [QuestconCTF 2024](https://senseixenus.github.io/posts/ctf/QUESTcon24/writeup.html)
 - [[October 27 2024]] [Urchinsec Aware 2024](https://senseixenus.github.io/posts/ctf/UrchinsecCTF/writeup.html)
-- [[October 27 2024]] [HeroCTF24](https://senseixenus.github.io/posts/ctf/HeroCTF/writeup.html)
+- [[October 27 2024]] [HeroCTF24](https://senseixenus.github.io/posts/ctf/HeroCTF24/writeup.html)
     
 * * *
