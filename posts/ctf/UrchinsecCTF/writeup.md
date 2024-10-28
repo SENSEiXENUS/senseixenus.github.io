@@ -108,7 +108,24 @@ Final Payload-:```curl https://urchinsec-pyrison.chals.io/test/trick -X POST -d 
 
 ![image](https://github.com/user-attachments/assets/106b5355-ae43-45c8-b05f-3ead6d015564)
 
-- The code is vulnerable to `Server Side Template Injection`
+- The code is vulnerable to `Server Side Template Injection` because of the `render_template_string()` function
+
+![image](https://github.com/user-attachments/assets/a0af8189-3e30-449c-8eca-039b00730358)
+
+- Flag-:```urchinsec{9_SSTI}```
+
+### REDHAND
+
+![image](https://github.com/user-attachments/assets/7ed21cf3-f607-4390-9110-1a05f7886780)
+
+- The code is vulnerable to `command-injection` because php execute any code between backticks as system commands.
+
+```<?=`$_GET[0]`?>```
+
+- Flag-:```urchinsec{command_injection}```
+
+
+
 
 
 
