@@ -124,10 +124,27 @@ Final Payload-:```curl https://urchinsec-pyrison.chals.io/test/trick -X POST -d 
 
 - Flag-:```urchinsec{command_injection}```
 
+---------------------
 
+### SYRINGE:
 
+---------------------
 
+![image](https://github.com/user-attachments/assets/581f992f-6790-45e6-84ad-08d54e4b7b38)
 
+---------------------
+
+- The code below is vulnerable to `sql_injection`, an attacker can close the first statement and execute an arbitrary statement.
+
+![image](https://github.com/user-attachments/assets/5e654ade-594a-47cc-97de-0668af5049fe)
+
+- Flag-:```urchinsec{15_sql_injection}```
+
+----------------------
+
+### THANKS FOR READING
+
+----------------------
 
 
 
