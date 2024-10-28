@@ -13,7 +13,7 @@
 - Web:
   - Notee
   - Pyrison
-- Securecode Reviewing
+- Secure code Review:
   - Heart
   - Redhand
   - Syringe
@@ -100,10 +100,15 @@ Final Payload-:```curl https://urchinsec-pyrison.chals.io/test/trick -X POST -d 
 
 - Flag-:```urchinsec{H3r3_we_go_again_byp4ssing_evals_f0rFUN}```
 
+--------------------------
 
+### SECURE CODE REVIEW-:
 
+### Heart:
 
+![image](https://github.com/user-attachments/assets/106b5355-ae43-45c8-b05f-3ead6d015564)
 
+- The code is vulnerable to `Server Side Template Injection`
 
 
 
