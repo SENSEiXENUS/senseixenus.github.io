@@ -71,5 +71,30 @@ def index():
 
 ![image](https://github.com/user-attachments/assets/2a322d84-6257-434c-9963-4c673f03a37b)
 
--
+- Flag-:```urchinsec{W3_KEEP_NOTES_SAfe_f0r_ouR_S3cr3t_r3cipesss}```
+
+---------------------
+
+### Pyrison
+
+![image](https://github.com/user-attachments/assets/c714af89-b059-493c-9800-b1a93da2633c)
+
+- This challenge requires blackbox testing because no source code was provided but based on the author's choice of name.I deduced that the backend is python and values are passed to `eval()` in python but some special keywords are filtered.
+- I tested `7*7` and got the value `49` which signifies that my deductions are accurate.
+
+![image](https://github.com/user-attachments/assets/113835e1-cf4c-49d3-aa86-eba45b42b466)
+
+- I also tried `import` to import modules but I noticed that the author blacklisted it.
+
+![image](https://github.com/user-attachments/assets/a1216e31-aacf-4ed6-9e02-6fe2b84ce1af)
+
+- I tried the next method by passing `eval("__IMPORT__".lower())` which worked because the filter is not case sensitive and picks only `import` in lowercase and not in uppercase.I passed the uppercase `import` to the `lower()` to convert it to lowercase which is evaluated later with the `eval()`.
+
+
+
+
+
+
+
+
 
