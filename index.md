@@ -65,6 +65,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Sept 11 2024]] [All in one](https://senseixenus.github.io/posts/ctf/THM/allinone.html) ``Mail Masta 1.0`` ``Abusing cronjobs``
 - [[Sept 18 2024]] [Lunizzctf](https://senseixenus.github.io/posts/ctf/THM/lunizzctf.html) ``Mysql`` ``default creds`` ``bcrypt`` ``backdoor``
 - [[Oct 2 2024]] [CheeseCTF](https://senseixenus.github.io/posts/ctf/THM/Cheesectf.html) ``LFI`` ``SYSTEMD timers`` ``XXD``
+- [[Oct 31 2024]] [Library](https://senseixenus.github.io/posts/ctf/THM/library.html) `Bruteforce` `Python Library Hijacking`
   
 * * *
 
