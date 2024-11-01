@@ -133,6 +133,15 @@ os.setuid(0);os.setgid(0);os.system("bash -p")
 
 - Root!!!!
 
+![image](https://github.com/user-attachments/assets/fecb5dd6-0a69-42a0-bdf8-30a03f88500f)
+
+---------------
+
+### THANKS FOR READING!!!
+
+---------------
+
+
 
 
 
