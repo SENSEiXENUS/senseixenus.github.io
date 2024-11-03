@@ -39,6 +39,28 @@
 
 -----------------
 
-
+![image](https://github.com/user-attachments/assets/ae6c96ef-8f4f-4e82-946d-3681564e05b8)
 
 ------------------
+
+- The site has a file upload functionality and it was created with php.We can try to upload a shell annd gain remote code execution.
+
+![image](https://github.com/user-attachments/assets/d070b161-9cf5-4ca1-9e98-a3b5a3bf0340)
+
+- I tried to upload a regular `php` file and it got flagged immediately.
+
+![image](https://github.com/user-attachments/assets/536adcf6-b00c-4b97-86f0-4c4be47d1231)
+
+- Then,I tried other `php` extensions which worked.`Phtml` bypassed the filters.
+
+![image](https://github.com/user-attachments/assets/64f9e67c-73e1-45f8-9679-c954ea16b4e9)
+
+- RCE gained
+
+![image](https://github.com/user-attachments/assets/cafabc5f-0bf9-4cb5-a8c1-f697500289f0)
+
+- Shell gained
+
+
+
+
