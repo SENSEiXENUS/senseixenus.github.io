@@ -106,5 +106,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[October 24 2024]] [QuestconCTF 2024](https://senseixenus.github.io/posts/ctf/QUESTcon24/writeup.html)
 - [[October 27 2024]] [Urchinsec Aware 2024](https://senseixenus.github.io/posts/ctf/UrchinsecCTF/writeup.html)
 - [[October 27 2024]] [HeroCTF24](https://senseixenus.github.io/posts/ctf/HeroCTF24/writeup.html)
+- [[November 3 2024]] [HTBMeetup Cameroon](https://senseixenus.github.io/posts/ctf/HTPMeetupCmr/writeup.html)
     
 * * *
