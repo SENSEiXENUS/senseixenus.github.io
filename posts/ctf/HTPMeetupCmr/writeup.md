@@ -61,6 +61,26 @@
 
 - Shell gained
 
+![image](https://github.com/user-attachments/assets/b6ae90b6-ba54-4abd-8eb3-73f3f36c30c6)
+
+### PRIVESC with nmap
+
+- I discovered a password for user in  `home` directory.
+
+![image](https://github.com/user-attachments/assets/46ca8e13-c32c-42cb-a4db-1466ffad6ed1)
+
+- I tried to login to `ctfuser` and it worked.
+
+![image](https://github.com/user-attachments/assets/525f3c35-c121-4a0a-95a7-243346bfe2d5)
+
+- I ran `sudo -l` and I discovered that I can run `nmap` as root.
+
+![image](https://github.com/user-attachments/assets/79211845-2774-4340-82b3-a48ff6de3fc2)
+
+- I
+
+
+
 
 
 
