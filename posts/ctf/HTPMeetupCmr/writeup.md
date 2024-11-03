@@ -77,7 +77,25 @@
 
 ![image](https://github.com/user-attachments/assets/79211845-2774-4340-82b3-a48ff6de3fc2)
 
-- I
+- I got a walkthrough to escalate privileges from `gtfobins`.
+
+![image](https://github.com/user-attachments/assets/a9158b00-94a2-4092-b2fb-d18d2f2839ef)
+
+- Root
+
+![image](https://github.com/user-attachments/assets/7d7876e5-b4cc-4503-b1ae-a12a2aa66412)
+
+- I got the flag in `/var/www/html/.flag.txt`
+
+![image](https://github.com/user-attachments/assets/b694442f-f5f8-4d5f-9622-836c2ea1db51)
+
+- Flag-:```htbmeetupcmr{Upl04d_R357r1ct10n_Byp455}```
+
+-----------------
+
+
+
+
 
 
 
