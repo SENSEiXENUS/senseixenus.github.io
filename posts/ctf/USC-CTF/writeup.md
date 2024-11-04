@@ -115,6 +115,31 @@ print(flag)
 
 - Flag-:```CYBORG{oce4n5_auth3N71ca7i0N}```
 
+------------------
+
+### Tictatocket
+
+------------------
+
+![image](https://github.com/user-attachments/assets/15902355-20ae-4649-a68c-fa907ed9d8ba)
+
+------------------
+
+- This is a tictactoe game that applies websockets to transmit data.
+
+![image](https://github.com/user-attachments/assets/ca311f70-16cc-4e48-9806-213060e6be39)
+
+- I discovered that players can play in the computer position if they spam clicks in the position the computer is about to place its square.
+
+![image](https://github.com/user-attachments/assets/eb08cc77-96b4-4947-886c-9a801377f95a)
+
+- Flag-:```CYBORG{S3RVER_W45_0VERTRUST1NG}```
+
+---------------------
+
+
+
+
 
 
 
