@@ -137,10 +137,30 @@ print(flag)
 
 ---------------------
 
+### Think_Twice
+
+---------------------
+
+![image](https://github.com/user-attachments/assets/8c0d7d57-4e13-4d4e-9235-6144099453e7)
+
+---------------------
+
+- The challenge file contains a png file `metadata.png`.
+- I checked for the exifdata with `exiftool` and got a base6 encoded string.
+
+![image](https://github.com/user-attachments/assets/f262f1ea-a1cb-411e-a9ad-4c3ea34cd810)
+
+- I double decoded it with base64 and got the flag.
+
+![image](https://github.com/user-attachments/assets/bd8acb9a-d9b0-4742-bcd9-530887dbcea7)
+
+- Flag-:```Cyb0rg{McCarthy}```
 
 
+--------------------
 
+### THANKS FOR READING !!!!
 
-
+--------------------
 
 
