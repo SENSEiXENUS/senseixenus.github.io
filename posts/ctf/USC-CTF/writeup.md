@@ -73,3 +73,49 @@ print(flag)
 
 ![image](https://github.com/user-attachments/assets/e5784792-0568-4464-b624-7cc991cdfc68)
 
+-----------------
+
+### Web: iRobots
+
+-----------------
+
+![image](https://github.com/user-attachments/assets/8ac57d6f-ade0-455f-9726-1d492fd61966)
+
+----------------
+
+- As the name implies, my first stop was the `robots.txt`.The flag's path was disallowed in the robots.txt disallowed entry.
+
+![image](https://github.com/user-attachments/assets/a1dfb010-2768-4f10-af36-b9eee16fd489)
+
+- Flag-:```CYBORG{robots_txt_is_fun}```
+
+![image](https://github.com/user-attachments/assets/7b7c7f45-efed-4e0d-bafc-0117c8f605d2)
+
+-----------------
+
+### Tommy's ArtAdventures
+
+-----------------
+
+![image](https://github.com/user-attachments/assets/6a034677-2688-4611-8afb-31bd0e0eedcd)
+
+-----------------
+
+- The challenge's secret key fo signing Flask's session was given.This is a major vulnerability because flask session's key is used to sign cookies for a flask web application.
+
+![image](https://github.com/user-attachments/assets/2c6b3b72-4b21-4448-a498-4490f921f648)
+
+- After checking the source code of the app, I noticed an endpoint `/curate` that gives the fla only to the admin user.
+
+![image](https://github.com/user-attachments/assets/e304d48f-850f-403f-8445-a1932fd61f74)
+
+- I used `flask-unsign` to sign a cookie with user `admin`.
+
+![image](https://github.com/user-attachments/assets/3b0079a9-56e1-4386-9682-c37bb5b1fe01)
+
+- Flag-:```CYBORG{oce4n5_auth3N71ca7i0N}```
+
+
+
+
+
