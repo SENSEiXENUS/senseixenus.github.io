@@ -1001,6 +1001,33 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ![image](https://github.com/user-attachments/assets/155a8934-d235-4929-9010-d4fd68a7c883)
 
+### Cracking cookies
+
+- The module responsible is the `flask_unsign.cracker`
+
+`from flask_unsign.cracker import *`
+
+- Call a function `Cracker`, pass the cookie as an argument and finally assign the object to a variable
+
+![image](https://github.com/user-attachments/assets/1f389464-b095-46ea-be38-38fd3c391c38)
+
+- You need to set everything to quiet,with the `object().quiet` variable.By default,it is set to bool `False`,we need to set it to `True` because the non-quiet mode can be weird.
+
+![image](https://github.com/user-attachments/assets/593a81b0-9a7c-4eeb-80e5-8c9881dae051)
+
+- Finally,call the `crack` function and pass in a list of words that you want to bruteforce with.
+
+![image](https://github.com/user-attachments/assets/33d66d65-98f6-461b-bdd6-8479f556275c)
+
+- After successfully bruteforcing the cookie,the secret is set to variable `object().secret`
+
+![image](https://github.com/user-attachments/assets/2a71ec5f-1c8d-42f9-afd4-d35c124e6289)
+
+------------------
+
+
+
+
 
 
 
@@ -1020,4 +1047,5 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 
   
+
 
