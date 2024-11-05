@@ -989,11 +989,20 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ![image](https://github.com/user-attachments/assets/e3298eab-c958-4190-a4ec-cde63648eccb)
 
+### Decoding Cookies
+
 - Use the `decode()` object to casually decode the session, it requires only one argument which is the cookie
 
 ![image](https://github.com/user-attachments/assets/9bee3729-b68d-4354-9cd0-c4373f9cf2e2)
 
-- 
+### Verifying Cookies
+
+- Use the `verify()` method which requires a cookie argument in string type,it returns a boolean.
+
+![image](https://github.com/user-attachments/assets/155a8934-d235-4929-9010-d4fd68a7c883)
+
+
+
 
 
 
