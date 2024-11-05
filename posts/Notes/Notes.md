@@ -971,6 +971,34 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ---------------------
 
+### Using Flask_unsign as a module in python's code
+
+--------------------
+
+### Importing it
+
+- Use
+
+`import flask_unsign`
+
+![image](https://github.com/user-attachments/assets/3da2de37-3aa8-4512-99e4-7e425c465b2f)
+
+### Signing cookies
+
+- Use the `sign()` object which requires 2 arguments a dict  containing a value and a string containig the secret key.
+
+![image](https://github.com/user-attachments/assets/e3298eab-c958-4190-a4ec-cde63648eccb)
+
+- Use the `decode()` object to casually decode the session, it requires only one argument which is the cookie
+
+![image](https://github.com/user-attachments/assets/9bee3729-b68d-4354-9cd0-c4373f9cf2e2)
+
+- 
+
+
+
+
+
 
 
 
