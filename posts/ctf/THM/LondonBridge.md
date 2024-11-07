@@ -200,7 +200,17 @@ if __name__ == "__main__":
     app.run(host="<ip>", port=8080)
 ```
 
--
+![image](https://github.com/user-attachments/assets/957e3bf8-62bb-45be-a479-0b00a57fedaa)
+
+- Filter bypassed
+
+![image](https://github.com/user-attachments/assets/cd6ba7d8-392c-417d-b590-2238f648695e)
+
+- I was able to read the ssh's id_rsa and authorized_keys files.It should be noted that `&` should be passed to the 
+
+
+
+
 
 
 
