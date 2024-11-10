@@ -208,6 +208,14 @@ if __name__ == "__main__":
 
 - I was able to read the ssh's id_rsa and authorized_keys files.It should be noted that `&` should be passed url encoded as seen below.The `authorized_keys` file helped me identify the user.
 
+![image](https://github.com/user-attachments/assets/e3f02a06-9ecf-4f8c-b277-08d89af8fb31)
+
+- User `beth` identified
+
+![image](https://github.com/user-attachments/assets/b8de72fe-9a79-46b6-b340-2bfe23cc9da9)
+
+- Ssh access
+
 
 
 
