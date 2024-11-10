@@ -216,6 +216,30 @@ if __name__ == "__main__":
 
 - Ssh access
 
+![image](https://github.com/user-attachments/assets/a20a9946-6178-42dc-a226-dd651314bf13)
+
+### Privesc with Overlayfs
+
+- This version of ubuntu is vulnerable to kernel exploit `overlayfs`.
+
+![image](https://github.com/user-attachments/assets/14b05b42-2449-4f10-8f55-bbef74b8453c)
+
+- I transferred the exploit with python's `http.server` module and executed the binary because it was compiled.
+
+![image](https://github.com/user-attachments/assets/5b733342-95d4-4132-add6-fe1743c754b5)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/f79434f1-61f1-4dd6-bc61-9e02f72818fe)
+
+---------------
+
+### THANKS FOR READING!!!
+
+---------------
+
+
+
 
 
 
