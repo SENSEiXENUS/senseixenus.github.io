@@ -1061,6 +1061,10 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
       if __name__ == "__main__":
           app.run(host="<ip>", port=8080)
 
+  - Proof with THM's room `Londonbridge`,I passed in `&` in a url encoded format.
+
+![image](https://github.com/user-attachments/assets/145bb5e4-2778-46a9-8393-a84c993245cb)
+  
 ----------------------
 
 
