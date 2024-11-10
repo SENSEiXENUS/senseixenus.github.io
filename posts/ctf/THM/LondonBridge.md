@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 ![image](https://github.com/user-attachments/assets/cd6ba7d8-392c-417d-b590-2238f648695e)
 
-- I was able to read the ssh's id_rsa and authorized_keys files.It should be noted that `&` should be passed to the 
+- I was able to read the ssh's id_rsa and authorized_keys files.It should be noted that `&` should be passed url encoded as seen below.The `authorized_keys` file helped me identify the user.
 
 
 
