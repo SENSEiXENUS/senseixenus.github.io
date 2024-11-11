@@ -155,7 +155,7 @@ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
 
 ### Reference:
 
-- [[LD_PRELOAD]](https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/)
+- [LD_PRELOAD](https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/)
 
 ------------------
 
