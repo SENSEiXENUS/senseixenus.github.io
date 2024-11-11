@@ -67,6 +67,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Oct 2 2024]] [CheeseCTF](https://senseixenus.github.io/posts/ctf/THM/Cheesectf.html) ``LFI`` ``SYSTEMD timers`` ``XXD``
 - [[Oct 31 2024]] [Library](https://senseixenus.github.io/posts/ctf/THM/library.html) `Bruteforce` `Python Library Hijacking`
 - [[Nov 7 2024]] [LondonBridge](https://senseixenus.github.io/posts/ctf/THM/LondonBridge.html) `SSRF` `Overlayfs`
+- [[Nov 12 2024]] [Creative](https://senseixenus.github.io/posts/ctf/THM/LondonBridge.html) `SSRF` `LD_PRELOAD`
   
 * * *
 
