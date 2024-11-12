@@ -1108,6 +1108,17 @@ whoami
 
 ------------------
 
+### Xfreerdp error:
+
+![image](https://github.com/user-attachments/assets/917ff8b7-50d8-4a0f-b442-34737f6f93db)
+
+- Fix-: Remmina
+
+![image](https://github.com/user-attachments/assets/53fc3a51-1ce9-40e5-94fe-fdfa5f3ae062)
+
+- In the case of Remmina, set the `TLS` level to `0` in the case of Windows 7 rdp as seen in the image above.
+
+------------------
 
 
 
@@ -1129,5 +1140,3 @@ whoami
 
 
   
-
-
