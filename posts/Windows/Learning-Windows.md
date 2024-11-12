@@ -728,6 +728,7 @@ Management Users can access it with WinRM.
 
 ### DLL Hijacking
 
+- Open `Process Monitor` and check for a program missing a dll
 
 
 
