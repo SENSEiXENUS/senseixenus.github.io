@@ -731,12 +731,13 @@ Management Users can access it with WinRM.
 - Open `Process Monitor` and check for a program missing a dll
 
 
+-------------------------
 
+### AD Cheatsheet
 
+[HTB](https://www.hackthebox.com/blog/active-directory-penetration-testing-cheatsheet-and-guide)
 
-
-
-
+-------------------------
 
 
 
