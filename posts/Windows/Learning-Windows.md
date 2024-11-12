@@ -703,6 +703,20 @@ Management Users can access it with WinRM.
 
 --------------
 
+### Abusing autoruns
+
+- Run `C:\Users\User\Desktop\Tools\Autoruns\Autoruns64.exe` in cmd to check for `logon` autorun
+
+![image](https://github.com/user-attachments/assets/df520e32-7cce-4f44-9348-19338d37fc80)
+
+- Use `C:\Users\User\Desktop\Tools\Accesschk\accesschk64.exe -wvu "C:\Program Files\Autorun Program\program.exe" to check for permission.
+
+![image](https://github.com/user-attachments/assets/f57d8100-6e70-4949-9bc4-1a9dd3d8a7d0)
+
+- We have write access to the file,I exploited it by copying a revshell to replace it.
+
+
+
 
 
 
