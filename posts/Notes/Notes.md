@@ -1122,6 +1122,30 @@ whoami
 
 ### CRIME PROBLEM with zlib compression-:
 
+- Challenge Code-:
+
+```python3
+import os
+import json
+import zlib
+
+def lambda_handler(event, context):
+    try:
+        payload=bytes.fromhex(event["queryStringParameters"]["payload"])
+        flag = os.environ["flag"].encode()
+        message = b"Your payload is: %b\nThe flag is: %b" % (payload, flag)
+        compressed_length = len(zlib.compress(message,9))
+    except ValueError as e:
+        return {'statusCode': 500, "error": str(e)}
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps({"sniffed": compressed_length})
+    }
+```
+
+- Solve
+
 ```python3
 
 #!/usr/bin/env python3
