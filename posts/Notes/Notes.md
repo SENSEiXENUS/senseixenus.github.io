@@ -1120,8 +1120,40 @@ whoami
 
 ------------------
 
+### CRIME PROBLEM with zlib compression-:
 
+```python3
 
+#!/usr/bin/env python3
+import requests
+import json
+
+base_url = 'https://55nlig2es7hyrhvzcxzboyp4xe0nzjrc.lambda-url.us-east-1.on.aws/?payload='
+
+flag = 'udctf{'
+while True:
+    for code in range(33, 127):
+        print('[+] Try flag:', flag + chr(code))
+        url = base_url + (flag + chr(code)).encode().hex()
+        r = requests.get(url)
+        res = json.loads(r.text)
+        size = res['sniffed']
+        if size == 67:
+            flag += chr(code)
+            break
+    if flag[-1] == '}':
+        break
+
+print('[*] flag:', flag)
+```
+
+----------------
+
+### References-:
+
+- [Yocchin](https://yocchin.hatenablog.com/entry/2024/11/12/084437)
+
+----------------
 
 
 
