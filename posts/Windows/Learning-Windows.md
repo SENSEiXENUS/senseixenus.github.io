@@ -773,7 +773,11 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 
 ![image](https://github.com/user-attachments/assets/4e388732-fed2-4187-9eb1-af7b07b79824)
 
+-------------------------
 
+### Reference-:
+
+- [Tater's script repo](https://github.com/Kevin-Robertson/Tater)
 
 -------------------------
 
