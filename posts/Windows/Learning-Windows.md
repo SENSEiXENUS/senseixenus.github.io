@@ -942,6 +942,32 @@ sudo apt-get update && sudo apt-get -y install slapd ldap-utils && sudo systemct
 sudo dpkg-reconfigure -p low slapd
 ```
 
+- Config process,use
+
+`sudo dpkg-reconfigure -p low slapd`
+
+- Follow the process below
+
+![image](https://github.com/user-attachments/assets/f28c0ec8-fb39-45ce-8d20-03ad15f07d9d)
+
+![image](https://github.com/user-attachments/assets/b7d6542b-f161-46cc-8f4e-3d64da7ccfa8)
+
+![image](https://github.com/user-attachments/assets/4f0a82ca-ee0b-4fb8-8b8e-fb7e09988dd2)
+
+![image](https://github.com/user-attachments/assets/5964b8e8-cf73-43a9-b84d-b86d70d214e2)
+
+![image](https://github.com/user-attachments/assets/7123846c-7ba5-40f1-8093-663a87f570ae)
+
+![image](https://github.com/user-attachments/assets/3188414d-c7d1-4dea-b554-53f0238d29c3)
+
+
+
+
+
+
+
+
+
 
 
 
