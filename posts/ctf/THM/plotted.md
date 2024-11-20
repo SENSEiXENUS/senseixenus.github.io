@@ -110,5 +110,66 @@ Host script results:
 
 ![image](https://github.com/user-attachments/assets/f3db9e70-2bc5-4283-94d6-a60272e5793b)
 
-- 
+- The directory hosts a traffic management system.
+
+![image](https://github.com/user-attachments/assets/d7d5e659-8c04-49a5-bd35-12add382ef1f)
+
+- The system is vulnerable to sql injection to bypass the admin login page and remote code execution through unrestricted file upload.I got a script to exploit it from the github [site](https://github.com/hunkaracar/Online-Traffic-Offense-Management-System-1.0---Remote-Code-Execution-RCE-Unauthenticated-).
+
+![image](https://github.com/user-attachments/assets/b83aab87-ae20-439d-b75e-806578a4cd05)
+
+- Shell access-:
+
+![image](https://github.com/user-attachments/assets/44b8d9be-a31f-4f7e-9b1a-d7b31ba72acb)
+
+### Privesc to user `plot_admin` with crontab
+
+- I read the crontab file and noticed that user `plot_admin` has a crontab in `/var/www/scripts`
+
+![image](https://github.com/user-attachments/assets/433de64e-b195-4580-8e1e-11cbc8fa5e83)
+
+- I was able to delete `backup.sh` and write a code to pop a reverse shell
+
+![image](https://github.com/user-attachments/assets/9301ec37-9428-4851-99a6-ce20a0615431)
+
+- Reverse shell as user `plot_admin`
+
+![image](https://github.com/user-attachments/assets/dbd1220e-5905-4029-9113-1d11728d832f)
+
+### Exploiting `doas` to run `openssl` and gain root
+
+- I read `/etc/doas.conf` and discovered that I can run openssl as user `root`.
+
+![image](https://github.com/user-attachments/assets/0182c704-2a2f-49e2-9ae8-f52b49e92192)
+
+- I was able  to read the `/etc/shadow` file
+
+![image](https://github.com/user-attachments/assets/e6b926e4-63f6-4e6f-8193-a2bc4ac11b5f)
+
+- I escalated privilege by adding an hash to the /etc/passwd file and creating a new user
+
+![image](https://github.com/user-attachments/assets/d8685edc-ccda-4259-9ea1-19f7f8507e2d)
+
+- I wrote the file to `/etc/passwd`.
+
+![image](https://github.com/user-attachments/assets/9c9781f0-016c-47ee-928a-3a2612ab3e0c)
+
+- Root
+
+![image](https://github.com/user-attachments/assets/21c57ab4-cfd9-42d6-aae7-5163cd0c2a85)
+
+---------------------
+
+### THANKS FOR READING...!!!!
+
+---------------------
+
+
+
+
+
+
+
+
+
 
