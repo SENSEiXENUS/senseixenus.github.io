@@ -1,6 +1,6 @@
 ------------------
 
-### PLatform: THM
+### Platform: THM
 ### Lab: Plotted
 
 ------------------
