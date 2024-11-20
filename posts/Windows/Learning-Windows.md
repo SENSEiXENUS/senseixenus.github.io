@@ -816,10 +816,24 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 
 ![image](https://github.com/user-attachments/assets/0ed25f47-948d-401a-86c9-39939b5b519f)
 
-### Remove 8.8.8.8
+Remove 8.8.8.8
 
 - Then, use `systemctl restart NetworkManager` to restart networkmanager
 
+
+![image](https://github.com/user-attachments/assets/71c18d06-828f-4091-88df-4100e56fdd0b)
+
+![image](https://github.com/user-attachments/assets/8432cd08-493b-4692-a414-0699e1065797)
+
+- Services applying NTLM can sometimes be facing the internet e.g
+
+```
+    Internally-hosted Exchange (Mail) servers that expose an Outlook Web App (OWA) login portal.
+    Remote Desktop Protocol (RDP) service of a server being exposed to the internet.
+    Exposed VPN endpoints that were integrated with AD.
+    Web applications that are internet-facing and make use of NetNTLM.
+ ```
+- 
 
 
 
