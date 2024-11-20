@@ -984,6 +984,14 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
 
 ![image](https://github.com/user-attachments/assets/2d76c37b-99d3-4c62-80b0-f98834e167f3)
 
+- Now, use `tcpdump` to  sniff packets
+
+![image](https://github.com/user-attachments/assets/a2b0fb03-ce71-457c-8140-22a5b489e59e)
+
+![image](https://github.com/user-attachments/assets/f904eee5-b731-4bb1-a108-e3d31d78258f)
+
+
+
 
 
 
