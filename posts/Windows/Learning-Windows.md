@@ -934,6 +934,13 @@ if __name__ == "__main__":
 - LDAP Pass-back attacks can be performed when we gain access to a device's configuration where the LDAP parameters are specified. This can be, for example, the web interface of a network printer. Usually, the credentials for these interfaces are kept to the default ones, such as admin:admin or admin:password. Here, we won't be able to directly extract the LDAP credentials since the password is usually hidden. However, we can alter the LDAP configuration, such as the IP or hostname of the LDAP server. In an LDAP Pass-back attack, we can modify this IP to our IP and then test the LDAP configuration, which will force the device to attempt LDAP authentication to our rogue device. We can intercept this authentication attempt to recover the LDAP credentials.
 
 - Netcat cannot be used to grab the creds.We need to create a rogue server.
+- Use binary slapd to create a rogue server.TO install,use
+
+```bash
+sudo apt-get update && sudo apt-get -y install slapd ldap-utils && sudo systemctl enable slapd
+#You will however have to configure your own rogue LDAP server on the AttackBox as well. We will start by reconfiguring the LDAP server using the following command:
+sudo dpkg-reconfigure -p low slapd
+```
 
 
 
