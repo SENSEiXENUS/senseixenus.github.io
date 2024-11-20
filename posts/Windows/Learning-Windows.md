@@ -925,6 +925,14 @@ if __name__ == "__main__":
 
 - If this services are exposed to the internet,the same attacks leveraged on NTLM can be applied.Although, it opens up an additional attack to to grab the credentials to gain authenticated access to AD.
 
+- Authentication process
+
+![image](https://github.com/user-attachments/assets/f13bbc4b-c220-4018-9115-d3840e6b9590)
+
+### LDAP Pass-back Attacks
+
+
+
 
 
 
