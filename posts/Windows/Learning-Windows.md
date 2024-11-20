@@ -960,6 +960,31 @@ sudo dpkg-reconfigure -p low slapd
 
 ![image](https://github.com/user-attachments/assets/3188414d-c7d1-4dea-b554-53f0238d29c3)
 
+- Set the server to recieve plain LOGIN credentials with an `ldif` file.
+
+```ldif
+#olcSaslSecProps.ldif
+dn: cn=config
+replace: olcSaslSecProps
+olcSaslSecProps: noanonymous,minssf=0,passcred
+```
+- Config meaning
+  
+    olcSaslSecProps: Specifies the SASL security properties
+    noanonymous: Disables mechanisms that support anonymous login
+    minssf: Specifies the minimum acceptable security strength with 0, meaning no protection.
+
+- Path up the server with the command below
+
+      sudo ldapmodify -Y EXTERNAL -H ldapi:// -f ./olcSaslSecProps.ldif && sudo service slapd restart
+
+- Verify the credentials settings with
+
+      ldapsearch -H ldap:// -x -LLL -s base -b "" supportedSASLMechanisms
+
+![image](https://github.com/user-attachments/assets/2d76c37b-99d3-4c62-80b0-f98834e167f3)
+
+
 
 
 
@@ -997,6 +1022,7 @@ sudo dpkg-reconfigure -p low slapd
 
 
   
+
 
 
 
