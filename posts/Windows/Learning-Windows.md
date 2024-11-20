@@ -808,6 +808,11 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 
 -------------------------
 
+### Learning AD exploitation
+
+-------------------------
+
+### NTLM Authenticated Services
 
 
 
