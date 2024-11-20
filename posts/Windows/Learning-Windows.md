@@ -914,6 +914,18 @@ if __name__ == "__main__":
 
 ![image](https://github.com/user-attachments/assets/52714f8e-8a3a-434a-94cf-681784bf70de)
 
+### LDAP Bind Credentials
+
+- LDAP auth is similar to NTLM AYTH,the application directly verifies the user's crenetials.The application has a set of creds that it uses to verify the AD user's creds.Although, non-microsoft applications that integrates wuth AD uses it. e.g
+ - Gitlab
+ - Jenkins
+ - Custom-developed web applications
+ - Printers
+ - Vpns
+
+- If this services are exposed to the internet,the same attacks leveraged on NTLM can be applied.Although, it opens up an additional attack to to grab the credentials to gain authenticated access to AD.
+
+
 
 
 
