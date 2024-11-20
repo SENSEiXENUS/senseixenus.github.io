@@ -1179,6 +1179,13 @@ print('[*] flag:', flag)
 
 ----------------
 
+### Writing hash in /etc/passwd format
+
+- Example
+
+```rootzy:$1$sJ7Zcpwb$fKpiAes0t0ocZAHeUzn6x1:0:0:root:/root:/bin/bash```
+
+-----------------
 
 
 
