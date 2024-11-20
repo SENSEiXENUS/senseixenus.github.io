@@ -812,7 +812,19 @@ BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
 
 -------------------------
 
-### NTLM Authenticated Services
+### DNS setting in Network Configuration
+
+![image](https://github.com/user-attachments/assets/0ed25f47-948d-401a-86c9-39939b5b519f)
+
+### Remove 8.8.8.8
+
+- Then, use `systemctl restart NetworkManager` to restart networkmanager
+
+
+
+
+
+
 
 
 
