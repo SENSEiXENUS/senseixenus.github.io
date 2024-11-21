@@ -1024,6 +1024,22 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
 ![image](https://github.com/user-attachments/assets/258289b9-b6c4-46a9-a8ca-2da81d15c0ed)
 
 
+### MICROSOFT DEVELOPMENT TOOLKITS
+
+- Large organisations need tools to deploy and manage the infrastructure of the estate. In massive organisations, you can't have your IT personnel using DVDs or even USB Flash drives running around installing software on every single machine. Luckily, Microsoft already provides the tools required to manage the estate. However, we can exploit misconfigurations in these tools to also breach AD.
+
+### PXE BOOT
+
+- Organizations use PXE boot to allow new devices that are connected to the network to load and install the OS directly over a network connection. MDT can be used to create, manage, and host PXE boot images. PXE boot is usually integrated with DHCP, which means that if DHCP assigns an IP lease, the host is allowed to request the PXE boot image and start the network OS installation process. The communication flow is shown in the diagram below:
+
+![image](https://github.com/user-attachments/assets/5c82863a-3ffb-4d5c-99e4-8e7454f54769)
+
+- The boot image can be received over tftp
+- Once the process is performed, the client will use a TFTP connection to download the PXE boot image. We can exploit the PXE boot image for two different purposes:
+
+    - Inject a privilege escalation vector, such as a Local Administrator account, to gain Administrative access to the OS once the PXE boot has been completed.
+    - Perform password scraping attacks to recover AD credentials used during the install.
+
 
 
 
