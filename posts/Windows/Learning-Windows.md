@@ -1017,9 +1017,12 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
 
 ![image](https://github.com/user-attachments/assets/21ff839b-a6f9-4b6f-b51e-128b267be9ea)
 
-- Use hashcat to crack the NTLM hash
+- Use hashcat to crack the NTLM hash or john
 
 `hashcat -m 5600 <hash file> <password file> --force`
+
+![image](https://github.com/user-attachments/assets/258289b9-b6c4-46a9-a8ca-2da81d15c0ed)
+
 
 
 
