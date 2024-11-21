@@ -1009,6 +1009,22 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
 
 ![image](https://github.com/user-attachments/assets/edbdcdfd-1a24-428c-af2f-8f34572cefdc)
 
+- If the responder triggers any error,try to stop the service running on that port
+
+![image](https://github.com/user-attachments/assets/36be688c-7b4b-4425-bddb-8f5b58327510)
+
+- Use one liner `ss --udp --tcp --listen --process` to spot ports running
+
+![image](https://github.com/user-attachments/assets/21ff839b-a6f9-4b6f-b51e-128b267be9ea)
+
+- Use hashcat to crack the NTLM hash
+
+`hashcat -m 5600 <hash file> <password file> --force`
+
+
+
+
+
 
 
 
