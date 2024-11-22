@@ -1040,6 +1040,25 @@ olcSaslSecProps: noanonymous,minssf=0,passcred
     - Inject a privilege escalation vector, such as a Local Administrator account, to gain Administrative access to the OS once the PXE boot has been completed.
     - Perform password scraping attacks to recover AD credentials used during the install.
 
+### Credentials in Configuration files
+
+- The target in this scenario is a Mcafee's database
+
+![image](https://github.com/user-attachments/assets/86b81975-8f82-4318-bc75-2399d82eeb75)
+
+- Copy to your host machine with scp `secure copy`
+
+  `scp <user>@<host>:<c:\<file>> `
+
+- Using sqlite3 to check user values, use `.open <db_name>` to open a db
+
+![image](https://github.com/user-attachments/assets/10ee983e-2e90-4dfb-9df5-e1eaaf7ecfa9)
+
+- Crack the encrypted password string with this [tool](https://github.com/funoverip/mcafee-sitelist-pwd-decryption)
+
+Usage-:```python mcafee_sitelist_pwd_decrypt.py <string>```
+
+![image](https://github.com/user-attachments/assets/4b4f732e-4862-4678-915e-c1bc0ae2e58b)
 
 
 
