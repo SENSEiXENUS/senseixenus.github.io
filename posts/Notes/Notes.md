@@ -1187,6 +1187,13 @@ print('[*] flag:', flag)
 
 -----------------
 
+### Using scp
+
+- Window files-:
+  ` scp thm@THMJMP1.za.tryhackme.com:C:/ProgramData/McAfee/Agent/DB/ma.db . `
+
+-----------------
+
 
 
 
