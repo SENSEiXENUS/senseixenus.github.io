@@ -116,11 +116,14 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/2541ffb8-859e-4b2b-89a0-284a97ae8742)
 
-- After playing with headers, I noticed that a user's ip can make 9 requests and if the user's ip is changed to another one with `X-Forwarded-For`, the user will gain access to more request.To sum it up,changing the request's ip after 8 requests can bypass the rate-limiting filter.
+- After playing with headers, I noticed that a user's ip can make 9 requests and if the user's ip is changed to another one with `X-Forwarded-For`, the user's tries will reset to default as seen below.To sum it up,changing the request's ip after 8 requests can bypass the rate-limiting filter.It is crucial to note that this rate-limit header is based on sessions.
 
 ![image](https://github.com/user-attachments/assets/b17a7b61-aa9b-4c85-938c-854a78588221)
 
 ![image](https://github.com/user-attachments/assets/f0c6d58a-a8a4-4d88-a92e-f2f503201686)
+
+- I wrote a python script to bruteforce the otp and it took multiple tries to get it because we have to bruteforce within `180 seconds`.
+
 
 
 
