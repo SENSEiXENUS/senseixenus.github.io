@@ -177,6 +177,52 @@ if __name__ == "__main__":
    process.join()
 ```
 
+![image](https://github.com/user-attachments/assets/2d0ef830-19f4-4062-9811-e7d64bcaedff)
+
+- Now we can login as user `tester` with password `nippedbud`
+
+![image](https://github.com/user-attachments/assets/d3bebd2a-9d31-4311-9b05-aca03e00ce38)
+
+- I tried to execute shell_command `ls` and spotted a jwt token in the request.
+
+![image](https://github.com/user-attachments/assets/d17207d5-51f5-4422-a431-5fcbcc3c9907)
+
+- After decoding the with `jwt.io`, I noticed the `kid` header reads a key stored in a file `/var/www/mykey.key`.
+
+![image](https://github.com/user-attachments/assets/53e7f09a-7168-4fcc-a8b7-6b41e0595318)
+
+### JWT Bypass
+
+- In this scenario,if we can point header `kid` to another key,we can use the new key that we specified to sign the token.
+- I ran `ls` in the `execute_command.php` page and noticed a key in the current directory.A normal user can only run `ls` in the page.Only an admin can run other commands
+
+![image](https://github.com/user-attachments/assets/b59355c0-be30-4fb6-b41c-6e70198acf5a)
+
+- Contents of the key file
+
+![image](https://github.com/user-attachments/assets/3de1bfde-c4fe-46ec-bdbe-30c55746ae00)
+
+- I signed a new cookie with `jwt.io`.
+
+![image](https://github.com/user-attachments/assets/b0e4b2dc-46da-41af-a7a1-0f1b7a5c91fd)
+
+- RCE achieved-:
+
+![image](https://github.com/user-attachments/assets/02b38593-b1a7-466e-bff3-d31f0136a413)
+
+
+-------------------
+
+### THANKS FOR READING
+
+-------------------
+
+
+
+
+
+
+
 
 
 
