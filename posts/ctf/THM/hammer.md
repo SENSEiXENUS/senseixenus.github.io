@@ -100,11 +100,29 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 - Ffuf's result using `hmr`
 
-- I checked `hmr_logs` and discovered a file `errors_log` which leaked an email
+ ![image](https://github.com/user-attachments/assets/db64cd1c-5594-481d-b3d0-bed9e9a0cc92)
+
+- I checked `hmr_logs` and discovered a file `errors_logS` which leaked an email `tester@hammer.thm`
 
 ![image](https://github.com/user-attachments/assets/85364c61-8c46-4776-971c-a2c7d85416bc)
 
 ### RATE-LIMITING
 
-- 
+- I verified the email in the `reset_password.php` page.
+
+![image](https://github.com/user-attachments/assets/8f28eb8a-b0c2-4b5f-98f3-58a79250de32)
+
+- I intercepted the page and tried to fuzz the otp but I noticed a rate-limiting heder in the response.A user can only make 10 requests in a row and if it is more than that a `rate limit` message will pop up.
+
+![image](https://github.com/user-attachments/assets/2541ffb8-859e-4b2b-89a0-284a97ae8742)
+
+- After playing with headers, I noticed that a user's ip can make 9 requests and if the user's ip is changed to another one with `X-Forwarded-For`, the user will gain access to more request.To sum it up,changing the request's ip after 8 requests can bypass the rate-limiting filter.
+
+![image](https://github.com/user-attachments/assets/b17a7b61-aa9b-4c85-938c-854a78588221)
+
+![image](https://github.com/user-attachments/assets/f0c6d58a-a8a4-4d88-a92e-f2f503201686)
+
+
+
+
 
