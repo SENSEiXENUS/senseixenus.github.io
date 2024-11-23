@@ -122,7 +122,9 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/f0c6d58a-a8a4-4d88-a92e-f2f503201686)
 
-- I wrote a python script to bruteforce the otp and it took multiple tries to get it because we have to bruteforce within `180 seconds`.
+- I wrote a python script to bruteforce the otp and it took multiple tries to get it because we have to bruteforce within `180 seconds`. The script also changes the password.
+
+```python3
 
 
 
