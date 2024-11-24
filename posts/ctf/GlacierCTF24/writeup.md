@@ -159,4 +159,16 @@ tar.addfile(info,io.BytesIO(php_shell))
 tar.close()
 ```
 
--
+- Then,I uploaded it with curl
+
+![image](https://github.com/user-attachments/assets/9df73440-efd6-4ed6-8bd3-d326fa14643e)
+
+- RCE achieved-:
+
+![image](https://github.com/user-attachments/assets/9e01d743-08c4-4759-a13b-10b288b4986a)
+
+- Shell access-:
+
+
+
+
