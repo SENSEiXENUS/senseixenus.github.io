@@ -123,3 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link rel="stylesheet" type="text/css" href="styles.css">
 <a href="index.php" class="back-button">Back to Homepage</a>
 ```
+
+- The php file takes in a files via the `file` parameter, checks if the file ends with `gz` and only takes in `gzip` archives to prevent upload of php shells.It writes the file to `/tmp` directory.Lastly,it executes the python script that will be explain below and passes the uploaded gzip file as an argument to function `exec()`.We cannot pass in malicious systemcommand because of `escapeshellarg()`.
+
+```php
+exec("python3 /usr/check_for_malicious_code.py " . escapeshellarg($targetFile), $output, $returnCode);
+```
