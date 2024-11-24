@@ -11,4 +11,17 @@
 ### Challenges
 
 - Web
-  - Losfuzzybytes
+  - Fuzzybytes
+
+---------------
+
+### Web: Fuzzybytes
+
+![image](https://github.com/user-attachments/assets/bc6606d4-73d5-4934-b393-5305bc210a93)
+
+---------------
+
+### CODE REVIEW
+
+
+  
