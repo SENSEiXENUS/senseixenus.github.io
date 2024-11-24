@@ -46,5 +46,19 @@ RUN chown www-data:www-data /var/www/html/databases
 RUN chmod +s /bin/tar
 ```
 
-- 
+- The docker script copies the content of `web` to `/var/www/html`, copies the python script `check_for_malicious_code.py` to directory `/usr`.
+
+```docker
+COPY ./config/php.ini $PHP_INI_DIR/php.ini
+COPY ./web /var/www/html
+COPY ./check_for_malicious_code.py /usr/
+```
+- The major ones to note are outlined below,the flag file is copied to `/root/flag.txt` which means we need root privilege to read it.Secondly, ownership of directory `/var/www/html/databases` is granted to user `www-data` and lastly, suid permissions is granted to binary `tar`.
+
+```docker
+COPY ./flag.txt /root/flag.txt
+
+RUN chown www-data:www-data /var/www/html/databases
+RUN chmod +s /bin/tar
+```
 
