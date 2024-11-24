@@ -69,6 +69,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Nov 7 2024]] [LondonBridge](https://senseixenus.github.io/posts/ctf/THM/LondonBridge.html) `SSRF` `Overlayfs`
 - [[Nov 12 2024]] [Creative](https://senseixenus.github.io/posts/ctf/THM/Creative.html) `SSRF` `LD_PRELOAD`
 - [[Nov 18 2024]] [Plotted](https://senseixenus.github.io/posts/ctf/THM/plotted.html) `TOMS 1.0 RCE` `Cron jobs` `doas rule` `openssl`
+- [[Nov 23 2024]] [Hammer](https://senseixenus.github.io/posts/ctf/THM/plotted.html) `Rate-Limiting bypass` `Jwt forgery`
   
 * * *
 
@@ -111,5 +112,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[October 27 2024]] [HeroCTF24](https://senseixenus.github.io/posts/ctf/HeroCTF24/writeup.html)
 - [[November 3 2024]] [HTBMeetup Cameroon](https://senseixenus.github.io/posts/ctf/HTPMeetupCmr/writeup.html)
 - [[November 3 2024]] [USC_CTF](https://senseixenus.github.io/posts/ctf/USC-CTF/writeup.html)
+- [[November 25 2024]] [GlacierCTF](https://senseixenus.github.io/posts/ctf/GlacierCTF24/writeup.html)
     
 * * *
