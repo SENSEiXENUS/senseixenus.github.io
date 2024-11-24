@@ -177,6 +177,12 @@ tar.close()
 
 - Flag-:```gctf{c0nGr4tZ_on_Z1p_sLiDinG_4nD_Tar_diving}```
 
+-------------
 
+### Reference-:
+
+- [Mindsdb](https://github.com/mindsdb/mindsdb/security/advisories/GHSA-2g5w-29q9-w6hx)
+
+--------------
 
 
