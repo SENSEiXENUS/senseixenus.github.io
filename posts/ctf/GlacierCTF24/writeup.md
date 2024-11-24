@@ -46,7 +46,7 @@ RUN chown www-data:www-data /var/www/html/databases
 RUN chmod +s /bin/tar
 ```
 
-- The docker script copies the content of `web` to `/var/www/html`, copies the python script `check_for_malicious_code.py` to directory `/usr`.
+- The docker script copies the content of `web` to `/var/www/html` and copies the python script `check_for_malicious_code.py` to directory `/usr`.
 
 ```docker
 COPY ./config/php.ini $PHP_INI_DIR/php.ini
@@ -61,4 +61,65 @@ COPY ./flag.txt /root/flag.txt
 RUN chown www-data:www-data /var/www/html/databases
 RUN chmod +s /bin/tar
 ```
+- Upload.php-:
 
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $uploadDir = "/tmp/";
+    $targetFile = $uploadDir . basename($_FILES["file"]["name"]);
+    $fileExtension = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+    $allowedExtensions = array('gz');
+
+    echo '<div id="log"></div>';
+
+    if (!in_array($fileExtension, $allowedExtensions)) {
+        echo "Sorry, only .tar.gz files are allowed.";
+        exit();
+    }
+
+    ob_start();
+
+    
+    function addLog($message) {
+        echo "<script>document.getElementById('log').innerHTML += '$message<br>';</script>";
+        ob_flush();
+        flush();
+    }
+
+    addLog("Unpacking file...");
+    
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
+        addLog("The file " . htmlspecialchars(basename($_FILES["file"]["name"])) . " has been uploaded.");
+
+        if ($fileExtension === 'gz') {
+            addLog("Scanning file...");
+
+            // Execute python malware checker
+            exec("python3 /usr/check_for_malicious_code.py " . escapeshellarg($targetFile), $output, $returnCode);
+
+            if ($returnCode === 0) {
+                addLog("Python script executed successfully.");
+            } else {
+                addLog("Error executing Python script.");
+            }
+
+            unlink($targetFile);
+            addLog("Cleaning up...");
+
+            addLog("Done.");
+
+        }
+    } else {
+        addLog("Sorry, there was an error uploading your file.");
+    }
+
+    ob_end_flush();
+}
+?>
+
+
+
+<link rel="stylesheet" type="text/css" href="styles.css">
+<a href="index.php" class="back-button">Back to Homepage</a>
+```
