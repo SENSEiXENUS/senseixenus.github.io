@@ -129,3 +129,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ```php
 exec("python3 /usr/check_for_malicious_code.py " . escapeshellarg($targetFile), $output, $returnCode);
 ```
+- The main sink is in the python script which is `tarfile.extractall()`.The function `tarfile.extractall()` is vulnerable to path traversal in the sense that if an archived files is saved as `../../shell.php`,instead of saving it in the current directory.It parses the relative path and moves up 2 directories to save the file.In this scenario,the code extracts our gz file to `/tmp/<dirname>/`,we need to move up two directories to save our php shell in `/var/www/html/databases` since we have write access to it.
+
+```python3
+try:
+    with tarfile.open(tar_file_path, 'r:gz') as tar:
+        if not os.path.exists("/tmp/files_for_checking"):
+            os.mkdir("/tmp/files_for_checking")
+        tar.extractall("/tmp/files_for_checking")
+    print("Successfully extracted the contents of the .tar file.")
+```
+
