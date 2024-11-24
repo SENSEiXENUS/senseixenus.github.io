@@ -169,6 +169,14 @@ tar.close()
 
 - Shell access-:
 
+![image](https://github.com/user-attachments/assets/0d042417-02fc-490f-8275-0353abbc5b3b)
+
+- I read the flag with suid binary `tar`.
+
+![image](https://github.com/user-attachments/assets/34315eb1-3d38-410a-b2e9-c13362d0ab34)
+
+- Flag-:```gctf{c0nGr4tZ_on_Z1p_sLiDinG_4nD_Tar_diving}```
+
 
 
 
