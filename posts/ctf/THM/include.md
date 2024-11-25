@@ -276,9 +276,35 @@ Service Info: Host:  mail.filepath.lab; OS: Linux; CPE: cpe:/o:linux:linux_kerne
 
 ![image](https://github.com/user-attachments/assets/ffa00f45-bc59-40c4-a23c-41f3fa0ca1bc)
 
-- I checked the view profile tab and notice an isAdmin value set to `false` and set it to `true` since in case admin access is required for other functionalities.
+- I checked the view profile tab and notice an isAdmin value set to `false` and set it to `true` since in case admin access is required for other functionalities.That functionality that allows us to add json keys and values is vulnerable to `broken access control`.
 
 ![image](https://github.com/user-attachments/assets/ca929718-76b1-4af4-bd23-74d454299b7b)
+
+- New tabs got unlocked in the navbar
+
+![image](https://github.com/user-attachments/assets/7881ccf9-ba04-4687-99e0-f6ee01b10f80)
+
+- I checked the `api` tab and noticed a new api running on port `5000` which reveals admin users credentials.We need a vulnerability like `Server Side Request Forgery` to communicate to an internal port.
+
+![image](https://github.com/user-attachments/assets/fda30f29-75c0-4020-bd11-f25b78bfa4c3)
+
+- I checked the `settings` endpoint,it allows user to paste url pointing to an image so that it can be downloaded and set as profile image for a user.We can use this endpoint to load the internal port and communicate with internal services.
+
+![image](https://github.com/user-attachments/assets/1fadb7be-2e02-48fa-a555-a2d56f29349d)
+
+- Credentials
+
+![image](https://github.com/user-attachments/assets/dff686bf-86ac-4b87-9359-eb657008c362)
+
+- The sysmon credentials belongs to the admin server for port `50000` which is an http server.Admin access
+
+![image](https://github.com/user-attachments/assets/7b9eb1d5-1902-47b9-a7d9-2e46eef680fa)
+
+- I viewed the source code and noticed a file `profile.php` that reads a file via the image param.
+
+
+
+
 
 
 
