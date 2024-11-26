@@ -1,4 +1,4 @@
-* * *
+![image](https://github.com/user-attachments/assets/90b21309-2905-4de5-b316-d439db3dabb2)* * *
 NOTES
 * * *
 
@@ -1244,6 +1244,23 @@ RCPT TO:<?php system($_GET['c']); ?>
 ![image](https://github.com/user-attachments/assets/70db8db3-5811-4074-bc70-e8a89b69d31e)
 
 --------------
+
+### Fixing git --auto update alias and gau clash
+
+- Error-:
+
+![image](https://github.com/user-attachments/assets/ec0cf078-bb76-4f06-80bf-b3f80852eb49)
+
+- Use find to check for "git.plugin.zsh" file
+
+![image](https://github.com/user-attachments/assets/154271cb-3659-4f20-b901-7de03ddbfef5)
+
+- Then edit the alias
+
+![image](https://github.com/user-attachments/assets/032168b9-a26c-4db7-8f20-3ee86159a2bd)
+
+- Use `source ~/.zshrc` to reload
+- 
 
 
 
