@@ -300,7 +300,47 @@ Service Info: Host:  mail.filepath.lab; OS: Linux; CPE: cpe:/o:linux:linux_kerne
 
 ![image](https://github.com/user-attachments/assets/7b9eb1d5-1902-47b9-a7d9-2e46eef680fa)
 
-- I viewed the source code and noticed a file `profile.php` that reads a file via the image param.
+- I viewed the source code and noticed a file `profile.php` that reads a file via the `img` parameter.
+
+![image](https://github.com/user-attachments/assets/eaf3991b-bfcc-44d6-8052-832ca6f71c0c)
+
+- I tried the basic attacks `../../` to read `/etc/passwd` but I wasn't getting any positive results.I fuzzed with Jhaddix's LFI wordlist and got a hit.
+
+![image](https://github.com/user-attachments/assets/217d6cf0-46ab-4352-a5f7-437dc903da95)
+
+### LFI2RCE
+
+- I need to elevate the LFI to RCE since it is a php web app which is possible either through php filters or log files that we have write access. Although, the latter worked.
+
+- I was able to read the `/var/log/mail.log` which is the log file for the smtp service running on port `25`.
+
+![image](https://github.com/user-attachments/assets/a6c7ce05-23f1-42f6-bfa5-8499357a2d78)
+
+- I wrote a php shell into the log by trying  to send a mail as seen below.
+
+![image](https://github.com/user-attachments/assets/e828aa79-9b7a-420d-9bce-2e4871530ab1)
+
+- RCE achieved,we can pass shell commands with the `c` get parameter.
+
+![image](https://github.com/user-attachments/assets/6f592267-ff93-499a-82f3-00cd5d707f95)
+
+- Final flag-:
+
+![image](https://github.com/user-attachments/assets/a9d8a72a-ec5c-4550-9a8e-e59f735d92dc)
+
+------------------
+
+### REFERENCES-:
+
+- [LFI2RCE](https://github.com/RoqueNight/LFI---RCE-Cheat-Sheet)
+- [Jhaddix's list](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt)
+
+------------------
+
+
+
+
+
 
 
 
