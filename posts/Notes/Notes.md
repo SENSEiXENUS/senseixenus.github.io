@@ -1258,6 +1258,7 @@ RCPT TO:<?php system($_GET['c']); ?>
 ▻ mv gau-linux-amd64 /usr/bin/getallurls
 ```
 - You can get the tar files from [releases](https://github.com/lc/gau/releases)
+- Or just remove the alias from `git.plugin.zsh`.Filepath is `~/.oh-my-zsh/plugins/git/git.plugin.zsh`.The alias conflicts with gau.
 
 --------------
 
