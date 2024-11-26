@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/90b21309-2905-4de5-b316-d439db3dabb2)* * *
+* * *
 NOTES
 * * *
 
@@ -1251,16 +1251,16 @@ RCPT TO:<?php system($_GET['c']); ?>
 
 ![image](https://github.com/user-attachments/assets/ec0cf078-bb76-4f06-80bf-b3f80852eb49)
 
-- Use find to check for "git.plugin.zsh" file
+- Rename gau
 
-![image](https://github.com/user-attachments/assets/154271cb-3659-4f20-b901-7de03ddbfef5)
+```
+▻ tar xvf gau-linux-amd64.tar
+▻ mv gau-linux-amd64 /usr/bin/getallurls
+```
+- You can get the tar files from [releases](https://github.com/lc/gau/releases)
 
-- Then edit the alias
+--------------
 
-![image](https://github.com/user-attachments/assets/032168b9-a26c-4db7-8f20-3ee86159a2bd)
-
-- Use `source ~/.zshrc` to reload
-- 
 
 
 
