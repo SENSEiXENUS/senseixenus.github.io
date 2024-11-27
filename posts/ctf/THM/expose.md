@@ -141,4 +141,24 @@ PORT     STATE SERVICE                 REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-- Ffuf's output
+- Ffuf's output for http serve ron port `1337`
+
+![image](https://github.com/user-attachments/assets/e957d657-2132-490f-8077-330ce70b8af1)
+
+- The admin page in directory `admin_101` hosts a login page with the username value `hacker@root.thm`.
+
+![image](https://github.com/user-attachments/assets/8166b15b-e817-4c66-a3e3-b228203c61cf)
+
+- I tried the basic sql injection payload `<username>'--` and got an `undefined` alert.
+
+![image](https://github.com/user-attachments/assets/1b2fbdf1-7066-430b-beb8-3e2107e35a7b)
+
+- Then, I tested for sql injection with the `ghauri` tool and was able to dump the data.
+
+- Important highlights are detailed in the pictures.The first pictures shows the password for the username which we don't need because it is a rabbit hole while the second picture shows urls and a password hash.
+
+
+
+
+
+
