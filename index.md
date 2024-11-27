@@ -71,6 +71,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Nov 18 2024]] [Plotted](https://senseixenus.github.io/posts/ctf/THM/plotted.html) `TOMS 1.0 RCE` `Cron jobs` `doas rule` `openssl`
 - [[Nov 23 2024]] [Hammer](https://senseixenus.github.io/posts/ctf/THM/plotted.html) `Rate-Limiting bypass` `Jwt forgery`
 - [[Nov 25 2024]] [Include](https://senseixenus.github.io/posts/ctf/THM/include.html) `Broken Access Control` `SSRF` `LFI2RCE`
+- [[Nov 26 2024]] [Expose](https://senseixenus.github.io/posts/ctf/THM/expose.html) `SQLI` `LFI` `Upload bypass` `SUID`
   
 * * *
 
