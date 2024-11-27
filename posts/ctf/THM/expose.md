@@ -347,7 +347,34 @@ var fileExtension = fileName.split('.').pop().toLowerCase();
 
 ![image](https://github.com/user-attachments/assets/a5ffb5de-0995-4eac-b100-69a928c35064)
 
-- I used the post parameter for the shell page because somehow the dev restricted the apache's server url which affects only the gat parameter.
+- I used the post parameter for the shell page because somehow the dev restricted the apache's server url which affects only the gat parameter.RCE achieved
+
+![image](https://github.com/user-attachments/assets/6d79dbaa-76f4-43d7-bbb3-b9af41532f5e)
+
+- Shell access-:
+
+ ![image](https://github.com/user-attachments/assets/2948113c-408f-4a94-8b77-c694b34f6c63)
+
+ ### PRIVESC with suid `find`
+
+ - I found ssh creds for a user `zeamkish` and gained access to the account.
+
+ ![image](https://github.com/user-attachments/assets/57c1dd3b-1cc0-418d-b550-eebe08d8faeb)
+
+ - I checked for suid binaries with `find / -perm -u=s -type f 2</dev/null` and discovered binary `find` with suid permissions
+
+ ![image](https://github.com/user-attachments/assets/5fafc065-1f75-470f-b1b8-8ab1b0bd5e46)
+
+ - Root-:
+
+ ![image](https://github.com/user-attachments/assets/220e498c-b389-42c9-a9b5-d7eb9c270c9b)
+
+
+ ------------------
+
+ ### THANKS FOR READING.......!!!
+
+ -----------------
 
 
 
@@ -364,3 +391,6 @@ var fileExtension = fileName.split('.').pop().toLowerCase();
 
 
 
+
+
+- 
