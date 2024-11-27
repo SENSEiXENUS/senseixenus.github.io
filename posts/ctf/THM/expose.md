@@ -141,4 +141,4 @@ PORT     STATE SERVICE                 REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
--
+- Ffuf's output
