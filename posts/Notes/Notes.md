@@ -1359,6 +1359,22 @@ bash package.sh
 
 ![image](https://github.com/user-attachments/assets/cbf00241-3470-4840-8233-4875641fcb47)
 
+- Teamserver-: This is the file that will start the Armitage server that multiple users will be able to connect to. This file takes two arguments:
+  - IP Address-: Your fellow Red Team Operators will use the IP Address to connect to your Armitage server.
+  - Shared Password-: Your fellow Red Team Operators will use the Shared Password to access your Armitage server.
+
+### Preparing the Environment
+
+- Postgresql is required to initialize Armitage
+
+
+
+- You cannot be the root user while trying to initialized msfdb
+
+```bash
+
+
+
 
 
 
