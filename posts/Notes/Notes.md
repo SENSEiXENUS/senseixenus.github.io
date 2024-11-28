@@ -1312,6 +1312,17 @@ if (isset($_POST['username'])) {
 - Visual Basic Application/Scripts
 - Microsoft Office Documents
 
+### MODULES-:
+
+- Modules are a core component of any C2 Framework; they add the ability to make agents and the C2 server more flexible. Depending on the C2 Framework, scripts must be written in different languages. Cobalt Strike has “Aggressor Scripts”, which are written in the “Aggressor Scripting Language”. PowerShell Empire has support for multiple languages, Metasploit’s Modules are written in Ruby, and many others are written in many other languages.
+- Post-Exploitation modules for anything after initial compromise e.g running SharpHound.ps1 to find paths of lateral movement, or it could be as complex as dumping LSASS and parsing credentials in memory.
+- Pivoting Modules-: ne of the last major components of a C2 Framework is its pivoting modules, making it easier to access restricted network segments within the C2 Framework. If you have Administrative Access on a system, you may be able to open up an “SMB Beacon”, which can enable a machine to act as a proxy via the SMB protocol. This may allow machines in a restricted network segment to communicate with your C2 server.
+
+![image](https://github.com/user-attachments/assets/13f625ad-5652-4a94-93c5-5261aa15fd4f)
+
+### Domain Fronting
+
+- 
 
 
 
