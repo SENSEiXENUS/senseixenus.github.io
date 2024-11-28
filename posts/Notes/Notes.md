@@ -1344,9 +1344,14 @@ if (isset($_POST['username'])) {
   - [Testing C2s](https://howto.thec2matrix.com/)
 
 ### Setting up Armitage-:
+- Steps-:
+
+```bash
+git clone https://gitlab.com/kalilinux/packages/armitage.git && cd armitage
+bash package.sh
 
 
-
+```
 
 
 
