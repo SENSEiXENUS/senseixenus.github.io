@@ -1349,9 +1349,19 @@ if (isset($_POST['username'])) {
 ```bash
 git clone https://gitlab.com/kalilinux/packages/armitage.git && cd armitage
 bash package.sh
-
-
 ```
+
+- Use Java 11 to build
+
+![image](https://github.com/user-attachments/assets/5298f58b-361d-4d96-a568-95f8c168177c)
+
+- Change directory to `armitage/release/unix` to see jar files
+
+![image](https://github.com/user-attachments/assets/cbf00241-3470-4840-8233-4875641fcb47)
+
+
+
+
 
 
 
