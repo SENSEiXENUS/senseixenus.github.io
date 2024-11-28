@@ -1322,7 +1322,27 @@ if (isset($_POST['username'])) {
 
 ### Domain Fronting
 
-- 
+- Domain Fronting utilizes a known, good host (for example) Cloudflare. Cloudflare runs a business that provides enhanced metrics on HTTP connection details as well as caching HTTP connection requests to save bandwidth.  Red Teamers can abuse this to make it appear that a workstation or server is communicating with a known, trusted IP Address. Geolocation results will show wherever the nearest Cloudflare server is, and the IP Address will show as ownership to Cloudflare.
+
+![image](https://github.com/user-attachments/assets/ca9d82fb-4843-4180-a1bf-06c31080797a)
+
+### C2 Profiles-:
+
+- The next technique goes by several names by several different products, "NGINX Reverse Proxy", "Apache Mod_Proxy/Mod_Rewrite",  "Malleable HTTP C2 Profiles", and many others. However, they are all more or less the same. All of the Proxy features more or less allow a user to control specific elements of the incoming HTTP request. Let's say an incoming connection request has an "X-C2-Server" header; we could explicitly extract this header using the specific technology that is at your disposal (Reverse Proxy, Mod_Proxy/Rewrite, Malleable C2 Profile, etc.) and ensure that your C2 server responds with C2 based responses. Whereas if a normal user queried the HTTP Server, they might see a generic webpage. This is all dependent on your configuration.
+
+![image](https://github.com/user-attachments/assets/8d052993-545e-45c3-9c55-2b2818901f16)
+
+
+### C2 framework
+
+- Free-:
+  - Metasploit
+  - Armitage
+  - Powershell Empire/Starkiller
+  - Covenant
+  - Slither
+  - [Testing C2s](https://howto.thec2matrix.com/)
+
 
 
 
