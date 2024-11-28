@@ -1304,6 +1304,16 @@ if (isset($_POST['username'])) {
   - Stage 2 is loaded into memory on the Victim Workstation
   - C2 Beaconing Initializes, and the Red Teamer/Threat Actors can engage with the Victim on the C2 Server.
 
+### PAYLOAD FORMATS-:
+
+- PowerShell Scripts -:Which may contain C# Code and may be compiled and executed with the Add-Type commandlet
+- HTA Files
+- JScript Files
+- Visual Basic Application/Scripts
+- Microsoft Office Documents
+
+
+
 
 
 
