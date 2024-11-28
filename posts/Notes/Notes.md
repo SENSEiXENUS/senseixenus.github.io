@@ -1367,11 +1367,23 @@ bash package.sh
 
 - Postgresql is required to initialize Armitage
 
+![image](https://github.com/user-attachments/assets/5786e9ea-f6bd-4b58-8e65-bdc1334fc63f)
 
-
-- You cannot be the root user while trying to initialized msfdb
+- You need to be root while trying to initialized msfdb
 
 ```bash
+sudo msfdb delete
+sudo msfdb init
+```
+
+![image](https://github.com/user-attachments/assets/681c5897-93a4-4ba7-944b-fd0bdbb3fb5c)
+
+- Starting and connecting to Armitage
+
+`sudo ./temaserver [ip] [password]`
+
+![image](https://github.com/user-attachments/assets/7f7f4c0d-e2d8-4d61-bdc8-965e9ea3733b)
+
 
 
 
