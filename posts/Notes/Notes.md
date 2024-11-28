@@ -1283,7 +1283,10 @@ if (isset($_POST['username'])) {
 
 --------------------
 
+### C2 Frameworks [Command and Control]
 
+- C2s help to manage compromised hosts during an engagement and makes it easy for laterla movement.AC2 framework is like a netcat listener (C2 server) capable of handling multiple reverse shells (C2 agents).It is like a server but for reverse shells but unlike almost all C2 frameworks, a C2 requires a special payload generator e.g metasploit uses the msfvenom payload generator.
+- 
 
 
 
