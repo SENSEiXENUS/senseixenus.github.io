@@ -1398,7 +1398,26 @@ sudo msfdb init
 
 ![image](https://github.com/user-attachments/assets/608a2616-05b0-40a0-9473-cc9e68df0c3e)
 
-- Save to files with option `-
+- Save to files with option `-w`
+
+![image](https://github.com/user-attachments/assets/ad1ed2fa-c2a7-494d-b7a4-8761fe0820b5)
+
+- Read captured packets from a file with `-r`
+
+![image](https://github.com/user-attachments/assets/0ca025c3-3ae2-495f-9944-c60a7e9fb15e)
+
+- Limit the amount of captured packets with `-c` which means `count`
+
+![image](https://github.com/user-attachments/assets/f2ff3a21-3fb6-4356-a3c5-b9e64410f009)
+
+
+- If you don't want port or ips to be resolved,use `-n` and -v for verbosity,for more verbosity,use `-vv` and `-vvv`
+
+
+
+
+
+
 
 
 
