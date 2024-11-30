@@ -1413,6 +1413,29 @@ sudo msfdb init
 
 - If you don't want port or ips to be resolved,use `-n` and -v for verbosity,for more verbosity,use `-vv` and `-vvv`
 
+### ADVANCED FILTERING
+
+- Filter by host with the `host` option as seen below,you can also limit packets to a source ip or hostname and destination ip or hostname with `src host hostname`,`src host ip`,`dst host hostname` and `dst host ip`.
+
+![image](https://github.com/user-attachments/assets/61e4b7e4-a4ce-412e-bcb5-4a60ddb72a3c)
+
+- You can limit to ports,use `port` option or `dst port [port number]` and `src port [port number]`.
+
+![image](https://github.com/user-attachments/assets/cd77f30d-0174-4af3-9018-3a081ee47201)
+
+- Packets can also be filtered based on protocols e.g `ip,ip6,icmp,tcp and udp`.
+
+### Logical operators
+
+-  and: Captures packets where both conditions are true. For example, tcpdump host 1.1.1.1 and tcp captures tcp traffic with host 1.1.1.1.
+-  or: Captures packets when either one of the conditions is true. For instance, tcpdump udp or icmp captures UDP or ICMP traffic.
+- not: Captures packets when the condition is not true. For example, tcpdump not tcp captures all packets except TCP segments; we expect to find UDP, ICMP, and ARP packets among the results.
+
+### ADVANCED FILTERING
+
+- 
+
+
 
 
 
