@@ -1388,6 +1388,17 @@ sudo msfdb init
 
 
 
+----------------
+
+### TCPDUMP Basics-:
+
+### Basic tcpdump packet capture-:
+
+-  Specify an interface with `-i` to listen on it, you can specify with `any` or `<interface's name>` e.g eth0.To check for interfaces,use `ip address show` or `ip a s`.
+
+![image](https://github.com/user-attachments/assets/608a2616-05b0-40a0-9473-cc9e68df0c3e)
+
+- Save to files with option `-
 
 
 
