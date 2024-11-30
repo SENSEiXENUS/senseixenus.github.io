@@ -1433,7 +1433,21 @@ sudo msfdb init
 
 ### ADVANCED FILTERING
 
-- 
+- We can limit the displayed packets to those smaller or larger than a certain length e.g `greater (length)[int]` or `less <length>`.
+
+### Displaying Packets
+
+- Commands
+  
+```
+    -q: Quick output; print brief packet information
+    -e: Print the link-level header
+    -A: Show packet data in ASCII
+    -xx: Show packet data in hexadecimal format, referred to as hex
+    -X: Show packet headers and data in hex and ASCII
+```
+
+
 
 
 
