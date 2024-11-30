@@ -1433,7 +1433,22 @@ sudo msfdb init
 
 ### ADVANCED FILTERING
 
-- We can limit the displayed packets to those smaller or larger than a certain length e.g `greater (length)[int]` or `less <length>`.
+- We can limit the displayed packets to those smaller or larger than a certain length e.g `greater <length>` or `less <length>`.
+- Header Bytes
+The purpose of this section is to be able to filter packets based on the contents of a header byte. Consider the following protocols: ARP, Ethernet, ICMP, IP, TCP, and UDP. These are just a few networking protocols we have studied. How can we tell Tcpdump to filter packets based on the contents of protocol header bytes? (We will not go into details about the headers of each protocol as this is beyond the scope of this room; instead, we will focus on TCP flags.)
+
+- Using pcap-filter, Tcpdump allows you to refer to the contents of any byte in the header using the following syntax proto[expr:size], where:
+
+    proto refers to the protocol. For example, arp, ether, icmp, ip, ip6, tcp, and udp refer to ARP, Ethernet, ICMP, IPv4, IPv6, TCP, and UDP respectively.
+    expr indicates the byte offset, where 0 refers to the first byte.
+    size indicates the number of bytes that interest us, which can be one, two, or four. It is optional and is one by default.
+
+To better understand this, consider the following two examples from the pcap-filter manual page (and don’t worry if you find them difficult):
+
+    ether[0] & 1 != 0 takes the first byte in the Ethernet header and the decimal number 1 (i.e., 0000 0001 in binary) and applies the & (the And binary operation). It will return true if the result is not equal to the number 0 (i.e., 0000 0000). The purpose of this filter is to show packets sent to a multicast address. A multicast Ethernet address is a particular address that identifies a group of devices intended to receive the same data.
+    ip[0] & 0xf != 5 takes the first byte in the IP header and compares it with the hexadecimal number F (i.e., 0000 1111 in binary). It will return true if the result is not equal to the (decimal) number 5 (i.e., 0000 0101 in binary). The purpose of this filter is to catch all IP packets with options.
+
+
 
 ### Displaying Packets
 
@@ -1446,6 +1461,7 @@ sudo msfdb init
     -xx: Show packet data in hexadecimal format, referred to as hex
     -X: Show packet headers and data in hex and ASCII
 ```
+
 
 
 
