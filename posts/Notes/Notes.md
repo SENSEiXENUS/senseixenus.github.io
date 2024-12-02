@@ -1385,8 +1385,25 @@ sudo msfdb init
 ![image](https://github.com/user-attachments/assets/7f7f4c0d-e2d8-4d61-bdc8-965e9ea3733b)
 
 
+- I encountered this pretty interesting msfconsole memory corruption  error
 
+```bash
+❯ msfconsole
+Metasploit tip: After running db_nmap, be sure to check out the result 
+of hosts and services
+double free or corruption (out)mework console...-
+```
+- I fixed with the steps below.
 
+```
+sudo apt remove metasploit-framework
+rm -rf ~/.msf4
+sudo apt autoremove
+sudo apt update
+sudo apt install metasploit-framework
+msfconsole
+```
+-
 
 ----------------
 
