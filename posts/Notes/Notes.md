@@ -1393,7 +1393,7 @@ Metasploit tip: After running db_nmap, be sure to check out the result
 of hosts and services
 double free or corruption (out)mework console...-
 ```
-- I fixed with the steps below.
+- I fixed with the steps below.[Source](https://github.com/rapid7/metasploit-framework/issues/18422)
 
 ```
 sudo apt remove metasploit-framework
