@@ -1479,6 +1479,20 @@ To better understand this, consider the following two examples from the pcap-fil
     -X: Show packet headers and data in hex and ASCII
 ```
 
+### ORACLE PADDING ATTACK with padbuster
+
+- Syntax-: `padbuster http://10.10.31.207:8080/api/debug/39353661353931393932373334633638EA0DCC6E567F96414433DDF5DC29CDD5E418961C0504891F0DED96BA57BE8FCFF2642D7637186446142B2C95BCDEDCCB6D8D29BE4427F26D6C1B48471F810EF4 39353661353931393932373334633638EA0DCC6E567F96414433DDF5DC29CDD5E418961C0504891F0DED96BA57BE8FCFF2642D7637186446142B2C95BCDEDCCB6D8D29BE4427F26D6C1B48471F810EF4 16 -encoding 2`
+
+- URL – This is the URL that you want to exploit, including query string if present. There are optional switches to supply POST data (-post) and Cookies if needed (-cookies)
+    Encrypted Sample – This is the encrypted sample of ciphertext included in the request. This value must also be present in either the URL, post or cookie values and will be replaced automatically on every test request
+    Block Size – Size of the block that the cipher is using. This will normally be either 8 or 16, so if you are not sure you can try both
+
+For this example, we will also use the command switch to specify how the encrypted sample is encoded. By default PadBuster assumes that the sample is Base64 encoded, however in this example the encrypted text is encoded as an uppercase ASCII HEX string. The option for specifying encoding (-encoding) takes one of the following three possible values:
+
+    0: Base64 (default)
+    1: Lowercase HEX ASCII
+    2: Uppercase HEX ASCII
+
 
 
 
