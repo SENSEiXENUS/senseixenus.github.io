@@ -1493,6 +1493,10 @@ For this example, we will also use the command switch to specify how the encrypt
     1: Lowercase HEX ASCII
     2: Uppercase HEX ASCII
 
+- In the syntax provided above, the ciphertext is divided into 4 blocks which is why it is set to 16
+
+
+
 
 
 
