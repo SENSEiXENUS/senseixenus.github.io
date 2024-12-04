@@ -1494,6 +1494,21 @@ For this example, we will also use the command switch to specify how the encrypt
     2: Uppercase HEX ASCII
 
 - In the syntax provided above, the ciphertext is divided into 4 blocks which is why it is set to 16
+- Results-:
+
+![image](https://github.com/user-attachments/assets/2a45a581-5d84-4ef8-a893-73bc92fe73f9)
+
+![image](https://github.com/user-attachments/assets/743ad518-fe15-407f-87ea-89237ef10f9b)
+
+------------
+
+### REFERENCE-:
+
+- [Aon's blog](https://www.aon.com/cyber-solutions/aon_cyber_labs/automated-padding-oracle-attacks-with-padbuster/)
+
+-------------
+
+
 
 
 
