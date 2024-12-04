@@ -1508,6 +1508,25 @@ For this example, we will also use the command switch to specify how the encrypt
 
 -------------
 
+### Exploting writable docker.sock to breakout of container
+
+------------
+
+- `Docker.sock` daemon which is used by docker to communicate with docker api.Use the find command `find / -name "docker.sock" -type f 2</dev/null` or it can spotted with `linpeas.sh`.
+
+![image](https://github.com/user-attachments/assets/5481d2d4-6178-4b9e-a3a7-058814ad3994)
+
+- Check if docker is running on the container,luckily for me,docker was running on this container.Exploiting it wiht docker will be easy
+
+![image](https://github.com/user-attachments/assets/c7c0e776-dd84-49d8-acf1-a1289bd9e19c)
+
+- Exploit with `docker run -v /:/host -it <image name>`,the exploitation process relies on spawning a container with the host file system mounted in it and the great plus is that we will be breaking out as root.he filesystem will be mounted in directory `/host`.
+
+![image](https://github.com/user-attachments/assets/f4cd3f49-9b8d-4b20-8d03-e18029e48436)
+
+
+
+
 
 
 
