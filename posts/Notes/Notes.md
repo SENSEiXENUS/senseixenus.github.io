@@ -1524,6 +1524,17 @@ For this example, we will also use the command switch to specify how the encrypt
 
 ![image](https://github.com/user-attachments/assets/f4cd3f49-9b8d-4b20-8d03-e18029e48436)
 
+### or Exploiting with curl and nc
+
+- I used curl in this example,you can either communicate with docker api with http or as a file with `--unix-socket` option with curl.
+- Run `dockerd -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2375` to access via http
+- Or use curl-:
+```bash
+curl -i -s --unix-socket /run/docker.sock http://localhost/containers/json
+```
+
+![image](https://github.com/user-attachments/assets/3ed1877e-2110-46a6-8f82-e256e17159e6)
+
 
 
 
