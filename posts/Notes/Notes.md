@@ -1500,6 +1500,14 @@ For this example, we will also use the command switch to specify how the encrypt
 
 ![image](https://github.com/user-attachments/assets/743ad518-fe15-407f-87ea-89237ef10f9b)
 
+- You can also use padre which is faster than padbuster.Syntax-:
+
+```bash
+padre -u "http://10.10.88.80:8080/api/debug/$" -err "Decryption error" -e lhex "39353661353931393932373334633638EA0DCC6E567F96414433DDF5DC29CDD5E418961C0504891F0DED96BA57BE8FCFF2642D7637186446142B2C95BCDEDCCB6D8D29BE4427F26D6C1B48471F810EF4"
+```
+
+![image](https://github.com/user-attachments/assets/2876f594-ed40-4e99-a541-bc7a7307f10b)
+
 ------------
 
 ### REFERENCE-:
