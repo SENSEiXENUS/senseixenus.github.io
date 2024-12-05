@@ -72,6 +72,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Nov 23 2024]] [Hammer](https://senseixenus.github.io/posts/ctf/THM/plotted.html) `Rate-Limiting bypass` `Jwt forgery`
 - [[Nov 25 2024]] [Include](https://senseixenus.github.io/posts/ctf/THM/include.html) `Broken Access Control` `SSRF` `LFI2RCE`
 - [[Nov 26 2024]] [Expose](https://senseixenus.github.io/posts/ctf/THM/expose.html) `SQLI` `LFI` `Upload bypass` `SUID`
+- [[Dec 5 2024]] [New YorkFlankees](https://senseixenus.github.io/posts/ctf/THM/newyorkflankees.html) `Padding Oracle Attack` `Command Injection` `Writeable Docker daemon`
   
 * * *
 
