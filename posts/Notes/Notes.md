@@ -1544,7 +1544,18 @@ curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/cr
 
 ![image](https://github.com/user-attachments/assets/0d90d4da-607b-440b-9c64-769d92e00175)
 
--
+- Start the container
+
+```bash
+curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/<id>/start
+```
+
+![image](https://github.com/user-attachments/assets/43de9628-97b3-4317-bc6a-ba6ee73c7ec0)
+
+- Attach the process
+
+
+
 
 
 
