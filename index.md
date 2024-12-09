@@ -74,6 +74,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Nov 26 2024]] [Expose](https://senseixenus.github.io/posts/ctf/THM/expose.html) `SQLI` `LFI` `Upload bypass` `SUID`
 - [[Dec 5 2024]] [New YorkFlankees](https://senseixenus.github.io/posts/ctf/THM/newyorkflankees.html) `Padding Oracle Attack` `Command Injection` `Writeable Docker daemon`
 - [[Dec 6 2024]] [Cyberlens](https://senseixenus.github.io/posts/ctf/THM/cyberlens.html) `Apache Tika` `RDP` `AlwaysInstallElevated`
+- [[Dec 8 2024]] [Opacity](https://senseixenus.github.io/posts/ctf/THM/Opacity.html) `File Upload bypass` `Kdbx` `Php lib hijacking`
   
 * * *
 
