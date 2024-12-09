@@ -133,7 +133,7 @@ can be uploaded.
 
 ![image](https://github.com/user-attachments/assets/cc332704-ca7b-4869-8cb5-fb1893bee2ce)
 
-- Although, gaining RCE with the `.jpg` will only be possible via LFI.I decided to exploit the fact that it checks if the url ends with `.jpg` by crafting a special url to download `shell.php` without need for `.jpg`.As seen below, I set up another fake parameter to hold the jpg extension but the shell.php file will be downloaded and the `shell.jpg` won't be downloaded.`%26` is the url-encoded string for `&`.
+- Although, gaining RCE with the `.jpg` will only be possible via LFI.I decided to exploit the fact that it checks if the url ends with `.jpg` by crafting a special url to download `shell.php` without the need for `.jpg` extension.As seen below, I set up a parameter to hold the jpg extension so that the url will end with `.jpg`.The python `http.server` module will only serve `shell.php` and won't do anything to the parameter passed.`%26` is the url-encoded string for `&`.
 
 Url-:`http://[ip]:8000/shell.php%26file=shell.jpg`
 
