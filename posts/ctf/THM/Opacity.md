@@ -173,6 +173,20 @@ Url-:`http://[ip]:8000/shell.php%26file=shell.jpg`
 
 - Reverse shell spawned-:
 
+![image](https://github.com/user-attachments/assets/aae28522-d1e0-4082-97fb-886552334b87)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/75732639-62c9-4859-81d3-46ef25f1bdf9)
+
+----------------
+
+### THANKS FOR READING......
+
+----------------
+
+
+
 
 
 
