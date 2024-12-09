@@ -145,6 +145,29 @@ Url-:`http://[ip]:8000/shell.php%26file=shell.jpg`
 
 - Reverse shell-:
 
+![image](https://github.com/user-attachments/assets/9c3db559-d814-4d8f-8022-1db772d8e3a7)
+
+### USER `sysadmin`
+
+- I discovered a keepass db belonging to user `sysadmin` in directory `/opt`.I dumped the hash with `keepass2john` and cracked with John the ripper.
+
+![image](https://github.com/user-attachments/assets/cdf68bea-c8a9-4781-a7fc-503f61fbaa08)
+
+- I recovered the password for user `sysadmin` in the database using keepassxc.
+
+![image](https://github.com/user-attachments/assets/5fd35feb-ce9d-4d76-9dd3-0639f14ea0d6)
+
+- User `sysadmin`-:
+
+![image](https://github.com/user-attachments/assets/12c83d0d-6a0d-4cfb-9925-0ffa18e1cdda)
+
+### PRIVESC with root php scripts
+
+-
+
+
+
+
 
 
 
