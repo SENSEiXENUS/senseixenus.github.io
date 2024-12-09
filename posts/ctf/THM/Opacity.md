@@ -163,7 +163,19 @@ Url-:`http://[ip]:8000/shell.php%26file=shell.jpg`
 
 ### PRIVESC with root php scripts
 
--
+- In `sysadmin`'s home directory, I discovered the script responsible deleting the files in the route `cloud` subdirectory named `images`.The user has no write access but I noticed a library `backup.inc.php` which function `zipData` gets called.With write access,we can add a reverse shell line in php `system()` function to execute os command and spawn a root reverse shell since the process is run by root.After dropping into rabbit holes,I discovered that the user has write access to the `backup.inc.php` file.
+
+![image](https://github.com/user-attachments/assets/b2adfb3f-776f-4d3c-b2fd-edd2e153c1be)
+
+- I added a bash reverse shell.
+
+![image](https://github.com/user-attachments/assets/f40ae920-f269-4318-8246-4bf273bad21c)
+
+- Reverse shell spawned-:
+
+
+
+
 
 
 
