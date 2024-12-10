@@ -118,5 +118,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[November 3 2024]] [HTBMeetup Cameroon](https://senseixenus.github.io/posts/ctf/HTPMeetupCmr/writeup.html)
 - [[November 3 2024]] [USC_CTF](https://senseixenus.github.io/posts/ctf/USC-CTF/writeup.html)
 - [[November 25 2024]] [GlacierCTF](https://senseixenus.github.io/posts/ctf/GlacierCTF24/writeup.html)
+- [[December 5 2024]]  [Platypwnies](https://senseixenus.github.io/posts/ctf/platypwnies/writeup.html)
     
 * * *
