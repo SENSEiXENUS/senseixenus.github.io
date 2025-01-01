@@ -89,4 +89,38 @@ PORT      STATE SERVICE REASON  VERSION
 37370/tcp open  ftp     syn-ack vsftpd 3.0.3
 Service Info: OSs: Linux, Unix; CPE: cpe:/o:linux:linux_kernel
 ```
-- Ftp is on port `37370`.
+- Ftp is on port `37370`.FFUF's output
+
+![image](https://github.com/user-attachments/assets/fe13f394-519e-4776-9a0f-ab500b9b79ff)
+
+- I scanned for directories under `/static` and discovered this file `00`.
+
+![image](https://github.com/user-attachments/assets/c6722238-72b9-48b2-ae27-b0dbdd9de8c2)
+
+- The file `00` contains a note from the dev and also points to the existence of an hidden admin page.
+
+![image](https://github.com/user-attachments/assets/76cfbda5-4dc0-4782-a7c2-cb5a09f12cc3)
+
+- After checking the source js code of the page, I discovered a credential which worked for the ftp server.
+
+![image](https://github.com/user-attachments/assets/9f74b00c-a4aa-49cf-b2d8-5190ef4f8db8)
+
+- Ftp Access
+
+![image](https://github.com/user-attachments/assets/d3ad268b-0968-40af-824c-1dec6470a047)
+
+- The ftp server contains 3 files as seen above.
+- I examined the `SIEMHTTP2.pcapng` file with wireshark and discovered credentials for a user `valleyDev`.
+
+![image](https://github.com/user-attachments/assets/51edb8d1-77da-4b48-bad6-4993672fe89f)
+
+- SSH access as user `valleyDev`
+
+![image](https://github.com/user-attachments/assets/d7a544d8-d3c5-42d8-9774-5a00d0b4058a)
+
+### Privesc to user `valley`
+
+- 
+
+
+
