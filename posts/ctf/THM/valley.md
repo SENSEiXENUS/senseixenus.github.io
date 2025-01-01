@@ -120,7 +120,55 @@ Service Info: OSs: Linux, Unix; CPE: cpe:/o:linux:linux_kernel
 
 ### Privesc to user `valley`
 
-- 
+- I noticed a binary in the directory named `valleyAuthenticator`.
+
+![image](https://github.com/user-attachments/assets/d7c577f5-eef8-42c6-8822-51b539640100)
+
+- I used strings to search for keywords and noticed this hash.
+
+![image](https://github.com/user-attachments/assets/a0a68621-2631-4390-b0e3-f87300ec6d22)
+
+- I cracked it with crackstation and got this password.
+
+![image](https://github.com/user-attachments/assets/deb1fa39-e41a-4939-a228-93e5b9a8d373)
+
+- SSH access as user `valley`.
+
+![image](https://github.com/user-attachments/assets/c19451fb-a6d5-4e44-959e-4014488ead67)
+
+### Root privesc with python library hijacking
+
+- Based on `pspy`'s results,I noticed that user `root` runs a script in the background.
+
+![image](https://github.com/user-attachments/assets/4020427d-1b9b-480d-acc6-79b0ac72e793)
+
+- I checked the file and noticed that I have no write access to the file as user `valley`.
+
+![image](https://github.com/user-attachments/assets/c6be419c-53f6-4ce6-adde-042b71f00e22)
+
+- But it imports module `base64` which we have write access to,we can hijack the library to spawn a root reverse shell.Users in group `valleyAdmin` which user `valley` is a member, can acces and edit the `base64.py` module.
+
+![image](https://github.com/user-attachments/assets/56330754-b8f1-458e-a35d-954d0f668b82)
+
+- I added the reverse shell code as seen below.
+
+![image](https://github.com/user-attachments/assets/97358ad3-579d-4ea2-9390-d77fce69b4fb)
+
+- Root shell-:
+
+![image](https://github.com/user-attachments/assets/18bd035d-5713-42c7-8d4d-b592e78925ae)
+
+--------------
+
+### THANKS FOR READING!!!!
+
+---------------
+
+
+
+
+
+
 
 
 
