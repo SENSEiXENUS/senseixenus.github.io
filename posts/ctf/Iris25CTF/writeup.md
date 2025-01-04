@@ -86,7 +86,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	}
 ```
 
-- Lastly, the main sink is seen is this code.The pages are controlled with the `fullpath` variable in the manner `"./pages" + path` which is passed to the `os.stat()` function to read the files.`Path` can be controlled by an attacker to gain path traversal but there is a slight twist.`../` is replaced with and empty string,we can easily bypass this with the string `..././`,`../` gets filtered out and a new `../` is created.We will abuse this to read the `users.json` file.
+- Lastly, the main sink is seen in this code.The pages are controlled with the `fullpath` variable in the manner `"./pages" + path` which is passed to the `os.stat()` function to read the files.`Path` can be controlled by an attacker to gain path traversal but there is a slight twist.`../` is replaced with and empty string,we can easily bypass this with the string `..././`,`../` gets filtered out and a new `../` is created.We will abuse this to read the `users.json` file.
 
 ```golang
 func pages(w http.ResponseWriter, r *http.Request) {
@@ -118,3 +118,13 @@ func pages(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, fullPath)
 }
 ```
+
+Path Replacer func-:
+
+```golang
+var PathReplacer = strings.NewReplacer(
+	"../", "",
+)
+```
+
+- 
