@@ -324,6 +324,17 @@ def redeem():
 	"URLBlocklist": ["*/giveflag", "*?token=*"]
 }
 ```
+- The bot only makes a request to url that starts with `http` and `https`.Although, it only allow url `https://political-web.chal.irisc.tf/` and must end with `/`.
 
+```javascript
+ if (!url.startsWith('http://localhost:1337/') && !url.startsWith('https://localhost:1337/')) {
+      socket.state = 'ERROR';
+      socket.write('Invalid URL (must start with http:// or https://).\n');
+      socket.destroy();
+      return;
+    }
+    socket.state = 'LOADED';
+    let cookie = JSON.parse(fs.readFileSync('/home/user/cookie'));
+```
 
-
+- 
