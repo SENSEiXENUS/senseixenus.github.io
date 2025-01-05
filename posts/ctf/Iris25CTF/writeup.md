@@ -337,4 +337,24 @@ def redeem():
     let cookie = JSON.parse(fs.readFileSync('/home/user/cookie'));
 ```
 
-- 
+- Although, the bot also sets its cookie to site `https://political-web.chal.irisc.tf` as explained in the `README.md`.
+
+```md
+# Note about cookie
+
+The challenge bot has its cookie set on `https://political-web.chal.irisc.tf`.
+```
+
+- Lastly,we can't steal with `document.cookie` because the cookie `httponly` header is set to false.
+
+```json
+{
+  "name": "admin",
+  "value": "redacted",
+  "domain": "localhost:1337",
+  "url": "http://localhost:1337/",
+  "path": "/",
+  "httpOnly": true,
+  "secure": true
+}
+```
