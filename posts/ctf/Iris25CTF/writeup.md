@@ -390,7 +390,7 @@ irisctf{flag_blocked_by_admin}
 
 ----------------
 
-### THANS FOR READING 
+### THANKS FOR READING 
 
 ---------------
 
