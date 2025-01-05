@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/ed083d2e-470b-4f29-91de-8d938251f544)----------------
+----------------
 
 ### CTF: IRISCTF 2025
 
@@ -286,5 +286,28 @@ def hello_world():
     return "GG"
 ```
 
-- Route 
+- Route `/token` generates a token
+
+```python3
+@app.route("/token")
+def tok():
+    token = secrets.token_hex(16)
+    valid_tokens[token] = False
+    return token
+```
+
+- Route `redeem` checks if the token in a post data is the `valid_tokens` and is set to `True`, it rturns the flag.
+
+```python3
+@app.route("/redeem", methods=["POST"])
+def redeem():
+    if "token" not in request.form:
+        return "Give me token"
+
+    token = request.form["token"]
+    if token not in valid_tokens or valid_tokens[token] != True:
+        return "Nice try."
+
+    return FLAG
+```
 
