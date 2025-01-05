@@ -1,6 +1,6 @@
-----------------
+![image](https://github.com/user-attachments/assets/ed083d2e-470b-4f29-91de-8d938251f544)----------------
 
-### CTF; IRISCTF 2025
+### CTF: IRISCTF 2025
 
 ----------------
 
@@ -12,6 +12,7 @@
 
 - WEB
   - Password Manager
+  - Political
 
 ----------------
 
@@ -200,3 +201,23 @@ var PathReplacer = strings.NewReplacer(
 ```
 
 - Flag-:`irisctf{l00k5_l1k3_w3_h4v3_70_t34ch_sk47_h0w_70_r3m3mb3r_s7uff}`
+
+----------------
+
+### POLITICAL
+
+----------------
+
+![image](https://github.com/user-attachments/assets/58243d3f-9037-4aae-8c0c-08be194d577b)
+
+----------------
+
+- There are three main files to check `policy.json`,`chal.py` and `bot.js`.
+
+![image](https://github.com/user-attachments/assets/9b605288-be54-4a39-a5f3-3f56133beaf5)
+
+---------------
+
+### Explaining the routes in `chal.py`
+
+
