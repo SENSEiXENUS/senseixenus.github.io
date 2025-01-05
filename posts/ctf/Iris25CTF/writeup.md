@@ -345,7 +345,7 @@ def redeem():
 The challenge bot has its cookie set on `https://political-web.chal.irisc.tf`.
 ```
 
-- Lastly,we can't steal with `document.cookie` because the cookie `httponly` header is set to false.
+- Lastly,we can't steal with `document.cookie` because the cookie `httponly` header is set to true.
 
 ```json
 {
@@ -358,3 +358,9 @@ The challenge bot has its cookie set on `https://political-web.chal.irisc.tf`.
   "secure": true
 }
 ```
+
+---------------
+
+### EXPLOITATION
+
+---------------
