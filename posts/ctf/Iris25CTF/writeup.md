@@ -311,3 +311,19 @@ def redeem():
     return FLAG
 ```
 
+--------------
+
+### Explaining the bot code
+
+-------------
+
+- The bot was written in `javascript`.The Chrome's `policy.json` blocks any url that contains path `/giveflag` and contains the query `?token=`.
+
+```json
+{
+	"URLBlocklist": ["*/giveflag", "*?token=*"]
+}
+```
+
+
+
