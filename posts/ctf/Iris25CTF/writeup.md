@@ -269,7 +269,7 @@ def redeem():
     return FLAG
 ```
 
-- Route `giveflag` checks if the request contains a token and a cookie with user `admin` and sends text `GG` if it contains those criterion.Lastly,it also appends the token to the `valid_token` dict.
+- Route `giveflag` checks if the request contains a token and a cookie with user `admin` and sends text `GG` if it contains those conditions.Lastly,it also appends the token to the `valid_token` dict.
 
 ```python3
 @app.route("/giveflag")
