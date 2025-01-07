@@ -896,8 +896,21 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
 -------------------
 
+- You can embed credentials in a URL before the hostname, using the @ character. For example:
 
+`https://expected-host:fakepassword@evil-host`
 
+- You can use the # character to indicate a URL fragment. For example:
+
+`https://evil-host#expected-host`
+
+- You can leverage the DNS naming hierarchy to place required input into a fully-qualified DNS name that you control. For example:
+
+`https://expected-host.evil-host`
+
+- You can URL-encode characters to confuse the URL-parsing code. This is particularly useful if the code that implements the filter handles URL-encoded characters differently than the code that performs the back-end HTTP request. You can also try double-encoding characters; some servers recursively URL-decode the input they receive, which can lead to further discrepancies.
+
+- You can use a combo of everything
 ---------------------
 
 ### Dumping .git sensitive info
