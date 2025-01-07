@@ -875,6 +875,8 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
   ![image](https://github.com/user-attachments/assets/38897cad-609e-4c4a-866c-b5f2b7e375f3)
 
+-----------------
+
 ### Circumventing Common SSRF defenses
 
 - Bypassing blacklist for `localhost` and `127.0.0.1`
@@ -883,6 +885,11 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
   - Use url-decoding or case variation
   - Or use open-redirect to redirect to localhost
   - Or switch to `http://` or `http://`
+
+-  Exploiting it
+
+![image](https://github.com/user-attachments/assets/e35b87e8-4a9d-4863-854e-253c72378465)
+
 
 ---------------------
 
