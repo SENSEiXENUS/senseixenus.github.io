@@ -875,6 +875,15 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 
   ![image](https://github.com/user-attachments/assets/38897cad-609e-4c4a-866c-b5f2b7e375f3)
 
+### Circumventing Common SSRF defenses
+
+- Bypassing blacklist for `localhost` and `127.0.0.1`
+  - Try alternative representation:```2130706433,017700000001 or 127.1```
+  - Register a domain that resolves to `localhost` e.g with burp collaborator
+  - Use url-decoding or case variation
+  - Or use open-redirect to redirect to localhost
+  - Or switch to `http://` or `http://`
+
 ---------------------
 
 ### Dumping .git sensitive info
