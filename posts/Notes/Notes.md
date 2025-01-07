@@ -911,6 +911,14 @@ Decoded header||payload-:```{"kid":"b854b842-0339-44da-b38f-984684b91506","alg":
 - You can URL-encode characters to confuse the URL-parsing code. This is particularly useful if the code that implements the filter handles URL-encoded characters differently than the code that performs the back-end HTTP request. You can also try double-encoding characters; some servers recursively URL-decode the input they receive, which can lead to further discrepancies.
 
 - You can use a combo of everything
+
+### Abusing SSRF with open-redirect
+
+- Payload
+
+![image](https://github.com/user-attachments/assets/7810de80-c231-4e82-8212-0e080bf4aa6d)
+
+
 ---------------------
 
 ### Dumping .git sensitive info
