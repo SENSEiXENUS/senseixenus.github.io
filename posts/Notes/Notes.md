@@ -1645,9 +1645,128 @@ def handleResponse(req, interesting):
 
 --------------
 
+### Understanding Graphql
 
+--------------
 
+- Graphql is a query language that allows effective communication between clients and servers.It allows a user to specify the amount of data that they need and prevents calling multiple objects.Clients make a query to a specific server and data is gotten from various places.
+- Data in graphql can be manipulated in three ways.
+  - Queries fetch data
+  - Mutations add,change or remove data
+  - Subscriptions are similar to queries, but set up a permanent connection by which a server can proactively push data to a client in the specified format.
 
+---------------
+
+### Graphql SCHEMA
+
+---------------
+
+- In GraphQL, the schema represents a contract between the frontend and backend of the service. It defines the data available as a series of types, using a human-readable schema definition language.The example below shows a simple schema definition for a Product type. The ! operator indicates that the field is non-nullable when called (that is, mandatory).
+
+```graphql
+type Product {
+        id: ID!
+        name: String!
+        description: String!
+        price: Int
+    }
+```
+
+- Graphql queries retrieve data from the data store.They are roughly equivalent to the `GET` requests in the REST API.A query's component
+
+- A query operation type. This is technically optional but encouraged, as it explicitly tells the server that the incoming request is a query.
+- A query name. This can be anything you want. The query name is optional, but encouraged as it can help with debugging.
+- A data structure. This is the data that the query should return.
+- Optionally, one or more arguments. These are used to create queries that return details of a specific object (for example "give me the name and description of the product that has the ID 123").
+
+```graphql
+#Example query
+
+    query myGetProductQuery {
+        getProduct(id: 123) {
+            name
+            description
+        }
+    }
+```
+
+- Graphql api mutations are similar to `REST API`'s `POST`,`PUT` and `DELETE` methods.Mutations have a defuned structure for operation type, name and structure for the returned data.Mutations require a form of input of some type.This can be an inline value.
+
+```graphql
+#Example mutation request
+
+    mutation {
+        createProduct(name: "Flamin' Cocktail Glasses", listed: "yes") {
+            id
+            name
+            listed
+        }
+    }
+```
+- Response to the above code
+
+```graphql
+#Example mutation response
+
+    {
+        "data": {
+            "createProduct": {
+                "id": 123,
+                "name": "Flamin' Cocktail Glasses",
+                "listed": "yes"
+            }
+        }
+    }
+```
+
+------------
+
+### Components of fields and mutations
+
+------------
+
+- All Graphql types contain items of queryable data types called fields.The example belows shows a query for employees data and in this case the fields are `id`,`name.firstname` and `name.lastname`.
+
+```graphql
+ #Request
+
+    query myGetEmployeeQuery {
+        getEmployees {
+            id
+            name {
+                firstname
+                lastname
+            }
+        }
+    }
+```
+
+```graphql
+#Response
+
+    {
+        "data": {
+            "getEmployees": [
+                {
+                    "id": 1,
+                    "name" {
+                        "firstname": "Carlos",
+                        "lastname": "Montoya"
+                    }
+                },
+                {
+                    "id": 2,
+                    "name" {
+                        "firstname": "Peter",
+                        "lastname": "Wiener"
+                    }
+                }
+            ]
+        }
+    }
+```
+
+- 
 
 
 
