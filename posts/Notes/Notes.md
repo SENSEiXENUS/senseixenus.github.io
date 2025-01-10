@@ -1766,6 +1766,76 @@ type Product {
     }
 ```
 
+-------------
+
+### Arguments
+
+-------------
+
+- Arguments are values provided to a field.Values acccepted are only types defined in a schema.When you send a query or mutation that contains arguments, the GraphQL server determines how to respond based on its configuration. For example, it might return a specific object rather than details of all objects.The query below sends argument's value for `id` and retrieves details based  on the fields.
+
+```graphql
+
+    #Example query with arguments
+
+    query myGetEmployeeQuery {
+        getEmployees(id:1) {
+            name {
+                firstname
+                lastname
+            }
+        }
+    }
+```
+
+```json
+
+    {
+        "data": {
+            "getEmployees": [
+            {
+                "name" {
+                    "firstname": Carlos,
+                    "lastname": Montoya
+                    }
+                }
+            ]
+        }
+    }
+```
+
+- If user-supplied arguments are used to access objects directly then a GraphQL API can be vulnerable to access control vulnerabilities such as insecure direct object references (IDOR).
+
+------------
+
+### Graphql queries with variable
+
+------------
+
+- Variables enable you to pass dynamic arguments, rather than having arguments directly within the query itself.Variable-based queries use the same structure as queries using inline arguments, but certain aspects of the query are taken from a separate JSON-based variables dictionary. They enable you to reuse a common structure among multiple queries, with only the value of the variable itself changing.When building a query or mutation that uses variables, you need to:
+
+- Declare the variable and type.
+- Add the variable name in the appropriate place in the query.
+- Pass the variable key and value from the variable dictionary.
+
+```graphql
+   #Example query with variable
+
+    query getEmployeeWithVariable($id: ID!) {
+        getEmployees(id:$id) {
+            name {
+                firstname
+                lastname
+            }
+         }
+    }
+
+    Variables:
+    {
+        "id": 1
+    }
+```
+
 - 
 
 
