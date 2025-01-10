@@ -2039,7 +2039,117 @@ type Product {
     }
 ```
 
--
+-----------------
+
+### More information can be gathered with introspection
+
+-----------------
+
+- To use introspection to discover schema information, query the `__schema` field. This field is available on the root type of all queries.
+- You can probe for introspection with the query below.If introspection is enabled, the response returns the name of al availabel queries.
+
+```json
+
+    {
+        "query": "{__schema{queryType{name}}}"
+    }
+```
+
+- Running an introspection query
+
+```graphql
+#Full introspection query
+
+    query IntrospectionQuery {
+        __schema {
+            queryType {
+                name
+            }
+            mutationType {
+                name
+            }
+            subscriptionType {
+                name
+            }
+            types {
+             ...FullType
+            }
+            directives {
+                name
+                description
+                args {
+                    ...InputValue
+            }
+            onOperation  #Often needs to be deleted to run query
+            onFragment   #Often needs to be deleted to run query
+            onField      #Often needs to be deleted to run query
+            }
+        }
+    }
+
+    fragment FullType on __Type {
+        kind
+        name
+        description
+        fields(includeDeprecated: true) {
+            name
+            description
+            args {
+                ...InputValue
+            }
+            type {
+                ...TypeRef
+            }
+            isDeprecated
+            deprecationReason
+        }
+        inputFields {
+            ...InputValue
+        }
+        interfaces {
+            ...TypeRef
+        }
+        enumValues(includeDeprecated: true) {
+            name
+            description
+            isDeprecated
+            deprecationReason
+        }
+        possibleTypes {
+            ...TypeRef
+        }
+    }
+
+    fragment InputValue on __InputValue {
+        name
+        description
+        type {
+            ...TypeRef
+        }
+        defaultValue
+    }
+
+    fragment TypeRef on __Type {
+        kind
+        name
+        ofType {
+            kind
+            name
+            ofType {
+                kind
+                name
+                ofType {
+                    kind
+                    name
+                }
+            }
+        }
+    }
+```
+
+- Note:If introspection is enabled but the above query doesn't run, try removing the onOperation, onFragment, and onField directives from the query structure. Many endpoints do not accept these directives as part of an introspection query, and you can often have more success with introspection by removing them.
+- Even if introspection is entirely disabled, you can sometimes use suggestions to glean information on an API's structure.Suggestions are a feature of the Apollo GraphQL platform in which the server can suggest query amendments in error messages. These are generally used where a query is slightly incorrect but still recognizable (for example, There is no entry for 'productInfo'. Did you mean 'productInformation' instead?).You can potentially glean useful information from this, as the response is effectively giving away valid parts of the schema.
+- Use [Clairvoyance](https://github.com/nikitastupin/clairvoyance) to grab possible graphql fields.
 
 
 
