@@ -1,6 +1,13 @@
 * * *
 NOTES
 * * *
+-----------------------------
+
+### Important stuffs
+
+------------------------------
+
+- [Custom Dork engine](https://vulnpire.github.io/bounty-search-engine/)
 
 -------------------------------
 
@@ -1950,6 +1957,13 @@ type Product {
 
 - Introspection is a built-in GraphQL function that enables you to query a server for information about the schema. It is commonly used by applications such as GraphQL IDEs and documentation generation tools.Like regular queries, you can specify the fields and structure of the response you want to be returned. For example, you might want the response to only contain the names of available mutations.Introspection can represent a serious information disclosure risk, as it can be used to access potentially sensitive information (such as field descriptions) and help an attacker to learn how they can interact with the API. It is best practice for introspection to be disabled in production environments.
 
+--------------
+
+### GRAPHQL vulnerabilities
+
+-------------
+
+-
 
 
 
