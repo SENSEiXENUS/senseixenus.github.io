@@ -1836,7 +1836,119 @@ type Product {
     }
 ```
 
-- 
+------------
+
+### Aliases
+
+------------
+
+- GraphQL objects can't contain multiple properties with the same name. For example, the following query is invalid because it tries to return the product type twice.
+
+```graphql
+ #Invalid query
+
+    query getProductDetails {
+        getProduct(id: 1) {
+            id
+            name
+        }
+        getProduct(id: 2) {
+            id
+            name
+        }
+    }
+```
+
+- You can bypass that by creating aliases as seen below.
+
+```graphql
+
+    #Valid query using aliases
+
+    query getProductDetails {
+        product1: getProduct(id: "1") {
+            id
+            name
+        }
+        product2: getProduct(id: "2") {
+            id
+            name
+        }
+    }
+```
+
+- Response
+
+```graphql
+ #Response to query
+
+    {
+        "data": {
+            "product1": {
+                "id": 1,
+                "name": "Juice Extractor"
+             },
+            "product2": {
+                "id": 2,
+                "name": "Fruit Overlays"
+            }
+        }
+    }
+```
+
+-----------------
+
+### Fragments
+
+-----------------
+
+- Fragments are reusable parts of queries and mutations.They contain a subset of the fields belonging to an associated type.Once defined, they can be included in queries or mutations. If they are subsequently changed, the change is included in every query or mutation that calls the fragment.
+- Example-:
+
+```graphql
+ #Example fragment
+
+    fragment productInfo on Product {
+        id
+        name
+        listed
+    }
+```
+
+- Query calling the fragment
+
+```graphql
+#Query calling the fragment
+
+    query {
+        getProduct(id: 1) {
+            ...productInfo
+            stock
+        }
+    }
+```
+
+- Response
+
+```json
+
+    #Response including fragment fields
+
+    {
+        "data": {
+            "getProduct": {
+                "id": 1,
+                "name": "Juice Extractor",
+                "listed": "no",
+                "stock": 5
+            }
+        }
+    }
+```
+
+- Subscription  are a special type of query. They enable clients to establish a long-lived connection with a server so that the server can then push real-time updates to the client without the need to continually poll for data. They are primarily useful for small changes to large objects and for functionality that requires small real-time updates (like chat systems or collaborative editing).
+
+- Introspection is a built-in GraphQL function that enables you to query a server for information about the schema. It is commonly used by applications such as GraphQL IDEs and documentation generation tools.Like regular queries, you can specify the fields and structure of the response you want to be returned. For example, you might want the response to only contain the names of available mutations.Introspection can represent a serious information disclosure risk, as it can be used to access potentially sensitive information (such as field descriptions) and help an attacker to learn how they can interact with the API. It is best practice for introspection to be disabled in production environments.
 
 
 
