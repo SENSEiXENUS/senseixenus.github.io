@@ -1963,6 +1963,82 @@ type Product {
 
 -------------
 
+- Graphql vulnerabilities arise from flaws in the implementation logic and design flaws.For example,if the information schema is left open, enabling attackers to query the api to get information of the schema.
+- To test a graphql endpoint, send `query{__typename}`.The query works because every GraphQL endpoint has a reserved field called `__typename` that returns the queried object's type as a string.
+- Common graphql endpoint-:
+
+```
+/graphql
+/api
+/api/graphql
+/graphql/api
+/graphql/graphql
+```
+- You can also try appending `/v1/` to the path.You should also note that GraphQL services will often respond to any non-GraphQL request with a "query not present" or similar error. You should bear this in mind when testing for GraphQL endpoints.
+- The next step in trying to find GraphQL endpoints is to test using different request methods.It is best practice for production GraphQL endpoints to only accept POST requests that have a content-type of application/json, as this helps to protect against CSRF vulnerabilities. However, some endpoints may accept alternative methods, such as GET requests or POST requests that use a content-type of x-www-form-urlencoded.If you can't find the GraphQL endpoint by sending POST requests to common endpoints, try resending the universal query using alternative HTTP methods.
+
+--------------------
+
+### Exploiting unsanitized arguments
+
+-------------------
+
+- You can check for `Insecure Direct Object Reference`.The request below queries for a product list in a shop.
+
+```graphql
+#Example product query
+
+    query {
+        products {
+            id
+            name
+            listed
+        }
+    }
+```
+
+- Id `3` has been delisted as seen in the response below
+
+```json
+
+    #Example product response
+
+    {
+        "data": {
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Product 1",
+                    "listed": true
+                },
+                {
+                    "id": 2,
+                    "name": "Product 2",
+                    "listed": true
+                },
+                {
+                    "id": 4,
+                    "name": "Product 4",
+                    "listed": true
+                }
+            ]
+        }
+```
+
+- You can make a query by passing an argument.
+
+```graphql
+#Query to get missing product
+
+    query {
+        product(id: 3) {
+            id
+            name
+            listed
+        }
+    }
+```
+
 -
 
 
