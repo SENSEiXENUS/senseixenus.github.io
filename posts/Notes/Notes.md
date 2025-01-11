@@ -2151,6 +2151,123 @@ type Product {
 - Even if introspection is entirely disabled, you can sometimes use suggestions to glean information on an API's structure.Suggestions are a feature of the Apollo GraphQL platform in which the server can suggest query amendments in error messages. These are generally used where a query is slightly incorrect but still recognizable (for example, There is no entry for 'productInfo'. Did you mean 'productInformation' instead?).You can potentially glean useful information from this, as the response is effectively giving away valid parts of the schema.
 - Use [Clairvoyance](https://github.com/nikitastupin/clairvoyance) to grab possible graphql fields.
 
+-----------------
+
+### Accidental Exposure of private Graphql fields
+
+- After using introspection to check for queries and fields,I noticed this `query`
+
+```json
+       {
+          "kind": "OBJECT",
+          "name": "query",
+          "description": null,
+          "fields": [
+            {
+              "name": "getBlogPost",
+              "description": null,
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Int",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+```
+
+- I noticed this query type to access users named `getUser` and it takes in a numerical id
+
+```json
+           {
+              "name": "getUser",
+              "description": null,
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Int",
+                      "ofType": null
+                    }
+                  }
+```
+
+- This query accesses the object `User` that contains the `username` and `password`.
+
+```json
+       {
+          "kind": "OBJECT",
+          "name": "User",
+          "description": null,
+          "fields": [
+            {
+              "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "username",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "password",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+```
+
+- Getting the password of `Administrator`
+
+![image](https://github.com/user-attachments/assets/a0254b75-2eb2-4435-aaaf-ce10b7187778)
+
+---------------
+
 
 
 
