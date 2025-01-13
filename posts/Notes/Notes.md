@@ -2278,6 +2278,64 @@ type Product {
 {__schema%0A{queryType{name}mutationType{name}subscriptionType{name}types{...FullType}directives{name+description+locations+args{...InputValue}}}}fragment+FullType+on+__Type{kind+name+description+fields(includeDeprecated:true){name+description+args{...InputValue}type{...TypeRef}isDeprecated+deprecationReason}inputFields{...InputValue}interfaces{...TypeRef}enumValues(includeDeprecated:true){name+description+isDeprecated+deprecationReason}possibleTypes{...TypeRef}}fragment+InputValue+on+__InputValue{name+description+type{...TypeRef}defaultValue}fragment+TypeRef+on+__Type{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name}}}}}}}}
 ```
 
+- Using mutation to delete users-:
+
+```graphql
+mutation {
+    deleteOrganizationUser(input: {
+        id: 3
+    }) {
+        user {
+            id
+            username
+    }}
+}
+```
+
+- Introspection result-:
+
+```json
+       {
+          "kind": "OBJECT",
+          "name": "mutation",
+          "description": null,
+          "fields": [
+            {
+              "name": "deleteOrganizationUser",
+              "description": null,
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "DeleteOrganizationUserInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "DeleteOrganizationUserResponse",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+```
+
+- Result of mutation
+
+![image](https://github.com/user-attachments/assets/341dd53d-bc22-475b-b473-d375922a98b3)
+
+---------------------
 
 
 
