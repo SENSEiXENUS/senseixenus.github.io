@@ -2386,11 +2386,18 @@ queries.close()
 
 ### Tools
 
-- Use Clairvoyance to grab schema via introspection or fuzzing
+- Use `Gplspection` to grab the schema for a query or mutation`
+
+Installation-:`pip install gqlspection`
+
+- Use Clairvoyance to grab schema via introspection or fuzzing,you can also use it to grab a schema
 
 Installation-:`pip install clairvoyance`
 
 Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
+
+- Use `JSWzl` for generating graphql wordlists
+
 
 
 
