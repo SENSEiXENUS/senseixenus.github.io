@@ -120,6 +120,143 @@ query IntrospectionQuery {
     }
 ```
 
+- I found other valid fields for the field Object `doctor` like `name`,`id` and `password` in the introspection schema.I added it to the query and got the hashed password for the doctor.
+
+```graphql
+{
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "doctor",
+              "type": {
+                "kind": "OBJECT",
+                "name": "DoctorType",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "appointment",
+              "type": {
+                "kind": "OBJECT",
+                "name": "AppointmentType",
+                "ofType": null
+              }
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "kind": "OBJECT",
+          "name": "MedicationType",
+          "possibleTypes": null
+        },
+        {
+          "description": null,
+          "enumValues": null,
+          "fields": [
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "id",
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "name",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "department",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "password",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": null,
+              "isDeprecated": false,
+              "name": "patients",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PatientType",
+                  "ofType": null
+                }
+              }
+            }
+          ]
+```
+
+- Query-:
+
+![image](https://github.com/user-attachments/assets/45db9d2e-4df7-43ff-86ec-f907a21a02cc)
+
+- Response-:
+
+![image](https://github.com/user-attachments/assets/dd34232a-3970-413b-b1cf-92c064a430c3)
+
+- I was able to crack the hash with `crackstation.net`.
+
+![image](https://github.com/user-attachments/assets/3dc5ed01-356d-4b45-978e-d9eb56702fc9)
+
+- Doctor Ivy's  account accessed-:
+
+![image](https://github.com/user-attachments/assets/a6eef09f-02b3-457e-bc3d-b70dae13a28f)
+
+- Flag-:
+
+```TUCTF{w3_7h1nk_1n_6r4ph5}```
+
+-------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
