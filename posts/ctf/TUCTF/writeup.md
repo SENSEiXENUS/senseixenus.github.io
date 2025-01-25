@@ -29,6 +29,28 @@
 
 ![image](https://github.com/user-attachments/assets/cf8e3ed0-28a4-4b84-a15e-b1f75b3ec90f)
 
+- The request contains this query `userData` which retrieves the `patient` and `doctor` information with fields `patient` and `doctor`.
+
+```graphql
+
+        {
+            userData {
+                name
+                age
+                medicalHistory
+                medications {
+                    name
+                    dosage
+                    description
+                }
+                doctor {
+                    name
+                    department
+                }
+            }
+        }
+```
+
 - I sent it to repeater and copied an introspection query to the graphql tab to discover the graphql schema of the webpage.
 
 ![image](https://github.com/user-attachments/assets/ac24323f-0fd0-4aea-9304-de1d853a32ce)
@@ -119,7 +141,6 @@ query IntrospectionQuery {
         }
     }
 ```
-
 - I found other valid fields for the field Object `doctor` like `name`,`id` and `password` in the introspection schema.I added it to the query and got the hashed password for the doctor.
 
 ```graphql
