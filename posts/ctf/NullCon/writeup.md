@@ -368,7 +368,27 @@ try {
 }
 ```
 
-- 
+- We need to pass in value `1` to get the flag which we can do easily by fooling the intval() function.`intval()` return the first number it spots in a situation where the remaining characters are alphabets or mathematical symbols. e.g
+
+```zsh
+php > echo intval('2-1');
+2                                                               
+php >
+
+```
+
+- Our query will be something like `2-1,10`, sqlite3 also calculates mathematical expressions passed to it.Sqlite3 will calculate `2-1` to `1` and render the flag.
+
+![image](https://github.com/user-attachments/assets/792a4d79-1984-4ee9-96a1-c9b109fd098b)
+
+- Base64 decoded flag-: `ENO{SQL1_W1th_0uT_C0mm4_W0rks_SomeHow!}`
+
+```pwsh
+▓   HP       ❯  echo "RU5Pe1NRTDFfVzF0aF8wdVRfQzBtbTRfVzBya3NfU29tZUhvdyF9" | base64 -d
+ENO{SQL1_W1th_0uT_C0mm4_W0rks_SomeHow!}
+▓   HP       ❯
+```
+
 
 
 
