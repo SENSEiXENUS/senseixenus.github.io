@@ -114,7 +114,50 @@ if __name__ == '__main__':
 app.ADMIN_PW_HASH = b'$2b$12$8bMrI6D9TMYXeMv8pq8RjemsZg.HekhkQUqLymBic/cRhiKRa3YPK'
 ```
 
-- The dev created a password with `os.urandom(128)` which will generate 128 bytes and a random salt which will be hashed with `bcrypt.hashpw()`.Also, the 71 bytes of the generated password was provided and also the admin_hash.I found a post on [Stack Overflow](https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length) which states that bcrypt's maximum length for a password is `72` bytes.If a password is `128` bytes long, bcrypt will only pick 72 bytes out it.In this case,we have only 71 bytes,we have to brute force the last bytes.I created a script to brute force by looping through a single byte produced with `os.urandom(1)`.
+- The dev created a password with `os.urandom(128)` which will generate 128 bytes and a random salt which will be hashed with `bcrypt.hashpw()`.Also, the 71 bytes of the generated password was provided and also the admin_hash.I found a post on [Stack Overflow](https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length) which states that bcrypt's maximum length for a password is `72` bytes.If a password is `128` bytes long, bcrypt will only pick 72 bytes out it.In this case,we have only 71 bytes,we have to brute force the last bytes.I created a script to brute force by looping through a single byte produced with `os.urandom(1)`.We don't ned to bother about the salt because bcrypt deduces the salt when the hash is passed to the `checkpw()` function.
+
+- Bruteforce script
+
+```python3
+#! /usr/bin/env python3
+import bcrypt
+import os
+hash = b'$2b$12$8bMrI6D9TMYXeMv8pq8RjemsZg.HekhkQUqLymBic/cRhiKRa3YPK'
+password = b"\xec\x9f\xe0a\x978\xfc\xb6:T\xe2\xa0\xc9<\x9e\x1a\xa5\xfao\xb2\x15\x86\xe5$\x86Z\x1a\xd4\xca#\x15\xd2x\xa0\x0e0\xca\xbc\x89T\xc5V6\xf1\xa4\xa8S\x8a%I\xd8gI\x15\xe9\xe7$M\x15\xdc@\xa9\xa1@\x9c\xeee\xe0\xe0\xf76"
+passed = b""
+while True:
+    passed = password + os.urandom(1)
+    print(f"[+] Checking {passed}")
+    if bcrypt.checkpw(passed,hash):
+        print(f"[+] Password is {passed}")
+        exit()
+    else:
+        print("[+] incorrect")
+    passed = b''
+```
+
+- Result
+
+![image](https://github.com/user-attachments/assets/60fe45ac-7201-42f9-99be-97684f4297d0)
+
+- Then, I created a python script to pass the bytes password and get the flag.
+
+```python3
+#! /usr/bin/env python3
+import requests
+password = b'\xec\x9f\xe0a\x978\xfc\xb6:T\xe2\xa0\xc9<\x9e\x1a\xa5\xfao\xb2\x15\x86\xe5$\x86Z\x1a\xd4\xca#\x15\xd2x\xa0\x0e0\xca\xbc\x89T\xc5V6\xf1\xa4\xa8S\x8a%I\xd8gI\x15\xe9\xe7$M\x15\xdc@\xa9\xa1@\x9c\xeee\xe0\xe0\xf76\xaa'
+
+data = {"username":"admin","password":password}
+url = "http://52.59.124.14:5013/"
+flag= requests.get(url,data=data).text
+print(flag)
+```
+
+- Flag-:```ENO{BCRYPT_FAILS_TO_B_COOL_IF_THE_PW_IS_TOO_LONG}```
+
+![image](https://github.com/user-attachments/assets/4c81b59d-6366-4128-94f4-915cc241c980)
+
+------------------
 
 
 
