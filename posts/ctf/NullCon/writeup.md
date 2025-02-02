@@ -389,6 +389,14 @@ ENO{SQL1_W1th_0uT_C0mm4_W0rks_SomeHow!}
 ▓   HP       ❯
 ```
 
+-------------
+
+### REFERENCES-:
+
+- [Bcrypt's password length](https://security.stackexchange.com/questions/39849/does-bcrypt-have-a-maximum-password-length)
+- [Templetor code evaluation](https://webpy.org/docs/0.3/templetor)
+
+------------
 
 
 
