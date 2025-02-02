@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
 -----------------
 
-### Cooking up  payload
+### Cooking up the payload
 
 -----------------
 
@@ -260,8 +260,115 @@ Payload-:
 
 -----------------
 
+### Paginator
+
+-----------------
+
+![image](https://github.com/user-attachments/assets/2b69c99b-cb17-4168-8906-55ba36800727)
+
+-----------------
+
+- Source Code-:
+
+```php
+<?php
+ini_set("error_reporting", 0);
+ini_set("display_errors",0);
+
+if(isset($_GET['source'])) {
+    highlight_file(__FILE__);
+}
+
+include "flag.php";
+
+$db = new SQLite3('/tmp/db.db');
+try {
+  $db->exec("CREATE TABLE pages (id INTEGER PRIMARY KEY, title TEXT UNIQUE, content TEXT)");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Flag', '" . base64_encode($FLAG) . "')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 1', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 2', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 3', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 4', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 5', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 6', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 7', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 8', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 9', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 10', 'This is not a flag, but just a boring page.')");
+} catch(Exception $e) {
+  //var_dump($e);
+}
 
 
+if(isset($_GET['p']) && str_contains($_GET['p'], ",")) {
+  [$min, $max] = explode(",",$_GET['p']);
+  if(intval($min) <= 1 ) {
+    die("This post is not accessible...");
+  }
+  try {
+    $q = "SELECT * FROM pages WHERE id >= $min AND id <= $max";
+    $result = $db->query($q);
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+      echo $row['title'] . " (ID=". $row['id'] . ") has content: \"" . $row['content'] . "\"<br>";
+    }
+  }catch(Exception $e) {
+    echo "Try harder!";
+  }
+} else {
+    echo "Try harder!";
+}
+?>
+
+```
+
+- The code creates an sqlite3 db and inserts the base64  encoded flag into table `1` and other posts.
+
+```php
+$db = new SQLite3('/tmp/db.db');
+try {
+  $db->exec("CREATE TABLE pages (id INTEGER PRIMARY KEY, title TEXT UNIQUE, content TEXT)");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Flag', '" . base64_encode($FLAG) . "')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 1', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 2', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 3', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 4', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 5', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 6', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 7', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 8', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 9', 'This is not a flag, but just a boring page.')");
+  $db->exec("INSERT INTO pages (title, content) VALUES ('Page 10', 'This is not a flag, but just a boring page.')");
+} 
+```
+
+- The code below checks if `GET` param `p` is set and also if it contains the char `,`.Then, it splits the value with func `explode` based on the delimiter `,`.These numbers are tagged with variable `min` and `max`.It also checks if the min value is lesser that 1 after parsing it with the `intval()` function and if lesser or equal to 1, it raises the `post is not accessible` and close the script.
+
+```php
+if(isset($_GET['p']) && str_contains($_GET['p'], ",")) {
+  [$min, $max] = explode(",",$_GET['p']);
+  if(intval($min) <= 1 ) {
+    die("This post is not accessible...");
+  }
+```
+
+- Later, the min and max variables are passed to the sqlite3 statement which is vulnerable to sqli.
+
+```php
+try {
+    $q = "SELECT * FROM pages WHERE id >= $min AND id <= $max";
+    $result = $db->query($q);
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+      echo $row['title'] . " (ID=". $row['id'] . ") has content: \"" . $row['content'] . "\"<br>";
+    }
+  }catch(Exception $e) {
+    echo "Try harder!";
+  }
+} else {
+    echo "Try harder!";
+}
+```
+
+- 
 
 
 
