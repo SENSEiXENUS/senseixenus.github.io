@@ -122,5 +122,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[December 5 2024]]  [Platypwnies](https://senseixenus.github.io/posts/ctf/platypwnies/writeup.html)
 - [[January 5 2025]] [IrisCTF25](https://senseixenus.github.io/posts/ctf/Iris25CTF/writeup.html)
 - [[January 25 2025]] [Tuctf25](https://senseixenus.github.io/posts/ctf/TUCTF/writeup.html)
+- [[February 2 2025]] [Nullcon25 Goa](https://senseixenus.github.io/posts/ctf/NullCon/writeup.html)
     
 * * *
