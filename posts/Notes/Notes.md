@@ -2453,6 +2453,38 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 ![image](https://github.com/user-attachments/assets/8539d086-5e9d-4e6a-a68a-2679210d0d5f)
 
+-------------------
+
+### Server Side Parameter Pollution
+
+-------------------
+
+- It occurs when a website embeds userinput to a server side request to an internal api without adequate encoding.This means that an attacker may be able to manipulate or inject parameters, which may enable them to override exisiting parameters, modify the application behaviour and access unauthorized data.Query parameters, form fields, headers, and URL path parameters may all be vulnerable
+
+--------------------
+
+### Testing for Server Side Parameter Pollution
+
+---------------------
+
+- To test for server-side parameter pollution in the query string, place query syntax characters like #, &, and = in your input and observe how the application responds.
+- You can use a URL-encoded # character to attempt to truncate the server-side request. To help you interpret the response, you could also add a string after the # character.
+- For example, you could modify the query string to the following:
+
+`GET /userSearch?name=peter%23foo&back=/home`
+
+- Ensure that `#` is url-encoded so that the front-end won't interpret it as a fragment.
+- You can also add an invalid parameter but it should also be url encoded.
+
+`GET /userSearch?name=peter%26email=foo&back=/home`
+
+- Try to override the first parameter by creating a new parameter with the same name .The internal API interprets two name parameters. The impact of this depends on how the application processes the second parameter. This varies across different web technologies. For example:
+- PHP parses the last parameter only. This would result in a user search for carlos.
+- ASP.NET combines both parameters. This would result in a user search for peter,carlos, which might result in an Invalid username error message.
+- Node.js / express parses the first parameter only. This would result in a user search for peter, giving an unchanged result.
+- If you're able to override the original parameter, you may be able to conduct an exploit. For example, you could add name=administrator to the request. This may enable you to log in as the administrator user.
+- Lab Solution-:
+
 
 
 
