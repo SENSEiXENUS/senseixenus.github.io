@@ -2441,7 +2441,15 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 ![image](https://github.com/user-attachments/assets/c1ab19d6-94e4-455f-922e-6074b609229e)
 
-- 
+---------------------------
+
+### Finding Mass Assignment vulnerabilities
+
+----------------------------
+
+- After identifying an endpoint e.g `/api/user/update`,you can also add a payload to the `/update` position e.g `update` and `add` to test for other functionalities.When looking for hidden endpoints, use wordlists based on common API naming conventions and industry terms. Make sure you also include terms that are relevant to the application, based on your initial recon.You can also check for hidden parameters with burp extensions like `Param-Miner`,`Content-Discovery` and with `Burp intruder`.
+- Mass-Assignment is also known as auto binding which works through internal parameters or when software auto binds a parameter to a request internally.Mass assignment may therefore result in the application supporting parameters that were never intended to be processed by the developer.
+
 
 
 
