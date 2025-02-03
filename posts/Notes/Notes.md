@@ -2429,6 +2429,14 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 ![image](https://github.com/user-attachments/assets/1b095022-8a8a-401c-b47f-8085f74ff215)
 
+------------------------
+
+### Using machine readable documentation
+
+-------------------------
+
+- You can parse documentation with burp extension `OpenApi Parser` and also specialized tools like `Postman` and `SoapUi`.
+- Documentation or api endpoints can be identified with javascript files.. Burp Scanner automatically extracts some endpoints during crawls, but for a more heavyweight extraction, use the JS Link Finder BApp.Identifying content types can help to discover critical vulnerabilities e.g an api that supports json and xml might be vulnerable to XXE attacks.
 
 
 
