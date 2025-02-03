@@ -2398,6 +2398,43 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 - Use `JSWzl` for generating graphql wordlists
 
+-----------------------
+
+###  API Testing <portswigger>
+
+-----------------------
+
+- APIs (Application Programming Interfaces) enable software systems and applications to communicate and share data. API testing is important as vulnerabilities in APIs may undermine core aspects of a website's confidentiality, integrity, and availability.
+- Common routes to find api documentation
+
+```
+/api
+/swagger/index.html
+/openapi.json
+/api/swagger/v1
+/api/swagger
+/api
+```
+----------------------
+
+### Lab-:
+
+----------------------
+
+- The api documentation is at `/api/`.
+
+![image](https://github.com/user-attachments/assets/b0bfd4e0-d2d8-4e60-b26d-368519bde769)
+
+- User Deleted with the `/api/user` endpoint and the `DELETE` header
+
+![image](https://github.com/user-attachments/assets/1b095022-8a8a-401c-b47f-8085f74ff215)
+
+
+
+
+
+
+
 
 
 
