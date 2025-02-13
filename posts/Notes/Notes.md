@@ -2498,12 +2498,41 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 ----------------
 
-### Resources on Unicod Normalization Attacks
+### Resources on Unicode Normalization Attacks
 
 ---------------
-
+### References-:
+---------------
 - [Unicode Python PEP Documentation](https://peps.python.org/pep-0672/)
-- [[Sloppy Joe's slide](https://docs.google.com/presentation/d/1Z-I9uPi2JGmc_jmAUFrt46rxFwLiqyiQc7z-o1i_I7Y/mobilepresent?slide=id.g2d1bb2d8abe_0_45)
+- [Sloppy Joe's slide](https://docs.google.com/presentation/d/1Z-I9uPi2JGmc_jmAUFrt46rxFwLiqyiQc7z-o1i_I7Y/mobilepresent?slide=id.g2d1bb2d8abe_0_45)
+
+----------------
+
+### BASH GLOB INJECTION
+
+-----------------
+
+- Exploiting wildcards in Bash
+- Executing commands with the wildcard `(*)` can pose a security risk e.g
+
+![image](https://github.com/user-attachments/assets/5929627b-163d-451e-962c-5b381df2bf1d)
+
+- Creating a file named "--help" and running "ls *" triggered file "--help" as an option instead.
+- Running `strace` shows that it is triggered as an option.
+
+![image](https://github.com/user-attachments/assets/3bf0f13c-87f2-4e9d-87b4-6c8126689123)
+
+- Fix-: Wildcards should be used after the "--" option
+
+![image](https://github.com/user-attachments/assets/4be55068-de05-4662-abb2-a25f2cd9f374)
+
+-----------------
+
+### REFERENCES-:
+
+-----------------
+
+- [Oxasploits](https://oxasploits.com/posts/bash-wildcard-expansion-arbitrary-command-line-arguments-0day/)
 
 
 
