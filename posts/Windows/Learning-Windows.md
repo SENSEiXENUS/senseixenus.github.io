@@ -1070,7 +1070,16 @@ Usage-:```python mcafee_sitelist_pwd_decrypt.py <string>```
 
 ![image](https://github.com/user-attachments/assets/4b4f732e-4862-4678-915e-c1bc0ae2e58b)
 
+-------------
 
+### SYSINTERNAL utilties
+
+-------------
+
+- Sysinternal troubleshooting utilities
+- [Link](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
+
+-------------
 
 
 
