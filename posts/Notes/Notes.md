@@ -2534,7 +2534,15 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 - [Oxasploits](https://oxasploits.com/posts/bash-wildcard-expansion-arbitrary-command-line-arguments-0day/)
 
+-----------------
 
+### Exploitable Java Functions
+
+-----------------
+
+- [Stack Overflow](https://stackoverflow.com/questions/4339611/exploitable-java-functions)
+
+------------------
 
 
 
