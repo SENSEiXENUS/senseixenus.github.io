@@ -2486,10 +2486,24 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 - Lab Solution-:
 
 
+---------------
 
+### Writing files with binary   `cat`
 
+--------------
 
+- Use-:
 
+![image](https://github.com/user-attachments/assets/a84d8a6b-8e14-49dc-9aa5-df000edb9f6f)
+
+----------------
+
+### Resources on Unicod Normalization Attacks
+
+---------------
+
+- [Unicode Python PEP Documentation](https://peps.python.org/pep-0672/)
+- [[Sloppy Joe's slide](https://docs.google.com/presentation/d/1Z-I9uPi2JGmc_jmAUFrt46rxFwLiqyiQc7z-o1i_I7Y/mobilepresent?slide=id.g2d1bb2d8abe_0_45)
 
 
 
