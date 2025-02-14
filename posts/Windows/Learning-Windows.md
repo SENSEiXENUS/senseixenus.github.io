@@ -1081,8 +1081,25 @@ Usage-:```python mcafee_sitelist_pwd_decrypt.py <string>```
 
 -------------
 
+###  Fixing Get-AppxPackage not installed Error
 
+------------
 
+- You have to import first with this command in an Admistrator prompt [`powershell start pwsh -v runAs`]
+
+```powershell
+ Import-Module Appx -UseWinPS
+```
+
+------------
+
+### Reference
+
+--------------
+
+- [Stack Overflow](https://superuser.com/questions/1456837/powershell-get-appxpackage-not-working)
+
+---------------
 
 
   
