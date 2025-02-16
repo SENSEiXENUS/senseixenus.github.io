@@ -73,6 +73,19 @@
 
 - Flag-: ```bronco{grandma-makes-b3tter-cookies-than-girl-scouts-and-i-w1ll-fight-you-over-th@t-fact}```
 
+-------------
+
+### Miku's Autograph
+
+------------
+
+![image](https://github.com/user-attachments/assets/6c602426-f82b-4e66-870f-ec52a644c878)
+
+------------
+
+- This challenge is based on `jwt exploitation`.If an attacker sets the base64 encoded header key `alg` to `none`, the server takes the jwt as having no algorithm.
+
+
 
 
 
