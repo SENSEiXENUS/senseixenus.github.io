@@ -26,7 +26,7 @@
 
 ------------------
 
-- I checked  the curl shows 3 endpoints as seen below and that we are logged in as `kitchen helper`
+- The site has 3 endpoints as seen in the image below.We are logged in as `grandma's helper`.
 
 ![image](https://github.com/user-attachments/assets/7348f296-603a-4fd7-aa23-f1dfd254c47b)
 
@@ -84,7 +84,7 @@
 ------------
 
 - This challenge is based on `jwt exploitation`.If an attacker sets the base64 encoded header key `alg` to `none`, the server takes the jwt as having no algorithm and decodes it freely without the secret key.
-- I wrote a script to automate the process
+- I wrote a script to automate the process.The script picks the token from the `get_token` endpoint.It is passed to the `tweakTokem` function which decodes the jwt header and set the `algorithm` or `alg` to `none`.The `sub` key in the base64_decoded payload which represents the `username` and set it to `miku_admin`.Lastly, the newly created `jwt_token` is passed to the `/login` which grants the flag.
 
 ```python3
 #! /usr/bin/env python3
