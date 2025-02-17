@@ -2544,6 +2544,25 @@ Syntax-:`clairvoyance <Graphql-endpoint> -o schema.json`
 
 ------------------
 
+### Exploiting SQLALCHEMY
+
+-------------------
+
+- The `order_by()` function in sqlalchemy is vulnerable to sql injection as seen in the [ctf-writeup](https://ctftime.org/writeup/33462).
+- [Unsafe methods](https://stackoverflow.com/questions/6501583/sqlalchemy-sql-injection) but these methods are unsafe if string literals are passed.
+
+```txt
+filter   - uses _literal_as_text (NOT SAFE)
+having   - uses _literal_as_text (NOT SAFE)
+
+distinct - uses _literal_as_label_reference (NOT SAFE)
+group_by - uses _literal_as_label_reference (NOT SAFE)
+order_by - uses _literal_as_label_reference (NOT SAFE)
+
+join     - uses model attributes to resolve relation (SAFE)
+```
+
+- 
 
 
 
