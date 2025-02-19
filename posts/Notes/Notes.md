@@ -59,7 +59,8 @@ NOTES
 
 - To local port forward
 
-      sudo ssh -l id_rsa -L {port you want to forwrd through}:127.0.0.1:{remote port discovered}  
+      sudo ssh -l id_rsa -L {port you want to forwrd through}:127.0.0.1:{remote port discovered}
+      ssh -N -L {local port(your machine)}:127.0.0.1:{remote port(victim machine)} rosa@chemistry.htb # No verbose output
 
 -------------------------------
 
