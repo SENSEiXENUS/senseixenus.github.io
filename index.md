@@ -101,6 +101,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 12 2024] [Editorial](https://senseixenus.github.io/posts/ctf/HTB/editorial.html) ``SSRF`` ``GIT`` ``GITPYTHON clone_from() RCE``
 - [[September 13 2024]] [Greenhorn](https://senseixenus.github.io/posts/ctf/HTB/greenhorn.html) ``PLUCK CMS`` ``DEPIX``
 - [[September 20 2024]] [Cap](https://senseixenus.github.io/posts/ctf/HTB/cap.html) ``Pcap Analysis`` ``Capabilities``
+- [[February 19 2025]] [Titanic](https://senseixenus.github.io/posts/ctf/HTB/cap.html) ``Path Traversal`` ``Gitea`` ``Pbkdf2 Cracking`` ``Image Magick Code Execution``
   
 
 * * *
@@ -123,5 +124,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[January 5 2025]] [IrisCTF25](https://senseixenus.github.io/posts/ctf/Iris25CTF/writeup.html)
 - [[January 25 2025]] [Tuctf25](https://senseixenus.github.io/posts/ctf/TUCTF/writeup.html)
 - [[February 2 2025]] [Nullcon25 Goa](https://senseixenus.github.io/posts/ctf/NullCon/writeup.html)
+- [[February 16 2025]] [BroncoCTF 2025](https://senseixenus.github.io/posts/ctf/BroncoCTF25/writeup.html)
     
 * * *
