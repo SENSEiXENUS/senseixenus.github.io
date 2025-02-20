@@ -5,6 +5,8 @@
 
 ---------------
 
+![image](https://github.com/user-attachments/assets/d2ef6314-7890-4ce6-87ef-c879c20ebe8c)
+
 ---------------
 
 - Rustscan's output
@@ -177,3 +179,52 @@ _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ().__class__.__mro__[1]
 _space_group_magn.number_BNS  62.448
 _space_group_magn.name_BNS  "P  n'  m  a'  "
 ```
+
+- Reverse shell-:
+
+![image](https://github.com/user-attachments/assets/96b66c1e-b24e-44a7-a3f6-08f494f3a204)
+
+----------------
+
+### User `Rosa`
+
+---------------
+
+- I discovered a sqlite3 database in directory `instance`.
+
+![image](https://github.com/user-attachments/assets/d1166ebd-c23f-4eda-98c7-9a3f593d3058)
+
+- The db contains md5 hashes for different users.My eyes the one for user `Rosa` because she is a user on the server.
+
+![image](https://github.com/user-attachments/assets/fb9225e8-f1a0-457d-a490-297fcf47bca5)
+
+- I cracked the hash with crackstation.net
+
+![image](https://github.com/user-attachments/assets/d8a5ff1a-8d35-4974-8495-2658d8e08ecf)
+
+- User `Rosa`
+
+![image](https://github.com/user-attachments/assets/5070bd48-dfc3-4aa5-a8ec-a9c2a9d79e11)
+
+--------------
+
+### Privesc with vulnerable service
+
+--------------
+
+- I noticed a web service running on port 8080 with `netstat -antp`.
+
+![image](https://github.com/user-attachments/assets/a19cc3c9-d459-43a3-a4e3-c8edfbf1098e)
+
+- I identified the server with `curl`.
+
+![image](https://github.com/user-attachments/assets/606e9f71-02c3-47cf-b5d7-3bebf3952057)
+
+- This version of `aiohttp` is vulnerable to path traversal as explained [here]()
+
+
+
+
+
+
+
