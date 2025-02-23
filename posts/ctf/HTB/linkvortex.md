@@ -189,5 +189,30 @@ if ! [[ "$LINK" =~ \.png$ ]]; then
   /usr/bin/echo "! First argument must be a png file !"
   exit 2
 fi
+```
 
-- 
+- The last part of the code check if the file is a symbolic link and it exists with `test -l` and sets the variable `LINK_NAME` to  the basename with `basename <filename>` and the `LINK_TARGET` holds the file which the symbolic link points to.Lastly,it checks if the symlink contains string `etc` or `root` to prevent attackers from reading  critical files.If the first condition is not fulfilled, the `else` statement move the file to `/var/quarantined` and if  variable `$CHECK_CONTENT` is set `true`, the file gets read.
+
+```bash
+if /usr/bin/sudo /usr/bin/test -L $LINK;then
+  LINK_NAME=$(/usr/bin/basename $LINK)
+  LINK_TARGET=$(/usr/bin/readlink $LINK)
+  if /usr/bin/echo "$LINK_TARGET" | /usr/bin/grep -Eq '(etc|root)';then
+    /usr/bin/echo "! Trying to read critical files, removing link [ $LINK ] !"
+    /usr/bin/unlink $LINK
+  else
+    /usr/bin/echo "Link found [ $LINK ] , moving it to quarantine"
+    /usr/bin/mv $LINK $QUAR_DIR/
+    if $CHECK_CONTENT;then
+      /usr/bin/echo "Content:"
+      /usr/bin/cat $QUAR_DIR/$LINK_NAME 2>/dev/null
+    fi
+  fi
+fi
+```
+
+------------------
+
+### Exploiting it
+
+------------------
