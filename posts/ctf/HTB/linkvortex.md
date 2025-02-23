@@ -86,4 +86,16 @@ PORT   STATE SERVICE REASON  VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
+- Subdomain enumeration-:
+
+![image](https://github.com/user-attachments/assets/89b5bd4a-9217-4c7a-ac8f-9f23834e132a)
+
+- I discovered a git directory after fuzzing the `dev` subdomain.
+
+![image](https://github.com/user-attachments/assets/80cfb290-a26e-4279-a885-6b5146f47385)
+
+- 
+
+
+
 
