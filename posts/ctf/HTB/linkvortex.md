@@ -216,3 +216,41 @@ fi
 ### Exploiting it
 
 ------------------
+
+- I created  a symlink for file `/etc/shadow` in the home directory.
+
+![image](https://github.com/user-attachments/assets/634bcd4f-06ea-447e-ad7f-ed0a01d1d3d4)
+
+- Then,in another directory,we have to create a symlink to point to our former symlink so that `readlink` will not spot that we are trying to read `/etc/shadow` and exit the script.You can see in the image that it does not point to the original file which is `/etc/shadow` but binary `cat` will read the file.
+
+![image](https://github.com/user-attachments/assets/d054b87e-b665-4b4f-a2d0-700bf322d781)
+
+- Before we execute the script,an env variable `CHECK_CONTENT` must be created and set to `true` with `export`.
+
+```bash
+cd ~;ln -s /etc/shadow /home/bob/tpassz.txt;cd /tmp;ln -s /home/bob/tpassz.txt /tmp/rootz.png;
+export CHECK_CONTENT=true;sudo -u root /usr/bin/bash /opt/ghost/clean_symlink.sh *.png
+```
+
+![image](https://github.com/user-attachments/assets/0793a57c-18af-4c30-a6bd-5beca73255a3)
+
+- I read the id_rsa file and got root access.
+
+![image](https://github.com/user-attachments/assets/c9a91c1b-c129-446b-a1b8-a07147e7ae6a)
+
+- Root access-:
+
+![image](https://github.com/user-attachments/assets/f0577721-21f3-45ae-aa91-b24959c73369)
+
+------------------
+
+### REFERENCE-:
+
+- [Ghost-5.58 exploit](https://github.com/0xDTC/Ghost-5.58-Arbitrary-File-Read-CVE-2023-40028)
+
+------------------
+
+
+
+
+
