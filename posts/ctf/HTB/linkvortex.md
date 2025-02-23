@@ -94,7 +94,29 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/80cfb290-a26e-4279-a885-6b5146f47385)
 
-- 
+- I recovered the `.git` directory with this [GitHacker](https://vedantyaduvanshi.medium.com/linkvortex-htb-writeup-5ec058845d9f) tool.
+
+![image](https://github.com/user-attachments/assets/6fb65072-6a84-4afb-bbd1-ddfb407becb0)
+
+- I grepped for credentials and discovered a password.
+
+![image](https://github.com/user-attachments/assets/0c4810df-10dd-4610-b2e1-e7a0f2d354a3)
+
+- I guessed the email which I presumed should be "admin@linkvortex.htb" which worked.I am logged in as the admin.
+
+![image](https://github.com/user-attachments/assets/0ff543bf-f0d5-455c-be15-62dcee9213bd)
+
+- The dockerfile in the git repo showed the version of the ghost cms.
+
+![image](https://github.com/user-attachments/assets/1e31dccb-be09-44f8-bebb-274a2e6a8ad9)
+
+- This version of Ghost cms is vulnerable to `Arbitrary File Read`.I discovered an exploit [here](https://github.com/0xDTC/Ghost-5.58-Arbitrary-File-Read-CVE-2023-40028).I read file `/etc/passwd`.
+
+![image](https://github.com/user-attachments/assets/375ff4d8-c98f-4b6d-8b82-75b032509c3a)
+
+- Then,I noticed a config file provided in the `Dockerfile` which might contain necessary credentials.
+
+![image](https://github.com/user-attachments/assets/82e7c53e-760e-44ec-b414-355b6198fbad)
 
 
 
