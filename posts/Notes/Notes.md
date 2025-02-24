@@ -2901,6 +2901,12 @@ curl [url]/wp-admin/admin-ajax.php?action=upload_image_check_mime -F "file=@pwn.
 
 ------------------
 
+### Image Related Check
+
+------------------
+
+- 
+
 
 
 
