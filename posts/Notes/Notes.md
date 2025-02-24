@@ -2781,6 +2781,36 @@ add_action( 'wp_ajax_af2_fnsf_delete_af2_font', array($this->Fnsf_Af2AjaxFormula
 curl '<WORDPRESS_BASE_URL>/wp-admin/admin-ajax.php?action=af2_delete_font -d "deletefile=../../../../etc/passwd&nonce=[nonce]" -H "Cookie:<cookie>"
 ```
 
+-----------------
+
+### Arbitrary file upload
+
+----------------
+
+-  This includes improper file input handling inside of the plugin/theme which can be used to arbitrarily upload files including .php files to further achieve Remote Code Execution (RCE).
+-  The most common way to trace a code file handling code is through the `$_FILES` php variable.Another way that is most of the time missed by hackers is via `WP_REST_Request::get_file_params` function. This function retrieves multipart file parameters from the body of a custom REST API route registered by the plugin/theme.
+
+- Vulnerable file functions-:
+
+```php
+move_uploaded_file()
+file_put_contents();
+fwrite();
+fputs();
+copy();
+fputcsv();
+rename();
+```
+
+- Vulnerable wordpress functions-:
+
+```php
+WP_Filesystem_Direct::put_contents();
+WP_Filesystem_Direct::move();
+WP_Filesystem_Direct::copy();
+```
+
+
 
 
 
