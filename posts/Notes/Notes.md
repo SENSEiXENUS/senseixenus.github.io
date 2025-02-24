@@ -2810,6 +2810,26 @@ WP_Filesystem_Direct::move();
 WP_Filesystem_Direct::copy();
 ```
 
+----------------
+
+### Compressed File Extraction
+
+----------------
+
+- One of the processes to upload a file is through an extraction of the compressed file. The compressed itself can vary from zip, gz, tar, rar, xz, 7z, etc. Most of the time, the developer forgets to implement a pre-check before the extraction process and it could lead to users uploading arbitrary files if the user can control the filename and the content of the extracted file.
+- Worpress functions-:
+
+```php
+Ziparchive::extractTo();
+Phardata::extractTo();
+unzip_file();
+```
+
+- Vulneravble code_:
+
+```php
+
+
 
 
 
