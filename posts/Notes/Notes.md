@@ -2626,6 +2626,36 @@ EOF
 
 ----------------------
 
+### Wordpress Functions
+
+----------------------
+
+- `current_user_can`-:
+- This function basically will check whether the current user has the specified capability. This function also accepts an ID of an object to check against if the capability is a meta capability. Meta capabilities such as edit_post and edit_user are capabilities used by the map_meta_cap function to map to primitive capabilities that a user or role has, such as `edit_posts` and `edit_others_posts`.
+
+```php
+current_user_can( 'edit_posts' );
+current_user_can( 'edit_post', $post->ID );
+current_user_can( 'manage_options' );
+```
+
+- [Capabilities in wordpress](https://wordpress.org/documentation/article/roles-and-capabilities/)
+
+Roles-:
+```
+Super Admin
+Administrator
+Editor
+Author
+Contributor
+Subscriber
+```
+
+- Defaults capabilities are assigned to each roles and can also be removed using `add_cap()` and `remove_cap()`.New roles can be introduced and removed with `add_role()` and `remove_role()` functions.
+- The Super Admin role allows a user to perform all possible capabilities. Each of the other roles has a decreasing number of allowed capabilities. For instance, the `Subscriber` role has just the `read` capability. One particular role should not be considered to be senior to another role. Rather, consider that roles define the user’s responsibilities within the site.
+- The difference between the `Super Admin` and the `Administrator` is that the former has access to the site network administration features and all other features while the latter has access to all the administration features within a single site.
+- 
+----------------------
 - Arbitrary file deletion-:It occurs when an attacker is able to delete files.Devs should always use the `sanitize_file_name` function to sanitize file name.Useful functions-:
 
 - PHP_Related-:
