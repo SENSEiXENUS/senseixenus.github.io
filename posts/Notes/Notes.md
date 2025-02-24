@@ -2653,8 +2653,8 @@ Subscriber
 
 - Defaults capabilities are assigned to each roles and can also be removed using `add_cap()` and `remove_cap()`.New roles can be introduced and removed with `add_role()` and `remove_role()` functions.
 - The Super Admin role allows a user to perform all possible capabilities. Each of the other roles has a decreasing number of allowed capabilities. For instance, the `Subscriber` role has just the `read` capability. One particular role should not be considered to be senior to another role. Rather, consider that roles define the user’s responsibilities within the site.
-- The difference between the `Super Admin` and the `Administrator` is that the former has access to the site network administration features and all other features while the latter has access to all the administration features within a single site.
-- 
+- The difference between the `Super Admin` and the `Administrator` is that the former has access to the site network administration features and all other features while the latter has access to all the administration features within a single site.The subscriber can only read posts.
+
 ----------------------
 - Arbitrary file deletion-:It occurs when an attacker is able to delete files.Devs should always use the `sanitize_file_name` function to sanitize file name.Useful functions-:
 
