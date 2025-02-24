@@ -2857,6 +2857,22 @@ function unpack_fonts(){
 curl [URL]/wp-admin/admin-ajax.php?action=unpack_fonts -H "Cookie: <authenticated_cookie>" -F "file=@/home/user.zip"
 ```
 
+-----------------
+
+### Bypass techniques
+
+-----------------
+
+- Developers check for the file extension type based on mime_type and forget to check the file extension name.
+- Vulnerable code-:
+
+```php
+mime_content_type();
+exif_imagetype();
+finfo_file();
+```
+
+
 
 
 
