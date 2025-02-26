@@ -3004,6 +3004,24 @@ function upload_image(){
 
 - Then, upload a malicious jpg with php code saved in it.
 
+-----------------
+
+### Broken Access Control
+
+-----------------
+
+- This covers cases of possible Broken Access Control on WordPress. This includes improper hook/function/code usage inside of the plugin/theme which can be used to access or update sensitive information.
+- By default,processes on hook and functions used a plugin don't have permission and nonce value check,that's why developer needs to manually carry out permision check with function like `current_user_can` and nonce check with functions-:
+
+```php
+wp_verify_nonce
+check_admin_referrer
+check_ajax_referrer
+```
+
+
+- 
+
 
 
 
