@@ -2715,11 +2715,31 @@ add_action( 'wp_ajax_wpdocs_action', 'wpdocs_action_function' );
 --------------------
 
 - `init`-: The init hook runs after the WordPress environment is loaded but before the current request is processed. This hook also allows developers to register custom post types, and taxonomies, or perform other tasks that need to be executed early in the WordPress loading process.This hook itself is accessible by unauthenticated users by default (also depends if the hook is registered outside from an additional permission check). Visiting the front page of a WordPress site should trigger the init hook.An unauthenticated user can simply visit the front page of a WordPress instance and it will trigger any function that is attached to the init hook.
+
+- Implementation-:
+
+```php
+add_action( 'init', 'process_post' );
+
+function process_post() {
+    if( isset( $_POST['unique_hidden_field'] ) ) {
+    // process $_POST data here, possibly need to add permission and nonce check first
+    }
+}
+```
+
+- Curl-:
+
+```bash
+curl [url]/?unique_hidden_field=1
+```
   
 --------------------
+
 ### Arbitrary File deletion
 
 ----------------------
+
 - Arbitrary file deletion-:It occurs when an attacker is able to delete files.Devs should always use the `sanitize_file_name` function to sanitize file name.Useful functions-:
 
 - PHP_Related-:
