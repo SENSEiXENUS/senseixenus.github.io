@@ -2655,6 +2655,70 @@ Subscriber
 - The Super Admin role allows a user to perform all possible capabilities. Each of the other roles has a decreasing number of allowed capabilities. For instance, the `Subscriber` role has just the `read` capability. One particular role should not be considered to be senior to another role. Rather, consider that roles define the user’s responsibilities within the site.
 - The difference between the `Super Admin` and the `Administrator` is that the former has access to the site network administration features and all other features while the latter has access to all the administration features within a single site.The subscriber can only read posts.
 
+---------------------
+
+- `wp_verify_nonce`-:It is one of the functions used to verify a nonce if it is correct within the 24 hours time limit.A nonce is valid for 24 hours (by default).The function is used to verify the nonce sent in the current request usually accessed by the $_REQUEST PHP variable.Nonces should never be relied on for authentication authorization, or access control. Protect your functions using the current_user_can function, always assume the nonce value can be compromised.
+- Implementation-:
+
+```php
+$nonce = $_REQUEST['_wpnonce'];
+if ( ! wp_verify_nonce( $nonce, 'my-nonce' ) || ! current_user_can("manage_options")) {
+  die( __( 'Security check', 'textdomain' ) );
+} else {
+  // Do stuff here.
+}
+```
+--------------------------
+
+- `check_admin_referrer`-:One of the functions available to check for nonce value. This function ensures intent by verifying that a user was referred from another admin page with the correct security nonce.Nonces should never be relied on for authentication authorization, or access control. Protect your functions using the `current_user_can ` function, always assume the nonce value can be compromised.
+
+- Implementation-:
+
+```php
+Nonces should never be relied on for authentication authorization, or access control. Protect your functions using the current_user_can function, always assume the nonce value can be compromised.
+```
+
+-----------------------
+
+- `check_ajax_referrer`-:One of the functions to check for nonce value. This function verifies the Ajax request to prevent processing requests external to the blog by checking the nonce value.Nonces should never be relied on for authentication authorization, or access control. Protect your functions using the current_user_can function, always assume the nonce value can be compromised.
+- Implementation-:
+
+```php
+/**
+ * Check the referrer for the AJAX call.
+ */
+function wpdocs_action_function() {
+    if(!current_user_can("manage_options")){
+        die;
+    }
+
+  check_ajax_referer( 'wpdocs-special-string', 'security' );
+  echo sanitize_text_field( $_POST['wpdocs_string'] );
+  die;
+}
+add_action( 'wp_ajax_wpdocs_action', 'wpdocs_action_function' );
+```
+
+----------------------
+
+- `register_rest_route`-: One of the functionalities or functions that are sometimes missed from a hacker’s point of view. This function’s purpose is to register a custom REST API route in the context of a plugin or theme.This function accepts $args as the third argument. The $args itself is either an array of options for the endpoint or an array of arrays for multiple methods.
+- There is a permission callback which checks if a user can perform the action ( reading,updating etc). This allows the API to tell the client what actions they can perform on a given URL without needing to attempt the request first.
+
+---------------------
+
+### Hooks
+
+---------------------
+
+- Hooks are a piece of code to interact/modify another piece of code at specific, pre-defined spots.They make up the foundation for how plugins and themes interact with WordPress Core, but they’re also used extensively by Core itself.
+
+--------------------
+
+- `init`-: The init hook runs after the WordPress environment is loaded but before the current request is processed. This hook also allows developers to register custom post types, and taxonomies, or perform other tasks that need to be executed early in the WordPress loading process.This hook itself is accessible by unauthenticated users by default (also depends if the hook is registered outside from an additional permission check). Visiting the front page of a WordPress site should trigger the init hook.An unauthenticated user can simply visit the front page of a WordPress instance and it will trigger any function that is attached to the init hook.
+  
+--------------------
+### Arbitrary File deletion
+
 ----------------------
 - Arbitrary file deletion-:It occurs when an attacker is able to delete files.Devs should always use the `sanitize_file_name` function to sanitize file name.Useful functions-:
 
