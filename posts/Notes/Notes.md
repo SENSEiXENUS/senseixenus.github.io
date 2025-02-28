@@ -3136,6 +3136,26 @@ check_ajax_referrer
 ```
 
 
+- The `init` hook allows unauthenticated users to make requests and it is triggered when Wordpress is initialized.
+- Vulnerable code-:If a vulnerable function i.e a function that should be for an admin used is hooked to `init`,it can accessed after Wordpress initializtion.
+
+```php
+add_action("init", "check_if_update");
+
+function check_if_update(){
+    if(isset($_GET["update"])){
+        update_option("user_data", sanitize_text_field($_GET_["data"]));
+    }
+}
+```
+
+- Exploitation-:
+
+```bash
+curl [url]/?update=1&data=admin
+```
+
+- The `admin_init` load functions hooked to it when an admin related function is loaded probably `/wp-admin/admin-ajax.php`.
 - 
 
 
