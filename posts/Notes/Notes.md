@@ -2733,6 +2733,38 @@ function process_post() {
 ```bash
 curl [url]/?unique_hidden_field=1
 ```
+
+- The `admin_init` hook is used to perform task when the admin panel is loaded.These tasks can include adding custom menus, registering custom post types or taxonomies, initializing settings, and performing security checks or authentication for admin-specific actions.The hook is similar to the `init` hook but it only fires as an admin screen or script is being initialized. This hook does not just run on user-facing admin screens, it also runs on the admin-ajax.php and admin-post.php endpoint as well.
+- Implementation-:
+
+```php
+function myplugin_settings() {
+    register_setting( 'myplugin', 'myplugin_setting_1', 'intval' );
+    register_setting( 'myplugin', 'myplugin_setting_2', 'intval' );
+}
+add_action( 'admin_init', 'myplugin_settings' );
+```
+
+- Since this hook also runs on the admin-ajax.php and admin-post.php endpoint, an unauthenticated user can trigger this hook by simply visiting the URL below:
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=myplugin-settings
+```
+
+- The `wp_ajax_${$action}` allows developers to handle custom AJAX endpoints. The wp_ajax_ hooks follow the format wp_ajax_$action, where $action variable comes from the action GET/POST parameter submitted to the admin-ajax.php endpoint.The hook only fires up  for users with `Subscriber+` role.A proper permission and nonce check is still needed to secure the function attached to this hook.
+- Implementation-:
+
+```php
+add_action( 'wp_ajax_foobar', 'my_ajax_foobar_handler' );
+
+function my_ajax_foobar_handler() {
+    // Make your response and echo it.
+
+    // Don't forget to stop execution afterward.
+    wp_die();
+}
+```
+- The `wp_ajax_nopriv_${action}` is the same as the `wp_ajax_${action}` except the `nopriv` part allows unauthenticated users to make `AJAX` requests i.e. when the `is_user_logged_in()` function returns false.
   
 --------------------
 
