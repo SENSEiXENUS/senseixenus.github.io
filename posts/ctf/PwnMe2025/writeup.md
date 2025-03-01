@@ -114,7 +114,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 ![image](https://github.com/user-attachments/assets/01ab5ca9-0c3a-4834-b4cd-8e1a63b77a27)
 
-- In order to get the flag,we need to find a way to trigger `error.html`.I was able to trigger it by registering an already registered user.Coe-:
+- In order to get the flag,we need to find a way to trigger `error.html`.I was able to trigger it by registering an already registered user.Code-:
 
 ```python3
 @app.route('/register', methods=['GET', 'POST'])
