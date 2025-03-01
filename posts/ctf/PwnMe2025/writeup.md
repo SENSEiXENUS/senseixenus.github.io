@@ -110,7 +110,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 ![image](https://github.com/user-attachments/assets/714d58e2-dd30-45b6-bf57-63725a9af3de)
 
-- We have write access ot the file,I edited it an added the code shown in the image.
+- We have write access to the file,I update the template with the code shown in the image.
 
 ![image](https://github.com/user-attachments/assets/01ab5ca9-0c3a-4834-b4cd-8e1a63b77a27)
 
