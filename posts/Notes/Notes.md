@@ -3327,6 +3327,31 @@ curl [url]/wp-admin/admin-ajax.php?action=fetch_image_url&image_url=http://local
 
 -----------------
 
+-  This includes improper usage of functions inside of the plugin/theme which can be used to directly execute code or command on the server.
+-  Vulnerable functions-:
+
+```php
+system()
+exec()
+shell_exec()
+passthru()
+proc_open()
+eval()
+call_user_func()
+call_user_func_array()
+create_function() //DEPRECATED as of PHP 7.2.0, and REMOVED as of PHP 8.0.0
+```
+- Php also supports a dynamic function call where we can execute a function from a string or variable.e.g
+
+```php
+$action_type = $_GET["action"];
+$input = $_GET["input"];
+$result = $action_type($input);
+echo $result;
+```
+
+
+
 
 
 
