@@ -3283,18 +3283,24 @@ curl [url]/wp-admin/admin-ajax.php?action=render_lesson&template_path=/etc/passw
 --------------------
 
 - This bug involves improper url handling. This includes improper URL fetch handling inside of the plugin/theme which can be used to perform unauthorized actions or access to data within the organization. This can be in the vulnerable application, or on other back-end systems that the application can communicate with.
-- Useful functions-:
-  -  file_get_contents
-  -  readfile
-  -  fopen
-  -  stream_get_contents
-  -  cURL
+- Useful functions[php]-:
+
+```php
+file_get_contents
+readfile
+fopen
+stream_get_contents
+cURL
+```
 
 - Wordpress related-:
- - wp_remote_head
- - wp_remote_get
- - wp_remote_post
- - wp_remote_request
+
+```php
+wp_remote_head
+wp_remote_get
+wp_remote_post
+wp_remote_request
+```
 
 
 
