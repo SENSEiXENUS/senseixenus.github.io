@@ -3384,6 +3384,55 @@ add_shortcode("imagerender", "image_render_callback");
 
 ------------------
 
+### SQL Injection
+
+------------------
+
+- This includes improper usage of functions and user input handling inside of the plugin/theme which can be used to inject a malicious query into the SQL execution to leak sensitive data.
+- Vulnerable functions-:
+
+```php
+$wpdb->query
+$wpdb->get_var
+$wpdb->get_cols
+$wpdb->get_results
+```
+
+- Vulnerable code-:
+
+```php
+add_action("wp_ajax_nopriv_load_questions", "load_questions");
+
+function load_questions(){
+    global $wpdb;
+
+    $quiz_id = $_GET["quiz_id"];
+
+    if ( isset($_COOKIE[ 'question_ids_'.$quiz_id ]) ) {
+        $question_sql = sanitize_text_field( wp_unslash( $_COOKIE[ 'question_ids_'.$quiz_id ] ) );
+    }else {
+        $question_ids = array("1","2","3");
+        $question_sql = implode( ',', $question_ids );
+    }
+
+    $order_by_sql = 'ORDER BY FIELD(question_id,'.$question_sql.')';
+
+    $query     = $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}custom_questions WHERE question_id IN (%1s)", $question_sql);
+    $questions = $wpdb->get_results( stripslashes( $query ) );
+
+    wp_send_json($questions);
+}
+```
+
+- The vulnerable variable is `$question_sql` and the point of exploitation is the cookie's query `'questions_ids_'.$quiz_id`.The vulnerable function is also `$wpdb->get_results()`
+
+```bash
+curl [url]/wp-admin/admin-ajax.php?action=load_questions&quiz_id=1 -H "Cookie: question_ids_1=[point_of_injection]"
+```
+
+
+
+
 
 
 
