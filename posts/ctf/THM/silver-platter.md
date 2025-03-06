@@ -148,7 +148,11 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/9844d9f3-81a4-4412-b0d0-10669a63a2b1)
 
+- This version of silverpeas is vulnerable to `Authentication bypass` as explained in this [Github Repo](https://gist.github.com/ChrisPritchard/4b6d5c70d9329ef116266a6c238dcb2d).I was able to access user `scr1ptkiddy` account.
+
 - 
+
+
 
 
 
