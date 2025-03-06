@@ -127,6 +127,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[January 25 2025]] [Tuctf25](https://senseixenus.github.io/posts/ctf/TUCTF/writeup.html)
 - [[February 2 2025]] [Nullcon25 Goa](https://senseixenus.github.io/posts/ctf/NullCon/writeup.html)
 - [[February 16 2025]] [BroncoCTF 2025](https://senseixenus.github.io/posts/ctf/BroncoCTF25/writeup.html)
-- [[March 5 2025]] [PwnMe2025](https://senseixenus.github.io/posts/ctf/PwnMe2025/writeup.html))
+- [[March 5 2025]] [PwnMe2025](https://senseixenus.github.io/posts/ctf/PwnMe2025/writeup.html)
     
 * * *
