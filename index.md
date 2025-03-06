@@ -75,7 +75,8 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[Dec 5 2024]] [New YorkFlankees](https://senseixenus.github.io/posts/ctf/THM/newyorkflankees.html) `Padding Oracle Attack` `Command Injection` `Writeable Docker daemon`
 - [[Dec 6 2024]] [Cyberlens](https://senseixenus.github.io/posts/ctf/THM/cyberlens.html) `Apache Tika` `RDP` `AlwaysInstallElevated`
 - [[Dec 8 2024]] [Opacity](https://senseixenus.github.io/posts/ctf/THM/Opacity.html) `File Upload bypass` `Kdbx` `Php lib hijacking`
-- [[Jan 1 2025]] [Valley](https://senseixenus.github.io/posts/ctf/THM/valley.html) `Reuesed credentials` `Wireshark` `python library hijacking`
+- [[Jan 1 2025]] [Valley](https://senseixenus.github.io/posts/ctf/THM/valley.html) `Reused credentials` `Wireshark` `python library hijacking`
+- [[March 6 2025] [Silver-Platter](https://senseixenus.github.io/posts/ctf/THM/silver-platter.html) `Username enumeration` `Silverpeas Auth bypass` `Exposed credentials` `sudo`
   
 * * *
 
@@ -126,5 +127,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[January 25 2025]] [Tuctf25](https://senseixenus.github.io/posts/ctf/TUCTF/writeup.html)
 - [[February 2 2025]] [Nullcon25 Goa](https://senseixenus.github.io/posts/ctf/NullCon/writeup.html)
 - [[February 16 2025]] [BroncoCTF 2025](https://senseixenus.github.io/posts/ctf/BroncoCTF25/writeup.html)
+- [[March 5 2025]] [PwnMe2025](https://senseixenus.github.io/posts/ctf/PwnMe2025/writeup.html))
     
 * * *
