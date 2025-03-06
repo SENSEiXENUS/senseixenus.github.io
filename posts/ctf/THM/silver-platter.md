@@ -150,11 +150,58 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 - This version of silverpeas is vulnerable to `Authentication bypass` as explained in this [Github Repo](https://gist.github.com/ChrisPritchard/4b6d5c70d9329ef116266a6c238dcb2d).I was able to access user `scr1ptkiddy` account.
 
-- 
+![image](https://github.com/user-attachments/assets/12e8b6fa-8d77-4031-8a68-50993cdb114e)
 
 
+- Request made-:
+
+![image](https://github.com/user-attachments/assets/d6cb6795-f773-489c-8911-635a30d9b821)
+
+- I was able to get another user `Manager` in the recent mails sent to the current user.
+
+![image](https://github.com/user-attachments/assets/907b5225-ebc2-4167-a0b7-5e7bea2f0bd2)
+
+- I discovered ssh credentials for the current user's mail.
+
+![image](https://github.com/user-attachments/assets/4d42140e-2f59-4e48-9730-5ebe76164abc)
+
+- User `tim` ssh access-:
+
+![image](https://github.com/user-attachments/assets/c51b11e3-af74-4030-8d0a-f01e0567d517)
+
+-----------------
+
+### Privesc with exposed password
+
+------------------
+
+- User `tim` is part of the `adm` groups which means we can read logs.I checked for password with grep and discovered `postgresql` logs.
+
+![image](https://github.com/user-attachments/assets/9e26b668-3709-4ac6-a0e7-be77dcb7fe34)
+
+- There are 3 users on the server `Root,Tim and Tyler`.
+
+![image](https://github.com/user-attachments/assets/6a0aa78e-184e-434d-a8fb-c567a401118d)
+
+- The password worked for user `Tyler`.Ssh access-:
+
+![image](https://github.com/user-attachments/assets/2739375b-c2b6-4057-8f43-ab4313dd699d)
+
+- Since, user `tyler` is part of the group `sudo`,we can `sudo` with no constraints.I escalated to root witht he steps showing in the image.
+
+![image](https://github.com/user-attachments/assets/d104712f-5cc2-4886-912c-19a69445bf22)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/bcc99705-9c59-4643-9b2b-6afabc2482c2)
 
 
+----------------
 
+### Reference-:
 
+----------------
 
+- [Silverpeas Auth Bypass](https://gist.github.com/ChrisPritchard/4b6d5c70d9329ef116266a6c238dcb2d)
+
+-----------------
