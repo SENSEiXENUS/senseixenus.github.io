@@ -207,7 +207,7 @@ try:
 
 -------------------------
 
-- According to the docker file,Docker api is exposed on port `2375` which we can exploit to create containers,inject containers and carry out malicious.This will be the url to interact with to trigger an RCE. URL-: `localhost:2375`, the mount point in target will be `/flag` because the main goal is to read the flag.
+- According to the docker file,Docker api is exposed on port `2375` which we can exploited to create containers,start containers,execute command and for malicious actions.We will be interacting with this internal url `localhost:2375` to load endpoints to buld a container.mount the `/flag/` directory in it and execute commands on the container.With the aid of the `action` json key,we can make `get` and `post` requests to send data to the internal service.
 
 ```Docker
 FROM python:3.9-alpine
