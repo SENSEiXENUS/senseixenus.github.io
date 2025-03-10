@@ -276,7 +276,18 @@ RUN exec_id=$(curl -s -X POST -H "Content-Type: application/json" -d '{"AttachSt
 ![image](https://github.com/user-attachments/assets/6ac103b6-488d-4a29-b8b6-314567dfd220)
 
 - Flag-:```pearl{do_y0u_r34llY_kn0w_d0ck3r_w3ll?}```
-- In real life scenarios,you can mount a more critical directory e.g `/mnt/root`,try to create privileged container and spawn a reverse shell to gain access to the host files conveniently.I followed this approach to save time.
 
+-----------------
+
+### THANKS FOR READING
+
+------------------
+
+### REFERENCES-:
+
+-----------------
+
+- [M0z](https://m0z.ie/research/2025-01-27-Developing-a-Docker-1-Click-RCE-chain-for-fun/)
+- [Docker API documentation]()
 
 
