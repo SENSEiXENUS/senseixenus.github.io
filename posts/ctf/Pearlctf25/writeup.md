@@ -1,6 +1,6 @@
 ------------
 
-### CTF-: Pearl Ctf 2025
+### CTF-: PearlCTF 2025
 
 -------------
 
@@ -9,7 +9,7 @@
 -------------
 
 - Web
-  - Tic-tact-toe
+  - Tic-tac-toe
 
 ---------------
 
@@ -21,7 +21,7 @@
 
 ----------------
 
-- Vulnerability-: SSRF-to-Docker-RCE chain
+- Vulnerability-: SSRF-to-DockerEscape-to-RCE chain
 
 -----------------
 
@@ -136,8 +136,8 @@ def get_game_url(req_json):
         return {"url": None, "action": None, "error": "Internal server error"}
 ```
 
-- The index route calls function `get_game_url` and pass the json body to create a url.We just need to focus on `get_game_url()` to understand how the url is being created and triggr an ssrf.
-The function picks key `api` from the dict and picks the keys from the dict with `keys()` object.Later, the url is replaced with environmental variables which will make the url look like this `http://localhost:8000/<game_action>`.The `<game_action>` will be replaced with the value of the first key.The `json` body must also contain an `action` key which will determine whether the request should be `get` or `post` and a state to mimic the `tic-tac-toe` state.The `state` must be a list containing 9 characts[string] and must consist of `X','_' and '0'`.
+- The index route calls function `get_game_url` and pass the json body to create a url.We just need to focus on `get_game_url()` to understand how the url is being created and trigger the `Server Side Request Forgery`.
+The function picks key `api` from the dict and picks the keys from the dict with `keys()` object.Later, the url is replaced with environmental variables which will make the url look like this `http://localhost:8000/<game_action>`.The `<game_action>` will be replaced with the value of the first key.The `json` body must also contain an `action` key which will determine whether the request should be `get` or `post` and a state to mimic the `tic-tac-toe` state.The `state` must be a list containing 9 characters[string] and must consist of either `X','_' or '0'`.
 
 ```python3
 import os
@@ -174,7 +174,7 @@ def get_game_url(req_json):
         return {"url": None, "action": None, "error": "Internal server error"}
 ```
 
-- I triggered an ssrf by creating an object in this manner because we want the entire url to be replaced with our own url.The url will be like this `http://localhost:8000/<game_action>` after it gets replaced by the `url.py` script which will be the first key of the api `dict`.The key `http://localhost:8000/<game_action>` will be replaced with our malicious url which will be the Docker api url as seen below.
+- I triggered an `SSRF` by creating an object in this manner because we want the entire url to be replaced with our own url.The url will be like this `http://localhost:8000/<game_action>` after it gets replaced by the `url.py` script which will be the first key of the api `dict`.The key `http://localhost:8000/<game_action>` will be replaced with our malicious url which will be the Docker api url as seen below.
 
 ```json
 {"api":{"http://localhost:8000/<game_action>":"http://localhost:2375/container/json"},"state":["X","X","X","X","X","X","X","X","X"],"action":"get"}
@@ -203,11 +203,11 @@ try:
 
 -------------------------
 
-### Dockerfile Analysis for RCE
+### Dockerfile Analysis for DOCKER ESCAPE to RCE
 
 -------------------------
 
-- According to the docker file,Docker api is exposed on port `2375` which we can exploited to create containers,start containers,execute command and for malicious actions.We will be interacting with this internal url `localhost:2375` to load endpoints to buld a container.mount the host filesystem in it and execute commands on the container.With the aid of the `action` json key,we can make `get` and `post` requests to send data to the internal service.
+- The Dockerfile will be based on the `alpine` image, it will install the `docker-cli`  and make the `/app` directory the home directory.The `requirements.txt` file will be copied into it and installed with `pip` followed by the `app.py` `url.py` and `templates`.The `flag.txt` will be copied to `/flag/`.Environmental variables will also be set,Host `tcp://localhost:2375` will be set to `DOCKER_HOST`,the `GAME_API_DOMAIN` will be set to `localhost` and the `GAME_API_PORT` wil be set to `8000`.Lastly, python `gunicorn` will be used to initialized the app.
 
 ```Docker
 FROM python:3.9-alpine
@@ -231,6 +231,8 @@ ENV GAME_API_PORT="8000"
 
 CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app", "--capture-output", "--log-level", "debug"]
 ```
+
+- According to the docker file,Docker api is exposed on port `2375` which we can exploited to create containers,start containers,execute command and for malicious actions.We will be interacting with this internal url `localhost:2375` to load endpoints to buld a container,mount the host filesystem in it and execute commands on the container.With the aid of the `action` json key,we can make `get` and `post` requests to send data to the internal service.Mounting the host filesystem in the malicious container will allow us escape to the host filesystem.
 
 -------------------
 
