@@ -288,6 +288,8 @@ RUN exec_id=$(curl -s -X POST -H "Content-Type: application/json" -d '{"AttachSt
 -----------------
 
 - [M0z](https://m0z.ie/research/2025-01-27-Developing-a-Docker-1-Click-RCE-chain-for-fun/)
-- [Docker API documentation]()
+- [Docker API documentation](https://docs.docker.com/reference/api/engine/version/v1.48/)
+
+---------------
 
 
