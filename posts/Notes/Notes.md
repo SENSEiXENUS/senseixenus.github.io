@@ -3495,11 +3495,22 @@ curl [url]/ -d "input=' or 1=1--+ "
 
 
 - Proof of Concept-:
+  
 - Fuzz the higlighted part with numbers
 
 ![image](https://github.com/user-attachments/assets/10291e7a-2baa-4f97-b508-e4d62ed58a6b)
 
 - Filter for success
+
+![image](https://github.com/user-attachments/assets/99ee65e1-4719-4699-af30-85b2fab01407)
+
+- RCE-:
+
+![image](https://github.com/user-attachments/assets/dfc2bd65-d912-4da6-8800-320aedd197a7)
+
+---------------------
+
+
 
 
 
