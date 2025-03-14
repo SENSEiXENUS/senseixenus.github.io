@@ -178,7 +178,35 @@ if(isset($_GET['cmd'])){
 
 ![image](https://github.com/user-attachments/assets/f455729f-5602-4f6a-8354-4ad4f35aa48e)
 
-- Upload it and install
+- Upload it and install, shell should be at `<url>/modules/sensei/sensei.php`
+
+![image](https://github.com/user-attachments/assets/b70161f5-5d5f-46de-99f7-60cbe163962b)
+
+- Shell-:
+
+![image](https://github.com/user-attachments/assets/d5d90f27-98ea-4774-80d8-537960e1cc13)
+
+
+- I grepped for users from `/etc/passwd` and discovered 2 users.
+
+![image](https://github.com/user-attachments/assets/e2385ba7-75f3-4ce6-a99b-915c1945c48f)
+
+- I tried the password for `tiffany@dog.htb` and was able to access user `johncusack`.
+
+![image](https://github.com/user-attachments/assets/7c3772ff-966b-45c3-b861-3f5482f7cbae)
+
+
+-------------
+
+### Privesc with backdrop-bee
+
+-------------
+
+
+
+
+
+
 
 
 
