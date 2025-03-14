@@ -101,5 +101,28 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/a59b1f33-81e8-43a1-a1da-ed9cbe99fcd8)
 
-- I dumped the gitfile witn 
+- I dumped the `.git` directory with `GITTOOLS` to check for credentials.
+
+![image](https://github.com/user-attachments/assets/fbabd504-1eec-4075-99cb-1f2b2e5ab97f)
+
+- And extracted it with `extractor.sh`
+
+![image](https://github.com/user-attachments/assets/535000f6-c15b-4bd1-b159-e49e157e698f)
+
+- I found this email in the objects after grepping for `dog.htb`.
+
+![image](https://github.com/user-attachments/assets/20ea2bc2-b079-451c-87ba-56b15365a874)
+
+- Then,after checking file `settings.php`, I noticed this credential.
+
+![image](https://github.com/user-attachments/assets/1bdc1851-7557-450a-aca4-164bee511752)
+
+- I was able to login to the admin dashboard.
+
+
+
+
+
+
+
 
