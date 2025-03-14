@@ -105,7 +105,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[February 19 2025]] [Titanic](https://senseixenus.github.io/posts/ctf/HTB/titanic.html) ``Path Traversal`` ``Gitea`` ``Pbkdf2 Cracking`` ``Image Magick Code Execution``
 - [[February 20 2025]] [Chemistry](https://senseixenus.github.io/posts/ctf/HTB/chemistry.html) ``Pymatgen`` ``exposed sqlite3db`` ``Aio/http``
 - [[February 23 2025]] [LinkVortex](https://senseixenus.github.io/posts/ctf/HTB/linkvortex.html) ``Git`` ``Arbitrary file read`` ``Symlink madness``
-- [[March 14 2025]] [Dog](https://senseixenus.github.io/posts/ctf/HTB/linkvortex.html) ``GIT`` ``Backdoor CMS RCE``  ``BEE RCE``
+- [[March 14 2025]] [Dog](https://senseixenus.github.io/posts/ctf/HTB/dog.html) ``GIT`` ``Backdoor CMS RCE``  ``BEE RCE``
 
 * * *
 
