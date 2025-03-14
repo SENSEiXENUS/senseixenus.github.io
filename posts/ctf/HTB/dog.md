@@ -202,6 +202,50 @@ if(isset($_GET['cmd'])){
 
 -------------
 
+- After running `sudo -l`,I noticed that user `johncusack` can run a binary `bee` as root.
+
+![image](https://github.com/user-attachments/assets/7cea4d6a-7005-4762-8566-e12983261845)
+
+- I checked the manual for the binary and noticed that bee is the cli tool for backdrop CMS and can be used to run php code and scripts.
+
+![image](https://github.com/user-attachments/assets/6ecef023-27f4-44c4-829a-4b52a2be2818)
+
+- I noticed this error when I tried to execute code.
+
+![image](https://github.com/user-attachments/assets/ff7f6d42-efc2-4aa4-bd8d-947609ced55e)
+
+- Bee gets bootstrapped if you run it in the valid directory that `Backdoor CMS` is installed which is in `/var/www/html`.
+
+![image](https://github.com/user-attachments/assets/bccd58a5-8d1b-4fb0-96a6-84ef3f41b169)
+
+- I spawned a root reverse shell.
+
+![image](https://github.com/user-attachments/assets/08cb2bd8-0b57-4057-84ba-f369c09cd56b)
+
+- Root shell-:
+
+![image](https://github.com/user-attachments/assets/a4abff9c-c4d8-419e-9631-1d44c55ecc72)
+
+--------------
+
+### THANKS FOR READING!!!!
+
+---------------
+
+### REFERENCES-:
+
+---------------
+
+- [Backdoor CMS exploit](https://www.exploit-db.com/exploits/52021)
+
+---------------
+
+
+
+
+
+
+
 
 
 
