@@ -1,0 +1,165 @@
+---------------
+
+### CTF-: HackTheBox
+### LAB-: Backfire
+
+---------------
+
+![image](https://github.com/user-attachments/assets/7aba93cb-a109-4bda-9d07-0c60187b8e32)
+
+---------------
+
+- Rustscan's output-:
+
+```bash
+❯ rustscan -a backfire.htb -- -Pn -sC -sV
+.----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
+| {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
+| .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
+`-' `-'`-----'`----'  `-'  `----'  `---' `-'  `-'`-' `-'
+The Modern Day Port Scanner.
+________________________________________
+: https://discord.gg/GFrQsGy           :
+: https://github.com/RustScan/RustScan :
+ --------------------------------------
+😵 https://admin.tryhackme.com
+
+[~] The config file is expected to be at "/home/sensei/.rustscan.toml"
+[!] File limit is lower than default batch size. Consider upping with --ulimit. May cause harm to sensitive servers
+[!] Your file limit is very small, which negatively impacts RustScan's speed. Use the Docker image, or up the Ulimit with '--ulimit 5000'. 
+Open 10.10.11.49:22
+Open 10.10.11.49:443
+Open 10.10.11.49:8000
+[~] Starting Script(s)
+[>] Script to be run Some("nmap -vvv -p {{port}} {{ip}}")
+
+Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times may be slower.
+[~] Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-03-17 08:38 WAT
+NSE: Loaded 156 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:38
+Completed NSE at 08:38, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:38                                                                                                                            
+Completed NSE at 08:38, 0.00s elapsed                                                                                                              
+NSE: Starting runlevel 3 (of 3) scan.                                                                                                              
+Initiating NSE at 08:38                                                                                                                            
+Completed NSE at 08:38, 0.00s elapsed                                                                                                              
+Initiating Connect Scan at 08:38
+Scanning backfire.htb (10.10.11.49) [3 ports]
+Discovered open port 22/tcp on 10.10.11.49
+Discovered open port 443/tcp on 10.10.11.49
+Discovered open port 8000/tcp on 10.10.11.49
+Completed Connect Scan at 08:38, 0.21s elapsed (3 total ports)
+Initiating Service scan at 08:38
+Scanning 3 services on backfire.htb (10.10.11.49)
+Completed Service scan at 08:38, 13.11s elapsed (3 services on 1 host)
+NSE: Script scanning 10.10.11.49.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 08:38
+Completed NSE at 08:38, 27.92s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 08:38
+Completed NSE at 08:38, 3.80s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 08:38
+Completed NSE at 08:38, 0.00s elapsed
+Nmap scan report for backfire.htb (10.10.11.49)
+Host is up, received user-set (0.20s latency).
+Scanned at 2025-03-17 08:38:09 WAT for 45s
+
+PORT     STATE SERVICE  REASON  VERSION
+22/tcp   open  ssh      syn-ack OpenSSH 9.2p1 Debian 2+deb12u4 (protocol 2.0)
+| ssh-hostkey: 
+|   256 7d:6b:ba:b6:25:48:77:ac:3a:a2:ef:ae:f5:1d:98:c4 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJuxaL9aCVxiQGLRxQPezW3dkgouskvb/BcBJR16VYjHElq7F8C2ByzUTNr0OMeiwft8X5vJaD9GBqoEul4D1QE=
+|   256 be:f3:27:9e:c6:d6:29:27:7b:98:18:91:4e:97:25:99 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA2oT7Hn4aUiSdg4vO9rJIbVSVKcOVKozd838ZStpwj8
+443/tcp  open  ssl/http syn-ack nginx 1.22.1
+|_ssl-date: TLS randomness does not represent time
+| http-methods: 
+|_  Supported Methods: GET POST
+|_http-server-header: nginx/1.22.1
+| ssl-cert: Subject: commonName=127.0.0.1/stateOrProvinceName=Connecticut/countryName=US/localityName=New Haven/streetAddress=/postalCode=5932
+| Subject Alternative Name: IP Address:127.0.0.1
+| Issuer: commonName=127.0.0.1/stateOrProvinceName=Connecticut/countryName=US/localityName=New Haven/streetAddress=/postalCode=5932
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2025-01-07T11:01:05
+| Not valid after:  2028-01-07T11:01:05
+| MD5:   b22f:704b:40e4:ca3b:7041:7c0f:a0a4:b252
+| SHA-1: 25f2:1fa8:8817:52db:be5b:276e:c47d:8278:2898:2863
+| -----BEGIN CERTIFICATE-----
+| MIIDxjCCAq6gAwIBAgIQXxBfoPPgreKo23ihIct2nDANBgkqhkiG9w0BAQsFADBl
+| MQswCQYDVQQGEwJVUzEUMBIGA1UECBMLQ29ubmVjdGljdXQxEjAQBgNVBAcTCU5l
+| dyBIYXZlbjEJMAcGA1UECRMAMQ0wCwYDVQQREwQ1OTMyMRIwEAYDVQQDEwkxMjcu
+| MC4wLjEwHhcNMjUwMTA3MTEwMTA1WhcNMjgwMTA3MTEwMTA1WjBlMQswCQYDVQQG
+| EwJVUzEUMBIGA1UECBMLQ29ubmVjdGljdXQxEjAQBgNVBAcTCU5ldyBIYXZlbjEJ
+| MAcGA1UECRMAMQ0wCwYDVQQREwQ1OTMyMRIwEAYDVQQDEwkxMjcuMC4wLjEwggEi
+| MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCcb3mxIvYVAKjUJg+vHxeMJ3PD
+| MhXt0hKdHai/iGDylZVkd/Ext3fFWAjWIYUPmvyl1KX8s7RWkjUgNfs7NNFz23At
+| wfWStZiUXFQuUNIrsMGff7GjrIKcAmLkAuFmt25br/Y//Y8SC8IsnBxneTd4DBbO
+| 8/So7zi86wI3ZZUNJeGo0eXK87dF/PikMHfAc672BVnCKIAt9/wk3FjVeoD9iNZR
+| MrpM42c0qRnsZNOBXo6RWVnkjaw1CgO4idSNm4osmk2zXTAjeCfrBdDfAXsEq8So
+| I/mwl2MjTdqvuImVr95PI6rb2+4bXfSAZeyEY2xpPGz57ZuFXH3cLxmLsgOJAgMB
+| AAGjcjBwMA4GA1UdDwEB/wQEAwICpDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYB
+| BQUHAwIwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUJXDEoW+wSe+Ptr+R4wBv
+| GLenLW8wDwYDVR0RBAgwBocEfwAAATANBgkqhkiG9w0BAQsFAAOCAQEAaznrYizH
+| 1AbCdZT8mftAn8JNcVwizyGTpuJs+otSZNpfoNAqMF5tQZvgpPix54XVGCZb5v2G
+| p/8kfYjXcmFZXCEyVNrudH+Yr0ZHQU+KLOZ+4l2dsBEZKyD/C5aqxWOb+QBytgUU
+| 6oaAiUXfj9Y7nzBp1vpz8teXM9dLJX+xGM2KZ+9ocw/k9Oxf73yTjEuIbme/K4Mr
+| IIyDRdmr56Gk504T4GKERcd6kjikfCZLrpu75Qw4M1D0LSqNaS3BzQcRLsnYobqn
+| BErrdtvyJEEZbNAMtxel2+SBvwffuWJOTOTIAx+gE4omfMc1axOOYet6p0JBdiDe
+| PQGP5TKPHe19cQ==
+|_-----END CERTIFICATE-----
+|_http-title: 404 Not Found
+| tls-alpn: 
+|   http/1.1
+|   http/1.0
+|_  http/0.9
+8000/tcp open  http     syn-ack nginx 1.22.1
+| http-methods: 
+|_  Supported Methods: GET HEAD
+|_http-server-header: nginx/1.22.1
+| http-ls: Volume /
+| SIZE  TIME               FILENAME
+| 1559  17-Dec-2024 12:31  disable_tls.patch
+| 875   17-Dec-2024 12:34  havoc.yaotl
+|_
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-title: Index of /
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+```
+
+- We have open ports `22`,`443` and `8000`.
+- In port `8000` which is running a webserver ,I noticed these files `disable_tls.patch` and `havoc.yaotl`.The server is hosting a C2 Havoc server.
+
+![image](https://github.com/user-attachments/assets/eff26c17-ec1b-4ae8-9b3f-13b4516c2011)
+
+- I discovered credentials for 2 users in one of the files.
+
+![image](https://github.com/user-attachments/assets/4c30f546-7356-4b21-9af6-0ae3c6beca0d)
+
+- Havoc is vulnerable to SSRF and RCE as explained [here](https://github.com/kit4py/CVE-2024-41570).
+
+![image](https://github.com/user-attachments/assets/3154a2fb-6420-48d3-a44f-cf188ba3dedf)
+
+- Running the exploit-:
+
+![image](https://github.com/user-attachments/assets/49ad1f30-0e60-4e99-a831-50d68ec83f82)
+
+- To maintain access,we have to copy our public key to the current user's ssh authorized keys.This will allow us login without a password.
+
+![image](https://github.com/user-attachments/assets/4f321e43-dfa0-46ea-bfcf-cf5e35a17ab2)
+
+- User Ilya
+
+![image](https://github.com/user-attachments/assets/9a0184d0-239c-4c65-9b40-b67c2a683a48)
+
+
+
+
+
+
