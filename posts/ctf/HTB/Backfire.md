@@ -245,7 +245,21 @@ print(r.text)
 
 ![image](https://github.com/user-attachments/assets/776ce9b1-6c3c-4c6f-b5d7-049c43af575d)
 
-- Spawn a shell and copy your 
+- Spawn a shell and copy your public keys to the `authorized_keys`.
+
+![image](https://github.com/user-attachments/assets/c44d72c4-92f5-4bc2-89cc-688e999dc090)
+
+- User `sergej`
+
+![image](https://github.com/user-attachments/assets/a358d84c-3c90-4a6c-81fe-88ae805bb717)
+
+-------------
+
+### PRIVESC with iptables and iptables-save
+
+------------
+
+
 
 
 
