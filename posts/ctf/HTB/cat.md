@@ -384,6 +384,31 @@ Table: None
 
 - I receieved this base64 blob.
 
+![image](https://github.com/user-attachments/assets/75896aaf-c30f-4059-9609-a53b31305196)
+
+- The base64 blob contains this credentials which is the `root` user's password.
+
+![image](https://github.com/user-attachments/assets/43595f38-c6a6-4bfc-9c83-25b0b1a22311)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/ec6a3675-6bdc-4b45-98db-0693e862f28b)
+
+--------------
+
+### REFERENCE-:
+
+--------------
+
+- [Gitea](https://www.exploit-db.com/exploits/52077)
+
+--------------
+
+
+
+
+
+
 
 
 
