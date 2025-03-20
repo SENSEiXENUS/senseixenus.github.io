@@ -335,6 +335,59 @@ Table: None
 
 - SSH access as user `rosa`-:
 
+![image](https://github.com/user-attachments/assets/3ff1e03e-53f1-4dcf-9772-32314133ca17)
+
+- Rosa is part of group `adm`,we have access to the logs.I grepped for user `axel` in the logs and got a hit
+
+![image](https://github.com/user-attachments/assets/c39859e3-1dfe-42e5-b03f-b03a6ced0d18)
+
+- Axel's access-:
+
+![image](https://github.com/user-attachments/assets/14a64ffd-41fc-4fd7-ac09-7b8e2bdbf862)
+
+
+-------------------
+
+### Privesc with GITEA's XSS
+
+-------------------
+
+- Gitea is running on port `3000` on the server.
+
+![image](https://github.com/user-attachments/assets/ccdfb21e-5914-4cf6-88df-b0c5934b2d61)
+
+- And there is a mail for user `axel` about the Gitea service, a repository on it.The mail also states that if we have any service we can send it to a user `jobert` via mail.
+
+![image](https://github.com/user-attachments/assets/25814d6d-1050-4dd2-9675-1be9fe846188)
+
+- I portforwarded the port with ssh.
+
+![image](https://github.com/user-attachments/assets/79ae47c8-7781-4076-858f-58587e255aa1)
+
+- I accessed AXEL's account.
+
+![image](https://github.com/user-attachments/assets/111d4f3b-33cf-499a-9ece-0cfbcdc877d5)
+
+- This gitea versin `1.22.0` is vulnerable to [cross-site scripting](https://www.exploit-db.com/exploits/52077).
+
+![image](https://github.com/user-attachments/assets/a8185f6d-ad24-40a6-a1f7-b7b15958b6f0)
+
+- I found this payload to read the repo's `index.php` file and send the content to a netcat server.I created the malicious repo first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
