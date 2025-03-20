@@ -107,6 +107,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[February 23 2025]] [LinkVortex](https://senseixenus.github.io/posts/ctf/HTB/linkvortex.html) ``Git`` ``Arbitrary file read`` ``Symlink madness``
 - [[March 14 2025]] [Dog](https://senseixenus.github.io/posts/ctf/HTB/dog.html) ``GIT`` ``Backdoor CMS RCE``  ``BEE RCE``
 - [[March 18 2025]] [Backfire](https://senseixenus.github.io/posts/ctf/HTB/Backfire.html) ``HAVOC C2`` ``Hard_Hat C2`` ``Iptables | iptables-save privilege escalation``
+- [[March 20 2025]] [Cat](https://senseixenus.github.io/posts/ctf/HTB/cat.html) ``XSS`` ``SQLI`` ``Exposed creds`` ``Gitea``
 
 * * *
 
