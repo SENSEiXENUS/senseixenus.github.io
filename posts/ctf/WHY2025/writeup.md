@@ -123,7 +123,7 @@ count(/[root node]/*)=2
 
 ![image](https://github.com/user-attachments/assets/9bf047e6-7d08-4bd7-9eaa-245b5bce01e7)
 
-- After,getting the child nodes,to read a text node which contains a text character,the syntax must change, it will be done with substring but without the `name()` function because it can only be used to read child and root nodes.This should be the new syntax to get the string length-:
+- After getting the child nodes,the next step requires reading a text node which contains a text string. It can be achieved with the  `substring()` but without the `name()` function because it can only be used to read child and root nodes.This should be the new syntax to get the string length-:
 
 ```xpath
 string-length(/data/products/product[1])=4
