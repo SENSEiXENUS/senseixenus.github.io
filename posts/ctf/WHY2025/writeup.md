@@ -73,4 +73,58 @@ try {
 
 ![image](https://github.com/user-attachments/assets/f9a7a19c-4d5a-491d-b990-bc265e2200b1)
 
-- 
+- I followed this [blogpost](https://www.vaadata.com/blog/xpath-injections-exploitations-and-security-tips/) to exploit the vulnerability but I modified the code slightly to exploit the target.
+- XPATH is like sql injection and the backend react differently to `TRUE` or `False` statements.In the case of a `TRUE` statement,we get the data related to id `1`.
+
+![image](https://github.com/user-attachments/assets/f60082cd-397d-4787-9006-b73feb7112a5)
+
+- But, in a false statement,we get none.
+
+![image](https://github.com/user-attachments/assets/4a8da922-7e7d-442f-bb98-6e78953612ce)
+
+- This target is vulnerable to `XPATH blind injection`,we'll have to exfiltrate data based on `TRUE` and `FALSE` statemeent.In our case, if the statement is true,we get the data of id `1` but if it is false,we get none.
+- In Xpath,we have the root node and other child nodes e.g `/root/` -> `[root node]`,`/root/mead/` ->`[Meager is the child node]`.The firsst step is to find the string-length of the root node with the query below.It is done with the string-length() function.Value 3 should be iterated.
+
+```xpath
+string-length(name(/*[1]))=3
+```
+- I wrote a POC for it.
+
+![image](https://github.com/user-attachments/assets/4cae27fb-b329-432c-a8b7-b1134612e19f)
+
+- The root-node has 4 characters-:
+
+![image](https://github.com/user-attachments/assets/c93f9376-0cda-4a57-9d5d-0282ecfe4ae2)
+
+- The next step is to read the characters with this function `substring()`.The char `d` should be replaced with characters.
+
+```xpath
+substring(name(/*[1]), 1, 1)=’d‘
+```
+
+- POC-:
+
+![image](https://github.com/user-attachments/assets/8082e0ef-8b91-4111-9139-7b259fe854de)
+
+- Result is `data`-:
+
+![image](https://github.com/user-attachments/assets/11f15086-29fe-4296-9dfb-42160414a1a0)
+
+- The next step is to count the amount of child_nodes with `count()` function.
+
+```xpath
+count(/[root node]/*)=2
+```
+- Count Nodes POC-:
+
+![image](https://github.com/user-attachments/assets/890c0543-d525-4f11-8741-45a69c3ab399)
+
+- 2 child nodes-:
+
+![image](https://github.com/user-attachments/assets/9bf047e6-7d08-4bd7-9eaa-245b5bce01e7)
+
+
+
+
+
+
