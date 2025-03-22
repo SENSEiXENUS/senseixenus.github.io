@@ -58,3 +58,14 @@ try {
 
 - Flag-:`flag{54de9e7dbee502cdc153cec4e0abfb38}`
 
+----------------------
+
+### FESTIVALS
+
+-----------------------
+
+![image](https://github.com/user-attachments/assets/4c2dc171-a7bc-44cb-a0d2-5d9e977649ad)
+
+-----------------------
+
+- 
