@@ -42,7 +42,7 @@ try {
         }
 ```
 
-- The code above is js ajax request  making a post requests to php page `/api.php`.The interesting part is the body which contains sql query sent to the server.
+- The code above is a js ajax request  making a post request to php page `/api.php`.The interesting part is the body which contains sql query sent to the server.We can manipulate the input to read other data from the database.
 
 ```js
  body: "query=SELECT * FROM planets"
