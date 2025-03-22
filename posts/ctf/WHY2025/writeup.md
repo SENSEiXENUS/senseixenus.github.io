@@ -68,4 +68,9 @@ try {
 
 -----------------------
 
+- This target uses the graphl language but it is vulnerable to XPATH injection which is a vulnerability that affect websites that use `XPATH` to interact with `XML databases`.The exploitation aspect focuses on xpath injection in graphql.
+- I spotted the vulnerability with the error `Invalid Predicate` in the result.This StackOverflow [post](https://stackoverflow.com/questions/33830821/python-xpath-syntaxerror-invalid-predicate) associated the error to XPATH.
+
+![image](https://github.com/user-attachments/assets/f9a7a19c-4d5a-491d-b990-bc265e2200b1)
+
 - 
