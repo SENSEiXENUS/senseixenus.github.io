@@ -210,6 +210,12 @@ print(x.__class__.__base__.__subclasses__()[100].__init__.__globals__[x][y](z).c
 
 ![image](https://github.com/user-attachments/assets/3a8dc094-d3ec-4621-99f2-aadba3357ff6)
 
+--------------
+
+### THANKS FOR READING
+
+---------------
+
 
 
 
