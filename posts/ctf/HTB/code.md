@@ -162,5 +162,61 @@ print(x.__class__.__base__.__subclasses__()[100].__init__.__globals__[x][y](z).c
 
 ----------------
 
+- I ran `sudo -l` and discovered that user `martin` can run a script
+
+![image](https://github.com/user-attachments/assets/40332400-b729-445f-b97e-0cfec3f4dbd0)
+
+- I dived into the script and discovered that it runs a binary `backy`.
+
+![image](https://github.com/user-attachments/assets/0ca2b7bb-b6b7-47c4-9aea-6af9c13d6c96)
+
+- I ran strings and discovered the repo for the `backy` tool.
+
+![image](https://github.com/user-attachments/assets/56c4a08f-261f-4022-91e9-d530337b0761)
+
+- The tool has another functionality which is syncing directories with another directory with `Rsync`.This functionality also allows us to copy files and most importantly `overwrite the target file`.We can overwrite `/etc/passwd` and create a user with root privileges.
+
+![image](https://github.com/user-attachments/assets/6a99610d-1761-41f2-b4fa-6c536130b673)
+
+- Creating a passwd with a malicious user-:
+
+![image](https://github.com/user-attachments/assets/64d4e86d-68db-49d2-b5d7-d1f0e9fee1e7)
+
+- Then, our malicious json POC-:
+
+```json
+{
+        "destination": "/etc/passwd",
+        "multiprocessing": true,
+        "verbose_log": false,
+        "directories_to_archive": [
+                "/home/martin"
+        ],
+          "directories_to_sync": [
+             "passwd"
+        ],
+        "exclude": [
+                ".*"
+        ]
+}
+```
+
+- Transfer it into the target directory
+- Now,run the backy script with the poc json file-:
+
+![image](https://github.com/user-attachments/assets/5f592233-497d-4e2d-bc7d-6129e08eb23c)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/3a8dc094-d3ec-4621-99f2-aadba3357ff6)
+
+
+
+
+
+
+
+
+
 
 
