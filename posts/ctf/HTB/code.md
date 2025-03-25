@@ -104,4 +104,13 @@ eval
 exec
 Popen
 ```
+- To disguise the filtered characters, I encoded them with hex, so I'll later decode with `bytes` which is one python's inbuilt modules and don't need to the imported.
 
+![image](https://github.com/user-attachments/assets/c6a02556-cd22-4bea-b543-e47d9dd24165)
+
+- To gain RCE without,we'll try to find `__builtins__` by accessing it through `__init__`.`__builtins__` contains builtin function in python.
+- I accessed subclasses with `x.__class__.__base__.__subclasses__`.
+
+![image](https://github.com/user-attachments/assets/6a3d812e-e4a5-454d-8fed-e210372ac401)
+
+- It is a list,we can call a class based on its index value.Index `100` allows me to access `__init__`.
