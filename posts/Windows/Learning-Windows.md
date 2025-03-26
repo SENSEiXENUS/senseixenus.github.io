@@ -655,17 +655,32 @@ Management Users can access it with WinRM.
 
 - Finding running processes, use powershell `Get-Process` cmdlet
 - The listed processes might not be complete.Check for files in the `c:/` directory
-  
+- Gather more data about user with `net user [username]`
+- ` Remote Desktop Users or Remote Management Users` can access services like `RDP` or `WINRM`.
+
+------------------------------
+
+### Using RUNAS
+
+------------------------------
+
+- If a user is not part of the group `remote desktop Users of Remote Management Users` but you have access to GUI.`Runas` can be used to spawn a command as a user.Syntax-:
+
+```pwsh
+runas /user:[username] cmd
+```
+
 --------------------------------
 
 ### Hidden in Plain view
 
 -------------------------------
 
+- Find files e.g ".txt,ini" with -: `Get-ChildItem`
 
-
-
-
+```pwsh
+Get-ChildItem -Path C:\ -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue
+```
 -------------------------------
 
 ### Upgrading a shell to meterpreter
