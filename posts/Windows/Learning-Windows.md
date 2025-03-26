@@ -657,6 +657,15 @@ Management Users can access it with WinRM.
 - The listed processes might not be complete.Check for files in the `c:/` directory
 - Gather more data about user with `net user [username]`
 - ` Remote Desktop Users or Remote Management Users` can access services like `RDP` or `WINRM`.
+- Check Powershell history with-:`Get-History`
+- Most Administrators use the Clear-History770 command to clear the PowerShell history. But this Cmdlet is only clearing PowerShell’s own history, which can be retrieved with Get-History. Starting with PowerShell v5, v5.1, and v7, a module named PSReadline771 is included, which is used for line-editing and command history functionality.Interestingly, Clear-History does not clear the command history recorded by `PSReadline`. Therefore, we can check if the user in our example misunderstood the Clear-History Cmdlet to clear all traces of previous commands.
+
+```pwsh
+(Get-PSReadlineOption).HistorySavePath
+```
+
+- 
+
 
 ------------------------------
 
