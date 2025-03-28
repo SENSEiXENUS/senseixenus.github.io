@@ -90,4 +90,15 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/87250fcc-9f25-45fe-84bd-e3e5deb27aff)
 
+- I tested the login page with single quote and got this giant blob of error.
+
+![image](https://github.com/user-attachments/assets/d0fb74a9-3e97-4bc1-8447-46e2a3fadc6d)
+
+- Lets look at it closer with curl because notification box disappears after some seconds.
+
+![image](https://github.com/user-attachments/assets/bb3610b1-c224-4c9b-9544-c050803b49ba)
+
+- I discovered it is a neo4j database which is a graph type of  database.A graph database is defined as a specialized, single-purpose platform for creating and manipulating graphs. Graphs contain nodes, edges, and properties, all of which are used to represent and store data in a way that relational databases are not equipped to do as explained [here](https://www.oracle.com/ng/autonomous-database/what-is-graph-database/).I got an interesting [article](https://hackmd.io/@Chivato/rkAN7Q9NY#Fun-with-Cypher-Injections) to exploit it.
+- 
+
 
