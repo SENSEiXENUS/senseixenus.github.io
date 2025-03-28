@@ -3625,11 +3625,11 @@ Start-Process "Chrome" "--remote-debugging-port=9222 --restore-last-session"
 
 ------------------------
 
-- Create  a bbot_preset.yml and edit the module_dir key to a directory with write access-:
+- Create  a `bbot_preset.yml` and edit the module_dir key to a directory with write access-:
 
 ![image](https://github.com/user-attachments/assets/cebb2697-8d33-4b29-b4e0-224079bc1f42)
 
-- Create a malicious module e.g The one below spawn a rev shell-:
+- Create a malicious module  and save in the directory specified in the yml file.The code below spawns a rev shell-:
 
 ```python3
 import os
