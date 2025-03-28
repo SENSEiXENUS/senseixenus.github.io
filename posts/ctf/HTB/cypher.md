@@ -274,6 +274,16 @@ module_dirs:
 
 -------------
 
+### References-:
+
+----------------
+
+- [Cypher Injection](https://hackmd.io/@Chivato/rkAN7Q9NY#Fun-with-Cypher-Injections)
+- [More on CYpher Injection](https://www.varonis.com/blog/neo4jection-secrets-data-and-cloud-exploits)
+- [Modules creation for Bbot](https://www.blacklanternsecurity.com/bbot/Stable/dev/module_howto/)
+
+-----------------
+
 
 
 
