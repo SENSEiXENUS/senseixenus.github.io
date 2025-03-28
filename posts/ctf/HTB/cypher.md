@@ -256,7 +256,26 @@ module_dirs:
   - /home/graphasm
 ```
 
--
+- I edited the `bbot_preset.yml` file.
+
+![image](https://github.com/user-attachments/assets/97017b8d-dcbb-40ce-8bd5-8c4504aea3fc)
+
+- `Dirty.py created`-:
+
+![image](https://github.com/user-attachments/assets/edd48d49-d108-49af-971e-051bfe498a2d)
+
+- To run a custom preset, use `-p` and specify the absolute path,`-m` should hold the module name.
+
+![image](https://github.com/user-attachments/assets/2f2fd218-119f-4a79-830b-6cdb657fc0fb)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/020a7fd5-e6cf-4608-ab35-6fee5a1775bc)
+
+-------------
+
+
+
 
 
 
