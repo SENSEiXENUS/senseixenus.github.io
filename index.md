@@ -109,6 +109,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[March 18 2025]] [Backfire](https://senseixenus.github.io/posts/ctf/HTB/Backfire.html) ``HAVOC C2`` ``Hard_Hat C2`` ``Iptables | iptables-save privilege escalation``
 - [[March 20 2025]] [Cat](https://senseixenus.github.io/posts/ctf/HTB/cat.html) ``XSS`` ``SQLI`` ``Exposed creds`` ``Gitea``
 - [[March 25 2025]] [Code](https://senseixenus.github.io/posts/ctf/HTB/code.html) ``Python RCE`` ``Exposed||Weak hash`` ``Backy Go Arbitrary File Write``
+- [[March 27 2025]] [Cypher](https://senseixenus.github.io/posts/ctf/HTB/cypher.html) ``Cypher Injection to RCE`` ``BBOT``
 
 * * *
 
