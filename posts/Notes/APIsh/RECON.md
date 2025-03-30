@@ -145,4 +145,24 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ------------------
 
-- 
+- Installing `mitmweb`-:
+
+```pwsh
+ pip3 install mitmproxy2swagger
+ pip3 install mitmweb
+```
+
+- It uses the default burp port `8080`.To use mitmweb,close burp suite to use it.
+- While connected to the proxy, run `mitm.it` to get the certificate and install it.
+
+![image](https://github.com/user-attachments/assets/e9118525-8157-43e0-b696-a1463bade257)
+
+- Now the requests are getting logged.
+
+![image](https://github.com/user-attachments/assets/c3c461c3-fece-4dee-a7f0-6c07022952be)
+
+- Installing postman-:
+
+------------------
+
+
