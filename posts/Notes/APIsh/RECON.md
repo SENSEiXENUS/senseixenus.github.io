@@ -169,7 +169,27 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ------------------
 
-- Interact with the webpage feature to rack up rrequests
+- Interact with the webpage feature to rack up requests
+- Save it, the file name will be save as `flows`
 
+![image](https://github.com/user-attachments/assets/99890e61-855a-474b-81d1-7eaa3e52c111)
+
+- Sift with `mitmproxyswagger`
+
+`sudo mitmproxy2swagger -i /Downloads/flows -o spec.yml -p http://crapi.apisec.ai -f flow`
+
+![image](https://github.com/user-attachments/assets/30ba878d-e8b4-4728-bd2d-16da53f259cf)
+
+- Remove the unnecessary endpoints and the ignore before it(remove with sublime text with (ctrl + shift+L) -:
+
+![image](https://github.com/user-attachments/assets/f69e0430-852d-4ede-a413-6f78e5915cfe)
+
+![image](https://github.com/user-attachments/assets/641e93b4-c73e-4733-a2ea-54702e29a78d)
+
+- Run the mitm script again and add `--examples`
+
+`sudo mitmproxy2swagger -i /Downloads/flows -o spec.yml -p http://crapi.apisec.ai -f flow --examples`
+
+- Finally, open with `https://editor.swagger.io/` to parse it and create a user friendly documentation
 
 
