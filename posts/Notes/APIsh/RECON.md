@@ -66,6 +66,12 @@ test.target-name.com
 
 ----------------
 
-- Google Dorking 
+- Google Dorking-: It is useful if you are getting too many irrelevant result
+
+Queries-:
+
+- `inurl:"/wp-json/wp/v2/users"`<->`Finds all publicly available WordPress API user directories.`
+- `intitle:"index.of" intext:"api.txt"` <-> 
+
 
 
