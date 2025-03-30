@@ -93,14 +93,18 @@ API Key exposed
 
 - Trufflehog-: TruffleHog is a great tool for automatically discovering exposed secrets. You can simply use the following Docker run to initiate a TruffleHog scan of your target's Github.
 
-`Syntax-:`
+Syntax-:` trufflehog git <repo> --results=verified,unknown`
 
 - Shodan-: Shodan is the go-to search engine for devices accessible from the internet. Shodan regularly scans the entire IPv4 address space for systems with open ports and makes their collected information public on https://shodan.io. You can use Shodan to discover external-facing APIs and get information about your target’s open ports, making it useful if you have only an IP address or organization’s name to work from. Like with Google dorks, you can search Shodan casually by entering your target’s domain name or IP addresses; alternatively, you can use search parameters like you would when writing Google queries. The following table shows some useful Shodan queries.
 
 - Queries-:
 
 ```
-
+hostname:sensei.com 
+"content-type: application/json" <-> filter responses with json body
+"content-type: application/xml"  <-> filter responses with xml body
+"200 OK"  <-> successful requests
+"wp-json"  <-> This will search for web applications using the WordPress API.
 ```
 
 - The Wayback Machine-: It can be used to find zombie apis[active but retired endpoints that remain unknown to the devs]. Zombie APIs fall under the Improper Assets Management vulnerability on the OWASP API Security Top 10 list. Finding and comparing historical snapshots of API documentation can simplify testing for Improper Assets Management.
