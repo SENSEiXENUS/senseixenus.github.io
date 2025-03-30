@@ -165,4 +165,11 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ------------------
 
+### Creating custom documentation with MITMweb
+
+------------------
+
+- Interact with the webpage feature to rack up rrequests
+
+
 
