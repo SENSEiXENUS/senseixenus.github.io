@@ -66,7 +66,7 @@ test.target-name.com
 
 ----------------
 
-- Google Dorking-: It is useful if you are getting too many irrelevant result
+- Google Dorking-: It is useful if you are getting too many irrelevant results on Google
 
 Queries-:
 
@@ -75,7 +75,38 @@ Queries-:
 - `inurl:"/api/v1" intext:"index of /"` <-> `Finds potentially interesting API directories.`
 - `ext:php inurl:"api.php?action="` <-> `	Finds all sites with a XenAPI SQL injection vulnerability. (This query was posted in 2016; four years later, there are currently 141,000 results.)`
 - `intitle:"index of" api_key OR "api key" OR apiKey -pool` <-> `find exposed api keys`
-- 
 
+- Git Dorking-: Regardless of whether your target performs its own development, it’s worth checking GitHub (www.github.com) for sensitive information disclosure. Developers use GitHub to collaborate on software projects. Searching GitHub for OSINT could reveal your target’s API capabilities, documentation, and secrets, such as API keys, passwords, and tokens, which could prove useful during an attack.
+- Examples of GitDorking query-: `filename:swagger.json extension:.json`
+- Or search for sensitive string
 
+```
+api key
+apikeys
+api key
+authorization: Bearer
+access_token
+secret
+token
+API Key exposed
+```
 
+- Trufflehog-: TruffleHog is a great tool for automatically discovering exposed secrets. You can simply use the following Docker run to initiate a TruffleHog scan of your target's Github.
+
+`Syntax-:`
+
+- Shodan-: Shodan is the go-to search engine for devices accessible from the internet. Shodan regularly scans the entire IPv4 address space for systems with open ports and makes their collected information public on https://shodan.io. You can use Shodan to discover external-facing APIs and get information about your target’s open ports, making it useful if you have only an IP address or organization’s name to work from. Like with Google dorks, you can search Shodan casually by entering your target’s domain name or IP addresses; alternatively, you can use search parameters like you would when writing Google queries. The following table shows some useful Shodan queries.
+
+- Queries-:
+
+```
+
+```
+
+- The Wayback Machine-: It can be used to find zombie apis[active but retired endpoints that remain unknown to the devs]. Zombie APIs fall under the Improper Assets Management vulnerability on the OWASP API Security Top 10 list. Finding and comparing historical snapshots of API documentation can simplify testing for Improper Assets Management.
+
+----------------
+
+### Active Reconnaissance
+
+----------------
