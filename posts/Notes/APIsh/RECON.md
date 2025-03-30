@@ -114,3 +114,24 @@ hostname:sensei.com
 ### Active Reconnaissance
 
 ----------------
+
+- This form of reconnaissance involves interacting with the actual target.During this process you will be scanning systems, enumerating open ports, and finding ports that have services using HTTP. Once you have found systems hosting HTTP, you can open a web browser and investigate the web application. You could find an API being advertised to end users or you may have to dig deeper. Finally, you can scan the web app for API-related directories.
+
+- Amass-:OWASP Amass is a command-line tool that can map a target’s external network by collecting OSINT from over 55 different sources. You can set it to perform passive or active scans. If you choose the active option, Amass will collect information directly from the target by requesting its certificate information. Otherwise, it collects data from search engines (such as Google, Bing, and HackerOne), SSL certificate sources (such as GoogleCT, Censys, and FacebookCT), search APIs (such as Shodan, AlienVault, Cloudflare, and GitHub), and the web archive Wayback.
+
+- List data sources with `amass enum -list`
+
+![image](https://github.com/user-attachments/assets/850ed4fe-c704-4d99-8784-525a2818faae)
+
+- Create a `config.ini` file
+
+```
+curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~/.config/amass/config.ini
+```
+
+- API active reconnaissance-:
+
+`amass enum -active -d <target> |grep api`
+
+- Directory busting with `ffuf`
+- 
