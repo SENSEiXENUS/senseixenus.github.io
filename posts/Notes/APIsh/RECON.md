@@ -192,4 +192,19 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 - Finally, open with `https://editor.swagger.io/` to parse it and create a user friendly documentation
 
+![image](https://github.com/user-attachments/assets/41e45fd9-71a2-4cf0-b717-1e2a4419af65)
+
+------------------------
+
+### Excessive Data exposure
+
+------------------------
+
+- Excessive Data Exposure occurs when an API provider sends back a full data object, typically depending on the client to filter out the information that they need. From an attacker's perspective, the security issue here isn't that too much information is sent, instead, it is more about the sensitivity of the sent data. This vulnerability can be discovered as soon as you are able to start making requests. API requests of interest include user accounts, forum posts, social media posts, and information about groups (like company profiles).
+- If an API provider responds with an entire data object, then the first thing that could tip you off to excessive data exposure is simply the size of the response.
+
+![image](https://github.com/user-attachments/assets/e8547e1a-a3e9-4510-8fee-cde7a830c76f)
+
+- This instance of Excessive Data Exposure reveals usernames, emails, IDs, and vehicle IDs all of which may prove handy in additional attacks. 
+
 
