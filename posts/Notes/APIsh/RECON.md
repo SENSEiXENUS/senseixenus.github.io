@@ -134,4 +134,15 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 `amass enum -active -d <target> |grep api`
 
 - Directory busting with `ffuf`
+
+------------------
+
+### Endpoint Analysis
+
+------------------
+
+### Reverse engineering an api with postman and mitmweb
+
+------------------
+
 - 
