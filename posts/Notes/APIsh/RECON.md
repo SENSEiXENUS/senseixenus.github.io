@@ -58,12 +58,14 @@ test.target-name.com
 [Postman Explore](https://www.postman.com/explore/apis)
 [APIS guru](https://apis.guru/)
 [Public Apis Github Project](https://github.com/public-apis/public-apis)
-[Rapid API Hub]( https://rapidapi.com/search/ )
+[Rapid API Hub](https://rapidapi.com/search/)
 
 ----------------
 
 ### PASSIVE RECONNAISSANCE
 
 ----------------
+
+- Google Dorking 
 
 
