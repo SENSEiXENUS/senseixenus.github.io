@@ -208,3 +208,34 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 - This instance of Excessive Data Exposure reveals usernames, emails, IDs, and vehicle IDs all of which may prove handy in additional attacks. 
 
 
+---------------
+
+### AUTHENTICATION ATTACKS
+
+---------------
+
+- Classic authentication attacks are techniques that have been around such as bruteforcing and password spraying. To authenticate using this basic authentication, the consumer issues a request containing a username and password, then the provider performs a check to make sure that the combination matches records stored in a database. As we know, RESTful APIs do not maintain a state, so if the API were to leverage basic authentication across all endpoints, then a username and password would have to be issued every time.
+-  The classic authentication attacks in this section include password brute-force attacks with base64 encoding, password reset brute-force, and password spraying.Bruteforce with `ffuf`-:
+
+![image](https://github.com/user-attachments/assets/19db7576-bff3-4793-ad61-093b505e20ae)
+
+- Password spraying with cluster bomb-:
+-  A technique called password spraying can evade many of these controls by combining a long list of users with a short list of targeted passwords. Let’s say you know that an API authentication process has a lockout policy in place and will only allow 10 login attempts. You could craft a list of the nine most likely passwords (one less password than the limit) and use these to attempt to log in to many user accounts. When you’re password spraying, large and outdated wordlists like rockyou.txt won’t work. There are way too many unlikely passwords in such a file to have any success. Instead, craft a short list of likely passwords, taking into account the constraints of the API provider’s password policy, which you can discover during reconnaissance. Most password policies likely require a minimum character length, upper- and lowercase letters, and perhaps a number or special character. Use passwords that are simple enough to guess but complex enough to meet basic password requirements (generally a minimum of eight characters, a symbol, upper- and lowercase letters, and a number). The first type includes obvious passwords like QWER!@#$, Password1!, and the formula Season+Year+Symbol (such as Winter2025!, Spring2025?, Fall2025!, and Autumn2025?).
+-  he real key to password spraying is to maximize your user list. The more usernames you include, the higher your odds of compromising a user account with a bad password. Build a user list during your reconnaissance efforts or by discovering excessive data exposure vulnerabilities. Let's revisit the crAPI excessive data exposure that we discovered earlier in the course. 
+
+- Gather data from sensitive data exposure-:
+
+ ![image](https://github.com/user-attachments/assets/cd984536-4551-43a1-a82d-ec4b95d298ea)
+
+ - Or just use curl-:
+
+![image](https://github.com/user-attachments/assets/51632378-bb22-47ca-9d49-b0c6a5b4f520)
+
+- Sort it out with `uniq` and `sort -u`
+
+ ![image](https://github.com/user-attachments/assets/b705fb36-63dd-4bdd-a52d-4d2bde93608a)
+ 
+
+
+
+
