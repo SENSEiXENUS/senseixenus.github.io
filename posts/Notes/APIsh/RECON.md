@@ -245,7 +245,7 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 --------------------
 
-- It can can achieved with `Payload processing`-`Encode`-``
+- It can can achieved with `Payload processing`-`Encode`-`Base64-encode`
 
 ![image](https://github.com/user-attachments/assets/51c5aa7a-b6a6-445f-b88a-3958383e6bb1)
 
