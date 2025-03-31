@@ -234,6 +234,30 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 - Sort it out with `uniq` and `sort -u`
 
  ![image](https://github.com/user-attachments/assets/b705fb36-63dd-4bdd-a52d-4d2bde93608a)
+
+- Bruteforce with Cluster Bomb-:
+
+![image](https://github.com/user-attachments/assets/5cf763ed-b49f-4d6e-9317-eda85b5e5531)
+
+--------------------
+
+### Passwords in requests can also be base64 encoded
+
+--------------------
+
+- It can can achieved with `Payload processing`-`Encode`-``
+
+![image](https://github.com/user-attachments/assets/51c5aa7a-b6a6-445f-b88a-3958383e6bb1)
+
+![image](https://github.com/user-attachments/assets/12f6f8dd-a99f-4aee-80d1-f46baf482717)
+
+- Proof-:
+
+![image](https://github.com/user-attachments/assets/232f403a-c934-4ffd-8536-3e9b69a0cca1)
+
+------------------------
+
+
  
 
 
