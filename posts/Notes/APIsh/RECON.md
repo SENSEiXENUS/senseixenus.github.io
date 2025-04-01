@@ -316,6 +316,11 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 --------------------
 
+- It focuses on two categories `Broken Object Level Authorization` and `Broken Function Level Authorization`
+
+- An API’s authentication process is meant to validate that users are who they claim to be. An API's authorization is meant to allow users to access the data they are permitted to access. In other words, UserA should only be able to access UserA's resources and UserA should not be able to access UserB's resources. API providers have been pretty good about requiring authentication when necessary, but there has been a tendency to overlook controls beyond the hurdle of authentication. Authorization vulnerabilities are so common for APIs that the OWASP security project included two authorization vulnerabilities on its top ten list, Broken Object Level Authorization (BOLA) and Broken Function Level Authorization (BFLA).
+-  BOLA vulnerabilities occur when an API provider does not restrict access to access to resources.
+-  BFLA vulnerabilities are present when an API provider does not restrict the actions that can be used to manipulate the resources of other users. BOLA is the ability for UserA to see UserB's bank account balance and BFLA is the ability to for UserA to transfer funds from UserB's account back to UserA.
 
 
 
