@@ -289,12 +289,16 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ![image](https://github.com/user-attachments/assets/7854ff0c-64b7-4186-bd25-bd6a4881e0e0)
 
-- You'll notice a delimiter `,`,we'll use payload processing to process the rule.
-
-![image](https://github.com/user-attachments/assets/bb3de313-51b8-423e-9a8a-31b7898f2993)
-
 - For the username, use the regex `,.*`
+
+  ![image](https://github.com/user-attachments/assets/52036b02-e159-44c5-ab53-67fedac91a66)
+
 - For the password, use the regex `.*,`
+
+![image](https://github.com/user-attachments/assets/01bfc19a-2832-45d2-9284-05c3e6da66ec)
+
+
+
 
 
 
