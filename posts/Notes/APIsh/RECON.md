@@ -297,6 +297,21 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ![image](https://github.com/user-attachments/assets/01bfc19a-2832-45d2-9284-05c3e6da66ec)
 
+---------------
+
+### JWT TOOL
+
+---------------
+- Error `no proxy` fix-: Use `-np` for no proxy
+
+ ![image](https://github.com/user-attachments/assets/3e117e95-317a-47d6-a92b-0ef31ba6756f)
+
+- Use the playbook test to scan for common jwt vulnerabilities,syntax-:
+
+`python3 jwt_tool.py -t http://crapi.apisec.ai/identity/api/v2/user/dashboard -rh "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiaW1iaW16QGdtYWlsLmNvbSIsImlhdCI6MTc0MzUxMDEwNSwiZXhwIjoxNzQzNTk2NTA1fQ.OufYUVmq7Ys8Dn8FSTFNQLMDy3ZKRA3YAzuLzb0J4na0PDea4afHLeQhSbuXOUpethOxue5Z4GqtyDIaQPNTSA" -M pb -np`
+
+------------------- 
+
 
 
 
