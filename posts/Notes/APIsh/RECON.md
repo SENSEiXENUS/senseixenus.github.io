@@ -321,7 +321,27 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 - An API’s authentication process is meant to validate that users are who they claim to be. An API's authorization is meant to allow users to access the data they are permitted to access. In other words, UserA should only be able to access UserA's resources and UserA should not be able to access UserB's resources. API providers have been pretty good about requiring authentication when necessary, but there has been a tendency to overlook controls beyond the hurdle of authentication. Authorization vulnerabilities are so common for APIs that the OWASP security project included two authorization vulnerabilities on its top ten list, Broken Object Level Authorization (BOLA) and Broken Function Level Authorization (BFLA).
 -  BOLA vulnerabilities occur when an API provider does not restrict access to access to resources.
 -  BFLA vulnerabilities are present when an API provider does not restrict the actions that can be used to manipulate the resources of other users. BOLA is the ability for UserA to see UserB's bank account balance and BFLA is the ability to for UserA to transfer funds from UserB's account back to UserA.
+-  Ingredients for BOLA-:
+   - Resource ID-: a resource identifier will be the value used to specify a unique resource. This could be as simple as a number, but will often be more complicated.
+   - Requests that access resources. In order to test if you can access another user's resource, you will need to know the requests that are necessary to obtain resources that your account should not be authorized to access.
+   - Missing or flawed access controls. In order to exploit this weakness, the API provider must not have access controls in place. This may seem obvious, but just because resource IDs are predictable, does not mean there is an authorization vulnerability present.
 
+- Finding resource id-: You can test for authorization weaknesses by understanding how an API’s resources are structured and then attempting to access resources you shouldn’t be able to access. By detecting patterns within API paths and parameters, you might be able to predict other potential resources. The bold resource IDs in the following API requests should catch your attention
+
+- Examples-:You can proceed to tweak the bold ids
+
+```
+GET /api/resource/1
+GET /user/account/find?user_id=15
+POST /company/account/Apple/balance
+POST /admin/pwreset/account/90
+```
+
+- In these simple examples, you’ve performed an attack by merely replacing the bold items with other numbers or words. If you can successfully access the information you shouldn’t be authorized to access, you have discovered an authorization vulnerability. Here are a few ideas for  requests that could be good targets for an authorization test.
+
+![image](https://github.com/user-attachments/assets/a989b63f-311e-4bca-b365-e46f90f553a5)
+
+- 
 
 
 
