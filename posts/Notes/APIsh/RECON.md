@@ -257,6 +257,38 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ------------------------
 
+### Exploiting token flaws with `jwt_tool.py`
+
+------------------------
+
+- In order to study jwt token with sequencer,navigate to the Sequencer tab and select the request that you forwarded. Here we can use the Live Capture to interact with the target and get live tokens back in a response to be analyzed. To make this process work, you will need to define the custom location of the token within the response. Select the Configure button to the right of Custom Location. Highlight the token found within quotations and click OK.
+
+![image](https://github.com/user-attachments/assets/6f548e73-3b5c-401a-9ede-23e11a53d023)
+
+- Once it has been defined, you should press the `start live capture`.Using Sequencer against crAPI shows that the tokens generated seem to have enough randomness and complexity to not be predictable. Just because your target sends you a seemingly complex token, does not mean that it is safe from token forgery. Sequencer is great at showing that some complex tokens are actually very predictable. If an API provider is generating tokens sequentially then even if the token were 20 plus characters long, it could be the case that many of the characters in the token do not actually change. Making it easy to predict and create our own valid tokens.
+
+![image](https://github.com/user-attachments/assets/e6588d27-4e36-49b4-b722-854955122d9f)
+
+------------------
+
+### JWT ATTACKS
+
+-------------------
+
+- "none" attack
+- Algorithm confusion
+
+-------------------
+
+### Automating jwt attacks with `JWT_TOOL`
+
+-------------------
+
+
+
+
+
+
 
  
 
