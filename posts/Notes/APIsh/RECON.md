@@ -337,11 +337,18 @@ POST /company/account/Apple/balance
 POST /admin/pwreset/account/90
 ```
 
-- In these simple examples, you’ve performed an attack by merely replacing the bold items with other numbers or words. If you can successfully access the information you shouldn’t be authorized to access, you have discovered an authorization vulnerability. Here are a few ideas for  requests that could be good targets for an authorization test.
+- In these simple examples, you’ve performed an attack by merely replacing the bold items with other numbers or words. If you can successfully access the information you shouldn’t be authorized to access, you have discovered an authorization vulnerability. Here are a few ideas for  requests that could be good targets for an authorization test.Most times you can leverage on a excessive data exposure to read data.
 
 ![image](https://github.com/user-attachments/assets/a989b63f-311e-4bca-b365-e46f90f553a5)
 
-- 
+-----------------
+
+### Broken Function Level Authorization
+
+------------------
+
+- Where BOLA is about acessing resources that is not yours, BFLA is about performing unauthorized actions on resources that are not yours.These requests could be lateral actions or escalated actions. Lateral actions are requests that perform actions of users that are the same role or privilege level. Escalated actions are requests that perform actions that are of an escalated role like an administrator. The main difference between hunting for BFLA is that you are looking for functional requests. This means that you will be testing for various HTTP methods, seeking out actions of other users that you should not be able to perform.If you think of this in terms of a social media platform, an API consumer should be able to delete their own profile picture, but they should not be able to delete other users' profile pictures. The average user should be able to create or delete their own account, but they likely shouldn't be able to perform administrative actions for other user accounts.
+- The main difference between BOLA and BFLA is that we are looking for functional requests(CRUD)- Create,Read,Update and Delete. BFLA will mainly concern requests that are used to update, delete, and create resources that we should not be authorized to. For APIs that means that we should scrutinize requests that utilize POST, PUT, DELETE, and potentially GET with parameters.
 
 
 
