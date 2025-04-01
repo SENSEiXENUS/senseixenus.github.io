@@ -312,6 +312,10 @@ curl https://raw.githubusercontent.com/OWASP/Amass/master/examples/config.ini >~
 
 ------------------- 
 
+### Broken Authorization
+
+--------------------
+
 
 
 
