@@ -349,6 +349,7 @@ POST /admin/pwreset/account/90
 
 - Where BOLA is about acessing resources that is not yours, BFLA is about performing unauthorized actions on resources that are not yours.These requests could be lateral actions or escalated actions. Lateral actions are requests that perform actions of users that are the same role or privilege level. Escalated actions are requests that perform actions that are of an escalated role like an administrator. The main difference between hunting for BFLA is that you are looking for functional requests. This means that you will be testing for various HTTP methods, seeking out actions of other users that you should not be able to perform.If you think of this in terms of a social media platform, an API consumer should be able to delete their own profile picture, but they should not be able to delete other users' profile pictures. The average user should be able to create or delete their own account, but they likely shouldn't be able to perform administrative actions for other user accounts.
 - The main difference between BOLA and BFLA is that we are looking for functional requests(CRUD)- Create,Read,Update and Delete. BFLA will mainly concern requests that are used to update, delete, and create resources that we should not be authorized to. For APIs that means that we should scrutinize requests that utilize POST, PUT, DELETE, and potentially GET with parameters.
+- 
 
 
 
