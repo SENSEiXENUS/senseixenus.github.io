@@ -4,6 +4,20 @@
 
 ----------------
 
+### Proxying Postman through Burp SUite
+
+----------------
+
+-  Postman's proxy setting should contain burp's host and port value-:
+
+![image](https://github.com/user-attachments/assets/5b076a89-fdb4-4f11-a76a-ba45ed23cc0c)
+
+- Install Burp's cert-:
+
+![image](https://github.com/user-attachments/assets/dfbe9f00-f6f8-4932-8a4b-85006a5ff1e9)
+
+---------------
+
 ### Techniques
 
 ----------------
@@ -349,6 +363,52 @@ POST /admin/pwreset/account/90
 
 - Where BOLA is about acessing resources that is not yours, BFLA is about performing unauthorized actions on resources that are not yours.These requests could be lateral actions or escalated actions. Lateral actions are requests that perform actions of users that are the same role or privilege level. Escalated actions are requests that perform actions that are of an escalated role like an administrator. The main difference between hunting for BFLA is that you are looking for functional requests. This means that you will be testing for various HTTP methods, seeking out actions of other users that you should not be able to perform.If you think of this in terms of a social media platform, an API consumer should be able to delete their own profile picture, but they should not be able to delete other users' profile pictures. The average user should be able to create or delete their own account, but they likely shouldn't be able to perform administrative actions for other user accounts.
 - The main difference between BOLA and BFLA is that we are looking for functional requests(CRUD)- Create,Read,Update and Delete. BFLA will mainly concern requests that are used to update, delete, and create resources that we should not be authorized to. For APIs that means that we should scrutinize requests that utilize POST, PUT, DELETE, and potentially GET with parameters.
+
+
+------------------
+
+### Improper Assets Management
+
+-----------------
+
+- Testing for this involves checking for outdated and unsupported versions of an api.Often times an API provider will update services and the newer version of the API will be available over a new path like the following .
+
+```
+api.target.com/v3
+/api/v2/accounts
+/api/v3/accounts
+/v2/accounts
+```
+- Api versioning can also be made with an header-:
+
+```
+Accept: version=2.0
+Accept api-version=3
+```
+
+- Also in `GET` and `POST` data
+
+```
+/api/accounts?ver=2
+POST /api/accounts
+
+{
+"ver":1.0,
+"user":"hapihacker"
+}
+```
+
+- In these instances, earlier versions of the API may no longer be patched or updated. Since the older versions lack this support, they may expose the API to additional vulnerabilities. For example, if v3 of an API was updated to fix a vulnerability to injection attacks, then there are good odds that requests that involve v1 and v2 may still be vulnerable.
+- Non-production versions of an API include any version of the API that was not meant for end-user consumption. Non-production versions could include:
+```
+api.test.target.com
+api.uat.target.com
+beta.api.com
+/api/private
+/api/partner
+/api/test
+```
+
 - 
 
 
