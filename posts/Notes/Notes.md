@@ -3708,6 +3708,7 @@ sth -or -exec cat /etc/passwd ; -quit
 
 - Solve-:
 
+![image](https://github.com/user-attachments/assets/7590e3ea-c001-4620-aab4-a9508bb7587d)
 
 
 ---------------------
