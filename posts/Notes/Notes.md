@@ -3768,6 +3768,16 @@ svr.close()
 
 - [Jorian](https://book.jorianwoltjer.com/languages/python)
 
+------------------
+
+### Ironstone's binexp notes
+
+-------------------
+
+- [Ironstone](https://ir0nstone.gitbook.io/notes/binexp/stack/introduction)
+
+-------------------
+
 
 
 
