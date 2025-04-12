@@ -45,4 +45,16 @@
 
 - Quoting Mechanisms-:
 
+```
+- Escape Character
+- Single Quotes
+- Double quotes
+- Ansi-c Quoting
+- Locale-Specific Translation
+```
+
+- Escape character `\` is the Bash escape character.It preserves the literal value of the next character that follows, with the exception of newline. If a \newline pair appears, and the backslash itself is not quoted, the \newline is treated as a line continuation (that is, it is removed from the input stream and effectively ignored).
+- Enclosing characters in single quotes (‘'’) preserves the literal value of each character within the quotes. A single quote may not occur between single quotes, even when preceded by a backslash.
+- Double quotes-: Enclosing characters in double quotes (‘"’) preserves the literal value of all characters within the quotes, with the exception of ‘$’, ‘`’, ‘\’, and, when history expansion is enabled, ‘!’.
+
 
