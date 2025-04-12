@@ -3754,7 +3754,19 @@ svr.close()
 
 -------------------
 
+### Reference-:
 
+-------------------
+
+- [Kjcolley7](https://github.com/kjcolley7/CTF-WriteUps/blob/master/2021/thcon/TheHiddenOne/README.md)
+
+------------------
+
+### Python Sandbox bypass
+
+------------------
+
+- [Jorian](https://book.jorianwoltjer.com/languages/python)
 
 
 
