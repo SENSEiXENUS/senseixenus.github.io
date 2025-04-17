@@ -104,6 +104,14 @@ function
 !
 ```
 
-- `in` is recognized as a reserved word if it is the third word of a case or select command. in and do are recognized as reserved words if they are the third word in a for command. 
+- `in` is recognized as a reserved word if it is the third word of a case or select command. in and do are recognized as reserved words if they are the third word in a for command.
+- A simple command is the kind of command encountered most often. It’s just a sequence of words separated by blanks, terminated by one of the shell’s control operators (see Definitions). The first word generally specifies a command to be executed, with the rest of the words being that command’s arguments.
+- A pipeline is a set of simple commands separated by `|` or `|&`.e.g
+
+```bash
+ls|base64
+```
+
+- If the `|&` is used, the standard error is passed to the other command along with the `stdout`.`|&` is the shorthand for `2>&1`.
 
 
