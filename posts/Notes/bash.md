@@ -55,7 +55,17 @@
 
 - Escape character `\` is the Bash escape character.It preserves the literal value of the next character that follows, with the exception of newline. If a \newline pair appears, and the backslash itself is not quoted, the \newline is treated as a line continuation (that is, it is removed from the input stream and effectively ignored).
 - Enclosing characters in single quotes (‘'’) preserves the literal value of each character within the quotes. A single quote may not occur between single quotes, even when preceded by a backslash.
-- Double quotes-: Enclosing characters in double quotes (‘"’) preserves the literal value of all characters within the quotes, with the exception of ‘$’, ‘\`’, ‘\’, and, when history expansion is enabled, ‘!’.The characters ‘$’ and ‘`’ retain their special meaning within double quotes.A double quote may be quoted within double quotes by preceding it with a backslash. If enabled, history expansion will be performed unless an ‘!’ appearing in double quotes is escaped using a backslash. Backslahing with non-special characters within double quotes won't affect the characters e.g `backslash before a double quotes within 2 double quotes `.The backslash preceding the ‘!’ is not removed.The special parameters ‘*’ and ‘@’ have special meaning when in double quotes.
+- Double quotes-: Enclosing characters in double quotes (‘"’) preserves the literal value of all characters within the quotes, with the exception of ‘$’, ‘\`’, ‘\’, and, when history expansion is enabled, ‘!’.The characters ‘$’ and "\`" retain their special meaning within double quotes.A double quote may be quoted within double quotes by preceding it with a backslash. If enabled, history expansion will be performed unless an ‘!’ appearing in double quotes is escaped using a backslash. Backslahing with non-special characters within double quotes won't affect the characters e.g `backslash before a double quotes within 2 double quotes `.The backslash preceding the ‘!’ is not removed.The special parameters ‘*’ and ‘@’ have special meaning when in double quotes.
 - ANSI-C Quoting-: Character sequences of the form $’string’ are treated as a special kind of single quotes. The sequence expands to string, with backslash-escaped characters in string replaced as specified by the ANSI C standard.
+- Locale-Specific Translation-:Prefixing a double-quoted string with a dollar sign (‘$’), such as `$"hello, world"`, will cause the string to be translated according to the current locale.
+
+----------------
+
+### Comments
+
+----------------
+
+- In a non-interactive shell, or an interactive shell in which the interactive_comments option to the shopt builtin is enabled (see The Shopt Builtin), a word beginning with ‘#’ causes that word and all remaining characters on that line to be ignored. An interactive shell without the interactive_comments option enabled does not allow comments. The interactive_comments option is on by default in interactive shells.
+- An
 
 
