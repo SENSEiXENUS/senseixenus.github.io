@@ -73,9 +73,35 @@
 
 ------------------
 
-- 
+- A simple shell command can be "echo a c b",`echo` is the command and `a b c` are the arguments.More complex shell commands are composed of simple commands arranged together in a variety of ways: in a pipeline in which the output of one command becomes the input of a second, in a loop or conditional construct, or in some other grouping. 
 
 
 ------------------
+
+- Reserved words are words that have a special meaning in the shell. They are used to begin and end the shell’s compound commands. The following words are recognized as reserved when unquoted and the first word of a command (see below for exceptions):
+
+```bash
+if
+fi
+then
+elseif
+time
+for
+in
+until
+while
+do
+done
+case
+esac
+coproc
+select
+function
+{
+}
+[[
+]]
+!
+```
 
 
