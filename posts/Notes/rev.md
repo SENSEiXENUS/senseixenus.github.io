@@ -100,4 +100,14 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 - The presence of voltage indicates a binary 1 and the absence of voltage indicates a binary 0 therefore the memory cell holds one binary digit or bit which is either 1 or 0 meaning on or off.
 - Bytes,Word and Double word-:
 - Memory is measured in bytes.A byte is `8 bits`.Two bytes are a called `a word` and two words are called a `double word` which 4 bytes(32 bit).Quad word is `4 words` and equal to `64 bits`.A byte is 8 bits and is 2^8 power which is 256. The number of binary numbers 8 bits in size is one of 256 values starting at 0 and going to 255.4 bits is a nibble.
-- A digit in hexadecimal is 4 bits long which is a `nibble`.If we look at `40`,it is 8 bits long which is a byte.If we look at d040, we have two bytes or a word in length. Finally, ffffd040 is a double word or 4 bytes in length which is 32-bits long.
+- A digit in hexadecimal is 4 bits long which is a `nibble`.If we look at `40`,it is 8 bits long which is a byte.If we look at d040, we have two bytes or a word in length. Finally, ffffd040 is a double word or 4 bytes in length which is 32-bits long.he 0x at the beginning of the address just designates that is is a hexadecimal value.
+- A computer program is no more than a machine code stored in a memory.A 32-bit CPU grabs a double word(4 bytes) from a memory address.4 bytes is loaded from a memory and loaded into a CPU.As soon as it finishes executing, the CPU fetches the next machine instruction in memory from the instruction pointer.
+
+-------------------
+
+### X86 Architecture
+
+--------------------
+
+
+--------------------
