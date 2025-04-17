@@ -104,4 +104,6 @@ function
 !
 ```
 
+- `in` is recognized as a reserved word if it is the third word of a case or select command. in and do are recognized as reserved words if they are the third word in a for command. 
+
 
