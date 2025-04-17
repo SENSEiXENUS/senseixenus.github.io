@@ -50,5 +50,54 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 ------------------
 
 - Binary numbers are what define the core of a computer. A bit within a computer is either on or off. A bit has either electricity turned on to it or it is absent of such.
+- Understanding the numbering system
+- In binary,each number is a bit,if we combine 8 bits,it is a byte.A byte can be divided into 4 top bits and 4 lower bits.4 bits is a nibble,Since 4 bits gives you the possible range from 0 - 15 a base 16 number system is easier to work with. Keep in mind when we say base 16 we start with 0 and therefore 0 - 15 is 16 different numbers.This exciting number system is called hexadecimal. The reason why we use this number system is that in x86 Assembly it is much easier to express binary number representations in hexadecimal than it is in any other numbering system.
+
+- Hex chart-:
+
+![image](https://github.com/user-attachments/assets/f529ed1e-a54f-42c6-97e7-1f496fbc1556)
+
+---------------
+
+### Examining 42 in decimal
+
+- 42
+```python3
+>>> 2*10**0 + 4*10**1
+42
+```
+- In hexadecimal, everything will be treated with `base 16`.Converting "2a" based on the number charts, 10 is `a` in hexadecimal while `2` is `2` in hexadecimal.Number has to be converted first in decimal.
+
+```python3
+>>> 10*16**0 + 2*16**1
+42
+```
+- "F5" in hexadecimal to decimal-:
+
+```python3
+>>> 5*16**0+15*16**1
+245
+>>>
+```
+- `F1CD` to decimal-:
+
+```python3
+>>> 13*16**0 + 12*16**1 + 1*16**2 + 15*16**3
+61901
+>>>
+```
+
 - 
 
+----------------
+
+### Transistors and Memory
+
+-----------------
+
+- Electronic computers are simply made out of transistor switches. Transistors are microscopic crystals of silicon that use electrical properties of silicon to act as switches. Modern computers have what are referred to as field-effect transistors.
+
+- The presence of voltage indicates a binary 1 and the absence of voltage indicates a binary 0 therefore the memory cell holds one binary digit or bit which is either 1 or 0 meaning on or off.
+- Bytes,Word and Double word-:
+- Memory is measured in bytes.A byte is `8 bits`.Two bytes are a called `a word` and two words are called a `double word` which 4 bytes(32 bit).Quad word is `4 words` and equal to `64 bits`.A byte is 8 bits and is 2^8 power which is 256. The number of binary numbers 8 bits in size is one of 256 values starting at 0 and going to 255.4 bits is a nibble.
+- A digit in hexadecimal is 4 bits long which is a `nibble`.If we look at `40`,it is 8 bits long which is a byte.If we look at d040, we have two bytes or a word in length. Finally, ffffd040 is a double word or 4 bytes in length which is 32-bits long.
