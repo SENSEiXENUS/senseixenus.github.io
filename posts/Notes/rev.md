@@ -150,5 +150,7 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 
 ---------------
 
-- EAX would have AX as its 16-bits segment and you can further AX into AL for the low 8-bits and AH for the high 8-bits.
+- EAX would have AX as its 16-bits segment and you can further AX into AL for the low 8-bits and AH for the high 8-bits.The same holds true for EBX, ECX and EDX as well. EBX would have BX as its 16-bit segment and then you can further subdivide BX into BL for the low 8 bits and BH for the high 8 bits. ECX would have CX as its 16-bit segment and then you can further subdivide CX into CL for the low 8 bits and CH for the high 8 bits. EDX would have DX as its 16-bit segment and then you can further subdivide DX into DL for the low 8 bits and DH for the high 8 bits.
+- ESI would have SI as its 16-bit segment, EDI would have DI as its 16-bit segment, EBP would have BP as its 16-bit segment and ESP would have SP as its 16-bit segment.
+- 
 
