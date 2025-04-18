@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c3ec41e7-d7f1-4a61-a83d-5583e4880c5a)![image](https://github.com/user-attachments/assets/ace7fe22-998a-4081-8a79-1bc7d2ae2c50)-----------------
+-----------------
 
 ### Reverse
 
@@ -126,3 +126,19 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 - X86 32-bit CPU fetches a double-word(32-bits)(4 bytes) from a specific address in the memory and loads it into the CPU.At this point the CPU looks at the binary pattern of bits within the double word and begins executing the procedure that the fetched machine instruction directs it to do.Upon execution,the CPU fetches the next instruction in sequence.The CPU has a register called the `EIP` or the instruction pointer tht contains the next instruction to be fetched from the memory and then executed.We can immediately see that if we controlled flow of EIP, we can alter the program to do things it was NOT intended to do. This is a popular technique upon which malware operates.
 
 --------------------
+
+### General Purpose Registers
+
+--------------------
+
+- General purpos registers are used to temporarily store data as it is processed on the computer.The registers have evolved dramatically over time and continue to do so.Each new version of general-purpose registers is created to be backward compatible with previous processors. This means that code utilizing 8-bit registers on the 8080 chips will still function on today's 64-bit chipset.
+- 8 purpose register-:
+  - EAX->It is used for arithmetic calcaulations and also known as an accumulator, as it holds the results of arithmetic operations and function return values.
+  - EBX-> The Base Register,Pointer to the data in th .DS segment.Used to store the base address of the program,
+  - ECX-> It contains the counter register.It holds the amount of value that a process is to be repeated.Used for string and loop operations.
+  - EDX-> General Purpose Register, additionally used for I/O devices,In addition will extend EAX to 64-bits.
+  - ESI-> Source Index register. Pointer to data in the segment pointed to by the DS register. Used as an offset address in string and array operations. It holds the address from where to read data.
+  - EDI-> Destination Index Register, Pointer to data (or destination) in the segment pointed to by the ES register. Used as an offset address in string and array operations. It holds the implied write address of all string operations.
+  - EBP-> Base Pointer, pointer to the data in the stack frame, it points to the bottom of the current stack frame. It is used to reference local variables.
+  - ESP-> Stack pointer, pointer to the data in the top of the stack frame, It is used to reference local variables.
+
