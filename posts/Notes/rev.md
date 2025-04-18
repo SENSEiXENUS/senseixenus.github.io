@@ -142,3 +142,13 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
   - EBP-> Base Pointer, pointer to the data in the stack frame, it points to the bottom of the current stack frame. It is used to reference local variables.
   - ESP-> Stack pointer, pointer to the data in the top of the stack frame, It is used to reference local variables.
 
+- The above registers are 32-bit in length or 4 bytes in length.Each of the lower 2 bytes of the EAX, EBX, ECX, and EDX registers can be referenced by AX and then subdivided by the names AH, BH, CH and DH for high bytes and AL, BL, CL and DL for the low bytes which are 1 byte each.
+- In addition, the ESI, EDI, EBP and ESP can be referenced by their 16-bit equivalent which is SI, DI, BP, SP.
+----------------
+
+### Subdividing EAX
+
+---------------
+
+- EAX would have AX as its 16-bits segment and you can further AX into AL for the low 8-bits and AH for the high 8-bits.
+
