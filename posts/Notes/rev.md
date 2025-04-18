@@ -146,11 +146,27 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 - In addition, the ESI, EDI, EBP and ESP can be referenced by their 16-bit equivalent which is SI, DI, BP, SP.
 ----------------
 
-### Subdividing EAX
+### Subdividing EAX and other registers
 
 ---------------
 
 - EAX would have AX as its 16-bits segment and you can further AX into AL for the low 8-bits and AH for the high 8-bits.The same holds true for EBX, ECX and EDX as well. EBX would have BX as its 16-bit segment and then you can further subdivide BX into BL for the low 8 bits and BH for the high 8 bits. ECX would have CX as its 16-bit segment and then you can further subdivide CX into CL for the low 8 bits and CH for the high 8 bits. EDX would have DX as its 16-bit segment and then you can further subdivide DX into DL for the low 8 bits and DH for the high 8 bits.
 - ESI would have SI as its 16-bit segment, EDI would have DI as its 16-bit segment, EBP would have BP as its 16-bit segment and ESP would have SP as its 16-bit segment.
-- 
+
+----------------
+
+### Segment Registers
+
+----------------
+
+- They are used to reference memory locations.There are three different methods of accessing system memory of which we will focus on the flat memory model which is relevant for our purposes.
+- There are six segment registers which are as follows:
+  - CS: Code segment register stores the base location of the code section (.text section) which is used for data access.
+  - DS: Data segment register stores the default location for variables (.data section) which is used for data access.
+  - ES: Extra segment register which is used during string operations.
+  - SS: Stack segment register stores the base location of the stack segment and is used when implicitly using the stack pointer or when explicitly using the base pointer.
+  - FS: Extra Segment Register
+  - GS: Extra Segment Register
+
+----------------
 
