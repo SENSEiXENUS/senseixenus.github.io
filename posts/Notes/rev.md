@@ -1,4 +1,4 @@
------------------
+![image](https://github.com/user-attachments/assets/c3ec41e7-d7f1-4a61-a83d-5583e4880c5a)![image](https://github.com/user-attachments/assets/ace7fe22-998a-4081-8a79-1bc7d2ae2c50)-----------------
 
 ### Reverse
 
@@ -118,6 +118,10 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
   - Execution Unit - Where the execution of fetching and retrieving instructions occurs.
   - Registers - Internal CPU memory locations used a temporary data storage.
   - Flags - Indicate events when execution occurs.
+
+    ![image](https://github.com/user-attachments/assets/0f1edb9f-5e91-4b8d-8cb7-53ca61796102)
+
+
 
 - X86 32-bit CPU fetches a double-word(32-bits)(4 bytes) from a specific address in the memory and loads it into the CPU.At this point the CPU looks at the binary pattern of bits within the double word and begins executing the procedure that the fetched machine instruction directs it to do.Upon execution,the CPU fetches the next instruction in sequence.The CPU has a register called the `EIP` or the instruction pointer tht contains the next instruction to be fetched from the memory and then executed.We can immediately see that if we controlled flow of EIP, we can alter the program to do things it was NOT intended to do. This is a popular technique upon which malware operates.
 
