@@ -297,7 +297,7 @@ CF: Carry Flag
 PF: Parity Flag
 AF: Adjust Flag
 ZF: Zero Flag
-SF: Sign Fla
+SF: Sign Flags
 OF: Overflow Flag
 ```
 
@@ -309,6 +309,8 @@ OF: Overflow Flag
 - Sign flag-:The sign flag is set to the most significant bit of the result which is the sign bit and indicates whether the result is positive or negative.
 
 - Control flag-:They are used to control the specific behaviour in the processor.The DF flag which is the direction flag is used to control the way strings are handled by the processor. When set, string instructions automatically decrement memory addresses to get the next byte in the string. When cleared, string instructions automatically increment memory addresses to get the next byte in the string.
+- System flag are used to control OS level operations which would never be modified by any respective program or application.
+
 
 
 
