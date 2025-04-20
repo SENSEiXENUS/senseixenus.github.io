@@ -331,6 +331,17 @@ ID: Identification Flag
 - Nested Task Flag-: It controls whether the currently running task is linked to the previously executed task and is used for chaining interrupted and called tasks.
 - Resume Flag-: The resume flag controls how the processor responds to exceptions when in debugging mode.
 - VM-: The VM flag indicates that the processor is operating in virtual-8086 mode instead of protected or real mode.
+- The alignment check flag is used in conjunction with the AM bit in the CR0 control register to enable alignment checking of memory references.
+- The virtual interrupt flag replicates the IF flag when the processor is operating in virtual mode.
+- The virtual interrupt pending flag is used when the processor is operating in virtual mode to indicate that n interrupt is pending.
+- The ID flag indicates whether the processor supports the CPUID instruction.
+
+-----------------
+
+### Stack
+
+----------------
+
 - 
 
 
