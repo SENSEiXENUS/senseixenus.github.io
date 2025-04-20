@@ -184,5 +184,42 @@ For our purposes, when we are ultimately disassembling or debugging software, wh
 
 - The instruction pointer register called the EIP register is simply the most important register you will deal with in any reverse engineering. The EIP keeps track of the next instruction code to execute.EIP pointer points to the next instruction code to execute.If you were to alter that pointer to jump to another area in the code you have complete control over that program.
 
----------------
+-------------------
+
+- It is the most important register that we will deal with in reverse engineering and it presents the next instruction code for the processor to execute.For our purposes today, we will see the raw POWER of assembly language and particularly that of the EIP register and what we can do to completely hack program control.
+- Code-:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void unreachableFunction(void) {
+     printf("flag{hidden_function_12345678}\n");
+}
+
+int main(void) {
+    printf("Hello World!\n")
+    return 0;
+}
+
+```
+- In this code, we cannot access the `UnreachableFunction` because it cannot be called by the program itself
+- Compiling with gcc-:
+
+```bash
+```
+- You might face this error-:
+
+```
+❯ gcc -m32 -o eipexample eipexample.c
+In file included from eipexample.c:1:
+/usr/include/stdio.h:28:10: fatal error: bits/libc-header-start.h: No such file or directory
+   28 | #include <bits/libc-header-start.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+```
+- Install 32-bit libraries with `sudo apt-get install gcc-multilib`
+
+
+--------------------
 
