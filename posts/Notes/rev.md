@@ -219,7 +219,7 @@ In file included from eipexample.c:1:
 compilation terminated.
 ```
 - Install 32-bit libraries with `sudo apt-get install gcc-multilib`
-
+- Launching gdb without pwndgb,comment out `source /home/<user</pwndbg/gdbinit.py` in the `~/.gdbinit` file.
 
 --------------------
 
