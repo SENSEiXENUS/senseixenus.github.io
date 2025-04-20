@@ -272,7 +272,7 @@ set disassembly-flavor intel
   -  CR1-: (Not Currently Implemented)
   -  CR2-: Memory Fault Implementation
   -  CR3: Memory page Directory information
-  -  CR4-: Flags that enable processor feathers and indicate feature capabilities of the processor.
+  -  CR4-: Flags that enable processor features and indicate feature capabilities of the processor.
 
 - The values in each of the control registers can’t be directly accessed however the data in the control register can be moved to one of the general-purpose registers and once the data is in a GP register, a program can examine the bit flags in the register to determine the operating status of the processor in conjunction with the current running task.
 - If a change is required to a control register flag value, the change can be made to the data in the GP register and the register moved to the CR. Low-level System Programmers usually modify the values in control registers. Normal application programs do not usually modify control register entries however they might query flag values to determine the capabilities of the host processor chip on which the program is currently running.
@@ -310,7 +310,24 @@ OF: Overflow Flag
 
 - Control flag-:They are used to control the specific behaviour in the processor.The DF flag which is the direction flag is used to control the way strings are handled by the processor. When set, string instructions automatically decrement memory addresses to get the next byte in the string. When cleared, string instructions automatically increment memory addresses to get the next byte in the string.
 - System flag are used to control OS level operations which would never be modified by any respective program or application.
+- Examples of system flags-:
 
+```
+TF: Trap Flag
+IF: Interrupt Enable Flag
+IOPL: I/O Privilege Level Flag
+NT: Nested Task Flag
+RF: Resume Flag
+VM: Virtual-8086 Mode Flag
+AC: Alignment Check Flag
+VIF: Virtual Interrupt Flag
+VIP: Virtual Interrupt Pending Flag
+ID: Identification Flag
+```
+
+- Trap flag: It is set single-step mode and when in this mode,processor performs instructions execution step by step until it gets the signal to perform the next instruction.
+- Interrupt Enable flag-: It controls how the processor handles signal received from external sources.
+- I/O Privilege Level Flag-: 
 
 
 
