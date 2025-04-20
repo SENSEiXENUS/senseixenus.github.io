@@ -327,7 +327,11 @@ ID: Identification Flag
 
 - Trap flag: It is set single-step mode and when in this mode,processor performs instructions execution step by step until it gets the signal to perform the next instruction.
 - Interrupt Enable flag-: It controls how the processor handles signal received from external sources.
-- I/O Privilege Level Flag-: 
+- I/O Privilege Level Flag-: It indicate the input-output privilege of the current running task and defines access levels for the input-output address space which must be less than or equal to the access level required to access the respective address space.In the case where it is not less than or equal to the access level required, any request to access the address space will be denied.
+- Nested Task Flag-: It controls whether the currently running task is linked to the previously executed task and is used for chaining interrupted and called tasks.
+- Resume Flag-: The resume flag controls how the processor responds to exceptions when in debugging mode.
+- VM-: The VM flag indicates that the processor is operating in virtual-8086 mode instead of protected or real mode.
+- 
 
 
 
