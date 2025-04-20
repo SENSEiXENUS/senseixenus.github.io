@@ -220,6 +220,67 @@ compilation terminated.
 ```
 - Install 32-bit libraries with `sudo apt-get install gcc-multilib`
 - Launching gdb without pwndgb,comment out `source /home/<user</pwndbg/gdbinit.py` in the `~/.gdbinit` file.
+- Controlling the eip,first of all, run the program with `gdb ./program`, set disasseumble flavor to intel architecture.
+
+```gdb
+set disassembly-flavor intel
+```
+- Set a breakpoint at function `main` with `b main`
+![image](https://github.com/user-attachments/assets/aac64a40-aa6d-466d-a56e-a5316e641470)
+
+- Then, run with `r`
+
+![image](https://github.com/user-attachments/assets/23917dc6-c492-4366-8c84-e98db3a66eff)
+
+
+- Use `disas` to disassemble the code with `gdb`
+
+![image](https://github.com/user-attachments/assets/c9c56bcd-d8c4-4f02-8c20-03e6786eb573)
+
+- The "=>" points to the instruction where the EIP is pointing to that will be executed next.
+- If we run it with `r`, we will see where it is pointing to.
+
+![image](https://github.com/user-attachments/assets/7eddfaec-3b95-49bb-b721-786eda262888)
+
+- Let's see where the eip is pointing to with `x/1xw $eip` and `x/1xb $eip`.
+
+![image](https://github.com/user-attachments/assets/ecbf4202-4607-44c6-8219-1e07f7ee4c11)
+
+- Now, let's focus on the unreachable function.Disassemble with `disas` and the highlighted part is the memory address.
+
+![image](https://github.com/user-attachments/assets/e50902ce-efa1-450d-865a-b8627e4fc8e6)
+
+- Now let's set the eip with `set $eip=<addr>` to hijack the flow of the program.`$eip` is `$rip` in  64-bit programs.
+
+![image](https://github.com/user-attachments/assets/6341b4f7-6e62-48df-9bc0-f7716519e98b)
+
+- Then, press `c` to continue-:
+
+![image](https://github.com/user-a5ttachments/assets/69dee587-8fac-41e3-9404-efdca5c2de4a)
+
+
+- We've successfully hijacked the program flow with the aid of instruction pointer.
 
 --------------------
+
+### Control Register Pointer
+
+---------------------
+
+- There are 5 control registers which are used to determine the operating mode of the CPU and the characteristics of the current executing tasks.
+  -  CR0-: System flag that control the operating mode and various states of the processor
+  -  CR1-: (Not Currently Implemented)
+  -  CR2-: Memory Fault Implementation
+  -  CR3: Memory page Directory information
+  -  CR4-: Flags that enable processor feathers and indicate feature capabilities of the processor.
+
+- The values in each of the control registers can’t be directly accessed however the data in the control register can be moved to one of the general-purpose registers and once the data is in a GP register, a program can examine the bit flags in the register to determine the operating status of the processor in conjunction with the current running task.
+- If a change is required to a control register flag value, the change can be made to the data in the GP register and the register moved to the CR. Low-level System Programmers usually modify the values in control registers. Normal application programs do not usually modify control register entries however they might query flag values to determine the capabilities of the host processor chip on which the program is currently running.
+- 
+
+
+
+----------------------
+
+
 
