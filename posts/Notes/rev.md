@@ -256,7 +256,7 @@ set disassembly-flavor intel
 
 - Then, press `c` to continue-:
 
-![image](https://github.com/user-a5ttachments/assets/69dee587-8fac-41e3-9404-efdca5c2de4a)
+![image](https://github.com/user-attachments/assets/efce90e8-9b7c-4a13-b814-11a456447408)
 
 
 - We've successfully hijacked the program flow with the aid of instruction pointer.
@@ -343,7 +343,22 @@ ID: Identification Flag
 ----------------
 
 - Functions are the most fundamental feature in software development. A function allows you to organize code in a logical way to execute a specified task. It is not critical that you understand how functions work at this stage it is only important that you understand that when we start learning to develop, we want to minimize duplication by using functions that can be called multiple times rather than duplicate code taking up excessive memory.
-- When the program starts to execute a contiguous part of the memory is allocated to the program and called the stack.The stack pointer contains the top of the stack.The stack pointer contains the smallest address e.g 0x00001000 such that anything smaller than 0x00001000 is garbage and anything larger than that is considered valid.
+- When the program starts to execute a contiguous part of the memory is allocated to the program and called the stack.The stack pointer contains the top of the stack.The stack pointer contains the smallest address e.g 0x00001000 such that anything smaller than 0x00001000 is garbage and anything larger than that is considered valid.Diagram-:
+
+![image](https://github.com/user-attachments/assets/0f3e902c-ad6c-4d81-b809-d4ed70fcab5e)
+
+- In the diagram,it shows that the stacks grows upwards which is not true because it grows from higher to lower memory.In the addMe example below, the stack pointer (ESP), when examined in memory on a breakpoint on the main function, lists 0xffffd050. When the program calls the addMe function from main, ESP is now 0xffffd030 which is LOWER in memory. Therefore the stack grows DOWNWARD despite the diagram showing it pointing upward. Just keep in mind when the arrows below are pointing upward they are actually pointing to lower memory addresses.
+- The stack bottom is located in the top address or the top of the stack.It contains the largest memory address.The stack grows downward in memory and it might be confusing.
+- The stack limit is the smallest valid address of the stack.If the stack pointer gets smaller than this, there is a stack overflow which can corrupt a program to allow an attacker to take control of a system. Malware attempts to take advantage of stack overflows. As of recent, there are protections build into modern OS that attempt to prevent this from happening.
+
+---------------
+
+### STACK OPERATIONS-: PUSH and POP
+
+----------------
+
+- There are two operations in a stack which is the push and pop.
+
 
 
 
