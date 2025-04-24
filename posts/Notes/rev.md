@@ -342,7 +342,8 @@ ID: Identification Flag
 
 ----------------
 
-- 
+- Functions are the most fundamental feature in software development. A function allows you to organize code in a logical way to execute a specified task. It is not critical that you understand how functions work at this stage it is only important that you understand that when we start learning to develop, we want to minimize duplication by using functions that can be called multiple times rather than duplicate code taking up excessive memory.
+- When the program starts to execute a contiguous part of the memory is allocated to the program and called the stack.The stack pointer contains the top of the stack.The stack pointer contains the smallest address e.g 0x00001000 such that anything smaller than 0x00001000 is garbage and anything larger than that is considered valid.
 
 
 
