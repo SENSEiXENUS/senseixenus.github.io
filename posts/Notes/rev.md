@@ -384,7 +384,29 @@ int main(void) {
 
 ![image](https://github.com/user-attachments/assets/976f465f-b723-4fee-9889-ddc6a7d993cb)
 
-- 
+- FP is the frame pointer and points to the location where the stack pointer was just before int addMe(int a, int b) moved the stack pointer or SP for int addMe(int a, int b)’s own local variables.he use of a frame pointer is essential when a function is likely to move the stack pointer several times throughout the course of running the function.The idea is to keep the frame pointer fixed for the duration of the function's stack frame.
+- In sum, the stack is a special region of memory that stores temporary variables created by each function including main. The stack is a LIFO which is last in, first out data structure which is managed and optimized by the CPU closely. Every time a function declares a new variable it is pushed onto the stack. Every time a function exists, all of the variables pushed onto the stack by that function are freed or deleted. Once a stack variable is freed, that region of memory becomes available for other stack variables.
+
+----------------
+
+### Heap
+
+----------------
+
+- The stacks grows downward while the Heap grows upward.
+
+![image](https://github.com/user-attachments/assets/72ce62be-e077-4b8f-bda7-06cdfb156ccf)
+
+- The heap is the part of the computer memory that is not managed by you and it is not tightly managed by the CPU.It is free-floating region of memory and is larger than the stack allocation of memory.
+- To allocate memory on the heap,you must use `malloc()` or `calloc()` which are built-in C functions.Once you have allocated memory on the heap, you are responsible for freeing it by using free() to de-allocate that memory once you don't need it any more and if it is not done it can lead to a memory leak.That is, memory on the heap will still be set aside and won't be available to other processes that need it.
+- Unlike the stack, the heap does not have size restrictions on variable size. The only thing that would limit the heap is the physical limitations of your computer. Heap memory is slightly slower to be read from and written to, because you have to to use pointers to access memory on the heap. When we dive into our C tutorial series we will demonstrate this.
+- Heap variables are global in scope and basically accessible by any function.
+- If you need to allocate a large block of memory for something like a struct or a large array and you need to keep that variable around for a good duration of the program to which must be accessed globally, then you should choose the heap for this purpose. If you need variables like arrays and structs that can change size dynamically such as arrays that can grow or shrink as needed, then you will likely need to allocate them on the heap, and use dynamic memory allocation functions like malloc(), calloc(), realloc() and free() to manage that memory manually.
+
+---------------
+
+
+
 
 
 
