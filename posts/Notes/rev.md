@@ -380,6 +380,11 @@ int main(void) {
 
 ![image](https://github.com/user-attachments/assets/fbe5a43a-438b-49e0-8c2f-497f3771a47d)
 
+- Code-:
+
+![image](https://github.com/user-attachments/assets/976f465f-b723-4fee-9889-ddc6a7d993cb)
+
+- 
 
 
 
