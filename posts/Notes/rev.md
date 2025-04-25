@@ -405,12 +405,28 @@ int main(void) {
 
 ---------------
 
-### ASSEMBLY
+### ASSEMBLY -> Instruction Code Handling
 
 ---------------
 
+- The instruction pointer is used to help the CPU keep track of which instruction codes have already been processed and what code is to be processed next. Each and every instruction code must include an opcode that defines the basic task to be done by the CPU.Opcodes are 1 to 3 bytes in length and uniquely defines the function that is performed.
+- Let's examine a simple C program-:
 
+```c
+int main(void) {
+    return 0;
+}
+```
 
+- Using `objdump` to find the function within it
+
+```bash
+objdump -d -M intel test | grep main.: -A11
+```
+
+![image](https://github.com/user-attachments/assets/f5cd3ff0-dffc-4cf9-91d4-b2e3babfa8ec)
+
+- To keep this simple, lets examine memory address 80483de where we see op codes b8 00 00 00 00. We can see that the b8 opcode corresponds with the mov eax, 0x0 instruction on the right. The next series of 00 00 00 00 represents 4 bytes of the value 0. We see mov eax, 0x0 therefore the value of 0 is moved into eax therefore representing the above code. Keep in mind, the IA-32 platform uses what we call little-endian notation which means the lower-value bytes appear first in order when reading right to left.
 
 
 
