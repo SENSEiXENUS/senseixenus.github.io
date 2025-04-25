@@ -357,8 +357,7 @@ ID: Identification Flag
 
 ----------------
 
-- There are two operations in a stack which is the push and pop.
-
+- There are two operations in a stack which is the push and pop.You can push one or more registers to a stack by setting the stack pointer to a smaller value.This is done by subtracting 4 times the number of registers to be pushed onto the stack and pushing it to the stack.
 
 
 
