@@ -359,6 +359,29 @@ ID: Identification Flag
 
 - There are two operations in a stack which is the push and pop.You can push one or more registers to a stack by setting the stack pointer to a smaller value.This is done by subtracting 4 times the number of registers to be pushed onto the stack.You can pop it off the stack by copying the data from the stack to the register,then to add more value to the stack pointer.This is done by adding 4 times the registers' number to be popped off the stack.
 - For each function call there is a section of the stack reserved for the function. This is called the stack frame.
+- Using the example given here-:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void unreachableFunction(void) {
+     printf("flag{hidden_function_12345678}\n");
+}
+
+int main(void) {
+    printf("Hello World!\n");
+    return 0;
+}
+```
+
+- We see two functions here. The first one is the unreachableFunction to which will never execute under normal circumstances and we also see the main function that will always be the first function to be called onto the stack
+- The image below is the `activation record`.A stack frame exist whenever a function executes and it is yet to complete.For example, inside of the body of the int main(void) there is a call to int addMe(int a, int b) which takes two arguments a and b. There needs to be assembly language code in int main(void) to push the arguments for int addMe(int a, int b) onto the stack.
+
+![image](https://github.com/user-attachments/assets/fbe5a43a-438b-49e0-8c2f-497f3771a47d)
+
+
+
 
 
 
