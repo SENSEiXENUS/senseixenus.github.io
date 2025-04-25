@@ -357,7 +357,8 @@ ID: Identification Flag
 
 ----------------
 
-- There are two operations in a stack which is the push and pop.You can push one or more registers to a stack by setting the stack pointer to a smaller value.This is done by subtracting 4 times the number of registers to be pushed onto the stack and pushing it to the stack.
+- There are two operations in a stack which is the push and pop.You can push one or more registers to a stack by setting the stack pointer to a smaller value.This is done by subtracting 4 times the number of registers to be pushed onto the stack.You can pop it off the stack by copying the data from the stack to the register,then to add more value to the stack pointer.This is done by adding 4 times the registers' number to be popped off the stack.
+- For each function call there is a section of the stack reserved for the function. This is called the stack frame.
 
 
 
