@@ -161,7 +161,65 @@ public class ProfileServlet extends HttpServlet {
 
 --------------------
 
-![Uploading image.png…]()
-
+![image](https://github.com/user-attachments/assets/e6d01ca7-f5b4-4d25-bc9c-d2f600dc8b22)
 
 --------------------
+
+- Detetor is back again but with a twist this time.Let's dive into the code of `detect-dragon`.
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+<?php
+  $ip = $_REQUEST['ip'];
+
+  if (str_contains($ip, "\"")) {
+      echo "<h1>🛑 Invalid IP Address!</h1>";
+      echo "<p>That doesn't look like a valid IP address. Are you sure that's not a goblin lair?</p>";
+      echo '<a href="/">Try again</a>';
+      exit;
+  }
+
+
+  echo "<h1>";
+  system("bash /app/dragon-detector-ai \"$ip\"");
+  echo "</h1>";
+
+  echo '<br><a href="/">Check another IP</a>';
+?>
+    </div>
+</body>
+</html>
+```
+
+- The code checks if the string contains `"` and raises an error if it is in it.
+
+```php
+if (str_contains($ip, "\"")) {
+      echo "<h1>🛑 Invalid IP Address!</h1>";
+      echo "<p>That doesn't look like a valid IP address. Are you sure that's not a goblin lair?</p>";
+      echo '<a href="/">Try again</a>';
+      exit;
+  }
+```
+
+- If it passes the statement, the string is passed to shell statement `bash /app/dragon-detector-ai \"$ip\"` and `"` is required to close the statement and execute another statemnent.Although there is a walkaround, bash statement can also be executed within `$()` or backticks.
+- Exploiting it-:
+
+![image](https://github.com/user-attachments/assets/3fb9fe78-ad18-44af-aaac-132a51ee1e79)
+
+- Flag-:```CTF{tharr-be-MORE-draggggons}```
+
+----------------------
+
+
+
+
