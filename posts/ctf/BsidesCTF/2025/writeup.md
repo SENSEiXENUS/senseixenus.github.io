@@ -20,6 +20,7 @@
   - Hangman-one
   - Hoard
   - Sighting
+  - Taxonomy
 
 -----------------------
 
@@ -470,6 +471,26 @@ $ /app/valuate-hoard '$data['gold']' '$data['gems']' 'data['artifacts']'
 ![image](https://github.com/user-attachments/assets/4c63539f-dcf8-402f-8d60-b3d83b1be4f2)
 
 ---------------------
+
+### Taxonomy
+
+--------------------
+
+![image](https://github.com/user-attachments/assets/43d74844-7d51-41db-96b1-f09f5221bfab)
+
+--------------------
+
+- The target is vulnerable to sql injection, I passed `')--+` to close the statement and got the flag.
+
+![image](https://github.com/user-attachments/assets/d810abe0-89f8-4075-90a6-812ea67dae74)
+
+- Flag-:```CTF{those-are-the-types-of-dragons}```
+
+---------------------
+
+
+
+
 
 
 
