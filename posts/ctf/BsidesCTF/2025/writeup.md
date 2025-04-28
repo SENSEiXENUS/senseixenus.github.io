@@ -15,6 +15,7 @@
 - Web-:
   - Dating
   - Detector
+  - Detector-2
 
 -----------------------
 
@@ -156,3 +157,11 @@ public class ProfileServlet extends HttpServlet {
 
 --------------------
 
+### Detector-2
+
+--------------------
+
+![Uploading image.png…]()
+
+
+--------------------
