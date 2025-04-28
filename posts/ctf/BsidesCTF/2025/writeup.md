@@ -17,6 +17,7 @@
   - Detector
   - Detector-2
   - Evidence
+  - Hangman-one
 
 -----------------------
 
@@ -313,6 +314,23 @@ $dom->loadXML(file_get_contents($file), LIBXML_NOENT | LIBXML_DTDLOAD);
 - Flag-: ```CTF{aha-found-em}```
 
 ------------------------
+
+### Hangman-one
+
+------------------------
+
+![image](https://github.com/user-attachments/assets/97374fcc-0f3c-4776-bde7-78f2d08bdafb)
+
+------------------------
+
+- The challenege requires us to guess the flag, we can get the flag by guessing the chars with multiple accounts till we get it.It is an hangman themed game.
+
+![image](https://github.com/user-attachments/assets/cdce05f2-9ff1-43f8-b000-f97d5fde98c8)
+
+- Flag-: ```CTF{hangm4nw1thfr1end5andf03s}```
+
+--------------------------
+
 
 
 
