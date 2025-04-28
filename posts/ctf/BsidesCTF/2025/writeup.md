@@ -331,6 +331,116 @@ $dom->loadXML(file_get_contents($file), LIBXML_NOENT | LIBXML_DTDLOAD);
 
 --------------------------
 
+### Hoard
+
+--------------------------
+
+![image](https://github.com/user-attachments/assets/bdd8acde-9762-4cea-941e-adcaf8ff8b3b)
+
+--------------------------
+
+- This challenge is dope,it is command injection with certain setbacks.Let's look at the backend-:
+
+```php
+<?php
+header('Content-Type: application/json');
+
+// Ensure the request method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $input = file_get_contents('php://input');
+  $data = json_decode($input, true);
+
+  // Validate the JSON input
+  if ($data) {
+    // Validate
+    if(!preg_match('/[0-9]*/', $data['gold']) || !preg_match('/[0-9]*/', $data['gems']) || !preg_match('/[0-9]*/', $data['artifacts'])) {
+      echo json_encode([
+        "status" => "error",
+        "message" => "Fire-scorched parchment detected - invalid submission"
+      ]);
+      exit(1);
+    } else {
+      if($data['hoardType'] == 'gold') {
+        $valuation = $data['gold'] * 100;
+      } elseif($data['hoardType'] == 'gemstone') {
+        $valuation = $data['gems'] * 1000;
+      } elseif($data['hoardType'] == 'artifact') {
+        $valuation = shell_exec("/app/valuate-hoard '" . $data['gold'] . "' '" . $data['gems'] . "' '" . $data['artifacts'] . "'");
+      } else {
+        http_response_code(400);
+        echo json_encode([
+          "status" => "error",
+          "message" => "Fire-scorched parchment detected - invalid submission"
+        ]);
+        exit(1);
+      }
+
+      echo json_encode([
+        "status" => "success",
+        "message" => "Hoard valuation logged and valued at <tt>$valuation</tt>"
+      ]);
+    }
+  } else {
+      // Handle invalid JSON input
+      http_response_code(400);
+      echo json_encode([
+        "status" => "error",
+        "message" => "Fire-scorched parchment detected - invalid submission"
+      ]);
+  }
+} else {
+  // Handle non-POST requests
+  http_response_code(405); // Method Not Allowed
+  echo json_encode([
+    "status" => "error",
+    "message" => "Only POST requests are allowed for hoard valuation"
+  ]);
+}
+?>
+```
+
+- The `backend.php` takes in json body as data and checks if the json keys `gold`,`gems` and `artifacts` are present.Lastly, the `hoardType` must be set.
+
+```php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $input = file_get_contents('php://input');
+  $data = json_decode($input, true);
+
+  // Validate the JSON input
+  if ($data) {
+    // Validate
+    if(!preg_match('/[0-9]*/', $data['gold']) || !preg_match('/[0-9]*/', $data['gems']) || !preg_match('/[0-9]*/', $data['artifacts'])) {
+      echo json_encode([
+        "status" => "error",
+        "message" => "Fire-scorched parchment detected - invalid submission"
+      ]);
+      exit(1);
+```
+
+- Our main target is the `hoardType` artifacts because it gets passed to a shell statement.
+
+```php
+shell_exec("/app/valuate-hoard '" . $data['gold'] . "' '" . $data['gems'] . "' '" . $data['artifacts'] . "'");
+```
+
+- Although,there is a slight twist, we can't execute a shell command with `$()` because of the double quotes.Everything passed will be treated as a string.e,g
+
+```bash
+HP@H-DOLAPO22 MINGW64 ~/Downloads/Telegram Desktop
+$ /app/valuate-hoard '$data['gold']' '$data['gems']' 'data['artifacts']'
+```
+
+- I exploited it by closing the first `'` with `'` in param `gold`, then we will pass our statement with `$()` and use `#` to comment the other statement which will not be executed.The whole idea-:
+
+```
+'$(ls) #
+```
+
+- Exploiting it-:
+
+
+
+
 
 
 
