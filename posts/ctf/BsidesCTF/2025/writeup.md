@@ -21,6 +21,8 @@
   - Hoard
   - Sighting
   - Taxonomy
+  - Extinction
+  - Hangman-three
 
 -----------------------
 
@@ -488,12 +490,60 @@ $ /app/valuate-hoard '$data['gold']' '$data['gems']' 'data['artifacts']'
 
 ---------------------
 
+### Extinction
+
+---------------------
+
+![image](https://github.com/user-attachments/assets/42d37e5b-a659-472b-b901-e9ec86418a3a)
+
+---------------------
+
+- The main goal is to login with creds `admin:admin` but there is a slight twist.Let's check the source code-:
+
+```php
+<?php
+$correct_username = 'admin';
+$correct_password = 'admin';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $encoded_creds = $_REQUEST['encoded_creds'] ?? '';
+
+    if(str_contains($encoded_creds, 'YWRtaW46YWRtaW4')) {
+      $error_message = "AHA! We are aware that that password has been leaked! CAUGHT YOU!!";
+    } else {
+      $decoded_creds = base64_decode($encoded_creds);
+      $creds_parts = explode(':', $decoded_creds);
+
+      if (count($creds_parts) !== 2) {
+        $error_message = '⚠️ Invalid authentication runes! Dragon peril persists...';
+      } else {
+        $username = $creds_parts[0];
+        $password = $creds_parts[1];
+
+        if ($username === $correct_username && $password == $correct_password) {
+          $flag = file_get_contents("/flag.txt");
+          $success_message = "Congratulations! Your flag is <tt>$flag</tt>";
+        } else {
+          $error_message = '⚡ Authentication failed! Dragon extinction counter: ░░░░░░░░░░] 90%';
+        }
+      }
+    }
+}
+?>
+```
+
+- The page grabs the base64 encoded value of `$_POST['encoded_creds']` and checks if the string contains `YWRtaW46YWRtaW4` which the base64 encoded value for `admin:admin` which means we can't login with creds `admin:admin`.
+- Base64 encoding can also contain characters like `\`,`==`,`+`and `=`.If we can sneak in `\` or `+`,we will bypass the filter and get the flag.I tried placing `\` after some of the characters to check if it successfully decoded to `admin:admin`.I got it the second time.
+
+![image](https://github.com/user-attachments/assets/7219e59f-ab5a-4501-8cd0-17497a20f874)
+
+- The string above will successfully bypass the check.
+- Flag-:```CTF{i-saved-the-dragons-and-all-i-got-was-this-stupid-flag}```
+
+![image](https://github.com/user-attachments/assets/7e6d9dee-a9c4-4f3c-aac5-8bc90e7c274e)
 
 
-
-
-
-
+-----------------
 
 
 
