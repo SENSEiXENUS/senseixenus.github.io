@@ -532,7 +532,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 ```
 
-- The page grabs the base64 encoded value of `$_POST['encoded_creds']` and checks if the string contains `YWRtaW46YWRtaW4` which the base64 encoded value for `admin:admin` which means we can't login with creds `admin:admin`.
+- The page grabs the base64 encoded value of `$_POST['encoded_creds']` and checks if the string contains `YWRtaW46YWRtaW4` which is the base64 encoded value for `admin:admin` which means we can't login with creds `admin:admin`.
 - Base64 encoding can also contain characters like `\`,`==`,`+`and `=`.If we can sneak in `\` or `+`,we will bypass the filter and get the flag.I tried placing `\` after some of the characters to check if it successfully decoded to `admin:admin`.I got it the second time.
 
 ![image](https://github.com/user-attachments/assets/7219e59f-ab5a-4501-8cd0-17497a20f874)
@@ -542,8 +542,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ![image](https://github.com/user-attachments/assets/7e6d9dee-a9c4-4f3c-aac5-8bc90e7c274e)
 
-
 -----------------
+
+
 
 
 
