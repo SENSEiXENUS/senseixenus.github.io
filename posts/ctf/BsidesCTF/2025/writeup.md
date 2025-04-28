@@ -19,6 +19,7 @@
   - Evidence
   - Hangman-one
   - Hoard
+  - Sighting
 
 -----------------------
 
@@ -450,8 +451,29 @@ $ /app/valuate-hoard '$data['gold']' '$data['gems']' 'data['artifacts']'
 {"status":"success","message":"Hoard valuation logged and valued at <tt>Usage: \/app\/valuate-hoard num1 num2 num3\nCTF{a-dragons-hoard-is-all-he-has-dont-take-it-away}\n<\/tt>"}
 ```
 
+----------------------
+
+### SIGHTING
 
 ----------------------
+
+![image](https://github.com/user-attachments/assets/a9462c49-7a7a-454c-a6cc-16d32c1c9632)
+
+----------------------
+
+- I inspected the source code and discovered this file `picture.php` with parameter `file` to read files.This page is vulnerable to `Arbitrary File Read`.
+
+![image](https://github.com/user-attachments/assets/8df10915-23a8-4e49-9e5a-b8242f8df2bc)
+
+- Reading the flag file at `/flag.txt`.
+
+![image](https://github.com/user-attachments/assets/4c63539f-dcf8-402f-8d60-b3d83b1be4f2)
+
+---------------------
+
+
+
+
 
 
 
