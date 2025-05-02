@@ -4,6 +4,25 @@
 
 ----------------
 
+### Postman Introduction <GeekforGeeks>
+
+----------------
+
+- Postman is an API(Application Programming Interface) development tool that helps to build,modify and test apis. It has the ability to make various types of HTTP requests(GET, POST, PUT, PATCH), save environments for later use, converting the API to code for various languages(like JavaScript, and Python).
+
+-----------------
+
+### API Development(Postman)
+
+----------------
+
+- Interface-:
+
+![image](https://github.com/user-attachments/assets/6e94d1b5-5a3b-4f59-bfa3-978199f4e84f)
+
+
+----------------
+
 ### Proxying Postman through Burp SUite
 
 ----------------
