@@ -3912,3 +3912,49 @@ Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
 
 - Here, the front-end and back-end servers both support the Transfer-Encoding header, but one of the servers can be induced not to process it by obfuscating the header in some way.
 - 
+---------------------
+
+### Web Socket Vulnerabilities
+
+----------------------
+
+- WebSockets are widely used in modern web applications. They are initiated over HTTP and provide long-lived connections with asynchronous communication in both directions.WebSockets are used for all kinds of purposes, including performing user actions and transmitting sensitive information. Virtually any web security vulnerability that arises with regular HTTP can also arise in relation to WebSockets communications.
+- Manipulating websockets generally involves manipulating them in ways that are not expected.Burpsuite can be used to-:
+ - Intercept and modify WebSocket messages.
+ - Replay and generate new WebSocket messages.
+ - Manipulate WebSocket connections.
+
+---------------------
+
+### Web sockets vulnerabilities
+
+---------------------
+
+- In principle, practically any web security vulnerability might arise in relation to WebSockets:
+- User-supplied input transmitted to the server might be processed in unsafe ways, leading to vulnerabilities such as SQL injection or XML external entity injection.
+- Some blind vulnerabilities reached via WebSockets might only be detectable using out-of-band (OAST) techniques.
+- If attacker-controlled data is transmitted via WebSockets to other application users, then it might lead to XSS or other client-side vulnerabilities.
+
+--------------------
+
+### Exploiting web sockets vulnerabilities
+
+--------------------
+
+- For example, suppose a chat application uses WebSockets to send chat messages between the browser and the server. When a user types a chat message, a WebSocket message like the following is sent to the server:
+
+```json
+{"message":"Hello Carlos"}
+```
+- The contents of the message are transmitted (again via WebSockets) to another chat user, and rendered in the user's browser as follows:
+
+```json
+<td>Hello Carlos</td>
+```
+- In this situation, provided no other input processing or defenses are in play, an attacker can perform a proof-of-concept XSS attack by submitting the following WebSocket message:
+
+```json
+{"message":"<img src=1 onerror='alert(1)'>"}
+```
+
+---------------
