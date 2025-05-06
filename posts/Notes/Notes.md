@@ -3845,25 +3845,16 @@ q=smuggling
 
 -  Note-: These techniques are only possible using HTTP/1 requests. Browsers and other clients, including Burp, use HTTP/2 by default to communicate with servers that explicitly advertise support for it during the TLS handshake.As a result, when testing sites with HTTP/2 support, you need to manually switch protocols in Burp Repeater. You can do this from the Request attributes section of the Inspector panel.
 
+----------------
 
+### CL:TE vulnerability
 
+----------------
 
+- Switching between `HTTP/1.1` and `HTTP/2` in burpsuite
 
+![image](https://github.com/user-attachments/assets/9327bbbf-e690-40e3-99dc-81695d30bd07)
 
+- 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+-------------------
