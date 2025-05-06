@@ -3909,3 +3909,6 @@ Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
 ### TE:TE-: Transfer-Encoding: Transfer Encoding
 
 --------------------
+
+- Here, the front-end and back-end servers both support the Transfer-Encoding header, but one of the servers can be induced not to process it by obfuscating the header in some way.
+- 
