@@ -3838,6 +3838,11 @@ q=smuggling
 
 ----------------
 
+- Classic request smuggling involves placing both the Content-Length header and the Transfer-Encoding header into a single HTTP/1 request and manipulating these so that the front-end and back-end servers process the request differently. The exact way in which this is done depends on the behavior of the two servers:
+  -  CL-TE: The front-end server uses the Content-Length header and the back-end server uses the Transfer-Encoding header.
+  -  TE.TE: the front-end and back-end servers both support the Transfer-Encoding header, but one of the servers can be induced not to process it by obfuscating the header in some way.
+  -  TE.CL: the front-end server uses the Transfer-Encoding header and the back-end server uses the Content-Length header.
+
 
 
 
