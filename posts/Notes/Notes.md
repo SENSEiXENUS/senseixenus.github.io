@@ -3958,3 +3958,67 @@ Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
 ```
 
 ---------------
+
+### SSTI [Server Side Request Forgery]
+
+---------------
+
+- Twig SSTI sink->
+
+```php
+$output = $twig->render("Dear " . $_GET['name']);
+```
+- User's input is concatenated with a template.It can be exploited this way.
+
+```
+curl <url>/?name={{bad-stuff}}
+```
+
+- You can identify SSTI by fuzzing this characters `${{<%[%'"}}%\` till you get an error that might identify the template.If fuzzing was inconclusive, a vulnerability may still reveal itself using one of these approaches. Even if fuzzing did suggest a template injection vulnerability, you still need to identify its context in order to exploit it.
+- Plaintext Approach-: Most template languages allow you to freely input content either by using HTML tags directly or by using the template's native syntax, which will be rendered to HTML on the back-end before the HTTP response is sent. For example, in Freemarker, the line render('Hello ' + username) would render to something like Hello Carlos.This can sometimes be exploited for XSS and is in fact often mistaken for a simple XSS vulnerability. However, by setting mathematical operations as the value of the parameter, we can test whether this is also a potential entry point for a server-side template injection attack.For example, consider a template that contains the following vulnerable code:
+
+```java
+render('Hello ' + username)
+```
+
+- If we try `${7*7}` and we get `49`,it indicates SSTI vulnerability.
+- Codetext approach-: Sometimes it is revealed through the code .User input might be placed in a template expression as seen below.This may take the form of a user-controllable variable name being placed inside a parameter, such as:
+
+```
+greeting = getQueryParameter('greeting')
+engine.render("Hello {{"+greeting+"}}", data)
+```
+
+- The url  will be like and render `Hello Carlos`
+
+```
+http://vulnerable-website.com/?greeting=data.username
+```
+- This context is easily missed during assessment because it doesn't result in obvious XSS and is almost indistinguishable from a simple hashmap lookup. One method of testing for server-side template injection in this context is to first establish that the parameter doesn't contain a direct XSS vulnerability by injecting arbitrary HTML into the value:
+- In the absence of XSS, this will usually either result in a blank entry in the output (just Hello with no username), encoded tags, or an error message. The next step is to try and break out of the statement using common templating syntax and attempt to inject arbitrary HTML after it:
+
+```
+http://vulnerable-website.com/?greeting=data.username}}<tag>
+```
+
+- If this again results in an error or blank output, you have either used syntax from the wrong templating language or, if no template-style syntax appears to be valid, server-side template injection is not possible. Alternatively, if the output is rendered correctly, along with the arbitrary HTML, this is a key indication that a server-side template injection vulnerability is present:
+
+```
+Hello Carlos<tag>
+```
+
+- Once you have detected the template injection potential, the next step is to identify the template engine.Although there are a huge number of templating languages, many of them use very similar syntax that is specifically chosen not to clash with HTML characters. As a result, it can be relatively simple to create probing payloads to test which template engine is being used.Simply submitting invalid syntax is often enough because the resulting error message will tell you exactly what the template engine is, and sometimes even which version. For example, the invalid expression <%=foobar%> triggers the following response from the Ruby-based ERB engine:
+
+```
+(erb):1:in `<main>': undefined local variable or method `foobar' for main:Object (NameError)
+from /usr/lib/ruby/2.5.0/erb.rb:876:in `eval'
+from /usr/lib/ruby/2.5.0/erb.rb:876:in `result'
+from -e:4:in `<main>'
+```
+
+- Decision tree to determine `SSTI`-:
+
+![image](https://github.com/user-attachments/assets/e252cf9b-4deb-4f1d-a048-86adeafe2c7d)
+
+- You should be aware that the same payload can sometimes return a successful response in more than one template language. For example, the payload {{7*'7'}} returns 49 in Twig and 7777777 in Jinja2. Therefore, it is important not to jump to conclusions based on a single successful response.
+
