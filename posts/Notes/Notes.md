@@ -3778,6 +3778,12 @@ svr.close()
 
 -------------------
 
+### HTTP Request Smuggling
+
+--------------------
+
+- HTTP Request smuggling requires interfering with the way websites processes with sequences of http requests.
+
 
 
 
