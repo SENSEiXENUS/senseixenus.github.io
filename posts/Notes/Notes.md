@@ -3843,6 +3843,8 @@ q=smuggling
   -  TE.TE: the front-end and back-end servers both support the Transfer-Encoding header, but one of the servers can be induced not to process it by obfuscating the header in some way.
   -  TE.CL: the front-end server uses the Transfer-Encoding header and the back-end server uses the Content-Length header.
 
+-  Note-: These techniques are only possible using HTTP/1 requests. Browsers and other clients, including Burp, use HTTP/2 by default to communicate with servers that explicitly advertise support for it during the TLS handshake.As a result, when testing sites with HTTP/2 support, you need to manually switch protocols in Burp Repeater. You can do this from the Request attributes section of the Inspector panel.
+
 
 
 
