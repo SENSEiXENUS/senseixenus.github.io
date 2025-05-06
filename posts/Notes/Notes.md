@@ -3856,5 +3856,31 @@ q=smuggling
 ![image](https://github.com/user-attachments/assets/9327bbbf-e690-40e3-99dc-81695d30bd07)
 
 - The frontend server allows `GET` and `POST` requests and determines body length with `CONTENT-LENGTH` and the backend server uses `Transfer-Encoding`.
+- Solving the lab-:
+- The [Transfer-Encoding]first chunk is specified as having 0 length.Any request smuggled after the `0` char is interpreted as a new request.
+
+![image](https://github.com/user-attachments/assets/810abc25-4c2c-46e9-8477-60ebc50885f0)
+
+- You'll notice that the char after `0` gets interpreted by the back-end server and raises an `unknown-header error`.
+
+-----------------
+
+### TE-CL vulnerability
+
+----------------
+
+- Here the front-end server uses the `Transfer-Encoding` while the backend server uses the `Content-Length` header to determine body length.It can be carried out as follows:
+
+```http
+POST / HTTP/1.1
+Host: vulnerable-website.com
+Content-Length: 3
+Transfer-Encoding: chunked
+
+8
+SMUGGLED
+0
+```
+- The char must be followed by the trailing slash sequence `\r\n\r\n`,Ensure `update content-length` is unchecked
 
 -------------------
