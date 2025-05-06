@@ -3782,7 +3782,36 @@ svr.close()
 
 --------------------
 
-- HTTP Request smuggling requires interfering with the way websites processes with sequences of http requests.
+- HTTP Request smuggling requires interfering with the way websites processes with sequences of http requests.It is associated with HTTP/1 requests. However, websites that support HTTP/2 may be vulnerable, depending on their back-end architecture.
+
+---------------------
+
+### What happens in a Request Smuggling attack
+
+-------------------
+
+- Today's web applications employ chains of web servers between users and application logic.Users send requests to a front end server(called a load balancer or a reverse proxy) and this server forwards requests to one or more back-end servers. This type of architecture is increasingly common, and in some cases unavoidable, in modern cloud-based applications.When the front-end server forwards HTTP requests to a back-end server, it typically sends several requests over the same back-end network connection, because this is much more efficient and performant. The protocol is very simple; HTTP requests are sent one after another, and the receiving server has to determine where one request ends and the next one begins
+- In this scenario. the back end and front end server must agree on boundaries of requests or an attacker might be able to create an ambiguous request that will be translated differently by both servers.
+
+----------------------
+
+### How Request Smuggling vulnerabilities arise
+
+--------------------
+
+- Most Request smuggling vulnerabilities occurs because `HTTP/1` specification provides 2 different ways where a request ends: The `Content-Length` and the `Transfer-Encoding` headers.
+- The `Content-Length` is straight forward.It specifies the body length of a request.
+
+```http
+POST /search HTTP/1.1
+Host: normal-website.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 11
+
+q=smuggling
+```
+
+- `Transfer-Encoding` on the other hand
 
 
 
