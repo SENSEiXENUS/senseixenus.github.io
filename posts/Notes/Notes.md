@@ -3855,6 +3855,6 @@ q=smuggling
 
 ![image](https://github.com/user-attachments/assets/9327bbbf-e690-40e3-99dc-81695d30bd07)
 
-- 
+- The frontend server allows `GET` and `POST` requests and determines body length with `CONTENT-LENGTH` and the backend server uses `Transfer-Encoding`.
 
 -------------------
