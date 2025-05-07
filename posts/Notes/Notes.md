@@ -3930,7 +3930,13 @@ X: X[\n]Transfer-Encoding: chunked
 Transfer-Encoding
 : chunked
 ```
-- The main idea is to obfuscate the second `Transfer-Encoding` header with `Transfer-Encoding: x`
+- The main idea is to obfuscate the second `Transfer-Encoding` header with `Transfer-Encoding: x` so that it can be passed to the backend server..Then, create a normal `chunked` request with the smuggled request in the body.
+
+![image](https://github.com/user-attachments/assets/1ceec8c0-4231-4736-b015-1070bd13489b)
+
+- Then, create a classic `TC:CL` smuggling request by setting `Content-Lenght` to read the chunked request's number of bytes.
+
+![image](https://github.com/user-attachments/assets/aac9359b-2873-421d-baef-6f08dbb1750b)
 
 ---------------------
 
