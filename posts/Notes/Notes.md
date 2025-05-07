@@ -3911,7 +3911,27 @@ Host: 0a840084034a88008123fc40002200ab.web-security-academy.net
 --------------------
 
 - Here, the front-end and back-end servers both support the Transfer-Encoding header, but one of the servers can be induced not to process it by obfuscating the header in some way.
-- 
+- Obfuscation method for `Transfer-Encoding` header-:
+
+```
+Transfer-Encoding: xchunked
+
+Transfer-Encoding : chunked
+
+Transfer-Encoding: chunked
+Transfer-Encoding: x
+
+Transfer-Encoding:[tab]chunked
+
+[space]Transfer-Encoding: chunked
+
+X: X[\n]Transfer-Encoding: chunked
+
+Transfer-Encoding
+: chunked
+```
+- The main idea is to obfuscate the second `Transfer-Encoding` header with `Transfer-Encoding: x`
+
 ---------------------
 
 ### Web Socket Vulnerabilities
