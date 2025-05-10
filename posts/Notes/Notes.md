@@ -4131,9 +4131,30 @@ print(t.generate(myvalue="XXX"))
 
 ------------
 
+### Ldap Injection
 
+------------
 
+- Just like sqli, it involves injecting a malicious statement into a ldap query.You'll notice that the variables `username` and `password` are passed into the ldap query without being filtered.
 
+```python3
+if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        server = Server('localhost', port=389, get_info=ALL)
+
+        conn = Connection(server, 
+                          user=f'cn=admin,dc=bts,dc=ctf',
+                          password=ADMIN_PASSWORD,
+                          auto_bind=True)
+if not conn.bind():
+            return 'Failed to connect to LDAP server', 500
+
+        conn.search('ou=people,dc=bts,dc=ctf', f'(&(employeeType=active)(uid={username})(userPassword={password}))', attributes=['uid'])
+```
+
+- 
 
 
 
