@@ -1,7 +1,6 @@
 * * *
 NOTES
 * * *
------------------------------
 
 ### Important stuffs
 
@@ -4202,6 +4201,8 @@ while True:
 ```
 
 - Result-:
+
+![image](https://github.com/user-attachments/assets/0aea5991-c478-49d1-8f7b-69db2958a4e1)
 
 
 - Exfiltrating field `userPassword`-:
