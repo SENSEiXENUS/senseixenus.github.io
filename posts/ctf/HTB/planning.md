@@ -179,7 +179,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 --------------------
 
-- [Grafan exploit](https://github.com/nollium/CVE-2024-9264)
+- [Grafana's exploit](https://github.com/nollium/CVE-2024-9264)
 - [Crontab-ui](https://github.com/alseambusher/crontab-ui)
 
 ---------------------
