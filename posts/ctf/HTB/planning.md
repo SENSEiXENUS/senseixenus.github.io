@@ -129,11 +129,60 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ![image](https://github.com/user-attachments/assets/c326ee3e-721a-42bf-aa91-12b2cf91f40c)
 
--
+- I noticed this directory `crontab-ui` and I decided to look into it.
 
+![image](https://github.com/user-attachments/assets/a5f51032-ba89-463f-bbc4-d7e3f49c2429)
 
+- [Crontab-ui](https://github.com/alseambusher/crontab-ui) is a nodejs web application that allows you manage your crontabs.
 
+![image](https://github.com/user-attachments/assets/0bc0ba95-c24f-47de-a307-f23251b2f3b1)
 
+- I portforwarded the port with ssh to access it on my local machine.
+
+![image](https://github.com/user-attachments/assets/ee29ad8a-cb8f-4ed6-8db7-dffcc83c279d)
+
+- When I tried to access it, I met an obstacle "a nginx login prompt".After checking the docs,I discovered that crontab-ui can be used with nginx as an intermediary.
+
+![image](https://github.com/user-attachments/assets/bec82aab-ab9c-446b-8c32-d6c7d89e2aa3)
+
+- I checked the crontab-ui's installation directory for creds and discovered some db files.
+
+![image](https://github.com/user-attachments/assets/d7ff6b39-7e56-40b3-97e8-0a6fc607f045)
+
+- I saw a password in one of the files.
+
+![image](https://github.com/user-attachments/assets/e8d0bc2d-371e-4ca5-8078-eca924138411)
+
+- The `root_grafana:password` combo didn't work.Then, I tried `root:password` and the combo worked.
+
+![image](https://github.com/user-attachments/assets/04d20c84-7ab5-4b32-b944-3875c6a64894)
+
+- To escalate privileges,create a crontab that spawns a reverse shell.
+
+![image](https://github.com/user-attachments/assets/4772b7a4-1800-4ba6-8080-13a04b3bb773)
+
+- Run it-:
+
+![image](https://github.com/user-attachments/assets/a3452f6b-2930-4e83-9705-936031d360dd)
+
+- Reverse shell and roottt!!!-:
+
+![image](https://github.com/user-attachments/assets/56669d79-5092-444e-b4ee-e2197759de14)
+
+--------------------
+
+### THANKS FOR READING
+
+--------------------
+
+### REFERENCES
+
+--------------------
+
+- [Grafan exploit](https://github.com/nollium/CVE-2024-9264)
+- [Crontab-ui](https://github.com/alseambusher/crontab-ui)
+
+---------------------
 
 
 
