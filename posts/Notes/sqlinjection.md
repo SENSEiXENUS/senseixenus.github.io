@@ -141,10 +141,6 @@
 
 -----------------------
 
-- Challenge-:
-
-![image](https://github.com/user-attachments/assets/cf7e7a9a-50c2-43a9-87ad-8619e87a80e8)
-
 - Script to dump the whole db-:
 
 ```python
