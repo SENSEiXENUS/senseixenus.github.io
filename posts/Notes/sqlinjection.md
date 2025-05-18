@@ -89,8 +89,17 @@
 
 ------------------------
 
-- Welp-:
+- Welp,limit and offset requires the same logic used for tables but `substr()`'s second argument should be set to `1` and the third one should incremented.`WHEN` holds the characters found e.g substr(name,1,4) indicates you are looking for the fourth character, so `WHEN` should be `fla+{new_character}`.
 
 ```sqlite3
 (select+case+substr(name,1,{digit+1})+WHEN+'{character}'+THEN+1+ELSE+1/0+END+FROM+PRAGMA_TABLE_INFO('{table_name}') LIMIT {i+1} OFFSET {i})
 ```
+
+---------------------------
+
+### COUNTING THE STRING OF A DATA IN A COLUMN
+
+--------------------
+
+- 
+--------------------
