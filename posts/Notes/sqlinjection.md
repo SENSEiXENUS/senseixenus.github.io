@@ -97,9 +97,25 @@
 
 ---------------------------
 
-### COUNTING THE STRING OF A DATA IN A COLUMN
+### COUNTING THE ROWS IN A COLUMN
 
 --------------------
 
-- 
+- You still have to use count() to achieve this.
+
+```sqlite3
+(SELECT+count({column_name})+FROM+{table_name})={digit}
+```
+
 --------------------
+
+### COUNTING THE CHARACTER LENGTH OF A ROW
+
+---------------------
+
+- OFFSET AND LIMIT does the same job and limit the rows to one.It still requires length like tables and columns.
+
+```sqlite3
+(SELECT+length({column_name})+FROM+{table_name} LIMIT {length+1} OFFSET {length})={i}
+```
+
