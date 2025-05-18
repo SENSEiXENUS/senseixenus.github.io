@@ -52,3 +52,9 @@
 ### Reading the tables's characters
 
 ----------------------
+
+- The functions `hex()` and `substr()` are useful in this scenario.You limit the rows and column with limit and offset and select the characters with `substr()`,the substr requires 3 arguments `(tbl_name,{characters'limit},{character's start})` which is hexed with `hex()` and checked if it is equal to a character that is hexed.The second argument of substr should be incremented only while the third argument is set to `1`.
+
+```sqlite
+(SELECT hex(substr(tbl_name,{character's end},{character's stop})) FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%' limit {i+1} offset {i}) = hex('{char}')--+"
+```
