@@ -41,8 +41,14 @@
 
 --------------------
 
-- Use the length() function
+- Use the length() function,the code below is used to count the character length of table.I added `LIMIT` and `OFFSET` because we have to limit the table to a single one.If offset is set to `0` and limit is set to `1`, the first row will be read, to read the others, you just need to increment it.`Offset`-1 and `limit` to 2.
 
 ```sql
-(SELECT length(tbl_name) FROM sqlite_master WHERE type='table' and tbl_name not like 'sqlite_%' LIMIT {length+1} OFFSET {length}) = {i+1}
+(SELECT length(tbl_name) FROM sqlite_master WHERE type='table' and tbl_name not like 'sqlite_%' LIMIT 1 OFFSET 0) = {number}
 ```
+
+---------------------
+
+### Reading the tables's characters
+
+----------------------
