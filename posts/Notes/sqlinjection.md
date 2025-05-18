@@ -113,9 +113,16 @@
 
 ---------------------
 
-- OFFSET AND LIMIT does the same job and limit the rows to one.It still requires length like tables and columns.
+- OFFSET AND LIMIT perform the same job and limit the rows to one.It still requires length like tables and columns.
 
 ```sqlite3
-(SELECT+length({column_name})+FROM+{table_name} LIMIT {length+1} OFFSET {length})={i}
+(SELECT+length({column_name})+FROM+{table_name} LIMIT {length+1} OFFSET {length})={digit}
 ```
 
+---------------------
+
+### Reading character off the rows 
+
+---------------------
+
+- 
