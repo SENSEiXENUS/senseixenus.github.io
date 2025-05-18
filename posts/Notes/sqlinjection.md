@@ -58,3 +58,7 @@
 ```sqlite
 (SELECT hex(substr(tbl_name,{character's end},{character's stop})) FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%' limit {i+1} offset {i}) = hex('{char}')--+"
 ```
+
+-------------------
+
+
