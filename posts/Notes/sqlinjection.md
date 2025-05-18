@@ -41,7 +41,7 @@
 
 --------------------
 
-- Use the length() function,the code below is used to count the character length of table.I added `LIMIT` and `OFFSET` because we have to limit the table to a single one.If offset is set to `0` and limit is set to `1`, the first row will be read, to read the others, you just need to increment it.`Offset`-1 and `limit` to 2.
+- Use the length() function,the code below is used to count the character length of table.I added `LIMIT` and `OFFSET` because we have to limit the table to a single one.If offset is set to `0` and limit is set to `1`, the first row will be read, to read the others, you just need to increment it.`Offset-:`1 and `limit` to 2.
 
 ```sql
 (SELECT length(tbl_name) FROM sqlite_master WHERE type='table' and tbl_name not like 'sqlite_%' LIMIT 1 OFFSET 0) = {number}
@@ -61,4 +61,36 @@
 
 -------------------
 
+### Counting Columns-:
 
+-------------------
+
+- Query-:`count()`
+
+```sqlite3
+(SELECT count(name) FROM PRAGMA_TABLE_INFO('{table_name}'))={number}
+```
+
+-----------------------
+
+### Column's length
+
+-----------------------
+
+- Query-:`length()`
+
+```sqlite3
+(SELECT+length(name)+FROM+PRAGMA_TABLE_INFO('{table_name}')+LIMIT+{end}+OFFSET+{start})={number}
+```
+
+------------------------
+
+### Column's characters
+
+------------------------
+
+- Welp-:
+
+```sqlite3
+(select+case+substr(name,1,{digit+1})+WHEN+'{character}'+THEN+1+ELSE+1/0+END+FROM+PRAGMA_TABLE_INFO('{table_name}') LIMIT {i+1} OFFSET {i})
+```
