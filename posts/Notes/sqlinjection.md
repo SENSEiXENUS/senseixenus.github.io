@@ -29,10 +29,20 @@
 
 ------------------
 
-- The count() function in sql is used to count the amount of tables in a database. Digit will be placed after equals to `=`.
+- The count() function in sql is used to count the amount of stuffs in a database. Digit will be placed after equals to `=`.`Count()` can count amount of rows,column and tables in a dataabase.
 
 ```sql
 (SELECT count(tbl_name) FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%' ) = {number}
 ```
 
--
+-------------------
+
+### Tables length
+
+--------------------
+
+- Use the length() function
+
+```sql
+(SELECT length(tbl_name) FROM sqlite_master WHERE type='table' and tbl_name not like 'sqlite_%' LIMIT {length+1} OFFSET {length}) = {i+1}
+```
