@@ -231,4 +231,60 @@ SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [+] All files processed succ
 
 ![image](https://github.com/user-attachments/assets/f67b8b3d-966c-42fc-a36b-b01d3ef55455)
 
-- On port `8888`,we have python data framework installed on it named `framework` which requires a token to login.
+- On port `8888`,we have python data framework installed on it named `tornado` which requires a token to login.
+
+![image](https://github.com/user-attachments/assets/52196f9d-b2f3-4065-9b50-7fff5ce99d83)
+
+- Jupyter token discovered amongst the dumped smb shares' files.
+
+![image](https://github.com/user-attachments/assets/64702946-f9d7-41b5-922a-9d58b0f42cfe)
+
+- Tornado accessed-:
+
+![image](https://github.com/user-attachments/assets/84ccde2a-6353-4292-8249-82aa24fc6c6f)
+
+------------------
+
+### RCE with Tornado
+
+-----------------
+
+- You can access `Tornado` terminal which is also a python3 interactive shell.
+
+![image](https://github.com/user-attachments/assets/f347dee4-3b46-4fa1-b541-83ec4a1dd38e)
+
+- I spawned a bash reverse shell.
+
+![image](https://github.com/user-attachments/assets/4f658f9a-864e-4dd7-b37e-81f488014f48)
+
+- I discovered a ssh private key in the home directory.
+
+![image](https://github.com/user-attachments/assets/83209472-3b79-4420-a714-5390e30598a7)
+
+- SSH access to window host-:
+
+![image](https://github.com/user-attachments/assets/d459e221-1c3e-4040-b160-6fc6cd479e89)
+
+- I ran winpeas.exe to get more info of the host.I got 2 privilege escalation vectors `AlwaysInstallElevated` and `Auto-Logon creds`.
+
+![image](https://github.com/user-attachments/assets/b70cfbdd-ffe8-467f-b20d-adf83ba3046c)
+
+![image](https://github.com/user-attachments/assets/fcfeaccd-bcdf-49ce-9d06-4c4c7fcdb4ad)
+
+- I created an msi reverse shell payload with msfvenom.
+
+![image](https://github.com/user-attachments/assets/9a6cfd62-c300-4bd9-a3f4-6fbd511e85b5)
+
+- I used the runas command to execute the msi payload.`AlwaysInstallElevated` allows us to install a msi package with administrative privileges.It requires the user's password although we've gotten that from the autologon creds.
+
+![image](https://github.com/user-attachments/assets/a05b7d24-04be-4807-a704-e2b1ccc1936c)
+
+- Reverse shell as `nt authority/system`-:
+
+![image](https://github.com/user-attachments/assets/cda0d289-b4d2-4b02-9720-ef67924ba80a)
+
+
+--------------------------
+
+
+
