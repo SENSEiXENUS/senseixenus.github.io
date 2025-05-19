@@ -187,4 +187,48 @@ Host script results:
 |_  0/4 checks are positive: Host is CLEAN or ports are blocked
 ```
 
-- 
+- Smb enumeration with netexec,we have anonymous access-:
+
+![image](https://github.com/user-attachments/assets/d7e9c787-2edd-4147-97a7-9ad0c0b0c530)
+
+- Dumping the shares
+
+```bash
+❯ nxc smb "10.10.77.27" -u 'guest' -p '' -M spider_plus -o DOWNLOAD_FLAG=True
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  [*] Windows 10 / Server 2019 Build 17763 x64 (name:DEV-DATASCI-JUP) (domain:DEV-DATASCI-JUP) (signing:False) (SMBv1:False)
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  [+] DEV-DATASCI-JUP\guest: 
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] Started module spidering_plus with the following options:
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*]  DOWNLOAD_FLAG: True
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*]     STATS_FLAG: True
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] EXCLUDE_FILTER: ['print$', 'ipc$']
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*]   EXCLUDE_EXTS: ['ico', 'lnk']
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*]  MAX_FILE_SIZE: 50 KB
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*]  OUTPUT_FOLDER: /home/sensei/.nxc/modules/nxc_spider_plus
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  [*] Enumerated shares
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  Share           Permissions     Remark
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  -----           -----------     ------
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  ADMIN$                          Remote Admin
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  C$                              Default share
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  datasci-team    READ,WRITE      
+SMB         10.10.77.27     445    DEV-DATASCI-JUP  IPC$            READ            Remote IPC
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [+] Saved share-file metadata to "/home/sensei/.nxc/modules/nxc_spider_plus/10.10.77.27.json".
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] SMB Shares:           4 (ADMIN$, C$, datasci-team, IPC$)
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] SMB Readable Shares:  2 (datasci-team, IPC$)
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] SMB Writable Shares:  1 (datasci-team)
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] SMB Filtered Shares:  1
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] Total folders found:  4
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] Total files found:    13
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] Files filtered:       5
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] File size average:    356.34 KB
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] File size min:        12 B
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] File size max:        3.33 MB
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] File unique exts:     5 (csv, pdf, ipynb, txt, html)
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] Unmodified files:     8
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [*] All files were not changed.
+SPIDER_PLUS 10.10.77.27     445    DEV-DATASCI-JUP  [+] All files processed successfully.
+```
+- Files-:
+
+![image](https://github.com/user-attachments/assets/f67b8b3d-966c-42fc-a36b-b01d3ef55455)
+
+- On port `8888`,we have python data framework installed on it named `framework` which requires a token to login.
