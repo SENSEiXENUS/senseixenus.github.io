@@ -4274,8 +4274,45 @@ Host: wonka.chal.cyberjousting.com
 
 ---------------
 
-### CrackMapExec
+### NETXEC
 
 -----------------
 
+- Install it with `pipx`-:
+
+```bash
+sudo apt install pipx git
+pipx ensurepath
+pipx install git+https://github.com/Pennyw0rth/NetExec
+```
+- SMB enumeration with-:
+
+```bash
+nxc smb ./[host_file_name]
+```
+![image](https://github.com/user-attachments/assets/9cc4dfdc-5e59-4b43-b142-c98ca6c12ee6)
+
+- Trying null logon with netexec
+
+```bash
+nxc smb ./hosts.txt -u '' -p '' --shares
+```
+
+![image](https://github.com/user-attachments/assets/36416101-1997-49f0-a1c9-5c4dc3cad2c8)
+
+- Testing anonymous and guest login, to run guest enum, change `anonymous` to `guest`
+
+```bash
+nxc smb ./hosts.txt -u 'anonymous' -p '' - shares
+```
+![image](https://github.com/user-attachments/assets/d40f4955-a6de-43e3-91dd-86cd77a5acb2)
+
+- Dumping files(Module used(spider_plus))-:
+
+```
+nxc smb  -u 'anonymous' -p '' -M spider_plus -o DOWNLOAD_FLAG=True
+```
+
 - 
+
+-----------------
