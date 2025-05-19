@@ -4273,3 +4273,9 @@ Host: wonka.chal.cyberjousting.com
 ![image](https://github.com/user-attachments/assets/e6f56e17-9c7b-4276-8c35-cfba104f1f89)
 
 ---------------
+
+### CrackMapExec
+
+-----------------
+
+- 
