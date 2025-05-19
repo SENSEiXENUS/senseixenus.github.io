@@ -4313,6 +4313,12 @@ nxc smb ./hosts.txt -u 'anonymous' -p '' - shares
 nxc smb  -u 'anonymous' -p '' -M spider_plus -o DOWNLOAD_FLAG=True
 ```
 
-- 
+![image](https://github.com/user-attachments/assets/0dfcdf66-50e6-458b-b38d-f6b3a7ed76b1)
+
+- Validate creds with-:
+
+```bash
+nxc smb ./hosts.txt -u "${TARGET_USERNAME}" -p "${TARGET_PASSWORD}"
+```
 
 -----------------
