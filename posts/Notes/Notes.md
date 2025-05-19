@@ -4322,3 +4322,13 @@ nxc smb ./hosts.txt -u "${TARGET_USERNAME}" -p "${TARGET_PASSWORD}"
 ```
 
 -----------------
+
+### Mounting `c:\` filesystem of a windows host on wsl
+
+-----------------
+
+- Use if you are root on wsl
+
+```bash
+mount -f drvfs 'c:' /mnt/dir
+```
