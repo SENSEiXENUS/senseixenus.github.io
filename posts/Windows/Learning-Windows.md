@@ -1694,7 +1694,7 @@ Get-NetComputer -fulldata | select operatingsystem
 apt-get install bloodhound
 neo4j console #- default credentials -> neo4j:neo4j
 ```
-- Starting bloodhound
+- Starting bloodhound, I suggest you run with the latest Bloodhound [scripts](https://github.com/SpecterOps/SharpHound/releases)
 
 ```
 powershell -ep bypass
@@ -1713,8 +1713,9 @@ Invoke-Bloodhound -CollectionMethod All -Domain CONTROLLER.local -ZipFileName lo
 
 ![image](https://github.com/user-attachments/assets/2c882069-79c6-461e-a3ee-f7c613737d9d)
 
+- Bloodhound post processing [error](https://github.com/SpecterOps/BloodHound-Legacy/issues/724) fix.Try to delete the `computers.json` file before uploading the `loot.zip` Check analysis for queries to try-:
 
-
+![image](https://github.com/user-attachments/assets/c0e7f122-fce4-42cc-91ff-b788418864eb)
 
 ------------------
 
