@@ -4365,6 +4365,13 @@ hashcat -a 0 -m 3200 (hash) (wordlist)
 
 ----------------------
 
+### Fuzzing php extensions
+
+---------------------
+
+- [Fuzzdb](https://github.com/fuzzdb-project/fuzzdb/blob/master/attack/file-upload/alt-extensions-php.txt)
+
+---------------------
 
 
 
