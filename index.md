@@ -111,6 +111,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[March 25 2025]] [Code](https://senseixenus.github.io/posts/ctf/HTB/code.html) ``Python RCE`` ``Exposed||Weak hash`` ``Backy Go Arbitrary File Write``
 - [[March 27 2025]] [Cypher](https://senseixenus.github.io/posts/ctf/HTB/cypher.html) ``Cypher Injection to RCE`` ``BBOT``
 - [[May 12 2025]] [Planning](https://senseixenus.github.io/posts/ctf/HTB/planning.html) ``Subdomain enumeration`` ``Grafana`` ``Crontab-ui``
+- [[May 21 2025]] [Environment](https://senseixenus.github.io/posts/ctf/HTB/Environment.html) ``CVE-2024-52301`` ``GPG-keys`` ``keep_env||bash_env``
 
 * * *
 
