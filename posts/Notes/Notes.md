@@ -4332,3 +4332,25 @@ nxc smb ./hosts.txt -u "${TARGET_USERNAME}" -p "${TARGET_PASSWORD}"
 ```bash
 mount -f drvfs 'c:' /mnt/dir
 ```
+
+-----------------
+
+### Decrypting GPG  in your target machine
+
+-----------------
+
+- Use-:
+
+```bash
+cp -r /home/hish/.gnupg /tmp/gnupg-hish
+chmod -R 700 /tmp/gnupg-hish
+export GNUPGHOME=/tmp/gnupg-hish
+gpg --list-secret-keys --keyid-format LONG
+gpg --decrypt /home/hish/backup/keyvault.gpg
+```
+
+![image](https://github.com/user-attachments/assets/e5a7a15e-e592-4802-9efa-865643e74195)
+
+-----------------------
+
+
