@@ -4353,4 +4353,18 @@ gpg --decrypt /home/hish/backup/keyvault.gpg
 
 -----------------------
 
+### Cracking bcrypt with hashacat
+
+----------------------
+
+- Use-:
+
+```bash
+hashcat -a 0 -m 3200 (hash) (wordlist)
+```
+
+----------------------
+
+
+
 
