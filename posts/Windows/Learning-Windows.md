@@ -1701,7 +1701,19 @@ powershell -ep bypass
 Import-Module .\SharpHound.ps1    
 Invoke-Bloodhound -CollectionMethod All -Domain CONTROLLER.local -ZipFileName loot.zip
 ```
-![Uploading image.png…]()
+
+![image](https://github.com/user-attachments/assets/964f266d-97b7-4154-a62d-c4200677c289)
+
+- Copy to your machine
+- Now, run `bloodhound`, creds is defualt-: `neo4j:neo4j`, the current bloodhound version requires you to change password of neo4j db.The highlighted part is the import part.
+
+![image](https://github.com/user-attachments/assets/1cffa30d-7999-4544-b33a-3e380c9f928d)
+
+- Drag and drop works too
+
+![image](https://github.com/user-attachments/assets/2c882069-79c6-461e-a3ee-f7c613737d9d)
+
+
 
 
 ------------------
