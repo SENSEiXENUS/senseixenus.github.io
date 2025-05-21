@@ -169,19 +169,28 @@ POC-:
 
 ------------------
 
+- `sudo -l`-:
 
+![image](https://github.com/user-attachments/assets/1dccd336-c751-4fc9-9c8a-8d93feec781a)
 
+- When running a binary based on the sudoers file, only the default env variables are loaded.`Env_keep` exists to allow us add a vaariable to the members of the `sudo group` which means we can set this variable which can be used when we run as root.The `BASH_ENV` variable indicates the startup script path when a bash non interactive shell is started.
+- A non interactive shell starts when you run a bash script.It starts because a bash shebang is indicated.
 
+![image](https://github.com/user-attachments/assets/abe78c69-f335-4b68-a9e4-7e6d9e31cc09)
 
+- I exploited it by creating a bash startup script that starts a bash shell.
 
+![image](https://github.com/user-attachments/assets/59f241bd-c2b5-445e-b7ad-cfeebe362bd2)
 
+- POC-:
 
+```bash
+echo -ne "#\! /bin/bash\nbash" > shell.sh
+export BASH_ENV=./shell.sh
+sudo /usr/bin/systeminfo
+```
 
-
-
-
-
-
+- Root-:
 
 
 
