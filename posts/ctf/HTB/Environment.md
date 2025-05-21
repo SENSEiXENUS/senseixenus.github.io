@@ -4,6 +4,8 @@
 ### CTF: HACKTHEBOX
 
 * * *
+![image](https://github.com/user-attachments/assets/f85c958b-48e2-4440-ad40-6b2915533b6b)
+
 
 - Rustscan's output-:
 
@@ -191,6 +193,22 @@ sudo /usr/bin/systeminfo
 ```
 
 - Root-:
+
+![image](https://github.com/user-attachments/assets/efa8b55c-3a52-409b-9bdc-f5fa8c06710e)
+
+
+--------------
+
+### REFERENCES-:
+
+--------------
+
+- [Laravel's argument injection](https://github.com/Nyamort/CVE-2024-52301)
+- [Bash_env](https://www.linux.org/threads/where-does-bash_env-get-set.47214/)
+- [env_keep](https://superuser.com/questions/742333/undocumented-default-values-for-sudoers-env-keep-variable)
+
+---------------
+
 
 
 
