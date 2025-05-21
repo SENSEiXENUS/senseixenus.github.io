@@ -78,6 +78,10 @@ PORT   STATE SERVICE REASON  VERSION
 |_  Supported Methods: GET HEAD
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
+- Ffuf's output
+
+![image](https://github.com/user-attachments/assets/8ca19e57-5173-4697-9df8-d10293e28e5c)
+
 
 - I identified Laravel's version because debug mode is enabled.I made a `GET` request to the directory upload and encountered an error which exposed the php and laravel build
 
@@ -86,9 +90,74 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 - I googled for CVES related to this version and got [one](https://github.com/Nyamort/CVE-2024-52301).Laravel is vulnerable to argument injection which occurs if the `register_argc_argv` option is enabled in the php.ini.This setting loads command-line arguments and query params into `$_SERVER['argv']`.The vulnerability allows us to set the environment that the laravel web app will load which signifies that we can load old environments that can be vulnerable.
 
 POC-:
+
 ```<url>/?env--=production
 ```
 
-- Our next task is to find pre-existing enviroment before `production`.I tried to trigger more errors to discover more parts of the source code.I tried to login with no values in the params and I got another error/
+- Our next task is to find pre-existing enviroment before `production`.I tried to trigger more errors to discover more parts of the source code.I tried to login with no values in the params and I got another error with more exposed source code.
+
+![image](https://github.com/user-attachments/assets/d50b1984-ea85-4fa2-97a1-171349953598)
+
+- The code exposed reveals a pre-existing environment that allows us to login automatically.
+
+```php
+      $keep_loggedin = False;
+    } elseif ($remember == 'True') {
+        $keep_loggedin = True;
+    }
+ 
+    if($keep_loggedin !== False) {
+    // TODO: Keep user logged in if he selects "Remember Me?"
+    }
+ 
+    if(App::environment() == "preprod") { //QOL: login directly as me in dev/local/preprod envs
+        $request->session()->regenerate();
+        $request->session()->put('user_id', 1);
+        return redirect('/management/dashboard');
+    }
+ 
+    $user = User::where('email', $email)->first();
+```
+
+- Poc-:
+
+```
+<url>/login?--env=prepod
+```
+
+- Request should be submitted with empty params aside `_token` and remember should be set to false.
+
+![image](https://github.com/user-attachments/assets/db2f93c5-7602-49c6-b3b7-8fc5d440c8f5)
+
+- Portal accessed-:
+
+![image](https://github.com/user-attachments/assets/c5c9f813-43ff-4b4e-ac4a-b068040ae769)
+
+
+- We can upload a profile picture,let's try to upload a php reverse shell within a legitimate image and an extension `.php.`.
+
+![image](https://github.com/user-attachments/assets/22c6cb5b-67b5-4d80-91ab-aa2229952dd6)
+
+
+- Shell
+
+![image](https://github.com/user-attachments/assets/189d1a4c-540f-4e14-abe3-defab693940d)
+
+- Reverse shell-:
+
+![image](https://github.com/user-attachments/assets/5a5c1c75-a170-4d2c-bb8f-c0361168b6c3)
+
+- I ran linpeas and discovered a directory where gpg keys are stored.
+
+
+
+
+
+
+
+
+
+
+
 
 
