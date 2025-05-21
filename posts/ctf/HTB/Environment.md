@@ -149,6 +149,30 @@ POC-:
 
 - I ran linpeas and discovered a directory where gpg keys are stored.
 
+![image](https://github.com/user-attachments/assets/faff85ff-d6f5-4267-9b5b-beb86f5d566c)
+
+- A gpg encrypted file too-:
+
+![image](https://github.com/user-attachments/assets/8c968551-4a92-4ec4-bee1-a728a2b931dd)
+
+- I decrypted with this-:
+
+![image](https://github.com/user-attachments/assets/3b8f2914-9742-49af-87f4-4272ae11b46a)
+
+- Hish accessed-:
+
+![image](https://github.com/user-attachments/assets/72af2350-ec5e-4e64-b210-6938325ac4b9)
+
+------------------
+
+### Privesc with keep_env and bash_env
+
+------------------
+
+
+
+
+
 
 
 
