@@ -5,6 +5,9 @@
 
 ------------
 
+![image](https://github.com/user-attachments/assets/21312129-1342-497b-b9f4-756c0eb31af5)
+
+-------------
 - Rustscan's output-:
 
 ```bash
@@ -196,7 +199,25 @@ f (isset($_POST['backup']) && !empty($_POST['password'])) {
 
 ![image](https://github.com/user-attachments/assets/038f5f9d-7910-4436-8f06-1194462c40e5)
 
-- 
+- The service was used to host the php framework `ispconfig`.I accessed the site with `admin:<tobias' password>`.
+
+![image](https://github.com/user-attachments/assets/38043403-a308-4e99-8e4d-9a6e6f7e6e42)
+
+- I discovered a [POC](https://raw.githubusercontent.com/ajdumanhug/CVE-2023-46818/refs/heads/main/CVE-2023-46818.py) for the framework and got `RCE` as root on the server.
+
+![image](https://github.com/user-attachments/assets/49ab02f3-a111-49d6-8788-e11b772bdad4)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/e93286bb-0d19-4d44-a84d-f52edf87a246)
+
+----------------
+
+### THANKS FOR READING
+
+-----------------
+
+
 
 
 
