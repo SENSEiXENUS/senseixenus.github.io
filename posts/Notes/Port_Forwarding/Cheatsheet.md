@@ -36,4 +36,30 @@
 
 - Protocols are the rules that govern network communications. Many protocols and services have corresponding ports that act as identifiers. Logical ports aren't physical things we can touch or plug anything into. They are in software assigned to applications. When we see an IP address, we know it identifies a computer that may be reachable over a network. When we see an open port bound to that IP address, we know that it identifies an application we may be able to connect to. Connecting to specific ports that a device is listening on can often allow us to use ports & protocols that are permitted in the firewall to gain a foothold on the network.
 - Let's take, for example, a web server using HTTP (often listening on port 80). The administrators should not block traffic coming inbound on port 80. This would prevent anyone from visiting the website they are hosting. This is often a way into the network environment, through the same port that legitimate traffic is passing. We must not overlook the fact that a source port is also generated to keep track of established connections on the client-side of a connection. We need to remain mindful of what ports we are using to ensure that when we execute our payloads, they connect back to the intended listeners we set up. We will get creative with the use of ports throughout this module.
+
+------------------- 
+
+### Dynamic Port Forwarding with SSH and SOCKS Tunneling
+
+-------------------
+
+- Port forawrding involves redirecting a communication request from one port to another port.Port forwarding uses TCP as the primary communication layer to provide interactive communication for the forwarded port. However, different application layer protocols such as SSH or even SOCKS (non-application layer) can be used to encapsulate the forwarded traffic. This can be effective in bypassing firewalls and using existing services on your compromised host to pivot to other networks.
+- Example-:
+
+![image](https://github.com/user-attachments/assets/8b0a9a0c-1cd6-4ea8-b6c9-4df38673b238)
+
+- Scanning the pivot target-:
+
+![image](https://github.com/user-attachments/assets/214883ca-e00e-4eaf-8277-e10027245e60)
+
+- The Nmap output shows that the SSH port is open. To access the MySQL service, we can either SSH into the server and access MySQL from inside the Ubuntu server, or we can port forward it to our localhost on port 1234 and access it locally. A benefit of accessing it locally is if we want to execute a remote exploit on the MySQL service, we won't be able to do it without port forwarding. This is due to MySQL being hosted locally on the Ubuntu server on port 3306.
+- We'll use ssh to portforward the mysql service.Syntax-:
+
+```bash
+ssh -L [attacker's port]:localhost:[internal service port] ubuntu@10.129.202.64
+```
+
 - 
+
+
+
