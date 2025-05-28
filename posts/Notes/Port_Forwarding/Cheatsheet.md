@@ -141,7 +141,24 @@ proxychains msfconsole
 ```msfconsole
 search "rdp_scanner"
 ```
-- 
+- set host with `set rhosts <ip>`
+- Run-:
+
+![image](https://github.com/user-attachments/assets/24eda74b-5302-45dd-8cb8-a568f90654cb)
+
+- Connecting to rdp with xfreerdp-:
+
+```bash
+proxychains xfreerdp /v:172.16.5.19 /u:victor /p:pass@123
+```
+
+- Running it-:
+
+![image](https://github.com/user-attachments/assets/e3601d9b-5f37-4421-b0d8-f2327c362cdd)
+
+---------------------
+
+
 
 
 
