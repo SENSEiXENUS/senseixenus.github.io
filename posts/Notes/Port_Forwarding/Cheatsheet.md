@@ -95,7 +95,7 @@ ssh -N -L [attacker's port]:localhost:[internal service port] -L [attacker's por
 - SSH syntax-:
 
 ```bash
-ssh -D 9050 ubuntu@10.129.202.64
+ssh -fND 9050 ubuntu@10.129.202.64
 ```
 - After setting up dynamic port forwarding, a tool like proxychains is required which is capable of redirecting TCP connections through TOR, SOCKS, and HTTP/HTTPS proxy servers and also allows us to chain multiple proxy servers together.Using proxychains, we can hide the IP address of the requesting host as well since the receiving host will only see the IP of the pivot host. Proxychains is often used to force an application's TCP traffic to go through hosted proxies like SOCKS4/SOCKS5, TOR, or HTTP/HTTPS proxies.
 - To inform proxychains to use port 9050,you have to make a configuration.Add to `/etc/proxychains.conf`-:
@@ -119,7 +119,12 @@ proxychains nmap -sn 172.16.5.1-200
 - This part of packing all your Nmap data using proxychains and forwarding it to a remote server is called SOCKS tunneling. One more important note to remember here is that we can only perform a full TCP connect scan over proxychains. The reason for this is that proxychains cannot understand partial packets. If you send partial packets like half connect scans, it will return incorrect results. We also need to make sure we are aware of the fact that host-alive checks may not work against Windows targets because the Windows Defender firewall blocks ICMP requests (traditional pings) by default.Enumerating windows host-:
 
 ```bash
-proxychains nmap -v -Pn -sT 172.16.5.19
+proxychains nmap -v -Pn -sT 172.16.5.19 
+```
+or
+
+```bash
+proxychains nmap -sVT 172.16.5.19 -Pn
 ```
 
 -----------------
@@ -158,7 +163,14 @@ proxychains xfreerdp /v:172.16.5.19 /u:victor /p:pass@123
 
 ---------------------
 
+### Remote/Reverse Portforwarding with SSH
 
+--------------------
+
+- We have seen local port forwarding, where SSH can listen on our local host and forward a service on the remote host to our port, and dynamic port forwarding, where we can send packets to a remote network via a pivot host. But sometimes, we might want to forward a local service to the remote port as well. Let's consider the scenario where we can RDP into the Windows host Windows A. As can be seen in the image below, in our previous case, we could pivot into the Windows host via the Ubuntu server.
+
+- What if we want to gain a reverse shell on the internal victim server.The windows host can only communicate to hosts within `172.16.5.0/23` network.If we start a Metasploit listener on our attack host and try to get a reverse shell, we won't be able to get a direct connection here because the Windows server doesn't know how to route traffic leaving its network (172.16.5.0/23) to reach the 10.129.x.x (the Academy Lab network).
+- In this case,we might want to find a pivot host,which is a common connection point between our attack host and the Windows server.In our case, our pivot host would be the Ubuntu server since it can connect to both: our attack host and the Windows target. To gain a Meterpreter shell on Windows, we will create a Meterpreter HTTPS payload using msfvenom, but the configuration of the reverse connection for the payload would be the Ubuntu server's host IP address (172.16.5.129). We will use the port 8080 on the Ubuntu server to forward all of our reverse packets to our attack hosts' 8000 port, where our Metasploit listener is running.
 
 
 
