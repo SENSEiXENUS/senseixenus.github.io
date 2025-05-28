@@ -221,6 +221,13 @@ ssh -R <InternalIPofPivotHost>:[listening port on internal host]:0.0.0.0:[target
 
 ------------------
 
+### Meterprreter tnnelling and port forwarding
+
+------------------
+
+
+------------------
+
 
 
 
