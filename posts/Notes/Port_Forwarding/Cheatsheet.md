@@ -209,7 +209,19 @@ scp filename ubuntu@host:~/
 ```bash
 ssh -R <InternalIPofPivotHost>:[listening port on internal host]:0.0.0.0:[target-Attacker'sport] ubuntu@<ipAddressofTarget> -vN
 ```
-- 
+![image](https://github.com/user-attachments/assets/b6c2180d-1fa3-4ac9-80f9-ca4631d7d7f9)
+
+- Execute payload-:
+
+![image](https://github.com/user-attachments/assets/b338454f-6908-4f8f-bde0-93d577e0b535)
+
+- Received over meterpreter-:
+
+![image](https://github.com/user-attachments/assets/776f8f42-c9e1-42bd-8d09-89528ce9b300)
+
+------------------
+
+
 
 
 
