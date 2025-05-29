@@ -1807,9 +1807,23 @@ kerberos::golden /user: /domain: /sid: /krbtgt: /id:
 
 - Use `misc::cmd` to spawn an elevated shell-:
 
-
-
 ![image](https://github.com/user-attachments/assets/80c18837-d239-477f-a320-232e50afab7a)
+
+---------------
+
+### RDP Timeout error in xfreerdp
+
+---------------
+
+- Error-:
+
+![image](https://github.com/user-attachments/assets/2950dcad-92bf-419f-a14a-c2c54d633689)
+
+- Increase the timeout-: `/timeout:60000`
+
+![image](https://github.com/user-attachments/assets/46c5b7c6-883a-432e-9e91-677b9c1187a5)
+
+-----------------
 
 
 
