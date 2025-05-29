@@ -449,13 +449,32 @@ run
 
 --------------
 
-### SSH for windows plinx.exe
+### Portforwarding with socat
 
 --------------
 
-- 
+-  Syntax-:
+
+```bash
+socat TCP4-LISTEN:[listening port],fork TCP4:[internal-ip]:[internal-port]
+```
+![image](https://github.com/user-attachments/assets/0cb6ceae-0a09-42c4-83aa-ffd0e4084573)
 
 
+---------------
+
+### SSH for windows:- plink.exe
+
+---------------
+
+- Plink, short for PuTTY Link, is a Windows command-line SSH tool that comes as a part of the PuTTY package when installed. Similar to SSH, Plink can also be used to create dynamic port forwards and SOCKS proxies. Before the Fall of 2018, Windows did not have a native ssh client included, so users would have to install their own. The tool of choice for many a sysadmin who needed to connect to other hosts was PuTTY.
+- Incase a window host is our attack host.We can use ssh for dynamic port forwarding-:
+
+```cmd
+plink -ssh -D 9050 ubuntu@10.129.15.50
+```
+
+---------------
 
 
 
