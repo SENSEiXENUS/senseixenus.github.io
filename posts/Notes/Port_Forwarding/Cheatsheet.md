@@ -588,6 +588,10 @@ window -i 1
 ```
 ![image](https://github.com/user-attachments/assets/17e2a137-db46-43ec-b5bb-080bd4a792f3)
 
+- Shell-:
+
+![image](https://github.com/user-attachments/assets/32112045-c2a4-4a99-8545-a7db83c5a823)
+
 
 -----------------
 
