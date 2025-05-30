@@ -476,6 +476,65 @@ plink -ssh -D 9050 ubuntu@10.129.15.50
 
 ---------------
 
+### Pivoting with sshuttle
+
+---------------
+
+- Sshuttle is another tool written in Python which removes the need to configure proxychains. However, this tool only works for pivoting over SSH and does not provide other options for pivoting over TOR or HTTPS proxy servers.Sshuttle can be extremely useful for automating the execution of iptables and adding pivot rules for the remote host. We can configure the Ubuntu server as a pivot point and route all of Nmap's network traffic with sshuttle using the example later in this section.
+- Installing `sshuttle`-:
+
+```bash
+sudo apt-get install sshuttle
+```
+
+- To use sshuttle, we specify the option -r to connect to the remote machine with a username and password. Then we need to include the network or IP we want to route through the pivot host, in our case, is the network 172.16.5.0/23.
+
+```bash
+sudo sshuttle -r ubuntu@10.129.202.64 172.16.5.0/23 -v
+```
+![image](https://github.com/user-attachments/assets/b83150d7-ae82-41b4-b9c5-ce99598826d5)
+
+- Routing is done through ip-tables.
+- Nmap-:
+
+```
+nmap -v -sV -p3389 172.16.5.19 -A -Pn
+```
+![image](https://github.com/user-attachments/assets/d0a9de1a-b560-415f-81c7-042c47893eaa)
+
+- Rdp access-:
+
+![image](https://github.com/user-attachments/assets/bbdfad7b-7309-48d4-8a2a-64fa1eab1cdc)
+
+
+----------------
+
+### Using Netsh to port forward on windows
+
+-----------------
+
+- Netsh is a Windows command-line tool that can help with the network configuration of a particular Windows system. Here are just some of the networking related tasks we can use Netsh for:
+ - Finding routes
+ - Viewing the firewall configuration
+ - Adding proxies
+ - Creating port forwarding rules
+- Let's take an example of the below scenario where our compromised host is a Windows 10-based IT admin's workstation (10.129.15.150, 172.16.5.25). Keep in mind that it is possible on an engagement that we may gain access to an employee's workstation through methods such as social engineering and phishing. This would allow us to pivot further from within the network the workstation is in.
+
+
+- We can use netsh.exe to forward all data received on a specific port (say 8080) to a remote host on a remote port. This can be performed using the below command.
+```cmd
+netsh.exe interface portproxy add v4tov4 listenport=8080 listenaddress=10.129.42.198 connectport=3389 connectaddress=172.16.5.25
+```
+
+- Confirm port-forwarding with-:
+
+```cmd
+netsh.exe interface portproxy show v4tov4
+```
+
+
+
+
 
 
 
