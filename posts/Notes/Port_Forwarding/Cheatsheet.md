@@ -595,6 +595,20 @@ window -i 1
 
 -----------------
 
+### Chisel
+
+-----------------
+
+- Chisel is a TCP/UDP-based tunneling tool written in Go that uses HTTP to transport data that is secured using SSH. Chisel can create a client-server tunnel connection in a firewall restricted environment. Let us consider a scenario where we have to tunnel our traffic to a webserver on the 172.16.5.0/23 network (internal network). We have the Domain Controller with the address 172.16.5.19. This is not directly accessible to our attack host since our attack host and the domain controller belong to different network segments. However, since we have compromised the Ubuntu server, we can start a Chisel server on it that will listen on a specific port and forward our traffic to the internal network through the established tunnel.
+- Setting up Chisel-:
+
+```bash
+git clone https://github.com/jpillora/chisel.git
+```
+- Shrinking chisel size to prevent detection based on ippsec's idea, use [upx](https://github.com/upx/upx/releases/)
+
+```
+```
 
 
 
