@@ -607,10 +607,12 @@ git clone https://github.com/jpillora/chisel.git
 ```
 - Shrinking chisel size to prevent detection based on ippsec's idea, use [upx](https://github.com/upx/upx/releases/)
 
+```bash
+upx brute chisel
 ```
-```
+![image](https://github.com/user-attachments/assets/615624d1-eac3-4e35-b211-dac4746a8dec)
 
-
+- 
 
 
 
