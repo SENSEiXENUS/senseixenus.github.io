@@ -148,6 +148,7 @@ if __name__ == "__main__":
     for table in tables:
         column_number = count_columns(table)
         columns = read_columnChars(column_number,table)
+        #columns = {'database': ['user', 'pass', 'time']}
         for column in columns[table]:
             data_length = count_Data(column,table)
             readChars(data_length,column,table)
