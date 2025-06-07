@@ -86,3 +86,15 @@
 
 --------------------
 
+![image](https://github.com/user-attachments/assets/bb01070a-dd95-48b6-929d-e8b828ca056d)
+
+---------------------
+
+- The site is vulnerable to sqlite3 injection and it filters important chars like `or` and `--`.My teammates discovered a user `test` which made it easier to use `AND` and also replaced `--` with `/*`.
+- After enum for a long time,I discovered columns for `stats` and `database`.I focused more on dumping `database` with my script.To avoid wasting time, we'll focus solely on column `user` and `pass`.The crucial user in this chall is `tuxlikeslowercaseletters`.
+
+- My team mate cracked the hash which is sha1 for `allsgud` which allowed him to login and get the flag.
+
+
+
+---------------------
