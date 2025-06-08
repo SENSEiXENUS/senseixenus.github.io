@@ -91,7 +91,7 @@
 ---------------------
 
 - The site is vulnerable to sqlite3 injection and it filters important chars like `or` and `--`.My teammates discovered a user `test` which made it easier to use `AND` and also replaced `--` with `/*`.
-- After enum for a long time,I discovered columns for `stats` and `database`.I focused more on dumping `database` with my script.To avoid wasting time, we'll focus solely on column `user` and `pass`.The crucial user in this chall is `tuxtheflagmasteronlylikeslowercaseletters`.User's dump-:
+- After enumerating for a long time,I discovered columns for `stats` and `database`.I focused more on dumping `database` with my script.To avoid wasting time, we'll focus solely on column `user` and `pass`.The crucial user in this chall is `tuxtheflagmasteronlylikeslowercaseletters`.User's dump-:
 
 ```bash
 [+] Number of tables-:2
@@ -346,8 +346,18 @@
 
 - Hash-: ```64b7c90a991571c107cc663aa768514822896f49```
 
-- My team mate cracked the hash which is sha1 for `allsgud` which allowed him to login and get the flag.
+- My team mate cracked the hash which is sha1 for `allsgud` and accessed the account for user `tuxtheflagmasteronlylikeslowercaseletters` to get the flag.
 
+![image](https://github.com/user-attachments/assets/5d5cd88f-c7ff-4c1a-9865-97d8ab89d262)
 
+- Flag-:```tjctf{3verth1ng_i5_fin3}```
 
 ---------------------
+
+###  Reference
+
+--------------------
+
+- [Latex Injection](https://hackmd.io/@toxicpie9/By154DFe9)
+
+--------------------
