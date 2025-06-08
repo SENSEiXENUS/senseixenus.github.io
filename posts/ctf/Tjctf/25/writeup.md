@@ -164,6 +164,10 @@
 [+] Found Char:-:A
 [+] Column user dumped::humanA
 ```
+- Users-:
+
+![image](https://github.com/user-attachments/assets/b345ea41-a008-49ab-bab2-8e9a9ac632f4)
+
 - Password-hash-:
 
 ```bash
