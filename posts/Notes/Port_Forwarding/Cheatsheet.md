@@ -693,7 +693,19 @@ regsvr32.exe SocksOverRDP-Plugin.dll
 
 ![image](https://github.com/user-attachments/assets/4ec58a61-0c4d-4790-ac10-34c6d12890fc)
 
-- 
+-  Use `mstsc.exe` on non-admin command prompt,add host address first-:
+
+![image](https://github.com/user-attachments/assets/3213d377-0303-42f4-9cdc-1d58a23a9b3b)
+
+- `Show options` to set username and password
+- Connected-:
+
+![image](https://github.com/user-attachments/assets/4cb78010-bd1b-4ab9-8334-d4f610897283)
+
+
+
+
+
 
 
 
