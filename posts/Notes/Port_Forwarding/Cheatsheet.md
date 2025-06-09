@@ -729,6 +729,31 @@ regsvr32.exe SocksOverRDP-Plugin.dll
 
 --------------------
 
+### Ligolo-ng
+
+--------------------
+
+- Ligolo-Ng is a lightweight and efficient tool designed to enable penetration testers to establish tunnels through reverse TCP/TLS connections, employing a tun interface. Noteworthy features include its GO-coded nature, VPN-like behavior, customizable proxy, and agents in GO.
+- Installing ligolo-ng, check [here](https://github.com/nicocha30/ligolo-ng/releases),download an agent for windows and another proxy or server for linux-:
+
+![image](https://github.com/user-attachments/assets/8a713860-6403-445b-8319-e0527032b333)
+
+- Setting up ligolo-ng by setting its interface-:
+
+```bash
+ip tuntap add user root mode tun ligolo
+ip link set ligolo up
+```
+
+![image](https://github.com/user-attachments/assets/ace3845c-a46b-4874-901c-00dcef6393a4)
+
+- This proxy file facilitates the establishment of a connection through Ligolo, enabling us to execute subsequent pivoting actions.
+- Start the proxy with `./proxy -selfcert`
+
+![image](https://github.com/user-attachments/assets/587f81fd-c1f4-421f-a5ec-b52255bb9507)
+
+- 
+
 
 
 
