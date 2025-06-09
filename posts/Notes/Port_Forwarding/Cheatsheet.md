@@ -671,6 +671,31 @@ sudo ./chisel server --reverse -v -p 1234 --socks5
 
 -----------------
 
+### Double Pivoting with SocksoverRDP
+
+------------------
+
+- There are often times during an assessment when we may be limited to a Windows network and may not be able to use SSH for pivoting. We would have to use tools available for Windows operating systems in these cases. SocksOverRDP is an example of a tool that uses Dynamic Virtual Channels (DVC) from the Remote Desktop Service feature of Windows. DVC is responsible for tunneling packets over the RDP connection. Some examples of usage of this feature would be clipboard data transfer and audio sharing. However, this feature can also be used to tunnel arbitrary packets over the network. We can use SocksOverRDP to tunnel our custom packets and then proxy through it. We will use the tool Proxifier as our proxy server.
+- Link to the binaries:[Proxifier](https://www.proxifier.com/download/#win-tab) and [SocksoverRDPx64binaries](https://github.com/nccgroup/SocksOverRDP/releases).For `Proxifier`,use `ProxifierPE.zip`
+- Unzipping with powershell-:
+
+```powershell
+Expand-Archive -Path "C:\path\to\your\file.zip" -DestinationPath "C:\path\to\destination"
+```
+![image](https://github.com/user-attachments/assets/9dcb737d-4648-44b4-b2f2-d0549f22e1a7)
+
+- Loading SocksOverRDP.dll using regsvr32.exe-:
+
+```powershell
+regsvr32.exe SocksOverRDP-Plugin.dll
+```
+- Note that the shell has to be an admin one unless you'll get an error-:
+
+![image](https://github.com/user-attachments/assets/4ec58a61-0c4d-4790-ac10-34c6d12890fc)
+
+- 
+
+
 
 
 
