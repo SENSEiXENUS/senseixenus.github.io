@@ -634,7 +634,10 @@ socks5 127.0.0.1 1080
 ```
 ![image](https://github.com/user-attachments/assets/08f29206-a665-435c-b4c3-3e57b045c44d)
 
-- 
+- Testing it with proxychains and `nmap`-:
+
+![image](https://github.com/user-attachments/assets/dcb3b921-416f-4abb-a56c-462986de9a0b)
+
 
 
 
