@@ -702,6 +702,36 @@ regsvr32.exe SocksOverRDP-Plugin.dll
 
 ![image](https://github.com/user-attachments/assets/4cb78010-bd1b-4ab9-8334-d4f610897283)
 
+- Transfer the `socksoverdp.exe` file to the host.
+  - Base64 encode it with this [site](https://www.browserling.com/tools/file-to-base64)
+  - Save it in a file
+  - Use `certutil.exe` to decode it
+    ```cmd
+    certutil -decode upload.txt upload.zip
+    ```
+    ![image](https://github.com/user-attachments/assets/abe331c8-bbfc-4cbc-92d4-0779cf22950a)
+
+- Start socksoverdp exe with admin rights{admin command prompt]-:
+
+![image](https://github.com/user-attachments/assets/5904ab5a-2a18-49c7-81e2-22e99c8e9f3d)
+
+- Discover if it is working with `netstat -aon | findstr "1080"`
+
+![image](https://github.com/user-attachments/assets/a17de9b8-b053-42ea-8560-237a80cfac41)
+
+- Configuring `Proxifier`-:
+
+![image](https://github.com/user-attachments/assets/20f53a08-ca13-4fc2-b1ae-6d4f7ec751ea)
+
+- With Proxifier configured and running, we can start mstsc.exe, and it will use Proxifier to pivot all our traffic via 127.0.0.1:1080, which will tunnel it over RDP to 172.16.5.19, which will then route it to 172.16.6.155 using SocksOverRDP-server.exe.
+
+![image](https://github.com/user-attachments/assets/21bdb337-e503-4870-a111-926b58614bd2)
+
+--------------------
+
+
+
+
 
 
 
