@@ -638,6 +638,22 @@ socks5 127.0.0.1 1080
 
 ![image](https://github.com/user-attachments/assets/dcb3b921-416f-4abb-a56c-462986de9a0b)
 
+-----------------
+
+### Chisel Reverse Pivot
+
+-----------------
+
+- In the previous example, we used the compromised machine (Ubuntu) as our Chisel server, listing on port 1234. Still, there may be scenarios where firewall rules restrict inbound connections to our compromised target. In such cases, we can use Chisel with the reverse option.This option is used we cannot connect to the pivot host due to firewall restrictions.
+- When CHisel is in `--reverse` mode, the option `R:socks` is used to indicate reverse on our attack host.Reverse remotes specifying R:socks will listen on the server's default socks port (1080) and terminate the connection at the client's internal SOCKS5 proxy.
+- Starting the server requires `--reverse`-:
+
+```bash
+sudo ./chisel server --reverse -v -p 1234 --socks5
+```
+![image](https://github.com/user-attachments/assets/4816980e-cdec-471f-895e-7289185f0311)
+
+-
 
 
 
