@@ -348,7 +348,10 @@
 [+] Column pass dumped::9aa888e9ad7f219a13348362b4df4e41da33cb48
 ```
 
-- Hash-: ```64b7c90a991571c107cc663aa768514822896f49```
+- Hash-: ```64b7c90a991571c107cc663aa768514822896f49```-:
+
+![image](https://github.com/user-attachments/assets/47ee29c2-0a14-4bcb-84f9-327099cc88a2)
+
 
 - My team mate cracked the hash which is sha1 for `allsgud` and accessed the account for user `tuxtheflagmasteronlylikeslowercaseletters` to get the flag.
 
