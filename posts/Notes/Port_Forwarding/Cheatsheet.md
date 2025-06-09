@@ -653,7 +653,25 @@ sudo ./chisel server --reverse -v -p 1234 --socks5
 ```
 ![image](https://github.com/user-attachments/assets/4816980e-cdec-471f-895e-7289185f0311)
 
--
+- Client[Pivot host],don't forget to specify socks5 port with `R:[port]:socks`-:
+
+```bash
+./chisel client -v 10.10.15.4:1234 R:1080:socks
+```
+
+![image](https://github.com/user-attachments/assets/d7bbc5b0-bf9f-42ec-92c4-fb12c41811c7)
+
+- Set proxychains
+
+![image](https://github.com/user-attachments/assets/1776dbed-91d9-4b60-ad67-d87623516821)
+
+- Worked-:
+
+![image](https://github.com/user-attachments/assets/cdd4bf20-c0d2-4547-84da-07908ed05773)
+
+-----------------
+
+
 
 
 
