@@ -612,6 +612,28 @@ upx brute chisel
 ```
 ![image](https://github.com/user-attachments/assets/615624d1-eac3-4e35-b211-dac4746a8dec)
 
+- Running a server on the pivot host-:
+
+```bash
+./chisel server -v -p 1234 --socks5
+```
+
+- The Chisel listener will listen for incoming connections on port 1234 using SOCKS5 (--socks5) and forward it to all the networks that are accessible from the pivot host. In our case, the pivot host has an interface on the 172.16.5.0/23 network, which will allow us to reach hosts on that network.
+- Then,We start a client server on our attack host and connect it to the pivot server.
+
+```bash
+./chisel client -v 10.129.202.64:1234 [port]:socks
+```
+![image](https://github.com/user-attachments/assets/8fd7d777-36a7-4334-b252-f71b0d34f591)
+
+- As you can see in the above output, the Chisel client has created a TCP/UDP tunnel via HTTP secured using SSH between the Chisel server and the client and has started listening on port 1080.
+- Add to proxychains.conf
+
+```conf
+socks5 127.0.0.1 1080
+```
+![image](https://github.com/user-attachments/assets/08f29206-a665-435c-b4c3-3e57b045c44d)
+
 - 
 
 
