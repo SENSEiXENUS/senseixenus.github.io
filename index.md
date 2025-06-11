@@ -24,6 +24,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 * * *
 
 - [[August 01 2024]] [Notes](https://senseixenus.github.io/posts/Notes/Notes.html)
+- [[June 11 2025]] [Portforwarding cheatsheet](https://senseixenus.github.io/posts/Notes/Port_Forwarding/Cheatsheet.html)
 - [[August 16 2024]] [Everything Windows](https://senseixenus.github.io/posts/Windows/Learning-Windows.html)
   
 * * *
@@ -138,5 +139,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[March 10 2025]] [PearlCTF 2025](https://senseixenus.github.io/posts/ctf/Pearlctf25/writeup.html)
 - [[March 23 2025]] [WhyCTF 2025 teaser](https://senseixenus.github.io/posts/ctf/WHY2025/writeup.html)
 - [[April 28 2025]] [Bsides 2025](https://senseixenus.github.io/posts/ctf/BsidesCTF/2025/writeup.html)
+- [[June 9 2025]] [Tjctf 2025](tps://senseixenus.github.io/posts/ctf/Tjctf/25/writeup.html)
     
 * * *
