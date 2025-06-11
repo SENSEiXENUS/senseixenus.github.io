@@ -856,13 +856,21 @@ ifcreate --name ligolo1
 tunnel_start --tun ligolo1
 route_add --name ligolo1 --route 172.16.6.0/24
 ```
+![image](https://github.com/user-attachments/assets/52743ba0-5136-484f-ab1e-dae98d81ea4c)
+
 - Removing a route-:
 
 ```bash
 sudo ip route del 172.16.0.0/16 dev ligolo
 ```
 
-![image](https://github.com/user-attachments/assets/d7294671-82ce-44c3-95aa-42440102fca3)
+- Host on `172.16.6.155` with rdp-:
+
+![image](https://github.com/user-attachments/assets/35a43da0-190a-483f-ad7a-108693719101)
+
+-------------------
+
+
 
 
 
