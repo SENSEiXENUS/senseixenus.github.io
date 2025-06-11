@@ -352,7 +352,7 @@
 
 ![image](https://github.com/user-attachments/assets/47ee29c2-0a14-4bcb-84f9-327099cc88a2)
 
-- FUll script-:
+- Full script-:
 
 ```python3
 #! /usr/bin/env python3
