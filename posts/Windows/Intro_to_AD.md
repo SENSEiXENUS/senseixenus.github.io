@@ -1,5 +1,8 @@
 -----------
 
+- [Add-on corrupted fix for Firefox](https://stackoverflow.com/questions/39854127/add-on-appears-to-be-corrupt-when-trying-to-install-my-add-ons-xpi-file-in-f)
+-----------
+
 ### Introduction to AD
 
 ------------
