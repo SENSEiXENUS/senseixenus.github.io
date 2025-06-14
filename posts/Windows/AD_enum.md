@@ -11,4 +11,24 @@
   - Cloud and Dev storage places-: Github dorks, [Grayhatwarfare](https://grayhatwarfare.com/) and Google dorks
   - Breach Data Sources-: [HaveIbeenPwned](https://haveibeenpwned.com/) for breaches and [Dehashed](https://www.dehashed.com/) for corporate mails and passwords.
 
+-------------------
+
+### Initial Enumeration
+
+-------------------
+
+- Wireshark can be used to gather hosts with the syntax below-:
+
+```bash
+sudo wireshark -E enss224 -A
+```
+- Gather host with `fping`,Fping provides us with a similar capability as the standard ping application in that it utilizes ICMP requests and replies to reach out and interact with a host. 
+
+```bash
+fping -asgq 172.16.5.0/23
+```
+
+![image](https://github.com/user-attachments/assets/262fbd26-4d41-4f6a-9f40-ea6150894d0f)
+
+- 
 
