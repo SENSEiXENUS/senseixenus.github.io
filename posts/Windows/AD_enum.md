@@ -91,9 +91,12 @@ sudo responder -I ens224
 ```bash
 hashcat -m 5600 forend_ntlmv2 /usr/share/wordlists/rockyou.txt
 ```
+- Use John the Ripper-:
 
+```bash
+john --wordlist=[] hash.txt
+```
 
+![image](https://github.com/user-attachments/assets/a0c99524-85aa-45d9-958c-c0e4610a4d03)
 
-
-
-
+- 
