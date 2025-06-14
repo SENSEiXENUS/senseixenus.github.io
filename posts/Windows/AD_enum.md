@@ -101,7 +101,9 @@ john --wordlist=[] hash.txt
 
 - Responder logs are stored in `/usr/share/responder/logs`-:
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/e0045ce3-c707-44b1-90c0-156ca1e9b165)
+
+
 
 
 
