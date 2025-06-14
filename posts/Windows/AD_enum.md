@@ -105,7 +105,20 @@ john --wordlist=[] hash.txt
 
 ![image](https://github.com/user-attachments/assets/e0045ce3-c707-44b1-90c0-156ca1e9b165)
 
+--------------
 
+### Exploitng LLMNR/NBT-NS attacks with Inveigh.exe on windows
 
+-------------
 
+- [Inveigh](https://github.com/Kevin-Robertson/Inveigh)-: If we end up with a Windows host as our attack box, our client provides us with a Windows box to test from, or we land on a Windows host as a local admin via another attack method and would like to look to further our access, the tool Inveigh works similar to Responder, but is written in PowerShell and C#. Inveigh can listen to IPv4 and IPv6 and several other protocols, including LLMNR, DNS, mDNS, NBNS, DHCPv6, ICMPv6, HTTP, HTTPS, SMB, LDAP, WebDAV, and Proxy Auth.
+- Let's start Inveigh with LLMNR and NBNS spoofing, and output to the console and write to a file.Using Inveigh-:
+
+```powershell
+Invoke-Module .\Inveigh.ps1
+Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
+```
+![image](https://github.com/user-attachments/assets/56b17304-f7db-49e0-93a7-ba3c29d4996e)
+
+- C# Inveigh Zero
 
