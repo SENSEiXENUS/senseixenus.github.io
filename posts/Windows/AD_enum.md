@@ -143,8 +143,5 @@ Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
 
 - We can type in `GET NTLMV2USERNAMES` and see which usernames we have collected.
 
-![Uploading image.png…]()
-
-- 
 
 
