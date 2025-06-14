@@ -84,7 +84,16 @@ kerbrute userenum -d <DOMAIN> --dc 172.16.5.5 jsmith.txt -o valid_ad_users
 ```bash
 sudo responder -I ens224 
 ```
--
+![image](https://github.com/user-attachments/assets/30273a69-842a-4b87-bb89-aca45e1d1aef)
+
+- Cracking NTLMv2 hash with hashcat-:
+
+```bash
+hashcat -m 5600 forend_ntlmv2 /usr/share/wordlists/rockyou.txt
+```
+
+
+
 
 
 
