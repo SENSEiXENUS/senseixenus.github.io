@@ -99,6 +99,8 @@ john --wordlist=[] hash.txt
 
 ![image](https://github.com/user-attachments/assets/a0c99524-85aa-45d9-958c-c0e4610a4d03)
 
+![image](https://github.com/user-attachments/assets/caa7ddbe-8696-4547-8d1e-6be5c31ff80a)
+
 - Responder logs are stored in `/usr/share/responder/logs`-:
 
 ![image](https://github.com/user-attachments/assets/e0045ce3-c707-44b1-90c0-156ca1e9b165)
