@@ -105,4 +105,21 @@ INLANEFREIGHT.LOCAL/
 
 ---------------
 
+### Functionalty
+
+----------------
+
+- There are 5 `flexible single master operation` roles.Roles-:
+  - Schema Master-: This role manages the read/write copy of the AD schema, which defines all attributes that can apply to an object in AD.
+  - Domain naming master-: It focuses on naming domains and ensure that domains don't get the same name in the forest.
+  - Relative ID(RID)Master-:
+
+--------------
+
+### Kerberos, LDAP, DNS and MSRPC
+
+--------------
+
+- While Windows operating systems use a variety of protocols to communicate, Active Directory specifically requires Lightweight Directory Access Protocol (LDAP), Microsoft's version of Kerberos, DNS for authentication and communication, and MSRPC which is the Microsoft implementation of Remote Procedure Call (RPC), an interprocess communication technique used for client-server model-based applications.
+- Kerberos is  Windows' default authentication protocol for domain accounts.When a user logs into their PC, Kerberos is used to authenticate them via mutual authentication, or both the user and the server verify their identity.
 
