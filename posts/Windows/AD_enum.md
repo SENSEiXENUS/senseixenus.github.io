@@ -59,6 +59,9 @@ sudo nmap -A -iL hosts.txt -oN result2
 kerbrute userenum -d <DOMAIN> --dc 172.16.5.5 jsmith.txt -o valid_ad_users
 ```
 
+![image](https://github.com/user-attachments/assets/7976b616-25f6-4e37-91f6-a71c93d395fb)
+
+
 ----------------
 
 
