@@ -112,13 +112,39 @@ john --wordlist=[] hash.txt
 -------------
 
 - [Inveigh](https://github.com/Kevin-Robertson/Inveigh)-: If we end up with a Windows host as our attack box, our client provides us with a Windows box to test from, or we land on a Windows host as a local admin via another attack method and would like to look to further our access, the tool Inveigh works similar to Responder, but is written in PowerShell and C#. Inveigh can listen to IPv4 and IPv6 and several other protocols, including LLMNR, DNS, mDNS, NBNS, DHCPv6, ICMPv6, HTTP, HTTPS, SMB, LDAP, WebDAV, and Proxy Auth.
-- Let's start Inveigh with LLMNR and NBNS spoofing, and output to the console and write to a file.Using Inveigh-:
+- Let's start Inveigh with LLMNR and NBNS spoofing, and output to the console and write to a file.Don't forget to run as adminstrator `powershell start powershell -v runAs`.Using Inveigh-:
 
 ```powershell
 Invoke-Module .\Inveigh.ps1
 Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
 ```
 ![image](https://github.com/user-attachments/assets/56b17304-f7db-49e0-93a7-ba3c29d4996e)
+- Captured Hashes-:
 
-- C# Inveigh Zero
+![image](https://github.com/user-attachments/assets/211c8faf-8c75-4c48-8d5c-1b475598d6e1)
+
+
+- C# Inveigh Zero-:
+- Usage-:
+```powershell
+.\Inveigh.exe
+```
+- We can hit the esc key to enter the console while Inveigh is running.
+
+![image](https://github.com/user-attachments/assets/5274c331-3afc-4f79-a58a-26e952918efa)
+
+- Hit "help" for several options-:
+
+![image](https://github.com/user-attachments/assets/c119c284-9260-4473-a2a7-ee28272352a8)
+
+- We can quickly view unique captured hashes by typing `GET NTLMV2UNIQUE`.
+
+![image](https://github.com/user-attachments/assets/52644780-7bab-4de7-8936-bad04d34d94b)![image](https://github.com/user-attachments/assets/3d593408-ec58-423d-a39f-1fd1063b8261)
+
+- We can type in `GET NTLMV2USERNAMES` and see which usernames we have collected.
+
+![Uploading image.png…]()
+
+- 
+
 
