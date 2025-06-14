@@ -17,11 +17,17 @@
 
 -------------------
 
+- Gathering hosts
 - Wireshark can be used to gather hosts with the syntax below-:
 
 ```bash
 sudo wireshark -E enss224 -A
 ```
+- Tcpdump-:
+```bash
+sudo tcpdump -i ens224 
+```
+
 - Gather host with `fping`,Fping provides us with a similar capability as the standard ping application in that it utilizes ICMP requests and replies to reach out and interact with a host. 
 
 ```bash
@@ -38,7 +44,7 @@ sudo nmap -A -iL hosts.txt -oN result2
 
 ------------------
 
-### Username Enumeration
+### Username Enumeration[Internal AD Username enum with Kerbrute]
 
 ------------------
 
