@@ -48,5 +48,17 @@ sudo nmap -A -iL hosts.txt -oN result2
 
 ------------------
 
-- 
+- [Wordlist](https://github.com/insidetrust/statistically-likely-usernames) Use `jsmith.txt` and `jsmith2.txt` to brute force it
+- Installing `kerbrute` [precompiled releases](https://github.com/ropnop/kerbrute/releases/tag/v1.0.3)
+
+![image](https://github.com/user-attachments/assets/f1a525bf-74e3-4069-8177-1b327405adec)
+
+- Syntax-:
+
+```bash
+kerbrute userenum -d <DOMAIN> --dc 172.16.5.5 jsmith.txt -o valid_ad_users
+```
+
+----------------
+
 
