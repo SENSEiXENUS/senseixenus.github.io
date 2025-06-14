@@ -30,5 +30,17 @@ fping -asgq 172.16.5.0/23
 
 ![image](https://github.com/user-attachments/assets/262fbd26-4d41-4f6a-9f40-ea6150894d0f)
 
+- Nmap-:
+
+```bash
+sudo nmap -A -iL hosts.txt -oN result2
+```
+
+------------------
+
+### Username Enumeration
+
+------------------
+
 - 
 
