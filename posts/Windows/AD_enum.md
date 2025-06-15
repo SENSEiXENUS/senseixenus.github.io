@@ -143,5 +143,65 @@ Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y
 
 - We can type in `GET NTLMV2USERNAMES` and see which usernames we have collected.
 
+---------------
 
+### Using ldap-search
+
+----------------
+
+- To filter objects, use -W "objectClass="
+
+```bash
+ldapsearch -x -H ldap://[ip] -b 'dc=support,dc=htb' -D "support\ldap" -W 'objectClass=user'
+```
+
+- All objects, use -W "objectClass=*"
+
+![image](https://github.com/user-attachments/assets/4ad995ae-a820-4520-a17d-8c5c68fe8abe)
+
+- Users in the directory -: `objectClass=user`
+
+```bash
+ldapsearch -x -H ldap://[ip] -b 'dc=support,dc=htb' -D "support\ldap" -W 'objectClass=user'
+```
+
+- Using ldapsearch with password stored in a file.I used `-n` to prevent newline in text file.Use `-y` to specify passwd file.
+
+```bash
+ldapsearch -x -H ldap://support.htb -b 'dc=support,dc=htb' -D "support\ldap" -W 'objectClass=user' -y passwd
+```
+
+```
+echo -n "password" > passwd
+chmod 600 passwd
+```
+
+![image](https://github.com/user-attachments/assets/966f7ace-f31a-49d7-bbdc-b9f715219953)
+
+- Finding the user without -W "filter" -:
+
+```bash
+ldapsearch -x -H ldap://support.htb -b 'cn=support,cn=users,dc=support,dc=htb' -D "support\ldap" '(objectClass=user)' -y passwd
+```
+![image](https://github.com/user-attachments/assets/9472fa1e-9422-4dde-b5fe-ba2d4e2d46f0)
+
+- Groups-:
+
+```bash
+ldapsearch -x -H ldap://support.htb -b 'dc=support,dc=htb' -D "support\ldap" '(objectClass=group)'
+```
+
+- Computer Accounts-:
+
+```bash
+ldapsearch -x -H ldap://support.htb -b 'dc=support,dc=htb' -D "support\ldap" '(objectClass=computer)' -y passwd
+```
+
+- Users of a group-:
+
+```bash
+ldapsearch -x -H ldap://support.htb -b 'dc=support,dc=htb' -D "support\ldap" '(sAMAccountName=*)' -y passwd
+```
+
+--------------
 
