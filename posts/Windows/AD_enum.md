@@ -212,7 +212,9 @@ ldapsearch -x -H ldap://support.htb -b 'dc=support,dc=htb' -D "support\ldap" '(s
 - [Installation](https://github.com/dirkjanm/BloodHound.py)-:
 
 ```bash
-pip install bloodhound-ce
+pip install bloodhound-ce #community edition
+pip install bloodhound #legaacy version
+#same syntax tho
 ```
 - Usage`[-c -> 'all']`-:
 
