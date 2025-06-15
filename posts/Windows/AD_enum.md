@@ -224,5 +224,12 @@ bloodhound-ce-python -u [user@domain] -p '[password]' -ns [nameserver / IP] -d [
 
 ![image](https://github.com/user-attachments/assets/902b2934-ae9d-4012-8876-e255d3a38626)
 
+- Collector for [Bloodhound 4.3.1](https://github.com/SpecterOps/BloodHound-Legacy/blob/master/Collectors/SharpHound.exe)
+
+![image](https://github.com/user-attachments/assets/b78f5f72-6f3a-4e63-9d1b-23630909ff07)
+
 - 
+
+
+
 
