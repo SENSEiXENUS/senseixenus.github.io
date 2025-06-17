@@ -446,6 +446,24 @@ beta.api.com
 
 -----------------
 
+### API PATCH Method
+
+-----------------
+
+- `PATCH` standard [format](https://medium.com/@isuru89/a-better-way-to-implement-http-patch-operation-in-rest-apis-721396ac82bf)
+
+```query
+[
+   { "op": "test", "path": "/a/b/c", "value": "foo" },
+   { "op": "remove", "path": "/a/b/c" },
+   { "op": "add", "path": "/a/b/c", "value": [ "foo", "bar" ] },
+   { "op": "replace", "path": "/a/b/c", "value": 42 },
+   { "op": "move", "from": "/a/b/c", "path": "/a/b/d" },
+   { "op": "copy", "from": "/a/b/d", "path": "/a/b/e" }
+]
+```
+------------------
+
 
 
 
