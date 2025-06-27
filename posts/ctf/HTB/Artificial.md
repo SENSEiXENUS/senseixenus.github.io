@@ -137,3 +137,25 @@ model.save("exploit.h5")
 
 -----------------
 
+- I discovered an sqlite3 db which contained user hashes.
+
+![image](https://github.com/user-attachments/assets/8cf10162-6953-4e4e-a932-1e445a6b3924)
+
+- I dumped and discovered one for user `gael`.
+
+![image](https://github.com/user-attachments/assets/12edd127-6bd9-410c-a24f-73eae6988631)
+
+- I cracked with `crackstation.net`.
+
+![image](https://github.com/user-attachments/assets/0d9624b4-dda1-49c1-8a59-39c7a2d6c126)
+
+- User `gael`-:
+
+![image](https://github.com/user-attachments/assets/7a4ba0c8-89c4-44c3-adf2-eb4d4c47030f)
+
+- I noticed a backupfile in directory `/opt`.
+
+
+
+
+
