@@ -153,8 +153,38 @@ model.save("exploit.h5")
 
 ![image](https://github.com/user-attachments/assets/7a4ba0c8-89c4-44c3-adf2-eb4d4c47030f)
 
-- I noticed a backupfile in directory `/opt`.
+- I noticed a backupfile in directory `/opt` after runing `llinpeas.sh` script.
 
+![image](https://github.com/user-attachments/assets/28fe33a0-1ad4-4c11-ac3c-8f77af1407a1)
+
+- I extracted it with `tar` and my eyes caught this file `*/config.json`.
+
+![image](https://github.com/user-attachments/assets/244c93b1-5775-4501-bb47-fc4fe1d809bf)
+
+- It contains a password hash and username.
+
+![image](https://github.com/user-attachments/assets/9aff7aca-c76e-4015-a2f8-d37e410d734c)
+
+- I read a bit about the backrest go app and discovere that it runs on port `9898`.I cracked the hash with john.
+
+![image](https://github.com/user-attachments/assets/dd8ae716-2316-4021-a0d3-6782e0ac0145)
+
+- I portforwarded it with `ssh`.
+
+![image](https://github.com/user-attachments/assets/5a2b2096-5d65-424f-a4b7-ced986b02bc4)
+
+- Logged in with the credentials-:
+
+![image](https://github.com/user-attachments/assets/3c881c83-be41-4288-9860-67f71f385616)
+
+
+--------------------
+
+### PRIVESC with Backrest `repo hook`
+
+--------------------
+
+- 
 
 
 
