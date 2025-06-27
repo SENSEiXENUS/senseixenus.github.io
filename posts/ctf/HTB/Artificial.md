@@ -165,7 +165,7 @@ model.save("exploit.h5")
 
 ![image](https://github.com/user-attachments/assets/9aff7aca-c76e-4015-a2f8-d37e410d734c)
 
-- I read a bit about the backrest go app and discovere that it runs on port `9898`.I cracked the hash with john.
+- I read a bit about the backrest go app and discovered that it runs on port `9898`.I cracked the hash with john.
 
 ![image](https://github.com/user-attachments/assets/dd8ae716-2316-4021-a0d3-6782e0ac0145)
 
@@ -184,7 +184,36 @@ model.save("exploit.h5")
 
 --------------------
 
-- 
+- An authenticated attacker can gain rce on a server by creating a hook that run shell commands in backrest `1.7.2`.
+
+![image](https://github.com/user-attachments/assets/d17a0995-4699-4bc9-a738-9065d2d74cbc)
+
+- Save and click on `check now`-:
+
+![image](https://github.com/user-attachments/assets/e01ad612-8bb4-42e4-999d-e6561b5e9438)
+
+- Root root root!!!-
+
+![image](https://github.com/user-attachments/assets/88f2d930-04f8-4f86-8564-1640d710a3a5)
+
+- Root-:
+
+![image](https://github.com/user-attachments/assets/a91d3147-adaf-4c40-ba05-78ec16a76045)
+
+
+--------------------
+
+### REFERENCE
+
+---------------------
+
+- [Tensorflow-rce](https://github.com/Splinter0/tensorflow-rce)
+
+---------------------
+
+
+
+
 
 
 
