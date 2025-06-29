@@ -306,6 +306,14 @@ if __name__ == "__main__":
 
 -----------------
 
+### Reference
+
+-----------------
+
+- [Backdooring Pkl files](https://embracethered.com/blog/posts/2022/machine-learning-attack-series-injecting-code-pickle-files/)
+
+---------------
+
 
 
 
