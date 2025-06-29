@@ -16,6 +16,7 @@
 - Web-:
   - Phantom-Binding
   - Worthless
+  - Operation Overflow
 
 ---------------------
 
@@ -203,6 +204,39 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
 
 
 ------------------
+
+### Operation Overflow
+
+------------------
+
+- The challenge requires us to guess the correct number between (1-100000).
+
+![image](https://github.com/user-attachments/assets/feea68ae-be24-4d6f-a860-bea77a1c54a2)
+
+- The easier method will be to brute force but we might hit a rate limiting error.I checked the js file and discovered that it runs on graphql.
+
+```js
+// GraphQL query
+            const query = `
+                query {
+                    guessNumber(number: ${number}) {
+                        correct
+                        message
+                        flag
+                    }
+                }
+            `;
+            
+            fetch('/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query }),
+            })
+```
+
+- We can bypass rate limiting in graphql by using aliases.A `Query` is made to the server to get data.You can view it as either a `POST` or `GET` request to grab data.An `Alias` allows you to create multiple queries in a given request e.g if you are trying to bruteforce 
 
 
 
