@@ -1,6 +1,6 @@
 ------------------
 
-### CTF BSIDESCTF MUMBAI
+### CTF-: BSIDESCTF MUMBAI 2025
 
 ------------------
 
@@ -127,11 +127,11 @@ google.com@127.0.0.1
 </body>
 </html>
 ```
-- I accessed the admin page next and noticed an endpoint that allows us to view files.
+- I accessed the admin page and noticed an endpoint that allows us to view files.
 
 ![image](https://github.com/user-attachments/assets/f9a7d216-fe71-4043-b1ab-1846a008312a)
 
-- This functionality will be a good stand to test path traversal to gain `Arbitrary file read`.I tried the basic `../../` but I got a 403 error.
+- This functionality will be a good spot to test path traversal to gain `Arbitrary file read` because it is used to read files.I tried the basic `../../` but I got a 403 error.
 
 ![image](https://github.com/user-attachments/assets/43d48383-dfe2-4dfd-a058-e1de48655628)
 
