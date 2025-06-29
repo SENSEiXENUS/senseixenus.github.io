@@ -168,7 +168,7 @@ http://6.tcp.eu.ngrok.io:16967@127.0.0.1/admin/view_file?file=%252E%252E%252F%25
 
 ![image](https://github.com/user-attachments/assets/0231794f-c2cc-4e43-8920-e391610dc116)
 
-- I injected malicious code into the pkl file with `ficling`.You can install with `pip instal fickling`.
+- I injected malicious code into the pkl file with `fickling`.You can install with `pip instal fickling`.
 
 ![image](https://github.com/user-attachments/assets/4ac08420-ef37-4539-9889-a169c18c3ffa)
 
