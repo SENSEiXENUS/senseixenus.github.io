@@ -158,7 +158,56 @@ http://6.tcp.eu.ngrok.io:16967@127.0.0.1/admin/view_file?file=%252E%252E%252F%25
 
 ### [Web]Worthless
 
-----------------
+-----------------
+
+![image](https://github.com/user-attachments/assets/6b7c4656-ca80-4896-a5ef-30ecc03eb0ea)
+
+-----------------
+
+- The chain in this challenge is `Insecure Deserialization via pkl files upload to RCE`.It is not news that `pickle.loads()` is a vulnerable function.Also the upload of pkl files which is used to store pickle bytes can be exploited if directly passed to `pickle.loads()`.This site allows upload of pickle `pkl` files.
+
+![image](https://github.com/user-attachments/assets/0231794f-c2cc-4e43-8920-e391610dc116)
+
+- I injected malicious code into the pkl file with `ficling`.You can install with `pip instal fickling`.
+
+![image](https://github.com/user-attachments/assets/4ac08420-ef37-4539-9889-a169c18c3ffa)
+
+- Syntax to run it-:
+
+```bash
+fickling --inject "int(__import__('os').popen('ls').read())" portfolio.pkl > ./portfolioz.pkl
+```
+
+- I tried to pop a reverse shell but it didn't work and was also unsure if I had gained RCE.After futile efforts, I noticed that the site returns errors mainly due to bad code syntax.
+
+![image](https://github.com/user-attachments/assets/0870b4fa-5363-4134-bd54-8f10697f0fa6)
+
+- This is an awesome discovery because I can use the error to read the output of `os.system()`.I did this by abusing `int()` feature which is used for integers in python.`int()` triggers an error and also expose a value in the error if it is a string.Example-:
+
+![image](https://github.com/user-attachments/assets/34e21c2d-a928-46d9-a2af-023548153dae)
+
+- I used it to read the value of the command `ls` that I executed.
+
+![image](https://github.com/user-attachments/assets/719c1491-79e4-40c0-af4d-f05a4ec00d5a)
+
+![image](https://github.com/user-attachments/assets/8f026c1b-023f-43fc-b192-4e462f4978be)
+
+- Final payload-:
+
+```
+fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio.pkl > ./portfolioz.pkl
+```
+- Flag-: ```BMCTF{pretty_lil_baby_you_say_that_maybe_youll_be_thinking_of_me_and_try_to_H4CK_me}```
+
+![image](https://github.com/user-attachments/assets/41b2a1f2-63bb-4a91-8992-48ffd503ef47)
+
+
+------------------
+
+
+
+
+
 
 
 
