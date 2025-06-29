@@ -209,7 +209,7 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
 
 ------------------
 
-- The challenge requires us to guess the correct number between (1-100000).
+- The challenge requires guessing  the correct number between (1-100000).
 
 ![image](https://github.com/user-attachments/assets/feea68ae-be24-4d6f-a860-bea77a1c54a2)
 
