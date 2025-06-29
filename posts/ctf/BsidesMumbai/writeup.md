@@ -15,6 +15,7 @@
 
 - Web-:
   - Phantom-Binding
+  - Worthless
 
 ---------------------
 
@@ -154,6 +155,10 @@ http://6.tcp.eu.ngrok.io:16967@127.0.0.1/admin/view_file?file=%252E%252E%252F%25
 ![image](https://github.com/user-attachments/assets/ed515136-f3a7-4b78-be08-cd59b97700af)
 
 -----------------
+
+### [Web]Worthless
+
+----------------
 
 
 
