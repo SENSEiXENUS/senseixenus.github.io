@@ -41,17 +41,17 @@
 
 ![image](https://github.com/user-attachments/assets/1fe12180-6655-43b8-a4a3-da665ef2804a)
 
-- I tried to access internal port with the localhost but I didn't get a hit because it got filtered.
+- I tried to scan for internal ports with host `localhost` but I noticed that internal hosts get filtered.
 
 ![image](https://github.com/user-attachments/assets/7b5d308f-119e-464d-b5a4-c95819f5455e)
 
-- I decided to try this ssrf trick that requires `@`.Any host placed after `@` will get loaded and not the host before it.
+- I decided to try this url trick that involves `@`.If 2 hosts are separated with `@`, any host placed after `@` will get loaded and not the host before it.For example-:
 
 ```
 google.com@127.0.0.1
 ```
 
-- The `127.0.0.1` will get picked over `google.com`.In my case, I used an ngrok host.
+- The `127.0.0.1` will get picked over `google.com`.In my case, I used an ngrok host but you can use any host that doesn't get blacklisted.
 
 ![image](https://github.com/user-attachments/assets/7bcc45d7-acb9-4df8-ab94-8e91fc0e4d3d)
 
