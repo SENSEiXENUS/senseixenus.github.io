@@ -127,15 +127,19 @@ google.com@127.0.0.1
 </body>
 </html>
 ```
-- I accessed the admin page and noticed an endpoint that allows us to view files.
+- SSRF can also be used as 403 bypass.At first, I tried to load the `/admin` page but I got the `403` error status `forbiddem`.Since we have ssrf, we can force the server to make a request to the endpoint.
+
+![image](https://github.com/user-attachments/assets/757aab82-a7ec-445e-ade7-bf02f343a462)
+
+- I accessed the admin page and noticed an endpoint that allows us to view files.It should be noted that the site saves the response in `jpg` so I have to load and show the output in a text editor.
 
 ![image](https://github.com/user-attachments/assets/f9a7d216-fe71-4043-b1ab-1846a008312a)
 
-- This functionality will be a good spot to test path traversal to gain `Arbitrary file read` because it is used to read files.I tried the basic `../../` but I got a 403 error.
+- This functionality will be a good spot to test for path traversal and gain `Arbitrary file read` because it is used to read files.I tried the basic `../../` but I got a 403 error.
 
 ![image](https://github.com/user-attachments/assets/43d48383-dfe2-4dfd-a058-e1de48655628)
 
-- I tested the double-url encoded trick which worked.I was able to read the passwd file.
+- I tested the double-url encoding trick for `../` which worked.I was able to read the `/etc/passwd `file.
 
 ![image](https://github.com/user-attachments/assets/d9898361-24b0-4560-89cd-69e378a3413c)
 
