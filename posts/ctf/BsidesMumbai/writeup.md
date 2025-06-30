@@ -265,7 +265,7 @@ query {
      message
      flag
    }
-   first12: guessNumber(number: ${number}) {
+   first12: guessNumber(number: 11) {
      correct
      message
      flag
