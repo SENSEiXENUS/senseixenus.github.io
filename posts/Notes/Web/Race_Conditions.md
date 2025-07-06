@@ -4,7 +4,7 @@
 
 ---------------
 
-- Limit Overrun attack with `single packet attack technique`.The single-packet attack enables you to completely neutralize interference from network jitter by using a single TCP packet to complete 20-30 requests simultaneously.
+- Limit Overrun attack with `single packet attack technique`.The single-packet attack enables you to completely neutralize interference from network jitter by using a single TCP packet to complete 20-30 requests simultaneously.Single packet is for `HTTP/2` while last byte atttack is for `HTTP/1`.
 
 - Exploiting Limit Overrun with Turbo Intruder if the target support `HTTP/2`-:
 
