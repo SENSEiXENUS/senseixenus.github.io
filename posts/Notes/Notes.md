@@ -4445,7 +4445,9 @@ COPY . .
 RUN pip3 install -r requirements.txt
 ```
 
-- 
+- Using it as a module-:
+
+
 
 
 
