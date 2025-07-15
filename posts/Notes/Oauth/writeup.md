@@ -48,3 +48,9 @@ scope=https://oauth-authorization-server.com/auth/scopes/user/contacts.readonly
 
 ---------------
 
+### Authorization Code Grant
+
+---------------
+
+- 
+
