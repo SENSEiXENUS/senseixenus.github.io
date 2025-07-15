@@ -96,20 +96,18 @@ public variables are serialized as: VariableName
 Classes in PHP are case-insensitive
 
 __sleep() //Triggered before an object is serialized.  
-
 __wakeup()   //Called immediately after an object is deserialized.
 From PHP 7.4 onward, if both __unserialize() and __wakeup() exist, only __unserialize() is executed. __wakeup() is ignored.。
 __construct() //when an object is created
 __destruct() //when an object is destroyed
 __toString()： //Runs when an object is used as a string (e.g., echo $object).
 __call() //Triggered when calling a non-accessible method in an object context.
-__callStatic() //在静态上下文中调用不可访问的方法时触发
-__get() //获得一个类的成员变量时调用,用于从不可访问的属性读取数据（不可访问的属性包括：1.属性是私有型。2.类中不存在的成员变量）
-__set() //用于将数据写入不可访问的属性
-__isset() //在不可访问的属性上调用isset()或empty()触发
-__unset() //在不可访问的属性上使用unset()时触发
-__toString() //把类当作字符串使用时触发
-__invoke() //当尝试以调用函数的方式调用一个对象时
+__callStatic() //Triggered when calling a non-accessible static method.
+__get() //Used to read data from inaccessible properties (either private or non-existent).
+__set() //Used to write data to inaccessible properties.
+__isset() //Called when isset() or empty() is used on an inaccessible property.
+__unset() //Called when unset() is used on an inaccessible property.
+__invoke() //Activated when an object is called as a function (e.g., $object()).
 ```
 
 
