@@ -52,5 +52,16 @@ scope=https://oauth-authorization-server.com/auth/scopes/user/contacts.readonly
 
 ---------------
 
-- 
+- In short, the client application and OAuth service first use redirects to exchange a series of browser-based HTTP requests that initiate the flow. The user is asked whether they consent to the requested access. If they accept, the client application is granted an "authorization code". The client application then exchanges this code with the OAuth service to receive an "access token", which they can use to make API calls to fetch the relevant user data.
+- All communication that takes place from the code/token exchange onward is sent server-to-server over a secure, preconfigured back-channel and is, therefore, invisible to the end user. This secure channel is established when the client application first registers with the OAuth service. At this time, a client_secret is also generated, which the client application must use to authenticate itself when sending these server-to-server requests.
+- As the most sensitive data (the access token and user data) is not sent via the browser, this grant type is arguably the most secure
+  - Authorization Request-: The client application makes a request to the OAuth Service Provider's `/authorization` route specifying the resource it wants to access.It can also be identified based on the parameters used.Example-:
+
+```
+GET /authorization?client_id=12345&redirect_uri=https://client-app.com/callback&response_type=code&scope=openid%20profile&state=ae13d489bd00e3c24 HTTP/1.1
+Host: oauth-authorization-server.com
+```
+
+  -
+
 
