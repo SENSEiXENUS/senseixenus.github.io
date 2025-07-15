@@ -81,6 +81,7 @@ class Example {
 echo urlencode(serialize(new Example));
 ?>
 ```
+--------------
 ---------------
 
 ### Sauce
@@ -88,5 +89,6 @@ echo urlencode(serialize(new Example));
 --------------
 
 - [Og Vickie li](https://vickieli.dev/insecure%20deserialization/pop-chains/)
+- [Chenxi(someOG Chinese Dude)](https://chenxi9981.github.io/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/)
 
 -------------
