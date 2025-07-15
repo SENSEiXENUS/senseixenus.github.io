@@ -128,7 +128,15 @@ Authorization: Bearer z0y9x8w7v6u5
 ```
 - Resoure grant-: The resource server should verify that the token is valid and that it belongs to the current client application. If so, it will respond by sending the requested resource i.e. the user's data based on the scope associated with the access token.
 
+-------------------
 
+### Implicit Grant bypass
 
+------------------
 
+- Since this OAuth grant is done via browser redirects e.g callback,access-code delivery,api call, resource grant.You can manipulate the response sent by the OAuth server to your desired information and takeover an account.
+- For example-:
 
+<img width="788" height="557" alt="image" src="https://github.com/user-attachments/assets/3e49724d-c8f8-4779-932a-5d503c25d60a" />
+
+--------------
