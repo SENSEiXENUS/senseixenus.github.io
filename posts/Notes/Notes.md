@@ -4473,6 +4473,19 @@ RUN pip3 install -r requirements.txt
 
 ------------------------
 
+### Recreating Js Map file
+
+-----------------------
+
+- Use [SourceMapper](https://github.com/denandz/sourcemapper)
+- Syntax-:
+
+```bash
+./sourcemapper -output dhubsrc -url []
+```
+
+------------------------
+
 
 
 
