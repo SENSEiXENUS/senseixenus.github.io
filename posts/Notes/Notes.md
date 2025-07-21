@@ -4554,3 +4554,11 @@ Connection: close
 
 -------------------
 
+### References
+
+--------------------
+
+- [PHITHON](https://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html)
+- [Mr-Xn](https://github.com/Mr-xn/thinkphp_lang_RCE)
+
+--------------------
