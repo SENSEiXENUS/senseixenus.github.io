@@ -4490,6 +4490,7 @@ RUN pip3 install -r requirements.txt
 
 -------------------------
 
+- Source:[Tower of Hanoi CTF]
 - In a situation where you can read only php files but you cannot upload.e.g
 
 ```
@@ -4525,7 +4526,6 @@ include 'lang/' . $lang . '.php';
 ?>
 ```
 
+- The file inclusion point is $_COOKIE["lang"],I read `./../../../usr/local/lib/php/pearcmd` which worked.
 
-
-
-
+<img width="1131" height="304" alt="image" src="https://github.com/user-attachments/assets/fea38cff-cdca-4941-aea2-f3a5034074d9" />
