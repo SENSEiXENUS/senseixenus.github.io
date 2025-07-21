@@ -4493,7 +4493,7 @@ RUN pip3 install -r requirements.txt
 - Source:[Tower of Hanoi CTF]
 - In a situation where you can read only php files but you cannot upload.e.g
 
-```
+```php
 <?php
 session_start();
 
@@ -4569,7 +4569,7 @@ Connection: close
 
 - Script-:
 
-```
+```python
 import string
 import requests
 
