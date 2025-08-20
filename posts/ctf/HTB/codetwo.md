@@ -11,9 +11,9 @@
 
 - Rustscan's result-:
 
-```bash                                                                                                                                                                      ─╯
-╭─   ~/labs/htb/editor                                                                                                                                                    at  13:04:33 ─╮
-╰─❯ rustscan -a 10.10.11.82 -- -sC -sV                                                                                                                                                    ─╯
+```bash
+╭─   ~/labs/htb/editor                
+╰─❯ rustscan -a 10.10.11.82 -- -sC -sV  
 .----. .-. .-. .----..---.  .----. .---.   .--.  .-. .-.
 | {}  }| { } |{ {__ {_   _}{ {__  /  ___} / {} \ |  `| |
 | .-. \| {_} |.-._} } | |  .-._} }\     }/  /\  \| |\  |
@@ -84,7 +84,7 @@ PORT     STATE SERVICE REASON         VERSION
 |_  Supported Methods: HEAD GET OPTIONS
 |_http-server-header: gunicorn/20.0.4
 |_http-title: Welcome to CodeTwo
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel                                                                                                                                              
 ```
 
 - Port `8000`-:
@@ -288,7 +288,7 @@ global_options:
 sudo /usr/local/bin/npbackup-cli -c me.conf -b
 ```
 
-<img width="1898" height="595" alt="image" src="https://github.com/user-attachments/assets/a1d4170b-e3e3-4bc2-ad56-95d6b0c9b6c0" />
+<img width="841" height="420" alt="image" src="https://github.com/user-attachments/assets/13a5bb26-9b6a-4197-a43e-6e235555bd2c" />
 
 - Root-:
 
