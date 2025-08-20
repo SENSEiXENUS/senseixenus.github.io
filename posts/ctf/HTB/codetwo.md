@@ -161,7 +161,16 @@ n11
 
 <img width="1270" height="429" alt="image" src="https://github.com/user-attachments/assets/a952f4d4-b82b-46ad-ba00-04c9d2d23925" />
 
-- 
+- User `marco`-:
+
+<img width="735" height="86" alt="image" src="https://github.com/user-attachments/assets/76cd9886-9ef9-497c-b243-ad5c08093720" />
+
+-----------------
+
+### Privilege Escalation
+
+-----------------
+
 
 
 
