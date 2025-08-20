@@ -284,8 +284,9 @@ global_options:
 
 - Trigger it by trying to backup with option `-b`.
 
-Command-:
-`sudo /usr/local/bin/npbackup-cli -c me.conf -b`
+```bash
+sudo /usr/local/bin/npbackup-cli -c me.conf -b
+```
 
 <img width="1898" height="595" alt="image" src="https://github.com/user-attachments/assets/a1d4170b-e3e3-4bc2-ad56-95d6b0c9b6c0" />
 
