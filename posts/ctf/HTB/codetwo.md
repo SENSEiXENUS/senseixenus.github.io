@@ -149,4 +149,19 @@ n11
 
 -------------
 
+- The server contains a db where I checked for credentials.
+
+<img width="831" height="120" alt="image" src="https://github.com/user-attachments/assets/fd7410e7-ccff-4720-9f52-6387585d0691" />
+
+- I discovered an hash for user `Marco`.
+
+<img width="1639" height="218" alt="image" src="https://github.com/user-attachments/assets/b7c33cc5-873b-430b-a580-64c84659318b" />
+
+- Cracked it with `crackstation.net`.
+
+<img width="1270" height="429" alt="image" src="https://github.com/user-attachments/assets/a952f4d4-b82b-46ad-ba00-04c9d2d23925" />
+
 - 
+
+
+
