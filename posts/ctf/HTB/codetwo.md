@@ -87,4 +87,24 @@ PORT     STATE SERVICE REASON         VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
+- Port `8000`-:
+
+<img width="717" height="710" alt="image" src="https://github.com/user-attachments/assets/8976f564-ef18-4fbe-96ee-9d4a7eea2258" />
+
+- The app's source code was provided for the challenge.
+
+<img width="576" height="544" alt="image" src="https://github.com/user-attachments/assets/6305dd36-9faa-473b-b23f-d8e70264e571" />
+
+- I checked the `app.py` and discovered a vulnerable python module `js2py`.The vulnerable function `js2py.eval_js()` allows attackers to bypass the sandbox restrictions and execute python code as explained [here](https://github.com/Marven11/CVE-2024-28397-js2py-Sandbox-Escape).
+
+```python
+def run_code():
+    try:
+        code = request.json.get('code')
+        result = js2py.eval_js(code)
+        return jsonify({'result': result})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+```
+
 - 
