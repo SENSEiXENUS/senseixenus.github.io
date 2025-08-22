@@ -86,7 +86,25 @@ var someObject = window.someObject || {};
   console.log(typeof document.x) //[object HTMLFormElement]
 </script>
 ```
--
+- Only certain elements can use the `name` attributes.e.g
+
+```html
+embed
+form
+iframe
+image
+img
+object
+```
+- Interestingly, when you use a form element to clobber a variable, you will get the toString value of the element itself: [object HTMLFormElement] but with anchor the toString will be the anchor href.If you clobber using the a tag, you can control the value when it's treated as a string.
+
+```html
+<a href="controlled string" id="x"></a>
+<script>
+  console.log(x) //controlled string
+</script>
+```
+- 
 
 ---------------
 
