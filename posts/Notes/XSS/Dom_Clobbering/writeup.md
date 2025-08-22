@@ -27,4 +27,21 @@
 </html>
 ```
 - Explanation-: The document is called the `root node` and contains  a child node which is the `<html>` tag.The `<html>` contains the `<head>` and `<body>` elements.`<head>` and `<body>` have elements of their own.
-- 
+
+---------------
+
+### HTML Collection
+
+---------------
+
+- When we combine HTML elements into groups they become a collection. This becomes like an array structure where you can represent each element by the order they appear in the collection e.g. collection[0], collection[1].
+
+---------------
+
+### DOM CLobbering
+
+---------------
+
+-
+
+---------------
