@@ -37,6 +37,23 @@
 
 ---------------
 
+## Creating workspaces
+
+---------------
+
+- Click on the highlighted part
+
+![image](https://github.com/user-attachments/assets/0957de6c-7856-4dc6-b882-4e91e5027e34)
+
+- Then, `create workspace`
+
+![image](https://github.com/user-attachments/assets/520950fa-c4c5-4c65-9b05-c7fd96c22e5b)
+
+
+--------------
+
+
+
 ### Techniques
 
 ----------------
