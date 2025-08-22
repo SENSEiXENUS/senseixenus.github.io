@@ -52,7 +52,20 @@
 
 --------------
 
+### Creating a collection for requests
 
+--------------
+
+- The `add` icon-:
+
+[image](https://github.com/user-attachments/assets/445a4cbd-3a27-48f0-9b4f-476481097d18)
+
+- Renaming it-:
+
+[image](https://github.com/user-attachments/assets/8bf36080-2b10-4add-ba5c-d66c1c2cb24a)
+
+
+--------------
 
 ### Techniques
 
