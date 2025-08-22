@@ -75,3 +75,11 @@ var someObject = window.someObject || {};
 
 
 ---------------
+
+### REFERENCES
+
+---------------
+
+- [IBM](https://medium.com/@ibm_ptc_security/dom-clobbering-baa55c208bce)
+
+---------------
