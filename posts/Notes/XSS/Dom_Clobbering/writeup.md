@@ -72,7 +72,21 @@ var someObject = window.someObject || {};
 
 - As the two anchors use the same ID, the DOM groups them together in a DOM collection. The DOM clobbering vector then overwrites the someObject reference with this DOM collection. A name attribute is used on the last anchor element in order to clobber the url property of the someObject object, which points to an external script.
 
+--------------
 
+### Basics
+
+---------------
+
+- You can generate global variables within the js context with the attributes `id` and `name` in html tags.
+
+```html
+<form id="x"></form>
+<script>
+  console.log(typeof document.x) //[object HTMLFormElement]
+</script>
+```
+-
 
 ---------------
 
