@@ -67,6 +67,25 @@
 
 --------------
 
+### Setting environmental variables for Postman
+
+--------------
+
+- Pick an environment-:
+
+<img width="380" height="310" alt="image" src="https://github.com/user-attachments/assets/29576fe0-d353-4339-8522-dc5723f6c103" />
+
+- Set it-:
+
+<img width="1401" height="557" alt="image" src="https://github.com/user-attachments/assets/ba754870-0335-46b0-8faa-7051599e081e" />
+
+- Reuse with `{{base_uri}}`-:
+
+<img width="528" height="280" alt="image" src="https://github.com/user-attachments/assets/34adc035-8205-4dd2-ae66-005cff796f50" />
+
+
+--------------
+
 ### Techniques
 
 ----------------
