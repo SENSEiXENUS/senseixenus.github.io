@@ -104,7 +104,15 @@ object
   console.log(x) //controlled string
 </script>
 ```
-- 
+- CLobbering an array and attributes-:
+
+```html
+<a id=x>
+  <a id =x name=y href=controlled>
+  </a>
+</a>
+```
+- Use a form to clobber 3 attributes
 
 ---------------
 
