@@ -168,10 +168,14 @@ document.body.appendChild(s);
 
 - Locating DOM elements(the ez way)-:
 
-```html
+```js
 document.querySelector("[id=Y]");
 ```
 - The dirty way(Property access on window or document)-:
+
+```js
+document.X.Y, or window.Y
+```
 
 ---------------
 
