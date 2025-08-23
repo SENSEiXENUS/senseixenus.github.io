@@ -205,6 +205,33 @@ top.location = self.location
 
 -------------
 
+- Example, Target-:
+
+```js
+window.X.Y
+```
+
+- Abuse HTML and DOM Specification rules-:
+
+```
+R1- Named Access on Window
+R2- DOM Tree Accessors
+R3- Form Parent Child
+R4- Window Proxies
+R5- HTMLCollection
+```
+
+- Rules R1+R3-:
+
+```html
+<form id=X name=Y>
+```
+
+- Rules R1+R5-:
+
+```html
+<a id=X><a id=X name=Y>
+```
 - 
 
 ---------------
