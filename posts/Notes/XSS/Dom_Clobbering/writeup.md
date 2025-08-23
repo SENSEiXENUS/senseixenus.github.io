@@ -160,8 +160,19 @@ document.body.appendChild(s);
    -  Document Referrer
    -  postMessages
 
-- Why does  `DOM Clobbering` happen?
-- 
+-----------
+
+### Why does  `DOM Clobbering` happen?
+
+------------
+
+- Locating DOM elements(the ez way)-:
+
+```html
+document.querySelector("[id=Y]");
+```
+- The dirty way(Property access on window or document)-:
+
 ---------------
 
 ### REFERENCES
