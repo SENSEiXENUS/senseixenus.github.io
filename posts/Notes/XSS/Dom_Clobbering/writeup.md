@@ -153,7 +153,15 @@ document.body.appendChild(s);
 ```html
 <img id="globalConfig" src="malicious.js" name=clobbered>
 ```
+- Dom Clobbering: Threat Model-:
+ - Injection( through input params)
+   -  Url params
+   -  Window name
+   -  Document Referrer
+   -  postMessages
 
+- Why does  `DOM Clobbering` happen?
+- 
 ---------------
 
 ### REFERENCES
