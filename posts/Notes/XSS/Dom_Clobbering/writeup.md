@@ -232,6 +232,13 @@ R5- HTMLCollection
 ```html
 <a id=X><a id=X name=Y>
 ```
+
+-------------
+
+### Double DOM Clobbering trick
+
+--------------
+
 - 
 
 ---------------
