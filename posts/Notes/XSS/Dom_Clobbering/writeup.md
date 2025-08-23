@@ -176,6 +176,13 @@ document.querySelector("[id=Y]");
 ```js
 document.X.Y, or window.Y
 ```
+--------------
+
+### Clobbering Markups and Browser Behaviours
+
+--------------
+
+- 
 
 ---------------
 
