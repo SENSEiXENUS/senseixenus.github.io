@@ -192,6 +192,18 @@ top.location = self.location
 ```html
 <iframe name=self src="evil.com">
 ```
+- What other attack markups will work?
+ - Not all built-in APIs can be successfully overshadowed-:
+ - SINK-:
+    ```js
+    document.documentURI //can be clobbered //<iframe name=documentURI src=evil.com>
+    document.location //cannot be clobbered 
+    ```
+-------------
+
+### How to Clobber
+
+-------------
 
 - 
 
