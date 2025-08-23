@@ -138,7 +138,21 @@ object
 
 ----------------
 
-- 
+-  It means `codeless markup injection`.
+-  Markup `id/name` collides with sensitive variables or APIs, and overwrties them.
+-  Code sink-:
+```js
+document.globalConfig = {'src': 'script.js', [...]);
+// [...]
+var s =  document.createElement('script');
+//sink
+s.src = doocument.globalCOnfig.src;
+document.body.appendChild(s);
+```
+- Payload-:
+```html
+<img id="globalConfig" src="malicious.js" name=clobbered>
+```
 
 ---------------
 
