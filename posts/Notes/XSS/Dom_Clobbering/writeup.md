@@ -4,7 +4,7 @@
 
 --------------
 
-### Document Object MOdel
+### Document Object Model
 
 -------------
 
