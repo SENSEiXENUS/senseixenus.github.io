@@ -182,6 +182,17 @@ document.X.Y, or window.Y
 
 --------------
 
+- First DOM Clobbering instance in 2010
+- Application code-:
+
+```js
+top.location = self.location
+```
+- Attack markup(injection)-:
+```html
+<iframe name=self src="evil.com">
+```
+
 - 
 
 ---------------
