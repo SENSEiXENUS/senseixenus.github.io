@@ -122,8 +122,31 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 - From: The address that sent the transaction.
 - To: The address that received the transaction.
 - Value: The amount of ETH sent (in this case, 0.1 Test ETH).
-
-- 
+ 
 -----------
 
+### Transaction and Gas Fees
+
+----------
+
+- The transaction fee is the amount rewarded to the block producer for processing the transaction. It is paid in Ether or GWei. The gas price, also defined in either Ether or GWei, is the cost per unit of gas specified for the transaction. The higher the gas price, the greater the chance of the transaction being included in a block.Gas price is not to be confused with gas. While gas refers to the computational effort required to execute the transaction, gas price is the cost per unit of that effort.
+
+------------
+
+### Role of nodes in Blockchain
+
+------------
+
+- Blockchains are run by a group of different nodes, sometimes referred to as miners or validators, depending on the network. These miners get incentivized for running the blockchain by earning a fraction of the native blockchain currency for processing transactions. For instance, Ethereum miners get paid in Ether, while those in Polygon get rewarded in MATIC, the native token of Polygon. This remuneration encourages people to continue running these nodes.
+- A gas is a computational complexity unit.The total transaction fee can be calculated by multiplying the gas used with the gas price in Ether (not GWei). Therefore, `Transaction fee = gasPrice * gasUsed`.
+
+
+-----------
+
+### Blockchain mode of operation
+
+-----------
+
+
+-----------
 
