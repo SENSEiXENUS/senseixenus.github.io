@@ -74,7 +74,24 @@
 
 ------------
 
-- It contains certain features that distinguishes it from traditonal contracts.
-- 
+- It contains certain features that distinguishes it from traditonal contracts.Features-:
+ - Decentralization-: They do not rely on a central intermediary.Instead, they run on a blockchain managed on thousand of individuals known as node operators which makes it decentralized.
+ - Transperency and Flexibility-: It is inherent in blockchain network since node operators can see everything going on.There is no room for unfair or hidden deals. This transparency ensures that everyone has access to the same information and plays by the same rules.Also, transactions are not tied toy our real identity.
+ - Security and Immutability-: Once a smart contract is deployed, it cannot be altered or tampered with. This immutability ensures that the terms of the contract are set in stone. This is a stark contrast to centralized systems where a server or database can be hacked, and data can be altered. The decentralized nature of blockchain makes hacking nearly impossible since an attacker would have to take control of more than half the nodes, which is significantly more challenging than compromising a single centralized server.Additionally, the data on a blockchain is resilient. In a traditional system, if your computer and backups fail, you lose all your data. In contrast, in a blockchain, your data is replicated across thousands of nodes. Even if several nodes were to go down, your data would remain secure as long as there is at least one copy of the blockchain.
+ - Elimination of Counterparty Risk-: It eliminates the risk of trust in transactions.Once a smart contract is deployed, it cannot be tweaked.None of the parties can tweak it based on greed to ensure it is enforced as intended.
+
+------------
+
+### Application of Smart Contracts
+
+------------
+
+- Defi(Decentralized Finance)-: It allows users to interact with the financial market without a central authority.With smart contracts, users have transparent access to financial markets and can engage with sophisticated financial products efficiently and securely. We will provide practical examples of how to build and interact with DeFi protocols in upcoming lessons.
+- DAOs(Decentralized Autonomous Organizations)-:AOs are governed entirely by smart contracts and operate in a decentralized manner. This structure offers benefits such as transparent governance, efficient engagement, and clear rules. DAOs are an evolution in politics and governance
+- Non-Fungible Tokens-: They are known as digital art or digital assets.
+
+-----------
+
+------------
 
 
