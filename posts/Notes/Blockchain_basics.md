@@ -58,3 +58,16 @@
 - It is the internet powered by blockchain and smart contracts.nlike the previous versions of the web, web3 is permissionless and relies on decentralized networks rather than centralized servers. This ushers in an era of censorship-resistant and transparent agreements and transactions, often called an ownership economy.
 
 -------------
+
+### The purpose of Smart Contracts
+
+-----------
+
+- Our entire interactions rely solely on contracts which means an agreement between individuals.Normal contracts required trust which can be set aside but not in the case of smart contracts.They are deployed on a decentralized network with visible terms for everyone to see and executed when predetermined terms are set.
+- They do this by representing 'promises' as code on the blockchain. This code is executed by a decentralized collective, such that no single entity can alter the agreemeent in any way! The agreement and its terms are public knowledge and will automatically execute without human intervention.
+- Although not all platforms are decentralized as claimed, A good example is the `SBF FIX company` which presented itself as a WEB3 company but a web2 one under the hood which used cryptocurrency without smart contracts.
+
+
+------------
+
+
