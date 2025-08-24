@@ -106,12 +106,24 @@
 
 -----------
 
-### Testnets
+### Working  with Testnets
 
 -----------
 
-- 
+- To send a token on a testnet, a `faucet` is required to get free tokens.
 
+![image](https://github.com/user-attachments/assets/815bf05b-010f-4e1a-a0af-0372c55f74ed)
+
+- Recommended [faucet](https://faucets.chain.link)
+- Understanding Transaction Details
+You can view transaction details on [Sepolia Etherscan](https://sepolia.etherscan.io). Important details include:
+- Transaction hash: A unique identifier for the transaction.
+- Status: Whether the transaction was successful.
+- From: The address that sent the transaction.
+- To: The address that received the transaction.
+- Value: The amount of ETH sent (in this case, 0.1 Test ETH).
+
+- 
 -----------
 
 
