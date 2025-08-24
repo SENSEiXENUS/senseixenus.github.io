@@ -70,4 +70,11 @@
 
 ------------
 
+### Features of Smart Contracts
+
+------------
+
+- It contains certain features that distinguishes it from traditonal contracts.
+- 
+
 
