@@ -92,6 +92,22 @@
 
 -----------
 
+### Setting up Testnet on Tenderly
+
 ------------
+
+- Visit [Tenderly](https://tenderly.co/?mtm_campaign=partner&mtm_kwd=cyfrin)
+- Create account and click on `Virtual Testnet` on dashboard
+- Settings-:
+
+![image](https://github.com/user-attachments/assets/92f54036-5a42-4847-82e2-32cc26b7f150)
+
+![image](https://github.com/user-attachments/assets/d822db39-b5fe-4de9-aef0-bd7cca242822)
+
+- 
+
+
+
+-----------
 
 
