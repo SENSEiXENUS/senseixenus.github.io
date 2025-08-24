@@ -55,6 +55,6 @@
 
 -------------
 
-- 
+- It is the internet powered by blockchain and smart contracts.nlike the previous versions of the web, web3 is permissionless and relies on decentralized networks rather than centralized servers. This ushers in an era of censorship-resistant and transparent agreements and transactions, often called an ownership economy.
 
 -------------
