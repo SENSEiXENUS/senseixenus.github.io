@@ -174,7 +174,24 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 
 --------------
 
+### Public and Private Keys
 
+-------------
 
------------
+- The private key is then passed through an algorithm (the Elliptic Curve Digital Signature Algorithm for Ethereum and Bitcoin) to create the corresponding public key. Both the private and public keys are central to the transaction process. However, while the private key must remain secret, the public key needs to be accessible to everyone.
+
+-------------
+
+### How does transaction signing occur?
+
+--------------
+
+- When we sign a transaction on the blockchain, we're digitally signing some data with our private key. The hashing algorithm used makes it impossible for something to derive your private key from a message signature.
+- It is like passing a private key to the blockchain-:
+
+![image](https://github.com/user-attachments/assets/13b15622-b549-4cf1-88e6-8e1c7cd4e29a)
+
+- This signing method allows anyone to verify the validity of a transaction by comparing the message signature to a user's public key!
+
+--------------
 
