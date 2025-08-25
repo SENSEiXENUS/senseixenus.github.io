@@ -158,7 +158,7 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 
 - In a blockchain, which is essentially a sequence of blocks, each block is comprised of the previous elements - a block number, a nonce and data - as well as the hash of the previous block.What this means in practice is that any changes to data, in any block of the chain, will invalidate every proceeding block, until they are recalculated, or re-mined.
 
-<img width="1465" height="646" alt="image" src="https://github.com/user-attachments/assets/6abd1680-07b2-47b1-aadd-6442c1b66e94" />
+![image](https://github.com/user-attachments/assets/6abd1680-07b2-47b1-aadd-6442c1b66e94)
 
 - The first block is known as the `Genesis Block`.
 
@@ -192,6 +192,14 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 ![image](https://github.com/user-attachments/assets/13b15622-b549-4cf1-88e6-8e1c7cd4e29a)
 
 - This signing method allows anyone to verify the validity of a transaction by comparing the message signature to a user's public key!
+- In addition to this, Ethereum addresses are derived from public keys by hashing a user's public keys with the Keccak256 algorithm.
 
 --------------
+
+### Transaction and Gas
+
+--------------
+
+
+-------------
 
