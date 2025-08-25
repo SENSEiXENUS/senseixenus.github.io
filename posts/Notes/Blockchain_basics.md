@@ -147,6 +147,33 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 
 -----------
 
+- Understanding hash functions-: Hash is a fixed length of string that serves to identify a piece of data. Eth uses its own form of hashing algorithm(keccak 256) which belongs to sha256 family.
+- Understanding Block-: The blockchain is a collection of "blocks". A `block` is divided into `block`,`nonce` and `data`.All three are then run through the hash algorithm, producing the hash for that block. As a result, even a minor change in the data leads to an entirely different hash, hence, invalidating the block.In essence, mining involves the computational trial and error process of finding an acceptable value to produce a hash which typically follows a certain pattern, such as starting with four zeros. The value found, which satisfies this criterion, is known as the 'nonce'.
+
+-----------
+
+### Inherent immutability 
+
+-----------
+
+- In a blockchain, which is essentially a sequence of blocks, each block is comprised of the previous elements - a block number, a nonce and data - as well as the hash of the previous block.What this means in practice is that any changes to data, in any block of the chain, will invalidate every proceeding block, until they are recalculated, or re-mined.
+
+<img width="1465" height="646" alt="image" src="https://github.com/user-attachments/assets/6abd1680-07b2-47b1-aadd-6442c1b66e94" />
+
+- The first block is known as the `Genesis Block`.
+
+--------------
+
+### Decentralized Distribution
+
+--------------
+
+- Now, if a single entity were to control the blockchain, they could conceivably change any data they want, and then re-mine, or re-validate subsequent blocks. This is bad.
+
+
+--------------
+
+
 
 -----------
 
