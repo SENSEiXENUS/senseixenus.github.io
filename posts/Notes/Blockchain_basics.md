@@ -10,7 +10,7 @@
 
 ----------
 
-### The Smart COntract Problem
+### The Smart Contract Problem
 
 ----------
 
@@ -232,7 +232,9 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
   - A chain selection algorithm
   - A sybil resistance mechanism
 - Mining, or Proof of Work, is a sybil resistance mechanism. This is what Bitcoin currently uses.
-- Proof of Work is known as a sybil resistance mechanism because it defines a way to figure out who is the block author or which node did the work to mine a block. Sybil resistance is a blockchain's ability to defend against users creating a large number of pseudo-anonymous identities to gain a disproportionately advantageous influence over said system.
+- Proof of Work is known as a sybil resistance mechanism because it defines a way to figure out who is the block author or which node did the work to mine a block. Sybil resistance is a blockchain's ability to defend against users creating a large number of pseudo-anonymous identities to gain a disproportionately advantageous influence over said system.Types-:
+  - Proof of work
+  - Proof of Stake
 
 ---------------
 
