@@ -85,6 +85,37 @@ Access-Control-Allow-Credentials: true
 ```http
 Access-Control-Allow-Credentials: true
 ```
-- 
+-  Also, the use of wildcard `*` with transfer of credentials `Access-Control-Allow-Credentials: true` is disallowed as this would be dangerously insecure, exposing any authenticated content on the target site to everyone.Given these constraints, some web servers dynamically create Access-Control-Allow-Origin headers based upon the client-specified origin. This is a workaround for CORS constraints that is not secure.
 
 -------------
+
+### Pre-flight Requests
+
+------------
+
+- The pre-flight check was added to the CORS specification to protect legacy resources from the expanded request options allowed by CORS.Under certain circumstances, when a cross-domain request includes a non-standard HTTP method or headers, the cross-origin request is preceded by a request using the `OPTIONS` method, and the CORS protocol necessitates an initial check on what methods and headers are permitted prior to allowing the cross-origin request. This is called the pre-flight check.The server returns a list of allowed methods in addition to the trusted origin and the browser checks to see if the requesting website's method is allowed.
+- For example, this is a pre-flight request that is seeking to use the PUT method together with a custom request header called Special-Request-Header:
+
+```http
+OPTIONS /data HTTP/1.1
+Host: <some website>
+...
+Origin: https://normal-website.com
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: Special-Request-Header
+```
+- Probable response-:
+
+```http
+HTTP/1.1 204 No Content
+...
+Access-Control-Allow-Origin: https://normal-website.com
+Access-Control-Allow-Methods: PUT, POST, OPTIONS
+Access-Control-Allow-Headers: Special-Request-Header
+Access-Control-Allow-Credentials: true
+Access-Control-Max-Age: 240
+```
+
+- This response sets out the allowed methods (PUT, POST and OPTIONS) and permitted request headers (Special-Request-Header). In this particular case the cross-domain server also allows the sending of credentials, and the Access-Control-Max-Age header defines a maximum timeframe for caching the pre-flight response for reuse. If the request methods and headers are permitted (as they are in this example) then the browser processes the cross-origin request in the usual way. Pre-flight checks add an extra HTTP request round-trip to the cross-domain request, so they increase the browsing overhead.
+
+------------
