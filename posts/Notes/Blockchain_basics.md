@@ -218,6 +218,24 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 - Max Priority Fee: Again, configurable prior to sending a transaction, this represents the maximum tip we're willing to give miners. This incentivizes the inclusion of our transaction within a block.
 - Block Confirmations: These are he number of blocks which have been mined or validated which have been confirmed to contain your transaction. The more confirmations the more sure we can be of the transaction's validity.
 
+--------------
+
+### Blockchain overview
+
+--------------
+
+- Traditionally, when you run an application be it a website or something that connects to a server you are interacting with a centralized entity. Blockchain runs on independent nodes.In our previous example, each of the Peers was representative of an independent node operator. The term node typically refers to a single instance of a decentralized system, Peer A would be a node. This network, this combination of these nodes interacting with each other is what creates a blockchain. What makes these networks so potent, is that anybody can join.
+- In the traditional world applications are run by centralized entities and if that entity goes down or is malicious or decides that they want to shut off - they just can.Blockchains, by contrast, don't have this problem. If one node or one entity that runs several nodes goes down, since there are so many other independent nodes running, it doesn't matter, the blockchain and the system will persist so long as there is at least one node always running. Luckily for us, the most popular chains like Bitcoin and Ethereum have thousands and thousands of nodes. Malicious nodes are kicked from the network, or even punished in some cases. Majority rules when it comes to the blockchain.
+
+- Consensus-: It includes  `Proof of work` and `Proof of Stake`, they both fall under `consensus`.Consensus is defined as the mechanism used to reach an agreement on the state or a single value on the blockchain especially in a decentralized system.
+- It is a decentralized protocol that can be broken into two pieces.
+  - A chain selection algorithm
+  - A sybil resistance mechanism
+- Mining, or Proof of Work, is a sybil resistance mechanism. This is what Bitcoin currently uses.
+- Proof of Work is known as a sybil resistance mechanism because it defines a way to figure out who is the block author or which node did the work to mine a block. Sybil resistance is a blockchain's ability to defend against users creating a large number of pseudo-anonymous identities to gain a disproportionately advantageous influence over said system.
+
+---------------
+
 
 
 -------------
