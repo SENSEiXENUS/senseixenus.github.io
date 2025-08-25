@@ -209,7 +209,16 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 
 ![image](https://github.com/user-attachments/assets/346b38bb-a924-4f8f-a45f-43d66acdf893)
 
-- 
+   - Transaction Fee: This is calculated as Total Gas Used * Gas Price where Gas Used represents the computational units required to perform the work and Gas Price is comprised of a Base and Priority Fee.
+   - Gas Limit: This is the maximum amount of gas allowed for the transaction. This can be set by the user prior to sending a transaction.
+
+- Base Gas Fee: The base fee of a transaction, represented in Gwei. Remember, this is cost per gas.
+- There are a couple important points to note regarding the Base Fee.The fee is burnt as of EIP-1559. Burning serves to remove the value from circulation, combating inflation on the protocol. The amount burnt can be seen beneath the Base Fee in the image above.The fee is dynamic, under EIP-1559, if a block is more than 50% full, the Base Gas Fee is increased for the next block. Likewise, if a block is less than 50% full, the fee decreases. This serves to balance network demand and capacity.
+- Max Gas Fee: This is the maximum cost per cast the transaction has been configured to allow. This can again be configured prior to sending a transaction.
+- Max Priority Fee: Again, configurable prior to sending a transaction, this represents the maximum tip we're willing to give miners. This incentivizes the inclusion of our transaction within a block.
+- Block Confirmations: These are he number of blocks which have been mined or validated which have been confirmed to contain your transaction. The more confirmations the more sure we can be of the transaction's validity.
+
+
 
 -------------
 
