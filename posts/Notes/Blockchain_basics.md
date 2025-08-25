@@ -200,6 +200,16 @@ You can view transaction details on [Sepolia Etherscan](https://sepolia.ethersca
 
 --------------
 
+- Important terms-:
+
+```
+Wei:  1,000,000,000 Wei  = 1 Gwei (Gigawei)
+Gwei: 1,000,000,000 Gwei = 1 Eth
+```
+
+![image](https://github.com/user-attachments/assets/346b38bb-a924-4f8f-a45f-43d66acdf893)
+
+- 
 
 -------------
 
