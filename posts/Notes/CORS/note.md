@@ -197,7 +197,6 @@ The URL you are requesting is no longer available
 ```http
 GET /data HTTP/1.1
 Host: normal-website.com
-...
 Origin: https://innocent-website.com
 ```
 
@@ -205,7 +204,6 @@ Origin: https://innocent-website.com
 
 ```http
 HTTP/1.1 200 OK
-...
 Access-Control-Allow-Origin: https://innocent-website.com
 ```
 
@@ -213,6 +211,19 @@ Access-Control-Allow-Origin: https://innocent-website.com
 
 ```
 *.sensei.com
+```
+
+- A site might grant access to all subdomains registered under domain `normal-user.com`.An hacker might get a domain with `hackersnormal-website.com`.
+- Alternatively, suppose an application grants access to all domains beginning with
+
+```
+normal-website.com
+```
+
+- An hacker might gain access with the site.
+
+```
+normal-website.com.evil-user.net
 ```
 
 - 
