@@ -317,3 +317,9 @@ https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>
 
 ------------
 
+- 
+
+
+
+------------
+
