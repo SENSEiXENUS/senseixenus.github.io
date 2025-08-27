@@ -283,3 +283,37 @@ The URL you are requesting is no longer available
  
 
 -----------
+
+### Exploiting XSS via CORS trust relationships
+
+------------
+
+-Even "correctly" configured CORS establishes a trust relationship between two origins. If a website trusts an origin that is vulnerable to cross-site scripting (XSS), then an attacker could exploit the XSS to inject some JavaScript that uses CORS to retrieve sensitive information from the site that trusts the vulnerable application.
+
+- Given the following request:
+```http
+GET /api/requestApiKey HTTP/1.1
+Host: vulnerable-website.com
+Origin: https://subdomain.vulnerable-website.com
+Cookie: sessionid=...
+```
+- Response-:
+
+```http
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: https://subdomain.vulnerable-website.com
+Access-Control-Allow-Credentials: true
+```
+
+- Then an attacker who finds an XSS vulnerability on subdomain.vulnerable-website.com could use that to retrieve the API key, using a URL like:
+
+```url
+https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>
+```
+
+------------
+
+### Breaking TLS  with poorly configured CORS
+
+------------
+
