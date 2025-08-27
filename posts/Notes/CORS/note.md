@@ -226,6 +226,19 @@ normal-website.com
 normal-website.com.evil-user.net
 ```
 
+----------
+
+### Whitelisted Origin Null value
+
+-----------
+
+- The origin header supports the `null` value.Although, browsers might send it in some circumstances.For example,
+ - Cross-Origin redirects
+ - Requests from serialized data
+ - Request using the `file:` protocol
+ - Sandboxed cross origin requests
+
 - 
 
+------------
 -----------
