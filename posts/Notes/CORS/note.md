@@ -192,5 +192,29 @@ The URL you are requesting is no longer available
 
 -----------
 
+- Some applications that support access from multiple origins do so by using a whitelist of allowed origins. When a CORS request is received, the supplied origin is compared to the whitelist. If the origin appears on the whitelist then it is reflected in the Access-Control-Allow-Origin header so that access is granted. For example, the application receives a normal request like:
+
+```http
+GET /data HTTP/1.1
+Host: normal-website.com
+...
+Origin: https://innocent-website.com
+```
+
+- Response:
+
+```http
+HTTP/1.1 200 OK
+...
+Access-Control-Allow-Origin: https://innocent-website.com
+```
+
+- Mistakes often arise when implementing CORS origin whitelists. Some organizations decide to allow access from all their subdomains (including future subdomains not yet in existence). And some applications allow access from various other organizations' domains including their subdomains. These rules are often implemented by matching URL prefixes or suffixes, or using regular expressions. Any mistakes in the implementation can lead to access being granted to unintended external domains.Probably the regex rule-:
+
+```
+*.sensei.com
+```
+
+- 
 
 -----------
