@@ -270,12 +270,7 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 
 -------------------
 
+- Layer 1 solutions: This refers to base layer blockchain implementations like Bitcoin or Ethereum.
+- Layer 2 solutions: These are applications added on top of a layer one, like `Chainlink` or `Arbitrum`.
 
 -------------------
-
-
-
-
-
--------------
-
