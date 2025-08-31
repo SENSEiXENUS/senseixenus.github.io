@@ -280,6 +280,23 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 ------------------
 
 - A `Layer 1(L1)` is the base layer of the blockchain that allows nodes to reach consensus. It operates without any additional plugins and is often referred to as the settlement layer.Examples of L1 chains include Bitcoin, BNB Chain, Solana, and Avalanche. In this course, we primarily focus on Ethereum, which serves as the hub of the Ethereum ecosystem. Applications directly deployed on Ethereum, like Uniswap, are not considered L2s but rather dApps on L1.
-- `Layer 2(L2)` are built outside the L1 blockchain that hooks back into it.
+- `Layer 2(L2)` are built outside the L1 blockchain that hooks back into it.There are different types of Layer 2, for example Chainlink, a decentralized Oracle networks and event indexing networks like The Graph, which enable applications to access on-chain data. But the most popular type of L2 is the rollup, or L2 chain.
+- Rollups-: It is a L2 scaling solutions that increases the number of transactions on Ethereum by bundling it into one, reducing gas costs.Rollups help solve the blockchain trilemma, which states that a blockchain can only achieve two out of three properties: decentralization, security, and scalability. In the case of Ethereum, scalability is sacrificed as it can only process approximately 15 transactions per second. Rollups, on the other hand, aim to enhance scalability without compromising security or decentralization.
+
+------------------
+
+### How Rollup works
+
+----------------
+
+- When a user submits a transaction to a rollup, an operator (a node or entity responsible for processing transactions) picks it up, bundles it with other transactions, compresses them, and submits the batch back to the L1 blockchain. This process allows for efficient handling of transactions as gas costs associated with the transaction, are split among all the users that submitted the transactions in the batch.
+
+-----------------
+
+### Types of Rollups
+
+------------------
+
+------------------
 
 -----------------
