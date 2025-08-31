@@ -274,3 +274,12 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 - Layer 2 solutions: These are applications added on top of a layer one, like `Chainlink` or `Arbitrum`.
 
 -------------------
+
+### Blockchain Layers
+
+------------------
+
+- A `Layer 1(L1)` is the base layer of the blockchain that allows nodes to reach consensus. It operates without any additional plugins and is often referred to as the settlement layer.Examples of L1 chains include Bitcoin, BNB Chain, Solana, and Avalanche. In this course, we primarily focus on Ethereum, which serves as the hub of the Ethereum ecosystem. Applications directly deployed on Ethereum, like Uniswap, are not considered L2s but rather dApps on L1.
+- `Layer 2(L2)` are built outside the L1 blockchain that hooks back into it.
+
+-----------------
