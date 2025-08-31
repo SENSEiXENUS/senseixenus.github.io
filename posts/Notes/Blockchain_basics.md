@@ -310,3 +310,21 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 - Zero Knowledge-: ZK rollups use validity proofs, known as zk proofs, to verify transaction batches. In this process, the prover (operator) generates a zk proof to show that their inputs (the transactions) satisfy this equation. A verifier (an L1 contract) then checks this proof to ensure that the output matches the expected result. The solution that the prover uses to demostrate that their input satisfies the mathematical equation in the zk proof is commonly referred as the witness.
 
 ------------------
+
+### Centralized Sequencer I
+
+------------------
+
+- In blockchain and cryptocurrency networks, the role of a sequencer is crucial for ordering and bundling transactions. Sequencers are operators that are responsible for organizing how transactions are processed. In many roll-up solutions, sequencers are centralized, controlled by a single entity.
+
+-------------------
+
+### Rollup Stages
+
+--------------------
+
+- 
+
+---------------------
+
+------------------
