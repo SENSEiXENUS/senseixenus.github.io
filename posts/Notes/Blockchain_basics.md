@@ -238,6 +238,43 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 
 ---------------
 
+- Proof of Work-: Proof of work is a system of sybil resistance used in many blockchains, in its essence a miner needs to go through a very computationally heavy process (mining) to find the block's answer. As a result, it doesn't matter how many additional nodes you're running, each node is obligated to do this work in order to receive a reward. The playing field is kept fair.Proof of Work needs to be combined with a chain selection rule to create consensus.
+- A `chain selection rule` is implemented as a means to determine which blockchain is the real blockchain. Bitcoin (and prior to the merge, Ethereum), both use something called `Nakamoto Consensus`. This is a combination of Proof of Work (Etherum has since switched to Proof of Stake) and the longest chain rule.
+- Proof of Work also serves as a means to determine who receives transaction fees as we discussed earlier. These transaction fees are paid by whomever initiates the transaction. In a Proof of Work system, every node is competing against eachother to solve the block problem first. The first node to solve the problem gets paid the transaction fees accumulated in the block they mine. In addition to this, miners are also paid a block reward, the block reward is given by the blockchain itself.
+
+-----------------
+
+### Blockchain Attacks
+
+------------------
+
+- Sybil Attack-: When a user creates a number of pseudo-anonymous accounts to try to influence a network.
+- 51% attack - Occurs when a single entity possesses both the longest chain and majority network control. This would allow the entity to fork the chain and bring the network onto the entities record of events, effectively allowing them to validate anything.
+
+
+------------------
+
+- Proof of Work does come with drawbacks. For example, Proof of Work consumes a LOT of electricity. When you have thousands of nodes all working as hard as they can to solve a block problem the energy consumption is HUGE and as such, so is the potential environmental impact.
+
+------------------
+
+### Proof of Stake
+
+------------------
+
+- Proof of Stake nodes put up some collateral that they are going to behave honestly aka they stake. If a node is found to be misbehaving, it's stake is slashed.This serves as a very effective sybil resistance mechanism because for each account, the validator needs to put up more stake and misbehaving risks losing all that collateral.
+
+------------------
+
+### Layer 1 and 2
+
+-------------------
+
+
+-------------------
+
+
+
 
 
 -------------
