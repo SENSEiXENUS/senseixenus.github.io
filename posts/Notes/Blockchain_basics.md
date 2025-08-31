@@ -297,6 +297,16 @@ Gwei: 1,000,000,000 Gwei = 1 Eth
 
 ------------------
 
-------------------
+- Optimistic rollups
+- Zero-Knowledge rollups
 
 -----------------
+
+### Optimistic rollups
+
+-----------------
+
+- They assume that off-chain transactions are valid by default. Operators propose the valid state of the rollup chain, and during a challenge period, other operators can challenge potentially fraudulent transactions by computing a fraud proof.This fraud proof process involves the operator engaging in a call and response interaction with another operator to identify and isolate a specific computational step. This specific step is then executed on the Layer 1 blockchain: if the result differs from the original state, it indicates that the transaction was fraudulent. When the fraud proof succeeds, the rollup will re-execute the entire batch of transactions correctly, and the operator responsible for including the incorrect transaction will be penalized, usually by losing staked tokens (slashing).
+- Zero Knowledge-: ZK rollups use validity proofs, known as zk proofs, to verify transaction batches. In this process, the prover (operator) generates a zk proof to show that their inputs (the transactions) satisfy this equation. A verifier (an L1 contract) then checks this proof to ensure that the output matches the expected result. The solution that the prover uses to demostrate that their input satisfies the mathematical equation in the zk proof is commonly referred as the witness.
+
+------------------
