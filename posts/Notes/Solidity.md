@@ -26,5 +26,24 @@ pragma solidity >=0.8.19 <0.9.0;
 pragma solidity ^0.8.30;
 ```
 
-- 
+- Running with `solcjs`-:
+
+```bash
+solcjs --bin main.sol
+```
+![image](https://github.com/user-attachments/assets/d14f8c95-e6a8-442d-94ec-f2d99164bdbc)
+
+- Code-:
+
+```sol
+//SPDX-License-Identifier: MIT
+//solidity version
+pragma solidity ^0.8.30;
+
+contract simpleStorage {
+    //code goes thus
+}
+```
+
 --------------
+
