@@ -132,6 +132,9 @@ struct Person {
 }
 ```
 - Using it-:
- 
+
+ ```sol
+Person public ade = Person("Ade",100);
+```
 ---------------
 
