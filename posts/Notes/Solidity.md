@@ -60,9 +60,27 @@ bool hasFavoriteNumber = true; //true or false
     bytes32 favoriteBytes32 = "cat";
 ```
 
-- create a function with `store`-:
+- create a function with `function`-:
 
+```sol
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
 
+contract Storage{
+    uint256 digit = 100;
+    function store(uint256 _digit) public {
+        digit = _digit;
+    }
+}
+```
+
+-  Appending the public keyword next to a variable will automatically change its visibility and it will generate a getter function (a function that gets the variable's value when called).
+
+```sol
+uint256 public digit = 1000;
+```
+
+- 
 
 --------------
 
