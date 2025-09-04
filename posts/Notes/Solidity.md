@@ -44,6 +44,25 @@ contract simpleStorage {
     //code goes thus
 }
 ```
+- Bool-:
+
+```sol
+bool hasFavoriteNumber = true; //true or false
+```
+- Basic types-:
+
+```sol
+   bool hasFavoriteNumber = true;
+    uint256 favoriteNumber = 88;
+    string favoriteNumberInText = "eighty-eight";
+    int256 favoriteInt = -88;
+    address myAddress = 0xAB1b7206aa6840C795aB7A6AE8b15417B7E63A8D;
+    bytes32 favoriteBytes32 = "cat";
+```
+
+- create a function with `store`-:
+
+
 
 --------------
 
