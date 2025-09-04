@@ -143,7 +143,7 @@ Person[] public people;
 Person[3] public three_people;
 ```
 
--
+- Pushing new values to an `array of structs` with a function.
 
 ---------------
 
