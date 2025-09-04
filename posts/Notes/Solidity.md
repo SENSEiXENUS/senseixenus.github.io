@@ -158,7 +158,28 @@ Person[3] public three_people;
 
 ---------------
 
-- How does solidity handle data storage?
+- How does solidity handle data storage? It uses locations like this-:
+
+```
+Calldata
+Memory
+Storage
+Stack
+Code
+Logs
+```
+
+- `Calldata` and `memory` are temporary storage locations during function execution.calldata is read-only, used for function inputs that can't be modified. In contrast, memory allows for read-write access, letting variables be changed within the function. To modify calldata variables, they must first be loaded into memory.
+- Memory-:
+
+```sol
+string memory name = "Ade";
+```
+
+
+
+
+
 
 -----------------
 
