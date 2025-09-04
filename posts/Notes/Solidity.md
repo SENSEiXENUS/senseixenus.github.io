@@ -80,7 +80,37 @@ contract Storage{
 uint256 public digit = 1000;
 ```
 
-- 
+- Visibility for variables and function-:
 
+```
+public
+private
+internal
+external
+```
+
+- Pure and view functions-:
+
+```sol
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
+contract Storage{
+    uint256 digit = 100;
+    function store(uint256 _digit) public {
+        digit = _digit;
+    }
+    //view
+    function retrieve() public view returns {
+        return digit;
+    }
+    //pure
+    function retrieve() public pure returns {
+        return 7;
+    }
+}
+```
+
+- 
 --------------
 
