@@ -136,5 +136,14 @@ struct Person {
  ```sol
 Person public ade = Person("Ade",100);
 ```
+- Array of struct-: Creating individual variables that represent several people might become a tedious task, due to the repetitive steps of the process. Instead of manually instantiating a variable for each person, we can combine the two concepts we just learned about: arrays and structs.
+
+```sol
+Person[] public people;
+Person[3] public three_people;
+```
+
+-
+
 ---------------
 
