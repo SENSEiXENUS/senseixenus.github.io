@@ -110,7 +110,20 @@ contract Storage{
     }
 }
 ```
+ 
+--------------
 
-- 
+### Arrays and Structs
+
+--------------
+
+- Creating a list of `uint256` numbers-:
+
+```
+uint256[] digits = [0,10,90];
+```
+
+-
+
 --------------
 
