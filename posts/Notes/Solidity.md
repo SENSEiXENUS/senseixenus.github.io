@@ -123,7 +123,15 @@ contract Storage{
 uint256[] digits = [0,10,90];
 ```
 
--
+- The issue with this data structure above is that we cannot link the owner with its favorite value. One solution is to establish a new type using the struct keyword, named Person, which is made of two attributes: a favorite number and a name.
 
---------------
+```sol
+struct Person {
+   string name;
+   uint256 age;
+}
+```
+- Using it-:
+ 
+---------------
 
