@@ -145,5 +145,14 @@ Person[3] public three_people;
 
 - Pushing new values to an `array of structs` with a function.
 
+```sol
+//function push to three_people array
+    function push_value(uint256 _negativeNumber, string memory _name) public{
+        people.push(Person(_negativeNumber,_name));
+  }
+```
+
+-
+
 ---------------
 
