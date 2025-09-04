@@ -158,7 +158,7 @@ Person[3] public three_people;
 
 ---------------
 
-- 
+- How does solidity handle data storage?
 
 -----------------
 
