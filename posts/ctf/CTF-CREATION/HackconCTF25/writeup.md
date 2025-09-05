@@ -277,5 +277,57 @@ class Work
 ?>
 ```
 
+- It uses the `__toString` function to access `$this->task` which tries to access attributes `action` which will obviously be non-existent in `Call`.This will be our next trigger point to execute `__get`.Although, `__toString` is only treated triggered if treated as a string e.g passed to function `echo` which will move us to class `Note`.
+- `User.php`-:
 
+```php
+<?php
+ob_start();
+class Note {
+    private $title;
+    private $content;
+    private $createdAt;
+    public $mystery;
+
+    public function __construct($title, $content) {
+        $this->title = $title;
+        $this->content = $content;
+        $this->createdAt = date("Y-m-d H:i:s");
+    }
+
+    // Getters
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function getContent() {
+        return $this->content;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+    public function __destruct() {
+        if (!empty($this->mystery)) {
+            echo $this->mystery;
+        }
+    }
+}
+ob_end_flush();        
+?>
+```
+
+- You'll notice there is a public attribute `mystery` which is passed to `__destruct` treats `mystery` as a string which helps us to trigger `__toString`. Well, we don't need to worry about `__destruct` because it gets triggered as soon unserialize is done unserializing the object.
+
+```php
+public function __destruct() {
+        if (!empty($this->mystery)) {
+            echo $this->mystery;
+        }
+```
+
+- Proof of concept-:
+
+```php
+```
 
