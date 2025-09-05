@@ -158,7 +158,7 @@ if ($role === "admin") {
 }
 ```
 
-- It unserializes the cookie and picks the variable `username` which is checked against the db and validated. Although, the `role` is checked with an if statement and not based on the db.We can solve this by creating a valid `User` object with the `role` set to `admin`.User.php-:
+- The main sink in this code is caused by `unserialize()` in php which deserilaizes code and while performing this process, it executes code.It unserializes the cookie and picks the variable `username` which is checked against the db and validated. Although, the `role` is checked with an if statement and not based on the db.We can solve this by creating a valid `User` object with the `role` set to `admin`.User.php-:
 
 ```php
 <?php
@@ -199,7 +199,83 @@ echo $payload;
 
 ![image](https://github.com/user-attachments/assets/0f9482a6-a5a1-4807-9821-2f504487aa48)
 
+----------------
 
+### Remote Code Execution with a custom gadget
+
+----------------
+
+- Most times,PHP object injection is not straight forward as displayed above. It requires abusing some functions to hit your desired aim which  is the beauty of `pop chains`.It requires abusing magic methods which are triggered when a desired condition is met which we'll see below.E.g you might have a vulnerable class but might need other classes to trigger it because of their magic methods.
+- Source code of Analysis of `admin.php`, Code's sink-:
+
+```php
+if (isset($_COOKIE['ADMIN_NOTES'])) {
+    $notes = unserialize(
+        base64_decode(urldecode($_COOKIE['ADMIN_NOTES']))
+    );
+    if (!is_array($notes)) {
+        $notes = [];
+    }
+}
+```
+
+- Unserialize() deserializes the `ADMIN_NOTES` cookie in the admin page.
+
+----------------
+
+### Building the POP chain
+
+---------------
+
+- It starts from `Hidden.php`-:
+
+```
+<?php
+class Hidden {
+    public $command;
+
+    public function __construct($command){
+        $this->command = $command;
+    }
+
+    public function __invoke() {
+        echo system($this->command);
+    }
+}
+?>
+```
+- The magic method `__invoke` executes any string passed to `command` as a shell command.You can only trigger `__invoke` if the object is treated like a function.
+- It moves us to class `Call` .`Call.php`-:
+
+```php
+<?php
+class Call
+{
+    public $called;
+    public function __get($task)
+    {
+        ($this->called)();
+    }
+}
+?>
+```
+
+- The `Call` class requires the variable `called` which get triggered by `__get` as a function.`__get` is only triggered if the code tries to access an inaccessible attribute in the object. To trigger `Hidden`, we'll pass it to `Call` to trigger it because `$this->called` is treated as a function which triggers `__invoke`.
+
+- The next stop is `Work.php`. `Work.php`-:
+
+```php
+<?php
+class Work
+{
+    public $task;
+    public function __toString()
+    {
+        $this->task->action;
+    }
+}
+?>
+```
 
 
 
