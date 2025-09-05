@@ -229,7 +229,7 @@ if (isset($_COOKIE['ADMIN_NOTES'])) {
 
 - It starts from `Hidden.php`-:
 
-```
+```php
 <?php
 class Hidden {
     public $command;
