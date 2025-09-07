@@ -116,9 +116,29 @@ def create_game():
 
 ----------------
 
-- 
+- The page does not print certificate for Hacker tag `Eth007`, it redacts it.
+
+![image](https://github.com/user-attachments/assets/3b55bc1d-57d3-4129-8423-22daeaa4e3ca)
+
+- I checked the source and found a function that creates the flag.
+
+```js
+function makeFlag(name){
+  const clean = name.trim() || "anon";
+  const h = customHash(clean);
+  return `ictf{${h}}`;
+}
+```
+
+- Solution-: ```ictf{7b4b3965}```
+
+![image](https://github.com/user-attachments/assets/1f660825-164d-47c9-91ba-f28a343f1e99)
+
 
 ----------------
 
+### Passwordless
+
+---------------
 
 
