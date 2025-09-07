@@ -58,7 +58,7 @@ print(data)
 
 --------------------
 
-<img width="794" height="590" alt="image" src="https://github.com/user-attachments/assets/f620acb4-0cec-405e-84e3-68bc09581ecb" />
+![image](https://github.com/user-attachments/assets/f620acb4-0cec-405e-84e3-68bc09581ecb)
 
 --------------------
 
@@ -95,7 +95,7 @@ def create_game():
 ```
 - The variable gets passed to the second argumnet in `os.path.join()` which an attacker can control to file read in such a way that abuses `os.path.join()`'s quirk. If the first argument is a relative path and the second path is an absolute one.The function picks the second one which is an absolute and nullifies the first argument. e.g
 
-[image](https://github.com/user-attachments/assets/e5bfe061-b0fb-40b1-8228-a5f48e3df356)
+![image](https://github.com/user-attachments/assets/e5bfe061-b0fb-40b1-8228-a5f48e3df356)
 
 - Exploiting it-:
 
@@ -108,11 +108,17 @@ def create_game():
 
 ----------------
 
+### Certificate
 
+----------------
 
+![image](https://github.com/user-attachments/assets/db68475e-987a-4c8a-835e-98a3952cac32)
 
---------------------
+----------------
 
+- 
+
+----------------
 
 
 
