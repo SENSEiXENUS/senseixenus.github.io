@@ -14,6 +14,7 @@
 
 - Web-:
   - Imaginary notes
+  - Codenames 1
 
 ---------------
 
@@ -52,6 +53,66 @@ print(data)
 ![image](https://github.com/user-attachments/assets/795fd795-7725-4272-9ca8-cdf1c4d4b376)
 
 --------------------
+
+### Codenames 1
+
+--------------------
+
+<img width="794" height="590" alt="image" src="https://github.com/user-attachments/assets/f620acb4-0cec-405e-84e3-68bc09581ecb" />
+
+--------------------
+
+- The main sink is in route `/create_game` and in body query `language`.
+
+```python3
+@app.route('/create_game', methods=['POST'])
+def create_game():
+    if 'username' not in session:
+        return redirect(url_for('index'))
+    # generate unique code
+    while True:
+        code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+        if code not in games:
+            break
+    # prepare game with selected language word list
+    # determine language (default to first available)
+    language = request.form.get('language', None)
+    if not language or '.' in language:
+        language = LANGUAGES[0] if LANGUAGES else None
+    # load words for this language
+    word_list = []
+    if language:
+        wl_path = os.path.join(WORDS_DIR, f"{language}.txt")
+        try:
+            with open(wl_path) as wf:
+                word_list = [line.strip() for line in wf if line.strip()]
+        except IOError as e:
+            print(e)
+            word_list = []
+    # fallback if needed
+    if not word_list:
+        word_list = []
+```
+- The variable gets passed to the second argumnet in `os.path.join()` which an attacker can control to file read in such a way that abuses `os.path.join()`'s quirk. If the first argument is a relative path and the second path is an absolute one.The function picks the second one which is an absolute and nullifies the first argument. e.g
+
+[image](https://github.com/user-attachments/assets/e5bfe061-b0fb-40b1-8228-a5f48e3df356)
+
+- Exploiting it-:
+
+![image](https://github.com/user-attachments/assets/7d288798-3711-4744-8039-e2a3f537c82b)
+
+
+- Flag-: ```ictf{common_os_path_join_L_b19d35ca}```
+
+![image](https://github.com/user-attachments/assets/a1591cc9-f887-41f3-ae8e-468b2a9e6073)
+
+----------------
+
+
+
+
+--------------------
+
 
 
 
