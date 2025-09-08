@@ -189,16 +189,31 @@ app.post('/user', limiter, (req, res, next) => {
 ---------
 
 - It is common knowledge that `bcrypt` hashes 72 chars out of any password passed to it.We need to pass 72 characters that we control to guess our password.This will be possible because our original mail gets passed and not the normalized one
-- I dived into the npm package `normalize-email` and discovered that adding dot before the `@domain.com` will get removed by the package.
+- I dived into the npm package `normalize-email` and discovered that adding dot before the `@gmail.com` will get removed by the package.
 
-<img width="838" height="459" alt="image" src="https://github.com/user-attachments/assets/af7f6de2-b4d2-40f7-ae40-ae9cc49cb455" />
+![image](https://github.com/user-attachments/assets/af7f6de2-b4d2-40f7-ae40-ae9cc49cb455)
 
 - For example
 
-<img width="727" height="294" alt="image" src="https://github.com/user-attachments/assets/6d1dbb0e-8be7-45c9-b9c0-12f74a18a128" />
+![image](https://github.com/user-attachments/assets/6d1dbb0e-8be7-45c9-b9c0-12f74a18a128)
 
-- We can b
+- We can use this to fit out password character limit. We create an email that hits `64` and add dots to make it fit `72` e.g
 
+![image](https://github.com/user-attachments/assets/5bc5f585-9d01-44bc-99de-0627d720628c)
+
+- The email's parser has varying ways to parse different domain's email format.I solved it with `gmail.com`
+- Mail-:
+
+```
+email-: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab@gmail.com
+password-: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab........@gmail.com
+```
+
+- Logged in-:
+
+![image](https://github.com/user-attachments/assets/c2e1006d-eb57-41be-85bb-e25a10cbdf78)
+
+- Flag-: ```ictf{8ee2ebc4085927c0dc85f07303354a05}```
 
 -----------------
 
