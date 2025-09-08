@@ -15,6 +15,8 @@
 - Web-:
   - Imaginary notes
   - Codenames 1
+  - Certificate
+  - Passwordless
 
 ---------------
 
@@ -144,6 +146,59 @@ function makeFlag(name){
 ![image](https://github.com/user-attachments/assets/69ccb915-aab8-4e33-ba4f-3dd96a5dd7aa)
 
 -----------------
+
+- Challenge code-:
+
+<img width="636" height="544" alt="image" src="https://github.com/user-attachments/assets/04522eb2-10f5-48ee-8545-53fc36d4d8dd" />
+
+- The challenge requires the players to access accounts without their passwords.
+- Sink in route `/user`-:
+
+```js
+app.post('/user', limiter, (req, res, next) => {
+    if (!req.body) return res.redirect('/login')
+
+    const nEmail = normalizeEmail(req.body.email)
+
+    if (nEmail.length > 64) {
+        req.session.error = 'Your email address is too long'
+        return res.redirect('/login')
+    }
+
+    const initialPassword = req.body.email + crypto.randomBytes(16).toString('hex')
+    console.log(initialPassword)
+    bcrypt.hash(initialPassword, 10, function (err, hash) {
+        if (err) return next(err)
+
+        const query = "INSERT INTO users VALUES (?, ?)"
+        db.run(query, [nEmail, hash], (err) => {
+            if (err) {
+                if (err.code === 'SQLITE_CONSTRAINT') {
+                    req.session.error = 'This email address is already registered'
+                    return res.redirect('/login')
+                }
+                return next(err)
+            }
+```
+- The code takes in our email with `req.body.email` and passes it to `normalizeEmail` which normalizes it to normal email format.Then, it takes the original email passed with 16 random bytes to form our password which looks unguessable for now. Although, the normalized maail must be lesser than `64`.Our newly created password is hashed with `bcrypt` and passed to the db.
+
+---------
+
+### Exploiting it
+
+---------
+
+- It is common knowledge that `bcrypt` hashes 72 chars out of any password passed to it.We need to pass 72 characters that we control to guess our password.This will be possible because our original mail gets passed and not the normalized one
+- I dived into the npm package `normalize-email` and discovered that adding dot before the `@domain.com` will get removed by the package.
+
+<img width="838" height="459" alt="image" src="https://github.com/user-attachments/assets/af7f6de2-b4d2-40f7-ae40-ae9cc49cb455" />
+
+- For example
+
+<img width="727" height="294" alt="image" src="https://github.com/user-attachments/assets/6d1dbb0e-8be7-45c9-b9c0-12f74a18a128" />
+
+- We can b
+
 
 -----------------
 
