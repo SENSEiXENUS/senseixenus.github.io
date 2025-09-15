@@ -151,7 +151,7 @@ function makeFlag(name){
 
 <img width="636" height="544" alt="image" src="https://github.com/user-attachments/assets/04522eb2-10f5-48ee-8545-53fc36d4d8dd" />
 
-- The challenge requires the players to access accounts without their passwords.
+- The challenge requires creating an account and accessing it with an unknown password.
 - Sink in route `/user`-:
 
 ```js
@@ -201,7 +201,7 @@ app.post('/user', limiter, (req, res, next) => {
 
 ![image](https://github.com/user-attachments/assets/5bc5f585-9d01-44bc-99de-0627d720628c)
 
-- The email's parser has varying ways to parse different domain's email format.I solved it with `gmail.com`
+- The email parser parses various domain formats with varying methods.I solved it with `gmail.com`
 - Mail-:
 
 ```
