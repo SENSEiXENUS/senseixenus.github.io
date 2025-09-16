@@ -265,6 +265,14 @@ enum4linux -P 172.16.5.5
 ```bash
 enum4linux-ng -P 172.16.5.5 -oA ilfreight
 ```
+- Enumerating the Password Policy - from Linux - LDAP Anonymous Bind
+ - LDAP anonymous binds allow unauthenticated attackers to retrieve information from the domain, such as a complete listing of users, groups, computers, user account attributes, and the domain password policy. This is a legacy configuration, and as of Windows Server 2003, only authenticated users are permitted to initiate LDAP requests. We still see this configuration from time to time as an admin may have needed to set up a particular application to allow anonymous binds and given out more than the intended amount of access, thereby giving unauthenticated users access to all objects in AD.
+   ```bash
+   ldapsearch -H ldap://172.16.5.5 -x -b "DC=INLANEFREIGHT,DC=LOCAL" -s sub "*" | grep -m 1 -B 10 pwdHistoryLength
+   ```
+
+<img width="1242" height="284" alt="image" src="https://github.com/user-attachments/assets/188505c9-5980-4c56-b270-76854ecb4395" />
+
 
 --------------
 
@@ -293,6 +301,12 @@ Get-DomainPolicy
 
 ---------------
 
+### Making a password list for password spraying
 
+---------------
+
+- 
+
+---------------
 
  
