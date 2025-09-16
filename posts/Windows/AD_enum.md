@@ -301,12 +301,68 @@ Get-DomainPolicy
 
 ---------------
 
-### Making a password list for password spraying
+### Making a user list for password spraying
 
 ---------------
 
-- 
+- Using enum4linux
+
+```bash
+enum4linux -U 172.16.5.5  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
+```
+
+<img width="1003" height="564" alt="image" src="https://github.com/user-attachments/assets/3284864b-5378-47e7-87c1-674902874bda" />
+
+- Using rpcclient's `enumdomusers`
+
+```bash
+rpcclient -U "" -N 172.16.5.5
+```
+
+<img width="695" height="594" alt="image" src="https://github.com/user-attachments/assets/d559c55d-df34-4cf9-a191-fcd4324147af" />
+
+- Using `nxc`'s `--users` flag
+
+```bash
+nxc smb[host] --users
+```
+
+<img width="1902" height="739" alt="image" src="https://github.com/user-attachments/assets/b7316540-d2c7-424c-b398-9ba6ab882823" />
+
+- Or use `ldapsearch`,it should also be noted that the use of `-h` is deprecated while `-H` is the new switch.
+
+```bash
+ldapsearch -H ldap://172.16.5.5 -x -b "DC=INLANEFREIGHT,DC=LOCAL" -s sub "(&(objectclass=user))"  | grep sAMAccountName: | cut -f2 -d" "
+```
+
+<img width="1618" height="486" alt="image" src="https://github.com/user-attachments/assets/201183f5-da5e-4b99-965e-e2e805bcca7d" />
+
+- Or `winldapsearch`-:
+```bash
+./windapsearch.py --dc-ip 172.16.5.5 -u "" -U
+```
+- Or use `kerbrute`
+
+```bash
+kerbrute userenum -d inlanefreight.local --dc 172.16.5.5 /opt/jsmith.txt 
+```
+
+- Lastly, you can enumerate users with credentials.Use nxc
+
+```bash
+nxc smb 172.16.5.5 -u htb-student -p "Academy_student_AD\!" --users
+```
+
+<img width="1913" height="589" alt="image" src="https://github.com/user-attachments/assets/cd4c36b7-462f-4ecd-a6fa-0d8fa2ef7e2e" />
+
+
 
 ---------------
 
- 
+### Password Spraying
+
+----------------
+
+-  
+
+----------------
