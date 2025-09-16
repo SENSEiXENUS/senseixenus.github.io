@@ -228,8 +228,71 @@ bloodhound-ce-python -u [user@domain] -p '[password]' -ns [nameserver / IP] -d [
 
 ![image](https://github.com/user-attachments/assets/b78f5f72-6f3a-4e63-9d1b-23630909ff07)
 
-- 
+---------------
+
+### Password Spraying overview
+
+---------------
+
+- Enumerating and retrieving password policies
+ - With valid domain credentials, the password policy can also be obtained remotely using tools such as CrackMapExec, rpcclient or nxc.
+   ```bash
+   nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --pass-pol
+   ```
+   <img width="1908" height="500" alt="image" src="https://github.com/user-attachments/assets/e970ee24-cf00-4975-8915-f90bbe6512ac" />
+
+- You can also use smb null sessions.The first is via an SMB NULL session. SMB NULL sessions allow an unauthenticated attacker to retrieve information from the domain, such as a complete listing of users, groups, computers, user account attributes, and the domain password policy. SMB NULL session misconfigurations are often the result of legacy Domain Controllers being upgraded in place, ultimately bringing along insecure configurations, which existed by default in older versions of Windows Server.
+- Using `rpcclient`-:
+
+```bash
+rpcclient -U "" -N 172.16.5.5
+```
+
+- Query for passwordinfo with `querydominfo` and `getdompwinfo`.
+
+<img width="629" height="427" alt="image" src="https://github.com/user-attachments/assets/2ec677b6-02a3-4daa-af12-fa290f5e9fac" />
+
+- Use `Enum4linux-ng`
+
+```bash
+enum4linux -P 172.16.5.5
+```
+
+<img width="1068" height="898" alt="image" src="https://github.com/user-attachments/assets/d39bc36f-cc5a-4b56-8959-4b44980756f4" />
+
+- Or use `enum4linux-ng` to retrieve the output in a file format
+
+```bash
+enum4linux-ng -P 172.16.5.5 -oA ilfreight
+```
+
+--------------
+
+### Windows 
+
+--------------
+
+- Using net for null sessions
+
+```cmd
+ net use \\host\ipc$ "" /u:"" 
+```
+
+- Use
+
+```cmd
+net accounts
+```
+
+- Powerview script
+
+```powershell
+import-module .\PowerView.ps1
+Get-DomainPolicy
+```
+
+---------------
 
 
 
-
+ 
