@@ -410,3 +410,34 @@ nxc smb --local-auth 172.16.5.0/23 -u administrator -H 88ad09182de639ccc6579eb08
 -
 
 -----------------
+
+### Enumerating Security Controls
+
+-----------------
+
+- After gaining access, it is important to understand the defensive state of the host, enumerate further with tools or `living off the land` with tools that exist solely on the host.
+- Windows Defender, use-: If real-time protection is set, it is  active
+
+```powershell
+Get-MpComputerStatus
+```
+
+- Applocker-: An application whitelist is a list of approved software applications or executables that are allowed to be present and run on a system. The goal is to protect the environment from harmful malware and unapproved software that does not align with the specific business needs of an organization.It is common for organizations to block cmd.exe and PowerShell.exe and write access to certain directories, but this can all be bypassed. Organizations also often focus on blocking the PowerShell.exe executable, but forget about the other PowerShell executable locations such as `%SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe` or `PowerShell_ISE.exe`. We can see that this is the case in the AppLocker rules shown below.
+- Getting the rules-:
+
+```powershell
+Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+```
+
+- Powershell Constrained Language Mode-: It restricts the syntax to be used on powershell
+
+```powershell
+$ExecutionContext.SessionState.LanguageMode
+```
+
+- LAPS(MIcrosoft Local Administrator Password Solution)-: It is used to randomize and rotate local administrator passwords on Windows hosts and prevent lateral movement. We can enumerate what domain users can read the LAPS password set for machines with LAPS installed and what machines do not have LAPS installed.  The LAPSToolkit greatly facilitates this with several functions. One is parsing ExtendedRights for all computers with LAPS enabled. This will show groups specifically delegated to read LAPS passwords, which are often users in protected groups. An account that has joined a computer to a domain receives All Extended Rights over that host, and this right gives the account the ability to read passwords. Enumeration may show a user account that can read the LAPS password on a host. This can help us target specific AD users who can read LAPS passwords.
+- Using `Find-LAPSDelegatedGroups`-:(This can help us target specific AD users who can read LAPS passwords.)
+- The `Find-AdmPwdExtendedRights` checks the rights on each computer with LAPS enabled for any groups with read access and users with "All Extended Rights." Users with "All Extended Rights" can read LAPS passwords and may be less protected than users in delegated groups, so this is worth checking for.
+- We can use the `Get-LAPSComputers` function to search for computers that have LAPS enabled when passwords expire, and even the randomized passwords in cleartext if our user has access.
+
+-----------------
