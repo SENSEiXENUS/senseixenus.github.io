@@ -441,3 +441,105 @@ $ExecutionContext.SessionState.LanguageMode
 - We can use the `Get-LAPSComputers` function to search for computers that have LAPS enabled when passwords expire, and even the randomized passwords in cleartext if our user has access.
 
 -----------------
+
+### Credentialed Enumeration (from Linux)
+
+-----------------
+
+- Using `nxc`(crackmapxec upgraded version)-:
+- Domain User Enumeration-:
+
+```bash
+nxc smb 172.16.5.5 -u forend -p Klmcargo2 --users
+```
+
+<img width="1876" height="454" alt="image" src="https://github.com/user-attachments/assets/3ec37e6e-36c2-435b-845c-5a20ba425bf6" />
+
+- Domain group enumeration(use crackmapexec)-:
+
+```bash
+crackmapexec smb 172.16.5.5 -u forend -p Klmcargo2 --groups
+```
+<img width="1905" height="707" alt="image" src="https://github.com/user-attachments/assets/24eca022-436d-40da-b9cc-230863387582" />
+
+- Logged-on-users too-:
+
+```bash
+crackmapexec smb 172.16.5.5 -u forend -p Klmcargo2 --loggedon-users
+```
+- Share enumeration-:
+
+```bash
+sudo nxc smb 172.16.5.5 -u forend -p Klmcargo2 --loggedon-users
+```
+<img width="1887" height="314" alt="image" src="https://github.com/user-attachments/assets/713e0cd4-37cb-421c-a751-2e0c253c9a1e" />
+
+- Grab all shares-:
+
+```bash
+nxc smb 172.16.5.5 -u forend -p Klmcargo2 -M spider_plus
+```
+
+<img width="1908" height="622" alt="image" src="https://github.com/user-attachments/assets/937876fd-0f3d-472d-a48d-6d45a887df09" />
+
+- Grab a single share-:
+
+```bash
+nxc smb 172.16.5.5 -u forend -p Klmcargo2 -M spider_plus --share "zzzz"
+```
+- Using smbmap-:
+- Checking access-:
+
+```bash
+smbmap -u forend -p Klmcargo2 -d INLANEFREIGHT.LOCAL -H 172.16.5.5
+```
+
+<img width="1225" height="573" alt="image" src="https://github.com/user-attachments/assets/6bdab111-9849-4a8e-97b8-004f179a28cf" />
+
+- Recursively listing all directories-:
+
+```bash
+smbmap -u forend -p Klmcargo2 -d INLANEFREIGHT.LOCAL -H 172.16.5.5 -R 'Department Shares' --dir-only
+```
+
+<img width="1506" height="832" alt="image" src="https://github.com/user-attachments/assets/686375b3-e571-4ae4-a8dd-775b8ca9efdf" />
+
+- RPCCLIENT-:rpcclient is a handy tool created for use with the Samba protocol and to provide extra functionality via MS-RPC. It can enumerate, add, change, and even remove objects from AD. It is highly versatile; we just have to find the correct command to issue for what we want to accomplish. The man page for rpcclient is very helpful for this; just type man rpcclient into your attack host's shell and review the options available. Let's cover a few rpcclient functions that can be helpful during a penetration test.
+
+- Samba null session-:
+
+```bash
+rpcclient -U "" -N 172.16.5.5
+```
+<img width="419" height="113" alt="image" src="https://github.com/user-attachments/assets/66422a38-d3f1-4ac1-84e1-d44933a46691" />
+
+-  What is an `RID`? A Relative Identifier (RID) is a unique identifier (represented in hexadecimal format) utilized by Windows to track and identify objects.Examples to full understand-:
+  -   E.g the sid for domain `INLANEFREIGHT.local` is `S-1-5-21-3842939050-3880317879-2865463114`
+  -   If an object is created on a domain the rid is merged with the sid to create a unique value of theobject
+  -   So the domain user htb-student with a RID:[0x457] Hex 0x457 would = decimal 1111, will have a full user SID of: S-1-5-21-3842939050-3880317879-2865463114-1111.
+- However, there are accounts that you will notice that have the same RID regardless of what host you are on. Accounts like the built-in Administrator for a domain will have a RID [administrator] rid:[0x1f4], which, when converted to a decimal value, equals 500. The built-in Administrator account will always have the RID value Hex 0x1f4, or 500. This will always be the case. Since this value is unique to an object, we can use it to enumerate further information about it from the domain. Let's give it a try again with rpcclient. We will dig a bit targeting the htb-student user.
+- User enumeration by RID-:
+
+```
+queryuser 0x457
+```
+
+<img width="738" height="593" alt="image" src="https://github.com/user-attachments/assets/9ad13a92-2241-400c-94c7-2fa6b3e9771a" />
+
+- Enumerating all users-:
+
+```bash
+enumdomusers
+```
+
+<img width="541" height="746" alt="image" src="https://github.com/user-attachments/assets/8b554b98-5d42-4906-ad2b-f020d968df7c" />
+
+- 
+
+
+
+
+----------------
+
+
+-----------------
