@@ -534,7 +534,7 @@ enumdomusers
 
 <img width="541" height="746" alt="image" src="https://github.com/user-attachments/assets/8b554b98-5d42-4906-ad2b-f020d968df7c" />
 
-- 
+- Impacket-toolkit-:
 
 
 
