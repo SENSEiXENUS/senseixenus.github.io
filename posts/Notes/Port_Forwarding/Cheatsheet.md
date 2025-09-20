@@ -868,6 +868,19 @@ sudo ip route del 172.16.0.0/16 dev ligolo
 
 ![image](https://github.com/user-attachments/assets/35a43da0-190a-483f-ad7a-108693719101)
 
+- Editing the bind address, find `ligolo-ng.yaml` and edit
+
+<img width="1303" height="360" alt="image" src="https://github.com/user-attachments/assets/3c1678c3-7dd7-4be2-b7d0-ef3bd90ef8ff" />
+
+- Run with-:
+
+```bash
+ligolo-ng -selfcert config ligolo-ng.yaml
+```
+
+<img width="1144" height="377" alt="image" src="https://github.com/user-attachments/assets/fba98849-4c37-428e-9f8c-5d6bf98d7c5c" />
+
+
 -------------------
 
 
