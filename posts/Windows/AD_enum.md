@@ -597,5 +597,84 @@ Get-Module
 
 <img width="745" height="274" alt="image" src="https://github.com/user-attachments/assets/52a523b7-7997-4338-bc19-ea682585784b" />
 
+-  The Get-Module cmdlet, which is part of the Microsoft.PowerShell.Core module, will list all available modules, their version, and potential commands for use. This is a great way to see if anything like Git or custom administrator scripts are installed. If the module is not loaded, run Import-Module ActiveDirectory to load it for use.
+
+```powershell
+Import-Module ActiveDirectory
+```
+
+<img width="794" height="251" alt="image" src="https://github.com/user-attachments/assets/7c7c269a-4ef1-422c-859a-bb3cf5e4cddf" />
+
+- Loaded
+
+<img width="1010" height="215" alt="image" src="https://github.com/user-attachments/assets/2c941cdf-3f4e-4b5f-8fe5-2114f7d2fbe2" />
+
+- Getting domain info-:
+
+```powershell
+Get-ADDomain
+```
+
+<img width="1004" height="639" alt="image" src="https://github.com/user-attachments/assets/7dd42999-33d2-49b6-8840-fc0b2c6b0e77" />
+
+- `Get-ADUser` (We'll use the Get-ADUser cmdlet. We will be filtering for accounts with the ServicePrincipalName property populated. )
+
+```powershell
+Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName
+```
+
+<img width="1011" height="452" alt="image" src="https://github.com/user-attachments/assets/9053efb7-812e-4b60-a2a0-6e707f71ea7c" />
+
+- Trust relationships-:
+
+```
+Get-ADTrust -Filter *
+```
+<img width="1019" height="507" alt="image" src="https://github.com/user-attachments/assets/9f6a4c24-1dcc-4a37-b6fb-55bdef401d50" />
+
+- Finding groups
+
+```powershell
+Get-ADGroup -Filter * | select name
+```
+
+<img width="1012" height="548" alt="image" src="https://github.com/user-attachments/assets/0236a68a-6f68-45f5-a315-278638ebb719" />
+
+- Detailed group info-:
+
+```powershell
+Get-ADGroup -Identity "Backup Operators"
+```
+<img width="866" height="261" alt="image" src="https://github.com/user-attachments/assets/f646bf2b-e059-48af-acef-b0a229802801" />
+
+- Getting a member listing of the group
+
+```powershell
+Get-ADGroupMember -Identity "Backup Operators"
+```
+
+<img width="907" height="402" alt="image" src="https://github.com/user-attachments/assets/ffcbe3bc-c2cf-4737-87f4-d54e6a031417" />
+
+
+----------------
+
+### Powerview
+
+-----------------
+
+- 
+
+-----------------
+
+
+
+
+
+
+
+
+
+
+
 
 ---------------
