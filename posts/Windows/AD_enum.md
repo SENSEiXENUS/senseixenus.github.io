@@ -666,15 +666,10 @@ Get-ADGroupMember -Identity "Backup Operators"
 
 -----------------
 
+### Blooodhound Cypher queries
 
+-----------------
 
-
-
-
-
-
-
-
-
+- [Haussec](https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/)
 
 ---------------
