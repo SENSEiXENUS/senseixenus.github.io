@@ -576,4 +576,26 @@ windapsearch -m privileged-users  --dc 172.16.5.5 -u forend@inlanefreight.local 
 
 -----------------
 
+- Usage-:
+
+```bash
+sudo bloodhound-python -u 'forend' -p 'Klmcargo2' -ns 172.16.5.5 -d inlanefreight.local -c all
+```
+
+---------------
+
+### Credentialed enumeration with windows
+
+----------------
+
+- [Active Directory powershell module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2022-ps)
+- Investigating modules, search with
+
+```powershell
+Get-Module
+```
+
+<img width="745" height="274" alt="image" src="https://github.com/user-attachments/assets/52a523b7-7997-4338-bc19-ea682585784b" />
+
+
 ---------------
