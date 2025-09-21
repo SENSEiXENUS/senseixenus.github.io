@@ -689,5 +689,13 @@ Snaffler.exe -s -d inlanefreight.local -o snaffler.log -v data
 <img width="993" height="440" alt="image" src="https://github.com/user-attachments/assets/044b0068-1de5-440e-81a1-3d7ce1be5991" />
 
 
+----------------
+
+### Living off the land
 
 ----------------
+
+- Basic enumeration Commands
+ - `hostname`-:``
+
+------------------
