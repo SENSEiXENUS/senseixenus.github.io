@@ -1,6 +1,6 @@
 -----------
 
-### Hash COllision(MD5)  
+### Hash Collision(MD5)  
 
 -----------
 
@@ -9,5 +9,7 @@
 
 <img width="1893" height="520" alt="image" src="https://github.com/user-attachments/assets/9b5c788a-494d-4661-bc07-ebe8b0f180df" />
 
-- 
+- Using it-:
+
+
 
