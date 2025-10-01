@@ -719,4 +719,22 @@ Snaffler.exe -s -d inlanefreight.local -o snaffler.log -v data
 
 - Downgrading powershell
 
+```powershell
+Get-Host
+powershell -version 2
+```
+
+<img width="1018" height="374" alt="image" src="https://github.com/user-attachments/assets/5f1f687e-d44f-4cb4-98f7-a0173ea5e0f5" />
+
+- Checking Defenses-:
+
+```powershell
+netsh advfirewall show allprofiles
+```
+- `sc query windefend`::`checking if windefender is active`
+- `Get-MpComputerStatus`:`Checking if AV is enabled`
+
+- `qwinsta`::`checking if an individual is logged in to the host`
+- 
+
 ------------------
