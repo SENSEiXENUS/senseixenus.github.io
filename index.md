@@ -143,5 +143,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[April 28 2025]] [Bsides 2025](https://senseixenus.github.io/posts/ctf/BsidesCTF/2025/writeup.html)
 - [[June 9 2025]] [Tjctf 2025](https://senseixenus.github.io/posts/ctf/Tjctf/25/writeup.html)
 - [[June 28 2025]] [BsidesCTF Mumbai2025](https://senseixenus.github.io/posts/ctf/BsidesMumbai/writeup.html)
+- [[September 2025]] [Imaginary CTF](https://senseixenus.github.io/posts/ctf/Imaginary_Ctf/writeup.html)
+- [[September 2025]] [GDSCCTF Hackcon](https://senseixenus.github.io/posts/ctf/CTF-CREATION/HackconCTF25/writeup.html)
     
 * * *
