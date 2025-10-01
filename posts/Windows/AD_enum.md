@@ -735,6 +735,25 @@ netsh advfirewall show allprofiles
 - `Get-MpComputerStatus`:`Checking if AV is enabled`
 
 - `qwinsta`::`checking if an individual is logged in to the host`
+- Networking Commands
+  - `arp -a`::`List all hosts in the arp table`
+  - `ipconfig /all`::`Prints out adapter settings for the host. We can figure out the network segment from here.`
+  - `route print`: `Displays the routing table (IPv4 & IPv6) identifying known networks and layer three routes shared with the host.`
+
+-----------------
+
+### Windows Management Instructions
+
+------------------
+
+- Windows Management Instrumentation (WMI) is a scripting engine that is widely used within Windows enterprise environments to retrieve information and run administrative tasks on local and remote hosts. For our usage, we will create a WMI report on domain users, groups, processes, and other information from our host and other domain hosts.
+
+- Checking domain info-:
+
+```powershell
+wmic ntdomain get Caption,Description,DnsForestName,DomainName,DomainControllerAddress
+```
+
 - 
 
 ------------------
