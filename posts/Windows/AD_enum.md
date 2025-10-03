@@ -841,6 +841,8 @@ dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -
 
 - Access Control List(ACL) Abuse primer
 - For security reasons, not all users and computers are allowed to access files on a domain. That's where Access Control List comes in.Although, a simple misconfiguration may affect it.
-- 
+- In their simplest form, ACLs are lists that define a) who has access to which asset/resource and b) the level of access they are provisioned. The settings themselves in an ACL are called Access Control Entries (ACEs). Each ACE maps back to a user, group, or process (also known as security principals) and defines the rights granted to that principal. Every object has an ACL, but can have multiple ACEs because multiple security principals can access objects in AD. ACLs can also be used for auditing access within AD.
+
+
 
 ------------------
