@@ -748,11 +748,15 @@ netsh advfirewall show allprofiles
 
 - Windows Management Instrumentation (WMI) is a scripting engine that is widely used within Windows enterprise environments to retrieve information and run administrative tasks on local and remote hosts. For our usage, we will create a WMI report on domain users, groups, processes, and other information from our host and other domain hosts.
 
-- Checking domain info-:
-
-```powershell
-wmic ntdomain get Caption,Description,DnsForestName,DomainName,DomainControllerAddress
-```
+| Commands                                                |   Description                                                                          |
+|-------------------------------------------------------- |-----------------------------------------------------------------------------------------|
+| wmic qfe get Caption,Description,HotFixID,InstalledOn|Prints the patch level and description of the Hotfixes applied                           |
+| wmic computersystem get Name,Domain,Manufacturer,Model,Username,Roles /format:List	| Displays basic host information to include any attributes within the list
+wmic process list /format:list	| A listing of all processes on host
+wmic ntdomain list /format:list	| Displays information about the Domain and Domain Controllers
+wmic useraccount list /format:list	| Displays information about all local accounts and any domain accounts that have logged into the device
+wmic group list /format:list	| Information about all local groups
+wmic sysaccount list /format:list	| Dumps information about any system accounts that are being used as service accounts.
 
 - 
 
