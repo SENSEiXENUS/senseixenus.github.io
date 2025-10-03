@@ -786,4 +786,41 @@ net view /all /domain[:domainname]	|Shares on the domains
 net view \computer /ALL	|List shares of a computer
 net view /domain	|List of PCs of the domain
 
+- Dsquery-: Dsquery is a helpful command-line tool that can be utilized to find Active Directory objects. The queries we run with this tool can be easily replicated with tools like BloodHound and PowerView, but we may not always have those tools at our disposal, as discussed at the beginning of the section. But, it is a likely tool that domain sysadmins are utilizing in their environment. With that in mind, dsquery will exist on any host with the Active Directory Domain Services Role installed, and the dsquery DLL exists on all modern Windows systems by default now and can be found at C:\Windows\System32\dsquery.dll.
+- User search
+
+```cmd
+dsquery user
+```
+
+- Computer search
+
+```cmd
+dsquery computer
+```
+
+- WIldcard search-:
+
+```powershell
+dsquery * "CN=Users,DC=INLANEFREIGHT,DC=LOCAL"
+```
+- Finding users with the `PASSWD_NOTREQD` flag with dsquery
+
+```powershell
+dsquery * -filter "(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=32))" -attr distinguishedName userAccountControl
+```
+- Searching for doamin controllers
+
+```pwsh
+dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -attr sAMAccountName
+```
+
+------------------
+
+### LDAP FIltering
+
+------------------
+
+-
+
 ------------------
