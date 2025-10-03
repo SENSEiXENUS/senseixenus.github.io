@@ -821,6 +821,6 @@ dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -
 
 ------------------
 
--
+- The identifier `userAccountControl:1.2.840.113556.1.4.803:` Specifies that we are looking at the User Account Control (UAC) attributes for an object. This portion can change to include three different values we will explain below when searching for information in AD (also known as Object Identifiers (OIDs).
 
 ------------------
