@@ -821,6 +821,26 @@ dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -
 
 ------------------
 
+- You will notice in the queries above that we are using strings such as userAccountControl:1.2.840.113556.1.4.803:=8192. These strings are common LDAP queries that can be used with several different tools too, including AD PowerShell, ldapsearch, and many others. Let's break them down quickly:
+
 - The identifier `userAccountControl:1.2.840.113556.1.4.803:` Specifies that we are looking at the User Account Control (UAC) attributes for an object. This portion can change to include three different values we will explain below when searching for information in AD (also known as Object Identifiers (OIDs).
+
+- The `=8192` represents the decimal bitmask we want to match in this search. This decimal number corresponds to a corresponding UAC Attribute flag that determines if an attribute like password is not required or account is locked is set. These values can compound and make multiple different bit entries. Below is a quick list of potential values.
+
+<img width="2576" height="1780" alt="image" src="https://github.com/user-attachments/assets/f742a6de-d177-4198-bd7d-8f9f1b89dd2c" />
+
+- Logical Operators
+- When building out search strings, we can utilize logical operators to combine values for the search. The operators & | and ! are used for this purpose. For example we can combine multiple search criteria with the & (and) operator like so:
+`(&(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=64))`
+
+------------------
+
+### AN ACE IN THE HOLE
+
+------------------
+
+- Access Control List(ACL) Abuse primer
+- For security reasons, not all users and computers are allowed to access files on a domain. That's where Access Control List comes in.Although, a simple misconfiguration may affect it.
+- 
 
 ------------------
