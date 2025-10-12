@@ -40,3 +40,13 @@ const user = {name: "Andrew",age: 15,role: "admin",isAdmin: function() {if (this
 ### Prototype in Javascript
 
 ---------------
+
+- Every object in JavaScript is linked to another object of some kind, known as its prototype. By default, JavaScript automatically assigns new objects one of its built-in prototypes. For example, strings are automatically assigned the built-in String.prototype.
+- For example-:
+
+```js
+let myString = "";
+Object.getPrototypeOf(myString); //String
+```
+
+- Inheritance way of life in Javascript-:
