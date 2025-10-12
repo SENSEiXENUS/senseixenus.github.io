@@ -1,6 +1,6 @@
 -----------------
 
-#### Prototype POllution
+#### Prototype Pollution
 
 -----------------
 
@@ -33,4 +33,10 @@ user['name'] //Andrew
 const user = {name: "Andrew",age: 15,role: "admin",isAdmin: function() {if (this.role === 'admin'){ return true; } else {return false;}}};
 ```
 
-- 
+- The example above is an "object literal", which means it was created using curly brace syntax to explicitly declare its properties and their initial values. However, it's important to understand that almost everything in JavaScript is an object under the hood. Throughout these materials, the term "object" refers to all entities, not just object literals.
+
+---------------
+
+### Prototype in Javascript
+
+---------------
