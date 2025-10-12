@@ -24,3 +24,6 @@
 |$ne | Matches all values that are not equal to a specified value|
 |$in |Matches all of the values specified in an array. |
 |$regex | Selects documents where values match a specified regular expression.|
+| $nin  | not in an array |
+
+- 
