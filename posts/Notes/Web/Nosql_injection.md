@@ -183,7 +183,9 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-- Usage-:
+- Usag ( reset carlos' password first)-:
+
+<img width="1231" height="578" alt="image" src="https://github.com/user-attachments/assets/6bf031f0-90eb-48fc-aff3-f2db309be654" />
 
 - Time based injection exfiltration-:
 
