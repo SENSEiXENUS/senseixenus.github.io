@@ -13,4 +13,24 @@
 
 ------------------
 
+- Javascript uses a prototypal-inheritance model compared to class-model used by other programming languages.
+- Objects in js-:It consist of `key:value` pair known as properties.e.g
+
+```js
+const user = {name: "Andrew",age: 15,role: "admin"};
+```
+
+- Access it via bracket notation or dot notation-:
+
+```js
+user.name //Andrew
+user['name'] //Andrew
+```
+
+- As well as data, properties may also contain executable functions. In this case, the function is known as a "method".
+
+```js
+const user = {name: "Andrew",age: 15,role: "admin",isAdmin: function() {if (this.role === 'admin'){ return true; } else {return false;}}};
+```
+
 - 
