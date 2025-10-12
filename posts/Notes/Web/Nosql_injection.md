@@ -199,3 +199,182 @@ admin'+function(x){if(x.password[0]==="a"){sleep(5000)};}(this)+'
 ```
 
 --------------------
+
+# 🧩 MongoDB Operators & Function Compatibility
+
+This cheat sheet outlines which MongoDB **operators** work with which **functions/stages**.
+
+---
+
+## ⚙️ 1. Comparison Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$eq` | Equal to | `find()`, `aggregate($match)` |
+| `$ne` | Not equal to | `find()`, `aggregate($match)` |
+| `$gt` | Greater than | `find()`, `aggregate($match)` |
+| `$gte` | Greater than or equal | `find()`, `aggregate($match)` |
+| `$lt` | Less than | `find()`, `aggregate($match)` |
+| `$lte` | Less than or equal | `find()`, `aggregate($match)` |
+| `$in` | Matches any value in array | `find()`, `aggregate($match)` |
+| `$nin` | Not in array | `find()`, `aggregate($match)` |
+
+---
+
+## 🧠 2. Logical Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$and` | Joins multiple conditions | `find()`, `aggregate($match)` |
+| `$or` | Matches any condition | `find()`, `aggregate($match)` |
+| `$nor` | Fails all conditions | `find()`, `aggregate($match)` |
+| `$not` | Negates a condition | `find()`, `aggregate($match)` |
+
+---
+
+## 🧱 3. Element Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$exists` | Checks if field exists | `find()`, `aggregate($match)` |
+| `$type` | Checks BSON data type | `find()`, `aggregate($match)` |
+| `$jsonSchema` | Validates JSON schema | `find()`, `aggregate()` |
+
+---
+
+## 🔍 4. Evaluation Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$expr` | Use aggregation expressions in queries | `find()`, `aggregate($match)` |
+| `$regex` | Regular expression match | `find()`, `aggregate($match)` |
+| `$text` | Text search | `find()` |
+| `$where` | Custom JavaScript condition | `find()` |
+
+---
+
+## 🧮 5. Array Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$all` | Matches all values in array | `find()`, `aggregate($match)` |
+| `$elemMatch` | Matches array element by condition | `find()`, `aggregate($match)` |
+| `$size` | Matches array length | `find()`, `aggregate($match)` |
+
+---
+
+## 🧾 6. Projection Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$slice` | Limit array elements | `find(projection)`, `aggregate($project)` |
+| `$meta` | Access text score metadata | `find(projection)`, `aggregate($project)` |
+| `$` | Positional projection | `find(projection)` |
+
+---
+
+## 🧱 7. Update Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$set` | Set a field value | `updateOne()`, `updateMany()` |
+| `$unset` | Remove a field | `updateOne()`, `updateMany()` |
+| `$rename` | Rename a field | `updateOne()`, `updateMany()` |
+| `$inc` | Increment numeric field | `updateOne()`, `updateMany()` |
+| `$mul` | Multiply numeric field | `updateOne()`, `updateMany()` |
+| `$min` | Set field to min value | `updateOne()`, `updateMany()` |
+| `$max` | Set field to max value | `updateOne()`, `updateMany()` |
+| `$currentDate` | Set field to current date | `updateOne()`, `updateMany()` |
+
+### ➕ Array Update Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$push` | Add element to array | `updateOne()`, `updateMany()` |
+| `$addToSet` | Add unique element to array | `updateOne()`, `updateMany()` |
+| `$pop` | Remove first/last element | `updateOne()`, `updateMany()` |
+| `$pull` | Remove elements matching condition | `updateOne()`, `updateMany()` |
+| `$pullAll` | Remove all listed elements | `updateOne()`, `updateMany()` |
+| `$each` | Add multiple elements (used with `$push`) | `updateOne()`, `updateMany()` |
+| `$position` | Insert array elements at index | `updateOne()`, `updateMany()` |
+| `$sort` | Sort array elements | `updateOne()`, `updateMany()` |
+
+---
+
+## 🔄 8. Aggregation Stage Operators
+
+| Stage | Description | Example Use |
+|--------|--------------|--------------|
+| `$match` | Filter documents | Similar to `find()` |
+| `$project` | Select and shape fields | Create new computed fields |
+| `$group` | Group documents | `{ $group: { _id: "$field", total: { $sum: 1 } } }` |
+| `$sort` | Sort documents | `{ $sort: { score: -1 } }` |
+| `$limit` | Limit number of docs | `{ $limit: 5 }` |
+| `$skip` | Skip documents | `{ $skip: 10 }` |
+| `$lookup` | Join collections | Foreign key join |
+| `$unwind` | Deconstruct arrays | Flatten array fields |
+| `$count` | Count documents | `{ $count: "total" }` |
+| `$addFields` | Add computed fields | Similar to `$project` |
+| `$replaceRoot` | Promote subdocument | — |
+| `$sample` | Random selection | `{ $sample: { size: 5 } }` |
+| `$merge` | Write aggregation output to collection | — |
+
+---
+
+## 💡 9. Bitwise Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$bitsAllSet` | All bits are set | `find()`, `aggregate($match)` |
+| `$bitsAnySet` | Any bit is set | `find()`, `aggregate($match)` |
+| `$bitsAllClear` | All bits are clear | `find()`, `aggregate($match)` |
+| `$bitsAnyClear` | Any bit is clear | `find()`, `aggregate($match)` |
+
+---
+
+## 🌍 10. Geospatial Operators
+
+| Operator | Description | Works In |
+|-----------|--------------|-----------|
+| `$geoWithin` | Geometry within a boundary | `find()`, `aggregate($match)` |
+| `$geoIntersects` | Intersects a geometry | `find()`, `aggregate($match)` |
+| `$near` | Sort by proximity | `find()`, `aggregate($match)` |
+| `$nearSphere` | Spherical proximity | `find()`, `aggregate($match)` |
+| `$center`, `$box`, `$polygon` | Define shapes | `find()` |
+
+---
+
+## 🧩 11. Cursor/Query Chain Functions (Not Operators)
+
+| Function | Purpose | Works On |
+|-----------|----------|----------|
+| `.sort()` | Sort results | `find()`, cursor |
+| `.limit()` | Limit number of results | `find()`, cursor |
+| `.skip()` | Skip results | `find()`, cursor |
+| `.count()` | Count documents | `find()`, cursor |
+| `.toArray()` | Convert cursor to array | `find()` |
+| `.forEach()` | Iterate results | `find()` |
+
+---
+
+## ⚡ Summary Table
+
+| Operator/Method | Works In |
+|------------------|----------|
+| Query operators (`$eq`, `$gt`, `$in`, etc.) | `find()`, `$match` |
+| Logical (`$and`, `$or`, etc.) | `find()`, `$match` |
+| Update (`$set`, `$inc`, etc.) | `updateOne()`, `updateMany()` |
+| Array updates (`$push`, `$pull`, etc.) | `updateOne()`, `updateMany()` |
+| Aggregation stages (`$group`, `$project`, etc.) | `aggregate()` |
+| Cursor methods (`.limit()`, `.sort()`, etc.) | `find()` |
+| Geospatial (`$geoWithin`, `$near`) | `find()`, `$match` |
+
+---
+
+📘 **Notes**
+- Operators **starting with `$`** are used inside MongoDB queries, updates, or pipelines.
+- Cursor methods (`.limit()`, `.skip()`, etc.) are **JavaScript methods**, not operators.
+- `$limit`, `$sort`, `$skip` **only work inside** the aggregation framework, not in plain queries.
+
+---
+
