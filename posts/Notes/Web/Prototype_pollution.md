@@ -49,4 +49,29 @@ let myString = "";
 Object.getPrototypeOf(myString); //String
 ```
 
-- Inheritance way of life in Javascript-:
+- Inheritance way of life in Javascript-: When javascript tries to check a property for an object, it checks if it exists in the object but if it is non-existent, it checks the object's prototype.
+- The prototype chain-: Note that an object's prototype is just another object, which should also have its own prototype, and so on. As virtually everything in JavaScript is an object under the hood, this chain ultimately leads back to the top-level Object.prototype, whose prototype is simply null.
+
+<img width="838" height="472" alt="image" src="https://github.com/user-attachments/assets/4cfcd0de-8e97-453a-a658-d2e3f5ad89f1" />
+
+- Crucially, objects inherit properties not just from their immediate prototype, but from all objects above them in the prototype chain. In the example above, this means that the username object has access to the properties and methods of both String.prototype and Object.prototype.
+
+
+---------------
+
+### Accessing an object's prototype using `__proto__`
+
+----------------
+
+- Every object has a special property that you can use to access its prototype. Although this doesn't have a formally standardized name, __proto__ is the de facto standard used by most browsers. If you're familiar with object-oriented languages, this property serves as both a getter and setter for the object's prototype. This means you can use it to read the prototype and its properties, and even reassign them if necessary.As with any property, you can access __proto__ using either bracket or dot notation:
+
+```js
+let username = "sensei";
+username.__proto__; //String.prototype
+username.__proto__.__proto__; //Objeect.prototype
+username.__proto__.__proto__.__proto__; //null
+```
+
+- 
+----------------
+
