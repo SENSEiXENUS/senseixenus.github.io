@@ -72,6 +72,7 @@ username.__proto__.__proto__; //Objeect.prototype
 username.__proto__.__proto__.__proto__; //null
 ```
 
-- 
+- Although it's generally considered bad practice, it is possible to modify JavaScript's built-in prototypes just like any other object. This means developers can customize or override the behavior of built-in methods, and even add new methods to perform useful operations.
+
 ----------------
 
