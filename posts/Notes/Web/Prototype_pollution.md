@@ -453,6 +453,71 @@ Priority: u=1, i
 {"address_line_1":"Wiener HQ","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"RpBd2708AlwcHGnQTiusLdpPJW5z02B1","__proto__":{"isAdmin":true}}
 ```
 
+-----------------
+
+### Detecting server-side prototype pollution without polluted property reflection
+
+-----------------
+
+- Installing Iconv for utf-7 encoding-:
+
+```zsh
+wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.11.tar.gz
+tar -xvf libiconv-1.11.tar.gz
+cd libiconv-1.11
+./configure --prefix=/usr/local/iconv
+```
+
+<img width="1901" height="154" alt="image" src="https://github.com/user-attachments/assets/a5430512-7648-473d-af58-f857477efafa" />
+
+- Most times the result of a prototype pollution attack doesn't get reflected due to the fact that it is not client side.One approach is to try injecting properties that match potential configuration options for the server. You can then compare the server's behavior before and after the injection to see whether this configuration change appears to have taken effect. If so, this is a strong indication that you've successfully found a server-side prototype pollution vulnerability.
+- Techniques-:
+
+```
+Status code override
+JSON spaces override
+Charset override
+```
+
+- Status code override-: Server-side JavaScript frameworks like Express allow developers to set custom HTTP response statuses. In the case of errors, a JavaScript server may issue a generic HTTP response, but include an error object in JSON format in the body. This is one way of providing additional details about why an error occurred, which may not be obvious from the default HTTP status.Although it's somewhat misleading, it's even fairly common to receive a 200 OK response, only for the response body to contain an error object with a different status.
+
+```json
+{
+    "error": {
+        "success": false,
+        "status": 401,
+        "message": "You do not have permission to access this resource."
+    }
+}
+```
+
+-  Node's http-errors module contains the following function for generating this kind of error response:
+
+```js
+function createError () {
+    //...
+    if (type === 'object' && arg instanceof Error) {
+        err = arg
+        status = err.status || err.statusCode || status
+    } else if (type === 'number' && i === 0) {
+    //...
+    if (typeof status !== 'number' ||
+    (!statuses.message[status] && (status < 400 || status >= 600))) {
+        status = 500
+    }
+    //...
+```
+
+- The line below tries to read `status` and `statusCode` from object `err` and if it is not explicitly stated by the developer.The properties can be polluted.Try polluting the prototype with your own status property. Be sure to use an obscure status code that is unlikely to be issued for any other reason.
+
+```js
+ status = err.status || err.statusCode || status
+```
+
+- JSON Spaces Override-: he Express framework provides a `json spaces` option, which enables you to configure the number of spaces used to indent any JSON data in the response. In many cases, developers leave this property undefined as they're happy with the default value, making it susceptible to pollution via the prototype chain.If you've got access to any kind of JSON response, you can try polluting the prototype with your own json `spaces` property, then reissue the relevant request to see if the indentation in the JSON increases accordingly. You can perform the same steps to remove the indentation in order to confirm the vulnerability.This is an especially useful technique because it doesn't rely on a specific property being reflected. It's also extremely safe as you're effectively able to turn the pollution on and off simply by resetting the property to the same value as the default.Although the prototype pollution has been fixed in Express 4.17.4, websites that haven't upgraded may still be vulnerable.
+- Always set the reponse tab to `raw` to identify it
+
+- Charset override-: 
 
 
 -----------------
