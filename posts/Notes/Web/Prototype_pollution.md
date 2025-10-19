@@ -347,3 +347,9 @@ The URL you are requesting is no longer available
 ```
 
 ----------------
+
+### Prototype Pollution Browser APIS
+
+-----------------
+
+-----------------
