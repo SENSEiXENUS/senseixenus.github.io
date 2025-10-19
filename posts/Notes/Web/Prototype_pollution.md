@@ -398,4 +398,16 @@ Object.defineProperty(vulnerableObject, 'gadgetProperty', {
 ```
 - This may initially seem like a reasonable mitigation attempt as this prevents the vulnerable object from inheriting a malicious version of the gadget property via the prototype chain. However, this approach is inherently flawed.Just like the fetch() method we looked at earlier, Object.defineProperty() accepts an options object, known as a "descriptor". You can see this in the example above. Among other things, developers can use this descriptor object to set an initial value for the property that's being defined. However, if the only reason that they're defining this property is to protect against prototype pollution, they might not bother setting a value at all.In this case, an attacker may be able to bypass this defense by polluting Object.prototype with a malicious value property. If this is inherited by the descriptor object passed to Object.defineProperty(), the attacker-controlled value may be assigned to the gadget property after all.
 
+- Solving the challenge-:Url
+
+```
+https://0a0800be0322ce61805912f8004f00fe.web-security-academy.net/?__proto__[value]=data:,alert(1);//
+```
+
+- I checked [mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) for how `Object.defineProperty()` works.It takes in argument `descriptor` which is an object requiring values passed into keys `value`,`configurable` and `writable`.`Value` allows us to set the defined value of an object's property.If not set, it can lead to prototype pollution and allow an attacker set `value` at `Object.prototype`.Gadget-:
+
+```js
+Object.defineProperty(config, 'transport_url', {configurable: false, writable: false}); //value key is not set
+```
+
 -----------------
