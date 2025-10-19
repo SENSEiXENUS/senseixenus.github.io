@@ -517,7 +517,65 @@ function createError () {
 - JSON Spaces Override-: he Express framework provides a `json spaces` option, which enables you to configure the number of spaces used to indent any JSON data in the response. In many cases, developers leave this property undefined as they're happy with the default value, making it susceptible to pollution via the prototype chain.If you've got access to any kind of JSON response, you can try polluting the prototype with your own json `spaces` property, then reissue the relevant request to see if the indentation in the JSON increases accordingly. You can perform the same steps to remove the indentation in order to confirm the vulnerability.This is an especially useful technique because it doesn't rely on a specific property being reflected. It's also extremely safe as you're effectively able to turn the pollution on and off simply by resetting the property to the same value as the default.Although the prototype pollution has been fixed in Express 4.17.4, websites that haven't upgraded may still be vulnerable.
 - Always set the reponse tab to `raw` to identify it
 
-- Charset override-: 
+- Charset override-: Middleware like `body-parser` that preprocess request sbefore they're passed to the appropriate handler function. For example, the body-parser module is commonly used to parse the body of incoming requests in order to generate a req.body object. This contains another gadget that you can use to probe for server-side prototype pollution.Notice that the following code passes an options object into the read() function, which is used to read in the request body for parsing. One of these options, encoding, determines which character encoding to use. This is either derived from the request itself via the getCharset(req) function call, or it defaults to UTF-8.
+
+```js
+var charset = getCharset(req) or 'utf-8'
+
+function getCharset (req) {
+    try {
+        return (contentType.parse(req).parameters.charset || '').toLowerCase()
+    } catch (e) {
+        return undefined
+    }
+}
+
+read(req, res, next, parse, debug, {
+    encoding: charset,
+    inflate: inflate,
+    limit: limit,
+    verify: verify
+})
+```
+- Polluting the `charset` attribute will be possible through `content-type` properties
+
+```json
+{
+    "sessionId":"0123456789",
+    "username":"wiener",
+    "role":"default",
+    "__proto__":{
+        "content-type": "application/json; charset=utf-7"
+    }
+}
+```
+- Due to a bug in Node's _http_incoming module, this works even when the request's actual Content-Type header includes its own charset attribute. To avoid overwriting properties when a request contains duplicate headers, the _addHeaderLine() function checks that no property already exists with the same key before transferring properties to an IncomingMessage object
+
+```js
+IncomingMessage.prototype._addHeaderLine = _addHeaderLine;
+function _addHeaderLine(field, value, dest) {
+    // ...
+    } else if (dest[field] === undefined) {
+        // Drop duplicates
+        dest[field] = value;
+    }
+}
+```
+If it does, the header being processed is effectively dropped. Due to the way this is implemented, this check (presumably unintentionally) includes properties inherited via the prototype chain. This means that if we pollute the prototype with our own content-type property, the property representing the real Content-Type header from the request is dropped at this point, along with the intended value derived from the header.
+
+- Lab-: Detecting server-side prototype pollution without polluted property reflection
+- Solution by tweaking `json spaces`-:
+
+```json
+{"address_line_1":"Wiener HQ","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"in1gBgf219ibnRiQgX2TWBVjrK808olK","__proto__":{"json spaces":3}}
+```
+
+- Tweaking body-parser:`content-type`
+
+```json
+{"address_line_1":"+AEgAZQBsAGwAbwAgACgAIABXAG8AcgBsAGQAIQAg5L2g5aW9ACAA8J+Mjw-","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"ZH3bo0oZfag2nB6Una1u5xNt4qtS9bEo","_proto__":{"content-type":"application/json;charset=UTF-7"}}
+```
+
 
 
 -----------------
