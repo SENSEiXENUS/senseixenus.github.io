@@ -411,3 +411,12 @@ Object.defineProperty(config, 'transport_url', {configurable: false, writable: f
 ```
 
 -----------------
+
+### Server-side Prototype Pollution
+
+-----------------
+
+- Detecting server-side prototype pollution via polluted property reflection
+
+
+-----------------
