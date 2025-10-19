@@ -320,5 +320,19 @@ eval('if(manager && manager.sequence){ manager.macro('+manager.sequence+') }');
 ```
 https://0a97007804f29e4e818f84e7005d005f.web-security-academy.net/?__pro__proto__to__[transport_url]=data:,alert(1);//
 ```
-- 
+- Another way to write `__proto__` is `constructor.prototype`.
+
+```js
+myObject.constructor.prototype        // Object.prototype
+myString.constructor.prototype        // String.prototype
+myArray.constructor.prototype         // Array.prototype
+```
+
+
 --------------
+
+### Using DOM Invader to identify prototype pollution in third party libraries
+
+---------------
+
+- 
