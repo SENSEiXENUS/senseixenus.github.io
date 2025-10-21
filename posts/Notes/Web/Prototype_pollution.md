@@ -632,3 +632,32 @@ consconstructortructor.proprototypetotype
 
 
 ----------------
+
+### Remote COde Execution
+
+----------------
+
+- Lastly, prototype pollution leads to nodejs RCE  in relation to server side unlike DOM XSS on client side.
+- It can occur in the `child_process` module which can be detected with Burp collaborator.The NODE_OPTIONS environment variable enables you to define a string of command-line arguments that should be used by default whenever you start a new Node process. As this is also a property on the env object, you can potentially control this via prototype pollution if it is undefined.Some of Node's functions for creating new child processes accept an optional shell property, which enables developers to set a specific shell, such as bash, in which to run commands. By combining this with a malicious `NODE_OPTIONS` property, you can pollute the prototype in a way that causes an interaction with Burp Collaborator whenever a new Node process is created:
+
+```json
+{
+"__proto__": {
+    "shell":"node",
+    "NODE_OPTIONS":"--inspect=YOUR-COLLABORATOR-ID.oastify.com\"\".oastify\"\".com"
+}
+}
+```
+- Remote code execution with `child_process.fork()` and `child_process.spawn()`-:
+- Methods such as child_process.spawn() and child_process.fork() enable developers to create new Node subprocesses. The fork() method accepts an options object in which one of the potential options is the execArgv property. This is an array of strings containing command-line arguments that should be used when spawning the child process. If it's left undefined by the developers, this potentially also means it can be controlled via prototype pollution.
+- As this gadget lets you directly control the command-line arguments, this gives you access to some attack vectors that wouldn't be possible using NODE_OPTIONS. Of particular interest is the --eval argument, which enables you to pass in arbitrary JavaScript that will be executed by the child process. This can be quite powerful, even enabling you to load additional modules into the environment:
+
+```json
+"execArgv": [
+    "--eval=require('<module>')"
+]
+```
+
+- It also applies to `child_process.spawn()`
+
+----------------
