@@ -662,6 +662,7 @@ consconstructortructor.proprototypetotype
 - Lab [child_process's docs](https://nodejs.org/api/child_process.html)-:
 
 ```json
+{
   "address_line_1": "Wiener HQ",
   "address_line_2": "One Wiener Way",
   "city": "Wienerville",
@@ -681,4 +682,28 @@ consconstructortructor.proprototypetotype
 
 ----------------
 
+### Remote code execution via child_process.execSync()
+
+----------------
+
+- Just like `fork()` which accepts the `execArgv`, `execSync` accepts the options argument which can be polluted.Image's sauce is from the documentation
+
+<img width="813" height="576" alt="image" src="https://github.com/user-attachments/assets/479ab773-5b4f-4362-83c2-25edd91db428" />
+
+- Although this doesn't accept an execArgv property, you can still inject system commands into a running child process by simultaneously polluting both the shell and input properties-:
+
+   - The input option is just a string that is passed to the child process's stdin stream and executed as a system command by execSync(). As there are other options for providing the command, such as simply passing it as an argument to the function, the input property itself may be left undefined.
+   - The shell option lets developers declare a specific shell in which they want the command to run. By default, execSync() uses the system's default shell to run commands, so this may also be left undefined.
+-  By polluting both of these properties, you may be able to override the command that the application's developers intended to execute and instead run a malicious command in a shell of your choosing.Although there are exceptions-:
+ 
+ -  The shell option only accepts the name of the shell's executable and does not allow you to set any additional command-line arguments.
+ -  The shell is always executed with the -c argument, which most shells use to let you pass in a command as a string. However, setting the -c flag in Node instead runs a syntax check on the provided script, which also prevents it from executing. As a result, although there are workarounds for this, it's generally tricky to use Node itself as a shell for your attack.
+ -  As the input property containing your payload is passed via stdin, the shell you choose must accept commands from stdin.
+
+- Example-:
+
+```
+"shell":"vim",
+"input":":! <command>\n"
+```
 ----------------
