@@ -30,4 +30,22 @@
 
 -----------------
 
-- 
+- I checked the source and noticed a minified js file.
+
+<img width="1548" height="662" alt="image" src="https://github.com/user-attachments/assets/7e482665-c821-4ef0-9f9d-d27acf2d48bb" />
+
+- I beautified the source code and read through it.The variable highlighted points to an hidden html file.
+
+<img width="1135" height="152" alt="image" src="https://github.com/user-attachments/assets/f24d5b24-6d5d-4a9f-9689-0c9fc4b1b23e" />
+
+- Devtools-:
+
+<img width="438" height="84" alt="image" src="https://github.com/user-attachments/assets/8a392001-0c49-4a1c-9fbc-d0a3512bf217" />
+
+- Found the flag in the page-:`CSCTF{r0le_manag3d_vi4_localStorage_1s_b4d}`
+
+<img width="685" height="206" alt="image" src="https://github.com/user-attachments/assets/f9513899-f532-468c-b293-57aa741baa04" />
+
+
+
+
