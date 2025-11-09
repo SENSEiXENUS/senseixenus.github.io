@@ -104,7 +104,8 @@ unction loadConversation(conversationId) {
 
 - It appears otherwise in the false statement-:
 
-<img width="1559" height="528" alt="image" src="https://github.com/user-attachments/assets/1fd95c04-7250-4b43-8f70-a453ddcd841a" />
+<img width="1527" height="469" alt="image" src="https://github.com/user-attachments/assets/c15a71d1-193b-41bd-a1ce-dbb6c91a62b2" />
+
 
 - The sql injection is weird because I couldn't read from columns and tables but I could call default functions like `sqlite_version()` but I was able to read the flag by matching for data(sender column) that starts with `l`.I was trying to match `LazyTitan` because that user seems to hold the flag for the chatbot challenges.The main idea is that the statement only allow you to read columsn only from that table.We can do that with the `substr()` sqlite3 function and then match characters with `LIKE`.Matching sender `LazyTitan` seems to spit out the flag but since we specified postion `substr(sender,1,1)`, we'll match only `L`.Payload-:
 
