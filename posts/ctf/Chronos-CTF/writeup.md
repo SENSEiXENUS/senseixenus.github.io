@@ -86,5 +86,35 @@ unction loadConversation(conversationId) {
 
 --------------
 
+### Chatbot-v3
 
+--------------
+
+<img width="482" height="702" alt="image" src="https://github.com/user-attachments/assets/d45f0fd4-c9ad-4294-a650-41cdd22ab82f" />
+
+--------------
+
+- In this version, the dev has patched up the idor issue by generating guids/uuids.
+
+<img width="1509" height="818" alt="image" src="https://github.com/user-attachments/assets/b10c47b1-154c-4929-8ff0-9970b3498a91" />
+
+- But, it is vulnerable to sql injection.I tested based on True and False Statements to finalize that it is vulnerable to blind sqli injection.True statement reaction reveals the values of  the identifier-:
+
+<img width="1559" height="528" alt="image" src="https://github.com/user-attachments/assets/fae4f0bf-cdfb-4669-bfb6-b1af38387fbf" />
+
+- It appears otherwise in the false statement-:
+
+<img width="1559" height="528" alt="image" src="https://github.com/user-attachments/assets/1fd95c04-7250-4b43-8f70-a453ddcd841a" />
+
+- The sql injection is weird because I couldn't read from columns and tables but I could call default functions like `sqlite_version()` but I was able to read the flag by matching for data(sender column) that starts with `l`.I was trying to match `LazyTitan` because that user seems to hold the flag for the chatbot challenges.The main idea is that the statement only allow you to read columsn only from that table.We can do that with the `substr()` sqlite3 function and then match characters with `LIKE`.Matching sender `LazyTitan` seems to spit out the flag but since we specified postion `substr(sender,1,1)`, we'll match only `L`.Payload-:
+
+```json
+{"conversation_id":"e3354de4-b91b-4e9f-8e10-f0157210bfed' or substr(sender,1,1) like '%L%'--+"}
+```
+
+- Flag-:`CSCTF{H4ck3d_V14_SqL_1nj3ct10n}`
+
+<img width="1535" height="623" alt="image" src="https://github.com/user-attachments/assets/a14a603c-6170-4297-869a-096c4cb2d434" />
+
+---------------
 
