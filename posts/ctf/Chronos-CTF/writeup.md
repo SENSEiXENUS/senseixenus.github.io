@@ -46,6 +46,45 @@
 
 <img width="685" height="206" alt="image" src="https://github.com/user-attachments/assets/f9513899-f532-468c-b293-57aa741baa04" />
 
+--------------
+
+### ChatBot-v2
+
+--------------
+
+<img width="508" height="876" alt="image" src="https://github.com/user-attachments/assets/357318db-19a6-43dd-8cb9-2e7502c5ad3b" />
+
+--------------
+
+- I checked the javascript and noticed the javascript code that the app uses to load conversations.The code uses hash type `md5` to hash an integer and passes it to endpoint `/load_conversation` to load conversations.The code snippet is vulnerable to IDOR.The mode of creating IDs is weak and can easily be replicated leading to access to other users' conversations.
+
+```js
+unction loadConversation(conversationId) {
+            currentConversationId = md5sum(conversationId.toString()); 
+            fetch(`/load_conversation`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ conversation_id: currentConversationId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML = ''; 
+```
+- I generated md5 ids with python3.
+
+```python3
+>>> import hashlib
+>>> for i in range(100): print(hashlib.md5(str(i).encode()).hexdigest())
+```
+
+- Fuzzed with burpsuite and got the flag-:`CSCTF{y0u_c4n7_h1d3_fr0m_1D0R}`
+
+<img width="1492" height="695" alt="image" src="https://github.com/user-attachments/assets/baeb9caf-5733-4b5e-8cea-d88846f56e39" />
+
+--------------
 
 
 
