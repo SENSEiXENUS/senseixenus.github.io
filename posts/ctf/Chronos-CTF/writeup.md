@@ -118,3 +118,41 @@ unction loadConversation(conversationId) {
 
 ---------------
 
+### Extension
+
+---------------
+
+<img width="507" height="910" alt="image" src="https://github.com/user-attachments/assets/c9054004-39e2-4f26-b06f-0ad7666c361b" />
+
+---------------
+
+- I don't get the idea behind this challenge but I guess it is browser escape.Maybe unintended or intended, this was how I solved it.We got presented with a vnc browser to solve the challenge.I couldn't load the urls but I noticed that I could read the files with the `file:///` protocol in the first tabs and not other tabs.
+
+<img width="646" height="278" alt="image" src="https://github.com/user-attachments/assets/bbcf14c3-0108-40ac-aaf0-69dd5708aef7" />
+
+- Now how can we spot important files to read, I noticed an `importing bookmarks` functinality that allows us to import bookmarks on firefox.I can use this to spot important files to read.
+
+<img width="1376" height="727" alt="image" src="https://github.com/user-attachments/assets/1427a18e-d6e1-4a8b-8945-a4c7a255527c" />
+
+- Then, click on other `other files`
+
+<img width="1291" height="877" alt="image" src="https://github.com/user-attachments/assets/dcaf2ffe-281c-455b-bfc6-667433e6aad1" />
+
+- I was able to get other important files to read.
+
+<img width="1121" height="267" alt="image" src="https://github.com/user-attachments/assets/e386fba8-9915-4997-8577-43fa19ae9f79" />
+
+- The flag is located in `/app/embed_flag.py`-:
+
+<img width="850" height="478" alt="image" src="https://github.com/user-attachments/assets/b292c6ba-992f-41ca-9a69-426645ba8d10" />
+
+- Flag-:`CSCTF{1ntricat3_ext3nsi0n_wIth_m@LiciOu$_iNt3nt}`
+
+--------------------
+
+
+
+
+
+
+
