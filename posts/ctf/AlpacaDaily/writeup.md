@@ -299,5 +299,22 @@ def cat():
     ).stdout.decode()
 ```
 
-- 
+- The code receives the `file` parameter and passes it to `Path(file).exist()` to check if it exists and also if the word `flag` is in it.
+```python3
+file = request.args.get("file", "app.py")
+    if not Path(file).exists():
+        return "🚫"
+    if "flag" in file:
+        return "🚩"
+```
+- It passes the file to `cat` to read the file.Also, it reads `flag.txt` with open and passes to stdin.
+
+```python3
+ return subprocess.run(
+        ["cat", file],
+        capture_output=True,
+        timeout=1,
+        stdin=open("flag.txt"),  # !!
+    ).stdout.decode()
+```
 
