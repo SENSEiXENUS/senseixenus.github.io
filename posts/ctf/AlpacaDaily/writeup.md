@@ -270,4 +270,34 @@ if __name__ == "__main__":
 
 <img width="1597" height="790" alt="image" src="https://github.com/user-attachments/assets/5e190596-0320-4593-9264-6e764c76a85d" />
 
+-----------
+
+### Cat
+
+-----------
+
+<img width="838" height="376" alt="image" src="https://github.com/user-attachments/assets/49154e38-3b1d-44b3-8828-1c83d838a368" />
+
+------------
+
+- `App.py`-:
+
+```python3
+@app.get("/cat")
+def cat():
+    file = request.args.get("file", "app.py")
+    if not Path(file).exists():
+        return "🚫"
+    if "flag" in file:
+        return "🚩"
+
+    return subprocess.run(
+        ["cat", file],
+        capture_output=True,
+        timeout=1,
+        stdin=open("flag.txt"),  # !!
+    ).stdout.decode()
+```
+
 - 
+
