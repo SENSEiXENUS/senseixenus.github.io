@@ -9,7 +9,8 @@
 --------------
 
 - Web
- - Emojify
+   - Emojify
+   - Alpaca Bank
 
 --------------
 
@@ -120,4 +121,119 @@ curl http://34.170.146.252:5737/api\?path\=//secret:1337/flag\?emoji
 Alpaca{Sup3r_Speci4l_Rar3_Flag}%
 ```
 
+------------
+
+### Alpaca Bank
+
+------------
+
+<img width="818" height="499" alt="image" src="https://github.com/user-attachments/assets/be871ce6-0f9a-4c32-b21b-17ecf43169e5" />
+
+
+------------
+
+- Code-:
+
+```js
+const express = require('express');
+const crypto = require('crypto');
+const path = require('path');
+const app = express();
+
+const FLAG = process.env.FLAG ?? "Alpaca{**** REDACTED ****}";
+const TRILLION = 1_000_000_000_000;
+
+app.use(express.json());
+
+const users = new Set();
+const balances = new Map();
+
+app.post('/api/register', (req, res) => {
+    const id = crypto.randomBytes(10).toString('hex');
+    users.add(id);
+    balances.set(id, 10); // Initial balance
+    res.status(201).json({ user: id });
+});
+
+app.get('/api/user/:user', (req, res) => {
+    const user = req.params.user;
+    if (!users.has(user)) return res.status(404).send({ error: 'User not found' });
+    res.status(200).json({
+        user: user,
+        balance: balances.get(user),
+        flag: balances.get(user) >= TRILLION ? FLAG : null // 🚩
+    });
+});
+
+app.post('/api/transfer', (req, res) => {
+    const { fromUser, toUser, amount } = req.body;
+
+    if (!Number.isInteger(amount) || amount <= 0) {
+        return res.status(400).send({ error: 'Invalid amount' });
+    }
+    if (!users.has(fromUser) || !users.has(toUser)) {
+        return res.status(400).send({ error: 'Invalid user ID' });
+    }
+
+    const fromBalance = balances.get(fromUser);
+    const toBalance = balances.get(toUser);
+    if (fromBalance < amount) {
+        return res.status(400).send({ error: 'Insufficient funds' });
+    }
+    
+    balances.set(fromUser, fromBalance - amount);
+    balances.set(toUser, toBalance + amount);
+
+    res.status(200).json({
+        receipt: `${fromUser} -> ${toUser} (${amount} yen)`
+    });
+});
+```
+
+- Vulnerable route is `/api/transfer`-:
+
+```js
+app.post('/api/transfer', (req, res) => {
+    const { fromUser, toUser, amount } = req.body;
+
+    if (!Number.isInteger(amount) || amount <= 0) {
+        return res.status(400).send({ error: 'Invalid amount' });
+    }
+    if (!users.has(fromUser) || !users.has(toUser)) {
+        return res.status(400).send({ error: 'Invalid user ID' });
+    }
+
+    const fromBalance = balances.get(fromUser);
+    const toBalance = balances.get(toUser);
+    if (fromBalance < amount) {
+        return res.status(400).send({ error: 'Insufficient funds' });
+    }
+    
+    balances.set(fromUser, fromBalance - amount);
+    balances.set(toUser, toBalance + amount);
+
+    res.status(200).json({
+        receipt: `${fromUser} -> ${toUser} (${amount} yen)`
+    });
+});
+```
+
+- Although, the code allows strict check for the amount passed to avoid negative figures or data types.
+
+```js
+ const { fromUser, toUser, amount } = req.body;
+
+    if (!Number.isInteger(amount) || amount <= 0) {
+        return res.status(400).send({ error: 'Invalid amount' });
+    }
+    if (!users.has(fromUser) || !users.has(toUser)) {
+        return res.status(400).send({ error: 'Invalid user ID' });
+    }
+```
+
+- But, it doesn't restrict self-transfer for ids.Also, in the implementation of `fromBalance` and `toBalance`, if a user send an amount equals to his balance, it deducts it from the actual balance which will be the `10` and also adds it back to the same balance since it is the same balance which is like double additon of the amount.A trillion is required to buy the flag, we can do this repeatedly and increasing the amount to get the flag.
+
+```js
+balances.set(fromUser, fromBalance - amount);
+    balances.set(toUser, toBalance + amount);
 ```
