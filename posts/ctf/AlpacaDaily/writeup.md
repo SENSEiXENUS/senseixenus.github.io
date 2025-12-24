@@ -1,4 +1,4 @@
-<img width="1824" height="252" alt="image" src="https://github.com/user-attachments/assets/ea5572fe-d5bf-4028-9d96-18011835f92f" />--------------
+--------------
 
 ### AlpacaDaily
 
@@ -11,6 +11,9 @@
 - Web
    - Emojify
    - Alpaca Bank
+   - Cat
+   - Omikuji
+   - Log-Viewer
 
 --------------
 
