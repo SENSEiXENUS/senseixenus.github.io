@@ -318,3 +318,23 @@ file = request.args.get("file", "app.py")
     ).stdout.decode()
 ```
 
+- The `stdin` arg in python3's subprocess allows 4 values. Our case is an existing file object which is based on a file descriptor.
+
+```
+- None (default): No redirection occurs; the child process inherits the parent process's standard input file handle.
+subprocess.PIPE: A new pipe is created between the parent and child processes. This allows the Python program to write data to the subprocess's standard input using methods like Popen.communicate() or Popen.stdin.write().
+- subprocess.DEVNULL: Indicates that the special file os.devnull will be used, effectively discarding any input intended for the subprocess.
+- An existing file descriptor (a positive integer): The subprocess will use this specific operating system file descriptor for its input.
+- An existing file object: Any object with a fileno() method (e.g., an opened file using open()) can be passed, and its underlying file descriptor will be used. 
+```
+
+> A file descriptor (FD) is a small, non-negative integer that the operating system uses as a unique identifier for an open file or other input/output (I/O) resource.
+> 0 (STDIN_FILENO): Standard input, typically connected to the keyboard.
+> 1 (STDOUT_FILENO): Standard output, typically connected to the terminal/console screen.
+> 2 (STDERR_FILENO): Standard error, used for outputting error messages, also typically connected to the terminal/console screen.
+
+- File descriptors can be accessed on linux with `/proc/<pid>/fd` but in our case, the pid will be `self` and we'll pass `0` to represent stdin after `fd/0`.
+
+>/proc/self/fd/0
+
+- 
