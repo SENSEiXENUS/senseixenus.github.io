@@ -459,6 +459,13 @@ app.post('/save', async c => {
 
 <img width="983" height="435" alt="image" src="https://github.com/user-attachments/assets/487ce8c3-330f-487a-b42b-54595e4ab8eb" />
 
+-------------
+
+### Log Viewer
 
 -------------
+
+- 
+
+------------
 
