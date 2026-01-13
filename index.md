@@ -15,7 +15,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 
 - **My Name:**    `Ayejuyo Andrew Olumide`
 - **Also Known As:** `SENSEIXENUS`
-- **What Do I Do:**  `CTF / Ethical Hacking / Penetration Testing`
+- **What Do I Do:**  `CTF | Ethical Hacking | Penetration Testing`
 - **Twitter:** `https://twitter.com/sense1xenus`
 - **Github:** `https://github.com/SENSEiXENUS`
 
