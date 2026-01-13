@@ -6,6 +6,7 @@ title: root💀senseicat:~#
 description: Hack. Eat. Sleep. Repeat!!!
 show_downloads: false
 show_repo: false
+future: true
 
 gems:
 - jekyll-sitemap
