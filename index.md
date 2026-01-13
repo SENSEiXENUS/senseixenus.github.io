@@ -147,3 +147,9 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[September 2025]] [GDSCCTF Hackcon](https://senseixenus.github.io/posts/ctf/CTF-CREATION/HackconCTF25/writeup.html)
     
 * * *
+
+### **Open Sourcce Research~#**
+
+* * *
+
+- [[January 13th 2026]] [Outray Cli](https://github.com/outray-tunnel/outray/security/advisories/GHSA-45hj-9x76-wp9g)
