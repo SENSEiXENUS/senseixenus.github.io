@@ -89,7 +89,7 @@ internal
 external
 ```
 
-- Pure and view functions-:
+- Pure and view functions,-:
 
 ```sol
 //SPDX-License-Identifier: MIT
@@ -108,6 +108,13 @@ contract Storage{
     function retrieve() public pure returns {
         return 7;
     }
+}
+```
+- To store function in memory, use `memory` -:
+
+```solidity
+function createZombie(string memory _name,uint _dna) public {
+
 }
 ```
  
