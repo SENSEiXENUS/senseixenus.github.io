@@ -117,6 +117,31 @@ function createZombie(string memory _name,uint _dna) public {
 
 }
 ```
+- Return a value in a function with `return`, specify like this
+
+```solidity
+string greeting = "What's up dog";
+
+function sayHello() public returns (string memory) {
+  return greeting;
+}
+```
+
+- Function modifiers
+- The below function doesn't actually change state in solidity e.g it doesn't chnage values or write anything.It is set with `view`
+
+```solidity
+function sayHello() public view returns (string memory){
+}
+```
+- Solidity also contains pure functions meaning you are not accessing any data fron the app e.g
+
+```solidity
+function _multiplyNumbers(uint a, uint b) private pure returns (uint memory) {
+  return a * b;
+}
+```
+- 
  
 --------------
 
@@ -182,11 +207,87 @@ Logs
 ```sol
 string memory name = "Ade";
 ```
+-----------------
 
-
-
-
-
+### Keccak256 and Typecasting
 
 -----------------
+
+- Ethereum's `keccak256` is the version of `SHA3`.It maps an input into a 256-bit hexadecimal number.It expects a parameter of type `bytes`.It means we have to pack `string` to `bytes`.
+
+```solidity
+keccak256(abi.encodePacked("deadbeef"))
+```
+
+-  Typecasting involves converting between data types.For example-:
+
+```solidity
+
+uint a = 6;
+uint8 b = 9;
+
+uint8 c = b * uint8(a);
+```
+-------------------
+
+### Events
+--------------------
+
+- Events are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.
+
+```solidity
+// declare the event
+event IntegersAdded(uint x, uint y, uint result);
+
+function add(uint _x, uint _y) public returns (uint) {
+  uint result = _x + _y;
+  // fire an event to let the app know the function was called:
+  emit IntegersAdded(_x, _y, result);
+  return result;
+}
+```
+
+- Javascript implementation-:
+
+```js
+YourContract.IntegersAdded(function(error, result) {
+  // do something with the result
+})
+```
+- Status (chapter 15)-:
+
+```solidity
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+    event NewZombie(uint zombieId,string name,uint dna);
+    
+    uint dnaDigits = 16;
+    uint dnaModulus = 10 ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    function _createZombie(string memory _name, uint _dna) private {
+        uint id = zombies.push(Zombie(_name, _dna)) - 1; // 2. Store the result of `zombies.push(...) - 1` in a `uint` called `id`
+        emit NewZombie(id, _name, _dna);
+    }
+
+    function _generateRandomDna(string memory _str) private view returns (uint) {
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        return rand % dnaModulus;
+    }
+
+    function createRandomZombie(string memory _name) public {
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+```
 
