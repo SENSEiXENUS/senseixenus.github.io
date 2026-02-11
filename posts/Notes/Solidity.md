@@ -377,4 +377,10 @@ function feedAndMultiply(uint _zombieId, uint _targetDna) public {
     // start here
   }
 ```
+- Access a struct's data with `struct.key`.e.g
+
+```
+myZombie.dna
+```
+-
 ---------------
