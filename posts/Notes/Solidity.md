@@ -346,6 +346,35 @@ require(abi.encodePacked('a') == abi.encodePacked('b'));
 
 --------------
 
-- 
+- Inheritance prevents a long contract by breaking it into several contracts inheriting attributes from the each other.Example-:
 
+```solidity
+contract Doge {
+}
+//is extends a subclass to base class
+contract baseDoge is Doge {
+
+}
+```
+- Importing a contract from another file, use-:
+
+```solidity
+
+import "./someContract.sol"
+
+contract Doge is someContract {
+}
+```
+
+-  `Storage v Memory` data location-:
+-  `Storage` data are stored on the blockchain while `Memory` values are stored in the `RAM` or the `hard-disk`.
+-  Although, you don't need to specify for `storage` because state variables are stored in it by default and permanently written to the blockchain, while variables stored in function are stored in the `memory` and disappears after a function gets called.
+
+```solidity
+function feedAndMultiply(uint _zombieId, uint _targetDna) public {
+    require(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    // start here
+  }
+```
 ---------------
