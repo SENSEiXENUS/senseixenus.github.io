@@ -291,3 +291,61 @@ contract ZombieFactory {
 }
 ```
 
+------------------
+
+### Intermediate Solidity
+
+--------------------
+
+- New data types `mapping` and `address`
+- Each account has an `address` which you can think of as a bank account which looks like this `0x0cE446255506E92DF41614C46F1d6df9Cc969183`. Mappings are another way of storing data
+- A mapping might look like this-:
+
+```solidity
+mapping (address => uint) public accountBalance;
+mapping (uint => string ) userIdToName;
+```
+
+-  It is typically a key-value pair for storing and looking up data.
+
+---------------------
+
+### Msg.sender
+
+---------------------
+
+- There are certain global functions available to all functions. One of them is `msg.sender` which belongs to the address of the person that called a function in a contract.
+
+>Note: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a msg.sender.
+
+- Example-:
+
+```solidity
+mapping (address => uint ) public contractAddresses;
+
+function setAddressValue(uint memory _number) public {
+    contractAddresses[msg.sender] = _number;
+}
+```
+
+- Increasing counter in solidity-:
+
+```sol
+uint number = 0;
+number++;
+```
+
+- `Require` is used to ensure a line of code throws an error if the condition is not fulfilled.
+
+```solidity
+require(abi.encodePacked('a') == abi.encodePacked('b'));
+```
+-------------
+
+### Inheritance
+
+--------------
+
+- 
+
+---------------
