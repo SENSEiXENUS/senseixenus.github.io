@@ -406,5 +406,40 @@ contract KittyInterface {
 }
 ```
 
-- Using an interface-: 
+- Using an interface-:
+
+```
+address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+  // Initialize kittyContract here using `ckAddress` from above
+  KittyInterface kittyContract = KittyInterface(ckAddress);
+```
+
+-  Handling multiple return values-:
+```solidity
+function multipleReturns() internal returns(uint a, uint b, uint c) {
+  return (1, 2, 3);
+}
+
+function processMultipleReturns() external {
+  uint a;
+  uint b;
+  uint c;
+  // This is how you do multiple assignment:
+  (a, b, c) = multipleReturns();
+}
+
+// Or if we only cared about one of the values:
+function getLastReturnValue() external {
+  uint c;
+  // We can just leave the other fields blank:
+  (,,c) = multipleReturns();
+}
+```
+- `if` statements-:
+
+```solidity
+if () {
+}
+```
+- 
 ---------------
