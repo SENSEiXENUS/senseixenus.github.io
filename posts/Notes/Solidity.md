@@ -382,5 +382,29 @@ function feedAndMultiply(uint _zombieId, uint _targetDna) public {
 ```
 myZombie.dna
 ```
--
+- More on function visibility-:
+- Soldity has two more types of visibility: `internal` and `external`.
+- `internal` is like private but it is accessible by a contract that inherits the contract.
+- `external` is similar to public, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract.
+- Interacting with other contracts, we can interact with other contracts on a blockchain with an `interface`.
+- `interface` is declared like this without the curly braces-:
+
+```solidity
+contract KittyInterface {
+  function getKitty(uint256 _id) external view returns (
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  );
+}
+```
+
+- Using an interface-: 
 ---------------
