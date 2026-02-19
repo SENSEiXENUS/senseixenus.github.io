@@ -441,5 +441,104 @@ function getLastReturnValue() external {
 if () {
 }
 ```
-- 
+
+--------------
+
+### Advanced Concepts
+
 ---------------
+
+- Contracts are immutable in solidity which means once updated, it can never be updated anymore.
+-  `constructor()` is a constructor, which is an optional special function. It will get executed only one time, when the contract is first created.
+Function Modifiers: modifier onlyOwner(). Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution
+- Example of a modifier-:
+
+```solidity
+modifier onlyOwner() {
+    require(isOwner());
+    _;
+  }
+```
+-  how it is called in a function-:
+
+```solidity
+function tryModifier(uint256 _number) external onlyOwner {
+}
+```
+- Time units-:
+> The variable `now` will return the current Unix timestamp.Solidity also contains the time units `seconds`, `minutes`, `hours`, `days`, `weeks` and `years`. These will convert to a uint of the number of seconds in that length of time.
+> Note: The uint32(...) is necessary because now returns a uint256 by default. So we need to explicitly convert it to a uint32.
+
+
+---------------
+
+### Passing struct as arguments
+
+----------------
+
+- You can pass a storage pointer to a struct as an argument to a private or internal function. This is useful, for example, for passing around our Zombie structs between functions.
+
+```solidity
+function _doStuff(Zombie storage _zombie) internal {
+  // do stuff with _zombie
+}
+```
+
+- Stopped at lesson 5 -:
+
+```solidity
+pragma solidity >=0.5.0 <0.6.0;
+
+import "./zombiefactory.sol";
+
+contract KittyInterface {
+  function getKitty(uint256 _id) external view returns (
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  );
+}
+
+contract ZombieFeeding is ZombieFactory {
+
+  KittyInterface kittyContract;
+
+  function setKittyContractAddress(address _address) external onlyOwner {
+    kittyContract = KittyInterface(_address);
+  }
+
+  // 1. Define `_triggerCooldown` function here
+  function _triggerCooldown(Zombie storage _zombie) internal {
+    _zombie.readyTime = uint32(now + cooldownTime);
+  }
+
+  // 2. Define `_isReady` function here
+  function _isReady(Zombie storage _zombie) internal view returns (bool){
+    return (_zombie.readyTime <= now );
+  }
+  function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public {
+    require(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / 2;
+    if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+      newDna = newDna - newDna % 100 + 99;
+    }
+    _createZombie("NoName", newDna);
+  }
+
+  function feedOnKitty(uint _zombieId, uint _kittyId) public {
+    uint kittyDna;
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+    feedAndMultiply(_zombieId, kittyDna, "kitty");
+  }
+
+}
+```
