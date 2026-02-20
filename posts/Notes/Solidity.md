@@ -542,3 +542,38 @@ contract ZombieFeeding is ZombieFactory {
 
 }
 ```
+
+----------------------
+
+### Public functions & security
+
+----------------------
+
+- An important security practice is to examine all your public and external functions, and try to think of ways users might abuse them. Remember — unless these functions have a modifier like onlyOwner, any user can call them and pass them any data they want to.
+
+- Function modifiers-: They can also take arguments.
+
+```solidity
+modifier aboveLevel(uint _level, uint _zombieId) {
+    require(zombies[_zombieId].level >= _level);
+    _;
+  }
+```
+
+- More on storage location for data-:
+> Note: calldata is somehow similar to memory, but it's only available to external functions.
+- View functions don't cost gas.
+
+> `view` functions don't cost any gas when they're called externally by a user.This is because view functions don't actually change anything on the blockchain – they only read the data. So marking a function with view tells web3.js that it only needs to query your local Ethereum node to run the function, and it doesn't actually have to create a transaction on the blockchain (which would need to be run on every single node, and cost gas).
+
+- Storage is expensive in solidity (particularly writes).
+- Declaring arrays in memory-:
+
+```solidity
+ uint[] memory result = new uint[](ownerZombieCount[_owner]);
+    // Start here
+    return result;
+```
+- For loops-: 
+
+-------------------
