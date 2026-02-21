@@ -574,6 +574,72 @@ modifier aboveLevel(uint _level, uint _zombieId) {
     // Start here
     return result;
 ```
-- For loops-: 
+- For loops-:
+
+```solidity
+ for (uint i = 0; i < zombies.length; i++) {
+      if (zombieToOwner[i] == _owner) {
+        result[counter] = i;
+        counter++;
+      }
+    }
+```
+-------------------
+- Payable-:
+- This modifier function makes Solidity and Ethereum dope. It can recieve Ether.
+> When you call an API function on a normal web server, you can't send US dollars along with your function call — nor can you send Bitcoin.But in Ethereum, because the money (Ether), the data (transaction payload), and the contract code itself all live on Ethereum, it's possible for you to call a function and pay money to the contract at the same time.
+
+- Here, msg.value is a way to see how much Ether was sent to the contract, and ether is a built-in unit.
+```solidity
+ function levelUp(uint _zombieId) external payable {
+    require(msg.value == levelUpFee);
+    zombies[_zombieId].level++;
+  }
+```
+
+-  Withdraws-:
+  - After you send Ether to a contract, it gets stuck in it except you sent a contract to withdraw it.
+ > It is important to note that you cannot transfer Ether to an address unless that address is of type address payable. But the _owner variable is of type uint160, meaning that we must explicitly cast it to address payable.
+ > Once you cast the address from uint160 to address payable, you can transfer Ether to that address using the transfer function, and address(this).balance will return the total balance stored on the contract. So if 100 users had paid 1 Ether to our contract, address(this).balance would equal 100 Ether.
+> You can use transfer to send funds to any Ethereum address. For example, you could have a function that transfers Ether back to the msg.sender if they overpaid for an item:
+```solidity
+uint itemFee = 0.001 ether;
+msg.sender.transfer(msg.value - itemFee);
+```
+- Example-:
+
+```solidity
+function withdraw() external onlyOwner {
+    address payable _owner = address(uint160(owner()));
+    _owner.transfer(address(this).balance);
+  }
+```
+
+- Random Numbers-:
+- The best randomness hash function in solidity is the `keccak256` hash function.
+
+```solidity
+ uint randNonce = 0;
+  function randMod(uint _modulus) internal returns (uint) {
+    randNonce++;
+    return uint(keccak256(abi.encodedPacked(now,msg.sender,randNonce))) % _modulus;
+  }
+```
+-------------------
+
+### Refactoring Code Logic
 
 -------------------
+
+-  Using two modifers for a function
+
+```solidity
+function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
+    zombies[_zombieId].dna = _newDna;
+  }
+```
+
+- 
+
+
+--------------------
