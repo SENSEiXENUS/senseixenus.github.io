@@ -641,5 +641,48 @@ function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombie
 
 - 
 
+--------------------
+
+### ERC721 & Crypto-Collectibles
 
 --------------------
+
+- A token in Ethereum basically behaves like a smart contract that follow some rules, it implements a set of functions that all other contracts follows, such as-:
+
+```solidity
+transferFrom(address _from, address _to, uint256 _amount) and balanceOf(address _owner)
+```
+
+- Internally, the smart contract has a mapping of `mapping( address => uint256) balances`, that keeps track of balances for each address. So basically a token is just a contract that keeps track of who owns how much of that token, and some functions so those users can transfer their tokens to other addresses.
+
+---------------------
+
+### ERC721 Standard
+
+---------------------
+
+- ERC721 standard-:
+
+```solidity
+contract ERC721 {
+  event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);
+  event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);
+
+  function balanceOf(address _owner) external view returns (uint256);
+  function ownerOf(uint256 _tokenId) external view returns (address);
+  function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+  function approve(address _approved, uint256 _tokenId) external payable;
+}
+```
+
+- A contract can also inherit multiple contracts.e.g
+
+```solidity
+contract Sathoshi is  Sensei,Blackie {
+
+}
+```
+
+- 
+
+---------------------
