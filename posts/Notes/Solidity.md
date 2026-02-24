@@ -682,6 +682,30 @@ contract Sathoshi is  Sensei,Blackie {
 
 }
 ```
+---------------------
+
+### ERC721 implementation
+
+---------------------
+
+- Transfer logic-: ERC721 has rwo different methods of transferring tokens.
+
+>function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+and
+function approve(address _approved, uint256 _tokenId) external payable;
+function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
+
+- Preventing Overflows(Contract security enhancements: Overflows and Underflows)-:
+
+```solidity
+import "./safemath.sol"
+
+contract ZombieFactory is Ownable {
+
+  // 2. Declare using safemath here
+  using SafeMath for uint256;
+
+```
 
 - 
 
