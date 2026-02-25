@@ -707,6 +707,28 @@ contract ZombieFactory is Ownable {
 
 ```
 
-- 
+- Using Safemath for our code-: To prevent overflows and underflows, we can look for places in our code where we use +, -, *, or /, and replace them with add, sub, mul, div.
+- Declaring for `uint32` and `uint16`-:
 
+```solidity
+using SafeMath32 for uint32;
+using SafeMath16 for uint16;
+```
+
+-  Comments in Solidity-:
+
+```solidity
+//Single line comments
+/* Multi line comments
+lolzz*/
+```
+
+- Natspec standard-:
+
+```solidity
+/// @title  A contract that manages transferring zombie ownership
+/// @uthor Sensei__
+/// @dev Compliant with OpenZeppelin's implementation of the ERC721 spec draft
+```
+```
 ---------------------
