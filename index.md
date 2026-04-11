@@ -153,6 +153,7 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 * * *
 
 - [[January 13th 2026]] [Outray Cli's webapp](https://github.com/outray-tunnel/outray/security/advisories/GHSA-45hj-9x76-wp9g)
+- [[April 11 2026]] [Python3 CRLF httplib](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/CVES/httplib_crlf.md)
 
 
 * * *
