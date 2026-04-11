@@ -4,6 +4,10 @@
 
 --------------
 
+- Original Advisory:
+
+ <img width="1754" height="883" alt="image" src="https://github.com/user-attachments/assets/c26f6ba1-81a3-4837-8d0a-6dcf72c4b8b8" />
+
 - Affected code in http.client._tunnel()-:
 
 ```python3
@@ -18,3 +22,6 @@
 
 Result-:
 
+<img width="607" height="193" alt="image" src="https://github.com/user-attachments/assets/98db9867-9b76-4a6c-81da-1b1bf175ab27" />
+
+-------------
