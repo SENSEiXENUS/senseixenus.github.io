@@ -17,6 +17,26 @@ apktool b revme/ -o revme1.apk
 keytool -genkey -v -keystore debug.keystore -alias androiddebugkey -keyalg DSA -sigalg  SHA1withDSA -keysize 1024 -validity 10000
 jarsigner -keystore debug.keystore -verbose -storepass "password" -sigalg SHA1withDSA -digestalg SHA1 c:\Users\HP\Downloads\revme1.apk androiddebugkey
 ```
+- [Apk file](https://github.com/IR0NBYTE/Reverse-Engineering-Practice/blob/main/revme.apk)
+- Solve-: 
+
+```js
+//Running it-:  frida -U -f com.example.basic_rev -l "C:\Users\HP\Downloads\revme\hook.js"
+Java.perform(function(){
+    Java.scheduleOnMainThread(function() {
+      console.log("[+] Starting solve script");
+
+      var targetClass =  Java.use("com.example.basic_rev.MainActivity");
+      var makeFlag = targetClass.makeFlag;
+      makeFlag.implementation = function(seed) {
+        console.log("[+] Make flag called with seed "+ seed);
+        var result =  makeFlag.call(this,seed);
+        console.log("[+] Makeflag result::" + result);
+        return result;
+      };
+    })
+})
+```
 
 ------------
 
