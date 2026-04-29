@@ -79,6 +79,41 @@ Java.perform(function() {
     }
 });
 ```
+- AndroGoat-:
+
+```js
+Java.perform(function() {
+    var target =  Java.use('owasp.sat.agoat.RootDetectionActivity');
+    var target2 = Java.use('okhttp3.CertificatePinner');
+    var target3  = Java.use('owasp.sat.agoat.EmulatorDetectionActivity');
+    var target4 =  Java.use('owasp.sat.agoat.BinaryPatchingActivity');
+    //Trying to patch isAdmin
+    //Accessing class instance values with Java.choose
+    Java.choose("owasp.sat.agoat.BinaryPatchingActivity", {
+        onMatch: function(instance) {
+            console.log("[+] Current value: " + instance.isAdmin.value);
+            instance.isAdmin.value = true;
+        },
+        onComplete: function() {}
+    })
+    target.isRooted.implementation = function(){
+        console.log("[+] IsRooted() hooked")
+        var result =  this.isRooted();
+        console.log('[+] Result: ' + result);
+        return false;
+    }
+    target2.check.overload.implementation = function(hostname, peerCertificates) {
+        result = this.check(hostname, peerCertificates);
+        console.log(result);
+    }
+    target3.isEmulator.implementation = function() {
+        console.log("[+] Hooked isEmulator() function");
+        return true;
+
+    }
+
+})
+```
 ------------
 
 ### Installing Keytool| Jar signer
