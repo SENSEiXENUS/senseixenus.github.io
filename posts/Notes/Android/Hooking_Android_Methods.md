@@ -37,7 +37,48 @@ Java.perform(function(){
     })
 })
 ```
+- Hooking shared libraries (.so) files-:
+- Checking for modules and base address-:
 
+```js
+//Format-: frida -U -n boxy -l hook.js
+var libboxy = Process.getModuleByName("libboxy.so");
+console.log("[+] Library base address" + libboxy.base);
+//Exported functions
+var exportedFunctions =  libboxy.enumerateExports();
+exportedFunctions.forEach(function(exp) {
+    console.log("[+] Exported functions")
+    console.log("[+]" + exp.name + " at " + exp.address);
+})
+ //Imported functions
+var importedFunctions =  libboxy.enumerateImports();
+importedFunctions.forEach(function(imp) {
+    console.log("[+] Imported functions")
+    console.log(" [+] " + imp.module + imp.name + " at " + imp.address);
+})
+```
+- Hook script( interceptor)
+
+
+```js
+Java.perform(function() {
+    var target  = Java.use("com.example.boxy.MainActivity$1");
+    const libboxy = Process.getModuleByName('libboxy.so', 'Java_com_example_boxy_MainActivity_checkCred');
+    target.onClick.implementation = function(view) {
+        console.log("[+] Onclick is called");
+        Interceptor.attach(libboxy.getExportByName('read'), {
+            onEnter(args) {
+                console.log("[+] Java_com_example_boxy_MainActivity_checkCred Intercepted (onEnter)");
+            },
+            onLeave(retval) {
+               retval.replace(0);
+               console.log("[+] The return value is " + retval);
+            }
+       });
+       this.onClick(view);
+    }
+});
+```
 ------------
 
 ### Installing Keytool| Jar signer
