@@ -5,7 +5,7 @@
 ------------
 
 - [Labs](http://github.com/DERE-ad2001/Frida-Labs/)
-
+- Hooking Method
 ```js
 //Hooking methods
 Java.perform(function() {
@@ -17,5 +17,6 @@ Java.perform(function() {
     }
 })
 ```
+- Lab2(Hooking Static Method)->
 
 ------------
