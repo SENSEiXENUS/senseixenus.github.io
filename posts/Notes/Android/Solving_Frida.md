@@ -152,4 +152,30 @@ Java.perform(function() {
 
 })
 ```
+- Hooking the constructor( Frida 0x7)-:
+
+```java
+package com.ad2001.frida0x7;
+
+/* JADX INFO: loaded from: classes3.dex */
+public class Checker {
+    int num1;
+    int num2;
+
+    Checker(int a, int b) {
+        this.num1 = a;
+        this.num2 = b;
+    }
+}
+```
+
+```js
+Java.perform(function() {
+    var clsChecker =  Java.use('com.ad2001.frida0x7.Checker');
+    clsChecker.$init.implementation =  function(a,b){
+        this.num1.value = 600;
+        this.num2.value = 600;
+    }
+})
+```
 
