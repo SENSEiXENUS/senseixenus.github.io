@@ -130,6 +130,26 @@ Java.perform(function() {
 })
 ```
 
--
+- [Frida 0x6]Invoking a method with an object argument-:
+
+```js
+Java.perform(function() {
+    var cls =  Java.use('com.ad2001.frida0x6.Checker');
+    var clsinstance = cls.$new();
+    clsinstance.num1.value =  1234;
+    clsinstance.num2.value = 4321;
+
+    Java.choose('com.ad2001.frida0x6.MainActivity',{
+        onMatch(ins){
+            console.log("[+] Instance found->")
+            ins.get_flag(clsinstance);
+        },
+        onComplete(){
+
+
+        }
+    })
+
+})
 ```
-------------
+
