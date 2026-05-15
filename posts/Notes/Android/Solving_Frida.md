@@ -46,5 +46,12 @@ Java.perform(function() {
     check.get_flag(4919);
 })
 ```
+- Changing the values of a variable-:
 
+```
+Java.perform(function() {
+    var checker =  Java.use('com.ad2001.frida0x3.Checker');
+    checker.code.value = 512;
+})
+```
 ------------
