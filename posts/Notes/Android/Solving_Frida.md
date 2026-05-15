@@ -54,4 +54,34 @@ Java.perform(function() {
     checker.code.value = 512;
 })
 ```
+
+- Creating a class instance-:
+
+```java
+//Vulnerable code
+package com.ad2001.frida0x4;
+
+/* JADX INFO: loaded from: classes3.dex */
+public class Check {
+    public String get_flag(int a) {
+        if (a == 1337) {
+            byte[] decoded = new byte["I]FKNtW@]JKPFA\\[NALJr".getBytes().length];
+            for (int i = 0; i < "I]FKNtW@]JKPFA\\[NALJr".getBytes().length; i++) {
+                decoded[i] = (byte) ("I]FKNtW@]JKPFA\\[NALJr".getBytes()[i] ^ 15);
+            }
+            return new String(decoded);
+        }
+        return "";
+    }
+}
+```
+- Solve-:
+
+```js
+Java.perform(function() {
+    var cls =  Java.use('com.ad2001.frida0x4.Check');
+    var obj = cls.$new();
+    console.log(obj.get_flag(1337));
+})
+```
 ------------
