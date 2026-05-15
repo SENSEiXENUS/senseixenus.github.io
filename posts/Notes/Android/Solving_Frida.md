@@ -84,4 +84,52 @@ Java.perform(function() {
     console.log(obj.get_flag(1337));
 })
 ```
+
+- Challenge 0x5(Invoking methods on an existing instance)-:
+
+```java
+public class MainActivity extends AppCompatActivity {
+    TextView t1;
+
+    @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        this.t1 = (TextView) findViewById(R.id.textview);
+    }
+
+    public void flag(int code) {
+        if (code == 1337) {
+            try {
+                SecretKeySpec secretKeySpec = new SecretKeySpec("WILLIWOMNKESAWEL".getBytes(), "AES");
+                Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+                IvParameterSpec iv = new IvParameterSpec(new byte[16]);
+                cipher.init(2, secretKeySpec, iv);
+                byte[] decodedEnc = Base64.getDecoder().decode("2Y2YINP9PtJCS/7oq189VzFynmpG8swQDmH4IC9wKAY=");
+                byte[] decryptedBytes = cipher.doFinal(decodedEnc);
+                String decryptedText = new String(decryptedBytes);
+                this.t1.setText(decryptedText);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
+```js
+Java.perform(function() {
+    Java.choose("com.ad2001.frida0x5.MainActivity",{
+        onMatch(ins){
+            console.log("[+] Instance Found");
+            ins.flag(1337);
+        },
+        onComplete(){
+
+        }
+    })
+})
+```
+
+-
+```
 ------------
