@@ -24,6 +24,16 @@ https://github.com/cryptax/misc-code.git
 python3 flutter-header.py -i libapp.so
 ```
 
+- Finding the offset-:
+
+```
+readelf -Ws  libapp.so | grep kDartIsolateSnapshotInstructions
+```
+
+<img width="1174" height="81" alt="image" src="https://github.com/user-attachments/assets/5ecb9c9e-6c4f-4a06-a54a-f489bd54276d" />
+
+
+
 <img width="806" height="175" alt="image" src="https://github.com/user-attachments/assets/cdc978ac-4a60-4c60-8b41-c7dc38c26644" />
 
 - Use blutter-termux-:
