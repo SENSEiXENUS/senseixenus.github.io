@@ -44,3 +44,5 @@ https://github.com/dedshit/blutter-termux/blob/main/README.md
 ```
 docker/run.sh morbb ./lib_dump
 ```
+<img width="1487" height="321" alt="image" src="https://github.com/user-attachments/assets/1552f10e-7123-4c98-8833-b573bd249192" />
+
