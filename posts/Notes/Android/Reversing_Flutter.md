@@ -36,7 +36,7 @@ readelf -Ws  libapp.so | grep kDartIsolateSnapshotInstructions
 
 <img width="806" height="175" alt="image" src="https://github.com/user-attachments/assets/cdc978ac-4a60-4c60-8b41-c7dc38c26644" />
 
-- Use blutter-termux-:
+- Use blutter-termux to dump the source code-:
 ```
 https://github.com/dedshit/blutter-termux/blob/main/README.md
 ```
