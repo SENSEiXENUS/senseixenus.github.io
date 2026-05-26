@@ -40,3 +40,7 @@ readelf -Ws  libapp.so | grep kDartIsolateSnapshotInstructions
 ```
 https://github.com/dedshit/blutter-termux/blob/main/README.md
 ```
+
+```
+docker/run.sh morbb ./lib_dump
+```
