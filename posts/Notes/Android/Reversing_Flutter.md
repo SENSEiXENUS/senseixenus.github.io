@@ -12,6 +12,20 @@
 ```
 _kDartIsolateSnapshotInstruction
 ```
+- Code in `\misc-code\flutter`:
+
+```
+https://github.com/cryptax/misc-code.git
+```
+
+- Usage-:
+
+```
+python3 flutter-header.py -i libapp.so
+```
+
+<img width="806" height="175" alt="image" src="https://github.com/user-attachments/assets/cdc978ac-4a60-4c60-8b41-c7dc38c26644" />
+
 - Use blutter-termux-:
 ```
 https://github.com/dedshit/blutter-termux/blob/main/README.md
