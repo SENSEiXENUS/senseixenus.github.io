@@ -142,10 +142,20 @@ Java.perform(function() {
 ```
 Frida-ps -Uia
 ```
-<img width="361" height="197" alt="image" src="https://github.com/user-attachments/assets/c24ba271-d6ed-4581-a5b9-091fbc6805cb" />
+<img width="361" height="197" alt="image" src="https://github.com/user-attachments/assets/cba7b2cf-35c5-43ae-83d9-9162146d3066" />
+
 
 - Then, run this to hook it-:
 
 ```
-frida -U --realm=emulated -p 2845 -l hook.js
+frida -U --realm=emulated -p [pid] -l hook.js
 ```
+- Script
+
+```js
+const libil2cpp = Process.getModuleByName("libil2cpp.so");
+if (libil2cpp !== null){
+    console.log("[+]Hooked libil2cpp.so found");
+}
+```
+
