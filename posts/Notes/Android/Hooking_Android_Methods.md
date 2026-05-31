@@ -158,4 +158,5 @@ if (libil2cpp !== null){
     console.log("[+]Hooked libil2cpp.so found");
 }
 ```
+<img width="468" height="183" alt="image" src="https://github.com/user-attachments/assets/6cb54805-94a9-490f-90a5-648854dbe686" />
 
