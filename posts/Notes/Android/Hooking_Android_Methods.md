@@ -124,3 +124,28 @@ Java.perform(function() {
 - Both available in jdks
 
 -----------------
+
+### Hooking arm based native functions
+
+-----------------
+
+- On most emulators, it is sort of a challenge to hook arm based binaries e.g libil2cpp.so, libapp.so. That's where `LDplayer` comes in to save the day.
+
+<img width="697" height="461" alt="image" src="https://github.com/user-attachments/assets/357b8f86-d6b9-4c3c-9577-c2fa55fbf562" />
+
+- Then, use the LD player multi instance manager to download an `Android 64bit` image.
+
+<img width="343" height="147" alt="image" src="https://github.com/user-attachments/assets/2f672d26-8016-45c4-a19f-896686c808d2" />
+
+- Setup frida, the first thing is to get the process identifier for the app process with-:
+
+```
+Frida-ps -Uia
+```
+<img width="361" height="197" alt="image" src="https://github.com/user-attachments/assets/c24ba271-d6ed-4581-a5b9-091fbc6805cb" />
+
+- Then, run this to hook it-:
+
+```
+frida -U --realm=emulated -p 2845 -l hook.js
+```
