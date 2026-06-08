@@ -168,7 +168,7 @@ if (libil2cpp !== null){
 
 - Challenge 8-:
 
-```
+```js
 Java.perform(()=>{
     const libfrida = Process.findModuleByName("libfrida0x8.so");
     if (libfrida){
@@ -187,7 +187,7 @@ Java.perform(()=>{
 
 - Dealing with java types in Frida-:
 
-```
+```js
 const HashMap =  Java.use('java.util.HashMap');
 const javaString = Java.use('java.lang.String');
 const javaBoolean = Java.use('java.lang.Boolean');
