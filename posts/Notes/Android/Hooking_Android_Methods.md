@@ -160,3 +160,40 @@ if (libil2cpp !== null){
 ```
 <img width="468" height="183" alt="image" src="https://github.com/user-attachments/assets/6cb54805-94a9-490f-90a5-648854dbe686" />
 
+-------------
+
+### Hooking Native functions
+
+--------------
+
+- Challenge 8-:
+
+```
+Java.perform(()=>{
+    const libfrida = Process.findModuleByName("libfrida0x8.so");
+    if (libfrida){
+        console.log("[+] Lib frida found");
+    }
+    Interceptor.attach(libfrida.getExportByName('Java_com_ad2001_frida0x8_MainActivity_cmpstr'),{
+        onEnter(args){
+            console.log(`[+] Found function: Java_com_ad2001_frida0x8_MainActivity_cmpstr::`,args[1].readCString());
+        },
+        onLeave(retVal){
+            retVal.replace(ptr(1));
+        }
+    })
+})
+```
+
+- Dealing with java types in Frida-:
+
+```
+const HashMap =  Java.use('java.util.HashMap');
+const javaString = Java.use('java.lang.String');
+const javaBoolean = Java.use('java.lang.Boolean');
+//Creating a new map
+var javaHashMap =  HashMap.$new()
+javaHashMap.put(javaString.$new("isJailed"), javaBoolean.FALSE.value);
+```
+
+--------------
