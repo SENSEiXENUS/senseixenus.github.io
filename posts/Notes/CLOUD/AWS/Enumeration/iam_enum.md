@@ -134,7 +134,7 @@ aws iam get-policy-version --policy-arn <arn> --version-id <v> --profile <p>
 
 ```bash
 aws iam get-user-policy --user-name <u> --policy-name <p> --profile <p>
-aws iam get-grpoup-policy --group-name <u> --policy-name <p> --profile <p>
+aws iam get-group-policy --group-name <u> --policy-name <p> --profile <p>
 aws iam get-role-policy --role-name <u> --policy-name <p> --profile <p>
 ```
 
@@ -143,6 +143,14 @@ aws iam get-role-policy --role-name <u> --policy-name <p> --profile <p>
 <img width="1505" height="332" alt="image" src="https://github.com/user-attachments/assets/b0cd4c51-bd93-4359-9705-01f3398ab86a" />
 
 
+- Investigating the metadata-:
+
+```bash
+aws iam get-role --role-name cg-flag4-role-c --profile bob | jq
+aws iam get-user --user-name cg-bob-c --profile bob | jq
+aws iam get-group --group-name cg-bob- --profile bob | jq  
+```
+<img width="1079" height="753" alt="image" src="https://github.com/user-attachments/assets/a4ff1cf6-3b44-4428-b501-6cff06be6c90" />
 
 
 -------------
