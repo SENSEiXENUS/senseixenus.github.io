@@ -1,6 +1,6 @@
 -------------
 
-### SECCON BEGINERS 26 
+### SECCON BEGINNERS 26 
 
 --------------
 
