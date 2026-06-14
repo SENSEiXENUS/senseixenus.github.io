@@ -81,6 +81,19 @@ aws sts get-caller-identity --profile default
 terraform version
 # cloudgoat config whitelist
 cloudgoat config whitelist
+```
 
+- Note-: Cloudgoat will not use your `default` AWS profile automatically.This is to prevent you from accidentally deploying vulnerable infrastructure to prevent accidentally vulnerable infrastructure to a production account. You must explicitly pass `--profile default`.
+- Most scenarios use free-tier or near free resources but some spin up EC2 instances or other billable services.
+- Always run
 
+```sh
+cloudgoat destroy <scenario-name> --profile default
+```
+
+- Verify with
+
+```
+aws iam list-users --profile default | grep cgid
+aws iam list-policies --scope local --profile default | grep cgid
 ```
