@@ -117,11 +117,11 @@ model Article {
 
 ```
 
-- The record pointed to by the function `findMany` is `Article`, we can only read a field  another model with the aid of `To-One` relation  because the field created in the model points to another field in field2.e.g
+- The record pointed to by the function `findMany` is `Article`, we can only read a field from another model with the aid of `To-One` relations  because the field created in the model points to another field in a different field which allows us to also point to another field in that model.e.g
 
 >If we are to read field `secretMemo` in model `Profile` from model `Article`.
 >It will be from field `author` as it references `id` in `User`.
->Then, point to `profile` which inherits the model `Profile` and lastly point to `secretMemo` which is a string.
+>Then, point to `profile` which inherits the model `Profile` and lastly point to `secretMemo` which is a `string` field in model `Profile`.
 
 ```prisma
 author.profile.secretMemo
