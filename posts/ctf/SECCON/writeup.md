@@ -1,0 +1,130 @@
+-------------
+
+### SECCON BEGGINERS 26 
+
+--------------
+
+<img width="1218" height="565" alt="image" src="https://github.com/user-attachments/assets/7f6fc758-62f2-4354-a4c2-6e386bc36723" />
+
+
+--------------
+
+### Web->Footnote
+
+--------------
+
+<img width="467" height="677" alt="image" src="https://github.com/user-attachments/assets/eff9c8c8-3188-43fa-a836-9942360fc85e" />
+
+-------------
+
+- Files-:
+
+<img width="535" height="510" alt="image" src="https://github.com/user-attachments/assets/30bb9e03-16e8-46f6-99f2-7e0a3a6f1f3c" />
+
+- We have an `Express` api using `PRISMA` orm to interact with the database. ORM is known as the `Obhects Relational Mapping` which defeats the idea of using traditional sql queries to interact with databases but with the aid of object relational programming.Prisma is good example of ORM and it is used in this instance
+- Example of ORM code instead of traditional sql query-:
+
+```js
+ await prisma.user.findMany({
+    include: {
+      posts: true,
+    },
+  })
+```
+- ORM injection is an issues that affects prisma statements when a developer allows user to control objects in a prisma statement. Sink in this code-:
+
+```typescript
+try {
+    const filterWhere = isAdvancedSearch({
+      field: req.query.field,
+      op: req.query.op,
+      value: req.query.value,
+    })
+      ? buildAdvancedWhere({
+          field: req.query.field,
+          op: req.query.op,
+          value: req.query.value,
+        })
+      : buildKeywordWhere(req.query.q);
+//Attacker can control fields, operation and value
+    const articles = await prisma.article.findMany({
+      where: {
+        AND: [{ published: true }, filterWhere],
+      },
+      orderBy: { id: "asc" },
+      select: articleSelect,
+    });
+
+```
+- In the code above, an attacker can control the field, operation and value allowing us to read sensitve data in the database.
+
+------------
+
+### Bypassing the filters in function `isAdvancedSearch`
+
+-------------
+
+- I noticed a `filter.ts` in the code which provides the method `isAdvancedSearch`.
+
+```typescript
+const ALLOWED_FILTER_ROOTS = new Set(["title", "body", "author"]);
+const ALLOWED_OPERATORS = new Set(["eq", "contains", "startsWith"]);
+const TO_ONE_RELATIONS = new Set(["author", "profile"]);
+```
+
+- The filters restrict the user to certain rules-:
+ - Field roots can only start with `title`,`body`,`author`.
+ - Allowed operators are `eq`,`contains` and `startsWith`
+ - Lastly, in Prisma, a To-One relation (or One-to-One relation) connects one record in a database table to exactly one record in another database table.Using the `schema.prisma`-:
+
+```prisma
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  role     String
+  profile  Profile?
+  articles Article[]
+}
+
+model Profile {
+  id         Int    @id @default(autoincrement())
+  displayName String
+  bio        String
+  secretMemo String
+  userId     Int    @unique
+  user       User   @relation(fields: [userId], references: [id])
+}
+
+model Article {
+  id        Int     @id @default(autoincrement())
+  title     String  @unique
+  body      String
+  published Boolean @default(true)
+  authorId  Int
+  author    User    @relation(fields: [authorId], references: [id])
+
+  @@index([published])
+}
+
+```
+
+- The record pointed to by the function `findMany` is `Article`, we can only read a field  another model with the aid of `To-One` relation  because the field creted in the model points to another field in field2.e.g
+
+>If we are to read field `secretMemo` in model `Profile` from model `Article`
+>It will be from field `author` as it reference to `id` in `User`
+>Then, point to `profile` which inherits the model `Profile` and lastly point to `secretMemo` which is a string.
+
+```prisma
+author.profile.secretMemo
+```
+- After accessing the field, we can predict values with `startsWith` and fuzz for characters with that operator.We can also confirm with `eq` which is `eqauls`to confirm if the found characters are correct.
+
