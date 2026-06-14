@@ -179,4 +179,6 @@ while True:
         else: 
             pass
 ```
+- Flag-: ```ctf4b{r00t_f13lds_4r3_n0t_en0ugh}```
 
+<img width="706" height="326" alt="image" src="https://github.com/user-attachments/assets/65ba5a88-63b4-4692-b23c-2cdee5901303" />
