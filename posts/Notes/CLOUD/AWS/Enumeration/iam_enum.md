@@ -56,9 +56,93 @@ aws iam list-roles --profile <u> --query "Roles[*].[RoleName,Path]" --output tab
 ```
 <img width="1132" height="179" alt="image" src="https://github.com/user-attachments/assets/1622afa8-7379-475e-9122-d2987026cdae" />
 
-> Roles explanation-: Resource Explorer (Resource discovery and indexing)
+> Roles explanation-:
+> Resource Explorer (Resource discovery and indexing)
 > AWS SUPPORT: (Enabling Support Related Diagnostics and Indexing)
 > Trusted Advisor (Allowing automated health and best practice checks)
 
+-----------
+
+### Enumerating Policies
+
+-----------
+
+- Inline user policies-:
+
+```sh
+aws iam list-user-policies --user-name <u> --profile <p>
+```
+<img width="944" height="160" alt="image" src="https://github.com/user-attachments/assets/90c192ce-dfdf-4f97-be4c-0429144e93cc" />
+
+-  Managed user policiees-:
+
+```
+aws iam list-attached-user-policies --user-name <u> --profile <p>
+```
+
+<img width="1124" height="276" alt="image" src="https://github.com/user-attachments/assets/c4ec7555-e94a-43a0-bfa3-94246810bb69" />
+
+- Group/Role policies-:
+
+```bash
+#Inline group policies
+aws iam list-group-policies --group-name <u> --profile <p>
+#attached group policies
+aws iam list-attached-group-policies --group-name <u> --profile <p>
+
+#Inline role policies
+aws iam list-role-policies --role-name <u> --profile <p>
+#attached role policies
+aws iam list-attached-role-policies --role-name <u> --profile <p>
+
+```
+
+<img width="1183" height="400" alt="image" src="https://github.com/user-attachments/assets/53da164b-949b-4645-a487-be264ec3866d" />
+
+<img width="1063" height="309" alt="image" src="https://github.com/user-attachments/assets/79a4e258-336c-467e-90b4-8df2a828f111" />
 
 
+-----------
+
+### Examining User Policy Rules
+
+------------
+
+- We exposed that there is one inline and two managed policies for our user `cg-bob-*` as well as one one  role policy for role `cg-flag4-role-*`
+- Let's look at the metadata for the policy name and the ARN (Amazon Resource Name) but have not looked at the metadata or policy document.
+- Inspecitng a custom managed policy-:
+
+```bash
+#Metadata about a managed Iam policy
+aws iam get-policy --policy-arn <arn> --profile <p>
+
+# Get Json policy document
+aws iam get-policy-version --policy-arn <arn> --version-id <v> --profile <p>
+```
+
+<img width="1701" height="597" alt="image" src="https://github.com/user-attachments/assets/d992cdaa-b356-4cd6-bd35-b44d89126dcd" />
+
+<img width="1643" height="420" alt="image" src="https://github.com/user-attachments/assets/b6687cbd-2130-441f-b942-e2485fd408d7" />
+
+------------
+
+### Investigating user, role, group inline policy
+
+-------------
+
+- Inspecting an inline role policy
+
+```bash
+aws iam get-user-policy --user-name <u> --policy-name <p> --profile <p>
+aws iam get-grpoup-policy --group-name <u> --policy-name <p> --profile <p>
+aws iam get-role-policy --role-name <u> --policy-name <p> --profile <p>
+```
+
+<img width="1723" height="347" alt="image" src="https://github.com/user-attachments/assets/dc77e5ee-e1fc-4883-8dd6-8e6d97bbcf17" />
+
+<img width="1505" height="332" alt="image" src="https://github.com/user-attachments/assets/b0cd4c51-bd93-4359-9705-01f3398ab86a" />
+
+
+
+
+-------------
