@@ -1,6 +1,6 @@
 -------------
 
-### SECCON BEGGINERS 26 
+### SECCON BEGINERS 26 
 
 --------------
 
@@ -117,14 +117,28 @@ model Article {
 
 ```
 
-- The record pointed to by the function `findMany` is `Article`, we can only read a field  another model with the aid of `To-One` relation  because the field creted in the model points to another field in field2.e.g
+- The record pointed to by the function `findMany` is `Article`, we can only read a field  another model with the aid of `To-One` relation  because the field created in the model points to another field in field2.e.g
 
->If we are to read field `secretMemo` in model `Profile` from model `Article`
->It will be from field `author` as it reference to `id` in `User`
+>If we are to read field `secretMemo` in model `Profile` from model `Article`.
+>It will be from field `author` as it references `id` in `User`.
 >Then, point to `profile` which inherits the model `Profile` and lastly point to `secretMemo` which is a string.
 
 ```prisma
 author.profile.secretMemo
 ```
-- After accessing the field, we can predict values with `startsWith` and fuzz for characters with that operator.We can also confirm with `eq` which is `eqauls`to confirm if the found characters are correct.
+- After accessing the field, we can predict values with `startsWith` and fuzz for characters with that operator.We can also confirm with `eq` which is `eqauls`to confirm if the found characters are correct.The next step is to get the result for true and false statements in order to write a script.
+- A true conditon returns 2 articles.-:
 
+```zsh
+╭─   ~/Documents/footnote                                                                                                                                                 at  19:17:48 ─╮
+╰─❯ curl http://footnote.beginners.seccon.games:44566/api/articles/search\?field\=author.profile.secretMemo\&op\=startsWith\&value\=b                                                     ─╯
+{"count":2,"articles":[{"id":1,"title":"朝の図書室から","body":"開館前の図書室には、まだ誰の足音もありません。窓際の机に光が差し込み、昨日返された本の背表紙だけが静かに並んでいます。棚を整えていると、誰かが挟んだ古いしおりが見つかりました。","author":{"profile":{"displayName":"admin","bio":"編集長。記事の裏側にある小さなメモを管理している。"}}},{"id":4,"title":"古い掲示板の手紙","body":"公民館の入口にある掲示板には、何年も変わらない画鋲の跡があります。新しいお知らせの隅に残った日焼けの形を見ると、ここで何度も季節が入れ替わったことが分かります。","author":{"profile":{"displayName":"admin","bio":"編集長。記事の裏側にある小さなメモを管理している。"}}}]}%
+```
+
+- False condition returns 0 articles-:
+
+```zsh
+─   ~/Documents/footnote                                                                                                                                                 at  19:18:42 ─╮
+╰─❯ curl http://footnote.beginners.seccon.games:44566/api/articles/search\?field\=author.profile.secretMemo\&op\=startsWith\&value\=f                                                     ─╯
+{"count":0,"articles":[]}%                                                                                                                    
+```
