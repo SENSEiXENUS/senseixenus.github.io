@@ -65,5 +65,25 @@ aws iam enable-mfa-device \
     --authentication-code-2 <second code>
 ```
 
+- Assuming role with an MFA device-:
+
+```bash
+aws sts assume-role \
+  --role-arm "arn:aws:iam::123456789012:role/YourAdminRoleName" \
+  --role-session-name "MFA-Admin-Session" \
+  --serial-number "arn:aws:iam::123456789012:mfa/your-username" \
+  --token-code <from authenticator>
+```
+<img width="1897" height="372" alt="image" src="https://github.com/user-attachments/assets/c0c5a1a6-d1f5-451c-8512-3ba056f00744" />
+
+- Switching to Pacu-:
+
+```
+#configure the temp_keys with
+set_keys
+#run module
+run enum__secrets --region us-east-1
+```
+
 
 -----------------
