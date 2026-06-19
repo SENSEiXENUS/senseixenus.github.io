@@ -85,5 +85,11 @@ set_keys
 run enum__secrets --region us-east-1
 ```
 
+<img width="1077" height="360" alt="image" src="https://github.com/user-attachments/assets/fdf24254-5bb4-4e0b-a95e-b61a7154eb82" />
+
+- Secretss-:
+
+<img width="1415" height="91" alt="image" src="https://github.com/user-attachments/assets/8c85745f-53d6-4f9f-8438-f5ebb22e031b" />
+
 
 -----------------
