@@ -35,7 +35,35 @@ aws iam delete-access-key --user-name admin_ --access-key-id AKIA4TCVBDXKSZGBT75
 aws iam create-access-key --user-name <admin> --profile key_rotation | jq
 ```
 
--
+- We need a `MFA-virtual-device` for user `admin_*` to assume role `secretsmanager`.
+
+<img width="813" height="521" alt="image" src="https://github.com/user-attachments/assets/04e375f7-86f8-43c0-83ea-a4674737f927" />
+
+- Creating an MFA virtual device-:
+
+```bash
+aws iam create-virtual-mfa-device --virtual-mfa-device-name mfaDevice --outfile /home/sensei/cloud/iam_key_rotation/iam.png --bootstrap-method QRCodePNG | jq
+```
+
+<img width="790" height="125" alt="image" src="https://github.com/user-attachments/assets/7d1bb2d2-344d-40d1-841f-fe19110c70a0" />
+
+- Showing already created mfa device-:
+
+```bash
+aws iam list-virtual-mfa-devices --profile admin_key_rotation | jq 
+```
+
+<img width="797" height="175" alt="image" src="https://github.com/user-attachments/assets/ad1072fa-21a4-4e36-81e0-744f3b869f21" />
+
+- Scan the already created png file with an authenticator app e.g `Authy` or `Google Authenticator`.Then, the first code is the first code you see and the second code is the code generated after the first.
+
+```bash
+aws iam enable-mfa-device \
+    --user-name TargetIAMUserName \
+    --serial-number arn:aws:iam::123456789012:mfa/MyUserMFADevice \
+    --authentication-code-1 <first one> \
+    --authentication-code-2 <second code>
+```
 
 
 -----------------
