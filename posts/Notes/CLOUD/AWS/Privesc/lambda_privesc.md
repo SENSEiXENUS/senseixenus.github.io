@@ -35,6 +35,17 @@ aws iam get-policy-version --policy-arn arn:aws:iam::865614241237:policy/cg-lamb
 
 - Fixing issue `'Namespace' object has no attribute 'cli_binary_format'`-:
 
+```bash
+pip install awscli
+```
 
+- Adding a new profile to `~/.aws/credentials`-: 
+
+```bash
+[temp-profile]
+aws_access_key_id = ASIAxxxxxxxxxxxxxxxx
+aws_secret_access_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+aws_session_token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
 -------------------
