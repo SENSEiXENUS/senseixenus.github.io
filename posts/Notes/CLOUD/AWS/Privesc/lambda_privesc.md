@@ -85,7 +85,6 @@ aws lambda invoke --function-name unknown_lambda output.txt --region us-east-1
 ```bash
 aws iam list-attached-user-policies --user-name chris-<cgid> --profile lambda_secrets | jq 
 ```
-
 <img width="1166" height="304" alt="image" src="https://github.com/user-attachments/assets/d864f7c1-c4e6-4aab-b035-daefe243590c" />
 
 
