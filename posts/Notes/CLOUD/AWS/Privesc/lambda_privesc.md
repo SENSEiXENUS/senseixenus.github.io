@@ -27,7 +27,14 @@ aws iam get-policy-version --policy-arn arn:aws:iam::865614241237:policy/cg-lamb
 
 <img width="1908" height="390" alt="image" src="https://github.com/user-attachments/assets/6fa87e8e-ebf0-4671-ae50-e80bf22881d9" />
 
+------------------
 
-
+### Privilege Escalation with Lambda
 
 ------------------
+
+- Fixing issue `'Namespace' object has no attribute 'cli_binary_format'`-:
+
+
+
+-------------------
