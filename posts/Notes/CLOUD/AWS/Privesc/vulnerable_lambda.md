@@ -52,5 +52,21 @@ target_policys = event['policy_names']
 ```sql
 AdministratorAccess' -- 
 ```
+- Create a `payload.json`-:
 
-- 
+```json
+{"user_name":"cg-bilbo-cgid*","policy_names":["AdministratorAccess' -- "]}
+```
+
+- Invoking the function-:
+
+```bash
+aws lambda invoke --function-name "cgid*-policy_applier_lambda1" --payload file://./payload.json out.txt --region us-east-1 --profile bilbo_lambda | jq
+```
+
+
+- Admin access-:
+
+<img width="1058" height="209" alt="image" src="https://github.com/user-attachments/assets/34ad3b09-3819-48ef-9fac-6750d0c0299d" />
+
+--------------
