@@ -14,6 +14,7 @@
    - Cat
    - Omikuji
    - Log-Viewer
+   - Ip-blocked-secret
 
 --------------
 
