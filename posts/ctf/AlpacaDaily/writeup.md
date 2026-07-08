@@ -558,6 +558,75 @@ curl -s http://34.170.146.252:29894/ -d 'query=/%0ABEGIN%20{system("cat%20/*.txt
 
 <img width="1459" height="419" alt="image" src="https://github.com/user-attachments/assets/eaf29950-703e-4f3e-bace-bf22a8ee4b8b" />
 
+-------------------
 
+### Ip-blocked-secret
 
+-------------------
 
+<img width="606" height="246" alt="image" src="https://github.com/user-attachments/assets/1af6d1a0-5cd2-41b8-b5ae-418bdc606d72" />
+
+--------------------
+
+- Files-:
+
+<img width="426" height="110" alt="image" src="https://github.com/user-attachments/assets/2da32d5b-7e05-4ded-b941-6b8251ee9525" />
+
+- The flag gets stored in table `flag` as shown in `init_db.py`-:
+
+```python3
+db.execute("""
+    CREATE TABLE IF NOT EXISTS flag (
+        flag TEXT NOT NULL
+    )
+""")
+db.execute(f"""
+    INSERT INTO flag (flag) VALUES ('{FLAG}')
+""")
+```
+
+- We have two sql injection  sinks in route `/` and `/set`-:
+
+```python3
+#Line 55
+# Second order sql injection
+@app.get("/")
+def index():
+    ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+    sid = session.get("sid", None)
+    if not IPV4_RE.fullmatch(ip):
+        return "Invalid IP", 400
+        
+    data = g.db.execute(f"""
+        SELECT secret, ip FROM secrets WHERE id='{sid}'
+    """).fetchone()
+```
+
+- The main sink we can control  in `/set`, you'll notice that after the `INSERT` gets executed, it returns the value of the id and save it in `sid` in the flask session.-:
+
+```python3
+@app.post("/set")
+def set():
+    ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+    secret = request.form.get("secret", "")
+    if not IPV4_RE.fullmatch(ip):
+        return "Invalid IP", 400
+    
+    secret = secret.replace("'", "''")
+    cur = g.db.execute(f"""
+        INSERT INTO secrets (ip, secret)
+        VALUES ('{ip}', '{secret}')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+    """)
+    session["sid"] = cur.fetchone()["id"]
+    g.db.commit()
+```
+
+- Other tidbits to understand
+ -  The regex is flawed because `.` is a special character in regex and should be escaped leaving us a sink that allows us to pass special characters instead of ipv4 addresses.-:
+>
+```regex
+re.compile(r"\d{,3}.\d{,3}.\d{,3}.\d{,3}", re.ASCII)
+``` 
