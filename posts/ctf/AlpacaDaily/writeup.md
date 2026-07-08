@@ -624,9 +624,29 @@ def set():
     g.db.commit()
 ```
 
-- Other tidbits to understand
+- Other tidbits to understand-:
  -  The regex is flawed because `.` is a special character in regex and should be escaped leaving us a sink that allows us to pass special characters instead of ipv4 addresses.-:
->
+>\d{,3}: Matches between 0 and 3 consecutive digits
+>.: Matches any single character (except a newline), not a literal
+> dot.re.ASCII: Restricts the \d shorthand to match only standard ASCII digits [0-9] instead of all Unicode digits.
+> So you can pass `...` or in our case `'/*` to exploit the sql injection
 ```regex
 re.compile(r"\d{,3}.\d{,3}.\d{,3}.\d{,3}", re.ASCII)
-``` 
+```
+
+ - The body `secret` replaces any quote `'` with `''` making sql injection impossible with quotes for now (I think).
+
+ ```python3
+ secret = secret.replace("'", "''")
+ ```
+
+- Exploiting it-:
+- First, we pass `'/*` to `X-Forwarded-For` to do multi line comments and also because we can close it unlike `--`.I'll pass the payload in it to show you the visual idea instead of just imagining it.
+
+```sql
+INSERT INTO secrets (ip, secret)
+        VALUES (''/*---everything is on comment mode for now', '{secret}')
+        ON CONFLICT(ip) DO UPDATE SET
+            secret = excluded.secret
+        RETURNING id
+```
