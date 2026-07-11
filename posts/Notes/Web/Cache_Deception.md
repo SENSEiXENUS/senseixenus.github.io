@@ -98,7 +98,53 @@
 
 --------------
 
+### Delimeter Decoding Discrepancies
 
+---------------
 
+- Let's take this into consideration e.g `/profile%23wcd.css` which decodes to `#`
+- Cache sees it plainly as `/profile%23wcd.css` and caches it but the origin server decodes it and sees it as a discrepamcy
+
+- Some cache servers may decode the URL and then forward the request with the decoded characters. Others first apply cache rules based on the encoded URL, then decode the URL and forward it to the next server. These behaviors can also result in discrepancies in the way cache and origin server interpret the URL path. Consider the example `/myaccount%3fwcd.css`:
+ - It checks the urlencoded one , apply cache rules and sends it to the origin server
+ - Which sees it as a normal url and returns the profile
 
 --------------
+
+### Exploiting static directory cache rules
+
+---------------
+
+- It's common practice for web servers to store static resources in specific directories. Cache rules often target these directories by matching specific URL path prefixes, like /static, /assets, /scripts, or /images. These rules can also be vulnerable to web cache deception.
+- Discrepancies in how the cache and origin server normalize the URL can enable an attacker to construct a path traversal payload that is interpreted differently by each parser. Consider the example `/static/..%2fprofile`:
+- Cache server might not decode it , apply cache rules and also return it to the Origin server leading to cache deception
+
+--------------
+
+### Challenge:  Exploiting origin server normalization for web cache deception
+
+---------------
+
+- Caching is a based on static assets storage `/resources/`-:
+
+```
+/resources/..%2fmy-account
+```
+
+- Exploit-:
+
+```html
+<! doctype html>
+<html>
+<img src="https://0a3d005204fb5c738344fc6f003b00b2.web-security-academy.net/resources/..%2fmy-account?foo=bar" width="0" height="0" />
+</html>
+```
+
+- Hit-:
+
+<img width="767" height="181" alt="image" src="https://github.com/user-attachments/assets/0e436064-0a59-4f06-b912-6f7fc636ac2c" />
+
+----------
+
+
+
