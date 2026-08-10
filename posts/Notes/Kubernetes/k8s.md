@@ -33,6 +33,25 @@ crictl -r unix:///custom/containerd/containerd.sock images
 
 <img width="1205" height="868" alt="image" src="https://github.com/user-attachments/assets/1d63c2ac-29e5-4013-8160-1632821738c4" />
 
-- 
 
 --------------
+
+### Kubernetes DNS 
+
+--------------
+
+- DNS specification-:
+
+```dns
+<pod-IPv4-address>.<namespace>.pod.<cluster-domain>
+```
+
+- Cluster dns-:
+
+```dns
+<pod-ipv4-address>.<service-name>.<my-namespace>.svc.<cluster-domain.example>
+```
+- You can find dns info at `file:///etc/resolv.conf`-:
+
+<img width="1166" height="832" alt="image" src="https://github.com/user-attachments/assets/887313d6-b6f3-4a5c-b3a4-574e04771adc" />
+
