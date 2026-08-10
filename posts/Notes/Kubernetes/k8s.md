@@ -29,4 +29,10 @@ debug: false
 crictl -r unix:///custom/containerd/containerd.sock images
 ```
 
+- If file read is supported, you can read `file:///var/run/secrets/kubernetes.io/serviceaccount/token`
+
+<img width="1205" height="868" alt="image" src="https://github.com/user-attachments/assets/1d63c2ac-29e5-4013-8160-1632821738c4" />
+
+- 
+
 --------------
