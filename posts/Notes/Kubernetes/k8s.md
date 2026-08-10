@@ -65,3 +65,10 @@ crictl -r unix:///custom/containerd/containerd.sock images
 
 
 -------------
+
+### Hacking docker containers with `cap_sys_ptrace` and --pid=HOST
+
+-------------
+
+- [Url](https://madhuakula.com/content/attacking-and-auditing-docker-containers-using-opensource/attacking-docker-containers/capability.html)
+-------------
