@@ -63,6 +63,12 @@ crictl -r unix:///custom/containerd/containerd.sock images
 
 - The Kubernetes node configuration can be found at the default path, which is used by the node level kubelet to talk to the Kubernetes API Server. If you can use this configuration, you gain the same privileges as the Kubernetes node.
 
+```bash
+./kubectl --kubeconfig /etc/kubernetes/admin.conf get nodes
+```
+
+<img width="1425" height="68" alt="image" src="https://github.com/user-attachments/assets/0738ee37-e3cc-47c2-a75a-3a748a5af419" />
+
 
 -------------
 
@@ -71,4 +77,5 @@ crictl -r unix:///custom/containerd/containerd.sock images
 -------------
 
 - [Url](https://madhuakula.com/content/attacking-and-auditing-docker-containers-using-opensource/attacking-docker-containers/capability.html)
+
 -------------
