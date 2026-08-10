@@ -55,3 +55,13 @@ crictl -r unix:///custom/containerd/containerd.sock images
 
 <img width="1166" height="832" alt="image" src="https://github.com/user-attachments/assets/887313d6-b6f3-4a5c-b3a4-574e04771adc" />
 
+--------------
+
+### Cluster takeover with `/etc/kubernetes/admin.conf`
+
+------------
+
+- The Kubernetes node configuration can be found at the default path, which is used by the node level kubelet to talk to the Kubernetes API Server. If you can use this configuration, you gain the same privileges as the Kubernetes node.
+
+
+-------------
