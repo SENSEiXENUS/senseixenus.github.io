@@ -79,3 +79,28 @@ crictl -r unix:///custom/containerd/containerd.sock images
 - [Url](https://madhuakula.com/content/attacking-and-auditing-docker-containers-using-opensource/attacking-docker-containers/capability.html)
 
 -------------
+
+### Exploiting Kubernetes Private registries
+
+--------------
+
+- Attacking Kubes private registries
+- CHeck for catalogue-:
+
+```bash
+curl <url>/v2/_catalog
+```
+<img width="891" height="193" alt="image" src="https://github.com/user-attachments/assets/fff5cd16-f15e-4e12-b9ca-431a11234dd9" />
+
+- Repo getting-:
+
+```url
+http://127.0.0.1:1235/v2/_catalog/madhuakula/k8s-goat-users-repo/manifests/latest
+```
+<img width="1290" height="526" alt="image" src="https://github.com/user-attachments/assets/1810ee3d-aaf4-45b2-a6ee-77742e9d0a79" />
+
+- Env-:
+
+<img width="1864" height="604" alt="image" src="https://github.com/user-attachments/assets/d2e514d7-87fc-4507-8ac3-4ad5e8d925e4" />
+
+--------------
