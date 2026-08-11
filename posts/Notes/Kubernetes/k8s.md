@@ -111,7 +111,8 @@ http://127.0.0.1:1235/v2/_catalog/madhuakula/k8s-goat-users-repo/manifests/lates
 
 - Issue while dumping tar files-:
 
-<img width="1800" height="92" alt="image" src="https://github.com/user-attachments/assets/329b2916-879d-4c0f-8882-303c264987de" />
+<img width="1790" height="87" alt="image" src="https://github.com/user-attachments/assets/e253c42c-1cce-4134-b54d-5e1349d8bacc" />
+
 
 ```bash
 curl <url>/v2/<image>/manifests/latest -H "Accept: application/vnd.oci.image.manifest.v1+json, application/vnd.docker.distribution.manifest.v2+json" -H "Accept: application/vnd.oci.image.index.v1+json" -H "Accept: application/vnd.oci.image.manifest.v1+json"
