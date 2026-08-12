@@ -39,3 +39,32 @@ body="GraphQL Server" && title="Graphql"
 /graphql
 ```
 
+-----------------
+
+### Creating Fragments
+
+-------------------
+
+- Fragment-:
+
+```grapqhl
+fragment UserFields on User {
+  id
+  username
+  email
+}
+```
+
+- Calling it-:
+
+```graphql
+query GetUsers {
+  activeUsers {
+    ...UserFields
+    status
+  }
+  adminUsers {
+    ...UserFields
+    permissions
+  }
+```
