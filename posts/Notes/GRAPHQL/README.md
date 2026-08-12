@@ -27,3 +27,15 @@ body="GraphQL Server" && title="Graphql"
 ```
 
 --------------------
+
+### Common list so far
+
+-------------------
+
+- Urls-:
+
+```text
+/query
+/graphql
+```
+
