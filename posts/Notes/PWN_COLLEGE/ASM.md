@@ -32,7 +32,7 @@ eio(x86), rip(amd64),r15(arm)
 
 ```
 mov rax, 0x539
-mov rbx, 1337
+mov ax, 1337
 ```
 
 - 32-bit caveat ( if you write to a 32-bit partial e.g eax, the CPU will zero out the rest from the register.
@@ -41,5 +41,46 @@ mov rbx, 1337
 mov rax to 0xfffffffffffffffffff
 mov eax, 0x539
 ```
+
+- You can move a general purpose register to another general purpose register.
+- Consider
+
+```asm
+mov eax, -1
+```
+- If you want to operate on that -1 in 64-bit land
+
+```asm
+mov eax, -1
+movsx rax, eax
+```
+
+- `movsx` does a sign-extending move by copying the top bit to the rest of the register.
+
+---------------
+
+### Register arrithmetic
+
+-------------
+
+- Don't mess with `rip`, it stores the memory address of next instruction to be executed.
+- Also, don't forget about `rsp` as it contains the address of a region to store temporary data (sp = Stack Pointer)
+
+<img width="658" height="318" alt="image" src="https://github.com/user-attachments/assets/c6bc338c-1aeb-4cf8-88f4-ca81cbf98b43" />
+
+------------
+
+### Memory
+
+-------------
+
+- Process memory is addressed linearly.
+
+```
+0x10000 ( for security reasons)
+0x7ffffffffffffff ( for architecture/ OS purposes)
+```
+
+- 
 
 ---------------
