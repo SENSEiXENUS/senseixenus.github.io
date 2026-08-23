@@ -851,3 +851,15 @@ dsquery * -filter "(userAccountControl:1.2.840.113556.1.4.803:=8192)" -limit 5 -
 
 
 ------------------
+
+### Installing impacket
+
+--------------------
+
+- Impacket-:
+
+```bash
+python3 -m pipx install impacket
+```
+
+-----------------------
