@@ -863,3 +863,14 @@ python3 -m pipx install impacket
 ```
 
 -----------------------
+
+### Filtering Kerbrute for nxc
+
+------------------------
+
+-  Bash liner-:
+
+```bash
+cat valid_ad_users | grep -oE "[a-z]+\.[a-z]+\@cs\.org" |  sed 's/@cs.org//g' | sort -u | tee nxc_usernames.txt
+```
+------------
