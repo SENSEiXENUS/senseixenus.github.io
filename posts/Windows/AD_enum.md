@@ -874,3 +874,17 @@ python3 -m pipx install impacket
 cat valid_ad_users | grep -oE "[a-z]+\.[a-z]+\@cs\.org" |  sed 's/@cs.org//g' | sort -u | tee nxc_usernames.txt
 ```
 ------------
+
+### Rusthound 
+
+-------------
+
+- Dumping users-:
+
+```bash
+rusthound -d cs.org -u 'claudine.ara@cs.org' -p 'charles' -o /tmp/demo -z
+```
+
+<img width="1078" height="652" alt="image" src="https://github.com/user-attachments/assets/1d23069f-fd1d-482e-8fb5-3cf80bb4adf2" />
+
+-----------------
