@@ -123,3 +123,19 @@ INLANEFREIGHT.LOCAL/
 - While Windows operating systems use a variety of protocols to communicate, Active Directory specifically requires Lightweight Directory Access Protocol (LDAP), Microsoft's version of Kerberos, DNS for authentication and communication, and MSRPC which is the Microsoft implementation of Remote Procedure Call (RPC), an interprocess communication technique used for client-server model-based applications.
 - Kerberos is  Windows' default authentication protocol for domain accounts.When a user logs into their PC, Kerberos is used to authenticate them via mutual authentication, or both the user and the server verify their identity.
 
+-----------------
+
+### Enabling winrm for a user
+
+-----------------
+
+- In Powershell-:
+
+```pwsh
+Set-PSSessionConfiguration -Name Microsoft.PowerShell -ShowSecurityDescriptorUI
+```
+
+<img width="268" height="262" alt="image" src="https://github.com/user-attachments/assets/b86ec14b-98c4-4601-80ea-ab59ee0b3ed7" />
+
+- Then grant all permission
+- 
