@@ -311,6 +311,9 @@ impacket-GetNPUsers cs.org/ -usersfile valid_ad_username -dc-ip 192.168.232.129 
 
 <img width="1900" height="855" alt="image" src="https://github.com/user-attachments/assets/05df868a-3178-4016-b38d-319e451d9006" />
 
+- Cracking with `john`-:
+
+<img width="1424" height="300" alt="image" src="https://github.com/user-attachments/assets/aa3c4e97-c71a-4113-823d-b63c8bebe4f9" />
 
 
 ---------------
