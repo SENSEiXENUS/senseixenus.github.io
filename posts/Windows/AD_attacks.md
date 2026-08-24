@@ -162,6 +162,12 @@ sudo faketime "$(sudo rdate -n 192.168.232.129)"  nxc ldap  192.168.232.129  -u 
 
 <img width="1736" height="736" alt="image" src="https://github.com/user-attachments/assets/8a1d9bdd-df75-4884-aa0c-2ae963a44afd" />
 
+- Hashes type for kerberoast(Note that users are encrypted with user'spassword) -:
+
+```
+AES+PKDF2 ($krb5tgs$17$, $krb5tgs$18$)
+RC+NTHASH (etype 23 ($krb5tgs$23$))
+```
 --------------
 
 ### Using Windows for kerberoasting( Semi Manual mode)
