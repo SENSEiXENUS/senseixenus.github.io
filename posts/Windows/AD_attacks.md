@@ -390,7 +390,7 @@ secretsdump.py -just-dc-ntlm -history -pwd-last-set -user-status <DOMAIN>/<USER>
 
 ---------------
 
-### Pass the hash with win-pthexe
+### Pass the hash with pth-winexe
 
 ---------------
 
