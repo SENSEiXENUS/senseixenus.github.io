@@ -417,3 +417,13 @@ mimikatz.exe
 <img width="465" height="183" alt="image" src="https://github.com/user-attachments/assets/be80f534-fdd0-41fd-a1f4-f83a93ba5b0a" />
 
 -----------------
+
+### Sign in with another user
+
+-----------------
+
+- Use `runas`-:
+
+```cmd
+runas /netonly /user:yourdomain\TargetUser cmd.exe
+```
