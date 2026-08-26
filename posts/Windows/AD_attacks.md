@@ -433,3 +433,27 @@ mimikatz.exe
 ```cmd
 runas /netonly /user:yourdomain\TargetUser cmd.exe
 ```
+
+----------------
+
+### Abusing Users in Backup Operators
+
+-----------------
+
+- Members of the Backup Operators group possess SeBackupPrivilege and SeRestorePrivilege, which let them bypass normal file permissions to read protected system files. If the compromised user is also part of the Remote Management Users group, you can connect directly to the target via WinRM (using tools like evil-winrm) to run the exploitation chain interactively.
+
+- User `stephanie.clara` is a member of that group.
+
+<img width="792" height="347" alt="image" src="https://github.com/user-attachments/assets/e56b8c73-5ab1-430b-aec3-938d95a3942c" />
+
+- Exploit [here](https://github.com/giuliano108/SeBackupPrivilege) -:
+
+```pwsh
+#Importing both dlls from the repo using powershell
+Import-Module .\SeBackupPrivilegeCmdLets.dll
+Import-Module .\SeBackupPrivilegeUtils.dll
+```
+
+- 
+
+-----------------
