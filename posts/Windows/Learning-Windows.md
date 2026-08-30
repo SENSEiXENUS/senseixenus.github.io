@@ -1825,6 +1825,43 @@ kerberos::golden /user: /domain: /sid: /krbtgt: /id:
 
 -----------------
 
+### VDI Sandbox bypass
+
+-------------------
+
+- Printer-:
+- Start with `ctrl+p` to print and `find printer`-:
+
+<img width="927" height="650" alt="image" src="https://github.com/user-attachments/assets/a63787a8-33f0-42bb-8606-96a913ec10a0" />
+
+- Click on that drop down to run  `cmd.exe`-:
+
+<img width="1046" height="459" alt="image" src="https://github.com/user-attachments/assets/6b753bbe-35fd-427f-99b2-0d62cb81e25d" />
+
+<img width="862" height="213" alt="image" src="https://github.com/user-attachments/assets/c56966c8-12fe-4ed2-804c-3be658996fc3" />
+
+- Lastly run `explorer.exe` to fully access it
+
+- Secondly, you can use `notepad.exe`, right-click to view source-:
+
+<img width="1053" height="848" alt="image" src="https://github.com/user-attachments/assets/55847d5d-5ec2-4e33-b0be-32d91de7e8c3" />
+
+- Then, `file>>open`, click all files
+
+<img width="970" height="666" alt="image" src="https://github.com/user-attachments/assets/7e83aa01-45f0-4ee0-abb9-017ee97029ec" />
+
+- Search for `cmd.exe` or `powershell.exe` and right click to run-:
+
+<img width="1047" height="702" alt="image" src="https://github.com/user-attachments/assets/1f2bf17c-2c03-4435-a088-34d3040a7a70" />
+
+----------------
+
+
+
+
+
+
+
 
 
 
