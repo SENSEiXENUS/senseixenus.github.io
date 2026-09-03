@@ -1900,8 +1900,17 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
     return TRUE;
 }
 ```
+----------------------
 
+### Exploiting SeImpersonate privilege
 
+----------------------
+
+- [Exploit](https://github.com/weaselsec/GodPotato-Aggressor-Script/blob/main/GodPotato-NET4.exe)
+
+<img width="1059" height="638" alt="image" src="https://github.com/user-attachments/assets/a4a26e05-7877-42e8-829d-8066829c5a7e" />
+
+---------------------
 
 
 
