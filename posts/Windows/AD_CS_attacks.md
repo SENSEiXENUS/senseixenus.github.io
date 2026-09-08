@@ -129,6 +129,34 @@ certipy-ad auth -pfx administrator --dc-ip <ip>
 
 -----------------------
 
+### ESC4
+
+------------------------
+
+- ESC4 Active Directory Certificate Services Vulnerability is a high-risk vulnerability in Active Directory Certificate Services (ADCS) that enables attackers to exploit misconfigured certificate template permissions (e.g., Write, GenericAll, WriteDACL). This flaw serves as a critical entry point for a certificate attack. By modifying vulnerable templates, attackers can issue authentication certificates with Client or Server Authentication EKU, allowing them to impersonate privileged users or systems (e.g., Domain Admins, Domain Controllers) using Kerberos PKINIT.
+- The ESC4 attack in ADCS arises due to misconfigured Access Control Entries (ACEs) on certificate templates. When these ACEs grant unintended or unprivileged Active Directory users the ability to modify the security settings of a certificate template, attackers can gain control over the template, enabling them to issue certificates with elevated privileges. This attack is particularly dangerous when attackers can leverage certificates with the Server Authentication EKU (Extended Key Usage) to impersonate trusted servers, such as Domain Controllers, and gain unauthorized access to sensitive resources.
+- Requirements-:
+  - True – Low-privileged user has Write/Owner/Modify permissions on a certificate template (e.g., WriteOwner, WriteDacl, WriteProperty).
+  - True – Low-privileged user has Enroll or Autoenroll permission on the vulnerable template.
+  - True – The template allows specifying a custom Subject Alternative Name (SAN) (e.g., to spoof a Domain Controller FQDN).
+  - True – The template includes or can be modified to include Server Authentication EKU (3.6.1.5.5.7.3.1).
+- Dangerous privileges highlighted in certipy's response.
+
+<img width="1174" height="889" alt="image" src="https://github.com/user-attachments/assets/1e98e06d-c86c-4a8c-8480-d84cf3c63969" />
+
+- Leveraging the template dangerous permissions, we'll leverage the permissions to make it more dangerous.
+
+```bash
+certipy-ad template -u 'dev@papa.local' -p password -template ESC3 -target 192.168.130.136 -save-configuration ESC3 
+```
+
+- The vulnerable template I created by checking  the templates to update the `pKIExtendedKeyUsage` and `msPKI-Certificate-Application-Policy`-:
+
+```json
+
+```
+  
+
 
 
 
