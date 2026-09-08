@@ -574,3 +574,44 @@ impacket-addcomputer -computer-name 'ControlledComputer$' -computer-pass 'Comput
 ```
 
 <img width="1678" height="152" alt="image" src="https://github.com/user-attachments/assets/4c71d3be-f677-4cfc-b980-3b0f2180edea" />
+
+-----------
+
+### Pre 2k AD configurations
+
+-----------
+
+- Pre2K Active Directory misconfigurations (short for “Pre-Windows 2000”) often stem from overlooked legacy settings in Windows environments. Common issues include enabling NTLM or SMBv1 for backward compatibility, leaving Pre-Windows 2000 accounts active, and neglecting proper account cleanup. These misconfigurations, when combined with weak permissions, can expose domains to privilege escalation and unauthorized access.
+- Using `pre2k` and `nxc` to exploit-:
+
+ - Using NXC-:
+
+```
+nxc ldap 192.168.130.136 -u "dev" -p "password" -M pre2k
+```
+<img width="1689" height="255" alt="image" src="https://github.com/user-attachments/assets/16a24b8a-6f4f-4f0b-b57a-8441a699ad53" />
+
+- Exploitation( We cannot login)-:
+
+<img width="1661" height="132" alt="image" src="https://github.com/user-attachments/assets/0a6d868b-4808-461c-81ac-3e24863f8542" />
+
+- The error “STATUS_NOLOGON_WORKSTATION_TRUST_ACCOUNT” indicates a computer is unable to log on to the domain because it does not have the necessary trust relationship set up with the Active Directory domain. This issue usually occurs when the system misconfigures the computer account, deactivates it, or allows the password to fall out of sync with the domain controller.Therefore, we can change the password and reattempt to connect with the new password.
+- Then, we'll change it using `impacket-changepasswd` tool-:
+
+```bash
+impacket-changepasswd ignite.local/DEMO$@192.168.1.48 -newpass 'Password@987' -p rpc-samr
+```
+
+<img width="985" height="226" alt="image" src="https://github.com/user-attachments/assets/bdc74a69-7eb2-47d6-acb3-fffd2cfa2431" />
+
+-----------------
+
+###
+
+-------------------
+
+- 
+
+----------------
+
+------------
