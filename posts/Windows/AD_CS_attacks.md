@@ -203,7 +203,35 @@ certipy-ad auth -pfx administrator_forged.pfx -dc-ip 192.168.130.136
 
 -------------------
 
+### ESC6:  Editf_attributesubjectaltname2
 
+------------------
+
+- ESC6 is a privilege escalation attack that exploits misconfigured certificate templates and CA settings. Consequently, it allows attackers to impersonate privileged users using legitimate certificates, bypassing brute-force or zero-day methods.
+- Requirements-:
+ - SAN Injection: ESC6 exploits the SAN request attribute (+EDITF_ATTRIBUTESUBJECTALTNAME2 flag) to add additional hostnames, typically used for webserver certificates.
+ - CA-Wide Vulnerability: The flag applies globally, making any certificate template open to user enrollment exploitable.
+ - Impersonating Privileged Users: Attackers can issue certificates with a Domain or Enterprise Admin as an additional UPN, impersonating high-privilege users.
+ - Unprivileged User Enrollment: Attackers can enroll through open templates (e.g., standard User template) to authenticate as domain administrators or other privileged entities.
+
+- The EDITF_ATTRIBUTESUBJECTALTNAME2 registry flag modifies CA behavior to allow certificate requesters to manually specify the Subject Alternative Name (SAN) field during enrollment.This includes identities like UPNs (e.g., administrator@ignite.local), DNS names, IPs, and email addresses. When enabled, it lets users inject custom SANs such as privileged UPNs making it a key enabler in ESC6 attacks.In an ESC6 attack, this flag is crucial. When enabled, it lets attackers request certificates with a privileged user’s UPN. If combined with a misconfigured template, the CA issues a valid certificate, grant the attacker to impersonate and authenticate as that user.By default, Active Directory auto-fills SAN fields based on the requester’s identity. However, with the flag enabled, requesters gain control over the SAN, thereby creating a path for abuse.
+- Exploiting it requires requesting a malicious cert as a low priv user-:
+
+```bash
+certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'User' -upn 'administrator@papa.local'
+```
+
+<img width="1672" height="299" alt="image" src="https://github.com/user-attachments/assets/112edbee-a263-41bd-ae4e-40a692b26017" />
+
+- Auth-:
+
+```bash
+certipy-ad auth -pfx administrator.pfx -dc-ip 192.168.130.136 
+```
+
+<img width="1009" height="306" alt="image" src="https://github.com/user-attachments/assets/5e2837ba-1e64-4beb-aef5-4480226619ba" />
+
+------------------
 
 
 
