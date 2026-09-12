@@ -289,7 +289,8 @@ certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-
   ```
   <img width="1910" height="307" alt="image" src="https://github.com/user-attachments/assets/afdc2411-7fdd-444d-a350-e9cbd844e672" />
 
-- 
+- When you try to auth with that cert, you'll get this error `KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)`
+- Use `passthecert`-:
 
 
 
