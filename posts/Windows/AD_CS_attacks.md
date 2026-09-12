@@ -312,4 +312,18 @@ certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-
 
 ------------------
 
+### ESC 9
 
+-------------------
+
+- Run certipy-ad to show existence of
+  - Template Name: ESC9
+  - Enrollment Flag: NoSecurityExtension
+  - Enrollment Rights: Includes Domain Users
+  - Vulnerabilities: Marked explicitly as ESC9
+
+<img width="1115" height="840" alt="image" src="https://github.com/user-attachments/assets/58df987f-4777-448b-9c3a-19ef416061c0" />
+
+- This demonstrates that any user in the Domain Users group (like raj) can enroll a certificate from this template and that no certificate security extensions enforce any rules. These conditions are exactly what one needs to proceed with an ESC9-based impersonation.
+- Gain access to a writable account (proxy) by injecting a shadow credential:
+ 
