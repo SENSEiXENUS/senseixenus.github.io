@@ -665,3 +665,21 @@ python3 dnstool.py -u papa.local\\delegation_user -p 'aad3b435b51404eeaad3b435b5
 - 
 
 -----------------
+
+### Timeroasting
+
+------------------
+
+- Domain-joined computers typically synchronize their clocks using the Network Time Protocol (NTP), with a Domain Controller (DC) acting as the time source. However, traditional NTP lacks authentication, making it vulnerable to man-in-the-middle (MitM) attacks where an adversary could spoof responses and manipulate the client’s system time.
+- Unauth Timeroast with [script](https://github.com/The-Viper-One/Invoke-AuthenticatedTimeRoast)-:
+
+```bash
+python3 timeroast.py papa.local
+```
+
+<img width="1324" height="184" alt="image" src="https://github.com/user-attachments/assets/32c01f9d-df68-475a-8d3f-f67e90651c68" />
+
+- Authenticated is 10x faster as it reduces the 
+
+
+------------------
