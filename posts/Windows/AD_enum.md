@@ -888,3 +888,28 @@ rusthound -d cs.org -u 'claudine.ara@cs.org' -p 'charles' -o /tmp/demo -z
 <img width="1078" height="652" alt="image" src="https://github.com/user-attachments/assets/1d23069f-fd1d-482e-8fb5-3cf80bb4adf2" />
 
 -----------------
+
+### Enumerating Tombstone with nxc
+
+-----------------
+
+- The tombstone helps to recover deleted objects from the AD recycle bin container.
+- Nxc with uv-:
+
+```bash
+uv run ~/NetExec/nxc/netexec.py ldap 192.168.130.136 -u "administrator" -p "hello" -M tombstone -o ACTION=query
+```
+
+<img width="1647" height="573" alt="image" src="https://github.com/user-attachments/assets/d1e2e0d5-324a-494b-a768-357308309d56" />
+
+- Recovering it-:
+
+```bash
+uv run ~/NetExec/nxc/netexec.py ldap 192.168.130.136 -u "administrator" -p "hello" -M tombstone -o ACTION=restore ID=a5e6bfef-6f24-497b-bf55-d74ca94f2e57  SCHEME=ldap
+```
+
+<img width="1909" height="424" alt="image" src="https://github.com/user-attachments/assets/12ff98f4-f0be-4dae-97ea-82e13668124f" />
+
+
+
+-----------------
