@@ -156,5 +156,6 @@ Yo 👋, Welcome To My Cyber Security Blog I'm SENSEIXENUS. I Post Different Hac
 - [[April 11 2026]] [Python3 CRLF httplib](https://github.com/SENSEiXENUS/senseixenus.github.io/blob/main/posts/CVES/httplib_crlf.md)
 - [[July 16 2026]] [Dokploy Authenticated Command Injection](https://github.com/Dokploy/dokploy/security/advisories/GHSA-qjrc-g63x-qhp9)
 - [[Feb 27 2026]] [Ldap Injection leads to username enumeration](https://github.com/Finsys/dockhand/security/advisories/GHSA-vmm5-cjvh-7vmv)
+- [Oct 17th 2026] [Arbitrary File Read](https://github.com/jerrybarry/tally/security/advisories/GHSA-x3jp-2cwp-7q9m)
 
 * * *
